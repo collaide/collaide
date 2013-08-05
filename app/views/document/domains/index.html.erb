@@ -1,0 +1,17 @@
+<div id="tree1"></div>
+
+<%
+   def self.html_tree(nodes)
+     inside = ""
+     nodes.map do |node, sub_nodes|
+       inside += "<li>#{link_to node.name, document_domain_path(node)}</li>#{html_tree(sub_nodes)}" unless node.name.nil? or node.name.empty?
+     end
+     return "" if inside.empty?
+     "<ul>#{inside}</ul>"
+   end
+%>
+      <p>
+        Je sais c'est très moche, mais c'est le plus simple à représenter graphiquement. L'arbre des domaines est
+        représenté par des listes imbriquées. Il y a JQTree, mais ça marche pas. Problème au niveau du javascript...
+      </p>
+<%= raw self.html_tree @domains %>

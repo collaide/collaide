@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Is send:</b>
+  <%= @member_message.is_send %>
+</p>
+
+<p>
+  <b>Send at:</b>
+  <%= @member_message.send_at %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @member_message.subject %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @member_message.message %>
+</p>
+
+<p>
+  <b>Is viewed:</b>
+  <%= @member_message.is_viewed %>
+</p>
+
+<p>
+  <b>Viewed at:</b>
+  <%= @member_message.viewed_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_member_message_path(@member_message) %> |
+<%= link_to 'Back', member_messages_path %>

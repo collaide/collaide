@@ -1,0 +1,6 @@
+<%= simple_form_for(@guest_book) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name %>
+    <%= f.input :comment %>
+    <%= f.button :submit %>
+<% end %>

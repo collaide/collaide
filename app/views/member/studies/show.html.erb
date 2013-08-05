@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Started at:</b>
+  <%= @study.started_at %>
+</p>
+
+<p>
+  <b>Ended at:</b>
+  <%= @study.ended_at %>
+</p>
+
+<p>
+  <b>Orientatoin:</b>
+  <%= @study.orientatoin %>
+</p>
+
+
+<%= link_to 'Edit', edit_member_study_path(@study) %> |
+<%= link_to 'Back', member_studies_path %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @document_type.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @document_type.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_document_type_path(@document_type) %> |
+<%= link_to 'Back', document_types_path %>

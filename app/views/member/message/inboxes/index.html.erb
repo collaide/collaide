@@ -1,0 +1,25 @@
+<h1>Listing member_message_inboxes</h1>
+
+<table>
+  <tr>
+    <th>Is viewed</th>
+    <th>Viewed at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @member_message_inboxes.each do |member_message_inbox| %>
+  <tr>
+    <td><%= member_message_inbox.is_viewed %></td>
+    <td><%= member_message_inbox.viewed_at %></td>
+    <td><%= link_to 'Show', member_message_inbox %></td>
+    <td><%= link_to 'Edit', edit_member_message_inbox_path(member_message_inbox) %></td>
+    <td><%= link_to 'Destroy', member_message_inbox, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Inbox', new_member_message_inbox_path %>

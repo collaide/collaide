@@ -1,0 +1,51 @@
+<nav class="top-bar">
+  <ul class="title-area">
+    <!-- Title Area -->
+    <li class="name">
+      <h1><%= link_to t("app_name"), eval("root_#{I18n.locale}_path")%></h1>
+    </li>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li class="divider"></li>
+      <li><%= link_to t("header.admin"), admin_root_path%></li>
+      <li class="divider"></li>
+      <li><%= link_to t("header.domain"), document_domains_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to t("header.guest_book"), guest_books_path %></li>
+      <li class="divider"></li>
+    </ul>
+
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="divider hide-for-small"></li>
+      <% if user_signed_in? %>
+          <li class="has-dropdown"><a href="#"><%= current_user.name %></a>
+            <ul class="dropdown">
+              <li><%= link_to t("header.user.profil"), current_user %></li>
+              <li><%= link_to t("header.user.edit"), edit_user_registration_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to t("header.user.repo"), structure_c_files_path(current_user.repository) unless current_user.repository.nil?%></li>
+              <li><%= link_to t("header.user.repo"), new_structure_path if current_user.repository.nil?%></li>
+              <li class="divider"></li>
+              <li><%= link_to t("header.user.logout"), destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+      <% else %>
+          <li class="has-form"><%= link_to t("header.connection"), new_user_session_path, class: "button" %></li>
+      <% end %>
+      <li class="divider"></li>
+      <li class="has-dropdown"><a href="#"><%= t "header.lang" %></a>
+        <ul class="dropdown">
+          <% I18n.available_locales.map do |l| %>
+            <li <% if l.to_s == I18n.locale.to_s %>class="active"<% end %>><%= link_to t("translation.#{l}"),  url_for(:locale => l.to_s) %></li>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</nav>

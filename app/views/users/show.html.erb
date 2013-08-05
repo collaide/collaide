@@ -1,0 +1,4 @@
+<h1><%= current_user.name%></h1>
+<h3><%= current_user.email %></h3>
+<%= image_tag @user.avatar.url(:thumb) %>
+<%= link_to "Edtion", edit_user_registration_path(current_user), class: "button"%>

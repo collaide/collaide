@@ -1,0 +1,6 @@
+-#TODO le créer en ajax, avec barre de progression et tout le bordel
+=simple_form_for @files, url: structure_c_files_path, method: :post, multipart: true do |f|
+  =f.input :files, as: :file, input_html: {multiple: true, class: "button success"}
+  =f.button :submit, 'start'
+  =f.button :button, 'cancel', type: :reset
+

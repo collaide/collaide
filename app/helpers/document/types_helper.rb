@@ -1,0 +1,2 @@
+module Document::TypesHelper
+end

@@ -1,0 +1,54 @@
+en:
+  devise:
+    confirmations:
+      new:
+        resend_confirmation_instructions: Resend confirmation instructions
+    mailer:
+      confirmation_instructions:
+        action: Confirm my email
+        greeting: Welcome %{recipient}!
+        instruction: You can confirm your email with the link under there
+        subject: Instructions to confirm your account
+      reset_password_instructions:
+        action: Change my password
+        greeting: Hello %{recipient}
+        instruction: Someone has ask for a link to change your password. That's it.
+        instruction_2: If you don't ask it, ignore it.
+        instruction_3: Your password will not change until you did not click on the link above and change your passowrd
+        subject: Instructions to change your password
+      unlock_instructions:
+        action: Unlock my account
+        greeting: Hello %{recipient}!
+        instruction: ! 'Follow this link to unlock your account'
+        message: Your account has been blocked after a too high try of connections
+        subject: Instructions to unlock your account
+    passwords:
+      new:
+        forgot_your_password: Password forget?
+        send_me_reset_password_instructions: Send me instructions to change my password
+    registrations:
+      edit:
+        are_you_sure: Are you shure?!
+        waiting_confirmation: "%{resource} must still be confirmed"
+        cancel_my_account: Delete my account
+        leave_blank_if_you_don_t_want_to_change_it: Leave the field blank if you don't want to change it
+        title: Édition du %{resource}
+        we_need_your_current_password_to_confirm_your_changes: we nned your password to valid your chages
+        update: "Update"
+        unhappy: "Not satisfaied?"
+      new:
+        sign_up: Inscription
+    sessions:
+      new:
+        sign_in: Sign in
+    shared:
+      links:
+        didn_t_receive_confirmation_instructions: Vous n'avez pas reçu le mail de confirmation ?
+        didn_t_receive_unlock_instructions: Vous n'avez pas reçu le mail de débloquage ?
+        forgot_your_password: forget your password?
+        sign_in: Sign in
+        sign_in_with_provider: Sign in with %{provider}
+        sign_up: Sign up
+    unlocks:
+      new:
+        resend_unlock_instructions: Resend unlock instructions

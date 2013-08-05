@@ -1,0 +1,11 @@
+<h1><%= t "guest_books.index.title" %></h1>
+<%= link_to t("guest_books.index.new_guest_book"), new_guest_book_path, class: "button success" %>
+<%= paginate @guest_books%>
+<% @guest_books.each do |guest_book| %>
+    <p>
+      <h3><%= link_to guest_book.name, guest_book %> </h3>
+    <p><%= t "guest_books.index.time_ago", date: time_ago_in_words(guest_book.created_at) %></p>
+       <%= guest_book.comment %>
+    </p>
+<% end %>
+<%= paginate @guest_books %>

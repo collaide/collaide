@@ -1,0 +1,12 @@
+=render 'c_files/form'
+
+-unless @files.has_siblings?
+  %p pas de dossiers
+-if @files.files.empty?
+  %p pas de fichiers
+-else
+  %ul
+  -@files.files.each do |file|
+    %li= file.file_file_name || "pas de nom"
+
+=debug params

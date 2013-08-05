@@ -1,0 +1,23 @@
+<h1>Listing member_group_demands</h1>
+
+<table>
+  <tr>
+    <th>Message</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @member_group_demands.each do |member_group_demand| %>
+  <tr>
+    <td><%= member_group_demand.message %></td>
+    <td><%= link_to 'Show', member_group_demand %></td>
+    <td><%= link_to 'Edit', edit_member_group_demand_path(member_group_demand) %></td>
+    <td><%= link_to 'Destroy', member_group_demand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Demand', new_member_group_demand_path %>

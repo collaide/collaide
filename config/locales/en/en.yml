@@ -1,0 +1,82 @@
+# Sample localization fichier for French. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+    dico:
+        app_name: &app_name Collaide
+        back: &back Back
+        connection: &connection Sign in
+        inscription: &inscription Sign up
+        password: &password Password
+        email: &email Email
+        password_confirmation: &password_confirmation Password confirmation
+        current_password: &current_password Current password
+        remember_me: &remember_me Remember me
+    activerecord:
+        models:
+          user: "account"
+          guest_book: "Guest book"
+        attributes:
+          user:
+            email: *email
+            password: *password
+            password_confirmation: *password_confirmation
+            current_password: *current_password
+            remember_me: *remember_me
+          guest_book:
+            name: "My name"
+            comment: "Comment"
+    helpers:
+        submit:
+            guest_book:
+                create: "New Comment"
+    views:
+        pagination:
+          first: "&laquo; First"
+          last: "Last &raquo;"
+          previous: "&lsaquo; Previous"
+          next: "Next &rsaquo;"
+          truncate: "..."
+    app_name: *app_name
+    back: *back
+    header:
+        admin: "Administration"
+        domain: "Domains"
+        guest_book: "Guest book"
+        user:
+            profil: "My profil"
+            edit: "Modify"
+            logout: "Log out"
+        lang: "Languages"
+        connection: *connection
+    domains:
+        link:
+            all: "List of the domains"
+    static_pages:
+        home:
+            h1:
+                title: Welcome on %{app_name} !!!
+                connection: *connection
+                inscription: *inscription
+        about:
+            title: About
+            text: Ce site a été réalisé dans le but de d'essayer le framework ruby on rails pour collaide. Construit en moins de deux jours
+        contact:
+            title: Contact
+            text: Si tu veux plus d'infos d'infos, contacte-moi à l'adresse facenord.sud at gmail point com
+        help:
+            title: Help
+            text1: Ce site a été développé grâce au farmework Ruby On Rails, basé sur le langage Ruby. Il utilise une foule de librairies additionels nécessaires au bon fonctionement du site.
+            text2: "Pour voir le code source, rendez-vous sur  github à l'adresse %{github}"
+            text3: Il y a plusieurs liens utiles qui fournissent une bonne documentation pour comprndre le fonctionement de ruby et ruby on rails. Je mettrai les liens prochainement
+    guest_books:
+        new:
+            title: "New comment in the guest book"
+        create:
+            notice: "The comment is successfully created"
+        show:
+            back_to_index: "back to the guest book"
+        index:
+            title: "Guest book"
+            new_guest_book: "New comment in the guest book"
+            time_ago: "at %{date} ago"

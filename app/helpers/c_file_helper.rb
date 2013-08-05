@@ -1,0 +1,2 @@
+module CFileHelper
+end

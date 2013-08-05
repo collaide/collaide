@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Message:</b>
+  <%= @member_comment.message %>
+</p>
+
+
+<%= link_to 'Edit', edit_member_comment_path(@member_comment) %> |
+<%= link_to 'Back', member_comments_path %>
