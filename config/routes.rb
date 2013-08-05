@@ -7,8 +7,16 @@
         resources :study_levels
       end
 
-      resources :structures do
+      resources :structures, only: [:index] do
         resources :c_files
+      end
+
+      scope 'member/group/:id' do
+        resources :structures
+      end
+
+      scope 'user/:id' do
+        resources :structures
       end
 
       namespace :cFile do

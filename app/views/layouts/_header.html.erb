@@ -30,7 +30,7 @@
               <li><%= link_to t("header.user.edit"), edit_user_registration_path %></li>
               <li class="divider"></li>
               <li><%= link_to t("header.user.repo"), structure_c_files_path(current_user.repository) unless current_user.repository.nil?%></li>
-              <li><%= link_to t("header.user.repo"), new_structure_path if current_user.repository.nil?%></li>
+              <li><%= link_to t("header.user.repo"), new_structure_path(1) if current_user.repository.nil?%></li>
               <li class="divider"></li>
               <li><%= link_to t("header.user.logout"), destroy_user_session_path, method: :delete %></li>
             </ul>
