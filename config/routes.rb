@@ -8,7 +8,7 @@
       end
 
       resources :structures do
-        resources :c_files, on: :collection
+        resources :c_files
       end
 
       namespace :cFile do
