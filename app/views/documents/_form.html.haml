@@ -1,0 +1,15 @@
+=simple_form_for(@document, url: documents_path, method: :post, html: {multipart: true}) do |f|
+  =f.error_notification
+  .form-inputs
+    =f.input :title
+    =f.input :description, input_html: {rows: 3}
+    =f.simple_fields_for :files do |file|
+      =file.input :file
+    =f.input :author
+    =f.input :number_of_pages, default: 1
+    =f.input :realized_at, as: :ui_date_picker, required: true
+    =f.input :language, collection: languages_list, prompt: t("documents.form.choose_language")
+    =f.association :study_level, prompt: t('documents.form.choose_study_level')
+    =f.association :document_type, prompt: t('documents.form.choose_document_type')
+  .form-actions
+    =f.button :submit, t('documents.form.submit')

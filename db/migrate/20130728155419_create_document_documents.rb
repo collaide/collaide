@@ -4,7 +4,7 @@ class CreateDocumentDocuments < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.string :author
-      t.integer :number_of_pages
+      t.integer :number_of_pages, default: 1
       t.date :realized_at
       t.string :language
 

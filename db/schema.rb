@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130805113003) do
+ActiveRecord::Schema.define(:version => 20130807153822) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130805113003) do
     t.integer  "member_group_id"
     t.integer  "c_file_c_file_id"
     t.string   "ancestry"
+    t.integer  "position"
   end
 
   add_index "c_file_structures", ["ancestry"], :name => "index_c_file_structures_on_ancestry"
@@ -78,11 +79,11 @@ ActiveRecord::Schema.define(:version => 20130805113003) do
     t.string   "title"
     t.text     "description"
     t.string   "author"
-    t.integer  "number_of_pages"
+    t.integer  "number_of_pages",  :default => 1
     t.date     "realized_at"
     t.string   "language"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.integer  "study_level_id"
     t.integer  "document_type_id"
     t.integer  "user_id"

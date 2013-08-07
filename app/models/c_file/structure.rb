@@ -1,5 +1,5 @@
 class CFile::Structure < ActiveRecord::Base
-  attr_accessible :name, :size
+  attr_accessible :name, :size, :group_id, :files_attributes
 
   belongs_to :user
   belongs_to :group, :class_name => 'Member::Group::Group'

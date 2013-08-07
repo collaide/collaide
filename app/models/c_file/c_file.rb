@@ -1,5 +1,5 @@
 class CFile::CFile < ActiveRecord::Base
-  attr_accessible :rights, :file
+  attr_accessible :rights, :file, :position
 
   belongs_to :creator, class_name: 'User'
   belongs_to :document, :class_name => 'Document::Document'
@@ -10,6 +10,6 @@ class CFile::CFile < ActiveRecord::Base
   has_attached_file :file
 
   has_paper_trail
-
-  has_bit_mask :rights, %w[read write execute]
+  RIGHTS = %w[read write execute]
+  has_bit_mask :rights, RIGHTS
 end

@@ -11,6 +11,7 @@ gem 'kaminari'
 gem 'jquery-rails'
 gem 'jqtree-rails'
 gem "jquery-ui-rails"
+gem 'ui_datepicker-rails3'
 
 gem 'cancan'
 gem 'devise'

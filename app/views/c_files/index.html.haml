@@ -1,12 +1,18 @@
+-unless @files.parent_id.nil?
+  =link_to 'Retour', structure_c_files_path(@files.parent_id)
 =render 'c_files/form'
 
--unless @files.has_siblings?
+-unless @files.has_children?
   %p pas de dossiers
+-else
+  %h2 Dossiers
+  %ul
+    -@files.children.each do |folder|
+      %li= link_to folder.name, structure_c_files_path(folder)
 -if @files.files.empty?
   %p pas de fichiers
 -else
+  %h2 Fichiers
   %ul
   -@files.files.each do |file|
     %li= file.file_file_name || "pas de nom"
-
-=debug params

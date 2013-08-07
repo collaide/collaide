@@ -23,10 +23,6 @@ FactoryGirl.define do
     number_of_pages 2
     realized_at {2.years.ago}
     sequence(:title) { |n| "Domain #{n}"}
-    association :study_level, factory: :study_level
-    association :document_type, factory: :document_type
-    association :user, factory: :user
-    domains {FactoryGirl.create_list :domain, 5}
 
   end
 

@@ -1,0 +1,6 @@
+%h3= @document.title
+%p= @document.description
+%p
+  Télécharger:
+  =link_to @document.files.first.file.name, @document.files.first.file.url
+=link_to t('documents.show.back'), documents_path, class: 'button'

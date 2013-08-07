@@ -62,4 +62,8 @@ class User < ActiveRecord::Base
   def no_roles?
     role_mask.nil?
   end
+
+  def name_to_show
+    self.name
+  end
 end

@@ -1,0 +1,26 @@
+%h3= t 'documents.index.title'
+
+=link_to t('documents.index.new_link'), new_document_path, class: "button success"
+
+-if @document_documents.empty?
+  %p= t 'documents.index.no_document'
+-else
+  =paginate @document_documents
+  %table
+    %thead
+      %th= t 'documents.index.table.thead.title'
+      %th= t 'documents.index.table.thead.description'
+      %th= t 'documents.index.table.thead.lang'
+      %th= t 'documents.index.table.thead.study_level'
+      %th= t 'documents.index.table.thead.document_type'
+      %th= t 'documents.index.table.thead.created_at'
+    %tbody
+      -@document_documents.each do |d|
+        %tr
+          %td= link_to d.title, document_path(d)
+          %td= d.description
+          %td= d.language
+          %td= d.study_level.name
+          %td= d.document_type.name
+          %td= l d.created_at, format: :long
+  =paginate @document_documents

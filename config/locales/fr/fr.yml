@@ -12,6 +12,13 @@ fr:
         password_confirmation: &password_confirmation Confirmation du mot de passe
         current_password: &current_password Mot de passe actuel
         remember_me: &remember_me Se souvenir de moi
+        documents:
+          title: &doc_title Titre
+          description: &doc_description Déscription
+          lang: &doc_lang Langue
+          study_level: &study_level Degré d'étude
+          document_type: &document_type Type de document
+          created_at: &created_at Crée le
     activerecord:
         models:
           user: "profil"
@@ -43,6 +50,7 @@ fr:
         admin: "Administration"
         domain: "Domaines"
         guest_book: "Livre d'or"
+        document: "Documents"
         user:
             profil: "Mon profil"
             edit: "Modifier"
@@ -80,3 +88,25 @@ fr:
             title: "Livre d'or"
             new_guest_book: "Nouveau commentaire dans le livre d'or"
             time_ago: "Il y a %{date}"
+    documents:
+      index:
+        title: "Tous les documents"
+        new_link: Nouveau document
+        no_document: Il n'y a aucun documents pour le moment
+        table:
+          thead:
+            title: *doc_title
+            description: *doc_description
+            lang: *doc_lang
+            document_type: *document_type
+            study_level: *study_level
+            created_at: *created_at
+      new:
+        title: Nouveau document
+      form:
+        submit: Déposer le document
+        choose_language: Choisissez la langue
+        choose_study_level: Choisissez le niveau d'étude
+        choose_document_type: Choisissez le type de document
+      show:
+        back: Retour

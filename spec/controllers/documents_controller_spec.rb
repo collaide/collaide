@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Document::DocumentsController do
+describe DocumentsController do
 
 
   describe "GET 'index'" do
@@ -36,7 +36,7 @@ describe Document::DocumentsController do
       end
 
       it "should redirect to 'index'" do
-        response.should redirect_to document_documents_url
+        response.should redirect_to documents_url
       end
     end
 
@@ -47,4 +47,10 @@ describe Document::DocumentsController do
     end
   end
 
+  describe "GET 'show'" do
+     it "returns http success" do
+       get :show, id: FactoryGirl.create(:document), locale: I18n.locale
+       response.should be_successful
+     end
+  end
 end

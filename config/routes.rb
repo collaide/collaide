@@ -1,7 +1,9 @@
   Collaide::Application.routes.draw do
 
+    resources :documents do
+      get 'page/:page', :action => :index, :on => :collection
+    end
       namespace :document do
-        resources :documents
         resources :domains, :only => [:show, :index]
         resources :types
         resources :study_levels
@@ -17,16 +19,6 @@
 
       scope 'user/:id' do
         resources :structures
-      end
-
-      namespace :cFile do
-
-
-        namespace :type do
-          resources :gps
-          resources :images
-          resources :pictures
-        end
       end
 
 
@@ -57,7 +49,7 @@
       end
 
 
-      resources :guest_books, :only => [:show, :index, :create, :new]do
+      resources :guest_books, :only => [:show, :index, :create, :new] do
         get 'page/:page', :action => :index, :on => :collection
       end
       resources :users,   :only => [:show]
