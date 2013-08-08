@@ -111,3 +111,6 @@ fr:
         choose_document_type: Choisissez le type de document
       show:
         back: Retour
+        modify: Modifier
+      edit:
+        title: Editer le document

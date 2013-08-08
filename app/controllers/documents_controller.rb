@@ -1,5 +1,5 @@
-class DocumentsController < InheritedResources::Base
-
+class DocumentsController < ApplicationController
+  load_and_authorize_resource class: Document::Document
   def create
     @document = Document::Document.new params[:document_document]
     @document.user = current_user
@@ -48,7 +48,7 @@ class DocumentsController < InheritedResources::Base
   end
 
   def edit
-
+     @document = Document::Document.find params[:id]
   end
 
   def update
