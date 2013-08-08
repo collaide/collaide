@@ -23,9 +23,13 @@ class DocumentsController < InheritedResources::Base
     sort = 'DESC'
     sort = 'ASC' if params[:order] == 'asc'
     attr = Document::Document::SORT_ARGS[:"#{params[:sort].to_s}"] || 'document_documents.created_at'
-    where_domains = 1
-    where_domains = {:"domains.name" => params[:domain]} unless params[:domain].nil?
-     @document_documents = Document::Document.order("#{attr} #{sort}").includes([:study_level, :document_type, :domains]).page(params[:page]).where(where_domains)
+
+     @document_documents = Document::Document.order("#{attr} #{sort}").includes([:study_level, :document_type, :domains]).page(params[:page])
+    #TODO: Comment afficher les documents par domaines ?
+    #unless params[:domain].nil?
+    #  where_domains = {:"domains.name" => params[:domain]}
+    #  @document_documents.where(where_domains)
+    #end
 
     respond_to do |format|
       format.html # index.html.haml
