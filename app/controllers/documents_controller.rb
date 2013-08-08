@@ -2,6 +2,7 @@ class DocumentsController < InheritedResources::Base
 
   def create
     @document = Document::Document.new params[:document_document]
+    @document.user = current_user
     if @document.save
       redirect_to document_path(@document)
     else
@@ -18,8 +19,28 @@ class DocumentsController < InheritedResources::Base
 
   def index
     #TODO Order by, comment le passer en paramètre ?
-    #TODO optimisation des requêtes, possibles de diminuer de beaucoup si on cherche dans la doc -> configuration du modèle
-     @document_documents = Document::Document.order('created_at DESC').page(params[:page])
+    #TODO optimisation des requêtes, déjà fait en partie. Possible de faire en core mieux ? a voir
+    sort = 'DESC'
+    sort = 'ASC' if params[:order] == 'asc'
+    attr = Document::Document::SORT_ARGS[:"#{params[:sort].to_s}"] || 'document_documents.created_at'
+    where_domains = '1'
+    where_domains = {:"domains.name" => params[:domain]} unless params[:domain].nil?
+     @document_documents = Document::Document.order("#{attr} #{sort}").includes([:study_level, :document_type, :domains]).page(params[:page]).where(where_domains)
+
+    respond_to do |format|
+      format.html # index.html.haml
+      format.json do
+        urls = {}
+        dates = {}
+        domains = {}
+        @document_documents.each do |doc|
+          dates[:"#{doc.id.to_s}"] = l(doc.created_at, format: :long)
+          urls[:"#{doc.id.to_s}"] = document_path(doc.id)
+          domains[:"#{doc.id.to_s}"] = Domain.flat(doc.domains)
+        end
+        render json: {doc: @document_documents, dates: dates, urls: urls, domains: domains}.to_json(methods: [:study_level, :document_type, :domains])
+      end
+    end
   end
 
   def edit

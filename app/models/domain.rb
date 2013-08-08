@@ -5,7 +5,9 @@ class Domain < ActiveRecord::Base
 
   has_ancestry :orphan_strategy => :rootify
 
-  translates :name, :description
+  translates :name, :description, fallbacks_for_empty_translations: true
+  #FIXME: le fallback ne marche pas. En fait si, de temps en temps...
+  Globalize.fallbacks = {:en => [:en, :fr], :fr => [:fr, :en]}
 
   has_and_belongs_to_many :documents, :class_name => 'Document::Document'
 
@@ -22,6 +24,16 @@ class Domain < ActiveRecord::Base
     nodes.map do |node, sub_nodes|
       {label: node.name, id: node.id, children: json_tree(sub_nodes).compact}
     end
+  end
+
+  def self.select_tree(separator='-')
+    Domain.order('position ASC').includes(:translations).each {|a_domain| a_domain.name = separator*a_domain.depth+a_domain.name unless a_domain.name.nil?}
+  end
+
+  def self.flat(nodes)
+    name = ""
+    nodes.map {|a_domain| name += "#{a_domain.name}, "}
+    name.chop.chop
   end
 
   class Translation

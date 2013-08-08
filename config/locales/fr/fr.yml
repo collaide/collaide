@@ -101,6 +101,7 @@ fr:
             document_type: *document_type
             study_level: *study_level
             created_at: *created_at
+            domain: Domaine d'étude
       new:
         title: Nouveau document
       form:

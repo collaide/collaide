@@ -9,7 +9,8 @@
     =f.input :number_of_pages, default: 1
     =f.input :realized_at, as: :ui_date_picker, required: true
     =f.input :language, collection: languages_list, prompt: t("documents.form.choose_language")
-    =f.association :study_level, prompt: t('documents.form.choose_study_level')
-    =f.association :document_type, prompt: t('documents.form.choose_document_type')
+    =f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations)
+    =f.association :document_type, prompt: t('documents.form.choose_document_type'), collection: Document::Type.includes(:translations)
+    =f.association :domains, collection: Domain.select_tree
   .form-actions
     =f.button :submit, t('documents.form.submit')

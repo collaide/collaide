@@ -8,12 +8,26 @@
   =paginate @document_documents
   %table
     %thead
-      %th= t 'documents.index.table.thead.title'
-      %th= t 'documents.index.table.thead.description'
-      %th= t 'documents.index.table.thead.lang'
-      %th= t 'documents.index.table.thead.study_level'
-      %th= t 'documents.index.table.thead.document_type'
-      %th= t 'documents.index.table.thead.created_at'
+      %th
+        =t 'documents.index.table.thead.title'
+        = order_by 'title'
+      %th
+        = t 'documents.index.table.thead.description'
+      %th
+        = t 'documents.index.table.thead.lang'
+        = order_by 'lang'
+      %th
+        = t 'documents.index.table.thead.study_level'
+        = order_by 'study_level'
+      %th
+        = t 'documents.index.table.thead.document_type'
+        = order_by 'type'
+      %th
+        = t 'documents.index.table.thead.created_at'
+        = order_by 'created_at'
+      %th
+        = t 'documents.index.table.thead.domain'
+        = order_by 'domain'
     %tbody
       -@document_documents.each do |d|
         %tr
@@ -23,4 +37,5 @@
           %td= d.study_level.name
           %td= d.document_type.name
           %td= l d.created_at, format: :long
+          %td= Domain.flat(d.domains)
   =paginate @document_documents
