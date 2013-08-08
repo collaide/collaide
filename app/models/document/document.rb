@@ -19,6 +19,9 @@ class Document::Document < ActiveRecord::Base
   validates :author, presence: true, length: {minimum: 3, maximum: 30}
   validates :description, presence: true, length: {minimum: 5}
   validates_presence_of :language
+  validates_presence_of :domains
+  validates_presence_of :study_level
+  validates_presence_of :document_type
   validates :number_of_pages, numericality: true, inclusion: {in: 1..100}
   #TODO conversion du format de la date en format de type SQL (YYY-mm-dd)
   validates :realized_at, date: {before: Proc.new {Time.now}}

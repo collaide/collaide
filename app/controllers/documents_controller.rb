@@ -23,7 +23,7 @@ class DocumentsController < InheritedResources::Base
     sort = 'DESC'
     sort = 'ASC' if params[:order] == 'asc'
     attr = Document::Document::SORT_ARGS[:"#{params[:sort].to_s}"] || 'document_documents.created_at'
-    where_domains = '1'
+    where_domains = 1
     where_domains = {:"domains.name" => params[:domain]} unless params[:domain].nil?
      @document_documents = Document::Document.order("#{attr} #{sort}").includes([:study_level, :document_type, :domains]).page(params[:page]).where(where_domains)
 

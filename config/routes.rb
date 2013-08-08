@@ -1,7 +1,7 @@
   Collaide::Application.routes.draw do
 
     resources :documents do
-      get ':domain', action: :index, on: :collection, as: 'documents_by_domain'
+      get 'domain/:domain', action: :index, on: :collection, as: 'documents_by_domain'
       get 'page/:page', :action => :index, :on => :collection
     end
       namespace :document do
