@@ -58,11 +58,13 @@
       match "about", to: "static_pages#about", as: "about"
       match "contact", to: "static_pages#contact", as: "contact"
       match "help", to: "static_pages#help", as: "help"
+      match 'change-lang', to: 'static_pages#change_lang', as: 'change_lang'
 
       root to: "static_pages#home"
 
       devise_for :user
       ActionDispatch::Routing::Translator.translate_from_file('config/locales/routes.yml', { :prefix_on_default_locale => true })
+    match "*path", :to => "application#routing_error"
   end
 
   Collaide::Application.routes.draw do

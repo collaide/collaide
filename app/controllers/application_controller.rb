@@ -4,7 +4,30 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :set_locale_from_url
 
+  rescue_from ActionController::RoutingError, :with => :render_not_found
+
+  def routing_error
+    raise ActionController::RoutingError.new(params[:path])
+  end
+
+  def render_not_found
+    lang = params[:path][/^[a-z]{2}/]
+    logger.info I18n.locale
+
+
+    if lang != I18n.locale.to_s
+      logger.info params[:path]
+      params[:path][/^[a-z]{2}/] = I18n.locale.to_s
+      url = Rails.application.routes.recognize_path(params[:path])
+      url[:locale] = lang
+       redirect_to url
+    else
+      redirect_to eval "change_lang_#{lang}_path"
+    end
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
+
     if !request.env["HTTP_REFERER"]
       redirect_to root_url
     else
