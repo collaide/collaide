@@ -64,7 +64,6 @@
 
       devise_for :user
       ActionDispatch::Routing::Translator.translate_from_file('config/locales/routes.yml', { :prefix_on_default_locale => true })
-    match "*path", :to => "application#routing_error"
   end
 
   Collaide::Application.routes.draw do
@@ -72,4 +71,5 @@
 
     ActiveAdmin.routes(self)
     devise_for :admin_users, ActiveAdmin::Devise.config
+    match "*path", :to => "application#routing_error"
   end
