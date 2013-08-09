@@ -52,11 +52,11 @@ class DocumentsController < ApplicationController
   end
 
   def update
-
+      #TODO: compléter la méthode
   end
 
   def destroy
-
+     #TODO: compléter la méthode
   end
 
   def show
