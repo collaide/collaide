@@ -66,7 +66,7 @@ class Document::DocumentsController < ApplicationController
   def destroy
     @document_documents = Document::Document.find params[:id]
     @document_documents.destroy()
-    redirect_to document_documents_path
+    redirect_to document_documents_path, notice: t('documents.destroy.notice')
   end
 
   def show

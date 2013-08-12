@@ -122,3 +122,5 @@ fr:
         notice: Le document a été modifié
       create:
         notice: Le document a été créé
+      destroy:
+        notice: Le document a été supprimé
