@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateTableGroupDemandsUsers < ActiveRecord::Migration
   def up
     create_table :group_demands_users do |t|

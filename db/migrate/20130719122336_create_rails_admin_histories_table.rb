@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateRailsAdminHistoriesTable < ActiveRecord::Migration
    def self.up
      create_table :rails_admin_histories do |t|

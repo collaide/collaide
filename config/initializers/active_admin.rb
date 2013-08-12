@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ActiveAdmin.setup do |config|
 
   config.namespace :admin do |admin|

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddAttachmentToCFileCFile < ActiveRecord::Migration
   def self.up
     add_attachment :c_file_c_files, :file

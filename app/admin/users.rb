@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ActiveAdmin.register User do
   form do |f|
     f.inputs "User Details" do

@@ -1,9 +1,10 @@
+# -*- encoding : utf-8 -*-
   Collaide::Application.routes.draw do
 
-    resources :documents do
-      get 'domain/:domain', action: :index, on: :collection, as: 'documents_by_domain'
-      get 'page/:page', :action => :index, :on => :collection
-    end
+      resources :'documents', as: 'document_documents', controller: 'document/documents' do
+        get 'domain/:domain', action: :index, on: :collection, as: 'documents_by_domain'
+        get 'page/:page', :action => :index, :on => :collection
+      end
       namespace :document do
         resources :domains, :only => [:show, :index]
         resources :types
@@ -71,5 +72,5 @@
 
     ActiveAdmin.routes(self)
     devise_for :admin_users, ActiveAdmin::Devise.config
-    match "*path", :to => "application#routing_error"
+    #match "*path", :to => "application#routing_error"
   end

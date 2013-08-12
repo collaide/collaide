@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateCFileOwners < ActiveRecord::Migration
   def change
     create_table :c_file_owners do |t|

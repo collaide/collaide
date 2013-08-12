@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddRelationsToMemberMessageInboxes < ActiveRecord::Migration
   def change
     add_column :member_message_inboxes, :message_id, :integer

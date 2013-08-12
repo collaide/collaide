@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: domains
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :text
+#  ancestry    :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  position    :integer
+#
+
+# -*- encoding : utf-8 -*-
 class Domain < ActiveRecord::Base
   attr_accessible :description, :name, :position, :translations_attributes
 
@@ -27,12 +41,18 @@ class Domain < ActiveRecord::Base
   end
 
   def self.select_tree(separator='-')
-    Domain.order('position ASC').includes(:translations).each {|a_domain| a_domain.name = separator*a_domain.depth+a_domain.name unless a_domain.name.nil?}
+    Domain.order('position ASC').includes(:translations).each do |a_domain|
+      a_domain.name = separator*a_domain.depth+a_domain.name unless a_domain.name.nil?
+    end
   end
 
   def self.flat(nodes)
     name = ""
-    nodes.map {|a_domain| name += "#{a_domain.name}, "}
+    nodes.map.with_index do |a_domain, key|
+       separator = ', '
+       separator = " #{I18n.translate('dico.and')} " if nodes.size >=2 and key+2 == nodes.size
+       name += "#{a_domain.name}#{separator}"
+    end
     name.chop.chop
   end
 

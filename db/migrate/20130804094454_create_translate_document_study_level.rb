@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateTranslateDocumentStudyLevel < ActiveRecord::Migration
   def up
     Document::StudyLevel.create_translation_table!({

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateDocumentStudyLevels < ActiveRecord::Migration
   def change
     create_table :document_study_levels do |t|

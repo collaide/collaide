@@ -1,10 +1,11 @@
-class DocumentsController < ApplicationController
+# -*- encoding : utf-8 -*-
+class Document::DocumentsController < ApplicationController
   load_and_authorize_resource class: Document::Document
   def create
     @document = Document::Document.new params[:document_document]
     @document.user = current_user
     if @document.save
-      redirect_to document_path(@document)
+      redirect_to document_documents_path, notice: t("documents.create.notice")
     else
       @document.files.build
       render action: 'new'
@@ -18,13 +19,14 @@ class DocumentsController < ApplicationController
   end
 
   def index
-    #TODO Order by, comment le passer en paramètre ?
     #TODO optimisation des requêtes, déjà fait en partie. Possible de faire en core mieux ? a voir
     sort = 'DESC'
     sort = 'ASC' if params[:order] == 'asc'
     attr = Document::Document::SORT_ARGS[:"#{params[:sort].to_s}"] || 'document_documents.created_at'
 
-     @document_documents = Document::Document.order("#{attr} #{sort}").includes([:study_level, :document_type, :domains]).page(params[:page])
+     @document_documents = Document::Document.order("#{attr} #{sort}").
+         includes([:study_level, :document_type, {domains: :translations}]).
+         page(params[:page])
     #TODO: Comment afficher les documents par domaines ?
     #unless params[:domain].nil?
     #  where_domains = {:"domains.name" => params[:domain]}
@@ -39,7 +41,7 @@ class DocumentsController < ApplicationController
         domains = {}
         @document_documents.each do |doc|
           dates[:"#{doc.id.to_s}"] = l(doc.created_at, format: :long)
-          urls[:"#{doc.id.to_s}"] = document_path(doc.id)
+          urls[:"#{doc.id.to_s}"] = document_document_path(doc.id)
           domains[:"#{doc.id.to_s}"] = Domain.flat(doc.domains)
         end
         render json: {doc: @document_documents, dates: dates, urls: urls, domains: domains}.to_json(methods: [:study_level, :document_type, :domains])
@@ -52,11 +54,19 @@ class DocumentsController < ApplicationController
   end
 
   def update
-      #TODO: compléter la méthode
+    @document_documents = Document::Document.find(params[:id])
+     if @document_documents.update_attributes(params[:document_document])
+       redirect_to document_document_path(@document_documents), notice: t('documents.update.notice')
+     else
+       render 'edit'
+     end
+
   end
 
   def destroy
-     #TODO: compléter la méthode
+    @document_documents = Document::Document.find params[:id]
+    @document_documents.destroy()
+    redirect_to document_documents_path
   end
 
   def show

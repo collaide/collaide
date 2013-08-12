@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Member::StudiesController < InheritedResources::Base
   def index
     @studies = Member::Study.all

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CFilesController < ApplicationController
   def index
     @files = CFile::Structure.find params[:structure_id]

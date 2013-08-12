@@ -1,6 +1,6 @@
 %h3= t 'documents.index.title'
 
-=link_to t('documents.index.new_link'), new_document_path, class: "button success"
+=create_link(Document::Document, t('documents.index.new_link'))
 
 -if @document_documents.empty?
   %p= t 'documents.index.no_document'
@@ -31,7 +31,7 @@
     %tbody
       -@document_documents.each do |d|
         %tr
-          %td= link_to d.title, document_path(d)
+          %td= link_to d.title, document_document_path(d)
           %td= d.description
           %td= d.language
           %td= d.study_level.name

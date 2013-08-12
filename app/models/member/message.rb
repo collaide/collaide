@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: member_messages
+#
+#  id         :integer          not null, primary key
+#  is_send    :boolean          default(FALSE)
+#  send_at    :datetime
+#  subject    :string(255)
+#  message    :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :integer
+#  message_id :integer
+#
+
+# -*- encoding : utf-8 -*-
 class Member::Message < ActiveRecord::Base
   def self.table_name_prefix
     ''

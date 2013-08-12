@@ -3,6 +3,7 @@
 
 fr:
     dico:
+        and: et
         app_name: &app_name Collaide
         back: &back Retour
         connection: &connection Connexion
@@ -46,6 +47,8 @@ fr:
           truncate: "..."
     app_name: *app_name
     back: *back
+    confirm: Etes-vous sûre ?
+    access_denied: Vous n'avez pas le droit de voir cette page. Désolé
     header:
         admin: "Administration"
         domain: "Domaines"
@@ -112,5 +115,10 @@ fr:
       show:
         back: Retour
         modify: Modifier
+        delete: Supprimer
       edit:
         title: Editer le document
+      update:
+        notice: Le document a été modifié
+      create:
+        notice: Le document a été créé

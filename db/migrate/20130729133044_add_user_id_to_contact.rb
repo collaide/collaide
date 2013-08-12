@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddUserIdToContact < ActiveRecord::Migration
   def change
     add_column :member_contacts, :user_id, :integer

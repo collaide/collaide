@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddrelationsTodocumentDocuments < ActiveRecord::Migration
   def change
     add_column :document_documents, :study_level_id, :integer

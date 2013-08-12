@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Document::DomainsController < ApplicationController
   load_and_authorize_resource
   def show

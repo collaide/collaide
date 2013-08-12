@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddRelationsToCFileStructures < ActiveRecord::Migration
   def change
     add_column :c_file_structures, :user_id, :integer

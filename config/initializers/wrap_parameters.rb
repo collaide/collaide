@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Be sure to restart your server when you modify this fichier.
 #
 # This fichier contains settings for ActionController::ParamsWrapper which

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ActiveAdmin.register CFile::CFile do
   form do |f|
     f.inputs "File Details" do

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Document::DocumentsHelper
 
   def languages_list
@@ -27,8 +28,8 @@ module Document::DocumentsHelper
     asc = options[:asc] || 'asc'
     desc = options[:desc] || 'desc'
     links = ""
-    links = "#{link_to(asc, documents_path(sort: attribute, order: 'asc', format: :json), remote: remote)}" unless options[:only] == :asc
-    links+=" / #{link_to(desc, documents_path(sort: attribute, order: 'desc', format: :json), remote: remote)}" unless options[:only] == :desc
+    links = "#{link_to(asc, document_documents_path(sort: attribute, order: 'asc', format: :json), remote: remote)}" unless options[:only] == :asc
+    links+=" / #{link_to(desc, document_documents_path(sort: attribute, order: 'desc', format: :json), remote: remote)}" unless options[:only] == :desc
     raw links
   end
 end

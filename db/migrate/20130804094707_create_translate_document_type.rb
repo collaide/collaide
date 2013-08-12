@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateTranslateDocumentType < ActiveRecord::Migration
   def up
     Document::Type.create_translation_table!({

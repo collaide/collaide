@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: c_file_structures
+#
+#  id               :integer          not null, primary key
+#  name             :string(255)
+#  size             :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  user_id          :integer
+#  member_group_id  :integer
+#  c_file_c_file_id :integer
+#  ancestry         :string(255)
+#  position         :integer
+#
+
+# -*- encoding : utf-8 -*-
 class CFile::Structure < ActiveRecord::Base
   attr_accessible :name, :size, :group_id, :files_attributes
 

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateMemberStudies < ActiveRecord::Migration
   def change
     create_table :member_studies do |t|

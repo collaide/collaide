@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateFolders < ActiveRecord::Migration
   def change
     create_table :c_file_folders do |t|

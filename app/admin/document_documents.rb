@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ActiveAdmin.register Document::Document do
   form do |f|
      f.inputs "Document detail" do

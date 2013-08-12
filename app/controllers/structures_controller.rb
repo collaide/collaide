@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class StructuresController < ApplicationController
   def new
       @structure = CFile::Structure.new

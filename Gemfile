@@ -8,6 +8,10 @@ gem 'faker', '1.0.1'
 
 gem 'kaminari'
 
+gem 'magic_encoding'
+gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git' # <a href="https://github.com/ctran/annotate_models" target="_blank">https://github.com/ctran/annotate_models</a>
+
+
 gem 'jquery-rails'
 gem 'jqtree-rails'
 gem "jquery-ui-rails"
@@ -38,6 +42,7 @@ gem "paperclip", "~> 3.0"
 gem 'aws-sdk', '~> 1.5.7'
 
 gem 'zurb-foundation'
+gem 'language_list'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
@@ -47,7 +52,6 @@ group :development, :test do
   gem 'childprocess', '0.3.6'
   gem 'spork', '0.9.2'
   gem "quiet_assets", ">= 1.0.1" # <a href="https://github.com/evrone/quiet_assets" target="_blank">https://github.com/evrone/quiet_assets</a>
-  gem "annotate", :git => 'git://github.com/ctran/annotate_models.git' # <a href="https://github.com/ctran/annotate_models" target="_blank">https://github.com/ctran/annotate_models</a>
   gem 'meta_request'
   gem 'guard-livereload'
   gem "rails-erd"

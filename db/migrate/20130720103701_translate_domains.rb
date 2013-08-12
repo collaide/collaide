@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class TranslateDomains < ActiveRecord::Migration
   def self.up
     Domain.create_translation_table!({

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateMemberGroupMembers < ActiveRecord::Migration
   def change
     create_table :member_group_members do |t|

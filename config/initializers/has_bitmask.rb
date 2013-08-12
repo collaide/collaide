@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class <<ActiveRecord::Base
    def has_bit_mask (name, array)
     define_method "#{name}=" do |values|

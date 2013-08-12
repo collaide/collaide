@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddRelationsToMemberGroupMembers < ActiveRecord::Migration
   def change
     add_column :member_group_members, :user_id, :integer

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: document_study_levels
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# -*- encoding : utf-8 -*-
 class Document::StudyLevel < ActiveRecord::Base
   attr_accessible :description, :name, :translations_attributes
 

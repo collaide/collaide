@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: document_types
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# -*- encoding : utf-8 -*-
 class Document::Type < ActiveRecord::Base
   attr_accessible :description, :name, :translations_attributes
 

@@ -1,10 +1,12 @@
-=simple_form_for(@document, url: documents_path, method: :post, html: {multipart: true}) do |f|
+=simple_form_for(@document, html: {multipart: true}) do |f|
   =f.error_notification
   .form-inputs
     =f.input :title
     =f.input :description, input_html: {rows: 3}
-    =f.simple_fields_for :files do |file|
-      =file.input :file
+    -if @document.files.empty? or @document.files.first.id.nil?
+      -@document.files.build if @document.files.empty?
+      =f.simple_fields_for :files do |file|
+        =file.input :file
     =f.input :author
     =f.input :number_of_pages, default: 1
     =f.input :realized_at, as: :ui_date_picker, required: true
@@ -14,3 +16,4 @@
     =f.association :domains, collection: Domain.select_tree
   .form-actions
     =f.button :submit, t('documents.form.submit')
+=debug @document.files.first.inspect

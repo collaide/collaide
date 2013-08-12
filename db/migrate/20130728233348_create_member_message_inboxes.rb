@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateMemberMessageInboxes < ActiveRecord::Migration
   def change
     create_table :member_message_inboxes do |t|

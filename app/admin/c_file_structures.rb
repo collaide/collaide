@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ActiveAdmin.register CFile::Structure do
   sortable tree: true,
            max_levels: 0, # infinite indent levels

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -27,11 +28,10 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-
     if !request.env["HTTP_REFERER"]
       redirect_to root_url
     else
-      redirect_to :back, notice: exception.message
+      redirect_to :back, alert: t('access_denied')
     end
   end
 

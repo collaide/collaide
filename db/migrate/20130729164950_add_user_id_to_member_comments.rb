@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddUserIdToMemberComments < ActiveRecord::Migration
   def change
     add_column :member_comments, :user_id, :integer

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class GuestBooksController < ApplicationController
   load_and_authorize_resource
   # GET /guest_books

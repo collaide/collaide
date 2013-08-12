@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateTableMemberAddressesUsers < ActiveRecord::Migration
   def up
     create_table :member_addresses_users do |t|

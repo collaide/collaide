@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateMemberFriendDemands < ActiveRecord::Migration
   def change
     create_table :member_friend_demands do |t|
