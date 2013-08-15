@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
+gem 'therubyracer'
+
 gem 'bcrypt-ruby', '3.0.1'
 
 gem 'faker', '1.0.1'
@@ -45,6 +47,7 @@ gem 'zurb-foundation'
 gem 'language_list'
 
 group :development, :test do
+#  gem 'therubyracer-heroku', :platform => :ruby
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '1.2.1'
