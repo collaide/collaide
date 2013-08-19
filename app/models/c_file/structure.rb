@@ -16,13 +16,13 @@
 
 # -*- encoding : utf-8 -*-
 class CFile::Structure < ActiveRecord::Base
-  attr_accessible :name, :size, :group_id, :files_attributes
+  attr_accessible :name, :size, :group_id, :files_attributes, :files_ids, :user_id
 
   belongs_to :user
   belongs_to :group, :class_name => 'Member::Group::Group'
 
   has_many :c_file_folders, :class_name => 'CFile::Folder'
-  has_many :files, class_name: 'CFile::CFile', through: :c_file_folders
+  has_many :files, class_name: 'CFile::CFile', through: :c_file_folders, source: :c_file
 
   has_paper_trail
 
