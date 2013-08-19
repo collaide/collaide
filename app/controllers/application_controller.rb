@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
+  #sécu
   protect_from_forgery
 
   before_filter :set_locale

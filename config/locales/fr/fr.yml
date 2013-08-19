@@ -76,7 +76,7 @@ fr:
             title: Contactez-moi
             text: Si tu veux plus d'infos d'infos, contacte-moi à l'adresse facenord.sud at gmail point com
         help:
-            title: Aide et lien utiles
+            title: Aide et liens utiles
             text1: Ce site a été développé grâce au farmework Ruby On Rails, basé sur le langage Ruby. Il utilise une foule de librairies additionels nécessaires au bon fonctionement du site.
             text2: "Pour voir le code source, rendez-vous sur  github à l'adresse %{github}"
             text3: Il y a plusieurs liens utiles qui fournissent une bonne documentation pour comprndre le fonctionement de ruby et ruby on rails. Je mettrai les liens prochainement

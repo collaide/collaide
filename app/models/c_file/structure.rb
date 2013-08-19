@@ -18,11 +18,16 @@
 class CFile::Structure < ActiveRecord::Base
   attr_accessible :name, :size, :group_id, :files_attributes, :files_ids, :user_id
 
+  #Liaison one to many
   belongs_to :user
   belongs_to :group, :class_name => 'Member::Group::Group'
 
+  #Liaison many to one
   has_many :c_file_folders, :class_name => 'CFile::Folder'
   has_many :files, class_name: 'CFile::CFile', through: :c_file_folders, source: :c_file
+
+  #Liaison many to many
+  #has_and_belongs_to_many
 
   has_paper_trail
 

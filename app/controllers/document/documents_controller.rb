@@ -14,7 +14,7 @@ class Document::DocumentsController < ApplicationController
   def new
     @document = Document::Document.new
     @document.author = current_user.name_to_show
-    @document.files.build
+    #@document.files.build
   end
 
   def index
