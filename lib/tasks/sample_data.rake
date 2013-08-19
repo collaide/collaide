@@ -1,14 +1,14 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
-    #make_users
+    make_users
     #add_avatar_to_user
     #make_guest_books
-    #make_study_levels
-    #make_document_types
-    #make_domains
+    make_study_levels
+    make_document_types
+    make_domains
     #make_files
-    make_documents
+    #make_documents
   end
 end
 
@@ -26,7 +26,7 @@ def make_users
 end
 
 def add_avatar_to_user
-  User.all.each { |user| user.avatar = File.open(Dir.glob(File.join('/Users/leo/Pictures/leo', '*', '*.JPG')).sample); user.save! }
+  User.all.each { |user| user.avatar = File.open(Dir.glob(File.join('C:\Users\Yves\Pictures', '*', '*.jpg')).sample); user.save! }
 end
 
   def make_guest_books

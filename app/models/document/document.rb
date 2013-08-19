@@ -35,6 +35,7 @@ class Document::Document < ActiveRecord::Base
   accepts_nested_attributes_for :files
   accepts_nested_attributes_for :domains
 
+  validates :title, presence: true, length: {minimum: 3, maximum: 30}, uniqueness: true
   validates :author, presence: true, length: {minimum: 3, maximum: 30}
   validates :description, presence: true, length: {minimum: 5}
   validates_presence_of :language
@@ -45,5 +46,4 @@ class Document::Document < ActiveRecord::Base
   validates :number_of_pages, numericality: true, inclusion: {in: 1..100}
   #TODO conversion du format de la date en format de type SQL (YYY-mm-dd)
   validates :realized_at, date: {before: Proc.new {Time.now}}
-  validates :title, presence: true, length: {minimum: 3, maximum: 30}, uniqueness: true
 end

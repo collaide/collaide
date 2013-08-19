@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20130807153822) do
   end
 
   create_table "c_file_folders", :force => true do |t|
-    t.integer  "file_id"
+    t.integer  "c_file_id"
     t.integer  "structure_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
