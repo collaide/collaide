@@ -2,10 +2,9 @@
 class Document::DocumentsController < ApplicationController
   load_and_authorize_resource class: Document::Document
   def create
-    puts 'saluttzo '
     @document = Document::Document.new params[:document_document]
     @document.user = current_user
-    if @document.save!
+    if @document.save
       redirect_to document_documents_path, notice: t("documents.create.notice")
     else
       render action: 'new'
@@ -23,7 +22,6 @@ class Document::DocumentsController < ApplicationController
     sort = 'DESC'
     sort = 'ASC' if params[:order] == 'asc'
     attr = Document::Document::SORT_ARGS[:"#{params[:sort].to_s}"] || 'document_documents.created_at'
-
      @document_documents = Document::Document.order("#{attr} #{sort}").
          includes([:study_level, :document_type, {domains: :translations}]).
          page(params[:page])

@@ -21,11 +21,11 @@ module ApplicationHelper
     link_to(content, [:edit, object], class: 'button warning') if can?(:update, object)
   end
 
-  def create_link(object, content = "New")
+  def create_link(object, content = "New", html_class='')
     if can?(:create, object)
       object_class = (object.kind_of?(Class) ? object : object.class)
       class_name = object_class.name.underscore.to_s.tr!('/', '_')
-      link_to(content, [:new, class_name.to_sym], class: 'button success')
+      link_to(content, [:new, class_name.to_sym], class: "button success #{html_class}")
     end
   end
 end

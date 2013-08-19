@@ -34,7 +34,8 @@ class Document::Document < ActiveRecord::Base
 
   accepts_nested_attributes_for :files
   accepts_nested_attributes_for :domains
-
+  #validation du type de fichier
+  #création d'une image en fonction du fichier
   validates :author, presence: true, length: {minimum: 3, maximum: 30}
   validates :description, presence: true, length: {minimum: 5}
   validates_presence_of :language

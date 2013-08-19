@@ -22,7 +22,7 @@ fr:
           created_at: &created_at Crée le
     activerecord:
         models:
-          user: "profil"
+          user: profil
           guest_book: "Livre d'or"
         attributes:
           user:
@@ -94,8 +94,12 @@ fr:
     documents:
       index:
         title: "Tous les documents"
+        subtitle: "%{type} en %{domains}"
         new_link: Nouveau document
+        download: Télécharger
         no_document: Il n'y a aucun documents pour le moment
+        show: "afficher un(e)"
+        search: Rechercher
         table:
           thead:
             title: *doc_title

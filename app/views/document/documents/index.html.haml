@@ -1,41 +1,57 @@
-%h3= t 'documents.index.title'
-
-=create_link(Document::Document, t('documents.index.new_link'))
+.row
+  .small-12.columns
+    %h1= t 'documents.index.title'
+.row
+  .small-12.columns.large-6
+    =create_link(Document::Document, t('documents.index.new_link'), 'expand')
 
 -if @document_documents.empty?
   %p= t 'documents.index.no_document'
 -else
-  =paginate @document_documents
-  %table
-    %thead
-      %th
-        =t 'documents.index.table.thead.title'
-        = order_by 'title'
-      %th
-        = t 'documents.index.table.thead.description'
-      %th
-        = t 'documents.index.table.thead.lang'
-        = order_by 'lang'
-      %th
-        = t 'documents.index.table.thead.study_level'
-        = order_by 'study_level'
-      %th
-        = t 'documents.index.table.thead.document_type'
-        = order_by 'type'
-      %th
-        = t 'documents.index.table.thead.created_at'
-        = order_by 'created_at'
-      %th
-        = t 'documents.index.table.thead.domain'
-        = order_by 'domain'
-    %tbody
+  -#TODO: déroulement infin
+  -#TODO: page de téléchargement + hits
+  -#TODO: possibilité de noter les documents
+  -#TODO: modal de connexion si pas les droits
+  -#TODO: formulaire de recherche
+  -#TODO: autocomplétion avec recherche instantanée
+  -#TODO: afficher plus de la recherche à volonté pour petit écran
+  .row.hide-for-small
+    .small-12.columns
+      =paginate @document_documents
+  .row
+    .large-4.columns.push-8.small-12
+      %fieldset
+        %form{action: document_documents_path, method: 'get'}
+          %label= t('documents.index.search')
+          %input.sticky{type: 'text', placeholder: 'mot-clés pour rechercher un document'}
+          .row.hide-for-small
+            .small-6.columns
+              %label= t('documents.index.show')
+              %select
+                %option{value: 3} Dissertation
+            .small-6.columns
+              %label en
+              %select
+                %option{value: 3} Sport
+          .row.hide-for-small
+            .small-6.columns
+              %label Classement
+              %select
+                %option{value: 3} les plus récent en premier
+            .small-6.columns
+              %label Réalisé avant le
+              %input.datepicker{type: 'text'}
+          .row.hide-for-small
+            .small-12.columns
+              %input.button.success.expand{type: 'submit', value: 'Go!!'}
+    .small-12.large-8.columns.pull-4
       -@document_documents.each do |d|
-        %tr
-          %td= link_to d.title, document_document_path(d)
-          %td= d.description
-          %td= d.language
-          %td= d.study_level.name
-          %td= d.document_type.name
-          %td= l d.created_at, format: :long
-          %td= Domain.flat(d.domains)
-  =paginate @document_documents
+        .row
+          .large-2.columns.small-12
+            =image_tag 'rails.png', width: 100, height: 100
+          .small-12.columns.large-10
+            %h2= link_to d.title, d
+            %h5.doc-subtitle= t('documents.index.subtitle', {type: d.document_type.name, domains: d.domains.first.name}).truncate 50, separator: ' ', omission: ' ...'
+            %p= d.description.truncate(100, separator: ' ', omission: ' ...')
+            =link_to t('documents.index.download'), d, class: 'button'
+        %hr

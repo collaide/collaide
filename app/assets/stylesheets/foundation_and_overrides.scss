@@ -968,7 +968,7 @@
 //
 
 // Background color for the top bar
- $topbar-bg: #57b35d;
+ $topbar-bg: rgb(78, 78, 78);
 
 // Height and margin
 // $topbar-height: 45px;
@@ -1008,5 +1008,11 @@
 // $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout
 // $topbar-media-query: "only screen and (min-width "#{$topbar-breakpoint}")";
 
+//documents
+
+//sub title to index documents
+
+$document-subtitle-color: #a03b32;
+$document-subtitle-font-size: emCalc(16px);
 
 @import 'foundation';

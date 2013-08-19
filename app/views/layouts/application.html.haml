@@ -23,17 +23,13 @@
 
 %body
   = render 'layouts/header'
-  -if true
+  -unless flash.empty?
     .row
       .columns.small-12
-        #status.alert-box.hide
-  .row
-    .columns.small-12
-      -flash.each do |key, value|
-        .alert-box{class: key, :'data-alert' =>  true}
-          = value
-          %a{href: '#', class: 'close'}= "&times;".html_safe
-        -#TODO: corriger pour que ça affiche des alertes de différentes couleures
+        -flash.each do |key, value|
+          .alert-box{class: key, :'data-alert' =>  true}
+            = value
+            %a{href: '#', class: 'close'}= "&times;".html_safe
   .row
     .columns.small-12
       = yield

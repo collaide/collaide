@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 
   has_many :group_members, :class_name => 'Member::Group::Member'
   has_many :groups, :class_name => 'Member::Group::Group', through: :group_members, source: :member_group
-  has_many :create_group_demands, :class_name => 'Member::Group::Demand'
+  has_many :created_group_demands, :class_name => 'Member::Group::Demand'
 
   has_many :member_friend_friends, :class_name => 'Member::Friend::Friend'
   has_many :friends, :class_name => 'Member::Friend::Friend', through: :member_friend_friends, source: :user
@@ -58,10 +58,12 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :group_demands, :class_name => 'Member::Group::Demand', join_table: 'group_demands_users'
   has_and_belongs_to_many :addresses, :class_name => 'Member::Address', join_table: 'member_addresses_users'
 
+  #paperclip https://github.com/thoughtbot/paperclip
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "rails.png"
 
   validates :name, presence: true
 
+  #ne pas modifier, ajouter
   ROLES = %w[admin moderator author banned super-admin]
 
   def roles=(roles)
