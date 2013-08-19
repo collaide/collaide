@@ -27,7 +27,7 @@ ActiveAdmin.register CFile::Structure do
         f.inputs do
           f.input :name
           f.input :size
-          f.input :files, as: :check_boxes
+          f.input :user
         end
     end
     f.actions

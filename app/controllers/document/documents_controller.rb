@@ -2,12 +2,12 @@
 class Document::DocumentsController < ApplicationController
   load_and_authorize_resource class: Document::Document
   def create
+    puts 'saluttzo '
     @document = Document::Document.new params[:document_document]
     @document.user = current_user
-    if @document.save
+    if @document.save!
       redirect_to document_documents_path, notice: t("documents.create.notice")
     else
-      @document.files.build
       render action: 'new'
     end
   end

@@ -72,5 +72,6 @@
 
     ActiveAdmin.routes(self)
     devise_for :admin_users, ActiveAdmin::Devise.config
+    post 'pusher/auth'
     #match "*path", :to => "application#routing_error"
   end

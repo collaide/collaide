@@ -23,6 +23,10 @@ FactoryGirl.define do
     number_of_pages 2
     realized_at {2.years.ago}
     sequence(:title) { |n| "Domain #{n}"}
+    domains { FactoryGirl.create_list :domain, 3 }
+    study_level { FactoryGirl.create :study_level }
+    document_type { FactoryGirl.create :document_type }
+    files { FactoryGirl.create_list :files, 1 }
 
   end
 
@@ -34,5 +38,9 @@ FactoryGirl.define do
   factory :document_type, class: 'Document::Type' do
     sequence(:name) { |n| "Document type  #{n}"}
     sequence(:description) {|n| "Lorem ipsume #{n}" }
+  end
+
+  factory :files, class: 'CFile::CFile' do
+    rights %w[read write]
   end
 end
