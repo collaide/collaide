@@ -43,7 +43,7 @@ class Document::Document < ActiveRecord::Base
   validates_presence_of :study_level
   validates_presence_of :document_type
   validates_presence_of :files
-  validates :number_of_pages, numericality: true, inclusion: {in: 1..100}
+  validates :number_of_pages, numericality: true, inclusion: {in: 1..300}
   #TODO conversion du format de la date en format de type SQL (YYY-mm-dd)
   validates :realized_at, date: {before: Proc.new {Time.now}}
   validates :title, presence: true, length: {minimum: 3, maximum: 30}, uniqueness: true
