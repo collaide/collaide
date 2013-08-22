@@ -1,0 +1,5 @@
+%ol
+  -@books.each do |b|
+    %li= image_tag b.image_link(:zoom => 6), width: 100, height: 100
+    #{b.title} de #{b.authors} (ISBN : #{b.isbn}). Note : #{b.average_rating}....... DESCRIPTION: #{b.description}
+
