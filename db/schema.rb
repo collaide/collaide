@@ -28,22 +28,6 @@ ActiveRecord::Schema.define(:version => 20130822093359) do
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
-  create_table "advertisements", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.boolean  "active"
-    t.string   "type"
-    t.decimal  "price"
-    t.string   "currency"
-    t.integer  "state"
-    t.integer  "annotation"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "user_id"
-    t.integer  "payment_mode_id"
-    t.integer  "delivery_mode_id"
-  end
-
   create_table "c_file_c_files", :force => true do |t|
     t.integer  "rights"
     t.datetime "created_at",        :null => false
@@ -85,25 +69,6 @@ ActiveRecord::Schema.define(:version => 20130822093359) do
   add_index "c_file_structures", ["ancestry"], :name => "index_c_file_structures_on_ancestry"
   add_index "c_file_structures", ["member_group_id"], :name => "index_c_file_structures_on_member_group_id"
   add_index "c_file_structures", ["user_id"], :name => "index_c_file_structures_on_user_id"
-
-  create_table "delivery_mode_translations", :force => true do |t|
-    t.integer  "delivery_mode_id"
-    t.string   "locale"
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
-  add_index "delivery_mode_translations", ["delivery_mode_id"], :name => "index_delivery_mode_translations_on_delivery_mode_id"
-  add_index "delivery_mode_translations", ["locale"], :name => "index_delivery_mode_translations_on_locale"
-
-  create_table "delivery_modes", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
 
   create_table "demands_users", :force => true do |t|
     t.integer "demand_id"
@@ -162,11 +127,6 @@ ActiveRecord::Schema.define(:version => 20130822093359) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "documents_domains", :force => true do |t|
-    t.integer "domain_id"
-    t.integer "document_id"
   end
 
   create_table "domain_translations", :force => true do |t|
@@ -343,25 +303,6 @@ ActiveRecord::Schema.define(:version => 20130822093359) do
   end
 
   add_index "member_studies", ["member_scolarity_id"], :name => "index_member_studies_on_member_scolarity_id"
-
-  create_table "payment_mode_translations", :force => true do |t|
-    t.integer  "payment_mode_id"
-    t.string   "locale"
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
-  add_index "payment_mode_translations", ["locale"], :name => "index_payment_mode_translations_on_locale"
-  add_index "payment_mode_translations", ["payment_mode_id"], :name => "index_payment_mode_translations_on_payment_mode_id"
-
-  create_table "payment_modes", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
