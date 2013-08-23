@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(:version => 20130823000000) do
 
   create_table "advertisements_domains", :force => true do |t|
     t.integer "domain_id"
-    t.integer "sale_book_id"
+    t.integer "saleBook_id"
   end
 
   create_table "c_file_c_files", :force => true do |t|
