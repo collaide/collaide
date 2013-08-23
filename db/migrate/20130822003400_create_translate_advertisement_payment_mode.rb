@@ -1,13 +1,13 @@
 # -*- encoding : utf-8 -*-
-class TranslateAdvertisementDeliveryModes < ActiveRecord::Migration
+class CreateTranslateAdvertisementPaymentMode < ActiveRecord::Migration
   def up
-    Advertisement::DeliveryMode.create_translation_table!({
+    Advertisement::PaymentMode.create_translation_table!({
                                                        name: :string,
                                                        description: :text
                                                    })
   end
 
   def down
-    Advertisement::DeliveryMode.drop_translation_table!
+    Advertisement::PaymentMode.drop_translation_table!
   end
 end
