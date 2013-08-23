@@ -58,11 +58,6 @@ ActiveRecord::Schema.define(:version => 20130823000000) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "advertisements_domains", :force => true do |t|
-    t.integer "domain_id"
-    t.integer "saleBook_id"
-  end
-
   create_table "c_file_c_files", :force => true do |t|
     t.integer  "rights"
     t.datetime "created_at",        :null => false
@@ -203,6 +198,11 @@ ActiveRecord::Schema.define(:version => 20130823000000) do
   end
 
   add_index "domains", ["ancestry"], :name => "index_domains_on_ancestry"
+
+  create_table "domains_sale_books", :force => true do |t|
+    t.integer "domain_id"
+    t.integer "sale_book_id"
+  end
 
   create_table "group_demands_users", :force => true do |t|
     t.integer "demand_id"
