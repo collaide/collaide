@@ -44,12 +44,36 @@ ActiveRecord::Schema.define(:version => 20130823000000) do
     t.integer  "delivery_mode_id"
   end
 
+  create_table "advertisement_delivery_mode_translations", :force => true do |t|
+    t.integer  "advertisement_delivery_mode_id"
+    t.string   "locale"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "advertisement_delivery_mode_translations", ["advertisement_delivery_mode_id"], :name => "index_6ce377a1b01aa667ca9499b9c4e36471961921c6"
+  add_index "advertisement_delivery_mode_translations", ["locale"], :name => "index_advertisement_delivery_mode_translations_on_locale"
+
   create_table "advertisement_delivery_modes", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "advertisement_payment_mode_translations", :force => true do |t|
+    t.integer  "advertisement_payment_mode_id"
+    t.string   "locale"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "advertisement_payment_mode_translations", ["advertisement_payment_mode_id"], :name => "index_d50d50db3ef6dba282082afeb4914d77f35eb9e7"
+  add_index "advertisement_payment_mode_translations", ["locale"], :name => "index_advertisement_payment_mode_translations_on_locale"
 
   create_table "advertisement_payment_modes", :force => true do |t|
     t.string   "name"
@@ -99,18 +123,6 @@ ActiveRecord::Schema.define(:version => 20130823000000) do
   add_index "c_file_structures", ["ancestry"], :name => "index_c_file_structures_on_ancestry"
   add_index "c_file_structures", ["member_group_id"], :name => "index_c_file_structures_on_member_group_id"
   add_index "c_file_structures", ["user_id"], :name => "index_c_file_structures_on_user_id"
-
-  create_table "delivery_mode_translations", :force => true do |t|
-    t.integer  "delivery_mode_id"
-    t.string   "locale"
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
-  add_index "delivery_mode_translations", ["delivery_mode_id"], :name => "index_delivery_mode_translations_on_delivery_mode_id"
-  add_index "delivery_mode_translations", ["locale"], :name => "index_delivery_mode_translations_on_locale"
 
   create_table "demands_users", :force => true do |t|
     t.integer "demand_id"
@@ -355,18 +367,6 @@ ActiveRecord::Schema.define(:version => 20130823000000) do
   end
 
   add_index "member_studies", ["member_scolarity_id"], :name => "index_member_studies_on_member_scolarity_id"
-
-  create_table "payment_mode_translations", :force => true do |t|
-    t.integer  "payment_mode_id"
-    t.string   "locale"
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
-  add_index "payment_mode_translations", ["locale"], :name => "index_payment_mode_translations_on_locale"
-  add_index "payment_mode_translations", ["payment_mode_id"], :name => "index_payment_mode_translations_on_payment_mode_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
