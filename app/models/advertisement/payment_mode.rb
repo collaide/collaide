@@ -6,6 +6,6 @@ class Advertisement::PaymentMode < ActiveRecord::Base
   #FIXME: le fallback ne marche pas. En fait si, de temps en temps...
   Globalize.fallbacks = {:en => [:en, :fr], :fr => [:fr, :en]}
 
-  has_many :sales, :class_name => 'Advertisement::Sale'
+  has_and_belongs_to_many :sales, :class_name => 'Advertisement::Sale'
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130823000000) do
+ActiveRecord::Schema.define(:version => 20130823000002) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -37,11 +37,9 @@ ActiveRecord::Schema.define(:version => 20130823000000) do
     t.string   "currency"
     t.integer  "state"
     t.integer  "annotation"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "user_id"
-    t.integer  "payment_mode_id"
-    t.integer  "delivery_mode_id"
   end
 
   create_table "advertisement_delivery_mode_translations", :force => true do |t|
@@ -123,6 +121,11 @@ ActiveRecord::Schema.define(:version => 20130823000000) do
   add_index "c_file_structures", ["ancestry"], :name => "index_c_file_structures_on_ancestry"
   add_index "c_file_structures", ["member_group_id"], :name => "index_c_file_structures_on_member_group_id"
   add_index "c_file_structures", ["user_id"], :name => "index_c_file_structures_on_user_id"
+
+  create_table "delivery_modes_sales", :force => true do |t|
+    t.integer "delivery_mode_id"
+    t.integer "sale_id"
+  end
 
   create_table "demands_users", :force => true do |t|
     t.integer "demand_id"
@@ -367,6 +370,11 @@ ActiveRecord::Schema.define(:version => 20130823000000) do
   end
 
   add_index "member_studies", ["member_scolarity_id"], :name => "index_member_studies_on_member_scolarity_id"
+
+  create_table "payment_modes_sales", :force => true do |t|
+    t.integer "payment_mode_id"
+    t.integer "sale_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
