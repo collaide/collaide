@@ -4,7 +4,7 @@ describe Advertisement::AdvertisementsController do
 
   describe "GET 'test'" do
     it "returns http success" do
-      get 'test'
+      get 'test', locale: I18n.locale
       response.should be_success
     end
   end
