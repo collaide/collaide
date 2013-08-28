@@ -14,8 +14,9 @@
 
       namespace :advertisement do
         #resources :delivery_mode
-        #recources :payment_mode
-        match "test", to: "advertisements#test"
+        #resources :payment_mode
+        resources :sale_books
+        get "test", to: "advertisements#test"
       end
 
       resources :'documents', as: 'document_documents', controller: 'document/documents' do
