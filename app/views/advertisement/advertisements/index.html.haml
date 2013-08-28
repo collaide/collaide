@@ -1,0 +1,15 @@
+.row
+  .small-12.columns
+    %h1= t 'advertisements.index.title'
+.row
+  .small-12.columns.large-6
+    %p="Quelle genre d'annonce voulez vous publier ?"
+    =create_link(Advertisement::Advertisement, t('advertisements.index.new_link'), 'expand')
+.row
+  .small-12.columns.large-6
+    -if @advertisement.empty?
+      %p=t'advertisements.index.no_advertisement'
+    -else
+      -@advertisement.each do |a|
+        %p=a.title
+        %p=a.type

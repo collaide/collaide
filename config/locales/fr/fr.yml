@@ -54,6 +54,7 @@ fr:
         domain: "Domaines"
         guest_book: "Livre d'or"
         document: "Documents"
+        advertisement: "Annonces"
         user:
             profil: "Mon profil"
             edit: "Modifier"
@@ -128,3 +129,15 @@ fr:
         notice: Le document a été créé
       destroy:
         notice: Le document a été supprimé
+    advertisements:
+      index:
+        title: Toutes les petites annonces
+        new_link: Publier une annonce
+        no_advertisement: Il n'y a aucune annonce
+      new:
+        title: Publier une annonces
+        sale_book: Vendre un livre
+      form:
+        sale_book:
+          isbn: ISBN
+          submit_search: Chercher ce livre

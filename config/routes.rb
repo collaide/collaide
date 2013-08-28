@@ -1,13 +1,22 @@
 # -*- encoding : utf-8 -*-
   Collaide::Application.routes.draw do
 
-    #get "advertisements/test"
+    root :to => "static_pages#home"
+
+    get "about", to: "static_pages#about", as: "about"
+    get "contact", to: "static_pages#contact", as: "contact"
+    get "help", to: "static_pages#help", as: "help"
+    get 'change-lang', to: 'static_pages#change_lang', as: 'change_lang'
+
+    resources :advertisements, as: 'advertisement_advertisements', controller: 'advertisement/advertisements' do
+      get "new/:book", to: "advertisements#new"
+    end
 
       namespace :advertisement do
-        match "test", to: "advertisements#test", as: "test"
+        #resources :delivery_mode
+        #recources :payment_mode
+        match "test", to: "advertisements#test"
       end
-
-    #match "test", to: "advertisement/advertisement#test", as: "test"
 
       resources :'documents', as: 'document_documents', controller: 'document/documents' do
         get 'domain/:domain', action: :index, on: :collection, as: 'documents_by_domain'
@@ -64,21 +73,11 @@
       end
       resources :users,   :only => [:show]
 
-      match "about", to: "static_pages#about", as: "about"
-      match "contact", to: "static_pages#contact", as: "contact"
-      match "help", to: "static_pages#help", as: "help"
-      match 'change-lang', to: 'static_pages#change_lang', as: 'change_lang'
-
-      root to: "static_pages#home"
-
       devise_for :user
       ActionDispatch::Routing::Translator.translate_from_file('config/locales/routes.yml', { :prefix_on_default_locale => true })
   end
 
   Collaide::Application.routes.draw do
-
-
-  get "advertisements/test"
 
     ActiveAdmin.routes(self)
     devise_for :admin_users, ActiveAdmin::Devise.config

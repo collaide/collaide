@@ -29,5 +29,7 @@ fr:
         c_files: "mes-fichiers"
         structures: "dossier"
 
+        advertisement_advertisements: "annonces"
+
 en:
     routes:
