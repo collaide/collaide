@@ -58,6 +58,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :group_demands, :class_name => 'Member::Group::Demand', join_table: 'group_demands_users'
   has_and_belongs_to_many :addresses, :class_name => 'Member::Address', join_table: 'member_addresses_users'
 
+  has_many :advertisement, :class_name => 'Advertisement::Advertisement'
+
   #paperclip https://github.com/thoughtbot/paperclip
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "rails.png"
 

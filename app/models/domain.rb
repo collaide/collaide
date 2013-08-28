@@ -24,6 +24,7 @@ class Domain < ActiveRecord::Base
   Globalize.fallbacks = {:en => [:en, :fr], :fr => [:fr, :en]}
 
   has_and_belongs_to_many :documents, :class_name => 'Document::Document'
+  has_and_belongs_to_many :saleBooks, :class_name => 'Advertisement::SaleBook'
 
   accepts_nested_attributes_for :translations
 

@@ -1,6 +1,14 @@
 # -*- encoding : utf-8 -*-
   Collaide::Application.routes.draw do
 
+    #get "advertisements/test"
+
+      namespace :advertisement do
+        match "test", to: "advertisements#test", as: "test"
+      end
+
+    #match "test", to: "advertisement/advertisement#test", as: "test"
+
       resources :'documents', as: 'document_documents', controller: 'document/documents' do
         get 'domain/:domain', action: :index, on: :collection, as: 'documents_by_domain'
         get 'page/:page', :action => :index, :on => :collection
@@ -69,6 +77,8 @@
 
   Collaide::Application.routes.draw do
 
+
+  get "advertisements/test"
 
     ActiveAdmin.routes(self)
     devise_for :admin_users, ActiveAdmin::Devise.config

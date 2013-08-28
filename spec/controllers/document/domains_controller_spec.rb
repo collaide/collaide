@@ -22,7 +22,7 @@ describe Document::DomainsController do
         get :show, locale: I18n.locale, id: @domain
         response.should be_success
       end
-       it "should find the correct domain with localt to '#{I18n.locale}'" do
+       it "should find the correct domain with local to '#{I18n.locale}'" do
          get :show, locale: I18n.locale, id: @domain
          assigns(:domain).should == @domain
        end
