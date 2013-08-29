@@ -27,14 +27,18 @@ describe Document::DocumentsController do
   describe "POST 'create'" do
     #FIXME: les testes ne marchent pas. Aucune idée pourquoi
     describe "with valid params" do
+      login_user
+      it "has a user not null" do
+        subject.current_user.should_not be_nil
+      end
       before :each do
        @attr = FactoryGirl.create(:document)
-        login_user
       end
       it "should create a document" do
         #expect {
-        post :create, :document_document => @attr.attributes.except('id', 'created_at', 'updated_at'), locale: I18n.locale
         puts @attr.inspect
+        post :create, :document_document => @attr.attributes.except('id', 'created_at', 'updated_at'), locale: I18n.locale
+
         #}.to change(Document::Document, :count).by(1)
       end
 

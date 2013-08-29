@@ -4,7 +4,7 @@ class Document::DocumentsController < ApplicationController
   def create
     @document = Document::Document.new params[:document_document]
     @document.user = current_user
-    if @document.save
+    if @document.save!
       redirect_to document_documents_path, notice: t("documents.create.notice")
     else
       render action: 'new'

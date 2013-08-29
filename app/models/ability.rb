@@ -4,7 +4,6 @@ class Ability
 
   def initialize(user)
     #utilisateur non connecté, à voir si ça va comme ça
-
     if user.nil?
       can :manage, GuestBook
       can :read, Domain
