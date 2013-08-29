@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Member::SchoolsController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/member/schools_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">InheritedResources::Base
+  
+</nav>
+
+    
+    
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Member.html">Member</a>
+  
+    <li><a href="../Member/Address.html">Member::Address</a>
+  
+    <li><a href="../Member/AddressesController.html">Member::AddressesController</a>
+  
+    <li><a href="../Member/AddressesHelper.html">Member::AddressesHelper</a>
+  
+    <li><a href="../Member/Comment.html">Member::Comment</a>
+  
+    <li><a href="../Member/CommentsController.html">Member::CommentsController</a>
+  
+    <li><a href="../Member/CommentsHelper.html">Member::CommentsHelper</a>
+  
+    <li><a href="../Member/Contact.html">Member::Contact</a>
+  
+    <li><a href="../Member/ContactsController.html">Member::ContactsController</a>
+  
+    <li><a href="../Member/ContactsHelper.html">Member::ContactsHelper</a>
+  
+    <li><a href="../Member/Friend.html">Member::Friend</a>
+  
+    <li><a href="../Member/Friend/Demand.html">Member::Friend::Demand</a>
+  
+    <li><a href="../Member/Friend/DemandsController.html">Member::Friend::DemandsController</a>
+  
+    <li><a href="../Member/Friend/DemandsHelper.html">Member::Friend::DemandsHelper</a>
+  
+    <li><a href="../Member/Friend/Friend.html">Member::Friend::Friend</a>
+  
+    <li><a href="../Member/Friend/FriendsController.html">Member::Friend::FriendsController</a>
+  
+    <li><a href="../Member/Friend/FriendsHelper.html">Member::Friend::FriendsHelper</a>
+  
+    <li><a href="../Member/Group.html">Member::Group</a>
+  
+    <li><a href="../Member/Group/Demand.html">Member::Group::Demand</a>
+  
+    <li><a href="../Member/Group/DemandsController.html">Member::Group::DemandsController</a>
+  
+    <li><a href="../Member/Group/DemandsHelper.html">Member::Group::DemandsHelper</a>
+  
+    <li><a href="../Member/Group/Group.html">Member::Group::Group</a>
+  
+    <li><a href="../Member/Group/GroupsController.html">Member::Group::GroupsController</a>
+  
+    <li><a href="../Member/Group/GroupsHelper.html">Member::Group::GroupsHelper</a>
+  
+    <li><a href="../Member/Group/Member.html">Member::Group::Member</a>
+  
+    <li><a href="../Member/Group/MembersController.html">Member::Group::MembersController</a>
+  
+    <li><a href="../Member/Group/MembersHelper.html">Member::Group::MembersHelper</a>
+  
+    <li><a href="../Member/Message.html">Member::Message</a>
+  
+    <li><a href="../Member/Message/Inbox.html">Member::Message::Inbox</a>
+  
+    <li><a href="../Member/Message/InboxesController.html">Member::Message::InboxesController</a>
+  
+    <li><a href="../Member/Message/InboxesHelper.html">Member::Message::InboxesHelper</a>
+  
+    <li><a href="../Member/MessagesController.html">Member::MessagesController</a>
+  
+    <li><a href="../Member/MessagesHelper.html">Member::MessagesHelper</a>
+  
+    <li><a href="../Member/Parameter.html">Member::Parameter</a>
+  
+    <li><a href="../Member/ParametersController.html">Member::ParametersController</a>
+  
+    <li><a href="../Member/ParametersHelper.html">Member::ParametersHelper</a>
+  
+    <li><a href="../Member/School.html">Member::School</a>
+  
+    <li><a href="../Member/SchoolsController.html">Member::SchoolsController</a>
+  
+    <li><a href="../Member/SchoolsHelper.html">Member::SchoolsHelper</a>
+  
+    <li><a href="../Member/Scolarity.html">Member::Scolarity</a>
+  
+    <li><a href="../Member/Status.html">Member::Status</a>
+  
+    <li><a href="../Member/StatusesController.html">Member::StatusesController</a>
+  
+    <li><a href="../Member/StatusesHelper.html">Member::StatusesHelper</a>
+  
+    <li><a href="../Member/StudiesController.html">Member::StudiesController</a>
+  
+    <li><a href="../Member/StudiesHelper.html">Member::StudiesHelper</a>
+  
+    <li><a href="../Member/Study.html">Member::Study</a>
+  
+    <li><a href="../Document.html">Document</a>
+  
+    <li><a href="../Document/Document.html">Document::Document</a>
+  
+    <li><a href="../Document/DocumentsController.html">Document::DocumentsController</a>
+  
+    <li><a href="../Document/DocumentsHelper.html">Document::DocumentsHelper</a>
+  
+    <li><a href="../Document/DomainsController.html">Document::DomainsController</a>
+  
+    <li><a href="../Document/StudyLevel.html">Document::StudyLevel</a>
+  
+    <li><a href="../Document/StudyLevel/Translation.html">Document::StudyLevel::Translation</a>
+  
+    <li><a href="../Document/StudyLevelsController.html">Document::StudyLevelsController</a>
+  
+    <li><a href="../Document/StudyLevelsHelper.html">Document::StudyLevelsHelper</a>
+  
+    <li><a href="../Document/Type.html">Document::Type</a>
+  
+    <li><a href="../Document/Type/Translation.html">Document::Type::Translation</a>
+  
+    <li><a href="../Document/TypesController.html">Document::TypesController</a>
+  
+    <li><a href="../Document/TypesHelper.html">Document::TypesHelper</a>
+  
+    <li><a href="../Advertisement.html">Advertisement</a>
+  
+    <li><a href="../Advertisement/Advertisement.html">Advertisement::Advertisement</a>
+  
+    <li><a href="../Advertisement/AdvertisementsController.html">Advertisement::AdvertisementsController</a>
+  
+    <li><a href="../Advertisement/AdvertisementsHelper.html">Advertisement::AdvertisementsHelper</a>
+  
+    <li><a href="../Advertisement/DeliveryMode.html">Advertisement::DeliveryMode</a>
+  
+    <li><a href="../Advertisement/PaymentMode.html">Advertisement::PaymentMode</a>
+  
+    <li><a href="../Advertisement/Sale.html">Advertisement::Sale</a>
+  
+    <li><a href="../Advertisement/SaleBook.html">Advertisement::SaleBook</a>
+  
+    <li><a href="../Advertisement/SaleBooksController.html">Advertisement::SaleBooksController</a>
+  
+    <li><a href="../Advertisement/SaleBooksHelper.html">Advertisement::SaleBooksHelper</a>
+  
+    <li><a href="../CFile.html">CFile</a>
+  
+    <li><a href="../CFile/CFile.html">CFile::CFile</a>
+  
+    <li><a href="../CFile/Folder.html">CFile::Folder</a>
+  
+    <li><a href="../CFile/Owner.html">CFile::Owner</a>
+  
+    <li><a href="../CFile/Structure.html">CFile::Structure</a>
+  
+    <li><a href="../Domain.html">Domain</a>
+  
+    <li><a href="../Domain/Translation.html">Domain::Translation</a>
+  
+    <li><a href="../Ability.html">Ability</a>
+  
+    <li><a href="../AdminUser.html">AdminUser</a>
+  
+    <li><a href="../ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../CFileHelper.html">CFileHelper</a>
+  
+    <li><a href="../CFilesController.html">CFilesController</a>
+  
+    <li><a href="../DocumentObserver.html">DocumentObserver</a>
+  
+    <li><a href="../DomainsHelper.html">DomainsHelper</a>
+  
+    <li><a href="../Fichier.html">Fichier</a>
+  
+    <li><a href="../GuestBook.html">GuestBook</a>
+  
+    <li><a href="../GuestBooksController.html">GuestBooksController</a>
+  
+    <li><a href="../GuestBooksHelper.html">GuestBooksHelper</a>
+  
+    <li><a href="../Notification.html">Notification</a>
+  
+    <li><a href="../PusherController.html">PusherController</a>
+  
+    <li><a href="../StaticPagesController.html">StaticPagesController</a>
+  
+    <li><a href="../StaticPagesHelper.html">StaticPagesHelper</a>
+  
+    <li><a href="../StructuresController.html">StructuresController</a>
+  
+    <li><a href="../User.html">User</a>
+  
+    <li><a href="../UsersController.html">UsersController</a>
+  
+    <li><a href="../UsersHelper.html">UsersHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Member::SchoolsController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
