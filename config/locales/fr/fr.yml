@@ -136,8 +136,9 @@ fr:
         no_advertisement: Il n'y a aucune annonce
       new:
         title: Publier une annonces
+        description: Quelle genre d'annonce voulez-vous publier ?
         sale_book: Vendre un livre
+    sale_books:
       form:
-        sale_book:
-          isbn: ISBN
-          submit_search: Chercher ce livre
+        isbn: ISBN
+        submit_search: Chercher ce livre

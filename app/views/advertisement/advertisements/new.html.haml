@@ -2,8 +2,11 @@
   .small-12.columns
     %h1= t 'advertisements.new.title'
 .row
-  .small-12.columns.large-6
-    =link_to t("advertisements.new.sale_book"), controller: "advertisement/advertisements", action: "new", id: "book"
+  .small-12.columns
+    %p=t'advertisements.new.description'
 .row
   .small-12.columns.large-6
-    =render 'advertisement/advertisements/new_sale_book'
+    =link_to t("advertisements.new.sale_book"), :controller => 'advertisement/sale_books', :action => 'new'
+.row
+  .small-12.columns.large-6
+

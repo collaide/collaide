@@ -1,0 +1,4 @@
+=form_tag({controller: "advertisement/sale_books", action: "new"}, method: "POST") do |f|
+  =label_tag(:isbn, t("sale_books.form.isbn"))
+  =text_field_tag(:isbn)
+  =submit_tag(t('sale_books.form.submit_search'))

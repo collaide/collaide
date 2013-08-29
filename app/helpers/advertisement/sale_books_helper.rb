@@ -1,0 +1,2 @@
+module Advertisement::SaleBooksHelper
+end
