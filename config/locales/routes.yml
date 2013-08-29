@@ -1,7 +1,7 @@
 fr:
     routes:
-        new: "creer"
-        edit: "editer"
+        new: "nouveau"
+        edit: "modifier"
         destroy: "supprimer"
         show: "afficher"
 
@@ -28,6 +28,10 @@ fr:
         cFile: "fichier"
         c_files: "mes-fichiers"
         structures: "dossier"
+
+        advertisement: annonce
+        advertisements: annonces
+        books: livres
 
 en:
     routes:

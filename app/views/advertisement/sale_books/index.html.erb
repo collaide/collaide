@@ -1,0 +1,32 @@
+<h1>Listing advertisement_sale_books</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Delivery_modes</th>
+    <th>State</th>
+    <th>Annotation</th>
+    <th>Domains</th>
+
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @advertisement_sale_books.each do |advertisement_sale_book| %>
+  <tr>
+    <td><%= advertisement_sale_book.title %></td>
+    <td><%= advertisement_sale_book.delivery_modes %></td>
+    <td><%= advertisement_sale_book.state %></td>
+    <td><%= advertisement_sale_book.annotation %></td>
+    <td><%= advertisement_sale_book.domains %></td>
+    <td><%= link_to 'Show', advertisement_sale_book %></td>
+    <td><%= link_to 'Edit', edit_advertisement_sale_book_path(advertisement_sale_book) %></td>
+    <td><%= link_to 'Destroy', advertisement_sale_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sale book', new_advertisement_sale_book_path %>

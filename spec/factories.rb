@@ -7,6 +7,7 @@ FactoryGirl.define do
   factory :user do
     sequence(:name)  { |n| "Person #{n}" }
     sequence(:email) { |n| "person_#{n}@example.com"}
+    roles %w[super-admin]
     password "foobar"
     password_confirmation "foobar"
   end
@@ -23,10 +24,10 @@ FactoryGirl.define do
     number_of_pages 2
     realized_at {2.years.ago}
     sequence(:title) { |n| "Domain #{n}"}
-    domains { FactoryGirl.create_list :domain, 3 }
+    domains { [(FactoryGirl.create :domain)] }
     study_level { FactoryGirl.create :study_level }
     document_type { FactoryGirl.create :document_type }
-    files { FactoryGirl.create_list :files, 1 }
+    files { [(FactoryGirl.create :files)] }
 
   end
 
