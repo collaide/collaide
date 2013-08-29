@@ -8,6 +8,7 @@ class Ability
       can :manage, GuestBook
       can :read, Domain
       can :index, Document::Document
+      can :read, Advertisement::Advertisement
     else
       if user.no_roles? #utilisateur normal, encore réfléchir comment exactement gérer, sinon un rôle normal dans User
         can :manage, User, id: user.id #peut gérer uniquement son profil
@@ -15,6 +16,7 @@ class Ability
         can :read, Domain
         can :read, Document::Document
         can :manage, Document::Document, user_id: user.id
+        can :manage, Advertisement::Advertisement, user_id: user.id
       else
         if user.is? 'super-admin'
           can :manage, :all

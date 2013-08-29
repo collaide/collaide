@@ -24,11 +24,11 @@ class Advertisement::SaleBooksController < ApplicationController
   # GET /advertisement/sale_books/new
   # GET /advertisement/sale_books/new.json
   def new
-    @advertisement_book = Advertisement::SaleBook.new
+    @sale_book = Advertisement::SaleBook.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @advertisement_book }
+      format.json { render json: @sale_book }
     end
   end
 
