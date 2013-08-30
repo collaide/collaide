@@ -26,6 +26,10 @@ class Ability
           #can :read, User par exemple
           #etc on continue de définir des permissions pour chaque rôles
         end
+
+        if user.is? 'validator'
+          can :manage, Document::Document
+        end
       end
     end
     #etc

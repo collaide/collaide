@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 Collaide::Application.routes.draw do
 
+  match '/rate' => 'rater#create', :as => 'rate'
+
   root :to => "static_pages#home"
 
   get "about", to: "static_pages#about", as: "about"
@@ -19,13 +21,18 @@ Collaide::Application.routes.draw do
   end
 
   resources :'documents', as: 'document_documents', controller: 'document/documents' do
-    get 'domain/:domain', action: :index, on: :collection, as: 'documents_by_domain'
-    get 'page/:page', :action => :index, :on => :collection
+    get 'page/:page', :action => :index, :on => :collection, as: 'pager'
+    get 'domain/:domain_id', action: :index, on: :collection, as: 'domain'
+    get 'type/:type_id', action: :index, on: :collection, as: 'type'
+    get ':type_id/in/:domain_id', action: :index, on: :collection, as: 'domain_type'
+    member do
+      post :rate
+    end
   end
   namespace :document do
     resources :domains, :only => [:show, :index]
-    resources :types
-    resources :study_levels
+    #resources :types
+    #resources :study_levels
   end
 
   resources :structures, only: [:index] do
@@ -41,31 +48,31 @@ Collaide::Application.routes.draw do
   end
 
 
-  namespace :member do
-    resources :parameters
-    resources :contacts
-    resources :addresses
-    resources :comments
-    resources :statuses
-    resources :schools
-    resources :studies, :only => [:show, :update, :create, :new, :index, :edit]
-
-    resources :messages
-    namespace :message do
-      resources :inboxes
-    end
-
-    resources :groups
-    namespace :group do
-      resources :members
-      resources :demands
-    end
-
-    resources :friends
-    namespace :friend do
-      resources :demands
-    end
-  end
+  #namespace :member do
+  #  resources :parameters
+  #  resources :contacts
+  #  resources :addresses
+  #  resources :comments
+  #  resources :statuses
+  #  resources :schools
+  #  resources :studies, :only => [:show, :update, :create, :new, :index, :edit]
+  #
+  #  resources :messages
+  #  namespace :message do
+  #    resources :inboxes
+  #  end
+  #
+  #  resources :groups
+  #  namespace :group do
+  #    resources :members
+  #    resources :demands
+  #  end
+  #
+  #  resources :friends
+  #  namespace :friend do
+  #    resources :demands
+  #  end
+  #end
 
 
   resources :guest_books, :only => [:show, :index, :create, :new] do
@@ -78,6 +85,8 @@ Collaide::Application.routes.draw do
 end
 
 Collaide::Application.routes.draw do
+
+  match '/rate' => 'rater#create', :as => 'rate'
 
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config

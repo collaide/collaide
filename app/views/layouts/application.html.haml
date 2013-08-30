@@ -38,30 +38,3 @@
       = render 'layouts/footer'
 
   = javascript_include_tag "application"
-  %script {src: 'http://js.pusherapp.com/1.9/pusher.min.js'}
-  :javascript
-      $(function() {
-          var pusher = new Pusher('fa7c1e955481731b1662'); // Replace with your app key
-          var channel = pusher.subscribe('private-'+"#{current_user ? current_user.id : 'null'}");
-
-          // Some useful debug msgs
-          pusher.connection.bind('connecting', function() {
-            $('div#status').text('Connecting to Pusher...');
-            $('div#status').show()
-          });
-          pusher.connection.bind('connected', function() {
-            $('div#status').text('Connected to Pusher!');
-            $('div#status').show()
-          });
-          pusher.connection.bind('failed', function() {
-            $('div#status').text('Connection to Pusher failed :(');
-            $('div#status').show()
-          });
-          channel.bind('subscription_error', function(status) {
-            $('div#status').text('Pusher subscription_error');
-            $('div#status').show()
-          });
-        });
-        channel.bind('new_message', function(data) {
-          alert(data.msg)
-        });

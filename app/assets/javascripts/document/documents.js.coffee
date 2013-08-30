@@ -2,17 +2,60 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+
+$('#paginate li a').on 'click', ->
+  history.pushState('', null, this.href)
+$(window).bind 'popstat', ->
+  location.reload()
 $ ->
-  $("a[data-remote]").on "ajax:success", (e, data, status, xhr) ->
-    table = $("table tbody")
-    table.empty()
-    for doc in data.doc
-      table.append "<tr>
-                        <td><a href='"+data.urls[doc.id]+"'>"+doc.title+"</a></td>
-                        <td>"+doc.description+"</td>
-                        <td>"+doc.language+"</td>
-                        <td>"+doc.study_level.name+"</td>
-                        <td>"+doc.document_type.name+"</td>
-                        <td>"+data.dates[doc.id]+"</td>
-                        <td>"+data.domains[doc.id]+"</td>
-                    </tr>"
+  type = false
+  domain = false
+  order_by = $('#order').val()
+  realized_before = false
+  ajaxUrl = ''
+  $('#type').change ->
+    type = $('#type').val()
+    doAjax()
+  $('#domains').change ->
+    domain = $('#domains').val()
+    doAjax()
+  $('#order').change ->
+    order_by = $('#order').val()
+    doAjax()
+  $('#datepicker').change ->
+    realized_before = $('#datepicker').val()
+    doAjax()
+
+  doAjax = () ->
+    url = $('#url_for_order').val()
+    ajaxUrl = ''
+    makeUrl(domain, 'domain')
+    makeUrl(type, 'type')
+    makeUrl(realized_before, 'created_at')
+    ajaxUrl += "order_by=#{order_by}" if order_by != '0'
+    url+='?'+ajaxUrl
+
+    history.pushState('', null, url) if realized_before or order_by != '0'
+
+    $.get url, (data, status) ->
+      $(".pagination > li").each ->
+      href = $(this).children('a').attr('href').split('?')[0]
+      $(this).children('a').attr('href', href+'?'+ajaxUrl) if  href!= '#'
+    , 'script'
+
+  makeUrl = (attr, name) ->
+    ajaxUrl += "#{name}=#{attr}" if attr
+    addAnd(attr)
+  makeSEOUrl = () ->
+    seoUrl = ''
+    seoUrl += (domain+'+') if domain
+    seoUrl += (type+'+') if type
+    seoUrl += (realized_before+'+') if realized_before
+    seoUrl += (order_by+'+') if order_by != '0'
+    seoUrl = seoUrl.slice(0, -1) if seoUrl != ''
+    seoUrl
+
+  addAnd = (attr) ->
+    ajaxUrl += '&' if attr and ajaxUrl != ''
+
+

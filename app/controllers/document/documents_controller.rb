@@ -19,31 +19,59 @@ class Document::DocumentsController < ApplicationController
 
   def index
     #TODO optimisation des requêtes, déjà fait en partie. Possible de faire en core mieux ? a voir
+
+    # affichage suivant les critères de l'utilisateur
     sort = 'DESC'
-    sort = 'ASC' if params[:order] == 'asc'
-    attr = Document::Document::SORT_ARGS[:"#{params[:sort].to_s}"] || 'document_documents.created_at'
+    attr = 'document_documents.created_at'
+    if params[:order_by] == '1'
+      attr = 'document_documents.title'
+      sort = 'ASC'
+    end
+    where = ''
+    joins = ''
+    logger.info params.inspect
+    domain = params[:domain] || params[:domain_id]
+    type = params[:type] || params[:type_id]
+    unless domain.blank?
+      where = 'domains.id=:domain'
+      joins = :domains
+    end
+    unless type.blank?
+      where+= ' AND ' unless where.blank?
+      where += 'document_documents.document_type_id=:type'
+    end
+    unless params[:created_at].blank?
+      where+= ' AND ' unless where.blank?
+      where+= 'document_documents.created_at <= :created_at'
+    end
+
+
+    if params[:order_by].nil? and params[:created_at].nil?
+        if domain.nil? and !type.nil?
+          @url = type_document_documents_url(type)
+        elsif !domain.nil? and type.nil?
+          @url = domain_document_documents_url(domain)
+        elsif !domain.nil? and !type.nil?
+          @url = domain_type_document_documents_url({type_id: type, domain_id: domain})
+        end
+    end
+
+    #la requête. Joli, non ?
      @document_documents = Document::Document.order("#{attr} #{sort}").
          includes([:study_level, :document_type, {domains: :translations}]).
+         joins(joins).
+         where(where, {domain: domain, type: type, created_at: params[:created_at]}).
          page(params[:page])
-    #TODO: Comment afficher les documents par domaines ?
-    #unless params[:domain].nil?
-    #  where_domains = {:"domains.name" => params[:domain]}
-    #  @document_documents.where(where_domains)
-    #end
+    #pour la partie javascript. Si on est sur la page 1 ou une autre
+    if params[:page].nil?
+      @url_for_js = document_documents_url
+    else
+      @url_for_js = pager_document_documents_url(page: params[:page])
+    end
 
     respond_to do |format|
       format.html # index.html.haml
-      format.json do
-        urls = {}
-        dates = {}
-        domains = {}
-        @document_documents.each do |doc|
-          dates[:"#{doc.id.to_s}"] = l(doc.created_at, format: :long)
-          urls[:"#{doc.id.to_s}"] = document_document_path(doc.id)
-          domains[:"#{doc.id.to_s}"] = Domain.flat(doc.domains)
-        end
-        render json: {doc: @document_documents, dates: dates, urls: urls, domains: domains}.to_json(methods: [:study_level, :document_type, :domains])
-      end
+      format.js # index.js.haml
     end
   end
 
