@@ -206,6 +206,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     language_list (1.0.0)
+    letsrate (1.0.8)
     listen (1.2.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -228,7 +229,7 @@ GEM
     method_source (0.8.2)
     mime-types (1.23)
     mini_portile (0.5.1)
-    multi_json (1.7.7)
+    multi_json (1.7.9)
     multi_test (0.0.2)
     multi_xml (0.5.4)
     nokogiri (1.6.0)
@@ -399,6 +400,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   language_list
+  letsrate
   lorem-ipsum
   magic_encoding
   meta_request

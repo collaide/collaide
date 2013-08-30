@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 Collaide::Application.routes.draw do
 
+  match '/rate' => 'rater#create', :as => 'rate'
+
   root :to => "static_pages#home"
 
   get "about", to: "static_pages#about", as: "about"
@@ -20,8 +22,12 @@ Collaide::Application.routes.draw do
 
   resources :'documents', as: 'document_documents', controller: 'document/documents' do
     get 'page/:page', :action => :index, :on => :collection, as: 'pager'
-    get 'domain/:domain', action: :index, on: :collection
-    get 'type/:type', action: :index, on: :collection do
+    get 'domain/:domain_id', action: :index, on: :collection, as: 'domain'
+    get 'type/:type_id', action: :index, on: :collection, as: 'type'
+    get ':type_id/in/:domain_id', action: :index, on: :collection, as: 'domain_type'
+    member do
+      post :rate
+    end
   end
   namespace :document do
     resources :domains, :only => [:show, :index]
@@ -79,6 +85,8 @@ Collaide::Application.routes.draw do
 end
 
 Collaide::Application.routes.draw do
+
+  match '/rate' => 'rater#create', :as => 'rate'
 
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config

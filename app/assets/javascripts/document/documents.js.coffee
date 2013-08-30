@@ -5,6 +5,8 @@
 
 $('#paginate li a').on 'click', ->
   history.pushState('', null, this.href)
+$(window).bind 'popstat', ->
+  location.reload()
 $ ->
   type = false
   domain = false
@@ -30,10 +32,10 @@ $ ->
     makeUrl(domain, 'domain')
     makeUrl(type, 'type')
     makeUrl(realized_before, 'created_at')
-    ajaxUrl += "order_by=#{order_by}"
+    ajaxUrl += "order_by=#{order_by}" if order_by != '0'
     url+='?'+ajaxUrl
 
-    history.pushState('', null, url)
+    history.pushState('', null, url) if realized_before or order_by != '0'
 
     $.get url, (data, status) ->
       $(".pagination > li").each ->
@@ -44,6 +46,14 @@ $ ->
   makeUrl = (attr, name) ->
     ajaxUrl += "#{name}=#{attr}" if attr
     addAnd(attr)
+  makeSEOUrl = () ->
+    seoUrl = ''
+    seoUrl += (domain+'+') if domain
+    seoUrl += (type+'+') if type
+    seoUrl += (realized_before+'+') if realized_before
+    seoUrl += (order_by+'+') if order_by != '0'
+    seoUrl = seoUrl.slice(0, -1) if seoUrl != ''
+    seoUrl
 
   addAnd = (attr) ->
     ajaxUrl += '&' if attr and ajaxUrl != ''

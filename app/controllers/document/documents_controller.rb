@@ -19,6 +19,8 @@ class Document::DocumentsController < ApplicationController
 
   def index
     #TODO optimisation des requêtes, déjà fait en partie. Possible de faire en core mieux ? a voir
+
+    # affichage suivant les critères de l'utilisateur
     sort = 'DESC'
     attr = 'document_documents.created_at'
     if params[:order_by] == '1'
@@ -28,11 +30,13 @@ class Document::DocumentsController < ApplicationController
     where = ''
     joins = ''
     logger.info params.inspect
-    unless params[:domain].blank?
+    domain = params[:domain] || params[:domain_id]
+    type = params[:type] || params[:type_id]
+    unless domain.blank?
       where = 'domains.id=:domain'
       joins = :domains
     end
-    unless params[:type].blank?
+    unless type.blank?
       where+= ' AND ' unless where.blank?
       where += 'document_documents.document_type_id=:type'
     end
@@ -40,12 +44,25 @@ class Document::DocumentsController < ApplicationController
       where+= ' AND ' unless where.blank?
       where+= 'document_documents.created_at <= :created_at'
     end
-    logger.info where
+
+
+    if params[:order_by].nil? and params[:created_at].nil?
+        if domain.nil? and !type.nil?
+          @url = type_document_documents_url(type)
+        elsif !domain.nil? and type.nil?
+          @url = domain_document_documents_url(domain)
+        elsif !domain.nil? and !type.nil?
+          @url = domain_type_document_documents_url({type_id: type, domain_id: domain})
+        end
+    end
+
+    #la requête. Joli, non ?
      @document_documents = Document::Document.order("#{attr} #{sort}").
          includes([:study_level, :document_type, {domains: :translations}]).
          joins(joins).
-         where(where, {domain: params[:domain], type: params[:type], created_at: params[:created_at]}).
+         where(where, {domain: domain, type: type, created_at: params[:created_at]}).
          page(params[:page])
+    #pour la partie javascript. Si on est sur la page 1 ou une autre
     if params[:page].nil?
       @url_for_js = document_documents_url
     else
@@ -54,7 +71,7 @@ class Document::DocumentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.haml
-      format.js
+      format.js # index.js.haml
     end
   end
 

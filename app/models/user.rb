@@ -63,6 +63,9 @@ class User < ActiveRecord::Base
   #paperclip https://github.com/thoughtbot/paperclip
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "rails.png"
 
+  # permet à un utilisateur de donner une note à un document. voir : https://github.com/muratguzel/letsrate
+  letsrate_rater
+
   validates :name, presence: true
 
   #ne pas modifier, ajouter

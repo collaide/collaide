@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :set_locale_from_url
 
-  rescue_from ActionController::RoutingError, :with => :render_not_found
+  #rescue_from ActionController::RoutingError, :with => :render_not_found
 
   def routing_error
     raise ActionController::RoutingError.new(params[:path])

@@ -1,6 +1,8 @@
 .row
   .large-2.columns.small-12
     =image_tag 'rails.png', width: 100, height: 100
+    =rating_for document, 'note', star: 5
+    #star
   .small-12.columns.large-10
     %h2= link_to document.title, document
     %h5.doc-subtitle= t('documents.index.subtitle', {type: document.document_type.name, domains: document.domains.first.name}).truncate 50, separator: ' ', omission: ' ...'

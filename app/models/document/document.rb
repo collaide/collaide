@@ -21,6 +21,8 @@ class Document::Document < ActiveRecord::Base
 
   SORT_ARGS = {title: 'title', lang: 'language', author: 'author', created_at: 'created_at', type: 'document_types.name',
                domain: 'domain.name', study_level: 'document_study_levels.name', domain: 'domains.name'}
+  # permet de donner une note à un document. voir : https://github.com/muratguzel/letsrate
+  letsrate_rateable 'note'
 
   attr_accessible :author, :description, :language, :number_of_pages, :realized_at, :title, :study_level_id,
                   :document_type_id, :user_id, :files_attributes, :domains_attributes, :domain_ids
