@@ -1,6 +1,7 @@
 .row
   .small-12.columns
     %h1= t 'documents.index.title'
+    %p#no-doc
 .row
   .small-12.columns.large-6
     =create_link(Document::Document, t('documents.index.new_link'), 'expand')
@@ -12,46 +13,39 @@
   -#TODO: page de téléchargement + hits
   -#TODO: possibilité de noter les documents
   -#TODO: modal de connexion si pas les droits
-  -#TODO: formulaire de recherche
-  -#TODO: autocomplétion avec recherche instantanée
+  -#TODO: autocomplétion
   -#TODO: afficher plus de la recherche à volonté pour petit écran
+  -#FIXME: la pagination ne marche pas quand on séléction un domaine
+  -#TODO: jolies urls
   .row.hide-for-small
-    .small-12.columns
-      =paginate @document_documents
+    .small-12.columns#paginate
+      =paginate @document_documents, remote: true
   .row
     .large-4.columns.push-8.small-12
       %fieldset
-        %form{action: document_documents_path, method: 'get'}
-          %label= t('documents.index.search')
-          %input.sticky{type: 'text', placeholder: 'mot-clés pour rechercher un document'}
-          .row.hide-for-small
-            .small-6.columns
-              %label= t('documents.index.show')
-              %select
-                %option{value: 3} Dissertation
-            .small-6.columns
-              %label en
-              %select
-                %option{value: 3} Sport
-          .row.hide-for-small
-            .small-6.columns
-              %label Classement
-              %select
-                %option{value: 3} les plus récent en premier
-            .small-6.columns
-              %label Réalisé avant le
-              %input.datepicker{type: 'text'}
-          .row.hide-for-small
-            .small-12.columns
-              %input.button.success.expand{type: 'submit', value: 'Go!!'}
-    .small-12.large-8.columns.pull-4
-      -@document_documents.each do |d|
-        .row
-          .large-2.columns.small-12
-            =image_tag 'rails.png', width: 100, height: 100
-          .small-12.columns.large-10
-            %h2= link_to d.title, d
-            %h5.doc-subtitle= t('documents.index.subtitle', {type: d.document_type.name, domains: d.domains.first.name}).truncate 50, separator: ' ', omission: ' ...'
-            %p= d.description.truncate(100, separator: ' ', omission: ' ...')
-            =link_to t('documents.index.download'), d, class: 'button'
-        %hr
+        =form_tag document_documents_path, method: :get do
+          =label_tag :search, t('documents.index.forms.search.label')
+          =search_field_tag :search
+          =submit_tag t('documents.index.forms.search.submit'), class: 'button success expand'
+      %fieldset
+        =hidden_field_tag :url_for_order, @url_for_js
+        .row.hide-for-small
+          .small-12.columns
+            =#dropdown_link :type, 'afficher un(e)', Document::Type.includes(:translations)
+        .row.hide-for-small
+          .small-6.columns
+
+            =label_tag :type, t('documents.index.forms.order.label_type')
+            =select_tag :type, options_from_collection_for_select(Document::Type.includes(:translations).order('name ASC'), :id, :name), prompt: t('documents.index.forms.order.select_type')
+          .small-6.columns
+            =label_tag :domains, t('documents.index.forms.order.label_domains')
+            =select_tag :domains, options_from_collection_for_select(Domain.includes(:translations).order('name ASC'), :id, :name), prompt: t('documents.index.forms.order.select_domains')
+        .row.hide-for-small
+          .small-6.columns
+            =label_tag :order, t('documents.index.forms.order.label_order')
+            =select_tag :order, options_for_select([[t('documents.index.forms.order.select.newest'), 0], [t('documents.index.forms.order.select.notest'), 1]])
+          .small-6.columns
+            =label_tag :datepicker, t('documents.index.forms.order.label_datepicker')
+            =text_field_tag :datepicker, nil, class: :datepicker
+    .small-12.large-8.columns.pull-4#documents
+      =render @document_documents

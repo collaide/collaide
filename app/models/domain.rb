@@ -50,9 +50,9 @@ class Domain < ActiveRecord::Base
   def self.flat(nodes)
     name = ""
     nodes.map.with_index do |a_domain, key|
-       separator = ', '
-       separator = " #{I18n.translate('dico.and')} " if nodes.size >=2 and key+2 == nodes.size
-       name += "#{a_domain.name}#{separator}"
+      separator = ', '
+      separator = " #{I18n.translate('dico.and')} " if nodes.size >=2 and key+2 == nodes.size
+      name += "#{a_domain.name}#{separator}"
     end
     name.chop.chop
   end
