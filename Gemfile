@@ -50,6 +50,8 @@ gem "googlebooks", "~> 0.0.7"
 
 gem 'letsrate'
 
+gem 'enumerize'
+
 group :development, :test do
 #  gem 'therubyracer-heroku', :platform => :ruby
   gem 'sqlite3', '1.3.5'

@@ -31,7 +31,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :registerable
 
-   attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :avatar, :name
+   attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :avatar, :name, :points,
+                   :last_sign_in_at, :created_at
 
   has_one :contact, :class_name => 'Member::Contact', inverse_of: :user
   has_one :parameter, :class_name => 'Member::Parameter'
@@ -67,6 +68,11 @@ class User < ActiveRecord::Base
   letsrate_rater
 
   validates :name, presence: true
+
+  validate :points, numericality: {
+      greater_than_or_equal_to: 0,
+      only_integer: true
+  }
 
   #ne pas modifier, ajouter
   ROLES = %w[admin moderator author banned super-admin]
