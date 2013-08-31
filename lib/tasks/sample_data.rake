@@ -113,8 +113,8 @@ end
 
 def make_files
   puts 'files'
-  3000.times do |n|
-    file = File.open(Dir.glob(File.join('/Users/leo', '*', '*.pdf')).sample)
+  30.times do |n|
+    file = File.open(Dir.glob(File.join('D:\Education\Unifr\Algorithmes', '*', '*.pdf')).sample)
     CFile::CFile.create!(
         file: file ,
         rights: %w[read write]
@@ -132,7 +132,7 @@ end
     all_files = CFile::CFile.all
     all_domains = Domain.all
     r = Random.new
-     500.times do |n|
+     50.times do |n|
        title = Faker::Lorem.words Random.new.rand(3..10)
        description = Faker::Lorem.sentences Random.new.rand(4..10)
        author = Faker::Name.name
