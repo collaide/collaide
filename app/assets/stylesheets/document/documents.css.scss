@@ -5,4 +5,14 @@
 
 .doc-subtitle {
   color: $document-subtitle-color;
+  a {
+    color: $document-subtitle-color;
+  }
+  a:hover {
+    color: $primary-color;
+  }
+}
+
+span{
+  font-weight: bold;
 }

@@ -18,6 +18,9 @@
 
 # -*- encoding : utf-8 -*-
 class Document::Document < ActiveRecord::Base
+  extend Enumerize
+
+  enumerize :status, in: %w[accepted pending refused], default: 'refused', predicates: true
 
   SORT_ARGS = {title: 'title', lang: 'language', author: 'author', created_at: 'created_at', type: 'document_types.name',
                domain: 'domain.name', study_level: 'document_study_levels.name', domain: 'domains.name'}
@@ -25,7 +28,8 @@ class Document::Document < ActiveRecord::Base
   letsrate_rateable 'note'
 
   attr_accessible :author, :description, :language, :number_of_pages, :realized_at, :title, :study_level_id,
-                  :document_type_id, :user_id, :files_attributes, :domains_attributes, :domain_ids
+                  :document_type_id, :user_id, :files_attributes, :domains_attributes, :domain_ids,
+                  :hits, :status, :is_deleted, :created_at, :updated_at
 
   has_many :files, :class_name => 'CFile::CFile', dependent: :delete_all
   belongs_to :study_level, :class_name => 'Document::StudyLevel', include: :translations
@@ -48,5 +52,5 @@ class Document::Document < ActiveRecord::Base
   validates :number_of_pages, numericality: true, inclusion: {in: 1..300}
   #TODO conversion du format de la date en format de type SQL (YYY-mm-dd)
   validates :realized_at, date: {before: Proc.new {Time.now}}
-  validates :title, presence: true, length: {minimum: 3, maximum: 30}, uniqueness: true
+  validates :title, presence: true, length: {minimum: 3, maximum: 60}, uniqueness: true
 end
