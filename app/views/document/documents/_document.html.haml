@@ -1,11 +1,24 @@
 .row
   .large-2.columns.small-12
-    =image_tag 'rails.png', width: 100, height: 100
-    =rating_for document, 'note', star: 5
+    .row
+      .smal-12.columns
+        %a{href: document_document_path(document)}
+          =image_tag show_icon(document.files.first.file_content_type), width: 100, height: 100
+    .row
+      .small-12.columns
+        %p= rating_for document, 'note', star: 5
+    .row
+      .small-12.columns
+        %p
+          =raw("<span>#{t('documents.index.hits')}</span>")
+          =document.hits
     #star
   .small-12.columns.large-10
-    %h2= link_to document.title, document
-    %h5.doc-subtitle= t('documents.index.subtitle', {type: document.document_type.name, domains: document.domains.first.name}).truncate 50, separator: ' ', omission: ' ...'
+    %h4= link_to document.title, document
+    %h5.doc-subtitle= raw t('documents.index.subtitle',
+    {type: link_to(document.document_type.name, type_document_documents_path(document.document_type)),
+    domains: link_to(document.domains.first.name, domain_document_documents_path(document.domains.first))})
     %p= document.description.truncate(100, separator: ' ', omission: ' ...')
-    =link_to t('documents.index.download'), document, class: 'button'
+    =show_link document, t('documents.index.download')
+    =show_link document, t('documents.index.show')
   %hr

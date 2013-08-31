@@ -140,11 +140,14 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.integer  "number_of_pages",  :default => 1
     t.date     "realized_at"
     t.string   "language"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.integer  "study_level_id"
     t.integer  "document_type_id"
     t.integer  "user_id"
+    t.string   "status",           :default => "refused"
+    t.integer  "hits"
+    t.boolean  "is_deleted",       :default => false
   end
 
   add_index "document_documents", ["title"], :name => "index_document_documents_on_title"
@@ -407,6 +410,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "name"
     t.integer  "role_mask"
+    t.integer  "points"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

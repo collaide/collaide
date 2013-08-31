@@ -9,14 +9,16 @@
 -if @document_documents.empty?
   %p= t 'documents.index.no_document'
 -else
-  -#TODO: déroulement infin
-  -#TODO: page de téléchargement + hits
-  -#TODO: possibilité de noter les documents
-  -#TODO: modal de connexion si pas les droits
-  -#TODO: autocomplétion
-  -#TODO: afficher plus de la recherche à volonté pour petit écran
-  -#FIXME: la pagination ne marche pas quand on séléction un domaine
-  -#TODO: jolies urls
+  -#FIXME: la pagination ne marche pas quand on séléction un domaine -> a corriger avant la sortie!!!
+  -#TODO: téléchargement du document depuis la page d'index -> important!!!
+  -#TODO: autocomplétion, recherche -> important!!!
+  -#TODO: utiliser friendlyid pour les urls
+  -#TODO: réseaux sociaux sous les hits, facile, manque les droits
+  -#TODO: fil d'arianne -> juste avant ou après la sortie, important aussi pour bien naviguer.
+  -#TODO: afficher plus de la recherche à volonté pour petit écran -> après mise en ligne
+  -#TODO: Penser à lier le dropdown avec la navigation entre les domaines. Dropdown dans le fil d'arianne ?
+  -#TODO: déroulement infin -> plus tard
+  -#TODO: afficher une screeshot de chaque document.
   .row.hide-for-small
     .small-12.columns#paginate
       =paginate @document_documents, remote: true

@@ -100,15 +100,8 @@ fr:
         download: Télécharger
         no_document: Il n'y a aucun documents pour le moment
         no_result: Aucun documents ne corresspondent à vos critères
-        table:
-          thead:
-            title: *doc_title
-            description: *doc_description
-            lang: *doc_lang
-            document_type: *document_type
-            study_level: *study_level
-            created_at: *created_at
-            domain: Domaine d'étude
+        hits: "Hits :"
+        show: Plus de détails
         forms:
           search:
             label: Rechercher

@@ -41,4 +41,26 @@ module Document::DocumentsHelper
     end
     raw name.chop.chop
   end
+
+  def show_icon(paperclip)
+
+    "documents/#{find_extension(paperclip).to_s}.png"
+  end
+
+  def find_extension(application_type)
+    doc_types = {
+        image: %w(image/jpg image/jpeg image/pjpeg image/png image/x-png image/gif),
+        pdf: %w(application/pdf),
+        doc: %w(application/msword applicationvnd.ms-word applicaiton/vnd.openxmlformats-officedocument.wordprocessingm1.document),
+        docx: %w[application/vnd.openxmlformats-officedocument.wordprocessingml.document],
+        xls: %w(application/msexcel application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet),
+        ppt: %w(application/mspowerpoint application/vnd.ms-powerpoint application/vnd.openxmlformats-officedocument.presentationml.presentation),
+        txt: %w(text/plain)
+    }
+    doc_types.each do |type, array|
+      if array.include?(application_type)
+        return type
+      end
+    end
+  end
 end
