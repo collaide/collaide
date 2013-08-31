@@ -1,5 +1,5 @@
 class Advertisement::SaleBook < Advertisement::Sale
-  attr_accessible :state, :annotation
+  attr_accessible :state, :annotation #, domain_ids
 
   has_and_belongs_to_many :domains, order: 'position ASC'
 

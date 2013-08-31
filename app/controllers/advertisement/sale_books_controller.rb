@@ -1,14 +1,4 @@
 class Advertisement::SaleBooksController < ApplicationController
-  # GET /advertisement/sale_books
-  # GET /advertisement/sale_books.json
-  def index
-    @advertisement_sale_books = Advertisement::SaleBook.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @advertisement_sale_books }
-    end
-  end
 
   # GET /advertisement/sale_books/1
   # GET /advertisement/sale_books/1.json
@@ -27,7 +17,7 @@ class Advertisement::SaleBooksController < ApplicationController
     @sale_book = Advertisement::SaleBook.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.json { render json: @sale_book }
     end
   end
@@ -69,15 +59,4 @@ class Advertisement::SaleBooksController < ApplicationController
     end
   end
 
-  # DELETE /advertisement/sale_books/1
-  # DELETE /advertisement/sale_books/1.json
-  def destroy
-    @advertisement_sale_book = Advertisement::SaleBook.find(params[:id])
-    @advertisement_sale_book.destroy
-
-    respond_to do |format|
-      format.html { redirect_to advertisement_sale_books_url }
-      format.json { head :no_content }
-    end
-  end
 end

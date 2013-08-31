@@ -20,6 +20,7 @@
 class Document::Document < ActiveRecord::Base
   extend Enumerize
 
+  #YVES : Le defaut devrait etre pending non ?
   enumerize :status, in: %w[accepted pending refused], default: 'refused', predicates: true
 
   SORT_ARGS = {title: 'title', lang: 'language', author: 'author', created_at: 'created_at', type: 'document_types.name',
