@@ -1,6 +1,7 @@
 %h1= t'sale_books.new.title'
 
 .section-container.auto{"data-section" => true}
+-#
   .section
     %p.title{"data-section-title"=>true}
       %a{:href => "#panel1"} étape 1
@@ -16,6 +17,6 @@
       %a{:href => "#panel2"} étape 3
       .content{"data-section-content"=>true}
         %p la vente
-/render 'form'
+=render 'form'
 
 = link_to 'Back', advertisement_sale_books_path

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Advertisement::SaleBooksController < ApplicationController
 
   # GET /advertisement/sale_books/1
@@ -14,11 +15,11 @@ class Advertisement::SaleBooksController < ApplicationController
   # GET /advertisement/sale_books/new
   # GET /advertisement/sale_books/new.json
   def new
-    @sale_book = Advertisement::SaleBook.new
+    @advertisement_sale_book = Advertisement::SaleBook.new
 
     respond_to do |format|
       format.html # new.html.haml
-      format.json { render json: @sale_book }
+      format.json { render json: @advertisement_sale_book }
     end
   end
 

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Advertisement::AdvertisementsController < ApplicationController
   load_and_authorize_resource class: Advertisement::Advertisement
 

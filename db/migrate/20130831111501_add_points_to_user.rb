@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddPointsToUser < ActiveRecord::Migration
   def change
     add_column :users, :points, :integer, default: 5

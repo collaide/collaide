@@ -1,9 +1,10 @@
+# -*- encoding : utf-8 -*-
 namespace :migrate_data do
 
   require 'Nokogiri'
   #le chemin global. Change si tes pas sur mon beau mac ;-)
-  @dir = '/Users/leo/Downloads'
-  @upload = "#{@dir}/uploads/uploads/"
+  @dir = 'D:\Collaide\old\\'
+  @upload = "#{@dir}uploads\\"  #deux \\ pour echaper le "
 
   # Ce fichier permet de lancer différentes tâches rake pour migrer de la version actuelle du site
   # à la nouvelle. Chaque tâche permet de migrer un type de donnée. Les noms sont explicites.
@@ -123,7 +124,7 @@ namespace :migrate_data do
   task domains: :environment do
     I18n.locale = :fr
     puts 'generating the domains ...'
-    file = File.open "#{@dir}/domains.xml"
+    file = File.open "#{@dir}domains.xml"
     xml_file = Nokogiri::XML file.read
     file.close
     read_table('domains.xml', @dir, 'domains').each do |entry|
@@ -238,7 +239,7 @@ namespace :migrate_data do
 
   # charge un fichier xml en mémoire avec Nokogiri
   def load_xml(file_name)
-    file = File.open "#{@dir}/#{file_name}"
+    file = File.open "#{@dir}#{file_name}"
     xml = Nokogiri::XML(file.read)
     file.close
     xml

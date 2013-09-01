@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Advertisement::DeliveryMode < ActiveRecord::Base
   attr_accessible :description, :name
 
