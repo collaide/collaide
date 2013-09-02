@@ -18,8 +18,6 @@ class Advertisement::SaleBooksController < ApplicationController
     @advertisement_sale_book = Advertisement::SaleBook.new
     @book = Book.new
 
-    @advertisement_sale_book.book = @book
-
     respond_to do |format|
       format.html # new.html.haml
       format.json { render json: @advertisement_sale_book }
@@ -34,8 +32,45 @@ class Advertisement::SaleBooksController < ApplicationController
   # POST /advertisement/sale_books
   # POST /advertisement/sale_books.json
   def create
-    @advertisement_sale_book = Advertisement::SaleBook.new(params[:advertisement_sale_book])
+    # ON CHERCHE SUR LE ISBN CORRESPOND
+    @google_book = GoogleBooks.search("isbn:#{params[:advertisement_sale_book][:book][:isbn_10]}").first
+    if @google_book
+      @book = Book.new
+      On récupère tout les attribut dans le googlebook
+      #@book.class.accessible_attributes.each do |attribute|
+      #  unless attribute.blank?
+      #    @book.attribute = @google_book.attribute
+      #  end
+      #end
 
+
+      @book.title = @google_book.title
+      @book.ratings_count = @google_book.ratings_count
+      @book.isbn_10 = @google_book.isbn_10
+      #@book = @google_book[:authors, :average_rating, :description, :image_link, :info_link, :isbn_10, :isbn_13, :language, :page_count, :preview_link, :published_date, :publisher, :ratings_count, :title]
+      #@book = @google_book[:authors, :average_rating, :description, :image_link, :info_link, :isbn_10, :isbn_13, :language, :page_count, :preview_link, :published_date, :publisher, :ratings_count, :title]
+      #@book = @google_book[:authors, :average_rating, :description, :image_link, :info_link, :isbn_10, :isbn_13, :language, :page_count, :preview_link, :published_date, :publisher, :ratings_count, :title]
+      #@book = @google_book[:authors, :average_rating, :description, :image_link, :info_link, :isbn_10, :isbn_13, :language, :page_count, :preview_link, :published_date, :publisher, :ratings_count, :title]
+      #@book = @google_book[:authors, :average_rating, :description, :image_link, :info_link, :isbn_10, :isbn_13, :language, :page_count, :preview_link, :published_date, :publisher, :ratings_count, :title]
+      #@book = @google_book[:authors, :average_rating, :description, :image_link, :info_link, :isbn_10, :isbn_13, :language, :page_count, :preview_link, :published_date, :publisher, :ratings_count, :title]
+      #@book = @google_book[:authors, :average_rating, :description, :image_link, :info_link, :isbn_10, :isbn_13, :language, :page_count, :preview_link, :published_date, :publisher, :ratings_count, :title]
+      #@book = @google_book[:authors, :average_rating, :description, :image_link, :info_link, :isbn_10, :isbn_13, :language, :page_count, :preview_link, :published_date, :publisher, :ratings_count, :title]
+      #@book = @google_book[:authors, :average_rating, :description, :image_link, :info_link, :isbn_10, :isbn_13, :language, :page_count, :preview_link, :published_date, :publisher, :ratings_count, :title]
+      #@book = @google_book[:authors, :average_rating, :description, :image_link, :info_link, :isbn_10, :isbn_13, :language, :page_count, :preview_link, :published_date, :publisher, :ratings_count, :title]
+      #@book = @google_book[:authors, :average_rating, :description, :image_link, :info_link, :isbn_10, :isbn_13, :language, :page_count, :preview_link, :published_date, :publisher, :ratings_count, :title]
+
+    else
+      # On crée le book avec le isbn entrée dans le formulaire
+      @book = Book.new(params[:advertisement_sale_book][:book])
+    end
+
+    # on enlève le book des parametres
+    params[:advertisement_sale_book].delete(:book)
+    # on crée le sale_book avec les parametres du form
+    @advertisement_sale_book = Advertisement::SaleBook.new(params[:advertisement_sale_book])
+    #On ajoute le livre dans la vente
+    @advertisement_sale_book.book = @book
+    #
     respond_to do |format|
       if @advertisement_sale_book.save
         format.html { redirect_to @advertisement_sale_book, notice: 'Sale book was successfully created.' }

@@ -17,7 +17,7 @@ Collaide::Application.routes.draw do
     #resources :delivery_mode
     #resources :payment_mode
     resources :books, :controller => "sale_books", as: 'sale_books', :except => [:index, :destroy] #on affiche tous les livres par advertisement#index
-    #get "test", to: "advertisements#test"
+    get "test", to: "advertisements#test"
   end
 
   resources :'documents', as: 'document_documents', controller: 'document/documents' do
