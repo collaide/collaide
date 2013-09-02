@@ -13,6 +13,4 @@ class Advertisement::SaleBook < Advertisement::Sale
   accepts_nested_attributes_for :domains
   accepts_nested_attributes_for :book
 
-  validates :state, numericality: true, inclusion: {in: 0..6}
-  validates :annotation, numericality: true, inclusion: {in: 0..5}
 end

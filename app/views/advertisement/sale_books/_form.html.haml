@@ -2,8 +2,8 @@
   =f.error_notification
   .form-inputs
     =field_set_tag t('sale_books.form.required') do
-      =f.simple_fields_for @book do |p|
-        =p.input :isbn_10
+      =f.simple_fields_for @advertisement_sale_book.book do |p|
+        =p.input :isbn_13
       =f.input :price
       =f.input :currency
     -if @showOptionalFields

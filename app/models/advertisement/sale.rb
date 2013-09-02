@@ -13,5 +13,4 @@ class Advertisement::Sale < Advertisement::Advertisement
 
 
   validates_presence_of :price, numericality: true, inclusion: {in: 0..300}
-  validates_presence_of :currency
 end
