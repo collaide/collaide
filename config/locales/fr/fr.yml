@@ -114,7 +114,9 @@ fr:
             label_order: Classé par
             select:
               newest: Les plus récents
-              notest: Order alphabétique
+              notest: Les mieux notés
+              hits: Les plus téléchargés
+              alphabetic: Par ordre alphabétique
             label_datepicker: Réalisé avant le
       new:
         title: Nouveau document

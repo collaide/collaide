@@ -23,9 +23,17 @@ class Document::DocumentsController < ApplicationController
     # affichage suivant les critères de l'utilisateur
     sort = 'DESC'
     attr = 'document_documents.created_at'
-    if params[:order_by] == '1'
-      attr = 'document_documents.title'
-      sort = 'ASC'
+    rates = ''
+    order_by = params[:order_by].to_i
+    case order_by
+      when 1
+        attr = 'document_documents.title'
+        sort = 'ASC'
+      when 2
+        rates = :rate_average_without_dimension
+        attr = 'rating_caches.avg'
+      when 3
+        attr = 'document_documents.hits'
     end
     where = ''
     joins = ''
@@ -59,7 +67,7 @@ class Document::DocumentsController < ApplicationController
     #la requête. Joli, non ?
      @document_documents = Document::Document.order("#{attr} #{sort}").
          includes([:study_level, :document_type, {domains: :translations}]).
-         joins(joins).
+         joins(joins).joins(rates).
          where(where, {domain: domain, type: type, created_at: params[:created_at]}).
          page(params[:page])
     #pour la partie javascript. Si on est sur la page 1 ou une autre
