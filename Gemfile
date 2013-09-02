@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-#gem 'therubyracer'
+gem 'therubyracer'
 
 gem 'bcrypt-ruby', '3.0.1'
 
@@ -51,6 +51,7 @@ gem "googlebooks", "~> 0.0.7"
 gem 'letsrate'
 
 gem 'enumerize'
+
 
 group :development, :test do
 #  gem 'therubyracer-heroku', :platform => :ruby

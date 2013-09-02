@@ -147,6 +147,13 @@ fr:
         description: Quelle genre d'annonce voulez-vous publier ?
         sale_book: Vendre un livre
     sale_books:
+      new:
+        title: Vendre un livre
       form:
         isbn: ISBN
+        required: Champs requis
+        optional: Plus de détails
+        choose_payment_mode: Veuillez choisir vos modes de payement
+        choose_delivery_mode: Veuillez choisir vos modes de livraison
         submit_search: Chercher ce livre
+        submit: Mettre ce livre en vente

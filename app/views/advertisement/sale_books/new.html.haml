@@ -1,0 +1,38 @@
+%h1= t'sale_books.new.title'
+
+.section-container.auto{"data-section" => true}
+-#
+  .section
+    %p.title{"data-section-title"=>true}
+      %a{:href => "#panel1"} étape 1
+      .content{"data-section-content"=>true}
+        %p Vos données personnelles
+  .section
+    %p.title{"data-section-title"=>true}
+      %a{:href => "#panel2"} étape 2
+      .content{"data-section-content"=>true}
+        %p le livre
+  .section
+    %p.title{"data-section-title"=>true}
+      %a{:href => "#panel2"} étape 3
+      .content{"data-section-content"=>true}
+        %p la vente
+
+%a{:href => "#", "data-reveal-id"=>"required"} Vente rapide !
+%a{:href => "#", "data-reveal-id"=>"complete"} Vente précise !
+
+
+%p= link_to 'Back', advertisement_sale_books_path
+
+
+-# On affiche les champs optionels
+-@showOptionalFields = true
+.reveal-modal{:id => 'complete'}
+  =render 'form'
+  %a.close-reveal-modal &#215;
+
+-# On n'affiche PAS les champs optionels
+-@showOptionalFields = false
+.reveal-modal{:id => 'required'}
+  =render 'form'
+  %a.close-reveal-modal &#215;

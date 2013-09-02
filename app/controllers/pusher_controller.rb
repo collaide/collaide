@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PusherController
   def auth
     if current_user

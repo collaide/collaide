@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DocumentObserver < ActiveRecord::Observer
 
   def after_create(document)

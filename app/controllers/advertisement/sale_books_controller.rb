@@ -1,14 +1,5 @@
+# -*- encoding : utf-8 -*-
 class Advertisement::SaleBooksController < ApplicationController
-  # GET /advertisement/sale_books
-  # GET /advertisement/sale_books.json
-  def index
-    @advertisement_sale_books = Advertisement::SaleBook.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @advertisement_sale_books }
-    end
-  end
 
   # GET /advertisement/sale_books/1
   # GET /advertisement/sale_books/1.json
@@ -24,11 +15,13 @@ class Advertisement::SaleBooksController < ApplicationController
   # GET /advertisement/sale_books/new
   # GET /advertisement/sale_books/new.json
   def new
-    @advertisement_book = Advertisement::SaleBook.new
+    @advertisement_sale_book = Advertisement::SaleBook.new
+    book = Book.new
+    @advertisement_sale_book.book = book
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @advertisement_book }
+      format.html # new.html.haml
+      format.json { render json: @advertisement_sale_book }
     end
   end
 
@@ -40,8 +33,48 @@ class Advertisement::SaleBooksController < ApplicationController
   # POST /advertisement/sale_books
   # POST /advertisement/sale_books.json
   def create
-    @advertisement_sale_book = Advertisement::SaleBook.new(params[:advertisement_sale_book])
+    # ON CHERCHE SUR LE ISBN CORRESPOND
+    google_book = GoogleBooks.search("isbn:#{params[:advertisement_sale_book][:book][:isbn_13]}").first
+    if google_book
+      #On cherche si le livre est déja dans la bdd, si il l'est, on le met à jour, si il ne l'ai pas, onle crée
+      book = Book.find_by_isbn_13(google_book.isbn_13) || Book.find_by_isbn_10(google_book.isbn_10) || Book.new(isbn_13: google_book.isbn_13, isbn_10: google_book.isbn_10)
 
+      #On récupère tout les attribut dans le googlebook
+      #@book.class.accessible_attributes.each do |attribute|
+      #  unless attribute.blank?
+      #    @book.attribute = @google_book.attribute
+      #  end
+      #end
+
+      # mettre à jour book
+      book.title = google_book.title
+      book.ratings_count = google_book.ratings_count
+      book.isbn_10 = google_book.isbn_10
+      book.isbn_13 = google_book.isbn_13
+      book.authors = google_book.authors
+      book.language = google_book.language
+      book.page_count = google_book.page_count
+      book.published_date = google_book.published_date
+      book.publisher = google_book.publisher
+      #book.description = google_book.description
+      #book.description = google_book.description
+      #book.description = google_book.description
+
+          #@google_book[:image_link, :info_link, :preview_link]
+
+    else
+      # On crée le book avec le isbn entrée dans le formulaire
+      book = Book.new(params[:advertisement_sale_book][:book])
+    end
+
+    # on enlève le book des parametres
+    params[:advertisement_sale_book].delete(:book)
+    # on crée le sale_book avec les parametres du form
+    @advertisement_sale_book = Advertisement::SaleBook.new(params[:advertisement_sale_book])
+    #On ajoute le livre dans la vente
+    @advertisement_sale_book.book = book
+    @advertisement_sale_book.user = current_user
+    #
     respond_to do |format|
       if @advertisement_sale_book.save
         format.html { redirect_to @advertisement_sale_book, notice: 'Sale book was successfully created.' }
@@ -69,15 +102,4 @@ class Advertisement::SaleBooksController < ApplicationController
     end
   end
 
-  # DELETE /advertisement/sale_books/1
-  # DELETE /advertisement/sale_books/1.json
-  def destroy
-    @advertisement_sale_book = Advertisement::SaleBook.find(params[:id])
-    @advertisement_sale_book.destroy
-
-    respond_to do |format|
-      format.html { redirect_to advertisement_sale_books_url }
-      format.json { head :no_content }
-    end
-  end
 end

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateTableDomainsSaleBooks < ActiveRecord::Migration
   def change
     create_table :domains_sale_books do |t|

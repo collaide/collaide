@@ -29,7 +29,7 @@ class GuestBooksController < ApplicationController
     @guest_book = GuestBook.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.json { render json: @guest_book }
     end
   end

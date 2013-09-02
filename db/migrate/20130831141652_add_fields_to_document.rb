@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddFieldsToDocument < ActiveRecord::Migration
   def change
     add_column :document_documents, :status, :string, default: 'refused'

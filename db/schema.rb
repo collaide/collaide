@@ -35,11 +35,13 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.string   "type"
     t.decimal  "price"
     t.string   "currency"
-    t.integer  "state"
-    t.integer  "annotation"
+    t.string   "state"
+    t.string   "annotation"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "user_id"
+    t.string   "language"
+    t.integer  "book_id"
   end
 
   create_table "advertisement_delivery_mode_translations", :force => true do |t|
@@ -78,6 +80,25 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "books", :force => true do |t|
+    t.string   "title"
+    t.string   "authors"
+    t.string   "publisher"
+    t.date     "published_date"
+    t.text     "description"
+    t.string   "isbn_10"
+    t.string   "isbn_13"
+    t.integer  "page_count"
+    t.float    "average_rating"
+    t.integer  "ratings_count"
+    t.string   "language"
+    t.string   "preview_link"
+    t.string   "info_link"
+    t.string   "image_link"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "c_file_c_files", :force => true do |t|
@@ -409,7 +430,6 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "name"
     t.integer  "role_mask"
-    t.integer  "points"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -424,6 +444,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "points",                 :default => 5
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

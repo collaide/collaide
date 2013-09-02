@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Advertisement::AdvertisementsController < ApplicationController
   load_and_authorize_resource class: Advertisement::Advertisement
 
@@ -53,7 +54,7 @@ class Advertisement::AdvertisementsController < ApplicationController
   end
 
   def test
-    @books = GoogleBooks.search('The Great Gatsby')
+    @books = GoogleBooks.search('cdsc0s0c9sdc8sdc900c0sdc0dcsd0c9sd0c9dscsd0cc9sd09c')
     #@first_book = books.first
 
 
