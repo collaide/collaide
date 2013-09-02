@@ -16,6 +16,9 @@ class Advertisement::SaleBooksController < ApplicationController
   # GET /advertisement/sale_books/new.json
   def new
     @advertisement_sale_book = Advertisement::SaleBook.new
+    @book = Book.new
+
+    @advertisement_sale_book.book = @book
 
     respond_to do |format|
       format.html # new.html.haml

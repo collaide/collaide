@@ -17,6 +17,22 @@
       %a{:href => "#panel2"} étape 3
       .content{"data-section-content"=>true}
         %p la vente
-=render 'form'
 
-= link_to 'Back', advertisement_sale_books_path
+%a{:href => "#", "data-reveal-id"=>"required"} Vente rapide !
+%a{:href => "#", "data-reveal-id"=>"complete"} Vente précise !
+
+
+%p= link_to 'Back', advertisement_sale_books_path
+
+
+-# On affiche les champs optionels
+-@showOptionalFields = true
+.reveal-modal{:id => 'complete'}
+  =render 'form'
+  %a.close-reveal-modal &#215;
+
+-# On n'affiche PAS les champs optionels
+-@showOptionalFields = false
+.reveal-modal{:id => 'required'}
+  =render 'form'
+  %a.close-reveal-modal &#215;

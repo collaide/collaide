@@ -3,7 +3,7 @@ namespace :db do
   task populate: :environment do
     make_users
     #add_avatar_to_user
-    #make_guest_books
+    make_guest_books
     make_study_levels
     make_document_types
     make_domains

@@ -75,6 +75,7 @@ class User < ActiveRecord::Base
       only_integer: true
   }
 
+  # Plus d'infos : https://github.com/ryanb/cancan/wiki/Role-Based-Authorization
   #ne pas modifier, ajouter
   ROLES = %w[admin moderator author banned super-admin]
 

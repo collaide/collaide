@@ -1,18 +1,21 @@
 =simple_form_for(@advertisement_sale_book) do |f|
   =f.error_notification
   .form-inputs
-    =f.input :description, input_html: {rows: 3}
-    =f.input :state
-    =f.input :annotation
-    =f.input :price
-    =f.input :currency
+    =field_set_tag t('sale_books.form.required') do
+      =f.simple_fields_for @book do |p|
+        =p.input :isbn_10
+      =f.input :price
+      =f.input :currency
+    -if @showOptionalFields
+      =field_set_tag t('sale_books.form.optional') do
+        =f.association :payment_modes, prompt: t('sale_books.form.choose_payment_mode'), collection: Advertisement::PaymentMode.includes(:translations)
+        =f.association :delivery_modes, prompt: t('sale_books.form.choose_delivery_mode'), collection: Advertisement::DeliveryMode.includes(:translations)
 
-    =f.association :payment_modes, prompt: t('sale_books.form.choose_payment_mode'), collection: Advertisement::PaymentMode.includes(:translations)
-    =f.association :delivery_modes, prompt: t('sale_books.form.choose_delivery_mode'), collection: Advertisement::DeliveryMode.includes(:translations)
+        =f.input :state
+        =f.input :annotation
+        =f.input :description, input_html: {rows: 3}
 
-    /Facultatif
-    =f.association :domains, collection: Domain.select_tree
-    /=f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations)
-
+        =f.association :domains, collection: Domain.select_tree
+        /=f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations)
   .form-actions
     =f.button :submit, t('sale_books.form.submit')
