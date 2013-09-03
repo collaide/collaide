@@ -1,14 +1,34 @@
 .row
   .small-12.columns
     %h1= t 'advertisements.index.title'
+    %p#no-doc
 .row
   .small-12.columns.large-6
     =create_link(Advertisement::Advertisement, t('advertisements.index.new_link'), 'expand')
-.row
-  .small-12.columns.large-6
-    -if @advertisement.empty?
-      %p=t'advertisements.index.no_advertisement'
-    -else
-      -@advertisement.each do |a|
-        %p=a.title
-        /%p=a.type
+
+-if @advertisement.empty?
+  %p= t 'advertisements.index.no_advertisement'
+-else
+  -#FIXME: la pagination ne marche pas quand on séléction un domaine -> a corriger avant la sortie!!!
+  -#TODO: téléchargement du document depuis la page d'index -> important!!!
+  -#TODO: autocomplétion, recherche -> important!!!
+  -#TODO: utiliser friendlyid pour les urls
+  -#TODO: réseaux sociaux sous les hits, facile, manque les droits
+  -#TODO: fil d'arianne -> juste avant ou après la sortie, important aussi pour bien naviguer.
+  -#TODO: afficher plus de la recherche à volonté pour petit écran -> après mise en ligne
+  -#TODO: Penser à lier le dropdown avec la navigation entre les domaines. Dropdown dans le fil d'arianne ?
+  -#TODO: déroulement infin -> plus tard
+  -#TODO: afficher une screeshot de chaque document.
+  -#TODO: De Yves: Faire que si on cherche dans un domaine, ça inclu ses sous domaines
+  .row.hide-for-small
+    .small-12.columns#paginate
+      -#=paginate @advertisement, remote: true
+  .row
+    .large-4.columns.push-8.small-12
+      %fieldset
+        =form_tag advertisement_advertisements_path, method: :get do
+          =label_tag :search, t('advertisements.index.forms.search.label')
+          =search_field_tag :search
+          =submit_tag t('advertisements.index.forms.search.submit'), class: 'button success expand'
+    .small-12.large-8.columns.pull-4#documents
+      /=render @document_documents

@@ -77,7 +77,7 @@ class Advertisement::SaleBooksController < ApplicationController
     #
     respond_to do |format|
       if @advertisement_sale_book.save
-        format.html { redirect_to @advertisement_sale_book, notice: 'Sale book was successfully created.' }
+        format.html { redirect_to @advertisement_sale_book, notice: t('sale_books.form.succes') }
         format.json { render json: @advertisement_sale_book, status: :created, location: @advertisement_sale_book }
       else
         format.html { render action: "new" }

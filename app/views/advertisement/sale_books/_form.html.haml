@@ -1,15 +1,17 @@
 =simple_form_for(@advertisement_sale_book) do |f|
   =f.error_notification
   .form-inputs
-    =field_set_tag t('sale_books.form.required') do
+    =field_set_tag t('sale_books.new.forms.required') do
       =f.simple_fields_for @advertisement_sale_book.book do |p|
         =p.input :isbn_13
       =f.input :price
       =f.input :currency
-    -if @showOptionalFields
-      =field_set_tag t('sale_books.form.optional') do
-        =f.association :payment_modes, prompt: t('sale_books.form.choose_payment_mode'), collection: Advertisement::PaymentMode.includes(:translations)
-        =f.association :delivery_modes, prompt: t('sale_books.form.choose_delivery_mode'), collection: Advertisement::DeliveryMode.includes(:translations)
+    #clickme
+      Plus de détails sur la vente !
+    #book{ :style => "display: none"}
+      =field_set_tag t('sale_books.new.forms.optional') do
+        =f.association :payment_modes, prompt: t('sale_books.new.forms.choose_payment_mode'), collection: Advertisement::PaymentMode.includes(:translations)
+        =f.association :delivery_modes, prompt: t('sale_books.new.forms.choose_delivery_mode'), collection: Advertisement::DeliveryMode.includes(:translations)
 
         =f.input :state
         =f.input :annotation
@@ -18,4 +20,31 @@
         =f.association :domains, collection: Domain.select_tree
         /=f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations)
   .form-actions
-    =f.button :submit, t('sale_books.form.submit')
+    =f.button :submit, t('sale_books.new.forms.submit')
+:javascript
+  if (window.jQuery) {
+          // jQuery is loaded
+          alert("Yeah!");
+      } else {
+          // jQuery is not loaded
+          alert("Doesn't Work");
+      }
+  window.onload = function() {
+      if (window.jQuery) {
+          // jQuery is loaded
+          alert("Yeah!");
+      } else {
+          // jQuery is not loaded
+          alert("Doesn't Work");
+      }
+  }
+  $('button').click(function() {
+    alert('Hello world!');
+    $('#book').show('slow', function() {
+      // Animation complete.
+    });
+  });
+  $("#show_hide_button").click(function () {
+    alert('Hello world!');
+    $("#form_to_hide").show('slow');
+  });
