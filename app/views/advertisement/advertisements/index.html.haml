@@ -30,5 +30,5 @@
           =label_tag :search, t('advertisements.index.forms.search.label')
           =search_field_tag :search
           =submit_tag t('advertisements.index.forms.search.submit'), class: 'button success expand'
-    .small-12.large-8.columns.pull-4#documents
-      /=render @document_documents
+    .small-12.large-8.columns.pull-4#advertisements
+      =render @advertisement

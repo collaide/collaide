@@ -56,7 +56,7 @@ class Advertisement::SaleBooksController < ApplicationController
       book.page_count = google_book.page_count
       book.published_date = google_book.published_date
       book.publisher = google_book.publisher
-      #book.description = google_book.description
+      book.image_link = google_book.image_link(:zoom => 2)
       #book.description = google_book.description
       #book.description = google_book.description
 
@@ -77,7 +77,7 @@ class Advertisement::SaleBooksController < ApplicationController
     #
     respond_to do |format|
       if @advertisement_sale_book.save
-        format.html { redirect_to @advertisement_sale_book, notice: t('sale_books.form.succes') }
+        format.html { redirect_to @advertisement_sale_book, notice: t('sale_books.new.forms.succes') }
         format.json { render json: @advertisement_sale_book, status: :created, location: @advertisement_sale_book }
       else
         format.html { render action: "new" }

@@ -140,6 +140,7 @@ fr:
         title: Les petites annonces
         new_link: Publier une annonce
         no_advertisement: Il n'y a aucune annonce
+        show: Plus de détails
         forms:
           search:
             label: Rechercher
@@ -149,6 +150,11 @@ fr:
         description: Quelle genre d'annonce voulez-vous publier ?
         sale_book: Vendre un livre
     sale_books:
+      index:
+        buy: Acheter
+        note: Note
+        subtitle: "%{price} %{currency}"
+        no_description: Il n'y a pas de description pour ce livre...
       new:
         title: Vendre un livre
         forms:
