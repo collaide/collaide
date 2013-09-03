@@ -141,6 +141,7 @@ fr:
         new_link: Publier une annonce
         no_advertisement: Il n'y a aucune annonce
         show: Plus de détails
+        hits: "hits :"
         forms:
           search:
             label: Rechercher

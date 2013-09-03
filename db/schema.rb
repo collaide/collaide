@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.integer  "user_id"
     t.string   "language"
     t.integer  "book_id"
+    t.integer  "hits"
   end
 
   create_table "advertisement_delivery_mode_translations", :force => true do |t|
