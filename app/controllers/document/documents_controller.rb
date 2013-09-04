@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 class Document::DocumentsController < ApplicationController
   load_and_authorize_resource class: Document::Document
   def create

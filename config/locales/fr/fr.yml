@@ -94,7 +94,7 @@ fr:
             time_ago: "Il y a %{date}"
     documents:
       index:
-        title: "Tous les documents"
+        title: Les documents scolaires
         subtitle: "%{type} en %{domains}"
         new_link: Nouveau document
         download: Télécharger
@@ -139,21 +139,32 @@ fr:
         notice: Le document a été supprimé
     advertisements:
       index:
-        title: Toutes les petites annonces
+        title: Les petites annonces
         new_link: Publier une annonce
         no_advertisement: Il n'y a aucune annonce
+        show: Plus de détails
+        hits: "hits :"
+        forms:
+          search:
+            label: Rechercher
+            submit: Go!
       new:
         title: Publier une annonces
         description: Quelle genre d'annonce voulez-vous publier ?
         sale_book: Vendre un livre
     sale_books:
+      index:
+        buy: Acheter
+        note: Note
+        subtitle: "%{price} %{currency}"
+        no_description: Il n'y a pas de description pour ce livre...
       new:
         title: Vendre un livre
-      form:
-        isbn: ISBN
-        required: Champs requis
-        optional: Plus de détails
-        choose_payment_mode: Veuillez choisir vos modes de payement
-        choose_delivery_mode: Veuillez choisir vos modes de livraison
-        submit_search: Chercher ce livre
-        submit: Mettre ce livre en vente
+        forms:
+          required: Champs requis
+          optional: Plus de détails
+          choose_payment_mode: Veuillez choisir vos modes de payement
+          choose_delivery_mode: Veuillez choisir vos modes de livraison
+          submit: Mettre ce livre en vente
+          succes: Félicitation ! Votre livre a bien été mis en vente !
+          valid_isbn: Désolé, nous n'avons trouvé aucun livre avec ce code ISBN

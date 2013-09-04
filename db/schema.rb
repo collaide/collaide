@@ -37,11 +37,12 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.string   "currency"
     t.string   "state"
     t.string   "annotation"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "user_id"
     t.string   "language"
     t.integer  "book_id"
+    t.integer  "hits",        :default => 0
   end
 
   create_table "advertisement_delivery_mode_translations", :force => true do |t|
