@@ -68,6 +68,10 @@ class Advertisement::SaleBooksController < ApplicationController
         book.image_link = google_book.image_link(:zoom => 2)
       elsif google_book.image_link(:zoom => 5)
         book.image_link = google_book.image_link(:zoom => 5)
+      elsif google_book.image_link(:zoom => 1)
+        book.image_link = google_book.image_link(:zoom => 1)
+      else
+        book.image_link = google_book.image_link(:zoom => 4)
       end
       book.preview_link = google_book.preview_link
       book.info_link = google_book.info_link
