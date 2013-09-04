@@ -4,9 +4,9 @@
       .small-12.columns
         %a{href: advertisement_sale_book_path(sale_book)}
           -if sale_book.book.image_link
-            =image_tag sale_book.book.image_link, width: 100, height: 100
+            =image_tag sale_book.book.image_link, width: 100
           -else
-            =image_tag 'advertisements/book-icon.png', width: 100, height: 100
+            =image_tag 'advertisements/book-icon.png', width: 100
 
 
     .row

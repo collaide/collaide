@@ -4,11 +4,12 @@ class Advertisement::SaleBooksController < ApplicationController
   # GET /advertisement/sale_books/1
   # GET /advertisement/sale_books/1.json
   def show
-    @advertisement_sale_book = Advertisement::SaleBook.find(params[:id])
+    @sale_book = Advertisement::SaleBook.find(params[:id])
+    @google_book = GoogleBooks.search("isbn:#{@sale_book.book.isbn_13}").first
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @advertisement_sale_book }
+      format.json { render json: @sale_book }
     end
   end
 
@@ -48,19 +49,28 @@ class Advertisement::SaleBooksController < ApplicationController
 
       # mettre à jour book
       book.title = google_book.title
+      book.description = google_book.description
+      book.average_rating = google_book.average_rating
       book.ratings_count = google_book.ratings_count
       book.isbn_10 = google_book.isbn_10
       book.isbn_13 = google_book.isbn_13
       book.authors = google_book.authors
       book.language = google_book.language
       book.page_count = google_book.page_count
-      book.published_date = google_book.published_date
+      # si c'est juste 2000, j'ajoute 2000-01-01
+      if google_book.published_date.length == 4
+        book.published_date = "#{google_book.published_date}-01-01".to_date
+      else
+        book.published_date = google_book.published_date
+      end
       book.publisher = google_book.publisher
-      book.image_link = google_book.image_link(:zoom => 2)
-      #book.description = google_book.description
-      #book.description = google_book.description
-
-          #@google_book[:image_link, :info_link, :preview_link]
+      if google_book.image_link(:zoom => 2)
+        book.image_link = google_book.image_link(:zoom => 2)
+      elsif google_book.image_link(:zoom => 5)
+        book.image_link = google_book.image_link(:zoom => 5)
+      end
+      book.preview_link = google_book.preview_link
+      book.info_link = google_book.info_link
 
     else
       # On crée le book avec le isbn entrée dans le formulaire
