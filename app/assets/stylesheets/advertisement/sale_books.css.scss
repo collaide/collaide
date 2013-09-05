@@ -1,0 +1,9 @@
+// Place all the styles related to the advertisement/advertisements controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'foundation_and_overrides';
+
+.sale_book_subtitle {
+  front-size: $sale-book-subtitle-font-size
+  color: $sale-book-subtitle-color;
+}

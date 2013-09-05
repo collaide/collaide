@@ -2,11 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-
-if window.jQuery
-  alert("Yeah!")
-else
-  alert("Doesn't Work")
+alert('Hello world!')
 
 
 $("#show_hide_button").click ->

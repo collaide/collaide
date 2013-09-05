@@ -1,7 +1,8 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
+$("#show_hide_button").click ->
+  $("#form_to_hide").show('slow')
 # le js ne s'exécute plus, puiqu'il y une errure avec split!!! corrigé tout ira bien. y compris la pagiantion
 $('#paginate li a').on 'click', ->
   history.pushState('', null, this.href)
