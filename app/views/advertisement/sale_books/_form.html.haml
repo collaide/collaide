@@ -6,8 +6,11 @@
         =p.input :isbn_13
       =f.input :price
       =f.input :currency
-    #show_hide_button
-      Plus de détails sur la vente !
+      .columns.small-3
+        =label_tag :more_details, t('sale_books.form.more_details'), class: :right
+      .columns.small-9
+        =check_box_tag :more_details
+
     #form_to_hide{ :style => "display: none"}
       =field_set_tag t('sale_books.new.forms.optional') do
         =f.association :payment_modes, prompt: t('sale_books.new.forms.choose_payment_mode'), collection: Advertisement::PaymentMode.includes(:translations)
@@ -21,26 +24,3 @@
         /=f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations)
   .form-actions
     =f.button :submit, t('sale_books.new.forms.submit')
-:javascript
-  $(document).ready(function() {
-    alert("I'm loaded!");
-  });
-  window.onload = function() {
-      if (window.jQuery) {
-          // jQuery is loaded
-          alert("Yeah!");
-      } else {
-          // jQuery is not loaded
-          alert("Doesn't Work");
-      }
-  }
-  $('button').click(function() {
-    alert('Hello world!');
-    $('#book').show('slow', function() {
-      // Animation complete.
-    });
-  });
-  $("#show_hide_button").click(function () {
-    alert('Hello world!');
-    $("#form_to_hide").show('slow');
-  });
