@@ -1,10 +1,9 @@
-$(window).bind("popstate", function () {location.reload()});
+history.pushState('', null, "#{escape_javascript(@url)}")
 $('#documents').html("#{escape_javascript(render @document_documents)}");
 $('#paginate').html("#{escape_javascript paginate @document_documents, remote: true}");
 document.title = "#{escape_javascript(full_title(''))}";
-$('#paginate li a').click(function() {history.pushState('', null, this.href)});
-$('#url_for_order').val("#{escape_javascript @url_for_js}");
-history.pushState('', null, "#{@url}")
+$('#url_for_order').val("#{escape_javascript @url}");
+$('#paginate li a').on('click', function() {history.pushState('', null, this.href.split('?')[0]);});
 -if @document_documents.empty?
   $('#no-doc').html("#{t('documents.index.no_result')}")
 -else

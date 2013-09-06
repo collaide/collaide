@@ -29,7 +29,7 @@ class Document::DocumentsController < ApplicationController
         attr = 'document_documents.title'
         sort = 'ASC'
       when 2
-        rates = :rate_average_without_dimension
+        rates = :note_average
         attr = 'rating_caches.avg'
       when 3
         attr = 'document_documents.hits'

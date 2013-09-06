@@ -38,6 +38,7 @@ class Document::Document < ActiveRecord::Base
   belongs_to :document_type, :class_name => 'Document::Type', include: :translations
   has_and_belongs_to_many :domains, order: 'position ASC'
   belongs_to :user
+  has_one :note_average, :as => :cacheable, :class_name => "RatingCache", :dependent => :destroy, :conditions => {:dimension => 'note'}
 
 
   accepts_nested_attributes_for :files
