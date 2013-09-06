@@ -40,6 +40,8 @@ class User < ActiveRecord::Base
   has_one :repository, :class_name => 'CFile::Structure'
 
   has_many :documents, :class_name => 'Document::Document'
+  has_many :document_downloads, :class_name => 'Document::Download'
+  has_many :downloads, class_name: 'Document::Document', through: :document_downloads, source: :document
 
   has_many :statuses, :class_name => 'Member::Status', inverse_of: :user
   has_many :scolarities, :class_name => 'Member::Scolarity'

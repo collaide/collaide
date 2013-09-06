@@ -34,10 +34,16 @@ class Document::Document < ActiveRecord::Base
                   :hits, :status, :is_deleted, :created_at, :updated_at
 
   has_many :files, :class_name => 'CFile::CFile', dependent: :delete_all
+  has_many :document_downloads, :class_name => 'Document::Download'
+  has_many :user_downloader, :class_name => 'User', through: :document_downloads, source: :user
+
   belongs_to :study_level, :class_name => 'Document::StudyLevel', include: :translations
   belongs_to :document_type, :class_name => 'Document::Type', include: :translations
+
   has_and_belongs_to_many :domains, order: 'position ASC'
+
   belongs_to :user
+
   has_one :note_average, :as => :cacheable, :class_name => "RatingCache", :dependent => :destroy, :conditions => {:dimension => 'note'}
 
 
