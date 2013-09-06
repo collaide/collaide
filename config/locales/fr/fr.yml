@@ -137,6 +137,8 @@ fr:
         notice: Le document a été créé
       destroy:
         notice: Le document a été supprimé
+      download:
+        no_credit: "Plus assez de crédit pour télécharger le document '%{doc_name}"
     advertisements:
       index:
         title: Les petites annonces

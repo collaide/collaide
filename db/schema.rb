@@ -176,6 +176,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   create_table "document_downloads", :force => true do |t|
     t.integer  "user_id"
     t.integer  "document_documents_id"
+    t.integer  "number_of_downloads"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end

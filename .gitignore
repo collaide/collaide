@@ -19,3 +19,6 @@
 /public/system
 /.idea
 /nbproject/private/
+
+# ingorer les documents uploader
+/download

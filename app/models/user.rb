@@ -110,3 +110,7 @@ class User < ActiveRecord::Base
     self.name
   end
 end
+
+class Point
+  DOWNLOAD_DOCUMENT = 3
+end
