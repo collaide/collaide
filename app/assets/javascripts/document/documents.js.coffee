@@ -3,6 +3,9 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 # le js ne s'exécute plus, puiqu'il y une errure avec split!!! corrigé tout ira bien. y compris la pagiantion
 
+$(window).on 'hashchange', ->
+  alert location.href
+
 $ ->
   $('#paginate li a').on 'click', ->
     history.pushState '', null, this.href
