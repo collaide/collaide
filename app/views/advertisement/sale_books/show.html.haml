@@ -1,9 +1,15 @@
+-# Infos sur le livre
 .row
-  .large-4.columns
-    =image_tag @sale_book.book.image_link
-  .large-8.columns
+  .large-2.columns
+    .row
+      .large-12.columns
+        =image_tag @sale_book.book.image_link
+    .row
+      .large-12.columns
+        %p= rating_for @sale_book.book, 'note', star: 5
+  .large-10.columns
     %h1= @sale_book.book.title
-    %h2= "De #{@sale_book.book.authors}"
+    %h2.sale_book_subtitle= "De #{@sale_book.book.authors}"
     %p
       Edité
       -if @sale_book.book.publisher
@@ -11,7 +17,35 @@
       -if @sale_book.book.published_date
         =" en #{@sale_book.book.published_date}"
     -if @sale_book.book.description
-      %p= @sale_book.book.description
+      %p= @sale_book.book.description.truncate(100, separator: ' ', omission: ' ...')
+-# FIN Infos sur le livre
+-# Les annonces du livre
+.row
+  .large-12.columns
+    %h3 Vente
+    -if @sale_book.title
+      %h4= @sale_book.title
+    %p= "#{@sale_book.user.name} vend ce livre à #{@sale_book.price} #{@sale_book.currency}"
+    -if @sale_book.description
+      %p= @sale_book.description
+    -if @sale_book.state || @sale_book.annotation
+      %p
+        = "Le livre est"
+        -if @sale_book.state
+          #{@sale_book.state}
+        -if @sale_book.annotation
+          =" et " if @sale_book.state
+          =@sale_book.annotation
+    -if !@sale_book.payment_modes.empty?
+      Mode de payement :
+      -@sale_book.payment_modes.each do |p|
+        = "#{p.name}, "
+    -if !@sale_book.delivery_modes.empty?
+      Mode de livraison :
+      -@sale_book.delivery_modes.each do |d|
+        = "#{d.name}, "
+
+
 
 
 
@@ -19,10 +53,4 @@
 
 = link_to 'Edit', edit_advertisement_sale_book_path(@sale_book)
 |
-= link_to 'Back', advertisement_sale_books_path
-=@google_book.inspect
-
-:javascript
-  $(document).ready(function() {
-    alert("I'm loaded!");
-  });
+= link_to 'Back', advertisement_advertisements_path

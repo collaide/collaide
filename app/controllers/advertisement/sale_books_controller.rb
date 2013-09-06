@@ -64,11 +64,19 @@ class Advertisement::SaleBooksController < ApplicationController
         book.published_date = google_book.published_date
       end
       book.publisher = google_book.publisher
+      book.image_link = google_book.image_link
+
+=begin
       if google_book.image_link(:zoom => 2)
         book.image_link = google_book.image_link(:zoom => 2)
       elsif google_book.image_link(:zoom => 5)
         book.image_link = google_book.image_link(:zoom => 5)
+      elsif google_book.image_link(:zoom => 1)
+        book.image_link = google_book.image_link(:zoom => 1)
+      else
+        book.image_link = google_book.image_link(:zoom => 4)
       end
+=end
       book.preview_link = google_book.preview_link
       book.info_link = google_book.info_link
 

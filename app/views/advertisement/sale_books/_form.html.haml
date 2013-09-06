@@ -6,9 +6,9 @@
         =p.input :isbn_13
       =f.input :price
       =f.input :currency
-    #clickme
+    #show_hide_button
       Plus de détails sur la vente !
-    #book{ :style => "display: none"}
+    #form_to_hide{ :style => "display: none"}
       =field_set_tag t('sale_books.new.forms.optional') do
         =f.association :payment_modes, prompt: t('sale_books.new.forms.choose_payment_mode'), collection: Advertisement::PaymentMode.includes(:translations)
         =f.association :delivery_modes, prompt: t('sale_books.new.forms.choose_delivery_mode'), collection: Advertisement::DeliveryMode.includes(:translations)
