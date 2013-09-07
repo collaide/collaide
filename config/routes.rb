@@ -21,6 +21,7 @@ Collaide::Application.routes.draw do
   end
 
   resources :'documents', as: 'document_documents', controller: 'document/documents' do
+    get 'download', action: :download, as: 'download'
     get 'page/:page', :action => :index, :on => :collection, as: 'pager'
     get 'domain/:domain_id', action: :index, on: :collection, as: 'domain'
     get 'type/:type_id', action: :index, on: :collection, as: 'type'
@@ -78,7 +79,9 @@ Collaide::Application.routes.draw do
   resources :guest_books, :only => [:show, :index, :create, :new] do
     get 'page/:page', :action => :index, :on => :collection
   end
-  resources :users, :only => [:show]
+  resources :users, :only => [:show] do
+    get 'no-credit', action: :no_credit, as: 'no_credit', on: :collection
+  end
 
   devise_for :user
   ActionDispatch::Routing::Translator.translate_from_file('config/locales/routes.yml', {:prefix_on_default_locale => true})

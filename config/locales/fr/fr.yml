@@ -4,7 +4,6 @@
 fr:
     dico:
         and: et
-        and_with_spaces: ' et '
         app_name: &app_name Collaide
         back: &back Retour
         connection: &connection Connexion
@@ -169,11 +168,3 @@ fr:
           submit: Mettre ce livre en vente
           succes: Félicitation ! Votre livre a bien été mis en vente !
           valid_isbn: Désolé, nous n'avons trouvé aucun livre avec ce code ISBN
-      show:
-        authors: "De %{authors}"
-        publisher: " par %{publisher}"
-        published_date: " en %{published_date}"
-        sale_infos: "%{name} vend ce livre à %{price} %{currency}"
-        the_book_is: Le livre est
-        payment_modes: "Mode de payement :"
-        delivery_modes: "Mode de livraison :"

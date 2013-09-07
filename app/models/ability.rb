@@ -15,6 +15,7 @@ class Ability
         can :manage, GuestBook
         can :read, Domain
         can :read, Document::Document
+        can :download, Document::Document
         can :manage, Document::Document, user_id: user.id
         can :manage, Advertisement::Advertisement, user_id: user.id
       else

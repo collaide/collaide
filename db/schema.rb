@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.text     "description"
     t.boolean  "active"
     t.string   "type"
-    t.decimal  "price",       :precision => 6, :scale => 2
+    t.decimal  "price",       :precision => 9, :scale => 2
     t.string   "currency"
     t.string   "state"
     t.string   "annotation"
@@ -172,6 +172,14 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   end
 
   add_index "document_documents", ["title"], :name => "index_document_documents_on_title"
+
+  create_table "document_downloads", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "document_documents_id"
+    t.integer  "number_of_downloads"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
 
   create_table "document_study_level_translations", :force => true do |t|
     t.integer  "document_study_level_id"

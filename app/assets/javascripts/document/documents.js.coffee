@@ -1,13 +1,15 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-$("#show_hide_button").click ->
-  $("#form_to_hide").show('slow')
 # le js ne s'exécute plus, puiqu'il y une errure avec split!!! corrigé tout ira bien. y compris la pagiantion
-$('#paginate li a').on 'click', ->
-  history.pushState('', null, this.href)
-$(window).bind 'popstat', ->
-  location.reload()
+
+$(window).on 'hashchange', ->
+  alert location.href
+
+$ ->
+  $('#paginate li a').on 'click', ->
+    history.pushState '', null, this.href
+
 $ ->
   type = false
   domain = false
@@ -36,12 +38,18 @@ $ ->
     ajaxUrl += "order_by=#{order_by}" if order_by != '0'
     url+='?'+ajaxUrl
 
-    history.pushState('', null, url) if realized_before or order_by != '0'
-
+    #history.pushState('', null, url) if realized_before or order_by != '0'
     $.get url, (data, status) ->
       $(".pagination > li").each ->
-      href = $(this).children('a').attr('href').split('?')[0]
-      $(this).children('a').attr('href', href+'?'+ajaxUrl) if  href!= '#'
+        href = $(this).children('a').attr('href').split('?')[0]
+        $(this).children('a').attr('href', href+'?'+ajaxUrl) if  href!= '#'
+      if realized_before or order_by != '0'
+        seoUrl = ''
+        seoUrl = "created_at=#{realized_before}" if realized_before
+        seoUrl += '&' if realized_before and order_by != '0'
+        seoUrl += "order_by=#{order_by}" if order_by != '0'
+        alert $('#url_for_order').val()
+        history.pushState('', null, $('#url_for_order').val()+'?'+seoUrl)
     , 'script'
 
   makeUrl = (attr, name) ->

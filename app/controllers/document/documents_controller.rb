@@ -29,7 +29,7 @@ class Document::DocumentsController < ApplicationController
         attr = 'document_documents.title'
         sort = 'ASC'
       when 2
-        rates = :rate_average_without_dimension
+        rates = :note_average
         attr = 'rating_caches.avg'
       when 3
         attr = 'document_documents.hits'
@@ -104,5 +104,43 @@ class Document::DocumentsController < ApplicationController
 
   def show
      @document = Document::Document.find params[:id]
+  end
+
+  def download
+    send_file_method = :default
+    doc = Document::Document.find(params[:document_document_id])
+    head(:not_found) and return if (doc.nil?)
+
+    download =  Document::Download.where(document_documents_id: doc.id).where(user_id: current_user.id)
+    if download.empty?
+      if current_user.points-Point::DOWNLOAD_DOCUMENT<=0
+        redirect_to no_credit_users_path, alert: t('documents.download.no_credit', doc_name: doc.title) and return
+      end
+      current_user.points = current_user.points-Point::DOWNLOAD_DOCUMENT
+      current_user.save
+      doc_download = Document::Download.new
+      doc_download.number_of_downloads=1
+      doc_download.document = doc
+      doc_download.user = current_user
+      doc_download.save
+    else
+      download.first.number_of_downloads++1
+      download.first.save
+    end
+
+    path = doc.files.first.file.path
+
+    head(:bad_request) and return unless File.exist?(path)
+
+    send_file_options = { :type => MIME::Types.type_for(path).first.content_type, disposition: :inline }
+
+    case send_file_method
+      when :apache then send_file_options[:x_sendfile] = true
+      when :nginx then head(:x_accel_redirect => path.gsub(Rails.root, ''), :content_type => send_file_options[:type]) and return
+    end
+
+    send_file(path, send_file_options)
+    doc.hits = doc.hits+1
+    doc.save
   end
 end

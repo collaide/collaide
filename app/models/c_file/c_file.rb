@@ -25,7 +25,9 @@ class CFile::CFile < ActiveRecord::Base
    has_many :c_file_folders, :class_name => 'CFile::Folder'
   has_many :structures, :class_name => 'CFile::Structure', through: :c_file_folders
 
-  has_attached_file :file
+  has_attached_file :file,
+                    url: ':filename',
+                    path: ':rails_root/download/:class/:attachment/:id_partition/:style/:filename'
 
   has_paper_trail
   RIGHTS = %w[read write execute]
