@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.text     "description"
     t.boolean  "active"
     t.string   "type"
-    t.decimal  "price",       :precision => 9, :scale => 2
+    t.decimal  "price",       :precision => 6, :scale => 2
     t.string   "currency"
     t.string   "state"
     t.string   "annotation"
