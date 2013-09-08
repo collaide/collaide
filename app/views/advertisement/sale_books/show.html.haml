@@ -9,13 +9,13 @@
         %p= rating_for @sale_book.book, 'note', star: 5
   .large-10.columns
     %h1= @sale_book.book.title
-    %h2.sale_book_subtitle= "De #{@sale_book.book.authors}"
+    %h2.sale_book_subtitle= t'sale_books.show.authors', authors: @sale_book.book.authors
     %p
       Edité
       -if @sale_book.book.publisher
-        =" par #{@sale_book.book.publisher}"
+        =t'sale_books.show.publisher', publisher: @sale_book.book.publisher
       -if @sale_book.book.published_date
-        =" en #{@sale_book.book.published_date}"
+        =t'sale_books.show.published_date', published_date: @sale_book.book.published_date
     -if @sale_book.book.description
       %p= @sale_book.book.description.truncate(100, separator: ' ', omission: ' ...')
 -# FIN Infos sur le livre
@@ -25,23 +25,23 @@
     %h3 Vente
     -if @sale_book.title
       %h4= @sale_book.title
-    %p= "#{@sale_book.user.name} vend ce livre à #{@sale_book.price} #{@sale_book.currency}"
+    %p= t'sale_books.show.sale_infos', name: @sale_book.user.name, price: @sale_book.price, currency: @sale_book.currency
     -if @sale_book.description
       %p= @sale_book.description
     -if @sale_book.state || @sale_book.annotation
       %p
-        = "Le livre est"
+        = t'sale_books.show.the_book_is'
         -if @sale_book.state
           #{@sale_book.state}
         -if @sale_book.annotation
-          =" et " if @sale_book.state
+          =t'dico.and_with_spaces' if @sale_book.state
           =@sale_book.annotation
     -if !@sale_book.payment_modes.empty?
-      Mode de payement :
+      =t'sale_books.show.payment_modes'
       -@sale_book.payment_modes.each do |p|
         = "#{p.name}, "
     -if !@sale_book.delivery_modes.empty?
-      Mode de livraison :
+      =t'sale_books.show.delivery_modes'
       -@sale_book.delivery_modes.each do |d|
         = "#{d.name}, "
 

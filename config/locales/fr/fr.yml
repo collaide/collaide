@@ -138,8 +138,6 @@ fr:
         notice: Le document a été créé
       destroy:
         notice: Le document a été supprimé
-      download:
-        no_credit: "Plus assez de crédit pour télécharger le document '%{doc_name}"
     advertisements:
       index:
         title: Les petites annonces
@@ -171,5 +169,3 @@ fr:
           submit: Mettre ce livre en vente
           succes: Félicitation ! Votre livre a bien été mis en vente !
           valid_isbn: Désolé, nous n'avons trouvé aucun livre avec ce code ISBN
-      form:
-        more_details: "Plus de détails sur cette vente"
