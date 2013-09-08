@@ -9,16 +9,16 @@ module ApplicationHelper
     end
   end
 
-  def destroy_link(object, content = "Destroy")
-    link_to(content, object, class: 'button alert', :method => :delete, :confirm => t('confirm')) if can?(:destroy, object)
+  def destroy_link(object, content = "Destroy", html_class='')
+    link_to(content, object, class: "button alert #{html_class}", :method => :delete, :confirm => t('confirm')) if can?(:destroy, object)
   end
 
-  def show_link(object, content = "Show")
-    link_to(content, object, class: 'button') if can?(:read, object)
+  def show_link(object, content = "Show", html_class='')
+    link_to(content, object, class: "button #{html_class}") if can?(:read, object)
   end
 
-  def edit_link(object, content = "Edit")
-    link_to(content, [:edit, object], class: 'button warning') if can?(:update, object)
+  def edit_link(object, content = "Edit", html_class='')
+    link_to(content, [:edit, object], class: "button warning #{html_class}") if can?(:update, object)
   end
 
   def create_link(object, content = "New", html_class='')

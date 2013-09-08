@@ -43,7 +43,7 @@ module Document::DocumentsHelper
   end
 
   def show_icon(paperclip)
-
+    #FIXME: aucune image pour les doc en .txt
     "documents/#{find_extension(paperclip).to_s}.png"
   end
 
@@ -62,5 +62,11 @@ module Document::DocumentsHelper
         return type
       end
     end
+  end
+
+  def doc_sub_title(document)
+    raw t('documents.index.subtitle',
+          {type: link_to(document.document_type.name, type_document_documents_path(document.document_type)),
+           domains: link_to(document.domains.first.name, domain_document_documents_path(document.domains.first))})
   end
 end

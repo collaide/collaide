@@ -129,6 +129,7 @@ fr:
         back: Retour
         modify: Modifier
         delete: Supprimer
+        subtitle: "%{doc_subtitle}, réalisé par %{author}"
       edit:
         title: Editer le document
       update:

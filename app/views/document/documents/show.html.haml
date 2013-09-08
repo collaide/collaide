@@ -1,8 +1,10 @@
-%h3= @document.title
+%h2= @document.title
+%h4.doc-subtitle= raw t('documents.show.subtitle', doc_subtitle: doc_sub_title(@document), author: @document.author)
 %p= @document.description
-%p
-  Télécharger:
-  =link_to @document.files.first.file.name, @document.files.first.file.url unless @document.files.empty?
-=link_to t('documents.show.back'), document_documents_path, class: 'button'
-=edit_link @document, t('documents.show.modify')
-=destroy_link @document, t('documents.show.delete')
+.row
+  .columns.small-12.large-4
+    =link_to t('documents.index.download'), document_document_download_path(@document), class: 'button success expand'
+  .columns.small-12.large-4
+    =edit_link @document, t('documents.show.modify'), 'expand'
+  .columns.small-12.large-4
+    =destroy_link @document, t('documents.show.delete'), 'expand'
