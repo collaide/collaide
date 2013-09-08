@@ -19,6 +19,10 @@ class Document::DocumentsController < ApplicationController
   def index
     #TODO optimisation des requêtes, déjà fait en partie. Possible de faire en core mieux ? a voir
 
+    if params[:search].present?
+      redirect_to search_document_documents_path(query: params[:search].parameterize('+')) and return
+    end
+
     # affichage suivant les critères de l'utilisateur
     sort = 'DESC'
     attr = 'document_documents.created_at'
@@ -145,7 +149,7 @@ class Document::DocumentsController < ApplicationController
   end
 
   def search
-    @document_documents = Document::Document.search(Riddle::Query.escape(params[:search]))
+    @document_documents = Document::Document.search(Riddle::Query.escape(params[:query]))
     render 'document/documents/index'
   end
 end
