@@ -37,14 +37,16 @@
           =t'dico.and_with_spaces' if @sale_book.state
           =@sale_book.annotation.text
     -if !@sale_book.payment_modes.empty?
-      =t'sale_books.show.payment_modes'
-      -@sale_book.payment_modes.each do |p|
-        = "#{p}, "
+      %p
+        =t'sale_books.show.payment_modes'
+        -@sale_book.payment_modes.each do |p|
+          = "#{p.text}, "
     -if !@sale_book.delivery_modes.empty?
-      =t'sale_books.show.delivery_modes'
-      -@sale_book.delivery_modes.each do |d|
-        = "#{d}, "
-    =@sale_book.delivery_modes.values.inspect
+      %p
+        =t'sale_books.show.delivery_modes'
+        -@sale_book.delivery_modes.each do |d|
+          = "#{d.text}, "
+    =@sale_book.payment_modes.inspect
 
 
 

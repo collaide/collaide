@@ -15,8 +15,8 @@
     -if !edit
       #form_to_hide{ :style => "display: none"}
     =field_set_tag t('sale_books.new.forms.optional') do
-      =f.input :payment_modes#, :as => :check_boxes
-      =f.input :delivery_modes#, :as => :check_boxes
+      =f.input :payment_modes, :as => :check_boxes
+      =f.input :delivery_modes, :as => :check_boxes
 
       =f.input :state
       =f.input :annotation
