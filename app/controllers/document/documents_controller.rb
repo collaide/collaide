@@ -143,4 +143,9 @@ class Document::DocumentsController < ApplicationController
     doc.hits = doc.hits+1
     doc.save
   end
+
+  def search
+    @document_documents = Document::Document.search(Riddle::Query.escape(params[:search]))
+    render 'document/documents/index'
+  end
 end
