@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: books
+#
+#  id             :integer          not null, primary key
+#  title          :string(255)
+#  authors        :string(255)
+#  publisher      :string(255)
+#  published_date :date
+#  description    :text
+#  isbn_10        :string(255)
+#  isbn_13        :string(255)
+#  page_count     :integer
+#  average_rating :float
+#  ratings_count  :integer
+#  language       :string(255)
+#  preview_link   :string(255)
+#  info_link      :string(255)
+#  image_link     :string(255)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 # -*- encoding : utf-8 -*-
 class Book < ActiveRecord::Base
   attr_accessible :authors, :average_rating, :description, :image_link, :info_link, :isbn_10, :isbn_13, :language, :page_count, :preview_link, :published_date, :publisher, :ratings_count, :title

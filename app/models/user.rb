@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 # == Schema Information
 #
 # Table name: users
@@ -22,8 +21,10 @@
 #  avatar_content_type    :string(255)
 #  avatar_file_size       :integer
 #  avatar_updated_at      :datetime
+#  points                 :integer          default(5)
 #
 
+# -*- encoding : utf-8 -*-
 # -*- encoding : utf-8 -*-
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:

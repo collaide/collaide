@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 # == Schema Information
 #
 # Table name: document_documents
@@ -15,8 +14,12 @@
 #  study_level_id   :integer
 #  document_type_id :integer
 #  user_id          :integer
+#  status           :string(255)      default("refused")
+#  hits             :integer
+#  is_deleted       :boolean          default(FALSE)
 #
 
+# -*- encoding : utf-8 -*-
 # -*- encoding : utf-8 -*-
 class Document::Document < ActiveRecord::Base
   extend Enumerize
