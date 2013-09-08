@@ -15,11 +15,8 @@
     #star
   .small-12.columns.large-10
     %h4= link_to document.title, document
-    %h5.doc-subtitle= raw t('documents.index.subtitle',
-    {type: link_to(document.document_type.name, type_document_documents_path(document.document_type)),
-    domains: link_to(document.domains.first.name, domain_document_documents_path(document.domains.first))})
+    %h6.doc-subtitle= doc_sub_title document
     %p= document.description.truncate(100, separator: ' ', omission: ' ...')
-    %p= document.files.first.file.url
     =link_to t('documents.index.download'), document_document_download_path(document_document_id: document), class: 'button' if can? :download, Document::Document
     =show_link document, t('documents.index.show')
   %hr
