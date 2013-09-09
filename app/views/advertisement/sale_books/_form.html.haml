@@ -13,17 +13,20 @@
         .columns.small-9
           =check_box_tag :more_details
     -if !edit
-      #form_to_hide{ :style => "display: none"}
-    =field_set_tag t('sale_books.new.forms.optional') do
-      =f.input :payment_modes, :as => :check_boxes
-      =f.input :delivery_modes, :as => :check_boxes
+      -hide = 'hide'
+    -else
+      -hide = ''
+    #form_to_hide{class: hide}
+      =field_set_tag t('sale_books.new.forms.optional') do
+        =f.input :payment_modes, :as => :check_boxes
+        =f.input :delivery_modes, :as => :check_boxes
 
-      =f.input :state
-      =f.input :annotation
-      =f.input :description, input_html: {rows: 3}
+        =f.input :state
+        =f.input :annotation
+        =f.input :description, input_html: {rows: 3}
 
-      =f.association :domains, collection: Domain.select_tree
-      /=f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations)
+        =f.association :domains, collection: Domain.select_tree
+        /=f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations)
   .form-actions
     -if edit
       =f.button :submit, t('sale_books.edit.forms.submit')
