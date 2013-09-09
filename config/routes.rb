@@ -26,6 +26,8 @@ Collaide::Application.routes.draw do
     get 'domain/:domain_id', action: :index, on: :collection, as: 'domain'
     get 'type/:type_id', action: :index, on: :collection, as: 'type'
     get ':type_id/in/:domain_id', action: :index, on: :collection, as: 'domain_type'
+    get 'search/:query', action: :search, on: :collection, as: 'search'
+    get 'autocomplete', action: :autocomplete, on: :collection, as: 'autocomplete'
     member do
       post :rate
     end

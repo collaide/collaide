@@ -19,6 +19,10 @@ class Document::DocumentsController < ApplicationController
   def index
     #TODO optimisation des requêtes, déjà fait en partie. Possible de faire en core mieux ? a voir
 
+    if params[:search].present?
+      redirect_to search_document_documents_path(query: params[:search]) and return
+    end
+
     # affichage suivant les critères de l'utilisateur
     sort = 'DESC'
     attr = 'document_documents.created_at'
@@ -36,7 +40,6 @@ class Document::DocumentsController < ApplicationController
     end
     where = ''
     joins = ''
-    logger.info params.inspect
     domain = params[:domain] || params[:domain_id]
     type = params[:type] || params[:type_id]
     unless domain.blank?
@@ -142,5 +145,23 @@ class Document::DocumentsController < ApplicationController
     send_file(path, send_file_options)
     doc.hits = doc.hits+1
     doc.save
+  end
+
+  def search
+    @document_documents = Document::Document.search(Riddle::Query.escape(params[:query]), page: params[:page], ranker: :bm25)
+    @searched_value = params[:query]
+    respond_to do |format|
+      format.js {render 'document/documents/index.js'}
+      format.html {render 'document/documents/index.html'}
+    end
+  end
+
+  def autocomplete
+    res =  Document::Document.search(Riddle::Query.escape(params[:term])).map do |a_res|
+       {id: a_res.id, value: a_res.title}
+    end
+    respond_to do |format|
+      format.js { render json: res }
+    end
   end
 end

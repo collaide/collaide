@@ -28,12 +28,13 @@
   .row
     .large-4.columns.push-8.small-12
       %fieldset
-        =form_tag document_documents_path, method: :get do
+        %form{action: document_documents_path, method: :get}
           =label_tag :search, t('documents.index.forms.search.label')
-          =search_field_tag :search
-          =submit_tag t('documents.index.forms.search.submit'), class: 'button success expand'
+          =search_field_tag :search, @searched_value
+          =submit_tag t('documents.index.forms.search.submit'), class: 'button success expand', name: nil, id: 'go-search'
       %fieldset
         =hidden_field_tag :url_for_order, @url_for_js
+        =hidden_field_tag :auto_complete_url, autocomplete_document_documents_path
         .row.hide-for-small
           .small-6.columns
 

@@ -67,4 +67,6 @@ $ ->
   addAnd = (attr) ->
     ajaxUrl += '&' if attr and ajaxUrl != ''
 
+$('#more_infos').click ->
+  $('#more_details').toggle('slow')
 
