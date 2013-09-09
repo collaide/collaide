@@ -3,11 +3,11 @@
 La nouvelle version de collaide est développé grâce au framework Ruby on Rails. Actuellement, nous sommes deux personnes
 à y traviller.
 Cette nouvelle version a pour but d'utiliser les technologies web modernes (Ajax, responsive design, etc), de suivre
-le modèle de programmation REST, d'avoir une base de donnée unifiée (gerée avec un ORM), avec une seule logique et d'être
+le modèle de programmation REST, d'avoir une base de donnée unifiée (gerée avec un ORM) et d'être
 multi-lingue.
 
-Nous recherchons encore :
-* un traducteur français-anglais
+Nous recherchons encore quelqu'un pour :
+* traduire de français-anglais
 * un traducteur français-allemand
 * un traducteur français-italien
 * un web-designer
