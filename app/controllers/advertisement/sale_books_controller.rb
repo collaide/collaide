@@ -107,11 +107,13 @@ class Advertisement::SaleBooksController < ApplicationController
   # PUT /advertisement/sale_books/1
   # PUT /advertisement/sale_books/1.json
   def update
+    # on enlève le book des parametres
+    params[:advertisement_sale_book].delete(:book)
     @advertisement_sale_book = Advertisement::SaleBook.find(params[:id])
 
     respond_to do |format|
       if @advertisement_sale_book.update_attributes(params[:advertisement_sale_book])
-        format.html { redirect_to @advertisement_sale_book, notice: 'Sale book was successfully updated.' }
+        format.html { redirect_to @advertisement_sale_book, notice: t('sale_books.edit.forms.succes') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

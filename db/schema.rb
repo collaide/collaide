@@ -33,54 +33,18 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.text     "description"
     t.boolean  "active"
     t.string   "type"
-    t.decimal  "price",       :precision => 9, :scale => 2
+    t.decimal  "price",          :precision => 6, :scale => 2
     t.string   "currency"
     t.string   "state"
     t.string   "annotation"
-    t.datetime "created_at",                                               :null => false
-    t.datetime "updated_at",                                               :null => false
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
     t.integer  "user_id"
     t.string   "language"
     t.integer  "book_id"
-    t.integer  "hits",                                      :default => 0
-  end
-
-  create_table "advertisement_delivery_mode_translations", :force => true do |t|
-    t.integer  "advertisement_delivery_mode_id"
-    t.string   "locale"
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-  end
-
-  add_index "advertisement_delivery_mode_translations", ["advertisement_delivery_mode_id"], :name => "index_6ce377a1b01aa667ca9499b9c4e36471961921c6"
-  add_index "advertisement_delivery_mode_translations", ["locale"], :name => "index_advertisement_delivery_mode_translations_on_locale"
-
-  create_table "advertisement_delivery_modes", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "advertisement_payment_mode_translations", :force => true do |t|
-    t.integer  "advertisement_payment_mode_id"
-    t.string   "locale"
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-  end
-
-  add_index "advertisement_payment_mode_translations", ["advertisement_payment_mode_id"], :name => "index_d50d50db3ef6dba282082afeb4914d77f35eb9e7"
-  add_index "advertisement_payment_mode_translations", ["locale"], :name => "index_advertisement_payment_mode_translations_on_locale"
-
-  create_table "advertisement_payment_modes", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "hits",                                         :default => 0
+    t.string   "delivery_modes"
+    t.string   "payment_modes"
   end
 
   create_table "books", :force => true do |t|

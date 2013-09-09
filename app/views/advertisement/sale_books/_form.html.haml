@@ -2,25 +2,30 @@
   =f.error_notification
   .form-inputs
     =field_set_tag t('sale_books.new.forms.required') do
-      =f.simple_fields_for @advertisement_sale_book.book do |p|
-        =p.input :isbn_13
+      -if !edit
+        =f.simple_fields_for @advertisement_sale_book.book do |p|
+          =p.input :isbn_13
       =f.input :price
       =f.input :currency
-      .columns.small-3
-        =label_tag :more_details, t('sale_books.form.more_details'), class: :right
-      .columns.small-9
-        =check_box_tag :more_details
+      -if !edit
+        .columns.small-3
+          =label_tag :more_details, t('sale_books.new.forms.more_details'), class: :right
+        .columns.small-9
+          =check_box_tag :more_details
+    -if !edit
+      #form_to_hide{ :style => "display: none"}
+    =field_set_tag t('sale_books.new.forms.optional') do
+      =f.input :payment_modes, :as => :check_boxes
+      =f.input :delivery_modes, :as => :check_boxes
 
-    #form_to_hide{ :style => "display: none"}
-      =field_set_tag t('sale_books.new.forms.optional') do
-        =f.association :payment_modes, prompt: t('sale_books.new.forms.choose_payment_mode'), collection: Advertisement::PaymentMode.includes(:translations)
-        =f.association :delivery_modes, prompt: t('sale_books.new.forms.choose_delivery_mode'), collection: Advertisement::DeliveryMode.includes(:translations)
+      =f.input :state
+      =f.input :annotation
+      =f.input :description, input_html: {rows: 3}
 
-        =f.input :state
-        =f.input :annotation
-        =f.input :description, input_html: {rows: 3}
-
-        =f.association :domains, collection: Domain.select_tree
-        /=f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations)
+      =f.association :domains, collection: Domain.select_tree
+      /=f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations)
   .form-actions
-    =f.button :submit, t('sale_books.new.forms.submit')
+    -if edit
+      =f.button :submit, t('sale_books.edit.forms.submit')
+    -else
+      =f.button :submit, t('sale_books.new.forms.submit')
