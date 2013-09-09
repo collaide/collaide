@@ -40,7 +40,6 @@ class Document::DocumentsController < ApplicationController
     end
     where = ''
     joins = ''
-    logger.info params.inspect
     domain = params[:domain] || params[:domain_id]
     type = params[:type] || params[:type_id]
     unless domain.blank?

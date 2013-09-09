@@ -1,10 +1,23 @@
-%h2= @document.title
-%h4.doc-subtitle= raw t('documents.show.subtitle', doc_subtitle: doc_sub_title(@document), author: @document.author)
-%p= @document.description
 .row
-  .columns.small-12.large-4
-    =link_to t('documents.index.download'), document_document_download_path(@document), class: 'button success expand'
-  .columns.small-12.large-4
-    =edit_link @document, t('documents.show.modify'), 'expand'
-  .columns.small-12.large-4
-    =destroy_link @document, t('documents.show.delete'), 'expand'
+  .columns.large-8
+    %h2= @document.title
+    %p= rating_for @document, 'note', star: 5
+    %h4.doc-subtitle= raw t('documents.show.subtitle', doc_subtitle: doc_sub_title(@document), author: @document.author)
+    %form.custom
+      =label_tag :more_infos, id: :more_infos do
+        =check_box_tag :more_infos, nil, false, style: 'display: none;'
+        %span.custom.checkbox
+        =t('documents.show.more_infos')
+    #more_details.hide
+      %h6.subheader
+        =t('documents.show.more_details', page: pluralize(@document.number_of_pages, t('dico.documents.page')), realized_at: t('documents.show.realized_at', realized_at: t('dico.documents.realized_at'), date: l(@document.realized_at, format: :long)))
+    %p= @document.description
+    .row
+      .columns.small-12.large-4
+        =link_to t('documents.index.download'), document_document_download_path(@document), class: 'button success expand'
+      .columns.small-12.large-4
+        =edit_link @document, t('documents.show.modify'), 'expand'
+      .columns.small-12.large-4
+        =destroy_link @document, t('documents.show.delete'), 'expand'
+  .columns.large-4
+

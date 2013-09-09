@@ -20,6 +20,8 @@ fr:
           study_level: &study_level Degré d'étude
           document_type: &document_type Type de document
           created_at: &created_at Crée le
+          page: &page page
+          realized_at: &realized_at réalisé le
     activerecord:
         models:
           user: profil
@@ -126,6 +128,9 @@ fr:
         choose_study_level: Choisissez le niveau d'étude
         choose_document_type: Choisissez le type de document
       show:
+        more_infos: Plus de détails
+        realized_at: "%{realized_at} %{date}"
+        more_details: "%{page}, %{realized_at}"
         back: Retour
         modify: Modifier
         delete: Supprimer
