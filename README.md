@@ -22,6 +22,9 @@ si vous êtes intéressés
 
 ##Languages et outils
 
+Pour le versioning:
+* git
+
 Nous utilisons les languages suivant :
 * Ruby
 * Haml/ERB
