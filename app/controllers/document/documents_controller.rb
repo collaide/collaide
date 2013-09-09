@@ -20,7 +20,7 @@ class Document::DocumentsController < ApplicationController
     #TODO optimisation des requêtes, déjà fait en partie. Possible de faire en core mieux ? a voir
 
     if params[:search].present?
-      redirect_to search_document_documents_path(query: params[:search].parameterize('+')) and return
+      redirect_to search_document_documents_path(query: params[:search]) and return
     end
 
     # affichage suivant les critères de l'utilisateur
@@ -150,6 +150,16 @@ class Document::DocumentsController < ApplicationController
 
   def search
     @document_documents = Document::Document.search(Riddle::Query.escape(params[:query]))
+    @searched_value = params[:query]
     render 'document/documents/index'
+  end
+
+  def autocomplete
+    res =  Document::Document.search(Riddle::Query.escape(params[:term])).map do |a_res|
+       {id: a_res.id, value: a_res.title}
+    end
+    respond_to do |format|
+      format.js { render json: res }
+    end
   end
 end

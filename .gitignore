@@ -14,7 +14,7 @@
 /db/*.sqlite3
 
 /db/sphinx
-/log*.pid
+/log/*.pid
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
