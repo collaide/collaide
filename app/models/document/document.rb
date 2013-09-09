@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 # == Schema Information
 #
 # Table name: document_documents
@@ -15,14 +14,20 @@
 #  study_level_id   :integer
 #  document_type_id :integer
 #  user_id          :integer
+#  status           :string(255)      default("refused")
+#  hits             :integer
+#  is_deleted       :boolean          default(FALSE)
 #
 
+# -*- encoding : utf-8 -*-
 # -*- encoding : utf-8 -*-
 class Document::Document < ActiveRecord::Base
   extend Enumerize
 
-  #YVES : Le defaut devrait etre pending non ?
-  enumerize :status, in: %w[accepted pending refused], default: 'refused', predicates: true
+  enumerize :status, in: %w[accepted pending refused], default: 'pending', predicates: true
+
+  #permte aux utilisateurs de commenter un document. https://github.com/jackdempsey/acts_as_commentable
+  acts_as_commentable
 
   SORT_ARGS = {title: 'title', lang: 'language', author: 'author', created_at: 'created_at', type: 'document_types.name',
                domain: 'domain.name', study_level: 'document_study_levels.name', domain: 'domains.name'}

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: advertisement_payment_modes
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 # -*- encoding : utf-8 -*-
 class Advertisement::PaymentMode < ActiveRecord::Base
   attr_accessible :description, :name

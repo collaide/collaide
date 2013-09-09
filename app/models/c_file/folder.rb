@@ -1,15 +1,15 @@
-# -*- encoding : utf-8 -*-
 # == Schema Information
 #
 # Table name: c_file_folders
 #
 #  id           :integer          not null, primary key
-#  file_id      :integer
+#  c_file_id    :integer
 #  structure_id :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
 
+# -*- encoding : utf-8 -*-
 # -*- encoding : utf-8 -*-
 class CFile::Folder < ActiveRecord::Base
 
