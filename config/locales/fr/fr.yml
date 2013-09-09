@@ -203,7 +203,8 @@ fr:
       show:
         authors: "De %{authors}"
         publisher: " par %{publisher}"
-        published_date: " en %{published_date}"
+        published_date: " le %{published_date}"
+        published_date_year: " en %{published_date}"
         sale_infos: "%{name} vend ce livre à %{price}"
         the_book_is: Le livre est
         payment_modes: "Mode de payement :"

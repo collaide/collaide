@@ -1,4 +1,30 @@
 -# Infos sur le livre
+%p= @sale_book.book.isbn_13
+.row
+  .small-12.columns
+    %form
+      =label_tag :search, 'Recherche'
+      =text_field_tag :search
+      =button_tag 'Go', class: 'expand'
+.row
+  .small-12.columns
+    %h1= @sale_book.book.title
+.row
+  .small-5.columns
+    =image_tag @sale_book.book.image_link
+    %p= rating_for @sale_book.book, 'note', star: 5
+  .small-7.columns
+    %h2.sale_book_subtitle= t'sale_books.show.authors', authors: @sale_book.book.authors
+    %p
+      Edité
+      -if @sale_book.book.publisher
+        =t'sale_books.show.publisher', publisher: @sale_book.book.publisher
+      -if @sale_book.book.published_date
+        =t'sale_books.show.published_date', published_date: l(@sale_book.book.published_date, format: :long) unless @sale_book.book.published_date == @sale_book.book.published_date.beginning_of_year
+        =t'sale_books.show.published_date_year', published_date: @sale_book.book.published_date.strftime('%Y') if @sale_book.book.published_date == @sale_book.book.published_date.beginning_of_year
+      -if @sale_book.book.description
+        %p= @sale_book.book.description.truncate(100, separator: ' ', omission: ' ...')
+
 .row
   .large-2.columns
     .row
