@@ -149,9 +149,12 @@ class Document::DocumentsController < ApplicationController
   end
 
   def search
-    @document_documents = Document::Document.search(Riddle::Query.escape(params[:query]))
+    @document_documents = Document::Document.search(Riddle::Query.escape(params[:query]), page: params[:page], ranker: :bm25)
     @searched_value = params[:query]
-    render 'document/documents/index'
+    respond_to do |format|
+      format.js {render 'document/documents/index.js'}
+      format.html {render 'document/documents/index.html'}
+    end
   end
 
   def autocomplete
