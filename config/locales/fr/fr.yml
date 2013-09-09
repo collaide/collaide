@@ -58,7 +58,6 @@ fr:
       delivery_modes:
         hand: Remise en main propre
         post: Envoi postal
-
     helpers:
         submit:
             guest_book:
@@ -169,7 +168,7 @@ fr:
         new_link: Publier une annonce
         no_advertisement: Il n'y a aucune annonce
         show: Plus de détails
-        hits: "hits :"
+        hits: "Hits :"
         forms:
           search:
             label: Rechercher
@@ -194,6 +193,7 @@ fr:
           submit: Mettre ce livre en vente
           succes: Félicitation ! Votre livre a bien été mis en vente !
           valid_isbn: Désolé, nous n'avons trouvé aucun livre avec ce code ISBN
+#          no_isbn: Veuillez entrer un code ISBN
           more_details: Plus de précisions
       show:
         authors: "De %{authors}"

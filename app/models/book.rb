@@ -9,12 +9,15 @@ class Book < ActiveRecord::Base
   letsrate_rateable 'note'
 
   validates_presence_of :title
+  validates_presence_of :isbn_13
   validate :has_a_valid_isbn
 
   def has_a_valid_isbn
-    google_book = GoogleBooks.search("isbn:#{isbn_13}").first
-    unless google_book
-      errors.add(:isbn_13, I18n.t('sale_books.new.forms.valid_isbn'))
+    unless isbn_13.blank?
+      google_book = GoogleBooks.search("isbn:#{isbn_13}").first
+      unless google_book
+        errors.add(:isbn_13, I18n.t('sale_books.new.forms.valid_isbn'))
+      end
     end
   end
 

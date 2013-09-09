@@ -36,7 +36,7 @@ class Advertisement::SaleBooksController < ApplicationController
   def create
     # ON CHERCHE SUR LE ISBN CORRESPOND
     google_book = GoogleBooks.search("isbn:#{params[:advertisement_sale_book][:book][:isbn_13]}").first
-    if google_book
+    if google_book && !params[:advertisement_sale_book][:book][:isbn_13].blank?
       #On cherche si le livre est déja dans la bdd, si il l'est, on le met à jour, si il ne l'ai pas, onle crée
       book = Book.find_by_isbn_13(google_book.isbn_13) || Book.find_by_isbn_10(google_book.isbn_10) || Book.new(isbn_13: google_book.isbn_13, isbn_10: google_book.isbn_10)
 
@@ -108,7 +108,7 @@ class Advertisement::SaleBooksController < ApplicationController
   # PUT /advertisement/sale_books/1.json
   def update
     # on enlève le book des parametres
-    params[:advertisement_sale_book].delete(:book)
+    #params[:advertisement_sale_book].delete(:book)
     @advertisement_sale_book = Advertisement::SaleBook.find(params[:id])
 
     respond_to do |format|
