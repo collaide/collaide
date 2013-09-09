@@ -6,12 +6,12 @@ Cette nouvelle version a pour but d'utiliser les technologies web modernes (Ajax
 le modèle de programmation REST, d'avoir une base de donnée unifiée (gerée avec un ORM), avec une seule logique et d'être
 multi-lingue.
 
-Nous recherchons encore :
-* un traducteur français-anglais
-* un traducteur français-allemand
-* un traducteur français-italien
-* un web-designer
-* un développeur front-end (bonne maîtrise de JQuery et d'AJAX)
+Nous recherchons encore quelqu'un pour :
+* la traduction français-anglais
+* la traduction français-allemand
+* la traduction français-italien
+* le web-designe
+* le développement du front-end (bonne maîtrise de JQuery, d'AJAX, html et css. Connaissance )
 * un développeur Ruby on Rails
 * une personne responsable de la communication (social marketing, réferencement, écriture de textes, etc)
 
