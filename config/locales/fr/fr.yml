@@ -155,10 +155,13 @@ fr:
         more_infos: Plus de détails
         realized_at: "%{realized_at} %{date}"
         more_details: "%{page}, %{realized_at}"
+        hits: "Téléchargé %{times} fois"
         back: Retour
         modify: Modifier
         delete: Supprimer
         subtitle: "%{doc_subtitle}, réalisé par %{author}"
+        top_docs: "Top documents"
+        suggestion: "Vous aimerez peut-être"
       edit:
         title: Editer le document
       update:

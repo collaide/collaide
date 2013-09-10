@@ -1,23 +1,41 @@
 .row
   .columns.large-8
-    %h2= @document.title
-    %p= rating_for @document, 'note', star: 5
-    %h4.doc-subtitle= raw t('documents.show.subtitle', doc_subtitle: doc_sub_title(@document), author: @document.author)
-    %form.custom
-      =label_tag :more_infos, id: :more_infos do
-        =check_box_tag :more_infos, nil, false, style: 'display: none;'
-        %span.custom.checkbox
-        =t('documents.show.more_infos')
-    #more_details.hide
-      %h6.subheader
-        =t('documents.show.more_details', page: pluralize(@document.number_of_pages, t('dico.documents.page')), realized_at: t('documents.show.realized_at', realized_at: t('dico.documents.realized_at'), date: l(@document.realized_at, format: :long)))
-    %p= @document.description
     .row
-      .columns.small-12.large-4
-        =link_to t('documents.index.download'), document_document_download_path(@document), class: 'button success expand'
-      .columns.small-12.large-4
-        =edit_link @document, t('documents.show.modify'), 'expand'
-      .columns.small-12.large-4
-        =destroy_link @document, t('documents.show.delete'), 'expand'
+      .columns.small-4
+        =image_tag show_icon(@document)
+        %p= rating_for @document, 'note', star: 5
+      .columns.small-8
+        %h1
+          =@document.title
+          =like_button document_document_url(@document)
+        %form.custom
+          =label_tag :more_infos, id: :more_infos do
+            =check_box_tag :more_infos, nil, false, style: 'display: none;'
+            %span.custom.checkbox
+            =t('documents.show.more_infos')
+    .row
+      .columns.small-12
+        %h4.doc-subtitle= raw t('documents.show.subtitle', doc_subtitle: doc_sub_title(@document), author: link_to(@document.author, search_document_documents_path(query: @document.author)))
+        #more_details.hide
+          %h6.subheader
+            %ul.no-bullet
+              %li= t('documents.show.more_details', page: pluralize(@document.number_of_pages, t('dico.documents.page')), realized_at: t('documents.show.realized_at', realized_at: t('dico.documents.realized_at'), date: l(@document.realized_at, format: :long)))
+              %li= t('documents.show.hits', times: @document.hits)
+        %p= @document.description
+        .row
+          .columns.small-12.large-4
+            =link_to t('documents.index.download'), document_document_download_path(@document), class: 'button success expand'
+          .columns.small-12.large-4
+            =edit_link @document, t('documents.show.modify'), 'expand'
+          .columns.small-12.large-4
+            =destroy_link @document, t('documents.show.delete'), 'expand'
   .columns.large-4
-
+    %h3= t('documents.show.top_docs')
+    %ul.no-bullet
+      -@top_docs.map do |key, a_suggest|
+        -a_suggest = @top_docs[key]
+        %li= link_to"-> #{ a_suggest.title}", a_suggest
+    %h3= t('documents.show.suggestion')
+    %ul.no-bullet
+      -@suggest.each do |a_doc|
+        %li= link_to "-> #{a_doc.title}", a_doc

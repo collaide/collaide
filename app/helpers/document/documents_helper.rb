@@ -42,7 +42,8 @@ module Document::DocumentsHelper
     raw name.chop.chop
   end
 
-  def show_icon(paperclip)
+  def show_icon(document)
+    paperclip = document.files.first.file_content_type
     #FIXME: aucune image pour les doc en .txt
     "documents/#{find_extension(paperclip).to_s}.png"
   end

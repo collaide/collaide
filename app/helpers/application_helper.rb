@@ -28,4 +28,8 @@ module ApplicationHelper
       link_to(content, [:new, class_name.to_sym], class: "button success #{html_class}")
     end
   end
+
+  def like_button(url, data_layout = 'box_count')
+    raw '<div class="fb-like" data-href="'+url+'" data-width="450" data-layout="'+data_layout+'" data-show-faces="false" data-send="false"></div>'
+  end
 end
