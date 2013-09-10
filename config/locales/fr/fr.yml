@@ -43,7 +43,7 @@ fr:
         EUR: '€'
         USD: '$'
       annotation:
-        not_annotated: Aucune annotation
+        not_annotated: Sans annotation
         slightly_annotated: Légèrement annoté
         annotated: Annoté
         very_annotated: Très annoté
@@ -201,14 +201,16 @@ fr:
 #          no_isbn: Veuillez entrer un code ISBN
           more_details: Plus de précisions
       show:
+        h1_title: "Vente du livre étudiant: %{book}"
+        sale_title: "En vente par %{user}"
         authors: "De %{authors}"
         publisher: " par %{publisher}"
         published_date: " le %{published_date}"
         published_date_year: " en %{published_date}"
-        sale_infos: "%{name} vend ce livre à %{price}"
-        the_book_is: Le livre est
-        payment_modes: "Mode de payement :"
-        delivery_modes: "Mode de livraison :"
+        edit: Publié
+        payment_modes: "Mode de payement:"
+        delivery_modes: "Mode de livraison:"
+        buy: Acheter
       edit:
         title: Modifier la vente de ce livre
         forms:

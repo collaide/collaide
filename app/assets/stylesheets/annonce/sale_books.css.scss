@@ -3,7 +3,31 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'foundation_and_overrides';
 
-.sale_book_subtitle {
-  front-size: $sale-book-subtitle-font-size;
-  color: $sale-book-subtitle-color;
+// INDEX <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+#sale_book_index{
+  h5 {
+    a{
+      color: $header-font-color;
+    }
+  }
+}
+// END INDEX <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+// SHOW <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+.sale_book_title {
+  font-size: emCalc(30px)
+}
+#book_infos {
+  #book_description{
+    // Peut être pour mettre le show less/more
+  }
+  font-size: 1em;
+  //font-weight: normal;
+  h3{
+    font-size: 1em;
+  }
+  h4 {
+    font-weight: normal;
+    font-size: 1em;
+  }
 }
