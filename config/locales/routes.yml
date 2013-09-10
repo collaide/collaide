@@ -1,37 +1,36 @@
 fr:
-    routes:
-        new: "nouveau"
-        edit: "modifier"
-        destroy: "supprimer"
-        show: "afficher"
+  routes:
+    new: "nouveau"
+    edit: "modifier"
+    destroy: "supprimer"
+    show: "afficher"
 
-        users: "membres"
-        user: "membre"
-        sign_in: "connexion"
-        sign_out: "deconnexion"
-        password: "mot-de-passe"
-        sign_up: "inscription"
-        cancel: "annuler"
+    users: "membres"
+    user: "membre"
+    sign_in: "connexion"
+    sign_out: "deconnexion"
+    password: "mot-de-passe"
+    sign_up: "inscription"
+    cancel: "annuler"
 
-        livre_dor: &livre_dor livre-d-or
-        guest_books: *livre_dor
-        guest_book: *livre_dor
+    livre_dor: &livre_dor livre-d-or
+    guest_books: *livre_dor
+    guest_book: *livre_dor
 
-        contact: "contactez-nous"
-        about: "a-propos"
-        help: "aide"
+    contact: "contactez-nous"
+    about: "a-propos"
+    help: "aide"
 
-        domains: "domaines"
+    domains: "domaines"
 
-        member: "membre"
+    member: "membre"
 
-        cFile: "fichier"
-        c_files: "mes-fichiers"
-        structures: "dossier"
+    cFile: "fichier"
+    c_files: "mes-fichiers"
+    structures: "dossier"
 
-        advertisement: annonce
-        advertisements: annonces
-        books: livres
-
+    advertisement: annonce
+    advertisements: annonces
+    books: livres
 en:
-    routes:
+  routes:

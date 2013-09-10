@@ -23,12 +23,19 @@
               %li= t('documents.show.hits', times: @document.hits)
         %p= @document.description
         .row
-          .columns.small-12.large-4
-            =link_to t('documents.index.download'), document_document_download_path(@document), class: 'button success expand'
-          .columns.small-12.large-4
-            =edit_link @document, t('documents.show.modify'), 'expand'
-          .columns.small-12.large-4
-            =destroy_link @document, t('documents.show.delete'), 'expand'
+          -#.columns.small-12.large-4
+          -#  =link_to t('documents.index.download'), document_document_download_path(@document), class: 'button success expand'
+          -#.columns.small-12.large-4
+          -#  =edit_link @document, t('documents.show.modify'), 'expand'
+          -#.columns.small-12.large-4
+          -#  =destroy_link @document, t('documents.show.delete'), 'expand'
+          %ul.button-group.radius
+            %li
+              =link_to t('documents.index.download'), document_document_download_path(@document), class: 'button secondary'
+            %li
+              =edit_link @document, t('documents.show.modify'), 'button secondary'
+            %li
+              =destroy_link @document, t('documents.show.delete'), 'button secondary'
   .columns.large-4
     %h3= t('documents.show.top_docs')
     %ul.no-bullet

@@ -6,6 +6,7 @@ fr:
         and: et
         and_with_spaces: ' et '
         app_name: &app_name Collaide
+        app_name_long: &app_name_long Collaide, apprenons ensemble !
         back: &back Retour
         connection: &connection Connexion
         inscription: &inscription Inscription
@@ -14,6 +15,7 @@ fr:
         password_confirmation: &password_confirmation Confirmation du mot de passe
         current_password: &current_password Mot de passe actuel
         remember_me: &remember_me Se souvenir de moi
+        edit: &edit Modifier
         documents:
           title: &doc_title Titre
           description: &doc_description Déscription
@@ -83,7 +85,7 @@ fr:
         advertisement: "Annonces"
         user:
             profil: "Mon profil"
-            edit: "Modifier"
+            edit: *edit
             logout: "Déconnexion"
         lang: "Langues"
         connection: *connection
@@ -164,7 +166,7 @@ fr:
         top_docs: "Top documents"
         suggestion: "Vous aimerez peut-être"
       edit:
-        title: Editer le document
+        title: Modifier le document
       update:
         notice: Le document a été modifié
       create:
@@ -173,6 +175,7 @@ fr:
         notice: Le document a été supprimé
     advertisements:
       index:
+        breadcrumb: Les petites annonces
         title: Les petites annonces
         new_link: Publier une annonce
         no_advertisement: Il n'y a aucune annonce
@@ -180,8 +183,8 @@ fr:
         hits: "Hits :"
         forms:
           search:
-            label: Rechercher
-            submit: Go!
+            fieldset: Rechercher
+            submit: Chercher
       new:
         title: Publier une annonces
         description: Quelle genre d'annonce voulez-vous publier ?
@@ -207,8 +210,8 @@ fr:
 #          no_isbn: Veuillez entrer un code ISBN
           more_details: Plus de précisions
       show:
+        title: "Vente du livre étudiant: %{book}"
         meta_title: Achetez %{book}, livre étudiant d'occasion pour seulement %{price} !
-        h1_title: "Vente du livre étudiant: %{book}"
         sale_title: "%{user} vend ce livre"
         authors: "De %{authors}"
         publisher: " par %{publisher}"
@@ -218,8 +221,15 @@ fr:
         payment_modes: "Mode de payement:"
         delivery_modes: "Mode de livraison:"
         buy: Acheter
+        others_sales: Autres ventes pour %{book}
+        user: Membre
+        price: Prix
+        show: Détails
+        advertisement: Annonce
+        edit: *edit
+
       edit:
-        title: Modifier la vente de ce livre
+        title: Modifier la vente de %{book}
         forms:
           submit: Modifier la vente
           succes: Vos modifications ont bien été enregistrées !

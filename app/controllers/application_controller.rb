@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
+
   #sécu
   protect_from_forgery
 
@@ -47,4 +48,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || ((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/])
     logger.info "lang set to '#{I18n.locale}'"
   end
+
+  #breadcrumb
+  add_breadcrumb I18n.t("dico.app_name"),  :root_path
 end

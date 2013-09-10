@@ -1,14 +1,12 @@
 # -*- encoding : utf-8 -*-
 Collaide::Application.routes.draw do
-
-  match '/rate' => 'rater#create', :as => 'rate'
-
-  root :to => "static_pages#home"
+  root :to => "static_pages#home", as: 'root'
 
   get "about", to: "static_pages#about", as: "about"
   get "contact", to: "static_pages#contact", as: "contact"
   get "help", to: "static_pages#help", as: "help"
   get 'change-lang', to: 'static_pages#change_lang', as: 'change_lang'
+  match '/rate' => 'rater#create', :as => 'rate'
 
   resources :advertisements, as: 'advertisement_advertisements', controller: 'advertisement/advertisements', :except => [:edit, :show] do
   end

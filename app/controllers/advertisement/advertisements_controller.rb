@@ -2,6 +2,9 @@
 class Advertisement::AdvertisementsController < ApplicationController
   load_and_authorize_resource class: Advertisement::Advertisement
 
+  #breadcrumb
+  add_breadcrumb I18n.t("advertisements.index.breadcrumb"),  :advertisement_advertisements_path
+
   # Copier/coller de documents_controller.rb
   def create
     @advertisement = Advertisement::Advertisement.new params[:advertisement_advertisement]
@@ -16,12 +19,7 @@ class Advertisement::AdvertisementsController < ApplicationController
   def new
     #Il n'y a pas de création de nouvea advertisements, car c'est un object abstrait qui doit être hérité (par SaleBook, par ex)
     # La page new propose donc ce que le user veut créer
-  end
-
-  def newSaleBook
-    isbn = 'isbn:9781443411080'
-    @book = GoogleBooks.search(isbn).first
-    @bookSale = Advertisement::SaleBook.new
+    add_breadcrumb I18n.t("advertisements.new.title"), :new_advertisement_advertisement_path
   end
 
   def index
@@ -51,15 +49,5 @@ class Advertisement::AdvertisementsController < ApplicationController
 
   def show
     @advertisement = Advertisement::Advertisement.find params[:id]
-  end
-
-  def test
-    @books = GoogleBooks.search('cdsc0s0c9sdc8sdc900c0sdc0dcsd0c9sd0c9dscsd0cc9sd09c')
-    #@first_book = books.first
-
-
-    #first_book.author #=> 'F. Scott Fitzgerald'
-    #first_book.isbn #=> '9781443411080'
-    #first_book.image_link(:zoom => 6) #=> 'http://bks2.books.google.com/books?id=...'
   end
 end

@@ -1,11 +1,18 @@
 # -*- encoding : utf-8 -*-
 class Advertisement::SaleBooksController < ApplicationController
 
+  #breadcrumb
+  add_breadcrumb I18n.t("advertisements.index.breadcrumb"),  :advertisement_advertisements_path
+  #TODO faire une page qui affiche que les livres
+  #add_breadcrumb I18n.t(""),  :advertisement_sale_books_path
+
   # GET /advertisement/sale_books/1
   # GET /advertisement/sale_books/1.json
   def show
     @sale_book = Advertisement::SaleBook.find(params[:id])
-    @google_book = GoogleBooks.search("isbn:#{@sale_book.book.isbn_13}").first
+
+    #breadcrumb
+    add_breadcrumb I18n.t("sale_books.show.title", book: @sale_book.book.title), advertisement_sale_book_path(@sale_book)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -20,6 +27,10 @@ class Advertisement::SaleBooksController < ApplicationController
     book = Book.new
     @advertisement_sale_book.book = book
 
+    add_breadcrumb I18n.t("advertisements.new.title"), :new_advertisement_advertisement_path
+    add_breadcrumb I18n.t("sale_books.new.title"), :new_advertisement_sale_book_path
+
+
     respond_to do |format|
       format.html # new.html.haml
       format.json { render json: @advertisement_sale_book }
@@ -29,6 +40,10 @@ class Advertisement::SaleBooksController < ApplicationController
   # GET /advertisement/sale_books/1/edit
   def edit
     @advertisement_sale_book = Advertisement::SaleBook.find(params[:id])
+    #breadcrumb
+    add_breadcrumb I18n.t("sale_books.show.title", book: @advertisement_sale_book.book.title), advertisement_sale_book_path(@advertisement_sale_book)
+    add_breadcrumb I18n.t("sale_books.edit.title", book: @advertisement_sale_book.book.title), edit_advertisement_sale_book_path(@advertisement_sale_book)
+
   end
 
   # POST /advertisement/sale_books

@@ -10,7 +10,8 @@ module ApplicationHelper
   end
 
   def destroy_link(object, content = "Destroy", html_class='')
-    link_to(content, object, class: "button alert #{html_class}", :method => :delete, :confirm => t('confirm')) if can?(:destroy, object)
+    #link_to(content, object, class: "button alert #{html_class}", :method => :delete, :confirm => t('confirm')) if can?(:destroy, object)
+    link_to(content, object, class: "#{html_class}", :method => :delete, :confirm => t('confirm')) if can?(:destroy, object)
   end
 
   def show_link(object, content = "Show", html_class='')
@@ -18,14 +19,16 @@ module ApplicationHelper
   end
 
   def edit_link(object, content = "Edit", html_class='')
-    link_to(content, [:edit, object], class: "button warning #{html_class}") if can?(:update, object)
+    #link_to(content, [:edit, object], class: "button warning #{html_class}") if can?(:update, object)
+    link_to(content, [:edit, object], class: "#{html_class}") if can?(:update, object)
   end
 
   def create_link(object, content = "New", html_class='')
     if can?(:create, object)
       object_class = (object.kind_of?(Class) ? object : object.class)
       class_name = object_class.name.underscore.to_s.tr!('/', '_')
-      link_to(content, [:new, class_name.to_sym], class: "button success #{html_class}")
+      #link_to(content, [:new, class_name.to_sym], class: "button success #{html_class}")
+      link_to(content, [:new, class_name.to_sym], class: "button #{html_class}")
     end
   end
 
