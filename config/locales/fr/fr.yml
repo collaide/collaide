@@ -201,6 +201,7 @@ fr:
 #          no_isbn: Veuillez entrer un code ISBN
           more_details: Plus de précisions
       show:
+        meta_title: Achetez %{book}, livre étudiant d'occasion pour seulement %{price} !
         h1_title: "Vente du livre étudiant: %{book}"
         sale_title: "En vente par %{user}"
         authors: "De %{authors}"

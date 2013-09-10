@@ -5,6 +5,8 @@
 -#      =label_tag :search, 'Recherche'
 -#      =text_field_tag :search
 -#      =button_tag 'Go', class: 'expand'
+-price = number_to_currency(@sale_book.price, :unit => @sale_book.currency.text)
+-content_for :title, t('sale_books.show.meta_title', book: @sale_book.book.title, price: price)
 .row
   .small-12.columns
     %h1.sale_book_title= t'sale_books.show.h1_title', book: @sale_book.book.title
@@ -35,7 +37,7 @@
         %li.title=@sale_book.title
       -else
         %li.title=t'sale_books.show.sale_title', user: @sale_book.user.name
-      %li.price=number_to_currency(@sale_book.price, :unit => @sale_book.currency.text)
+      %li.price=price
       -if @sale_book.description
         %li.description=@sale_book.description
       -if @sale_book.state
