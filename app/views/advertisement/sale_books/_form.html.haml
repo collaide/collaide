@@ -23,6 +23,7 @@
 
         =f.input :state
         =f.input :annotation
+        =f.input :title
         =f.input :description, input_html: {rows: 3}
 
         =f.association :domains, collection: Domain.select_tree

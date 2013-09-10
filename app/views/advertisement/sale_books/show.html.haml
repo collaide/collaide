@@ -1,84 +1,61 @@
 -# Infos sur le livre
-%p= @sale_book.book.isbn_13
+-#.row
+-#  .small-12.columns
+-#    %form
+-#      =label_tag :search, 'Recherche'
+-#      =text_field_tag :search
+-#      =button_tag 'Go', class: 'expand'
+-price = number_to_currency(@sale_book.price, :unit => @sale_book.currency.text)
+-content_for :title, t('sale_books.show.meta_title', book: @sale_book.book.title, price: price)
 .row
   .small-12.columns
-    %form
-      =label_tag :search, 'Recherche'
-      =text_field_tag :search
-      =button_tag 'Go', class: 'expand'
+    %h1.sale_book_title= t'sale_books.show.h1_title', book: @sale_book.book.title
 .row
-  .small-12.columns
-    %h1= @sale_book.book.title
-.row
-  .small-5.columns
-    =image_tag @sale_book.book.image_link
-    %p= rating_for @sale_book.book, 'note', star: 5
-  .small-7.columns
-    %h2.sale_book_subtitle= t'sale_books.show.authors', authors: @sale_book.book.authors
-    %p
-      Edité
-      -if @sale_book.book.publisher
-        =t'sale_books.show.publisher', publisher: @sale_book.book.publisher
-      -if @sale_book.book.published_date
-        =t'sale_books.show.published_date', published_date: l(@sale_book.book.published_date, format: :long) unless @sale_book.book.published_date == @sale_book.book.published_date.beginning_of_year
-        =t'sale_books.show.published_date_year', published_date: @sale_book.book.published_date.strftime('%Y') if @sale_book.book.published_date == @sale_book.book.published_date.beginning_of_year
-      -if @sale_book.book.description
-        %p= @sale_book.book.description.truncate(100, separator: ' ', omission: ' ...')
-
-.row
-  .large-2.columns
-    .row
-      .large-12.columns
-        =image_tag @sale_book.book.image_link
-    .row
-      .large-12.columns
-        %p= rating_for @sale_book.book, 'note', star: 5
-  .large-10.columns
-    %h1= @sale_book.book.title
-    %h2.sale_book_subtitle= t'sale_books.show.authors', authors: @sale_book.book.authors
-    %p
-      Edité
-      -if @sale_book.book.publisher
-        =t'sale_books.show.publisher', publisher: @sale_book.book.publisher
-      -if @sale_book.book.published_date
-        =t'sale_books.show.published_date', published_date: @sale_book.book.published_date
-    -if @sale_book.book.description
-      %p= @sale_book.book.description.truncate(100, separator: ' ', omission: ' ...')
--# FIN Infos sur le livre
--# Les annonces du livre
-.row
-  .large-12.columns
-    %h3 Vente
-    -if @sale_book.title
-      %h4= @sale_book.title
-    %p= t'sale_books.show.sale_infos', name: @sale_book.user.name, price: number_to_currency(@sale_book.price, :unit => @sale_book.currency.text)
-    -if @sale_book.description
-      %p= @sale_book.description
-    -if @sale_book.state || @sale_book.annotation
-      %p
-        = t'sale_books.show.the_book_is'
-        -if @sale_book.state
-          #{@sale_book.state.text}
-        -if @sale_book.annotation
-          =t'dico.and_with_spaces' if @sale_book.state
-          =@sale_book.annotation.text
-    -if !@sale_book.payment_modes.empty?
-      %p
-        =t'sale_books.show.payment_modes'
-        -@sale_book.payment_modes.each do |p|
-          = "#{p.text}, "
-    -if !@sale_book.delivery_modes.empty?
-      %p
-        =t'sale_books.show.delivery_modes'
-        -@sale_book.delivery_modes.each do |d|
-          = "#{d.text}, "
-    =@sale_book.payment_modes.inspect
-
-
-
-
-
-
+  .small-12.large-6.columns
+    .panel#book_infos
+      .row
+        .small-4.large-4.columns
+          =image_tag @sale_book.book.image_link
+          %p= rating_for @sale_book.book, 'note', star: 5
+        .small-8.large-8.columns
+          %h3= @sale_book.book.title
+          %h4= t'sale_books.show.authors', authors: @sale_book.book.authors
+          %p
+            =t'sale_books.show.edit'
+            -if @sale_book.book.publisher
+              =t'sale_books.show.publisher', publisher: @sale_book.book.publisher
+            -if @sale_book.book.published_date
+              =t'sale_books.show.published_date', published_date: l(@sale_book.book.published_date, format: :long) unless @sale_book.book.published_date == @sale_book.book.published_date.beginning_of_year
+              =t'sale_books.show.published_date_year', published_date: @sale_book.book.published_date.strftime('%Y') if @sale_book.book.published_date == @sale_book.book.published_date.beginning_of_year
+          -if @sale_book.book.description
+            %p#book_description
+              =@sale_book.book.description.truncate(100)
+              %a.tiny.button.secondary#show_description{href: "#"} plus
+  .small-12.large-6.columns
+    %ul.pricing-table
+      -unless @sale_book.title.blank?
+        %li.title=@sale_book.title
+      -else
+        %li.title=t'sale_books.show.sale_title', user: @sale_book.user.name
+      %li.price=price
+      -unless @sale_book.description.blank?
+        %li.description=@sale_book.description
+      -if @sale_book.state
+        %li.bullet-item=@sale_book.state.text
+      -if @sale_book.annotation
+        %li.bullet-item=@sale_book.annotation.text
+      -unless @sale_book.payment_modes.empty?
+        %li.bullet-item
+          =t'sale_books.show.payment_modes'
+          -@sale_book.payment_modes.each do |p|
+            = "#{p.text}, "
+      -unless @sale_book.delivery_modes.empty?
+        %li.bullet-item
+          =t'sale_books.show.delivery_modes'
+          -@sale_book.delivery_modes.each do |p|
+            = "#{p.text}, "
+      %li.cta-button
+        %a.button{href: "#"}=t'sale_books.show.buy'
 
 = link_to 'Edit', edit_advertisement_sale_book_path(@sale_book)
 |
