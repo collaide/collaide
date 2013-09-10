@@ -5,6 +5,7 @@ $('#paginate').html("#{escape_javascript paginate @document_documents, remote: t
 document.title = "#{escape_javascript(full_title(''))}";
 $('#url_for_order').val("#{escape_javascript @url}");
 $('#paginate li a').on('click', function() {history.pushState('', null, this.href);});
+window.make_rateble();
 -if @document_documents.empty?
   $('#no-doc').html("#{t('documents.index.no_result')}")
 -else

@@ -1,7 +1,8 @@
 $.fn.raty.defaults.path = "/assets"; 
 $.fn.raty.defaults.half_show = true;  
  
-$(function(){ 
+$(function(){
+    window.make_rateble =
 	$(".star").raty({			       
 		score: function(){
 			return $(this).attr('data-rating')				

@@ -3,12 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'foundation_and_overrides';
 
-.doc-subtitle {
-  color: $document-subtitle-color;
-  a {
-    color: $document-subtitle-color;
+.index-data {
+  h3 {
+    a {
+      color: $header-font-color;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   }
-  a:hover {
-    color: $primary-color;
+  .doc-subtitle {
+    color: $document-subtitle-color;
+    a {
+      color: $document-subtitle-color;
+    }
+    a:hover {
+      color: $primary-color;
+    }
   }
 }

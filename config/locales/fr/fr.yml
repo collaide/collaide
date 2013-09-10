@@ -128,6 +128,7 @@ fr:
         no_result: Aucun documents ne corresspondent à vos critères
         hits: "Hits :"
         show: Plus de détails
+        display_search: Rechercher un document
         forms:
           search:
             label: Rechercher

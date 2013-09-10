@@ -70,3 +70,7 @@ $ ->
 $('#more_infos').click ->
   $('#more_details').toggle('slow')
 
+$ ->
+  $('#display_search').click ->
+    $('#form_to_hide').toggleClass('hide-for-small');
+
