@@ -2,234 +2,207 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 fr:
-    dico:
-        and: et
-        and_with_spaces: ' et '
-        app_name: &app_name Collaide
-        app_name_long: &app_name_long Collaide, apprenons ensemble !
-        back: &back Retour
-        connection: &connection Connexion
-        inscription: &inscription Inscription
-        password: &password Mot de passse
-        email: &email Adresse de courriel
-        password_confirmation: &password_confirmation Confirmation du mot de passe
-        current_password: &current_password Mot de passe actuel
-        remember_me: &remember_me Se souvenir de moi
-        edit: &edit Modifier
-        documents:
-          title: &doc_title Titre
-          description: &doc_description Déscription
-          lang: &doc_lang Langue
-          study_level: &study_level Degré d'étude
-          document_type: &document_type Type de document
-          created_at: &created_at Crée le
-          page: &page page
-          realized_at: &realized_at réalisé le
-    activerecord:
-        models:
-          user: profil
-          guest_book: "Livre d'or"
-        attributes:
-          user:
-            email: *email
-            password: *password
-            password_confirmation: *password_confirmation
-            current_password: *current_password
-            remember_me: *remember_me
-          guest_book:
-            name: "Mon nom"
-            comment: "Commentaire"
-    enumerize:
-      currency:
-        CHF: 'SFr.'
-        EUR: '€'
-        USD: '$'
-      annotation:
-        not_annotated: Sans annotation
-        slightly_annotated: Légèrement annoté
-        annotated: Annoté
-        very_annotated: Très annoté
-      state:
-        new: Neuf
-        like_new: Comme neuf
-        normal: Normal
-        damaged: Abimé
-        very_damaged: Très abimé
-      payment_modes:
-        cash: Espèce
-        bank: Virement
-        check: Chèque
-      delivery_modes:
-        hand: Remise en main propre
-        post: Envoi postal
-    helpers:
-        submit:
-            guest_book:
-                create: "Nouveau commentaire"
-    views:
-        pagination:
-          first: "&laquo; Premier"
-          last: "Dernier &raquo;"
-          previous: "&lsaquo; Précedant"
-          next: "Suivant &rsaquo;"
-          truncate: "..."
-    app_name: *app_name
-    back: *back
-    confirm: Etes-vous sûre ?
-    access_denied: Vous n'avez pas le droit de voir cette page. Désolé
-    header:
-        admin: "Administration"
-        domain: "Domaines"
+  dico:
+      and: et
+      and_with_spaces: ' et '
+      app_name: &app_name Collaide
+      app_name_long: &app_name_long Collaide, apprenons ensemble !
+      back: &back Retour
+      connection: &connection Connexion
+      inscription: &inscription Inscription
+      password: &password Mot de passse
+      email: &email Adresse de courriel
+      password_confirmation: &password_confirmation Confirmation du mot de passe
+      current_password: &current_password Mot de passe actuel
+      remember_me: &remember_me Se souvenir de moi
+      edit: &edit Modifier
+      documents:
+        title: &doc_title Titre
+        description: &doc_description Déscription
+        lang: &doc_lang Langue
+        study_level: &study_level Degré d'étude
+        document_type: &document_type Type de document
+        created_at: &created_at Crée le
+        page: &page page
+        realized_at: &realized_at réalisé le
+  app_name: *app_name
+  back: *back
+  confirm: Etes-vous sûre ?
+  access_denied: Vous n'avez pas le droit de voir cette page. Désolé
+  activerecord:
+      models:
+        user: profil
         guest_book: "Livre d'or"
-        document: "Documents"
-        advertisement: "Annonces"
+      attributes:
         user:
-            profil: "Mon profil"
-            edit: *edit
-            logout: "Déconnexion"
-        lang: "Langues"
-        connection: *connection
-    domains:
-        link:
-            all: "Liste des domaines"
-    static_pages:
-        home:
-            h1:
-                title: Bienvenue sur %{app_name} !!!
-                connection: *connection
-                inscription: *inscription
-        about:
-            title: A propos
-            text: Ce site a été réalisé dans le but de d'essayer le framework ruby on rails pour collaide. Construit en moins de deux jours
-        contact:
-            title: Contactez-moi
-            text: Si tu veux plus d'infos d'infos, contacte-moi à l'adresse facenord.sud at gmail point com
-        help:
-            title: Aide et liens utiles
-            text1: Ce site a été développé grâce au farmework Ruby On Rails, basé sur le langage Ruby. Il utilise une foule de librairies additionels nécessaires au bon fonctionement du site.
-            text2: "Pour voir le code source, rendez-vous sur  github à l'adresse %{github}"
-            text3: Il y a plusieurs liens utiles qui fournissent une bonne documentation pour comprndre le fonctionement de ruby et ruby on rails. Je mettrai les liens prochainement
-    guest_books:
-        new:
-            title: "Nouveau commentaire dans le livre d'or"
-        create:
-            notice: "Le commentaire a bien été créé"
-        show:
-            back_to_index: "Retour vers le livre d'or"
-        index:
-            title: "Livre d'or"
-            new_guest_book: "Nouveau commentaire dans le livre d'or"
-            time_ago: "Il y a %{date}"
-    documents:
-      index:
-        title: Les documents scolaires
-        subtitle: "%{type} en %{domains}"
-        new_link: Nouveau document
-        download: Télécharger
-        no_document: Il n'y a aucun documents pour le moment
-        no_result: Aucun documents ne corresspondent à vos critères
-        hits: "Hits :"
-        show: Plus de détails
-        display_search: Rechercher un document
-        forms:
-          search:
-            label: Rechercher
-            submit: Go!
-          order:
-            label_type: Afficher un(e)
-            select_type: Choissiez le type
-            label_domains: en
-            select_domains: Choisissez le domaine
-            label_order: Classé par
-            select:
-              newest: Les plus récents
-              notest: Les mieux notés
-              hits: Les plus téléchargés
-              alphabetic: Par ordre alphabétique
-            label_datepicker: Réalisé avant le
+          email: *email
+          password: *password
+          password_confirmation: *password_confirmation
+          current_password: *current_password
+          remember_me: *remember_me
+        guest_book:
+          name: "Mon nom"
+          comment: "Commentaire"
+  helpers:
+      submit:
+          guest_book:
+              create: "Nouveau commentaire"
+  views:
+      pagination:
+        first: "&laquo; Premier"
+        last: "Dernier &raquo;"
+        previous: "&lsaquo; Précedant"
+        next: "Suivant &rsaquo;"
+        truncate: "..."
+  header:
+      admin: "Administration"
+      domain: "Domaines"
+      guest_book: "Livre d'or"
+      document: "Documents"
+      advertisement: "Annonces"
+      user:
+          profil: "Mon profil"
+          edit: *edit
+          logout: "Déconnexion"
+      lang: "Langues"
+      connection: *connection
+  domains:
+      link:
+          all: "Liste des domaines"
+  static_pages:
+      home:
+          h1:
+              title: Bienvenue sur %{app_name} !!!
+              connection: *connection
+              inscription: *inscription
+      about:
+          title: A propos
+          text: Ce site a été réalisé dans le but de d'essayer le framework ruby on rails pour collaide. Construit en moins de deux jours
+      contact:
+          title: Contactez-moi
+          text: Si tu veux plus d'infos d'infos, contacte-moi à l'adresse facenord.sud at gmail point com
+      help:
+          title: Aide et liens utiles
+          text1: Ce site a été développé grâce au farmework Ruby On Rails, basé sur le langage Ruby. Il utilise une foule de librairies additionels nécessaires au bon fonctionement du site.
+          text2: "Pour voir le code source, rendez-vous sur  github à l'adresse %{github}"
+          text3: Il y a plusieurs liens utiles qui fournissent une bonne documentation pour comprndre le fonctionement de ruby et ruby on rails. Je mettrai les liens prochainement
+  guest_books:
       new:
-        title: Nouveau document
-      form:
-        submit: Déposer le document
-        choose_language: Choisissez la langue
-        choose_study_level: Choisissez le niveau d'étude
-        choose_document_type: Choisissez le type de document
-      show:
-        more_infos: Plus de détails
-        realized_at: "%{realized_at} %{date}"
-        more_details: "%{page}, %{realized_at}"
-        hits: "Téléchargé %{times} fois"
-        back: Retour
-        modify: Modifier
-        delete: Supprimer
-        subtitle: "%{doc_subtitle}, réalisé par %{author}"
-        top_docs: "Top documents"
-        suggestion: "Vous aimerez peut-être"
-      edit:
-        title: Modifier le document
-      update:
-        notice: Le document a été modifié
+          title: "Nouveau commentaire dans le livre d'or"
       create:
-        notice: Le document a été créé
-      destroy:
-        notice: Le document a été supprimé
-    advertisements:
-      index:
-        breadcrumb: Les petites annonces
-        title: Les petites annonces
-        new_link: Publier une annonce
-        no_advertisement: Il n'y a aucune annonce
-        show: Plus de détails
-        hits: "Hits :"
-        forms:
-          search:
-            fieldset: Rechercher
-            submit: Chercher
-      new:
-        title: Publier une annonces
-        description: Quelle genre d'annonce voulez-vous publier ?
-        sale_book: Vendre un livre
-      form:
-        choose: "Choisissez ..."
-    sale_books:
-      index:
-        buy: Acheter
-        note: Note
-        subtitle: "%{price} %{currency}"
-        no_description: Il n'y a pas de description pour ce livre...
-      new:
-        title: Vendre un livre
-        forms:
-          required: Champs requis
-          optional: Plus de détails
-          choose_payment_mode: Veuillez choisir vos modes de payement
-          choose_delivery_mode: Veuillez choisir vos modes de livraison
-          submit: Mettre ce livre en vente
-          succes: Félicitation ! Votre livre a bien été mis en vente !
-          valid_isbn: Désolé, nous n'avons trouvé aucun livre avec ce code ISBN
-#          no_isbn: Veuillez entrer un code ISBN
-          more_details: Plus de précisions
+          notice: "Le commentaire a bien été créé"
       show:
-        title: "Vente du livre étudiant: %{book}"
-        meta_title: Achetez %{book}, livre étudiant d'occasion pour seulement %{price} !
-        sale_title: "%{user} vend ce livre"
-        authors: "De %{authors}"
-        publisher: " par %{publisher}"
-        published_date: " le %{published_date}"
-        published_date_year: " en %{published_date}"
-        edit: Publié
-        payment_modes: "Mode de payement:"
-        delivery_modes: "Mode de livraison:"
-        buy: Acheter
-        others_sales: Autres ventes pour %{book}
-        user: Membre
-        price: Prix
-        show: Détails
-        advertisement: Annonce
-        edit: *edit
-
-      edit:
-        title: Modifier la vente de %{book}
-        forms:
-          submit: Modifier la vente
-          succes: Vos modifications ont bien été enregistrées !
+          back_to_index: "Retour vers le livre d'or"
+      index:
+          title: "Livre d'or"
+          new_guest_book: "Nouveau commentaire dans le livre d'or"
+          time_ago: "Il y a %{date}"
+  documents:
+    index:
+      title: Les documents scolaires
+      subtitle: "%{type} en %{domains}"
+      new_link: Nouveau document
+      download: Télécharger
+      no_document: Il n'y a aucun documents pour le moment
+      no_result: Aucun documents ne corresspondent à vos critères
+      hits: "Hits :"
+      show: Plus de détails
+      display_search: Rechercher un document
+      forms:
+        search:
+          label: Rechercher
+          submit: Go!
+        order:
+          label_type: Afficher un(e)
+          select_type: Choissiez le type
+          label_domains: en
+          select_domains: Choisissez le domaine
+          label_order: Classé par
+          select:
+            newest: Les plus récents
+            notest: Les mieux notés
+            hits: Les plus téléchargés
+            alphabetic: Par ordre alphabétique
+          label_datepicker: Réalisé avant le
+    new:
+      title: Nouveau document
+    form:
+      submit: Déposer le document
+      choose_language: Choisissez la langue
+      choose_study_level: Choisissez le niveau d'étude
+      choose_document_type: Choisissez le type de document
+    show:
+      more_infos: Plus de détails
+      realized_at: "%{realized_at} %{date}"
+      more_details: "%{page}, %{realized_at}"
+      hits: "Téléchargé %{times} fois"
+      back: Retour
+      modify: Modifier
+      delete: Supprimer
+      subtitle: "%{doc_subtitle}, réalisé par %{author}"
+      top_docs: "Top documents"
+      suggestion: "Vous aimerez peut-être"
+    edit:
+      title: Modifier le document
+    update:
+      notice: Le document a été modifié
+    create:
+      notice: Le document a été créé
+    destroy:
+      notice: Le document a été supprimé
+  advertisements:
+    index:
+      breadcrumb: Les petites annonces
+      title: Les petites annonces
+      new_link: Publier une annonce
+      no_advertisement: Il n'y a aucune annonce
+      show: Plus de détails
+      hits: "Hits :"
+      forms:
+        search:
+          fieldset: Rechercher
+          submit: Chercher
+    new:
+      title: Publier une annonces
+      description: Quelle genre d'annonce voulez-vous publier ?
+      sale_book: Vendre un livre
+  sale_books:
+    index:
+      buy: Acheter
+      note: Note
+      subtitle: "%{price} %{currency}"
+      no_description: Il n'y a pas de description pour ce livre...
+    new:
+      title: Vendre un livre
+      forms:
+        required: Champs requis
+        optional: Plus de détails
+        choose_payment_mode: Veuillez choisir vos modes de payement
+        choose_delivery_mode: Veuillez choisir vos modes de livraison
+        submit: Mettre ce livre en vente
+        succes: Félicitation ! Votre livre a bien été mis en vente !
+        valid_isbn: Désolé, nous n'avons trouvé aucun livre avec ce code ISBN
+        more_details: Plus de précisions
+    show:
+      title: "Vente du livre étudiant: %{book}"
+      meta_title: Achetez %{book}, livre étudiant d'occasion pour seulement %{price} !
+      sale_title: "%{user} vend ce livre"
+      authors: "De %{authors}"
+      publisher: " par %{publisher}"
+      published_date: " le %{published_date}"
+      published_date_year: " en %{published_date}"
+      edit: Publié
+      payment_modes: "Mode de payement:"
+      delivery_modes: "Mode de livraison:"
+      buy: Acheter
+      others_sales: Autres ventes pour %{book}
+      user: Membre
+      price: Prix
+      show: Détails
+      advertisement: Annonce
+      edit: *edit
+    edit:
+      title: Modifier la vente de %{book}
+      forms:
+        submit: Modifier la vente
+        succes: Vos modifications ont bien été enregistrées !

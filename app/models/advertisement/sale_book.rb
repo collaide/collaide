@@ -21,7 +21,7 @@
 
 # -*- encoding : utf-8 -*-
 class Advertisement::SaleBook < Advertisement::Sale
-  attr_accessible :state, :annotation, :domain_ids
+  attr_accessible :state, :annotation, :domain_ids, :study_level_id
 
   extend Enumerize
   enumerize :annotation, in: [:not_annotated, :slightly_annotated, :annotated, :very_annotated]
@@ -30,6 +30,7 @@ class Advertisement::SaleBook < Advertisement::Sale
   #Liaisons
   belongs_to :book
   has_and_belongs_to_many :domains, order: 'position ASC'
+  belongs_to :study_level, :class_name => 'Document::StudyLevel', include: :translations
 
   accepts_nested_attributes_for :domains
   accepts_nested_attributes_for :book

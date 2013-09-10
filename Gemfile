@@ -58,6 +58,7 @@ gem 'acts_as_commentable', '3.0.1'
 #gem 'thinking-sphinx', '3.0.5'
 
 gem "breadcrumbs_on_rails"
+gem "geocoder"
 
 group :development, :test do
 #  gem 'therubyracer-heroku', :platform => :ruby

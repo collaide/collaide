@@ -73,6 +73,10 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
+  #https://github.com/alexreisner/geocoder
+  geocoded_by :current_sign_in_ip   # can also be an IP address
+  after_validation :geocode          # auto-fetch coordinates
+
   validate :points, numericality: {
       greater_than_or_equal_to: 0,
       only_integer: true

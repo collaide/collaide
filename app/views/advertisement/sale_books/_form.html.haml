@@ -9,7 +9,7 @@
         .small-12.columns
           .row.collapse
             =f.input :price, wrapper_html: {class: 'columns small-10 large-10'}
-            =f.input :currency, wrapper_html: {class: 'columns small-2 large-2'}, prompt: t('advertisements.form.choose')
+            =f.input :currency, wrapper_html: {class: 'columns small-2 large-2'}
       -if !edit
         #more_details
           .small-2
@@ -31,7 +31,7 @@
         =f.input :description, input_html: {rows: 3}
 
         =f.association :domains, collection: Domain.select_tree
-        /=f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations)
+        =f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations)
   .form-actions
     -if edit
       =f.button :submit, t('sale_books.edit.forms.submit')

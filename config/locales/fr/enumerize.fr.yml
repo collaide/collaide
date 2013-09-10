@@ -1,0 +1,26 @@
+fr:
+  enumerize:
+    advertisement/sale:
+      payment_modes:
+        cash: Espèce
+        bank: Virement
+        check: Chèque
+      delivery_modes:
+        hand: Remise en main propre
+        post: Envoi postal
+      currency:
+        CHF: 'SFr.'
+        EUR: '€'
+        USD: '$'
+    advertisement/sale_book:
+      annotation:
+        not_annotated: Sans annotation
+        slightly_annotated: Légèrement annoté
+        annotated: Annoté
+        very_annotated: Très annoté
+      state:
+        new: Neuf
+        like_new: Comme neuf
+        normal: Normal
+        damaged: Abimé
+        very_damaged: Très abimé

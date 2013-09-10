@@ -50,5 +50,5 @@ class ApplicationController < ActionController::Base
   end
 
   #breadcrumb
-  add_breadcrumb I18n.t("dico.app_name"),  :root_path
+  add_breadcrumb I18n.t("app_name"),  :root_path
 end

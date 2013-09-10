@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.integer  "hits",                                         :default => 0
     t.string   "delivery_modes"
     t.string   "payment_modes"
+    t.integer  "study_level_id"
   end
 
   create_table "books", :force => true do |t|
@@ -432,6 +433,8 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "points",                 :default => 5
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

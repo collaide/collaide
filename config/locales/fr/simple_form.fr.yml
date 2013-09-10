@@ -23,4 +23,18 @@ fr:
     #   defaults:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
+    labels:
+      book:
+        isbn_13: ISBN
+      advertisement_sale_book:
+        price: Prix
+        currency: En
+        payment_modes: Modes de payement
+        delivery_modes: Modes de livraison
+        state: Etat du livre
+        annotation: Est-il annoté ?
+        title: Titre de l'annonce
+        description: Plus d'informations
+        domains: Domaines
+        study_level: Niveau d'étude
 
