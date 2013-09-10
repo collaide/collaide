@@ -33,12 +33,12 @@
               %a.tiny.button.secondary#show_description{href: "#"} plus
   .small-12.large-6.columns
     %ul.pricing-table
-      -if @sale_book.title
+      -unless @sale_book.title.blank?
         %li.title=@sale_book.title
       -else
         %li.title=t'sale_books.show.sale_title', user: @sale_book.user.name
       %li.price=price
-      -if @sale_book.description
+      -unless @sale_book.description.blank?
         %li.description=@sale_book.description
       -if @sale_book.state
         %li.bullet-item=@sale_book.state.text

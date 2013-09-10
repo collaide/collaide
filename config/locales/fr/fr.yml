@@ -203,7 +203,7 @@ fr:
       show:
         meta_title: Achetez %{book}, livre étudiant d'occasion pour seulement %{price} !
         h1_title: "Vente du livre étudiant: %{book}"
-        sale_title: "En vente par %{user}"
+        sale_title: "%{user} vend ce livre"
         authors: "De %{authors}"
         publisher: " par %{publisher}"
         published_date: " le %{published_date}"
