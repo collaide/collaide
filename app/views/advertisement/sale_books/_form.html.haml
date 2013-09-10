@@ -1,17 +1,21 @@
-=simple_form_for(@advertisement_sale_book) do |f|
+=simple_form_for(@advertisement_sale_book, html: {class: 'custom'}) do |f|
   =f.error_notification
   .form-inputs
     =field_set_tag t('sale_books.new.forms.required') do
       -if !edit
         =f.simple_fields_for @advertisement_sale_book.book do |p|
           =p.input :isbn_13
-      =f.input :price
-      =f.input :currency
+      .row
+        .small-12.columns
+          .row.collapse
+            =f.input :price, wrapper_html: {class: 'columns small-10 large-10'}
+            =f.input :currency, wrapper_html: {class: 'columns small-2 large-2'}, prompt: t('advertisements.form.choose')
       -if !edit
-        .columns.small-3
-          =label_tag :more_details, t('sale_books.new.forms.more_details'), class: :right
-        .columns.small-9
-          =check_box_tag :more_details
+        #more_details
+          .small-2
+            =label_tag :more_details, t('sale_books.new.forms.more_details'), class: :right
+          .small-10
+            =check_box_tag :more_details
     -if !edit
       -hide = 'hide'
     -else

@@ -185,6 +185,8 @@ fr:
         title: Publier une annonces
         description: Quelle genre d'annonce voulez-vous publier ?
         sale_book: Vendre un livre
+      form:
+        choose: "Choisissez ..."
     sale_books:
       index:
         buy: Acheter
