@@ -40,7 +40,7 @@ Collaide::Application.routes.draw do
     resources :c_files
   end
 
-  scope 'member/group/:id' do
+  scope 'user/group/:id' do
     resources :structures
   end
 
@@ -49,7 +49,7 @@ Collaide::Application.routes.draw do
   end
 
 
-  #namespace :member do
+  #namespace :user do
   #  resources :parameters
   #  resources :contacts
   #  resources :addresses
@@ -65,7 +65,7 @@ Collaide::Application.routes.draw do
   #
   #  resources :groups
   #  namespace :group do
-  #    resources :members
+  #    resources :users
   #    resources :demands
   #  end
   #

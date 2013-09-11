@@ -49,6 +49,5 @@ class ApplicationController < ActionController::Base
     logger.info "lang set to '#{I18n.locale}'"
   end
 
-  #breadcrumb
-  add_breadcrumb I18n.t("app_name"),  :root_path
+  add_breadcrumb I18n.t('app_name'), :root_path
 end

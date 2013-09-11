@@ -243,146 +243,6 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "member_addresses", :force => true do |t|
-    t.string   "country"
-    t.string   "street"
-    t.integer  "street_number"
-    t.integer  "city_code"
-    t.string   "country_code"
-    t.boolean  "is_actual",     :default => true
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-  end
-
-  create_table "member_addresses_users", :force => true do |t|
-    t.integer "address_id"
-    t.integer "user_id"
-  end
-
-  create_table "member_comments", :force => true do |t|
-    t.text     "message"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "member_status_id"
-    t.integer  "user_id"
-  end
-
-  add_index "member_comments", ["user_id"], :name => "index_member_comments_on_user_id"
-
-  create_table "member_contacts", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.date     "date_of_birth"
-    t.string   "gender"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "user_id"
-  end
-
-  add_index "member_contacts", ["user_id"], :name => "index_member_contacts_on_user_id"
-
-  create_table "member_friend_demands", :force => true do |t|
-    t.text     "message"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.integer  "user_has_sent_id"
-    t.integer  "user_is_invited_id"
-  end
-
-  create_table "member_friend_friends", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "user_id"
-  end
-
-  create_table "member_group_demands", :force => true do |t|
-    t.text     "message"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "user_id"
-    t.integer  "group_id"
-  end
-
-  create_table "member_group_groups", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.boolean  "is_public",   :default => true
-    t.string   "password"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-  end
-
-  create_table "member_group_members", :force => true do |t|
-    t.boolean  "is_admin"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "user_id"
-    t.integer  "member_group_id"
-  end
-
-  create_table "member_message_inboxes", :force => true do |t|
-    t.boolean  "is_viewed",  :default => false
-    t.datetime "viewed_at"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.integer  "message_id"
-    t.integer  "user_id"
-  end
-
-  create_table "member_messages", :force => true do |t|
-    t.boolean  "is_send",    :default => false
-    t.datetime "send_at"
-    t.string   "subject"
-    t.text     "message"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.integer  "user_id"
-    t.integer  "message_id"
-  end
-
-  create_table "member_parameters", :force => true do |t|
-    t.string   "language"
-    t.string   "localization"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "user_id"
-  end
-
-  add_index "member_parameters", ["user_id"], :name => "index_member_parameters_on_user_id"
-
-  create_table "member_schools", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "member_scolarities", :force => true do |t|
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "user_id"
-    t.integer  "member_school_id"
-  end
-
-  create_table "member_statuses", :force => true do |t|
-    t.text     "message"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "user_id"
-    t.integer  "member_group_id"
-  end
-
-  create_table "member_studies", :force => true do |t|
-    t.date     "started_at"
-    t.date     "ended_at"
-    t.string   "orientation"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.integer  "member_scolarity_id"
-  end
-
-  add_index "member_studies", ["member_scolarity_id"], :name => "index_member_studies_on_member_scolarity_id"
-
   create_table "payment_modes_sales", :force => true do |t|
     t.integer "payment_mode_id"
     t.integer "sale_id"
@@ -412,6 +272,146 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   end
 
   add_index "rating_caches", ["cacheable_id", "cacheable_type"], :name => "index_rating_caches_on_cacheable_id_and_cacheable_type"
+
+  create_table "user_addresses", :force => true do |t|
+    t.string   "country"
+    t.string   "street"
+    t.integer  "street_number"
+    t.integer  "city_code"
+    t.string   "country_code"
+    t.boolean  "is_actual",     :default => true
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  create_table "user_addresses_users", :force => true do |t|
+    t.integer "address_id"
+    t.integer "user_id"
+  end
+
+  create_table "user_comments", :force => true do |t|
+    t.text     "message"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "member_status_id"
+    t.integer  "user_id"
+  end
+
+  add_index "user_comments", ["user_id"], :name => "index_member_comments_on_user_id"
+
+  create_table "user_contacts", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "date_of_birth"
+    t.string   "gender"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "user_id"
+  end
+
+  add_index "user_contacts", ["user_id"], :name => "index_member_contacts_on_user_id"
+
+  create_table "user_friend_demands", :force => true do |t|
+    t.text     "message"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "user_has_sent_id"
+    t.integer  "user_is_invited_id"
+  end
+
+  create_table "user_friend_friends", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "user_group_demands", :force => true do |t|
+    t.text     "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.integer  "group_id"
+  end
+
+  create_table "user_group_groups", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "is_public",   :default => true
+    t.string   "password"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "user_group_users", :force => true do |t|
+    t.boolean  "is_admin"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
+    t.integer  "member_group_id"
+  end
+
+  create_table "user_message_inboxes", :force => true do |t|
+    t.boolean  "is_viewed",  :default => false
+    t.datetime "viewed_at"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "message_id"
+    t.integer  "user_id"
+  end
+
+  create_table "user_messages", :force => true do |t|
+    t.boolean  "is_send",    :default => false
+    t.datetime "send_at"
+    t.string   "subject"
+    t.text     "message"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "user_id"
+    t.integer  "message_id"
+  end
+
+  create_table "user_parameters", :force => true do |t|
+    t.string   "language"
+    t.string   "localization"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
+  end
+
+  add_index "user_parameters", ["user_id"], :name => "index_member_parameters_on_user_id"
+
+  create_table "user_schools", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "user_scolarities", :force => true do |t|
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "user_id"
+    t.integer  "member_school_id"
+  end
+
+  create_table "user_statues", :force => true do |t|
+    t.text     "message"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
+    t.integer  "member_group_id"
+  end
+
+  create_table "user_studies", :force => true do |t|
+    t.date     "started_at"
+    t.date     "ended_at"
+    t.string   "orientation"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "member_scolarity_id"
+  end
+
+  add_index "user_studies", ["member_scolarity_id"], :name => "index_member_studies_on_member_scolarity_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

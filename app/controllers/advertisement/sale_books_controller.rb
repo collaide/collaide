@@ -1,19 +1,22 @@
 # -*- encoding : utf-8 -*-
 class Advertisement::SaleBooksController < ApplicationController
 
+  include BooksHelper
+
   #breadcrumb
   add_breadcrumb I18n.t("advertisements.index.breadcrumb"),  :advertisement_advertisements_path
   #TODO faire une page qui affiche que les livres
   #add_breadcrumb I18n.t(""),  :advertisement_sale_books_path
+
+  add_breadcrumb I18n.t("advertisements.new.title"), :new_advertisement_advertisement_path, :only => %w(new create)
+  add_breadcrumb I18n.t("sale_books.new.title"), :new_advertisement_sale_book_path, :only => %w(new create)
 
   # GET /advertisement/sale_books/1
   # GET /advertisement/sale_books/1.json
   def show
     @sale_book = Advertisement::SaleBook.find(params[:id])
 
-    #breadcrumb
     add_breadcrumb I18n.t("sale_books.show.title", book: @sale_book.book.title), advertisement_sale_book_path(@sale_book)
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @sale_book }
@@ -27,10 +30,6 @@ class Advertisement::SaleBooksController < ApplicationController
     book = Book.new
     @advertisement_sale_book.book = book
 
-    add_breadcrumb I18n.t("advertisements.new.title"), :new_advertisement_advertisement_path
-    add_breadcrumb I18n.t("sale_books.new.title"), :new_advertisement_sale_book_path
-
-
     respond_to do |format|
       format.html # new.html.haml
       format.json { render json: @advertisement_sale_book }
@@ -40,18 +39,20 @@ class Advertisement::SaleBooksController < ApplicationController
   # GET /advertisement/sale_books/1/edit
   def edit
     @advertisement_sale_book = Advertisement::SaleBook.find(params[:id])
-    #breadcrumb
     add_breadcrumb I18n.t("sale_books.show.title", book: @advertisement_sale_book.book.title), advertisement_sale_book_path(@advertisement_sale_book)
     add_breadcrumb I18n.t("sale_books.edit.title", book: @advertisement_sale_book.book.title), edit_advertisement_sale_book_path(@advertisement_sale_book)
-
   end
 
   # POST /advertisement/sale_books
   # POST /advertisement/sale_books.json
   def create
+
     # ON CHERCHE SUR LE ISBN CORRESPOND
-    google_book = GoogleBooks.search("isbn:#{params[:advertisement_sale_book][:book][:isbn_13]}").first
-    if google_book && !params[:advertisement_sale_book][:book][:isbn_13].blank?
+    isbn = params[:advertisement_sale_book][:book][:isbn_13]
+    parseIsbn(isbn)
+
+    google_book = GoogleBooks.search("isbn:#{isbn}").first
+    if google_book && !isbn.blank?
       #On cherche si le livre est déja dans la bdd, si il l'est, on le met à jour, si il ne l'ai pas, onle crée
       book = Book.find_by_isbn_13(google_book.isbn_13) || Book.find_by_isbn_10(google_book.isbn_10) || Book.new(isbn_13: google_book.isbn_13, isbn_10: google_book.isbn_10)
 
@@ -124,6 +125,7 @@ class Advertisement::SaleBooksController < ApplicationController
   def update
     # on enlève le book des parametres
     #params[:advertisement_sale_book].delete(:book)
+
     @advertisement_sale_book = Advertisement::SaleBook.find(params[:id])
 
     respond_to do |format|
@@ -131,6 +133,8 @@ class Advertisement::SaleBooksController < ApplicationController
         format.html { redirect_to @advertisement_sale_book, notice: t('sale_books.edit.forms.succes') }
         format.json { head :no_content }
       else
+        add_breadcrumb I18n.t("sale_books.show.title", book: @advertisement_sale_book.book.title), advertisement_sale_book_path(@advertisement_sale_book)
+        add_breadcrumb I18n.t("sale_books.edit.title", book: @advertisement_sale_book.book.title), edit_advertisement_sale_book_path(@advertisement_sale_book)
         format.html { render action: "edit" }
         format.json { render json: @advertisement_sale_book.errors, status: :unprocessable_entity }
       end

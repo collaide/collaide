@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Language:</b>
+  <%= @user_parameter.language %>
+</p>
+
+<p>
+  <b>Localization:</b>
+  <%= @user_parameter.localization %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_parameter_path(@user_parameter) %> |
+<%= link_to 'Back', user_parameters_path %>

@@ -1,0 +1,23 @@
+<h1>Listing user_friend_demands</h1>
+
+<table>
+  <tr>
+    <th>Message</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_friend_demands.each do |user_friend_demand| %>
+  <tr>
+    <td><%= user_friend_demand.message %></td>
+    <td><%= link_to 'Show', user_friend_demand %></td>
+    <td><%= link_to 'Edit', edit_user_friend_demand_path(user_friend_demand) %></td>
+    <td><%= link_to 'Destroy', user_friend_demand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Demand', new_user_friend_demand_path %>

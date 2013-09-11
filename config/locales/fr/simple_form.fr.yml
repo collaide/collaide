@@ -1,7 +1,7 @@
 fr:
   simple_form:
-    "yes": 'Oui'
-    "no": 'Non'
+    yes: Oui
+    no: Non
     choose: &choose Choisissez...
     required:
       text: 'obligatoire'
@@ -30,8 +30,6 @@ fr:
       advertisement_sale_book:
         price: Prix
         currency: En
-        prompts:
-          currency: Choisissez votre monaie
         payment_modes: Modes de payement
         delivery_modes: Modes de livraison
         state: Etat du livre
@@ -40,9 +38,15 @@ fr:
         description: Plus d'informations
         domains: Domaines
         study_level: Niveau d'étude
+    placeholders:
+      book:
+        isbn_13: 9781781100820
+      advertisement_sale_book:
+        price: 12.95
+        title: Livre très utile en première année de droit
+        description: J'ai acheté ce livre au début de ma première année de droit à L'Université. Ayant changé de filière, je ne l'ai jamais utilisé.
     prompts:
       advertisement_sale_book:
         currency: Choisissez...
         state: *choose
         annotation: *choose
-

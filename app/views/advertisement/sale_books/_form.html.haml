@@ -1,16 +1,36 @@
-=simple_form_for(@advertisement_sale_book, html: {class: 'custom'}) do |f|
+-#TODO : Ajouter des tooltips foundation
+=simple_form_for(@advertisement_sale_book, :validate => :javascript_validators, html: {class: 'custom'}) do |f|
   =f.error_notification
   .form-inputs
     =field_set_tag t('sale_books.new.forms.required') do
       -if !edit
         =f.simple_fields_for @advertisement_sale_book.book do |p|
-          =p.input :isbn_13
+          =p.input :isbn_13, :validate => :javascript_validators
       .row
         .small-12.columns
-          .row.collapse
-            =f.input :price, wrapper_html: {class: 'columns small-8'}
-            =f.input :currency, prompt: t('simple_form.prompts.advertisement_sale_book.currency'), wrapper_html: {class: 'columns small-4'}
+          .row
+            =f.input :price, wrapper_html: {class: 'columns small-4'}
+            =f.input :currency, prompt: t('simple_form.prompts.advertisement_sale_book.currency'), wrapper_html: {class: 'columns large-4 small-8'}
+            .columns.small-4
       -if !edit
+        #more_details
+          -#=label_tag :more_details, t('sale_books.new.forms.more_details')
+          .switch
+            =radio_button_tag :x, 'no', true
+            =label_tag :x, t('sale_books.new.forms.more_details')
+            =radio_button_tag :x, 'yes'
+            =label_tag :x, t('sale_books.new.forms.less_details')
+            %span
+
+      -#<div class="switch">
+      -#  <input id="x" name="switch-x" type="radio" checked>
+      -#  <label for="x" onclick="">Off</label>
+      -#
+      -#  <input id="x1" name="switch-x" type="radio">
+      -#  <label for="x1" onclick="">On</label>
+      -#
+      -#  <span></span>
+      -#</div>
         #more_details
           .small-2
             =label_tag :more_details, t('sale_books.new.forms.more_details'), class: :right
@@ -23,7 +43,9 @@
     #form_to_hide{class: hide}
       =field_set_tag t('sale_books.new.forms.optional') do
         =f.input :payment_modes, :as => :check_boxes
+        %br
         =f.input :delivery_modes, :as => :check_boxes
+        %br
 
         =f.input :state, prompt: t('simple_form.prompts.advertisement_sale_book.state')
         =f.input :annotation, prompt: t('simple_form.prompts.advertisement_sale_book.annotation')
@@ -37,3 +59,4 @@
       =f.button :submit, t('sale_books.edit.forms.submit')
     -else
       =f.button :submit, t('sale_books.new.forms.submit')
+

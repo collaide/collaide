@@ -37,6 +37,8 @@ gem 'paper_trail'
 
 gem 'date_validator'
 gem 'simple_form'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 
 gem 'haml'
 
@@ -59,6 +61,7 @@ gem 'acts_as_commentable', '3.0.1'
 
 gem "breadcrumbs_on_rails"
 gem "geocoder"
+gem 'country_select'
 
 group :development, :test do
 #  gem 'therubyracer-heroku', :platform => :ruby

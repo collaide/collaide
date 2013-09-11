@@ -17,6 +17,8 @@
 //= require jquery.ui.all
 //= require tree.jquery
 //= require foundation
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_tree .
 
 $(document).foundation();

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Country:</b>
+  <%= @user_address.country %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%= @user_address.street %>
+</p>
+
+<p>
+  <b>Street number:</b>
+  <%= @user_address.street_number %>
+</p>
+
+<p>
+  <b>City code:</b>
+  <%= @user_address.city_code %>
+</p>
+
+<p>
+  <b>Country code:</b>
+  <%= @user_address.country_code %>
+</p>
+
+<p>
+  <b>Is actual:</b>
+  <%= @user_address.is_actual %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_address_path(@user_address) %> |
+<%= link_to 'Back', user_addresses_path %>

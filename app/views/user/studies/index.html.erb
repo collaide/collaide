@@ -1,0 +1,27 @@
+<h1>Listing user_studies</h1>
+
+<table>
+  <tr>
+    <th>Started at</th>
+    <th>Ended at</th>
+    <th>Orientatoin</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @studies.each do |user_study| %>
+  <tr>
+    <td><%= user_study.started_at %></td>
+    <td><%= user_study.ended_at %></td>
+    <td><%= user_study.orientatoin %></td>
+    <td><%= link_to 'Show', user_study %></td>
+    <td><%= link_to 'Edit', edit_user_study_path(user_study) %></td>
+    <td><%= link_to 'Destroy', user_study, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Study', new_user_study_path %>
