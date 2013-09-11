@@ -8,8 +8,8 @@
       .row
         .small-12.columns
           .row.collapse
-            =f.input :price, wrapper_html: {class: 'columns small-10 large-10'}
-            =f.input :currency, wrapper_html: {class: 'columns small-2 large-2'}
+            =f.input :price, wrapper_html: {class: 'columns small-8'}
+            =f.input :currency, prompt: t('simple_form.prompts.advertisement_sale_book.currency'), wrapper_html: {class: 'columns small-4'}
       -if !edit
         #more_details
           .small-2
@@ -25,8 +25,8 @@
         =f.input :payment_modes, :as => :check_boxes
         =f.input :delivery_modes, :as => :check_boxes
 
-        =f.input :state
-        =f.input :annotation
+        =f.input :state, prompt: t('simple_form.prompts.advertisement_sale_book.state')
+        =f.input :annotation, prompt: t('simple_form.prompts.advertisement_sale_book.annotation')
         =f.input :title
         =f.input :description, input_html: {rows: 3}
 

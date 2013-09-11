@@ -2,6 +2,7 @@ fr:
   simple_form:
     "yes": 'Oui'
     "no": 'Non'
+    choose: &choose Choisissez...
     required:
       text: 'obligatoire'
       mark: '*'
@@ -25,10 +26,12 @@ fr:
     #     password: 'No special characters, please.'
     labels:
       book:
-        isbn_13: ISBN
+        isbn_13: Code ISBN
       advertisement_sale_book:
         price: Prix
         currency: En
+        prompts:
+          currency: Choisissez votre monaie
         payment_modes: Modes de payement
         delivery_modes: Modes de livraison
         state: Etat du livre
@@ -37,4 +40,9 @@ fr:
         description: Plus d'informations
         domains: Domaines
         study_level: Niveau d'étude
+    prompts:
+      advertisement_sale_book:
+        currency: Choisissez...
+        state: *choose
+        annotation: *choose
 
