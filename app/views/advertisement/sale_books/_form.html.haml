@@ -5,15 +5,12 @@
     =field_set_tag t('sale_books.new.forms.required') do
       -if !edit
         =f.simple_fields_for @advertisement_sale_book.book do |p|
-          #joyIsbn
-            =p.input :isbn_13, label_html: tooltip(t("sale_books.new.forms.tooltips.isbn"))
+          =p.input :isbn_13, label_html: tooltip(t("sale_books.new.forms.tooltips.isbn"))
       .row
         .small-12.columns
           .row
-            #joyPrice
-              =f.input :price, label_html: tooltip(t("sale_books.new.forms.tooltips.price")), wrapper_html: {class: 'columns small-4'}
-            #joycurrency
-              =f.input :currency, prompt: t('simple_form.prompts.advertisement_sale_book.currency'), wrapper_html: {class: 'columns large-4 small-8'}, label_html: tooltip(t("sale_books.new.forms.tooltips.currency"))
+            =f.input :price, label_html: tooltip(t("sale_books.new.forms.tooltips.price")), wrapper_html: {class: 'columns small-4'}
+            =f.input :currency, prompt: t('simple_form.prompts.advertisement_sale_book.currency'), wrapper_html: {class: 'columns large-4 small-8'}, label_html: tooltip(t("sale_books.new.forms.tooltips.currency"))
             .columns.small-4
       -if !edit
         #more_details
