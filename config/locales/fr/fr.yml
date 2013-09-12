@@ -10,6 +10,7 @@ fr:
     app_name: &app_name Collaide
     app_name_long: &app_name_long Collaide, apprenons ensemble !
     back: &back Retour
+    next: &next Suivant
     connection: &connection Connexion
     inscription: &inscription Inscription
     password: &password Mot de passse
@@ -28,6 +29,7 @@ fr:
       page: &page page
       realized_at: &realized_at réalisé le
   app_name: *app_name
+  next: *next
   back: *back
   confirm: Etes-vous sûre ?
   access_denied: Vous n'avez pas le droit de voir cette page. Désolé
@@ -177,6 +179,18 @@ fr:
       no_description: Il n'y a pas de description pour ce livre...
     new:
       title: Vendre un livre
+      joy_ride:
+        joy_presentation:
+          content: Pour vendre un livre, rien de plus simple !<br/>Il vous suffit de suivre les 3 étapes suivantes !
+        joy_isbn:
+          title: Etape 1
+          content: Entrez le code ISBN de votre livre !
+        joy_price:
+          title: Etape 2
+          content: A quel prix voulez vous vendre votre livre ?
+        joy_currency:
+          title: Etape 3
+          content: Merci d'indiquer dans quelle devise vous voulez être payé.
       forms:
         required: Champs obligatoires
         optional: Plus de précisions
@@ -185,8 +199,22 @@ fr:
         submit: Mettre ce livre en vente
         succes: Félicitation ! Votre livre a bien été mis en vente !
         valid_isbn: Désolé, nous n'avons trouvé aucun livre avec ce code ISBN
-        more_details: Plus de précisions...
-        less_details: Moins de précisions...
+        details_label: Augmentez vos chances de vente
+        more_details: *no
+        less_details: *yes
+        tooltips:
+          isbn: Le code isbn est le nombre qui se situe sous le code barre au dos de votre livre
+          price: Il vaut mieux mettre un prix acceptable pour vendre son livre ;-)
+          currency: En quoi voulez-vous être payé ?
+          details: En cliquant ci-dessous vous allez pouvoir ajouter plus de précisions à votre vente pour augmenter vos chances de succès
+          optional: Vous n'êtes pas obligé de remplir les champs suivants. Mais cela augmentera vos chances de vendre votre livre !
+          payment_modes: Quels modes de payement acceptez-vous ?
+          delivery_modes: Quels modes de livraison acceptez-vous ?
+          annotation: Un livre scolaire très bien annoté peut être un gros attout pour son futur acquéreur !
+          title: N'hésitez pas à donner un titre à votre vente pour la rendre plus attractive !
+          description: Une petite description sympatique est toujours la bienvenue :-)
+          domain: Cela vous permet de préciser dans quels domaines ce livre est utile
+          study_level: A quel degré scolaire ce livre est-il le mieux adapté ?
     show:
       title: "Vente du livre étudiant: %{book}"
       meta_title: Achetez %{book}, livre étudiant d'occasion pour seulement %{price} !

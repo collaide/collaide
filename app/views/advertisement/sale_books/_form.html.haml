@@ -5,58 +5,48 @@
     =field_set_tag t('sale_books.new.forms.required') do
       -if !edit
         =f.simple_fields_for @advertisement_sale_book.book do |p|
-          =p.input :isbn_13, :validate => :javascript_validators
+          #joyIsbn
+            =p.input :isbn_13, label_html: tooltip(t("sale_books.new.forms.tooltips.isbn"))
       .row
         .small-12.columns
           .row
-            =f.input :price, wrapper_html: {class: 'columns small-4'}
-            =f.input :currency, prompt: t('simple_form.prompts.advertisement_sale_book.currency'), wrapper_html: {class: 'columns large-4 small-8'}
+            #joyPrice
+              =f.input :price, label_html: tooltip(t("sale_books.new.forms.tooltips.price")), wrapper_html: {class: 'columns small-4'}
+            #joycurrency
+              =f.input :currency, prompt: t('simple_form.prompts.advertisement_sale_book.currency'), wrapper_html: {class: 'columns large-4 small-8'}, label_html: tooltip(t("sale_books.new.forms.tooltips.currency"))
             .columns.small-4
       -if !edit
         #more_details
-          -#=label_tag :more_details, t('sale_books.new.forms.more_details')
+          =label_tag :more_details, t('sale_books.new.forms.details_label'), tooltip(t("sale_books.new.forms.tooltips.details"))
           .switch
             =radio_button_tag :x, 'no', true
             =label_tag :x, t('sale_books.new.forms.more_details')
             =radio_button_tag :x, 'yes'
             =label_tag :x, t('sale_books.new.forms.less_details')
             %span
-
-      -#<div class="switch">
-      -#  <input id="x" name="switch-x" type="radio" checked>
-      -#  <label for="x" onclick="">Off</label>
-      -#
-      -#  <input id="x1" name="switch-x" type="radio">
-      -#  <label for="x1" onclick="">On</label>
-      -#
-      -#  <span></span>
-      -#</div>
-        #more_details
-          .small-2
-            =label_tag :more_details, t('sale_books.new.forms.more_details'), class: :right
-          .small-10
-            =check_box_tag :more_details
     -if !edit
       -hide = 'hide'
     -else
       -hide = ''
     #form_to_hide{class: hide}
-      =field_set_tag t('sale_books.new.forms.optional') do
-        =f.input :payment_modes, :as => :check_boxes
+      %fieldset
+        %legend{class: "has-tip tip-top", title: t("sale_books.new.forms.tooltips.optional"), 'data-tooltip' => ''}= t('sale_books.new.forms.optional')
+        =f.input :payment_modes, label_html: tooltip(t("sale_books.new.forms.tooltips.payment_modes")), :as => :check_boxes
         %br
-        =f.input :delivery_modes, :as => :check_boxes
+        =f.input :delivery_modes, label_html: tooltip(t("sale_books.new.forms.tooltips.delivery_modes")), :as => :check_boxes
         %br
 
         =f.input :state, prompt: t('simple_form.prompts.advertisement_sale_book.state')
-        =f.input :annotation, prompt: t('simple_form.prompts.advertisement_sale_book.annotation')
-        =f.input :title
-        =f.input :description, input_html: {rows: 3}
+        =f.input :annotation, prompt: t('simple_form.prompts.advertisement_sale_book.annotation'), label_html: tooltip(t("sale_books.new.forms.tooltips.annotation"))
+        =f.input :title, label_html: tooltip(t("sale_books.new.forms.tooltips.title"))
+        =f.input :description, label_html: tooltip(t("sale_books.new.forms.tooltips.description")), input_html: {rows: 3}
 
-        =f.association :domains, collection: Domain.select_tree
-        =f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations)
+        =f.association :domains, collection: Domain.select_tree, label_html: tooltip(t("sale_books.new.forms.tooltips.domain"))
+        =f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations),  label_html: tooltip(t("sale_books.new.forms.tooltips.study_level"))
   .form-actions
     -if edit
       =f.button :submit, t('sale_books.edit.forms.submit')
     -else
       =f.button :submit, t('sale_books.new.forms.submit')
+
 
