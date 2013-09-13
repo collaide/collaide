@@ -56,6 +56,8 @@ module ApplicationHelper
   private
     def find_t_for_meta(meta, options={})
       action_name = params[:action]
+      action_name = 'new' if action_name == 'create'
+      action_name = 'edit' if action_name == 'edit'
       controller_name = params[:controller].split('/')[1]
       module_name = params[:controller].split('/')[0]
       array_meta = []

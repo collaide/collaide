@@ -1,5 +1,5 @@
 -#TODO : Ajouter des tooltips foundation
-=simple_form_for(@advertisement_sale_book, :validate => :javascript_validators, html: {class: 'custom'}) do |f|
+=simple_form_for(@advertisement_sale_book, :validate => :javascript_validators, html: {class: 'custom', data_abide: true}) do |f|
   =f.error_notification
   .form-inputs
     =field_set_tag t('sale_books.new.forms.required') do

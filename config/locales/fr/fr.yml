@@ -119,6 +119,10 @@ fr:
         hits: "Hits :"
         show: Plus de détails
         display_search: Rechercher un document
+        page: Page %{nb_page}
+        personlaized_search: Affichage personalisé
+        search: "Recherche de '%{search}'"
+        no_result: "Aucun documents"
         forms:
           search:
             label: Rechercher

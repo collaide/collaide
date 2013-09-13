@@ -1,4 +1,4 @@
-=simple_form_for(@document, :validate => :javascript_validators, html: {multipart: true}) do |f|
+=simple_form_for(@document, :validate => :javascript_validators, html: {multipart: true, class: 'custom'}) do |f|
   =f.error_notification
   .form-inputs
     =f.input :title
