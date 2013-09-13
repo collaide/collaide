@@ -26,7 +26,7 @@ class Advertisement::AdvertisementsController < ApplicationController
   def test
     isbn = "3.2_34-23 2-323 2-232"
 
-    parseIsbn(isbn)
+    parse_isbn(isbn)
     @salut= isbn
     @books = GoogleBooks.search("isbn:#{@salut}")
   end

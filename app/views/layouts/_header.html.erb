@@ -28,7 +28,7 @@
     <ul class="right">
       <li class="divider hide-for-small"></li>
       <% if user_signed_in? %>
-          <li class="has-dropdown"><a href="#"><%= current_user.name %></a>
+          <li class="has-dropdown"><a href="#"><%= current_user.name_to_show %></a>
             <ul class="dropdown">
               <li><%= link_to t("header.user.profil"), current_user %></li>
               <li><%= link_to t("header.user.edit"), edit_user_registration_path %></li>

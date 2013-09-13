@@ -4,10 +4,7 @@
     .row
       .small-12.columns
         %a.th{href: advertisement_sale_book_path(sale_book)}
-          -if sale_book.book.image_link
-            =image_tag sale_book.book.image_link
-          -else
-            =image_tag 'annonces/book-icon.png'
+          =book_image(sale_book.book)
     .row
       .small-12.columns
         %p= rating_for sale_book.book, 'note', star: 5
@@ -18,11 +15,15 @@
     -#      =sale_book.hits
     #star
   .small-12.columns.large-10
-    %h5= link_to sale_book.book.title, sale_book
-    %h6.subheader= raw t('sale_books.index.subtitle',
-    {price: sale_book.price,
-    currency: sale_book.currency})
-    -if sale_book.book.description
+    %h5= link_to sale_book_title(sale_book), sale_book
+    %h6.subheader= t('sale_books.index.subtitle1', book:sale_book.book.title)
+    %h6.subheader= raw(t('sale_books.index.subtitle2',
+                        {user: link_to(sale_book.user.name_to_show, sale_book.user),
+                        price: number_to_currency(sale_book.price,
+                        :unit => sale_book.currency.text)}))
+    -if sale_book.description
+      %p= sale_book.description.truncate(100, separator: ' ', omission: ' ...')
+    -elsif sale_book.book.description
       %p= sale_book.book.description.truncate(100, separator: ' ', omission: ' ...')
     -else
       %p= t('sale_books.index.no_description')

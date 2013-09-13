@@ -34,7 +34,7 @@ class Advertisement::SaleBooksController < ApplicationController
       format.html # new.html.haml
       format.json {
         isbn = params[:isbn]
-        parseIsbn(isbn)
+        parse_isbn(isbn)
         google_book = GoogleBooks.search("isbn:#{isbn}").first
         if google_book && !isbn.blank?
           fillBook(@advertisement_sale_book.book, google_book)
@@ -58,7 +58,7 @@ class Advertisement::SaleBooksController < ApplicationController
     # ON CHERCHE SUR LE ISBN CORRESPOND
     isbn = params[:advertisement_sale_book][:book][:isbn_13]
 
-    parseIsbn(isbn)
+    parse_isbn(isbn)
     google_book = GoogleBooks.search("isbn:#{isbn}").first
 
     if google_book && !isbn.empty?

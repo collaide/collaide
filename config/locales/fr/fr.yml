@@ -187,7 +187,8 @@ fr:
     index:
       buy: Acheter
       note: Note
-      subtitle: "%{price} %{currency}"
+      subtitle1: "Livre: %{book}"
+      subtitle2: "%{user} vend ce livre %{price}"
       no_description: Il n'y a pas de description pour ce livre...
     new:
       title: Vendre un livre
@@ -231,12 +232,12 @@ fr:
     show:
       title: "Vente du livre étudiant: %{book}"
       meta_title: Achetez %{book}, livre étudiant d'occasion pour seulement %{price} !
-      sale_title: "%{user} vend ce livre"
+      sale_title: "Vente de %{book}"
       authors: "De %{authors}"
       publisher: " par %{publisher}"
       published_date: " le %{published_date}"
       published_date_year: " en %{published_date}"
-      edit: Publié
+      edited: Publié
       payment_modes: "Mode de payement:"
       delivery_modes: "Mode de livraison:"
       buy: Acheter

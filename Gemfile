@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-#gem 'therubyracer'
+gem 'therubyracer'
 
 gem 'bcrypt-ruby', '3.0.1'
 
@@ -16,7 +16,7 @@ gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git' # <a href="
 
 gem 'jquery-rails'
 gem 'jqtree-rails'
-gem "jquery-ui-rails"
+gem 'jquery-ui-rails'
 gem 'ui_datepicker-rails3'
 
 gem 'cancan'
@@ -29,7 +29,7 @@ gem 'rails-translate-routes'
 gem 'globalize3'
 
 gem 'ancestry'
-gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
+gem 'activeadmin-sortable-tree', :github => 'nebirhos/activeadmin-sortable-tree', :branch => 'master'
 
 gem 'activeadmin'
 gem 'ActiveAdmin-Globalize3-inputs'
@@ -40,13 +40,13 @@ gem 'simple_form'
 
 gem 'haml'
 
-gem "paperclip", "~> 3.0"
+gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.5.7'
 
 gem 'zurb-foundation'
 gem 'language_list'
 
-gem "googlebooks", "~> 0.0.7"
+gem 'googlebooks', '~> 0.0.7'
 
 gem 'letsrate'
 
@@ -54,25 +54,24 @@ gem 'enumerize'
 
 gem 'acts_as_commentable', '3.0.1'
 
-gem 'mysql2',          '0.3.13'
-gem 'thinking-sphinx', '3.0.5'
+#gem 'mysql2',          '0.3.13'
+#gem 'thinking-sphinx', '3.0.5'
 
-gem "breadcrumbs_on_rails"
-gem "geocoder"
+gem 'breadcrumbs_on_rails'
+gem 'geocoder'
 gem 'country_select'
 
 group :development, :test do
-#  gem 'therubyracer-heroku', :platform => :ruby
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '1.2.1'
   gem 'guard-spork', '1.2.0'
   gem 'childprocess', '0.3.6'
   gem 'spork', '0.9.2'
-  gem "quiet_assets", ">= 1.0.1" # <a href="https://github.com/evrone/quiet_assets" target="_blank">https://github.com/evrone/quiet_assets</a>
+  gem 'quiet_assets', '>= 1.0.1' # <a href="https://github.com/evrone/quiet_assets" target="_blank">https://github.com/evrone/quiet_assets</a>
   gem 'meta_request'
   gem 'guard-livereload'
-  gem "rails-erd"
+  gem 'rails-erd'
 end
 
 # Gems used only for assets and not required
@@ -92,7 +91,7 @@ group :test do
   gem 'factory_girl_rails', '4.1.0'
   gem 'cucumber-rails', '1.2.1', :require => false
   gem 'database_cleaner', '0.7.0'
-  gem "lorem-ipsum"
+  gem 'lorem-ipsum'
   # gem 'launchy', '2.1.0'
   # gem 'rb-fsevent', '0.9.1', :require => false
   # gem 'growl', '1.0.3'
