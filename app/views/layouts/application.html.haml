@@ -14,6 +14,9 @@
 
   -# Set the viewport width to device width for mobile
   %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+  %meta{name: 'description', content: description(yield(:meta_description))}
+  %meta{name: 'keywords', content: key_words(yield(:key_words))}
+  %meta{name: 'author', content: 'Yves Bauman et Numa de Montmollin'}
 
   %title= full_title(yield(:title))
 

@@ -3,8 +3,8 @@ class Document::DocumentsController < ApplicationController
   def create
     @document = Document::Document.new params[:document_document]
     @document.user = current_user
-    if @document.save!
-      redirect_to document_documents_path, notice: t("documents.create.notice")
+    if @document.save
+      redirect_to document_documents_path, notice: t("document.documents.create.notice")
     else
       render action: 'new'
     end
@@ -24,6 +24,8 @@ class Document::DocumentsController < ApplicationController
     end
 
     # affichage suivant les critères de l'utilisateur
+    title_a = []
+    personalized_search = false
     sort = 'DESC'
     attr = 'document_documents.created_at'
     rates = ''
@@ -32,11 +34,14 @@ class Document::DocumentsController < ApplicationController
       when 1
         attr = 'document_documents.title'
         sort = 'ASC'
+        personalized_search = true
       when 2
         rates = :note_average
         attr = 'rating_caches.avg'
+        personalized_search = true
       when 3
         attr = 'document_documents.hits'
+        personalized_search = true
     end
     where = ''
     joins = ''
@@ -53,16 +58,20 @@ class Document::DocumentsController < ApplicationController
     unless params[:created_at].blank?
       where+= ' AND ' unless where.blank?
       where+= 'document_documents.created_at <= :created_at'
+      personalized_search = true
     end
 
 
     if params[:order_by].nil? and params[:created_at].nil?
         if domain.nil? and !type.nil?
           @url = type_document_documents_url(type)
+          title_a << Document::Type.find(type).name
         elsif !domain.nil? and type.nil?
           @url = domain_document_documents_url(domain)
+          title_a << Domain.find(domain).name
         elsif !domain.nil? and !type.nil?
           @url = domain_type_document_documents_url({type_id: type, domain_id: domain})
+          title_a << t('document.documents.index.subtitle', domains: Domain.find(domain).name, type: Document::Type.find(type).name)
         end
     end
 
@@ -78,7 +87,12 @@ class Document::DocumentsController < ApplicationController
     else
       @url_for_js = pager_document_documents_url(page: params[:page])
     end
-
+    if personalized_search
+      title_a = []
+      title_a << t('document.documents.index.personlaized_search')
+    end
+    title_a << t('document.documents.index.page', nb_page: params[:page]) unless params[:page].nil?
+    content_for(:title, title_a.join(' - '))
     respond_to do |format|
       format.html # index.html.haml
       format.js # index.js.haml
@@ -92,7 +106,7 @@ class Document::DocumentsController < ApplicationController
   def update
     @document_documents = Document::Document.find(params[:id])
      if @document_documents.update_attributes(params[:document_document])
-       redirect_to document_document_path(@document_documents), notice: t('documents.update.notice')
+       redirect_to document_document_path(@document_documents), notice: t('document.documents.update.notice')
      else
        render 'edit'
      end
@@ -102,7 +116,7 @@ class Document::DocumentsController < ApplicationController
   def destroy
     @document_documents = Document::Document.find params[:id]
     @document_documents.destroy()
-    redirect_to document_documents_path, notice: t('documents.destroy.notice')
+    redirect_to document_documents_path, notice: t('document.documents.destroy.notice')
   end
 
   def show
@@ -130,7 +144,7 @@ class Document::DocumentsController < ApplicationController
     download =  Document::Download.where(document_documents_id: doc.id).where(user_id: current_user.id)
     if download.empty?
       if current_user.points-Point::DOWNLOAD_DOCUMENT<=0
-        redirect_to no_credit_users_path, alert: t('documents.download.no_credit', doc_name: doc.title) and return
+        redirect_to no_credit_users_path, alert: t('document.documents.download.no_credit', doc_name: doc.title) and return
       end
       current_user.points = current_user.points-Point::DOWNLOAD_DOCUMENT
       current_user.save
@@ -163,6 +177,7 @@ class Document::DocumentsController < ApplicationController
   def search
     @document_documents = Document::Document.search(Riddle::Query.escape(params[:query]), page: params[:page], ranker: :bm25)
     @searched_value = params[:query]
+    content_for(:title, t('document.documents.index.search', search: @searched_value))
     respond_to do |format|
       format.js {render 'document/documents/index.js'}
       format.html {render 'document/documents/index.html'}
@@ -170,7 +185,7 @@ class Document::DocumentsController < ApplicationController
   end
 
   def autocomplete
-    res =  Document::Document.search(Riddle::Query.escape(params[:term])).map do |a_res|
+    res =  Document::Document.search(Riddle::Query.escape(params[:term]), rank: :fieldmask).map do |a_res|
        {id: a_res.id, value: a_res.title}
     end
     respond_to do |format|

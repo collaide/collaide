@@ -1,5 +1,5 @@
 -#TODO : Ajouter des tooltips foundation
-=simple_form_for(@advertisement_sale_book, :validate => :javascript_validators, html: {class: 'custom'}) do |f|
+=simple_form_for(@advertisement_sale_book, :validate => :javascript_validators, html: {class: 'custom', data_abide: true}) do |f|
   =f.error_notification
   .form-inputs
     =field_set_tag t('sale_books.new.forms.required') do
@@ -60,7 +60,7 @@
         =f.input :description, label_html: tooltip(t("sale_books.new.forms.tooltips.description")), input_html: {rows: 3}
 
         =f.association :domains, collection: Domain.select_tree, label_html: tooltip(t("sale_books.new.forms.tooltips.domain"))
-        =f.association :study_level, prompt: t('documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations),  label_html: tooltip(t("sale_books.new.forms.tooltips.study_level"))
+        =f.association :study_level, prompt: t('document.documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations),  label_html: tooltip(t("sale_books.new.forms.tooltips.study_level"))
   .form-actions
     -if edit
       =f.button :submit, t('sale_books.edit.forms.submit')

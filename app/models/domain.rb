@@ -42,7 +42,7 @@ class Domain < ActiveRecord::Base
     end
   end
 
-  def self.select_tree(separator='----')
+  def self.select_tree(separator='-')
     Domain.order('position ASC').includes(:translations).each do |a_domain|
       a_domain.name = separator*a_domain.depth+a_domain.name unless a_domain.name.nil?
     end

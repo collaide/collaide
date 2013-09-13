@@ -66,7 +66,7 @@ module Document::DocumentsHelper
   end
 
   def doc_sub_title(document)
-    raw t('documents.index.subtitle',
+    raw t('document.documents.index.subtitle',
           {type: link_to(document.document_type.name, type_document_documents_path(document.document_type)),
            domains: link_to(document.domains.first.name, domain_document_documents_path(document.domains.first))})
   end

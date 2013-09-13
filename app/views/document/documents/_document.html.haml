@@ -8,7 +8,7 @@
           %p= rating_for document, 'note', star: 5
         .large-12.small-8.columns
           %p
-            =raw("<important class='label secondary'>#{t('documents.index.hits')}</important>")
+            =raw("<important class='label secondary'>#{t('document.documents.index.hits')}</important>")
             =document.hits
           =like_button(document_document_url(document), 'button_count')
       #star
@@ -16,5 +16,5 @@
       %h3= link_to document.title, document
       %h6.doc-subtitle= doc_sub_title document
       %p= document.description.truncate(100, separator: ' ', omission: ' ...')
-      =link_to t('documents.index.download'), document_document_download_path(document_document_id: document), class: 'button' if can? :download, Document::Document
-      =show_link document, t('documents.index.show')
+      =link_to t('document.documents.index.download'), document_document_download_path(document_document_id: document), class: 'button' if can? :download, Document::Document
+      =show_link document, t('document.documents.index.show')

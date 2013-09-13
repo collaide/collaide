@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'therubyracer'
+#gem 'therubyracer'
 
 gem 'bcrypt-ruby', '3.0.1'
 
@@ -54,8 +54,8 @@ gem 'enumerize'
 
 gem 'acts_as_commentable', '3.0.1'
 
-#gem 'mysql2',          '0.3.13'
-#gem 'thinking-sphinx', '3.0.5'
+gem 'mysql2',          '0.3.13'
+gem 'thinking-sphinx', '3.0.5'
 
 gem "breadcrumbs_on_rails"
 gem "geocoder"
