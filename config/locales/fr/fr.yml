@@ -199,6 +199,7 @@ fr:
         submit: Mettre ce livre en vente
         succes: Félicitation ! Votre livre a bien été mis en vente !
         valid_isbn: Désolé, nous n'avons trouvé aucun livre avec ce code ISBN
+        other_solution: Vous pouvez entrer manuellement le titre et l'auteur de votre livre !
         details_label: Augmentez vos chances de vente
         more_details: *no
         less_details: *yes

@@ -28,6 +28,7 @@ fr:
       book:
         isbn_13: Code ISBN
         title: Titre du livre
+        authors: Auteur(s)
       advertisement_sale_book:
         price: Prix
         currency: En

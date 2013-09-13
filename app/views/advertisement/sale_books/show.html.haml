@@ -13,13 +13,14 @@
         .small-8.large-8.columns
           %h3= @sale_book.book.title
           %h4= t'sale_books.show.authors', authors: @sale_book.book.authors
-          %p
-            =t'sale_books.show.edit'
-            -if @sale_book.book.publisher
-              =t'sale_books.show.publisher', publisher: @sale_book.book.publisher
-            -if @sale_book.book.published_date
-              =t'sale_books.show.published_date', published_date: l(@sale_book.book.published_date, format: :long) unless @sale_book.book.published_date == @sale_book.book.published_date.beginning_of_year
-              =t'sale_books.show.published_date_year', published_date: @sale_book.book.published_date.strftime('%Y') if @sale_book.book.published_date == @sale_book.book.published_date.beginning_of_year
+          -if @sale_book.book.publisher || @sale_book.book.published_date
+            %p
+              =t'sale_books.show.edit'
+              -if @sale_book.book.publisher
+                =t'sale_books.show.publisher', publisher: @sale_book.book.publisher
+              -if @sale_book.book.published_date
+                =t'sale_books.show.published_date', published_date: l(@sale_book.book.published_date, format: :long) unless @sale_book.book.published_date == @sale_book.book.published_date.beginning_of_year
+                =t'sale_books.show.published_date_year', published_date: @sale_book.book.published_date.strftime('%Y') if @sale_book.book.published_date == @sale_book.book.published_date.beginning_of_year
           -if @sale_book.book.description
             %p#book_description
               =@sale_book.book.description.truncate(100)

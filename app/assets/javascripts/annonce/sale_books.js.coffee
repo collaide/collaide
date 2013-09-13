@@ -5,7 +5,41 @@
 $('#more_details').click ->
   $('#form_to_hide').toggle 'slow'
 
+$("#book_isbn").click -> $('#book_title_to_hide').hide 'slow'
+
+addErrorToIsbn = () ->
+  $('.advertisement_sale_book_book_isbn_13').addClass('error')
+  $('#book_isbn').after("<small class='small_book_isbn_error'>"+$('#ajax_book_isbn_error').val()+". "+$('#ajax_book_isbn_other_solution').val()+"</small>");
+
+disabledInput = (input) ->
+  $(input).addClass('disabled')
+  $(input).attr( "disabled", "disabled")
+
+
+initializeIsbn = () ->
+  $(".small_book_isbn_error").remove()
+  $('.advertisement_sale_book_book_isbn_13').removeClass('error')
+  $('#book_title').removeClass('disabled')
+  $('#book_authors').removeClass('disabled')
+  $('#book_title').removeAttr("disabled")
+  $('#book_authors').removeAttr("disabled")
+  $('#book_title').val("")
+  $('#book_authors').val("")
+
+  #Pour la page de correction
+#$(document).ready ->
+#  #si on a deja soumis le form
+#  if $('#book_isbn').val() != '' &&  $('#book_title').val() != '' && $('#book_authors').val() != ''
+#    disabledInput('#book_title')
+#    disabledInput('#book_authors')
+
+
+
+
+
+
 $('#book_isbn').blur ->
+  initializeIsbn()
   isbn = $('#book_isbn').val()
   if isbn.length==10||isbn.length==13
     $.getJSON(
@@ -14,10 +48,20 @@ $('#book_isbn').blur ->
       (data, textStatus, jqXHR) ->
         if (data.title) # On a trouvé un titre
           $('#book_title').val(data.title)
+          disabledInput('#book_title')
+          if (data.authors)
+            $('#book_authors').val(data.authors)
+            disabledInput('#book_authors')
           $('#book_title_to_hide').show 'slow'
         else
           # Afficher qu'on n'a pas trouvé le ISBN en rouge
+          addErrorToIsbn()
+          $('#book_title_to_hide').show 'slow'
     )
-  else
-    $('#book_title_to_hide').hide 'slow'
+  else if isbn.length > 0 # Il a entré un ISBN
     # Afficher qu'on n'a pas trouvé le ISBN en rouge
+    addErrorToIsbn()
+    $('#book_title_to_hide').show 'slow'
+  else
+    $('#book_isbn').after("<small class='small_book_isbn_error'>"+$('#ajax_book_isbn_other_solution').val()+"</small>");
+    $('#book_title_to_hide').show 'slow'

@@ -6,13 +6,26 @@
       =f.simple_fields_for @advertisement_sale_book.book do |p|
         -if !edit
           =p.input :isbn_13, input_html: {id: 'book_isbn'}, label_html: tooltip(t("sale_books.new.forms.tooltips.isbn"))
+        -disabledTitle = false
+        -hideBookTitle = ''
         -if !edit
-          -hideBookTitle = 'hide'
+          -# On est dans la création, on affiche les champs de titre et autheur si on doit
+          -if @advertisement_sale_book.book.isbn_13
+            -if !@advertisement_sale_book.book.isbn_13.empty? && !@advertisement_sale_book.book.authors.empty? && !@advertisement_sale_book.book.title.empty?
+              -disabledTitle = true
+          -else
+            -hideBookTitle = 'hide'
         -else
-          -hideBookTitle = ''
+          -disabledTitle = true
         #book_title_to_hide{class: hideBookTitle}
           =hidden_field_tag 'ajax_path', new_advertisement_sale_book_path(:format => :json)
-          =p.input :title, :disabled => true, input_html: {id: 'book_title'}
+          =hidden_field_tag 'ajax_book_isbn_error', t('sale_books.new.forms.valid_isbn')
+          =hidden_field_tag 'ajax_book_isbn_other_solution', t('sale_books.new.forms.other_solution')
+          .row
+            .large-6.columns
+              =p.input :title, input_html: {id: 'book_title'}, disabled: disabledTitle
+            .large-6.columns
+              =p.input :authors, input_html: {id: 'book_authors'}, disabled: disabledTitle
 
       .row
         .small-12.columns

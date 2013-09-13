@@ -30,17 +30,16 @@ class Advertisement::SaleBooksController < ApplicationController
     book = Book.new
     @advertisement_sale_book.book = book
 
-    if params[:isbn].present?
-      isbn = ActiveSupport::JSON.decode(params[:isbn])
-      #parseIsbn(@isbn)
-      google_book = GoogleBooks.search("isbn:#{isbn}").first
-      @data = {isbn: google_book.isbn, title:google_book.title}
-    end
-
     respond_to do |format|
       format.html # new.html.haml
       format.json {
-        render json: @data
+        isbn = params[:isbn]
+        parseIsbn(isbn)
+        google_book = GoogleBooks.search("isbn:#{isbn}").first
+        if google_book && !isbn.blank?
+          fillBook(@advertisement_sale_book.book, google_book)
+        end
+        render json: @advertisement_sale_book.book
       }
     end
   end
@@ -62,51 +61,18 @@ class Advertisement::SaleBooksController < ApplicationController
     parseIsbn(isbn)
     google_book = GoogleBooks.search("isbn:#{isbn}").first
 
-    if google_book && !isbn.blank?
+    if google_book && !isbn.empty?
       #On cherche si le livre est déja dans la bdd, si il l'est, on le met à jour, si il ne l'ai pas, onle crée
       book = Book.find_by_isbn_13(google_book.isbn_13) || Book.find_by_isbn_10(google_book.isbn_10) || Book.new(isbn_13: google_book.isbn_13, isbn_10: google_book.isbn_10)
 
-      #On récupère tout les attribut dans le googlebook
-      #@book.class.accessible_attributes.each do |attribute|
-      #  unless attribute.blank?
-      #    @book.attribute = @google_book.attribute
-      #  end
-      #end
-
-      # mettre à jour book
-      book.title = google_book.title
-      book.description = google_book.description
-      book.average_rating = google_book.average_rating
-      book.ratings_count = google_book.ratings_count
-      book.isbn_10 = google_book.isbn_10
-      book.isbn_13 = google_book.isbn_13
-      book.authors = google_book.authors
-      book.language = google_book.language
-      book.page_count = google_book.page_count
-      # si c'est juste 2000, j'ajoute 2000-01-01
-      if google_book.published_date.length == 4
-        book.published_date = "#{google_book.published_date}-01-01".to_date
-      else
-        book.published_date = google_book.published_date
-      end
-      book.publisher = google_book.publisher
-      book.image_link = google_book.image_link
-
-=begin
-      if google_book.image_link(:zoom => 2)
-        book.image_link = google_book.image_link(:zoom => 2)
-      elsif google_book.image_link(:zoom => 5)
-        book.image_link = google_book.image_link(:zoom => 5)
-      elsif google_book.image_link(:zoom => 1)
-        book.image_link = google_book.image_link(:zoom => 1)
-      else
-        book.image_link = google_book.image_link(:zoom => 4)
-      end
-=end
-      book.preview_link = google_book.preview_link
-      book.info_link = google_book.info_link
-
+      fillBook(book, google_book)
     else
+      # Si il a entré un faux isbn, je met un espace a autheur pour voir qu'il a entré quelque chose
+      if params[:advertisement_sale_book][:book][:title] && params[:advertisement_sale_book][:book][:authors]
+        if !params[:advertisement_sale_book][:book][:title].empty? && !params[:advertisement_sale_book][:book][:authors].empty?
+          params[:advertisement_sale_book][:book][:isbn_13] = ''
+        end
+      end
       # On crée le book avec le isbn entrée dans le formulaire
       book = Book.new(params[:advertisement_sale_book][:book])
     end
@@ -128,6 +94,43 @@ class Advertisement::SaleBooksController < ApplicationController
         format.json { render json: @advertisement_sale_book.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # sert à remplir le book avec les infos de google book
+  def fillBook(book, google_book)
+
+    # mettre à jour book
+    book.title = google_book.title
+    book.description = google_book.description
+    book.average_rating = google_book.average_rating
+    book.ratings_count = google_book.ratings_count
+    book.isbn_10 = google_book.isbn_10
+    book.isbn_13 = google_book.isbn_13
+    book.authors = google_book.authors
+    book.language = google_book.language
+    book.page_count = google_book.page_count
+    # si c'est juste 2000, j'ajoute 2000-01-01
+    if google_book.published_date.length == 4
+      book.published_date = "#{google_book.published_date}-01-01".to_date
+    else
+      book.published_date = google_book.published_date
+    end
+    book.publisher = google_book.publisher
+    book.image_link = google_book.image_link
+
+=begin
+      if google_book.image_link(:zoom => 2)
+        book.image_link = google_book.image_link(:zoom => 2)
+      elsif google_book.image_link(:zoom => 5)
+        book.image_link = google_book.image_link(:zoom => 5)
+      elsif google_book.image_link(:zoom => 1)
+        book.image_link = google_book.image_link(:zoom => 1)
+      else
+        book.image_link = google_book.image_link(:zoom => 4)
+      end
+=end
+    book.preview_link = google_book.preview_link
+    book.info_link = google_book.info_link
   end
 
   # PUT /advertisement/sale_books/1
