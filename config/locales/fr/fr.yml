@@ -33,6 +33,8 @@ fr:
   back: *back
   confirm: Etes-vous sûre ?
   access_denied: Vous n'avez pas le droit de voir cette page. Désolé
+  default_key_words: "collaide, étudier, documents scolaires"
+  default_description_meta: Collaide est un réseau d'étudiant
   activerecord:
     models:
       user: profil
@@ -75,6 +77,9 @@ fr:
       all: "Liste des domaines"
   static_pages:
     home:
+      title_page: Accueil
+      key_words: "accueil, bienvenue"
+      description_meta: vous êtes sur la page d'accueil
       h1:
         title: Bienvenue sur %{app_name} !!!
         connection: *connection
@@ -101,59 +106,62 @@ fr:
       title: "Livre d'or"
       new_guest_book: "Nouveau commentaire dans le livre d'or"
       time_ago: "Il y a %{date}"
-  documents:
-    index:
-      title: Les documents scolaires
-      subtitle: "%{type} en %{domains}"
-      new_link: Nouveau document
-      download: Télécharger
-      no_document: Il n'y a aucun documents pour le moment
-      no_result: Aucun documents ne corresspondent à vos critères
-      hits: "Hits :"
-      show: Plus de détails
-      display_search: Rechercher un document
-      forms:
-        search:
-          label: Rechercher
-          submit: Go!
-        order:
-          label_type: Afficher un(e)
-          select_type: Choissiez le type
-          label_domains: en
-          select_domains: Choisissez le domaine
-          label_order: Classé par
-          select:
-            newest: Les plus récents
-            notest: Les mieux notés
-            hits: Les plus téléchargés
-            alphabetic: Par ordre alphabétique
-          label_datepicker: Réalisé avant le
-    new:
-      title: Nouveau document
-    form:
-      submit: Déposer le document
-      choose_language: Choisissez la langue
-      choose_study_level: Choisissez le niveau d'étude
-      choose_document_type: Choisissez le type de document
-    show:
-      more_infos: Plus de détails
-      realized_at: "%{realized_at} %{date}"
-      more_details: "%{page}, %{realized_at}"
-      hits: "Téléchargé %{times} fois"
-      back: Retour
-      modify: Modifier
-      delete: Supprimer
-      subtitle: "%{doc_subtitle}, réalisé par %{author}"
-      top_docs: "Top documents"
-      suggestion: "Vous aimerez peut-être"
-    edit:
-      title: Modifier le document
-    update:
-      notice: Le document a été modifié
-    create:
-      notice: Le document a été créé
-    destroy:
-      notice: Le document a été supprimé
+  document:
+    documents:
+      title_page: Documents scolaires
+      index:
+        title: Les documents scolaires
+        subtitle: "%{type} en %{domains}"
+        new_link: Nouveau document
+        download: Télécharger
+        no_document: Il n'y a aucun documents pour le moment
+        no_result: Aucun documents ne corresspondent à vos critères
+        hits: "Hits :"
+        show: Plus de détails
+        display_search: Rechercher un document
+        forms:
+          search:
+            label: Rechercher
+            submit: Go!
+          order:
+            label_type: Afficher un(e)
+            select_type: Choissiez le type
+            label_domains: en
+            select_domains: Choisissez le domaine
+            label_order: Classé par
+            select:
+              newest: Les plus récents
+              notest: Les mieux notés
+              hits: Les plus téléchargés
+              alphabetic: Par ordre alphabétique
+            label_datepicker: Réalisé avant le
+      new:
+        title_page: Déposer
+        title: Nouveau document
+      form:
+        submit: Déposer le document
+        choose_language: Choisissez la langue
+        choose_study_level: Choisissez le niveau d'étude
+        choose_document_type: Choisissez le type de document
+      show:
+        more_infos: Plus de détails
+        realized_at: "%{realized_at} %{date}"
+        more_details: "%{page}, %{realized_at}"
+        hits: "Téléchargé %{times} fois"
+        back: Retour
+        modify: Modifier
+        delete: Supprimer
+        subtitle: "%{doc_subtitle}, réalisé par %{author}"
+        top_docs: "Top documents"
+        suggestion: "Vous aimerez peut-être"
+      edit:
+        title: Modifier le document
+      update:
+        notice: Le document a été modifié
+      create:
+        notice: Le document a été créé
+      destroy:
+        notice: Le document a été supprimé
   advertisements:
     index:
       meta_title: Achetez un grand nombre de livres étudiants d'occasions à bas prix mis en vente par des étudiants !

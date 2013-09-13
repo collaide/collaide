@@ -4,7 +4,7 @@ class Document::DocumentsController < ApplicationController
     @document = Document::Document.new params[:document_document]
     @document.user = current_user
     if @document.save!
-      redirect_to document_documents_path, notice: t("documents.create.notice")
+      redirect_to document_documents_path, notice: t("document.documents.create.notice")
     else
       render action: 'new'
     end
@@ -78,7 +78,10 @@ class Document::DocumentsController < ApplicationController
     else
       @url_for_js = pager_document_documents_url(page: params[:page])
     end
-
+    @title = ''
+    title_a = []
+    title_a << "page #{params[:page]}" unless params[:page].nil?
+    content_for(:title, title_a.join(' - '))
     respond_to do |format|
       format.html # index.html.haml
       format.js # index.js.haml
@@ -92,7 +95,7 @@ class Document::DocumentsController < ApplicationController
   def update
     @document_documents = Document::Document.find(params[:id])
      if @document_documents.update_attributes(params[:document_document])
-       redirect_to document_document_path(@document_documents), notice: t('documents.update.notice')
+       redirect_to document_document_path(@document_documents), notice: t('document.documents.update.notice')
      else
        render 'edit'
      end
@@ -102,7 +105,7 @@ class Document::DocumentsController < ApplicationController
   def destroy
     @document_documents = Document::Document.find params[:id]
     @document_documents.destroy()
-    redirect_to document_documents_path, notice: t('documents.destroy.notice')
+    redirect_to document_documents_path, notice: t('document.documents.destroy.notice')
   end
 
   def show
@@ -130,7 +133,7 @@ class Document::DocumentsController < ApplicationController
     download =  Document::Download.where(document_documents_id: doc.id).where(user_id: current_user.id)
     if download.empty?
       if current_user.points-Point::DOWNLOAD_DOCUMENT<=0
-        redirect_to no_credit_users_path, alert: t('documents.download.no_credit', doc_name: doc.title) and return
+        redirect_to no_credit_users_path, alert: t('document.documents.download.no_credit', doc_name: doc.title) and return
       end
       current_user.points = current_user.points-Point::DOWNLOAD_DOCUMENT
       current_user.save
@@ -163,6 +166,7 @@ class Document::DocumentsController < ApplicationController
   def search
     @document_documents = Document::Document.search(Riddle::Query.escape(params[:query]), page: params[:page], ranker: :bm25)
     @searched_value = params[:query]
+    content_for(:title, "Recherche #{@searched_value}")
     respond_to do |format|
       format.js {render 'document/documents/index.js'}
       format.html {render 'document/documents/index.html'}
@@ -170,7 +174,7 @@ class Document::DocumentsController < ApplicationController
   end
 
   def autocomplete
-    res =  Document::Document.search(Riddle::Query.escape(params[:term])).map do |a_res|
+    res =  Document::Document.search(Riddle::Query.escape(params[:term]), rank: :fieldmask).map do |a_res|
        {id: a_res.id, value: a_res.title}
     end
     respond_to do |format|

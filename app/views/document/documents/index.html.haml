@@ -1,13 +1,13 @@
 .row
   .small-12.columns
-    %h1= t 'documents.index.title'
+    %h1= t 'document.documents.index.title'
     %p#no-doc
 .row
   .small-12.columns.large-6
-    =create_link(Document::Document, t('documents.index.new_link'), 'expand')
+    =create_link(Document::Document, t('document.documents.index.new_link'), 'expand')
 
 -if @document_documents.empty?
-  %p= t 'documents.index.no_document'
+  %p= t 'document.documents.index.no_document'
 -else
   -#FIXME: la pagination ne marche pas quand on séléction un domaine -> ça marche en principe
   -#FAIT: ajouter deux options de tris: classé par: notes et classer par: hits => seul les documentés pour les quels on a voté sont affichés
@@ -31,30 +31,30 @@
         =label_tag :display_search, id: :display_search do
           =check_box_tag :display_search
           %span.custom.checkbox
-          =t('documents.index.display_search')
+          =t('document.documents.index.display_search')
     .large-4.columns.push-8.small-12.hide-for-small#form_to_hide
       %fieldset
         %form{action: document_documents_path, method: :get}
-          =label_tag :search, t('documents.index.forms.search.label')
+          =label_tag :search, t('document.documents.index.forms.search.label')
           =search_field_tag :search, @searched_value
-          =submit_tag t('documents.index.forms.search.submit'), class: 'button success expand', name: nil, id: 'go-search'
+          =submit_tag t('document.documents.index.forms.search.submit'), class: 'button success expand', name: nil, id: 'go-search'
       %fieldset
         =hidden_field_tag :url_for_order, @url_for_js
         =hidden_field_tag :auto_complete_url, autocomplete_document_documents_path
         .row
           .small-6.columns
 
-            =label_tag :type, t('documents.index.forms.order.label_type')
-            =select_tag :type, options_from_collection_for_select(Document::Type.includes(:translations).order('name ASC'), :id, :name), prompt: t('documents.index.forms.order.select_type')
+            =label_tag :type, t('document.documents.index.forms.order.label_type')
+            =select_tag :type, options_from_collection_for_select(Document::Type.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_type')
           .small-6.columns
-            =label_tag :domains, t('documents.index.forms.order.label_domains')
-            =select_tag :domains, options_from_collection_for_select(Domain.includes(:translations).order('name ASC'), :id, :name), prompt: t('documents.index.forms.order.select_domains')
+            =label_tag :domains, t('document.documents.index.forms.order.label_domains')
+            =select_tag :domains, options_from_collection_for_select(Domain.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_domains')
         .row
           .small-6.columns
-            =label_tag :order, t('documents.index.forms.order.label_order')
-            =select_tag :order, options_for_select([[t('documents.index.forms.order.select.newest'), 0], [t('documents.index.forms.order.select.notest'), 2], [t('documents.index.forms.order.select.hits'), 3], [t('documents.index.forms.order.select.alphabetic'), 1]])
+            =label_tag :order, t('document.documents.index.forms.order.label_order')
+            =select_tag :order, options_for_select([[t('document.documents.index.forms.order.select.newest'), 0], [t('document.documents.index.forms.order.select.notest'), 2], [t('document.documents.index.forms.order.select.hits'), 3], [t('document.documents.index.forms.order.select.alphabetic'), 1]])
           .small-6.columns
-            =label_tag :datepicker, t('documents.index.forms.order.label_datepicker')
+            =label_tag :datepicker, t('document.documents.index.forms.order.label_datepicker')
             =text_field_tag :datepicker, nil, class: :datepicker
     .small-12.large-8.columns.pull-4#documents
       =render @document_documents
