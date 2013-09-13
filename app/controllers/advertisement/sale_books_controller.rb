@@ -30,9 +30,18 @@ class Advertisement::SaleBooksController < ApplicationController
     book = Book.new
     @advertisement_sale_book.book = book
 
+    if params[:isbn].present?
+      isbn = ActiveSupport::JSON.decode(params[:isbn])
+      #parseIsbn(@isbn)
+      google_book = GoogleBooks.search("isbn:#{isbn}").first
+      @data = {isbn: google_book.isbn, title:google_book.title}
+    end
+
     respond_to do |format|
       format.html # new.html.haml
-      format.json { render json: @advertisement_sale_book }
+      format.json {
+        render json: @data
+      }
     end
   end
 
@@ -49,9 +58,10 @@ class Advertisement::SaleBooksController < ApplicationController
 
     # ON CHERCHE SUR LE ISBN CORRESPOND
     isbn = params[:advertisement_sale_book][:book][:isbn_13]
-    parseIsbn(isbn)
 
+    parseIsbn(isbn)
     google_book = GoogleBooks.search("isbn:#{isbn}").first
+
     if google_book && !isbn.blank?
       #On cherche si le livre est déja dans la bdd, si il l'est, on le met à jour, si il ne l'ai pas, onle crée
       book = Book.find_by_isbn_13(google_book.isbn_13) || Book.find_by_isbn_10(google_book.isbn_10) || Book.new(isbn_13: google_book.isbn_13, isbn_10: google_book.isbn_10)

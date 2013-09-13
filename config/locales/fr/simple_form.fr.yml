@@ -27,6 +27,7 @@ fr:
     labels:
       book:
         isbn_13: Code ISBN
+        title: Titre du livre
       advertisement_sale_book:
         price: Prix
         currency: En

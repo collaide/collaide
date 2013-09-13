@@ -3,9 +3,17 @@
   =f.error_notification
   .form-inputs
     =field_set_tag t('sale_books.new.forms.required') do
-      -if !edit
-        =f.simple_fields_for @advertisement_sale_book.book do |p|
-          =p.input :isbn_13, label_html: tooltip(t("sale_books.new.forms.tooltips.isbn"))
+      =f.simple_fields_for @advertisement_sale_book.book do |p|
+        -if !edit
+          =p.input :isbn_13, input_html: {id: 'book_isbn'}, label_html: tooltip(t("sale_books.new.forms.tooltips.isbn"))
+        -if !edit
+          -hideBookTitle = 'hide'
+        -else
+          -hideBookTitle = ''
+        #book_title_to_hide{class: hideBookTitle}
+          =hidden_field_tag 'ajax_path', new_advertisement_sale_book_path(:format => :json)
+          =p.input :title, :disabled => true, input_html: {id: 'book_title'}
+
       .row
         .small-12.columns
           .row
@@ -22,10 +30,10 @@
             =label_tag :x, t('sale_books.new.forms.less_details')
             %span
     -if !edit
-      -hide = 'hide'
+      -hideOptional = 'hide'
     -else
-      -hide = ''
-    #form_to_hide{class: hide}
+      -hideOptional = ''
+    #form_to_hide{class: hideOptional}
       %fieldset
         %legend{class: "has-tip tip-top", title: t("sale_books.new.forms.tooltips.optional"), 'data-tooltip' => ''}= t('sale_books.new.forms.optional')
         =f.input :payment_modes, label_html: tooltip(t("sale_books.new.forms.tooltips.payment_modes")), :as => :check_boxes
