@@ -87,6 +87,10 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
     choice (0.1.6)
@@ -150,6 +154,8 @@ GEM
     fastercsv (1.5.5)
     ffi (1.9.0)
     ffi (1.9.0-x86-mingw32)
+    foreigner (1.5.0)
+      activerecord (>= 3.0.0)
     formatador (0.2.4)
     formtastic (2.2.1)
       actionpack (>= 3.0)
@@ -223,6 +229,10 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailboxer (0.11.0)
+      carrierwave (>= 0.5.8)
+      foreigner (>= 0.9.1)
+      rails (> 3.0.0)
     meta_request (0.2.7)
       callsite
       rack-contrib
@@ -350,6 +360,8 @@ GEM
     sqlite3 (1.3.5-x86-mingw32)
     sys-proctable (0.9.3)
     sys-proctable (0.9.3-x86-mingw32)
+    therubyracer (0.11.0beta1)
+      ref
     therubyracer (0.11.0beta1-x86-mingw32)
       ref
     thor (0.18.1)
@@ -366,6 +378,7 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.0.7)
+    win32console (1.3.2)
     win32console (1.3.2-x86-mingw32)
     xpath (0.1.4)
       nokogiri (~> 1.3)
@@ -417,6 +430,7 @@ DEPENDENCIES
   letsrate
   lorem-ipsum
   magic_encoding
+  mailboxer
   meta_request
   paper_trail
   paperclip (~> 3.0)

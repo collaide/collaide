@@ -2,7 +2,7 @@
 class CreateMemberFriendDemands < ActiveRecord::Migration
   def change
     create_table :member_friend_demands do |t|
-      t.text :message
+      t.text :message2
 
       t.timestamps
     end

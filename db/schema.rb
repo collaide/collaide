@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.text     "description"
     t.boolean  "active"
     t.string   "type"
-    t.decimal  "price",          :precision => 9, :scale => 2
+    t.decimal  "price",          :precision => 6, :scale => 2
     t.string   "currency"
     t.string   "state"
     t.string   "annotation"
@@ -122,6 +122,12 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "conversations", :force => true do |t|
+    t.string   "subject",    :default => ""
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
 
   create_table "delivery_modes_sales", :force => true do |t|
     t.integer "delivery_mode_id"
@@ -243,6 +249,26 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "notifications", :force => true do |t|
+    t.string   "type"
+    t.text     "body"
+    t.string   "subject",              :default => ""
+    t.integer  "sender_id"
+    t.string   "sender_type"
+    t.integer  "conversation_id"
+    t.boolean  "draft",                :default => false
+    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                              :null => false
+    t.integer  "notified_object_id"
+    t.string   "notified_object_type"
+    t.string   "notification_code"
+    t.string   "attachment"
+    t.boolean  "global",               :default => false
+    t.datetime "expires"
+  end
+
+  add_index "notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
+
   create_table "payment_modes_sales", :force => true do |t|
     t.integer "payment_mode_id"
     t.integer "sale_id"
@@ -272,6 +298,20 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   end
 
   add_index "rating_caches", ["cacheable_id", "cacheable_type"], :name => "index_rating_caches_on_cacheable_id_and_cacheable_type"
+
+  create_table "receipts", :force => true do |t|
+    t.integer  "receiver_id"
+    t.string   "receiver_type"
+    t.integer  "notification_id",                                  :null => false
+    t.boolean  "is_read",                       :default => false
+    t.boolean  "trashed",                       :default => false
+    t.boolean  "deleted",                       :default => false
+    t.string   "mailbox_type",    :limit => 25
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+  end
+
+  add_index "receipts", ["notification_id"], :name => "index_receipts_on_notification_id"
 
   create_table "user_addresses", :force => true do |t|
     t.string   "country"
@@ -348,26 +388,6 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.datetime "updated_at",      :null => false
     t.integer  "user_id"
     t.integer  "member_group_id"
-  end
-
-  create_table "user_message_inboxes", :force => true do |t|
-    t.boolean  "is_viewed",  :default => false
-    t.datetime "viewed_at"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.integer  "message_id"
-    t.integer  "user_id"
-  end
-
-  create_table "user_messages", :force => true do |t|
-    t.boolean  "is_send",    :default => false
-    t.datetime "send_at"
-    t.string   "subject"
-    t.text     "message"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.integer  "user_id"
-    t.integer  "message_id"
   end
 
   create_table "user_parameters", :force => true do |t|
@@ -450,5 +470,9 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   end
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
+
+  add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
+
+  add_foreign_key "receipts", "notifications", name: "receipts_on_notification_id"
 
 end

@@ -8,8 +8,9 @@ Collaide::Application.routes.draw do
   get 'change-lang', to: 'static_pages#change_lang', as: 'change_lang'
   match '/rate' => 'rater#create', :as => 'rate'
 
-  resources :advertisements, as: 'advertisement_advertisements', controller: 'advertisement/advertisements', :except => [:edit, :show] do
-  end
+  resources 'messages'
+
+  resources :advertisements, as: 'advertisement_advertisements', controller: 'advertisement/advertisements', :except => [:edit, :show]
 
   namespace :advertisement do
     #resources :delivery_mode

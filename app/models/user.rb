@@ -56,20 +56,19 @@ class User < ActiveRecord::Base
   has_many :created_friend_demands, :class_name => 'Member::Friend::Demand', foreign_key: :user_has_sent_id
   has_many :friend_demands, class_name: 'Member::Friend::Demand', foreign_key: :user_is_invited_id
 
-  has_many :messages_send, :class_name => 'Member::Message'
-  has_many :member_message_inboxes, :class_name => 'Member::Message::Inbox'
-  has_many :messages_received, :class_name => 'Member::Message::Inbox', through: :member_message_inboxes, source: :message
-
   has_and_belongs_to_many :group_demands, :class_name => 'Member::Group::Demand', join_table: 'group_demands_users'
   has_and_belongs_to_many :addresses, :class_name => 'Member::Address', join_table: 'member_addresses_users'
 
-  has_many :advertisement, :class_name => 'Advertisement::Advertisement'
+  has_many :advertisements, :class_name => 'Advertisement::Advertisement'
 
   #paperclip https://github.com/thoughtbot/paperclip
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "rails.png"
 
   # permet à un utilisateur de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   letsrate_rater
+
+  #https://github.com/ging/mailboxer
+  acts_as_messageable
 
   validates :name, presence: true
 
@@ -109,6 +108,16 @@ class User < ActiveRecord::Base
 
   def no_roles?
     role_mask.nil?
+  end
+
+  #Returning the email address of the model if an email should be sent for this object (Message or Notification).
+  #If no mail has to be sent, return nil.
+  def mailboxer_email(object)
+    #Check if an email should be sent for that object
+    #if true
+    self.email
+    #if false
+    #return nil
   end
 
   def name_to_show

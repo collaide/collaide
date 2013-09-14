@@ -5,7 +5,7 @@ class CreateMemberMessages < ActiveRecord::Migration
       t.boolean :is_send, default: false
       t.datetime :send_at
       t.string :subject
-      t.text :message
+      t.text :message2
 
       t.timestamps
     end

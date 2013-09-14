@@ -32,5 +32,6 @@ fr:
     advertisement: annonce
     advertisements: annonces
     books: livres
+    messages: messages
 en:
   routes:

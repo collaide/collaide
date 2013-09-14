@@ -60,6 +60,7 @@ gem 'acts_as_commentable', '3.0.1'
 gem 'breadcrumbs_on_rails'
 gem 'geocoder'
 gem 'country_select'
+gem 'mailboxer'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
