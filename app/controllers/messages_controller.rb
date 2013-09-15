@@ -1,7 +1,10 @@
 # -*- encoding : utf-8 -*-
 class MessagesController < ApplicationController
   def index
-    @messages = current_user.mailbox.inbox
+    user = User.find('1')
+    user2 = User.find('2')
+    user.send_message(user2, '@message.body', '@message.subject')
+    @messages = current_user.mailbox.conversations
 
     ##alfa wants to retrieve all his conversations
     #alfa.mailbox.conversations

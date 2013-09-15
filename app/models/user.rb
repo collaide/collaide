@@ -36,6 +36,9 @@ class User < ActiveRecord::Base
    attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :avatar, :name, :points,
                    :last_sign_in_at, :created_at
 
+  #https://github.com/ging/mailboxer
+  acts_as_messageable
+
   has_one :contact, :class_name => 'Member::Contact', inverse_of: :user
   has_one :parameter, :class_name => 'Member::Parameter'
   has_one :repository, :class_name => 'CFile::Structure'
@@ -44,7 +47,7 @@ class User < ActiveRecord::Base
   has_many :document_downloads, :class_name => 'Document::Download'
   has_many :downloads, class_name: 'Document::Document', through: :document_downloads, source: :document
 
-  has_many :statuses, :class_name => 'Member::Status', inverse_of: :user
+  has_many :statues, :class_name => 'Member::Status', inverse_of: :user
   has_many :scolarities, :class_name => 'Member::Scolarity'
 
   has_many :group_members, :class_name => 'Member::Group::Member'
@@ -66,9 +69,6 @@ class User < ActiveRecord::Base
 
   # permet à un utilisateur de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   letsrate_rater
-
-  #https://github.com/ging/mailboxer
-  acts_as_messageable
 
   validates :name, presence: true
 
