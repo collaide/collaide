@@ -3,7 +3,8 @@ class MessagesController < ApplicationController
   def index
     user = User.find('1')
     user2 = User.find('2')
-    user.send_message(user2, '@message.body', '@message.subject')
+    #message = message.new({:body => 'msg_body', :subject => 'subject', :attachment => 'attachment'})
+    user.send_message(user2, 'messagbody', 'messagesubject')
     @messages = current_user.mailbox.conversations
 
     ##alfa wants to retrieve all his conversations
