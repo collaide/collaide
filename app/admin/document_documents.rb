@@ -11,6 +11,8 @@ ActiveAdmin.register Document::Document do
        f.input :document_type
        f.input :user
        f.input :domains, collection: Domain.select_tree
+       f.input :status
+       f.input :language, as: :select, collection: languages_list
      end
      f.actions
   end

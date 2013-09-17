@@ -178,7 +178,8 @@ fr:
           realized_at: La date à la quelle le document a été réalisé
           language: La langue dans la quelle le document a été écrit
           study_level: Le niveau d'étude pour le quel le document a été écrit
-
+          type: "Une dissertation, un rapport, une présentation ? Choisissez !"
+          domains: Dans quels domaine(s) se situe votre document ?
   advertisements:
     index:
       meta_title: Achetez un grand nombre de livres étudiants d'occasions à bas prix mis en vente par des étudiants !
