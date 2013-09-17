@@ -66,7 +66,7 @@
 //
 
 // $row-width: 62.5em;
- $row-width: emCalc(1000);
+ $row-width: emCalc(1280px);
 // $column-gutter: 1.875em;
 // $total-columns: 12;
 
@@ -1022,3 +1022,7 @@ $document-subtitle-font-size: emCalc(16px);
 
 //$sale-book-subtitle-color: #a03b32;
 $sale-book-subtitle-font-size: emCalc(3px);
+
+.row {
+  max-width: $row-width;
+}
