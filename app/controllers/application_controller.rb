@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
   before_filter :set_locale_from_url
-  after_filter  add_breadcrumb(I18n.t('app_name'), :root_path)
 
   #rescue_from ActionController::RoutingError, :with => :render_not_found
 
@@ -69,6 +68,7 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = params[:locale] || ((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/])
     logger.info "lang set to '#{I18n.locale}'"
+    add_breadcrumb(I18n.t('app_name'), :root_path)
   end
 
 
