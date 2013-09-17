@@ -44,6 +44,20 @@ fr:
         users: Destinataire(s)
         subject: Titre
         body: Contenu
+      document_document:
+        title: Titre du document
+        description: Déscription
+        author: Auteur du document
+        number_of_pages: Nombre de pages
+        realized_at: Date de réalisation
+        language: Langue du document
+        study_level: Niveau d'étude
+        document_type: Type de document
+        domains: Domaines d'études
+
+      c_file_c_file:
+        file: Ajouter un fichier
+
     placeholders:
       book:
         isbn_13: 9781781100820
@@ -51,6 +65,12 @@ fr:
         price: 12.95
         title: Livre très utile en première année de droit
         description: J'ai acheté ce livre au début de ma première année de droit à L'Université. Ayant changé de filière, je ne l'ai jamais utilisé.
+      document_document:
+        title: "Dissertation : Ma liberté s'arrête là où commence celle de mon voisin"
+        description: Dissertation sur le thème de la liberté. Dans cette dissertation, je démontre que la liberté n'est jamais totale, mais toujours en fonction des autres.
+        author: Alfred Dupont
+        number_of_pages: 1
+        realized_at: "01/01/1984"
     prompts:
       advertisement_sale_book:
         currency: *choose
