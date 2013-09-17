@@ -1,5 +1,7 @@
 class Document::DocumentsController < ApplicationController
   load_and_authorize_resource class: Document::Document
+  add_breadcrumb(I18n.t('document.documents.bc'), :document_documents_path)
+  add_breadcrumb(I18n.t('document.documents.new.bc'), :new_document_document_path, only: [:new, :create])
   def create
     @document = Document::Document.new params[:document_document]
     @document.user = current_user
@@ -11,8 +13,8 @@ class Document::DocumentsController < ApplicationController
   end
 
   def new
+
     @document = Document::Document.new
-    @document.author = current_user.name_to_show
     #@document.files.build
   end
 

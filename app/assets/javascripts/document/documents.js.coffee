@@ -74,3 +74,6 @@ $ ->
   $('#display_search').click ->
     $('#form_to_hide').toggleClass('hide-for-small');
 
+$ ->
+
+

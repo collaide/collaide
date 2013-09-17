@@ -109,6 +109,7 @@ fr:
   document:
     documents:
       title_page: Documents scolaires
+      bc: Les documents scolaires
       index:
         title: Les documents scolaires
         subtitle: "%{type} en %{domains}"
@@ -140,6 +141,7 @@ fr:
               alphabetic: Par ordre alphabétique
             label_datepicker: Réalisé avant le
       new:
+        bc: Envoyer un document
         title_page: Déposer
         title: Nouveau document
       form:
@@ -166,6 +168,17 @@ fr:
         notice: Le document a été créé
       destroy:
         notice: Le document a été supprimé
+      forms:
+        tooltips:
+          title: Le titre doit être le plus explicite possible
+          description: Expliquer à propos de quel sujet est le document
+          file: Vous devez choisir un fichier comme document
+          author: La personne qui a réalisé le document
+          number_of_pages: Le nombre de pages du document
+          realized_at: La date à la quelle le document a été réalisé
+          language: La langue dans la quelle le document a été écrit
+          study_level: Le niveau d'étude pour le quel le document a été écrit
+
   advertisements:
     index:
       meta_title: Achetez un grand nombre de livres étudiants d'occasions à bas prix mis en vente par des étudiants !

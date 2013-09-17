@@ -3,7 +3,7 @@ module Document::DocumentsHelper
 
   def languages_list
     #TODO: Compléter la liste
-    [[t("translation.en"), t("translation.en")], [t("translation.fr"), t("translation.fr")]]
+    [[t("translation.en"), :en], [t("translation.fr"), :fr]]
   end
 
   # Print links for sorting documents (ascendant or descendant) by a specified attribute
