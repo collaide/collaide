@@ -1,0 +1,26 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#conversations {
+  //message.sprite-message{ background-position: 0 0; width: 24px; height: 25px; }
+  //message.sprite-messagec_non_lus{ background-position: 0 -26px; width: 24px; height: 25px; }
+  //message.sprite-messagep_lu{ background-position: 0 -52px; width: 24px; height: 25px; }
+  //message.sprite-messagep_non_lu{ background-position: 0 -78px; width: 24px; height: 25px; }
+  .read {
+    background: url(messages/reads.png) no-repeat top left;
+    background-position: 0 0;
+    width: 24px;
+    height: 25px;
+  }
+  .unread {
+    background: url(messages/reads.png) no-repeat top left;
+    background-position: 0 -26px;
+    width: 24px;
+    height: 25px;
+  }
+
+
+
+
+}

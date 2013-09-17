@@ -1,0 +1,15 @@
+.row
+  .small-12
+    =link_to( t('messages.index.new_link'), new_message_path, class: 'button secondary small')
+%ul.side-nav
+  %li.divider
+  %li
+    %a.active{href:'#'}= t('messages.index.menu.inbox')
+  %li
+    %a{href:'#'}= t('messages.index.menu.sendbox')
+  %li.divider
+  %li
+    %a{href:'#'}= t('messages.index.menu.all')
+  %li.divider
+  %li
+    %a{href:'#'}= t('messages.index.menu.trash')

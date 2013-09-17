@@ -40,6 +40,10 @@ fr:
         description: Plus d'informations
         domains: Domaines
         study_level: Niveau d'étude
+      message_sending:
+        users: Destinataire(s)
+        subject: Titre
+        body: Contenu
     placeholders:
       book:
         isbn_13: 9781781100820
@@ -49,6 +53,6 @@ fr:
         description: J'ai acheté ce livre au début de ma première année de droit à L'Université. Ayant changé de filière, je ne l'ai jamais utilisé.
     prompts:
       advertisement_sale_book:
-        currency: Choisissez...
+        currency: *choose
         state: *choose
         annotation: *choose

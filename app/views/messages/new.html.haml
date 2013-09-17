@@ -1,3 +1,4 @@
-%h1 Envoyer Message
+%h1= t('messages.new.h1_title')
 
-=render 'form'
+-#=render(partial: 'form', :layout => 'layout_messages', :locals => {:conversations => @conversations})
+=render('form')

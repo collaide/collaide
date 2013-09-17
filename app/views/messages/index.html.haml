@@ -1,3 +1,7 @@
+-#LAYOUT DES MESSAGES
 .row
   .small-12.columns
-    %h1 Messages
+    %h1= t('messages.index.h1_title')
+=render(:layout => 'layout_messages', :locals => {:conversations => @conversations}) do
+  .row
+    Contenu de l'index

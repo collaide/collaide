@@ -5,7 +5,6 @@
 .row
   .small-12.columns.large-6
     =create_link(Document::Document, t('document.documents.index.new_link'), 'expand')
-
 -if @document_documents.empty?
   %p= t 'document.documents.index.no_document'
 -else

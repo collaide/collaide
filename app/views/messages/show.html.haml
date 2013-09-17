@@ -1,0 +1,7 @@
+.row
+  .small-12.columns
+    %h1= @conversation.subject
+-#using the receipts (i.e. in the view)
+-@receipts.each do |receipt|
+  = receipt.inspect
+  = receipt.is_unread? #or message.is_unread?(alfa)

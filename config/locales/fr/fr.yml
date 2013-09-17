@@ -252,3 +252,28 @@ fr:
       forms:
         submit: Modifier la vente
         succes: Vos modifications ont bien été enregistrées !
+  messages:
+    index:
+      h1_title: Vos messages
+      breadcrumb: Messagerie
+      new_link: Nouveau message
+      no_message: Vous n'avez aucun message
+      menu:
+        all: Tous les messages
+        inbox: Messages entrants
+        sendbox: Messages envoyés
+        trash: Messages supprimés
+      table:
+        title: Titre
+        reply: Rép.
+        participants: Participants
+        last: Dernier message
+    new:
+      h1_title: Envoyer un message
+      forms:
+        success: Votre message a bien été envoyé !
+        submit: Envoyer
+        tooltips:
+          users: Vous pouvez choisir plusieurs utilisateurs en maintenant la touche CTRL enfoncée
+    show:
+      #h1_title: %{title}
