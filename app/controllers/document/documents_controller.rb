@@ -182,6 +182,7 @@ class Document::DocumentsController < ApplicationController
     @document_documents = Document::Document.search(Riddle::Query.escape(params[:query]), page: params[:page], ranker: :bm25)
     @searched_value = params[:query]
     content_for(:title, t('document.documents.index.search', search: @searched_value))
+    add_breadcrumb(t('document.documents.index.search', search: @searched_value))
     respond_to do |format|
       format.js {render 'document/documents/index.js'}
       format.html {render 'document/documents/index.html'}
