@@ -47,7 +47,7 @@ fr:
       document_document:
         title: Titre du document
         description: Déscription
-        author: Auteur du document
+        author: Auteur(s) du document
         number_of_pages: Nombre de pages
         realized_at: Date de réalisation
         language: Langue du document

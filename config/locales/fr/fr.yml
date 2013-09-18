@@ -178,8 +178,8 @@ fr:
           author: La personne qui a réalisé le document
           number_of_pages: Le nombre de pages du document
           realized_at: La date à la quelle le document a été réalisé
-          language: La langue dans la quelle le document a été écrit
-          study_level: Le niveau d'étude pour le quel le document a été écrit
+          language: La langue dans la quelle le document est écrit
+          study_level: Le niveau d'étude pour le quel le document est écrit
           type: "Une dissertation, un rapport, une présentation ? Choisissez !"
           domains: Dans quels domaine(s) se situe votre document ?
   advertisements:
