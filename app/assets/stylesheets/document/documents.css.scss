@@ -3,13 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'foundation_and_overrides';
 
-.index-data {
-  h3 {
+.index-document {
+  h1 {
     a {
       color: $header-font-color;
+      font-size: emCalc(10px);
+      line-height: 0.5em;
     }
+    margin-bottom: emCalc(5px);
+    line-height: .85em;
     a:hover {
       text-decoration: underline;
+      color: $header-font-color;
     }
   }
   .doc-subtitle {

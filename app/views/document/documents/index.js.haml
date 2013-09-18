@@ -1,5 +1,6 @@
 -unless params[:page]
-  history.pushState('', null, "#{escape_javascript(@url)}")
+  history.pushState('', null, "#{escape_javascript(@url)}");
+$('#breadcrumb').html("#{escape_javascript(render_breadcrumbs :builder => ::FoundationBreadcrumbsBuilder, :separator => "&raquo;")}");
 $('#documents').html("#{escape_javascript(render @document_documents)}");
 $('#paginate').html("#{escape_javascript paginate @document_documents, remote: true}");
 document.title = "#{escape_javascript(full_title(yield(:title)))}";

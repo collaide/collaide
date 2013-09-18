@@ -124,6 +124,8 @@ fr:
         personlaized_search: Affichage personalisé
         search: "Recherche de '%{search}'"
         no_result: "Aucun documents"
+        title_type_document: Document
+        title_type: "%{document} en %{domain}"
         forms:
           search:
             label: Rechercher
