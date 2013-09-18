@@ -4,12 +4,12 @@
 %ul.side-nav
   %li.divider
   %li
-    %a.active{href:'#'}= t('messages.index.menu.inbox')
+    %a.active{href: messages_path}= t('messages.index.menu.inbox')
   %li
     %a{href:'#'}= t('messages.index.menu.sendbox')
   %li.divider
   %li
-    %a{href:'#'}= t('messages.index.menu.all')
-  %li.divider
-  %li
     %a{href:'#'}= t('messages.index.menu.trash')
+  %li.divider
+    %li
+      %a{href:'#'}= t('messages.index.menu.all')

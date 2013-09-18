@@ -17,10 +17,9 @@
   .small-12.columns.large-10
     %h5= link_to sale_book_title(sale_book), sale_book
     %h6.subheader= t('sale_books.index.subtitle1', book:sale_book.book.title)
-    %h6.subheader= raw(t('sale_books.index.subtitle2',
-                        {user: link_to(sale_book.user.name_to_show, sale_book.user),
-                        price: number_to_currency(sale_book.price,
-                        :unit => sale_book.currency.text)}))
+    %h6.subheader
+      =link_to(sale_book.user.name_to_show, sale_book.user)
+      =t('sale_books.index.subtitle2', price: number_to_currency(sale_book.price, :unit => sale_book.currency.text))
     -if sale_book.description
       %p= sale_book.description.truncate(100, separator: ' ', omission: ' ...')
     -elsif sale_book.book.description

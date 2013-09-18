@@ -13,7 +13,7 @@ class Advertisement::AdvertisementsController < ApplicationController
   end
 
   def index
-    @advertisement = Advertisement::Advertisement.all
+    @advertisement = Advertisement::Advertisement.order('id DESC').all
   end
 
   def destroy

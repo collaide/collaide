@@ -1,4 +1,8 @@
 %h1= t('messages.new.h1_title')
 
 -#=render(partial: 'form', :layout => 'layout_messages', :locals => {:conversations => @conversations})
-=render('form')
+.row
+  .large-2.columns
+    =render 'messages_menu'
+  .large-10.columns
+    =render('form')

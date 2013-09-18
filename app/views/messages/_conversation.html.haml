@@ -2,4 +2,15 @@
   %p.title{'data-section-title' => true}
     %a{'href'=>'#'}=c.subject
   .content{'data-section-content' => true}
-    Contenu à charger en AJAX
+    -receipts = c.receipts_for current_user
+    -receipts.each do |r|
+      -if r.mailbox_type == 'sentbox'
+        -text_align= 'text-left'
+      -else
+        -text_align= 'text-right'
+      .message{class: text_align}
+        %p=link_to(r.message.sender.name_to_show, r.message.sender)
+        %p=r.message.body
+        -#=link_to_message_sender(r)
+        -#=r.inspect
+        %hr

@@ -22,6 +22,13 @@ class MessagesController < ApplicationController
     #
     ##alfa wants to retrieve his trashed conversations
     #alfa.mailbox.trash
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json {
+        render json: @conversation
+      }
+    end
+
   end
 
   #def show
@@ -60,8 +67,8 @@ class MessagesController < ApplicationController
   end
 
   private
-  def getConversations
-    current_user.mailbox.conversations
+  def getConversations(page=1)
+    current_user.mailbox.conversations.page(page).per(9)
   end
 
 end

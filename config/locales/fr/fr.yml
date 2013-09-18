@@ -204,7 +204,7 @@ fr:
       buy: Acheter
       note: Note
       subtitle1: "Livre: %{book}"
-      subtitle2: "%{user} vend ce livre %{price}"
+      subtitle2: " vend ce livre %{price}"
       no_description: Il n'y a pas de description pour ce livre...
     new:
       title: Vendre un livre
@@ -256,6 +256,7 @@ fr:
       edited: Publié
       payment_modes: "Mode de payement:"
       delivery_modes: "Mode de livraison:"
+      sale_user: En vente par
       buy: Acheter
       others_sales: Autres ventes pour %{book}
       user: Membre
