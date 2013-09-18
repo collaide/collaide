@@ -276,6 +276,7 @@ fr:
       new_link: Nouveau message
       no_message: Vous n'avez aucun message
       reply: Votre réponse...
+      submit: Répondre
       menu:
         all: Tous les messages
         inbox: Messages entrants

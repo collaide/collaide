@@ -21,4 +21,4 @@
     =form_tag(controller: 'messages', action: 'reply') do
       =text_area_tag(:reply, nil, placeholder: t('messages.index.reply'))
       =hidden_field_tag(:conversation, c.id)
-      =submit_tag
+      =submit_tag(t('messages.index.submit'))
