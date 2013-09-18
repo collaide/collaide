@@ -5,9 +5,9 @@
     -receipts = c.receipts_for current_user
     -receipts.order.each do |r|
       -if r.mailbox_type == 'sentbox'
-        -text_align= ''#text-right'
+        -text_align= ''#'text-right'
       -else
-        -text_align= ''#text-left'
+        -text_align= ''#'text-left'
       -if r.is_unread?
         -unread = ''
       -else
