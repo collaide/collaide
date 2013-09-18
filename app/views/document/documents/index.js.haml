@@ -1,11 +1,13 @@
 -unless params[:page]
-  history.pushState('', null, "#{escape_javascript(@url)}")
+  history.pushState('', null, "#{escape_javascript(@url)}");
 $('#documents').html("#{escape_javascript(render @document_documents)}");
 $('#paginate').html("#{escape_javascript paginate @document_documents, remote: true}");
 document.title = "#{escape_javascript(full_title(yield(:title)))}";
 $('#url_for_order').val("#{escape_javascript @url}");
 $('#paginate li a').on('click', function() {history.pushState('', null, this.href);});
-window.make_rateble();
+applyRaty();
+FB.XFBML.parse();
+$('#breadcrumb').html("#{escape_javascript(render_breadcrumbs :builder => ::FoundationBreadcrumbsBuilder, :separator => "&raquo;")}");
 -if @document_documents.empty?
   $('#no-doc').html("#{t('document.documents.index.no_result')}")
 -else

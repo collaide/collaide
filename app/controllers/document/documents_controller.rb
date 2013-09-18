@@ -19,7 +19,7 @@ class Document::DocumentsController < ApplicationController
   end
 
   def index
-    #TODO optimisation des requêtes, déjà fait en partie. Possible de faire en core mieux ? a voir
+    #TODO: optimisation des requêtes, déjà fait en partie. Possible de faire en core mieux ? a voir
 
     if params[:search].present?
       redirect_to search_document_documents_path(query: params[:search]) and return
@@ -63,26 +63,27 @@ class Document::DocumentsController < ApplicationController
       personalized_search = true
     end
 
-
-    if params[:order_by].nil? and params[:created_at].nil?
-        if domain.nil? and !type.nil?
-          @url = type_document_documents_url(type)
-          title_a << Document::Type.find(type).name
-        elsif !domain.nil? and type.nil?
-          @url = domain_document_documents_url(domain)
-          title_a << Domain.find(domain).name
-        elsif !domain.nil? and !type.nil?
-          @url = domain_type_document_documents_url({type_id: type, domain_id: domain})
-          title_a << t('document.documents.index.subtitle', domains: Domain.find(domain).name, type: Document::Type.find(type).name)
-        end
-    end
-
     #la requête. Joli, non ?
      @document_documents = Document::Document.order("#{attr} #{sort}").
          includes([:study_level, :document_type, {domains: :translations}]).
          joins(joins).joins(rates).
          where(where, {domain: domain, type: type, created_at: params[:created_at]}).
          page(params[:page])
+
+    if params[:order_by].nil? and params[:created_at].nil?
+
+      if domain.nil? and !type.nil?
+        @url = type_document_documents_url(type)
+        title_a << view_context.pluralize(@document_documents.size, Document::Type.find(type).name)
+      elsif !domain.nil? and type.nil?
+        @url = domain_document_documents_url(domain)
+        title_a << t('document.documents.index.title_type', document: view_context.pluralize(@document_documents.size, t('document.documents.index.title_type_document')), domain: Domain.find(domain).name)
+      elsif !domain.nil? and !type.nil?
+        @url = domain_type_document_documents_url({type_id: type, domain_id: domain})
+        title_a << t('document.documents.index.subtitle', domains: Domain.find(domain).name, type: view_context.pluralize(@document_documents.size, Document::Type.find(type).name))
+      end
+    end
+
     #pour la partie javascript. Si on est sur la page 1 ou une autre
     if params[:page].nil?
       @url_for_js = document_documents_url
@@ -94,7 +95,8 @@ class Document::DocumentsController < ApplicationController
       title_a << t('document.documents.index.personlaized_search')
     end
     title_a << t('document.documents.index.page', nb_page: params[:page]) unless params[:page].nil?
-    content_for(:title, title_a.join(' - '))
+    content_for(:title, title_a.join(' - ')) unless title_a.nil?
+    add_breadcrumb(title_a.join(' - ')) unless title_a.empty?
     respond_to do |format|
       format.html # index.html.haml
       format.js # index.js.haml
@@ -180,6 +182,7 @@ class Document::DocumentsController < ApplicationController
     @document_documents = Document::Document.search(Riddle::Query.escape(params[:query]), page: params[:page], ranker: :bm25)
     @searched_value = params[:query]
     content_for(:title, t('document.documents.index.search', search: @searched_value))
+    add_breadcrumb(t('document.documents.index.search', search: @searched_value))
     respond_to do |format|
       format.js {render 'document/documents/index.js'}
       format.html {render 'document/documents/index.html'}
