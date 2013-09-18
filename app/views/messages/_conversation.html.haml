@@ -1,15 +1,15 @@
 %section
   %p.title{'data-section-title' => true}
-    %a{'href'=>'#'}=c.subject
-  .content{'data-section-content' => true}
+    %a{'href'=>messages_path(:anchor => c.id)}=c.subject
+  .content{'data-slug'=>c.id, 'data-section-content' => true}
     -receipts = c.receipts_for current_user
-    -receipts.order('id DESC').each do |r|
+    -receipts.order.each do |r|
       -if r.mailbox_type == 'sentbox'
-        -text_align= 'text-left'
+        -text_align= ''#text-right'
       -else
-        -text_align= 'text-right'
+        -text_align= ''#text-left'
       -if r.is_unread?
-        -unread = 'panel'
+        -unread = ''
       -else
         -unread = ''
       .message{class: "#{text_align} #{unread}"}

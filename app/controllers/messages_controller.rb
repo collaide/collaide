@@ -4,7 +4,9 @@ class MessagesController < ApplicationController
   add_breadcrumb I18n.t("messages.new.h1_title"), :new_message_path, :only => %w(new create)
 
   def index
-    current_user.send_message(current_user, "Salut Yves, je t'envoie ce mail car j'ai un soucis", 'titre')
+    #user = User.find(2)
+    #user.send_message(current_user, 'contenu du message', 'Salut vieux boy')
+    #current_user.send_message(current_user, "Salut Yves, je t'envoie ce mail car j'ai un soucis", 'titre')
 
     @conversations = getConversations
 
@@ -24,12 +26,12 @@ class MessagesController < ApplicationController
       redirect_to :messages, alert: t('messages.reply.no_conversation') and return
     end
     if params[:reply].empty?
-      redirect_to :messages, alert: t('messages.reply.empty_message') and return
+      redirect_to messages_path(:anchor => c.id), alert: t('messages.reply.empty_message') and return
     end
 
     current_user.reply_to_conversation(c, params[:reply])
 
-    redirect_to :messages, notice: t('messages.reply.succed')
+    redirect_to messages_path(:anchor => c.id), notice: t('messages.reply.succed')
   end
 
   #def show

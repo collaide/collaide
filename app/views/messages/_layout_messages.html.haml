@@ -3,6 +3,7 @@
   .large-2.columns
     =render 'messages_menu'
   .large-10.columns
-    .section-container.vertical-tabs{'data-section' => 'vertical-tabs'}
-      -conversations.each do |c|
-        =render partial: 'conversation', :locals => {:c => c}
+    #messages_box
+      .section-container.vertical-tabs{'data-section' => 'vertical-tabs', 'data-options'=>'deep_linking: true'}
+        -conversations.each do |c|
+          =render partial: 'conversation', :locals => {:c => c}
