@@ -7,21 +7,7 @@ class MessagesController < ApplicationController
     current_user.send_message(current_user, "Salut Yves, je t'envoie ce mail car j'ai un soucis", 'titre')
 
     @conversations = getConversations
-    #message = message.new({:body => 'msg_body', :subject => 'subject', :attachment => 'attachment'})
-    #user.send_message(user2, 'messagbody', 'messagesubject')
-    #@conversations = current_user.mailbox.inbox
 
-    ##alfa wants to retrieve all his conversations
-    #alfa.mailbox.conversations
-    #
-    ##A wants to retrieve his inbox
-    #alfa.mailbox.inbox
-    #
-    ##A wants to retrieve his sent conversations
-    #alfa.mailbox.sentbox
-    #
-    ##alfa wants to retrieve his trashed conversations
-    #alfa.mailbox.trash
     respond_to do |format|
       format.html # index.html.erb
       format.json {
@@ -29,6 +15,21 @@ class MessagesController < ApplicationController
       }
     end
 
+  end
+
+  #Cette methode sert juste à traiter la réponse, elle n'aura pas de vue
+  def reply
+    c = Conversation.find(params[:conversation])
+    unless c
+      redirect_to :messages, alert: t('messages.reply.no_conversation') and return
+    end
+    if params[:reply].empty?
+      redirect_to :messages, alert: t('messages.reply.empty_message') and return
+    end
+
+    current_user.reply_to_conversation(c, params[:reply])
+
+    redirect_to :messages, notice: t('messages.reply.succed')
   end
 
   #def show
@@ -68,7 +69,20 @@ class MessagesController < ApplicationController
 
   private
   def getConversations(page=1)
-    current_user.mailbox.conversations.page(page).per(9)
+    #@conversations = current_user.mailbox.inbox
+
+    ##alfa wants to retrieve all his conversations
+    #alfa.mailbox.conversations
+    #
+    ##A wants to retrieve his inbox
+    #alfa.mailbox.inbox
+    #
+    ##A wants to retrieve his sent conversations
+    #alfa.mailbox.sentbox
+    #
+    ##alfa wants to retrieve his trashed conversations
+    #alfa.mailbox.trash
+    current_user.mailbox.inbox.page(page).per(9)
   end
 
 end

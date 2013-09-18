@@ -3,14 +3,22 @@
     %a{'href'=>'#'}=c.subject
   .content{'data-section-content' => true}
     -receipts = c.receipts_for current_user
-    -receipts.each do |r|
+    -receipts.order('id DESC').each do |r|
       -if r.mailbox_type == 'sentbox'
         -text_align= 'text-left'
       -else
         -text_align= 'text-right'
-      .message{class: text_align}
+      -if r.is_unread?
+        -unread = 'panel'
+      -else
+        -unread = ''
+      .message{class: "#{text_align} #{unread}"}
         %p=link_to(r.message.sender.name_to_show, r.message.sender)
         %p=r.message.body
         -#=link_to_message_sender(r)
-        -#=r.inspect
-        %hr
+      %hr
+    -#formulair de réponse
+    =form_tag(controller: 'messages', action: 'reply') do
+      =text_area_tag(:reply, nil, placeholder: t('messages.index.reply'))
+      =hidden_field_tag(:conversation, c.id)
+      =submit_tag

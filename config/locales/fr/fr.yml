@@ -275,6 +275,7 @@ fr:
       breadcrumb: Messagerie
       new_link: Nouveau message
       no_message: Vous n'avez aucun message
+      reply: Votre réponse...
       menu:
         all: Tous les messages
         inbox: Messages entrants
@@ -294,3 +295,7 @@ fr:
           users: Vous pouvez choisir plusieurs utilisateurs en maintenant la touche CTRL enfoncée
     show:
       #h1_title: %{title}
+    reply:
+      no_conversation: Réponse non envoyée ! Cette conversation n'existe pas ou plus...
+      succed: Votre réponse a bien été envoyée !
+      empty_message: Les réponses vides ne sont pas envoyées
