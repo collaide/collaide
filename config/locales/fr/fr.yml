@@ -150,7 +150,7 @@ fr:
               notest: Les mieux notés
               hits: Les plus téléchargés
               alphabetic: Par ordre alphabétique
-            label_datepicker: Réalisé avant le
+            label_datepicker: Publié après le
       new:
         bc: Envoyer un document
         title_page: Déposer

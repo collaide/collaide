@@ -44,6 +44,7 @@
       %fieldset
         %form{class: 'custom', action: document_documents_path, method: :get}
           =hidden_field_tag :url_for_order, @url_for_js
+          =hidden_field_tag :url_for_ajax, @url_for_js
           =hidden_field_tag :auto_complete_url, autocomplete_document_documents_path
           .row
             .small-6.columns

@@ -59,29 +59,43 @@ class Document::DocumentsController < ApplicationController
     end
     unless params[:created_at].blank?
       where+= ' AND ' unless where.blank?
-      where+= 'document_documents.created_at <= :created_at'
+      where+= 'document_documents.created_at >= :created_at'
       personalized_search = true
     end
 
     #la requête. Joli, non ?
      @document_documents = Document::Document.order("#{attr} #{sort}").
-         includes([:study_level, :document_type, {domains: :translations}]).
+         includes([:study_level, :document_type, {domains: :translations}], :user, :files, :note_average).
          joins(joins).joins(rates).
          where(where, {domain: domain, type: type, created_at: params[:created_at]}).
          page(params[:page])
 
-    if params[:order_by].nil? and params[:created_at].nil?
-
-      if domain.nil? and !type.nil?
-        @url = type_document_documents_url(type)
-        title_a << view_context.pluralize(@document_documents.size, Document::Type.find(type).name)
-      elsif !domain.nil? and type.nil?
-        @url = domain_document_documents_url(domain)
-        title_a << t('document.documents.index.title_type', document: view_context.pluralize(@document_documents.size, t('document.documents.index.title_type_document')), domain: Domain.find(domain).name)
-      elsif !domain.nil? and !type.nil?
-        @url = domain_type_document_documents_url({type_id: type, domain_id: domain})
-        title_a << t('document.documents.index.subtitle', domains: Domain.find(domain).name, type: view_context.pluralize(@document_documents.size, Document::Type.find(type).name))
+    # définit l'url de la page et le titre en fonction des paramètres passés. C'est le bordel.
+    # A voir si on peut mieux faire
+    if domain.nil? and !type.nil?
+      @url = type_document_documents_url(type)
+      title_a << view_context.pluralize(@document_documents.size, Document::Type.find(type).name) if params[:order_by].nil? and params[:created_at].nil?
+    elsif !domain.nil? and type.nil?
+      @url = domain_document_documents_url(domain)
+      title_a << t('document.documents.index.title_type', document: view_context.pluralize(@document_documents.size, t('document.documents.index.title_type_document')), domain: Domain.find(domain).name) if params[:order_by].nil? and params[:created_at].nil?
+    elsif !domain.nil? and !type.nil?
+      @url = domain_type_document_documents_url({type_id: type, domain_id: domain})
+      title_a << t('document.documents.index.subtitle', domains: Domain.find(domain).name, type: view_context.pluralize(@document_documents.size, Document::Type.find(type).name)) if params[:order_by].nil? and params[:created_at].nil?
+    elsif domain.nil? and type.nil?
+      @url = document_documents_path
+    end
+    unless @url.nil?
+      get_url_part=''
+      get_url_part = "order_by=#{params[:order_by]}" unless params[:order_by].blank? or params[:order_by].to_s == '0'
+      if !get_url_part.blank?
+        if !params[:created_at].blank?
+          get_url_part << "&created_at=#{params[:created_at]}"
+        end
       end
+
+      get_url_part = "created_at=#{params[:created_at]}" if get_url_part.blank? and !params[:created_at].blank?
+      @url << "?#{get_url_part}" unless get_url_part.blank?
+      logger.info "get_url_part=#{get_url_part.blank?} et created_at=#{params[:created_at].blank?}"
     end
 
     #pour la partie javascript. Si on est sur la page 1 ou une autre

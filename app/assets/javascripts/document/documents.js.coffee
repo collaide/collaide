@@ -32,7 +32,7 @@ if history && history.pushState
       doAjax()
 
     doAjax = () ->
-      url = $('#url_for_order').val()
+      url = $('#url_for_ajax').val()
       ajaxUrl = ''
       makeUrl(domain, 'domain')
       makeUrl(type, 'type')
@@ -50,8 +50,8 @@ if history && history.pushState
           seoUrl = "created_at=#{realized_before}" if realized_before
           seoUrl += '&' if realized_before and order_by != '0'
           seoUrl += "order_by=#{order_by}" if order_by != '0'
-          alert $('#url_for_order').val()
-          history.pushState('', null, $('#url_for_order').val()+'?'+seoUrl)
+#          alert $('#url_for_order').val()
+#          history.pushState('', null, $('#url_for_order').val()+'?'+seoUrl)
       , 'script'
 
     makeUrl = (attr, name) ->

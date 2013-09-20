@@ -1,5 +1,5 @@
 -unless params[:page]
-  history.pushState('', null, "#{escape_javascript(@url)}");
+  history.pushState('', null, "#{raw @url}");
 $('#documents').html("#{escape_javascript(render @document_documents)}");
 $('#paginate').html("#{escape_javascript paginate @document_documents, remote: true}");
 document.title = "#{escape_javascript(full_title(yield(:title)))}";
