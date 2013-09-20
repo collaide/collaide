@@ -50,7 +50,10 @@ class Document::DocumentsController < ApplicationController
     domain = params[:domain] || params[:domain_id]
     type = params[:type] || params[:type_id]
     unless domain.blank?
+      children_of_domain = Domain.subtree_of(domain).map { |a_domain| "domains.id=#{a_domain.id}" }.join(' OR ')
       where = 'domains.id=:domain'
+      where << " OR #{children_of_domain}" if children_of_domain != where and !children_of_domain.blank?
+      logger.info where+" pour le domain=#{domain}"
       joins = :domains
     end
     unless type.blank?
@@ -109,7 +112,11 @@ class Document::DocumentsController < ApplicationController
       title_a << t('document.documents.index.personlaized_search')
     end
     title_a << t('document.documents.index.page', nb_page: params[:page]) unless params[:page].nil?
-    content_for(:title, title_a.join(' - ')) unless title_a.nil?
+    unless title_a.nil?
+      content_for(:title, title_a.join(' - '))
+      content_for(:key_words, t('document.documents.index.key_words') + ', ' + title_a.join(', '))
+      content_for(:meta_description, t('document.documents.index.description_meta') + '. ' + title_a.map {|an_elem| "#{an_elem.titleize}"}.join('. '))
+    end
     add_breadcrumb(title_a.join(' - ')) unless title_a.empty?
     respond_to do |format|
       format.html # index.html.haml
