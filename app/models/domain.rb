@@ -38,7 +38,11 @@ class Domain < ActiveRecord::Base
 
   def self.json_tree(nodes)
     nodes.map do |node, sub_nodes|
-      {label: node.name, id: node.id, children: json_tree(sub_nodes).compact}
+      json = {}
+      json[:label] = node.name
+      json[:id] = node.id
+      json[:children] =  json_tree(sub_nodes).compact
+      json
     end
   end
 

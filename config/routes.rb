@@ -34,6 +34,7 @@ Collaide::Application.routes.draw do
   end
   namespace :document do
     resources :domains, :only => [:show, :index]
+    get 'json_tree', action: :json_tree, controller: 'document/domains'
     #resources :types
     #resources :study_levels
   end

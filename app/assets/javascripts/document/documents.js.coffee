@@ -76,4 +76,10 @@ $ ->
   $('#display-search').click ->
     $('#form_to_hide').toggleClass('hide-for-small');
 
+$ ->
+  tree = $('#tree-domains')
+  $('#tree-domains > ul').addClass('no-bullet')
+  tree.tree({
+  })
+
 
