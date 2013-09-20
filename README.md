@@ -8,8 +8,6 @@ multi-lingue.
 
 ##Recherche
 
-=======
->>>>>>> search_docs
 Nous recherchons encore quelqu'un pour :
 * la traduction français-anglais
 * la traduction français-allemand
@@ -18,7 +16,6 @@ Nous recherchons encore quelqu'un pour :
 * le développement du front-end (bonne maîtrise de JQuery, d'AJAX, html et css. Connaissance de base en ruby et maîtrise de haml ou erb)
 * le développement des modules membre ou file
 * la communication du site (social marketing, réferencement, écriture de textes, etc)
-=======
 * le web-designe
 * le développement du front-end (bonne maîtrise de JQuery, d'AJAX, html et css. Connaissance )
 * un développeur Ruby on Rails
