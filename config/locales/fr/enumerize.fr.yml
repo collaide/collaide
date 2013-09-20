@@ -9,7 +9,7 @@ fr:
         hand: Remise en main propre
         post: Envoi postal
       currency:
-        CHF: 'SFr.'
+        CHF: 'CHF'
         EUR: '€'
         USD: '$'
     advertisement/sale_book:

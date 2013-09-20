@@ -33,11 +33,6 @@ initializeIsbn = () ->
 #    disabledInput('#book_title')
 #    disabledInput('#book_authors')
 
-
-
-
-
-
 $('#book_isbn').blur ->
   initializeIsbn()
   isbn = $('#book_isbn').val()
@@ -65,3 +60,31 @@ $('#book_isbn').blur ->
   else
     $('#book_isbn').after("<small class='small_book_isbn_error'>"+$('#ajax_book_isbn_other_solution').val()+"</small>");
     $('#book_title_to_hide').show 'slow'
+
+# ACHAT D UN LIVRE
+
+initializeBuy = () ->
+  $('#buy_book').find('.buy_book_title').empty();
+  $('#buy_book').find('.buy_book_content').empty();
+  $('#buy_book').find('textarea').empty();
+
+
+$('.button_buy_book').click ->
+  initializeBuy()
+  sale_book_id = $(this).attr('id');
+  # Vire ce qui est inutil, récupère l'id du doc cliqué.
+  sale_book_id = sale_book_id.replace('button_buy_book_','');
+  # Ok, on a l'id de la vente
+  find_sale_book = '.sale_book_id_'.concat(sale_book_id)
+  #$('.sale_book_id_37').hide 'slow'
+#  title = $(find_sale_book).find('.sale_book_title').text()
+#  price = $(find_sale_book).find('.sale_book_price').text()
+#  user = $(find_sale_book).find('.sale_book_user_link').text()
+  title_text = $(find_sale_book).find('.sale_book_text_title').text()
+  content_text = $(find_sale_book).find('.sale_book_text_content').text()
+  content_textarea = $(find_sale_book).find('.sale_book_textarea_content').text()
+  $('#buy_book').find('.buy_book_title').append(title_text);
+  $('#buy_book').find('.buy_book_content').append(content_text);
+  $('#buy_book').find('textarea').append(content_textarea);
+
+  #alert content_text

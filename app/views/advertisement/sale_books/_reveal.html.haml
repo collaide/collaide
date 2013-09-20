@@ -1,0 +1,11 @@
+#buy_book.reveal-modal
+  %h2.buy_book_title
+  %p.buy_book_content
+    -#empty
+  =simple_form_for(:message_sending, :url => messages_path, html: {class: 'custom buy_book_form', data_abide: true}) do |f|
+    =f.error_notification
+    .form-inputs
+      =f.input :body, input_html: {class: 'buy_book_form_textarea', rows: 10}, :as => :text
+    .form-actions
+      =f.button :submit, t('messages.new.forms.submit')
+  %a.close-reveal-modal &#215;
