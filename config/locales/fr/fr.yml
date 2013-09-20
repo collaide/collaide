@@ -28,6 +28,14 @@ fr:
       created_at: &created_at Crée le
       page: &page page
       realized_at: &realized_at réalisé le
+  application_name:
+    docx: Document Word
+    doc: Document Word 97-2004
+    pdf: Document PDF
+    image: Image
+    xls: Feuille de calcul excel
+    ppt: Document PowerPoint
+    txt: Document Text
   app_name: *app_name
   next: *next
   back: *back
@@ -111,6 +119,7 @@ fr:
       title_page: Documents scolaires
       bc: Les documents scolaires
       index:
+        published_by: Publié par %{user_name}
         title: Les documents scolaires
         subtitle: "%{type} en %{domains}"
         new_link: Nouveau document
@@ -182,6 +191,8 @@ fr:
           study_level: Le niveau d'étude pour le quel le document est écrit
           type: "Une dissertation, un rapport, une présentation ? Choisissez !"
           domains: Dans quels domaine(s) se situe votre document ?
+      download:
+        no_credit: Crédit insuffisant pour télécherger "%{doc_name}"
   advertisements:
     index:
       meta_title: Achetez un grand nombre de livres étudiants d'occasions à bas prix mis en vente par des étudiants !

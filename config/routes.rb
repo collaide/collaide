@@ -82,7 +82,7 @@ Collaide::Application.routes.draw do
     get 'page/:page', :action => :index, :on => :collection
   end
   resources :users, :only => [:show] do
-    get 'no-credit', action: :no_credit, as: 'no_credit', on: :collection
+    get 'no_credit', action: :no_credit, as: 'no_credit', on: :collection
   end
 
   devise_for :user

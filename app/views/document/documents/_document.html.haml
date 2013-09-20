@@ -12,27 +12,23 @@
             =image_tag show_icon(document), width: 100, height: 100
           %p= rating_for document, 'note', star: 5
         .large-12.small-8.columns
-          %p
-            =raw("<important class='label secondary'>#{t('document.documents.index.hits')}</important>")
-            =document.hits
-            .show-for-small
-              %p= like_button(document_document_url(document), 'button_count')
-              %p= l(document.created_at, format: :short)
+          %ul.no-bullet
+            %li
+              =raw("<important class='label secondary'>#{t('document.documents.index.hits')}</important>")
+              =document.hits
+            %li= document.show_extension
+            %li= pluralize document.number_of_pages, 'page'
+            %li.show-for-small= raw t('document.documents.index.published_by', user_name: link_to(document.user.name_to_show, document.user)) unless document.user.nil?
       #star
     .small-12.columns.large-10
       .hide-for-small
         %h1= link_to document.title, document
-        .hide-for-small
-          =l(document.created_at, format: :short)
         %h6.doc-subtitle= doc_sub_title document
+        .hide-for-small
+          =raw t('document.documents.index.published_by', user_name: link_to(document.user.name_to_show, document.user)) unless document.user.nil?
       %p= document.description.truncate(100, separator: ' ', omission: ' ...')
       .row
-        .columns.large-8.hide-for-small.show-for-large
+        .columns
           =link_to t('document.documents.index.download'), document_document_download_path(document_document_id: document), class: 'button secondary' if can? :download, Document::Document
           =show_link document, t('document.documents.index.show'), 'secondary'
-        .columns.small-12.show-for-small.hide-for-large
-          =link_to t('document.documents.index.download'), document_document_download_path(document_document_id: document), class: 'button secondary expand' if can? :download, Document::Document
-          =show_link document, t('document.documents.index.show'), 'secondary expand'
-        .columns.large-4.hide-for-small
-          =like_button(document_document_url(document), 'button_count')
   %hr

@@ -143,7 +143,7 @@ class Document::DocumentsController < ApplicationController
   def download
     send_file_method = :default
     doc = Document::Document.find(params[:document_document_id])
-    head(:not_found) and return if (doc.nil?)
+    raise ActiveRecord::RecordNotFound  and return if (doc.nil?)
 
     download =  Document::Download.where(document_documents_id: doc.id).where(user_id: current_user.id)
     if download.empty?

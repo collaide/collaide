@@ -21,16 +21,20 @@
   -#TODO: afficher une screeshot de chaque document.
   -#TODO: remplir la colonne de droite de trucs et de machins
   -#TODO: De Yves: Faire que si on cherche dans un domaine, ça inclus ses sous domaines
-  .row.hide-for-small
+  .row
     .small-12.columns#paginate
       =paginate @document_documents, remote: true
+  .row.show-for-small
+    .small-12.columns
+      #display-search
+        =label_tag :more_details, t('document.documents.index.display_search')
+        .switch
+          =radio_button_tag :x, 'no', true
+          =label_tag :x, t('sale_books.new.forms.more_details')
+          =radio_button_tag :x, 'yes'
+          =label_tag :x, t('sale_books.new.forms.less_details')
+          %span
   .row
-    .small-12.columns.hide-for-large
-      %form.custom
-        =label_tag :display_search, id: :display_search do
-          =check_box_tag :display_search
-          %span.custom.checkbox
-          =t('document.documents.index.display_search')
     .large-4.columns.push-8.small-12.hide-for-small#form_to_hide
       %fieldset
         %form{action: document_documents_path, method: :get, class: 'custom'}
