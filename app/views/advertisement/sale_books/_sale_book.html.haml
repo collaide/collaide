@@ -8,6 +8,10 @@
       =raw(t('sale_books.buy.content', user: link_to(h(sale_book.user.name_to_show), sale_book.user), book: link_to(h(sale_book.book.title),sale_book), price:number_to_currency(h(sale_book.price), :unit => h(sale_book.currency.text))))
     .sale_book_textarea_content
       =t('sale_books.buy.textarea', book: sale_book.book.title)
+    .sale_book_user_id
+      =sale_book.user.id
+    .sale_book_subject_content
+      =t('sale_books.buy.subject', book: sale_book.book.title)
   .large-2.columns.small-12
     .row
       .small-12.columns
@@ -38,4 +42,4 @@
     %a.button.secondary{'href'=>'#', 'data-reveal-id'=>'buy_book', 'class' => 'button_buy_book', 'id' => "button_buy_book_#{sale_book.id}"}=t('sale_books.index.buy')
     =show_link sale_book, t('advertisements.index.show'), 'secondary'
   %hr
-=render 'advertisement/sale_books/reveal'
+=render 'advertisement/sale_books/reveal', sale_book: nil

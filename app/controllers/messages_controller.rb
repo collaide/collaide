@@ -46,7 +46,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @conversations = getConversations
+    #@conversations = getConversations
     @message = MessageSending.new(params[:message_sending])
     respond_to do |format|
       if @message.valid?

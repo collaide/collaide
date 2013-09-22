@@ -14,7 +14,12 @@ class Advertisement::SaleBooksController < ApplicationController
   # GET /advertisement/sale_books/1
   # GET /advertisement/sale_books/1.json
   def show
+    @message = MessageSending.new
+
     @sale_book = Advertisement::SaleBook.find(params[:id])
+    @message.users<<@sale_book.user
+    @message.subject=t('sale_books.buy.subject', book: @sale_book.book.title)
+    @message.body=t('sale_books.buy.textarea', book: @sale_book.book.title)
 
     add_breadcrumb I18n.t("sale_books.show.title", book: @sale_book.book.title), advertisement_sale_book_path(@sale_book)
     respond_to do |format|

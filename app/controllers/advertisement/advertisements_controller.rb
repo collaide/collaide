@@ -13,6 +13,7 @@ class Advertisement::AdvertisementsController < ApplicationController
   end
 
   def index
+    @message = MessageSending.new
     @advertisement = Advertisement::Advertisement.order('id DESC').all
   end
 
