@@ -6,26 +6,20 @@ Cette nouvelle version a pour but d'utiliser les technologies web modernes (Ajax
 le modèle de programmation REST, d'avoir une base de donnée unifiée (gerée avec un ORM), avec une seule logique et d'être
 multi-lingue.
 
-<<<<<<< HEAD
 ##Recherche
 
-=======
->>>>>>> search_docs
 Nous recherchons encore quelqu'un pour :
 * la traduction français-anglais
 * la traduction français-allemand
 * la traduction français-italien
-<<<<<<< HEAD
 * le web-design
 * le développement du front-end (bonne maîtrise de JQuery, d'AJAX, html et css. Connaissance de base en ruby et maîtrise de haml ou erb)
 * le développement des modules membre ou file
 * la communication du site (social marketing, réferencement, écriture de textes, etc)
-=======
 * le web-designe
 * le développement du front-end (bonne maîtrise de JQuery, d'AJAX, html et css. Connaissance )
 * un développeur Ruby on Rails
 * une personne responsable de la communication (social marketing, réferencement, écriture de textes, etc)
->>>>>>> search_docs
 
 Une personne peut remplir plusieurs fonctions à la foi. Contactez-nous par e-mail à l'adresse facenord.sud at gmail.com
 si vous êtes intéressés
