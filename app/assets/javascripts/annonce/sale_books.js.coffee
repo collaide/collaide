@@ -80,11 +80,11 @@ $('.button_buy_book').click ->
 #  title = $(find_sale_book).find('.sale_book_title').text()
 #  price = $(find_sale_book).find('.sale_book_price').text()
 #  user = $(find_sale_book).find('.sale_book_user_link').text()
-  title_text = $(find_sale_book).find('.sale_book_text_title').text()
-  content_text = $(find_sale_book).find('.sale_book_text_content').text()
+  title_text = $(find_sale_book).find('.sale_book_text_title').html()
+  content_text = $(find_sale_book).find('.sale_book_text_content').html()
   content_textarea = $(find_sale_book).find('.sale_book_textarea_content').text()
-  $('#buy_book').find('.buy_book_title').append(title_text);
-  $('#buy_book').find('.buy_book_content').append(content_text);
-  $('#buy_book').find('textarea').append(content_textarea);
+  $('#buy_book').find('.buy_book_title').html(title_text);
+  $('#buy_book').find('.buy_book_content').html(content_text);
+  $('#buy_book').find('textarea').val(content_textarea);
 
   #alert content_text
