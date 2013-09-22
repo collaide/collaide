@@ -18,9 +18,13 @@
     }
   }
   .doc-subtitle {
+    margin-top: $subheader-top-margin;
+    margin-bottom: $subheader-bottom-margin;
     color: $document-subtitle-color;
+    font-weight: $subheader-font-weight;
     a {
       color: $document-subtitle-color;
+      font-weight: $subheader-font-weight;
     }
     a:hover {
       color: $primary-color;

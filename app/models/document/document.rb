@@ -67,4 +67,8 @@ class Document::Document < ActiveRecord::Base
   #TODO conversion du format de la date en format de type SQL (YYY-mm-dd)
   validates :realized_at, date: {before: Proc.new {Time.now}}
   validates :title, presence: true, length: {minimum: 3, maximum: 60}
+
+  def show_extension
+    I18n.t("application_name.#{Document::DocumentsController.helpers.find_extension(files.first.file_content_type)}")
+  end
 end

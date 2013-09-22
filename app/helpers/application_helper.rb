@@ -20,7 +20,7 @@ module ApplicationHelper
 
   def description(description)
     if description.blank?
-      find_t_for_meta('description_meta', prepend: t('default_description_meta')).join(' ').html_safe
+      raw find_t_for_meta('description_meta', prepend: t('default_description_meta')).join(' ').html_safe
     else
       "#{t('default_description_meta')} #{description}".html_safe
     end

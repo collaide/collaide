@@ -38,14 +38,16 @@ class Domain < ActiveRecord::Base
 
   def self.json_tree(nodes)
     nodes.map do |node, sub_nodes|
-      {label: node.name, id: node.id, children: json_tree(sub_nodes).compact}
+      json = {}
+      json[:label] = node.name
+      json[:id] = node.id
+      json[:children] =  json_tree(sub_nodes).compact
+      json
     end
   end
 
-  def self.select_tree(separator='-')
-    Domain.order('position ASC').includes(:translations).each do |a_domain|
-      a_domain.name = separator*a_domain.depth+a_domain.name unless a_domain.name.nil?
-    end
+  def self.select_tree(separator='----')
+    tree(Domain.includes(:translations).arrange(order: :position), separator)
   end
 
   def self.flat(nodes)
@@ -57,6 +59,18 @@ class Domain < ActiveRecord::Base
     end
     name.chop.chop
   end
+
+  private
+    def self.tree(domains, separator, result=[])
+      domains.each do |node, sub_nodes|
+        unless node.name.nil?
+          node.name = separator*node.depth + node.name
+          result << node
+          tree(sub_nodes, separator, result)
+        end
+      end
+      return result
+    end
 
   class Translation
     attr_accessible :locale, :name, :description
