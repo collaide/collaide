@@ -16,3 +16,5 @@
  *= require_tree .
  */
 
+textarea { height: auto; min-height: 50px;}
+

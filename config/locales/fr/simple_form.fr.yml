@@ -42,8 +42,8 @@ fr:
         study_level: Niveau d'étude
       message_sending:
         users: Destinataire(s)
-        subject: Titre
-        body: Contenu
+        subject: Sujet
+        body: Votre message
       document_document:
         title: Titre du document
         description: Déscription

@@ -232,6 +232,22 @@ fr:
       subtitle1: "Livre: %{book}"
       subtitle2: " vend ce livre %{price}"
       no_description: Il n'y a pas de description pour ce livre...
+    buy:
+      title: Achât du livre %{book}
+      content: Vous êtes sur le point de contacter %{user} pour acheter son livre %{book} au prix de %{price}.
+      textarea: "Bonjour,
+
+
+      Je désire acheter votre livre %{book}.
+
+
+      [...Donnez les informations nécessaires pour procéder à la transaction...]
+
+
+      Cordialement,
+
+      Prenom Nom"
+      subject: "[Achat] %{book}"
     new:
       title: Vendre un livre
       joy_ride:

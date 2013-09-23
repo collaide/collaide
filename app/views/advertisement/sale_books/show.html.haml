@@ -53,7 +53,7 @@
           -@sale_book.delivery_modes.each do |p|
             = "#{p.text}, "
       %li.cta-button
-        %a.button.success{href: "#"}=t'sale_books.show.buy'
+        %a.button.success{'href'=>'#', 'data-reveal-id'=>'buy_book'}=t'sale_books.show.buy'
 
 -#Si il y a d'autres ventes pour ce livre
 -if @sale_book.book.sale_books.count>1
@@ -73,3 +73,4 @@
                 %td=link_to(s.user.name_to_show, s.user)
                 %td=link_to(number_to_currency(s.price, :unit => s.currency.text), s)
                 %td=show_link s, t('sale_books.show.show'), 'small secondary'
+=render 'advertisement/sale_books/reveal', sale_book: @sale_book

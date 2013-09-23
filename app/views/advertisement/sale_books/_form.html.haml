@@ -49,13 +49,18 @@
     #form_to_hide{class: hideOptional}
       %fieldset
         %legend{class: "has-tip tip-top", title: t("sale_books.new.forms.tooltips.optional"), 'data-tooltip' => ''}= t('sale_books.new.forms.optional')
-        =f.input :payment_modes, label_html: tooltip(t("sale_books.new.forms.tooltips.payment_modes")), :as => :check_boxes
-        %br
-        =f.input :delivery_modes, label_html: tooltip(t("sale_books.new.forms.tooltips.delivery_modes")), :as => :check_boxes
-        %br
-
-        =f.input :state, prompt: t('simple_form.prompts.advertisement_sale_book.state')
-        =f.input :annotation, prompt: t('simple_form.prompts.advertisement_sale_book.annotation'), label_html: tooltip(t("sale_books.new.forms.tooltips.annotation"))
+        .row
+          .large-6.columns
+            =f.input :payment_modes, label_html: tooltip(t("sale_books.new.forms.tooltips.payment_modes")), :as => :check_boxes
+            %br
+          .large-6.columns
+            =f.input :delivery_modes, label_html: tooltip(t("sale_books.new.forms.tooltips.delivery_modes")), :as => :check_boxes
+            %br
+        .row
+          .large-6.columns
+            =f.input :state, prompt: t('simple_form.prompts.advertisement_sale_book.state')
+          .large-6.columns
+            =f.input :annotation, prompt: t('simple_form.prompts.advertisement_sale_book.annotation'), label_html: tooltip(t("sale_books.new.forms.tooltips.annotation"))
         =f.input :title, label_html: tooltip(t("sale_books.new.forms.tooltips.title"))
         =f.input :description, label_html: tooltip(t("sale_books.new.forms.tooltips.description")), input_html: {rows: 3}
 
