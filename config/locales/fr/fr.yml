@@ -19,6 +19,7 @@ fr:
     current_password: &current_password Mot de passe actuel
     remember_me: &remember_me Se souvenir de moi
     edit: &edit Modifier
+    time_ago: &time_ago il y a %{date}
     documents:
       title: &doc_title Titre
       description: &doc_description Déscription
@@ -28,6 +29,8 @@ fr:
       created_at: &created_at Crée le
       page: &page page
       realized_at: &realized_at réalisé le
+      download: "téléchargement"
+    personne: "personne"
   application_name:
     docx: Document Word
     doc: Document Word 97-2004
@@ -36,6 +39,7 @@ fr:
     xls: Feuille de calcul excel
     ppt: Document PowerPoint
     txt: Document Text
+    unknow: Type de fichier inconnu
   app_name: *app_name
   next: *next
   back: *back
@@ -121,7 +125,7 @@ fr:
       index:
         description_meta: Téléchargez toutes sortes de documents scolaires gratuitement pour les étudiants de tous niveaux d'études
         key_words: liste, des, documents, document, Dissertations, Analyses, Documents, rapports, résumés, Exposers, Tests, Présentations, base de donnée, Collaide, Etudiants, document de maturité
-        published_by: Publié par %{user_name}
+        published_by: Publié par
         title: Les documents scolaires
         subtitle: "%{type} en %{domains}"
         new_link: Nouveau document
@@ -171,8 +175,15 @@ fr:
         modify: Modifier
         delete: Supprimer
         subtitle: "%{doc_subtitle}, réalisé par %{author}"
+        realized_by: "réalisé par %{author}"
+        degree: "Degré %{study_level}"
         top_docs: "Top documents"
         suggestion: "Vous aimerez peut-être"
+        bc: "Document \"%{doc_name}\""
+        informations: "Informations"
+        average: "%{notes} / 5"
+        has_voted: a votée
+        have_voted: ont votées
       edit:
         title: Modifier le document
       update:
@@ -195,6 +206,8 @@ fr:
           domains: Dans quels domaine(s) se situe votre document ?
       download:
         no_credit: Crédit insuffisant pour télécherger "%{doc_name}"
+    dico:
+      page: "page"
   advertisements:
     index:
       meta_title: Achetez un grand nombre de livres étudiants d'occasions à bas prix mis en vente par des étudiants !

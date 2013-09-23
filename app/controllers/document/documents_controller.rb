@@ -53,7 +53,6 @@ class Document::DocumentsController < ApplicationController
       children_of_domain = Domain.subtree_of(domain).map { |a_domain| "domains.id=#{a_domain.id}" }.join(' OR ')
       where = 'domains.id=:domain'
       where << " OR #{children_of_domain}" if children_of_domain != where and !children_of_domain.blank?
-      logger.info where+" pour le domain=#{domain}"
       joins = :domains
     end
     unless type.blank?
@@ -65,12 +64,12 @@ class Document::DocumentsController < ApplicationController
       where+= 'document_documents.created_at >= :created_at'
       personalized_search = true
     end
-
     #la requête. Joli, non ?
      @document_documents = Document::Document.order("#{attr} #{sort}").
          includes([:study_level, :document_type, {domains: :translations}], :user, :files, :note_average).
          joins(joins).joins(rates).
          where(where, {domain: domain, type: type, created_at: params[:created_at]}).
+         where(status: 'accepted').
          page(params[:page])
 
     # définit l'url de la page et le titre en fonction des paramètres passés. C'est le bordel.
@@ -146,13 +145,15 @@ class Document::DocumentsController < ApplicationController
 
   def show
      @document = Document::Document.find params[:id]
+     add_breadcrumb(I18n.t('document.documents.show.bc', doc_name: @document.title))
     @top_docs = {}
-    Document::Document.all.map do |a_doc|
+    Document::Document.all.each do |a_doc|
       unless a_doc.id == @document.id
-        @top_docs[:hit] = a_doc if @top_docs[:hit].nil? or @top_docs[:hit].hits<a_doc.hits
-        @top_docs[:created_at] = a_doc if @top_docs[:created_at].nil? or @top_docs[:created_at].created_at<a_doc.created_at
+        @top_docs[:hit] = a_doc if @top_docs[:hit].nil? or @top_docs[:hit].hits < a_doc.hits
+        @top_docs[:created_at] = a_doc if @top_docs[:created_at].nil? or @top_docs[:created_at].created_at < a_doc.created_at
         @top_docs[:notest] = a_doc if !a_doc.note_average.nil? and(@top_docs[:notest].nil? or @top_docs[:notest].note_average.avg < a_doc.note_average.avg)
       end
+      logger.info "top docs: #{@top_docs.inspect}"
     end
 
     @suggest = []

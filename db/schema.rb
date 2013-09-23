@@ -176,12 +176,10 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.integer  "study_level_id"
     t.integer  "document_type_id"
     t.integer  "user_id"
-    t.string   "status",           :default => "refused"
-    t.integer  "hits"
+    t.string   "status",           :default => "pending"
+    t.integer  "hits",             :default => 0
     t.boolean  "is_deleted",       :default => false
   end
-
-  add_index "document_documents", ["title"], :name => "index_document_documents_on_title"
 
   create_table "document_downloads", :force => true do |t|
     t.integer  "user_id"

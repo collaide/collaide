@@ -31,3 +31,31 @@
     }
   }
 }
+
+.panel-subtitle {
+  margin-top: $subheader-top-margin;
+  margin-bottom: $subheader-bottom-margin;
+  font-size: emCalc(20px);
+  a {
+    color: #000000;
+  }
+  a:hover {
+    color: $primary-color;
+  }
+}
+
+.wrap-text {
+  float: left;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.suggestion-panel { @include panel(#f9fbff, $panel-padding, true);
+  border-color: #f5f5f9 1px;
+  ul {
+    list-style: none;
+  }
+  ul li:before {
+    content: "\2192 \0020";
+  }
+}

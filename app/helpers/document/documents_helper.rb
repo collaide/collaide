@@ -63,6 +63,7 @@ module Document::DocumentsHelper
         return type
       end
     end
+    'unknow'
   end
 
   def doc_sub_title(document)

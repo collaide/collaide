@@ -1,48 +1,50 @@
+%h1= @document.title
+-#infos documents et fichier
 .row
   .columns.large-8
-    .row
-      .columns.small-4
-        =image_tag show_icon(@document)
-        %p= rating_for @document, 'note', star: 5
-      .columns.small-8
-        %h1
-          =@document.title
-          =like_button document_document_url(@document)
-        %form.custom
-          =label_tag :more_infos, id: :more_infos do
-            =check_box_tag :more_infos, nil, false, style: 'display: none;'
-            %span.custom.checkbox
-            =t('document.documents.show.more_infos')
+    .panel
+      =image_tag show_icon(@document), class: 'th wrap-text', width: 100, height: 100
+      %h2.panel-subtitle
+        =raw(doc_sub_title(@document))
+        =t('document.documents.show.realized_by', author: @document.author)
+      %p= @document.description
+      %p
+        =t('document.documents.index.published_by')
+        =link_to(@document.user.name_to_show, @document.user)
+        =t('dico.time_ago', date: time_ago_in_words(@document.created_at))
+        %p
+          =rating_for @document, 'note', star: 5
+          -unless @document.note_average.nil?
+            = t('document.documents.show.average', notes: @document.note_average.avg)
+            %br
+            = pluralize @document.note_average.qty, t('dico.personne')
+            = @document.note_average.qty <= 1 ? t('document.documents.show.has_voted') : t('document.documents.show.have_voted')
+  .columns.large-4
     .row
       .columns.small-12
-        %h4.doc-subtitle= raw t('document.documents.show.subtitle', doc_subtitle: doc_sub_title(@document), author: link_to(@document.author, search_document_documents_path(query: @document.author)))
-        #more_details.hide
-          %h6.subheader
-            %ul.no-bullet
-              %li= t('document.documents.show.more_details', page: pluralize(@document.number_of_pages, t('dico.documents.page')), realized_at: t('document.documents.show.realized_at', realized_at: t('dico.documents.realized_at'), date: l(@document.realized_at, format: :long)))
-              %li= t('document.documents.show.hits', times: @document.hits)
-        %p= @document.description
-        .row
-          -#.columns.small-12.large-4
-          -#  =link_to t('documents.index.download'), document_document_download_path(@document), class: 'button success expand'
-          -#.columns.small-12.large-4
-          -#  =edit_link @document, t('documents.show.modify'), 'expand'
-          -#.columns.small-12.large-4
-          -#  =destroy_link @document, t('documents.show.delete'), 'expand'
-          %ul.button-group.radius
-            %li
-              =link_to t('document.documents.index.download'), document_document_download_path(@document), class: 'button secondary'
-            %li
-              =edit_link @document, t('document.documents.show.modify'), 'button secondary'
-            %li
-              =destroy_link @document, t('document.documents.show.delete'), 'button secondary'
-  .columns.large-4
-    %h3= t('document.documents.show.top_docs')
-    %ul.no-bullet
-      -@top_docs.map do |key, a_suggest|
-        -a_suggest = @top_docs[key]
-        %li= link_to"-> #{ a_suggest.title}", a_suggest
-    %h3= t('document.documents.show.suggestion')
-    %ul.no-bullet
-      -@suggest.each do |a_doc|
-        %li= link_to "-> #{a_doc.title}", a_doc
+        = edit_link(@document, t('document.documents.show.modify'), 'button small')
+        = destroy_link(@document, t('document.documents.show.delete'), 'button alert small')
+        %ul.pricing-table
+          %li.title
+            = t('document.documents.show.informations')
+          %li.bullet-item= t('document.documents.show.degree', study_level: @document.study_level.name)
+          %li.bullet-item
+            =t('dico.documents.realized_at').titleize
+            =l(@document.realized_at, format: :long)
+          %li.bullet-item= pluralize @document.number_of_pages, t('document.dico.page')
+          %li.bullet-item= pluralize @document.hits, t('dico.documents.download')
+          %li.bullet-item= @document.show_extension
+          %li.cta-button= link_to(t('document.documents.index.download'), document_document_download_path(document_document_id: @document), class: 'button success') if can? :download, Document::Document
+.row
+  .columns.large-6.small-12
+    .suggestion-panel
+      %h6= t('document.documents.show.suggestion')
+      %ul
+        -@suggest.each do |a_doc|
+          %li= link_to a_doc.title, a_doc
+  .columns.large-6.small-12
+    .suggestion-panel
+      %h6= t('document.documents.show.top_docs')
+      %ul
+        -@top_docs.each do |key|
+          %li= link_to @top_docs[key.first].title, @top_docs[key.first] unless @top_docs[key.first].nil?
