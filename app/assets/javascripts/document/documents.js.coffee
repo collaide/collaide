@@ -83,15 +83,15 @@ $ ->
   })
 
   tree.bind(
-    'tree.click', ->
-    e.preventDefault()
-    selected_node = e.node
-    if (tree.tree('isNodeSelected', selected_node))
-      tree.tree('removeFromSelection', selected_node)
-    else
-      tree.tree('addToSelection', selected_node)
-
+    'tree.click', (e)->
+      #e.preventDefault()
+      selected_node = e.node
+      $('#document_document_domain_ids').find("option[value=#{selected_node.id}]").attr('selected', 'true')
+      if (tree.tree('isNodeSelected', selected_node))
+        tree.tree('removeFromSelection', selected_node)
+      else
+        tree.tree('addToSelection', selected_node)
+        alert selected_node.id
   )
-
 
 

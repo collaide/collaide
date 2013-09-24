@@ -15,7 +15,7 @@
       =f.input :language, collection: languages_list, prompt: t("document.documents.form.choose_language"), label_html: tooltip(t('document.documents.forms.tooltips.language')), wrapper_html: {class: 'columns large-4'}
       =f.association :study_level, prompt: t('document.documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations), label_html: tooltip(t('document.documents.forms.tooltips.study_level')), wrapper_html: {class: 'columns large-4'}
       =f.association :document_type, prompt: t('document.documents.form.choose_document_type'), collection: Document::Type.includes(:translations), label_html: tooltip(t('document.documents.forms.tooltips.type')), wrapper_html: {class: 'columns large-4'}
-    =f.association :domains, collection: Domain.select_tree, label_html: tooltip(t('document.documents.forms.tooltips.domains')), input_html: {class: 'hide'}
+    =f.association :domains, collection: Domain.select_tree, label_html: tooltip(t('document.documents.forms.tooltips.domains')), input_html: {class: ''}
     #tree-domains{:'data-url' => document_json_tree_path}
   .form-actions
     =f.button :submit, t('document.documents.form.submit')
