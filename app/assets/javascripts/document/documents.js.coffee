@@ -84,9 +84,13 @@ $ ->
 
   tree.bind(
     'tree.click', (e)->
-      #e.preventDefault()
+      e.preventDefault()
       selected_node = e.node
-      $('#document_document_domain_ids').find("option[value=#{selected_node.id}]").attr('selected', 'true')
+      option = $('#document_document_domain_ids').find("option[value=#{selected_node.id}]")
+      if option.attr 'selected'
+        option.removeAttr('selected')
+      else
+        option.attr('selected', 'true')
       if (tree.tree('isNodeSelected', selected_node))
         tree.tree('removeFromSelection', selected_node)
       else
