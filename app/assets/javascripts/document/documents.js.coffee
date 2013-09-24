@@ -78,8 +78,8 @@ $ ->
 
 $ ->
   tree = $('#tree-domains')
-  $('#tree-domains > ul').addClass('no-bullet')
   tree.tree({
+    autoOpen: false
   })
 
 

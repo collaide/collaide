@@ -161,6 +161,7 @@ class Document::DocumentsController < ApplicationController
     Document::Document.joins(:domains).where("domains.id=#{@document.domains.first.id}").all.each do |a_doc|
       @suggest << a_doc if a_doc.id != @document.id and @suggest.size <3
     end
+   content_for(:title, t('document.documents.show.meta_title', doc_name: @document.title))
   end
 
   def download

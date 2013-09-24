@@ -263,6 +263,9 @@
 // $button-border-width: 1px;
 // $button-border-style: solid;
 // $button-border-color: darken($primary-color, $button-function-factor);
+// $button-border-width: 0px;
+// $button-border-style: none;
+// $button-border-color: none;
 
 // We use this to set the default radius used throughout the core.
 // $button-radius: $global-radius;
@@ -1025,4 +1028,31 @@ $sale-book-subtitle-font-size: emCalc(3px);
 
 .row {
   max-width: $row-width;
+}
+
+$success-color: #5ade7c;
+
+button, .button {
+  @include button-base($style:false);
+  @include button-size;
+  @include button-style;
+
+  &.secondary { @include button-style($bg:$secondary-color); }
+  &.success   { @include button-style($bg:$success-color); }
+  &.alert     { @include button-style($bg:$alert-color); }
+
+  &.large  { @include button-size($padding:$button-lrg); }
+  &.small  { @include button-size($padding:$button-sml); }
+  &.tiny   { @include button-size($padding:$button-tny); }
+  &.expand { @include button-size($padding:null,$full-width:true); }
+
+  &.left-align  { text-align: left; text-indent: emCalc(12); }
+  &.right-align { text-align: right; padding-right: emCalc(12); }
+
+  &.disabled, &[disabled] { @include button-style($bg:$primary-color, $disabled:true);
+    &.secondary { @include button-style($bg:$secondary-color, $disabled:true); }
+    &.success { @include button-style($bg:$success-color, $disabled:true); }
+    &.alert { @include button-style($bg:$alert-color, $disabled:true); }
+  }
+
 }
