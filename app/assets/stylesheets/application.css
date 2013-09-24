@@ -14,6 +14,7 @@
  *= require jquery.ui.all
  *= require foundation_and_overrides
  *= require jqtree
+ *= require select2
  *= require_tree .
  */
 

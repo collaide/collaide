@@ -76,24 +76,30 @@ $ ->
   $('#display-search').click ->
     $('#form_to_hide').toggleClass('hide-for-small');
 
+$ ->
+  # enable select2 js
+  $('#s2').select2()
+
 #$ ->
 #  $tree = $('#tree-domains')
 #  $tree.tree({
-#    autoOpen: true
+#    autoOpen: false,
+#    saveState: true
 #  })
 #
 #  $tree.bind(
 #    'tree.click', (e)->
 #      e.preventDefault()
 #      selected_node = e.node
-#      $('#document_document_domain_ids').find("option[value=#{selected_node.id}]").attr('selected', 'true')
-#      console.log(selected_node.name)
-#      console.log(tree.tree('isNodeSelected', selected_node))
-#      if (tree.tree('isNodeSelected', selected_node))
-#        tree.tree('removeFromSelection', selected_node)
+#      option = $('#document_document_domain_ids').find("option[value=#{selected_node.id}]")
+#      if option.attr 'selected'
+#        option.removeAttr('selected')
 #      else
-#        tree.tree('addToSelection', selected_node)
-#        alert selected_node.id
+#        option.attr('selected', 'true')
+#      if ($tree.tree('isNodeSelected', selected_node))
+#        $tree.tree('removeFromSelection', selected_node)
+#      else
+#        $tree.tree('addToSelection', selected_node)
 #  )
 
 
