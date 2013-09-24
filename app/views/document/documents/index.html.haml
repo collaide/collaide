@@ -42,21 +42,21 @@
           =search_field_tag :search, @searched_value
           =submit_tag t('document.documents.index.forms.search.submit'), class: 'button expand', name: nil, id: 'go-search'
       %fieldset
-        %form{class: 'custom', action: document_documents_path, method: :get}
+        %form{action: document_documents_path, method: :get}
           =hidden_field_tag :url_for_order, @url_for_js
           =hidden_field_tag :url_for_ajax, @url_for_js
           =hidden_field_tag :auto_complete_url, autocomplete_document_documents_path
           .row
             .large-6.small-12.columns
               =label_tag :type, t('document.documents.index.forms.order.label_type')
-              =select_tag :type, options_from_collection_for_select(Document::Type.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_type')
+              =select_tag :type, options_from_collection_for_select(Document::Type.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_type'), class: 's2'
             .large-6.small-12.columns
               =label_tag :domains, t('document.documents.index.forms.order.label_domains')
-              =select_tag :domains, options_from_collection_for_select(Domain.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_domains')
+              =select_tag :domains, options_from_collection_for_select(Domain.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_domains'), class: 's2'
           .row
             .large-6.small-12.columns
               =label_tag :order, t('document.documents.index.forms.order.label_order')
-              =select_tag :order, options_for_select([[t('document.documents.index.forms.order.select.newest'), 0], [t('document.documents.index.forms.order.select.notest'), 2], [t('document.documents.index.forms.order.select.hits'), 3], [t('document.documents.index.forms.order.select.alphabetic'), 1]])
+              =select_tag :order, options_for_select([[t('document.documents.index.forms.order.select.newest'), 0], [t('document.documents.index.forms.order.select.notest'), 2], [t('document.documents.index.forms.order.select.hits'), 3], [t('document.documents.index.forms.order.select.alphabetic'), 1]]), class: 's2'
             .large-6.small-12.columns
               =label_tag :datepicker, t('document.documents.index.forms.order.label_datepicker')
               =text_field_tag :datepicker, nil, class: :datepicker
