@@ -47,12 +47,13 @@ class Document::DocumentsController < ApplicationController
     end
     where = ''
     joins = ''
+    where_domains = ''
     domain = params[:domain] || params[:domain_id]
     type = params[:type] || params[:type_id]
     unless domain.blank?
       children_of_domain = Domain.subtree_of(domain).map { |a_domain| "domains.id=#{a_domain.id}" }.join(' OR ')
-      where = 'domains.id=:domain'
-      where << " OR #{children_of_domain}" if children_of_domain != where and !children_of_domain.blank?
+      where_domains = 'domains.id=:domain'
+      where_domains << " OR #{children_of_domain}" if children_of_domain != where_domains and !children_of_domain.blank?
       joins = :domains
     end
     unless type.blank?
@@ -70,6 +71,7 @@ class Document::DocumentsController < ApplicationController
          joins(joins).joins(rates).
          where(where, {domain: domain, type: type, created_at: params[:created_at]}).
          where(status: 'accepted').
+         where(where_domains, {domain: domain}).
          page(params[:page])
 
     # définit l'url de la page et le titre en fonction des paramètres passés. C'est le bordel.
@@ -153,7 +155,6 @@ class Document::DocumentsController < ApplicationController
         @top_docs[:created_at] = a_doc if @top_docs[:created_at].nil? or @top_docs[:created_at].created_at < a_doc.created_at
         @top_docs[:notest] = a_doc if !a_doc.note_average.nil? and(@top_docs[:notest].nil? or @top_docs[:notest].note_average.avg < a_doc.note_average.avg)
       end
-      logger.info "top docs: #{@top_docs.inspect}"
     end
 
     @suggest = []
@@ -163,30 +164,44 @@ class Document::DocumentsController < ApplicationController
   end
 
   def download
+    #méthode d'envoi de fichier :default -> pour le local
     send_file_method = :default
+    #recherche du document
     doc = Document::Document.find(params[:document_document_id])
     raise ActiveRecord::RecordNotFound  and return if (doc.nil?)
 
+    #le document a-t-il déjà été téléchargé par l'utilisateur ?
     download =  Document::Download.where(document_documents_id: doc.id).where(user_id: current_user.id)
     if download.empty?
-      if current_user.points-Point::DOWNLOAD_DOCUMENT<=0
+      # si l'utilisateur n'a plus assez de points et que ce n'est pas un document qu'il a déposé, on redirige et on arrête
+      if current_user.points-Point::DOWNLOAD_DOCUMENT<=0 and doc.user.id != current_user.id
         redirect_to no_credit_users_path, alert: t('document.documents.download.no_credit', doc_name: doc.title) and return
+      else
+        # on lui enlève le bon nombre de points si ce n'est pas un de ses documents
+        unless doc.user.id == current_user.id
+          current_user.points = current_user.points-Point::DOWNLOAD_DOCUMENT
+          current_user.save
+        end
       end
-      current_user.points = current_user.points-Point::DOWNLOAD_DOCUMENT
-      current_user.save
+      # l'utilisateur n'a jamais téléchargé ce document.
+      # On créée un nouveau modèle qui enregistre le nombre de téléchargement pour chaque document
       doc_download = Document::Download.new
       doc_download.number_of_downloads=1
       doc_download.document = doc
       doc_download.user = current_user
       doc_download.save
+    # l'utilisateur a téléchargé au moins une fois ce document
     else
+      # la requête renvoi un tableau de taille 1. On a donc besoin de prendre le premier
       download.first.number_of_downloads++1
       download.first.save
     end
 
+    # le chemin du fichier à télécharger. Pour l'instant, un fichier par document -> le premier
     path = doc.files.first.file.path
 
-    head(:bad_request) and return unless File.exist?(path)
+    # Si le fichier n'est pas trouvé
+    render status: :bad_request and return unless File.exist?(path)
 
     send_file_options = { :type => MIME::Types.type_for(path).first.content_type, disposition: :inline }
 
@@ -195,6 +210,7 @@ class Document::DocumentsController < ApplicationController
       when :nginx then head(:x_accel_redirect => path.gsub(Rails.root, ''), :content_type => send_file_options[:type]) and return
     end
 
+    # on envoie le fichier
     send_file(path, send_file_options)
     doc.hits = doc.hits+1
     doc.save
