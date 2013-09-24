@@ -13,7 +13,7 @@ addErrorToIsbn = () ->
 
 disabledInput = (input) ->
   $(input).addClass('disabled')
-  $(input).attr( "disabled", "disabled")
+  $(input).attr("disabled", "disabled")
 
 
 initializeIsbn = () ->
@@ -36,7 +36,8 @@ initializeIsbn = () ->
 $('#book_isbn').blur ->
   initializeIsbn()
   isbn = $('#book_isbn').val()
-  if isbn.length==10||isbn.length==13
+  #if isbn.length==10||isbn.length==13
+  if isbn.length > 0
     $.getJSON(
       $('#ajax_path').val(),
       {isbn: isbn},
@@ -53,10 +54,10 @@ $('#book_isbn').blur ->
           addErrorToIsbn()
           $('#book_title_to_hide').show 'slow'
     )
-  else if isbn.length > 0 # Il a entré un ISBN
-    # Afficher qu'on n'a pas trouvé le ISBN en rouge
-    addErrorToIsbn()
-    $('#book_title_to_hide').show 'slow'
+#  else if isbn.length > 0 # Il a entré un ISBN
+#    # Afficher qu'on n'a pas trouvé le ISBN en rouge
+#    addErrorToIsbn()
+#    $('#book_title_to_hide').show 'slow'
   else
     $('#book_isbn').after("<small class='small_book_isbn_error'>"+$('#ajax_book_isbn_other_solution').val()+"</small>");
     $('#book_title_to_hide').show 'slow'
@@ -93,5 +94,4 @@ $('.button_buy_book').click ->
   $('#buy_book').find('#message_sending_user_ids').val(user_id);
   $('#buy_book').find('#message_sending_subject').val(content_subject);
 
-
-  #alert content_text
+  $(this).find('span').text()

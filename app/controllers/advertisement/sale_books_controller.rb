@@ -40,6 +40,7 @@ class Advertisement::SaleBooksController < ApplicationController
       format.json {
         isbn = params[:isbn]
         parse_isbn(isbn)
+        logger.info(isbn.inspect)
         google_book = GoogleBooks.search("isbn:#{isbn}").first
         if google_book && !isbn.blank?
           fillBook(@advertisement_sale_book.book, google_book)
