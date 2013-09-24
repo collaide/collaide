@@ -17,6 +17,7 @@
 //= require jquery.ui.all
 //= require tree.jquery
 //= require foundation
+//= require select2
 //= require_tree .
 
 $(document).foundation();
