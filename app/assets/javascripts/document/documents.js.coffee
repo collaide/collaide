@@ -82,4 +82,16 @@ $ ->
     autoOpen: false
   })
 
+  tree.bind(
+    'tree.click', ->
+    e.preventDefault()
+    selected_node = e.node
+    if (tree.tree('isNodeSelected', selected_node))
+      tree.tree('removeFromSelection', selected_node)
+    else
+      tree.tree('addToSelection', selected_node)
+
+  )
+
+
 
