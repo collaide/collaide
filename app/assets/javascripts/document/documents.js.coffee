@@ -78,7 +78,8 @@ $ ->
 
 $ ->
   # enable select2 js
-  $('#s2').select2()
+  $('.s2').select2()
+
 
 #$ ->
 #  $tree = $('#tree-domains')
