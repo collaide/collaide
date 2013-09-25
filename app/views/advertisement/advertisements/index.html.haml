@@ -15,8 +15,8 @@
   .row
     .large-4.columns.push-8.small-12
       =field_set_tag t('advertisements.index.forms.search.fieldset') do
+        =hidden_field_tag :auto_complete_url, autocomplete_advertisement_advertisements_path
         %form{action: search_advertisement_advertisements_path, method: :get, class: 'custom'}
-          =hidden_field_tag :auto_complete_url, autocomplete_advertisement_advertisements_path
           =label_tag :search, t('advertisements.index.forms.search.fieldset')
           =search_field_tag :search, @searched_value
           =submit_tag t('advertisements.index.forms.search.submit'), class: 'button secondary expand', name: nil, id: 'go-search'
