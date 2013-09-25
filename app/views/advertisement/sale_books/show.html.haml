@@ -19,6 +19,7 @@
               -if @sale_book.book.publisher
                 =t'sale_books.show.publisher', publisher: @sale_book.book.publisher
               -if @sale_book.book.published_date
+              -# j'ai créé une méthode dans ApplicationHelper qui s'appel display_date_or_year. Je te laisse changer si tu veux
                 =t'sale_books.show.published_date', published_date: l(@sale_book.book.published_date, format: :long) unless @sale_book.book.published_date == @sale_book.book.published_date.beginning_of_year
                 =t'sale_books.show.published_date_year', published_date: @sale_book.book.published_date.strftime('%Y') if @sale_book.book.published_date == @sale_book.book.published_date.beginning_of_year
           -if @sale_book.book.description

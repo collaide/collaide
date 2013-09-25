@@ -147,7 +147,7 @@ class Document::DocumentsController < ApplicationController
 
   def show
      @document = Document::Document.find params[:id]
-     add_breadcrumb(I18n.t('document.documents.show.bc', doc_name: @document.title))
+     add_breadcrumb(@document.title)
     @top_docs = {}
     Document::Document.all.each do |a_doc|
       unless a_doc.id == @document.id
@@ -161,7 +161,20 @@ class Document::DocumentsController < ApplicationController
     Document::Document.joins(:domains).where("domains.id=#{@document.domains.first.id}").all.each do |a_doc|
       @suggest << a_doc if a_doc.id != @document.id and @suggest.size <3
     end
-   content_for(:title, t('document.documents.show.meta_title', doc_name: @document.title))
+   content_for(:title, t('document.documents.show.meta_title',
+                         doc_name: @document.title,
+                         title_type: t('document.documents.index.title_type',
+                                       document: @document.document_type.name,
+                                       domain: @document.domains.first.name)))
+    key_words = []
+    key_words << @document.title
+     key_words << @document.document_type.name
+     key_words << @document.study_level.name
+     @document.domains.each {|a_domain| key_words << a_domain.name}
+     key_words << t('dico.download')
+     key_words << t('dico.free')
+    content_for(:key_words, key_words.join(', '))
+    content_for(:meta_description, @document.description)
   end
 
   def download
