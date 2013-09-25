@@ -17,6 +17,25 @@ class Advertisement::AdvertisementsController < ApplicationController
     @advertisement = Advertisement::Advertisement.order('id DESC').all
   end
 
+  def search
+    @message = MessageSending.new
+    @advertisement = Advertisement::SaleBook.search(
+        Riddle::Query.escape(params[:search])
+    )
+    render 'advertisement/advertisements/index'
+  end
+
+  def autocomplete
+    res =  Advertisement::SaleBook.search(
+        Riddle::Query.escape(params[:term])
+    ).map do |a_res|
+      {id: a_res.id, value: a_res.book.title}
+    end
+    respond_to do |format|
+      format.js { render json: res }
+    end
+  end
+
   def destroy
     @advertisement = Advertisement::Advertisement.find params[:id]
     @advertisement.destroy()
