@@ -231,7 +231,20 @@ class Document::DocumentsController < ApplicationController
   end
 
   def search
-    @document_documents = Document::Document.search(Riddle::Query.escape(params[:query]), page: params[:page], ranker: :bm25)
+    @document_documents = Document::Document.search(
+        Riddle::Query.escape(params[:query]),
+        page: params[:page],
+        ranker: :bm25,
+        field_weights: {
+          title: 10,
+          domains: 10,
+          document_type: 7,
+          study_level: 5,
+          user: 5,
+          author: 6,
+          description: 1
+        }
+    )
     @searched_value = params[:query]
     content_for(:title, t('document.documents.index.search', search: @searched_value))
     add_breadcrumb(t('document.documents.index.search', search: @searched_value))
@@ -242,7 +255,20 @@ class Document::DocumentsController < ApplicationController
   end
 
   def autocomplete
-    res =  Document::Document.search(Riddle::Query.escape(params[:term]), rank: :fieldmask).map do |a_res|
+    res =  Document::Document.search(
+        Riddle::Query.escape(
+            params[:term]),
+            rank: :fieldmask,
+            field_weights: {
+                title: 10,
+                domains: 8,
+                document_type: 7,
+                study_level: 5,
+                user: 5,
+                author: 6,
+                description: 2
+            }
+    ).map do |a_res|
        {id: a_res.id, value: a_res.title}
     end
     respond_to do |format|
