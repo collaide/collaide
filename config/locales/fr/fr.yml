@@ -20,6 +20,8 @@ fr:
     remember_me: &remember_me Se souvenir de moi
     edit: &edit Modifier
     time_ago: &time_ago il y a %{date}
+    download: télécharger
+    free: gratuitement
     documents:
       title: &doc_title Titre
       description: &doc_description Déscription
@@ -29,6 +31,7 @@ fr:
       created_at: &created_at Crée le
       page: &page page
       realized_at: &realized_at réalisé le
+      realized: &realized réalisé
       download: "téléchargement"
     personne: "personne"
   application_name:
@@ -168,7 +171,7 @@ fr:
         choose_study_level: Choisissez le niveau d'étude
         choose_document_type: Choisissez le type de document
       show:
-        meta_title: "Les détails du document \"%{doc_name}\""
+        meta_title: "Les détails du document \"%{doc_name}\" - %{title_type} à télécharger gratuitement"
         more_infos: Plus de détails
         realized_at: "%{realized_at} %{date}"
         more_details: "%{page}, %{realized_at}"

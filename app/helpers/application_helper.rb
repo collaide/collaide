@@ -7,7 +7,7 @@ module ApplicationHelper
     unless page_title.blank?
       options[:append] = page_title
     end
-    find_t_for_meta('title_page', options).join(sep).html_safe
+    find_t_for_meta('title_page', options).reverse.join(sep).html_safe
   end
 
   def key_words(words)
@@ -51,6 +51,12 @@ module ApplicationHelper
 
   def like_button(url, data_layout = 'box_count')
     raw '<div class="fb-like" data-href="'+url+'" data-width="450" data-layout="'+data_layout+'" data-show-faces="false" data-send="false"></div>'
+  end
+
+  def display_date_or_year(date)
+    (date == date.beginning_of_year) ?
+        t('sale_books.show.published_date_year', published_date: date.strftime('%Y')) :
+        t('sale_books.show.published_date', published_date: l(date, format: :long))
   end
 
   private

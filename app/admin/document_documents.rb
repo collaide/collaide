@@ -10,7 +10,7 @@ ActiveAdmin.register Document::Document do
        f.input :study_level
        f.input :document_type
        f.input :user
-       f.input :domains, collection: Domain.select_tree
+       f.input :domains, collection: Domain.select_tree, input_html: {class: 's2'}
        f.input :status
        f.input :language, as: :select, collection: languages_list
      end

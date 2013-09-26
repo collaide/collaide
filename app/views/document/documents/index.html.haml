@@ -3,8 +3,8 @@
     %h1= t 'document.documents.index.title'
     %p#no-doc
 .row
-  .small-12.columns.large-4
-    =create_link(Document::Document, t('document.documents.index.new_link'), 'success expand')
+  .small-12.columns.large-3
+    =create_link(Document::Document, t('document.documents.index.new_link'), 'expand')
 -if @document_documents.empty?
   %p= t 'document.documents.index.no_document'
 -else
@@ -40,7 +40,7 @@
         %form{action: document_documents_path, method: :get, class: 'custom'}
           =label_tag :search, t('document.documents.index.forms.search.label')
           =search_field_tag :search, @searched_value
-          =submit_tag t('document.documents.index.forms.search.submit'), class: 'button expand', name: nil, id: 'go-search'
+          =submit_tag t('document.documents.index.forms.search.submit'), class: 'button secondary expand', name: nil, id: 'go-search'
       %fieldset
         %form{action: document_documents_path, method: :get}
           =hidden_field_tag :url_for_order, @url_for_js
