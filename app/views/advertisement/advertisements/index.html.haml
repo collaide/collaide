@@ -14,10 +14,11 @@
       -#=paginate @advertisement, remote: true
   .row
     .large-4.columns.push-8.small-12
-      =form_tag advertisement_advertisements_path, method: :get do
-        =field_set_tag t('advertisements.index.forms.search.fieldset') do
-          -#=label_tag :search, t('advertisements.index.forms.search.label')
-          =search_field_tag :search
-          =submit_tag t('advertisements.index.forms.search.submit'), class: 'button secondary expand'
+      =field_set_tag t('advertisements.index.forms.search.fieldset') do
+        =hidden_field_tag :auto_complete_url, autocomplete_advertisement_advertisements_path
+        %form{action: search_advertisement_advertisements_path, method: :get, class: 'custom'}
+          =label_tag :search, t('advertisements.index.forms.search.fieldset')
+          =search_field_tag :search, @searched_value
+          =submit_tag t('advertisements.index.forms.search.submit'), class: 'button secondary expand', name: nil, id: 'go-search'
     .small-12.large-8.columns.pull-4#advertisements
       =render @advertisement
