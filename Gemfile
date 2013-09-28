@@ -54,15 +54,15 @@ gem 'enumerize'
 
 gem 'acts_as_commentable', '3.0.1'
 
-#gem 'mysql2',          '0.3.13'
-#gem 'thinking-sphinx', '3.0.5'
+gem 'mysql2',          '0.3.13'
+gem 'thinking-sphinx', '3.0.5'
 
 gem 'breadcrumbs_on_rails'
 gem 'geocoder'
 gem 'country_select'
 gem 'mailboxer'
 
-gem "select2-rails"
+gem 'select2-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
