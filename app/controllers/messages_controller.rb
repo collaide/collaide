@@ -48,10 +48,10 @@ class MessagesController < ApplicationController
     redirect_to messages_path(:anchor => c.id), notice: t('messages.reply.succed')
   end
 
-  #def show
-  #  @conversation = Conversation.find(params[:id])
-  #  @receipts = @conversation.receipts_for current_user
-  #end
+  def show
+    @conversation = Conversation.find(params[:id])
+    @receipts = @conversation.receipts_for current_user
+  end
 
   def new
     @conversations = getConversations
