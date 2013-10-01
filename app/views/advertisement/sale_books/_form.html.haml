@@ -1,5 +1,5 @@
 -#TODO : Ajouter des tooltips foundation
-=simple_form_for(@advertisement_sale_book, html: {class: 'custom', data_abide: true}) do |f|
+=simple_form_for(@advertisement_sale_book, html: {data_abide: true}) do |f|
   =f.error_notification
   .form-inputs
     =field_set_tag t('sale_books.new.forms.required') do
@@ -31,7 +31,7 @@
         .small-12.columns
           .row
             =f.input :price, label_html: tooltip(t("sale_books.new.forms.tooltips.price")), wrapper_html: {class: 'columns small-4'}
-            =f.input :currency, prompt: t('simple_form.prompts.advertisement_sale_book.currency'), wrapper_html: {class: 'columns large-4 small-8'}, label_html: tooltip(t("sale_books.new.forms.tooltips.currency"))
+            =f.input :currency, prompt: t('simple_form.prompts.advertisement_sale_book.currency'), input_html: {class: 's2'}, wrapper_html: {class: 'columns large-4 small-8'}, label_html: tooltip(t("sale_books.new.forms.tooltips.currency"))
             .columns.small-4
       -if !edit
         #more_details

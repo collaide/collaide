@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-#gem 'therubyracer'
+gem 'therubyracer'
 
 gem 'bcrypt-ruby', '3.0.1'
 
@@ -62,7 +62,7 @@ gem 'geocoder'
 gem 'country_select'
 gem 'mailboxer'
 
-gem "select2-rails"
+gem 'select2-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

@@ -241,18 +241,7 @@ fr:
     buy:
       title: Achât du livre %{book}
       content: Vous êtes sur le point de contacter %{user} pour acheter son livre %{book} au prix de %{price}.
-      textarea: "Bonjour,
-
-
-      Je désire acheter votre livre %{book}.
-
-
-      [...Donnez les informations nécessaires pour procéder à la transaction...]
-
-
-      Cordialement,
-
-      Prenom Nom"
+      textarea: "Bonjour,\n\nJe désire acheter votre livre %{book}.\n\n[...Donnez les informations nécessaires pour procéder à la transaction...]\n\nCordialement,\nPrenom Nom"
       subject: "[Achat] %{book}"
     new:
       title: Vendre un livre
@@ -325,6 +314,7 @@ fr:
       no_message: Vous n'avez aucun message
       reply: Votre réponse...
       submit: Répondre
+      no_message: Vous n'avez aucun message...
       menu:
         all: Tous les messages
         inbox: Messages entrants
