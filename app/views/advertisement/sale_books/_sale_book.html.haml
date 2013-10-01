@@ -6,8 +6,7 @@
     .sale_book_text_content
       -#Attention avec raw, de tout escape dedans !
       =raw(t('sale_books.buy.content', user: link_to(h(sale_book.user.name_to_show), sale_book.user), book: link_to(h(sale_book.book.title),sale_book), price:number_to_currency(h(sale_book.price), :unit => h(sale_book.currency.text))))
-    .sale_book_textarea_content
-      =t('sale_books.buy.textarea', book: sale_book.book.title)
+    %pre.sale_book_textarea_content~t('sale_books.buy.textarea', book: sale_book.book.title)
     .sale_book_user_id
       =sale_book.user.id
     .sale_book_subject_content

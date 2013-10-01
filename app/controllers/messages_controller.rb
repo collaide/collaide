@@ -3,12 +3,26 @@ class MessagesController < ApplicationController
   add_breadcrumb I18n.t("messages.index.breadcrumb"),  :messages_path
   add_breadcrumb I18n.t("messages.new.h1_title"), :new_message_path, :only => %w(new create)
 
-  def index
-    #user = User.find(2)
-    #user.send_message(current_user, 'contenu du message', 'Salut vieux boy')
-    #current_user.send_message(current_user, "Salut Yves, je t'envoie ce mail car j'ai un soucis", 'titre')
+  def index(page=1)
+    user = User.find(2)
+    #user.send_message(current_user, 'contenu du messag2e')
+    #current_user.send_message(current_user, "Salut Yves, je t'envoie ce mail car j'ai un soucis")
+    #logger.info('subject'.inspect)
 
-    @conversations = getConversations
+    #@conversations = current_user.mailbox.inbox
+
+    ##alfa wants to retrieve all his conversations
+    #alfa.mailbox.conversations
+    #
+    ##A wants to retrieve his inbox
+    #alfa.mailbox.inbox
+    #
+    ##A wants to retrieve his sent conversations
+    #alfa.mailbox.sentbox
+    #
+    ##alfa wants to retrieve his trashed conversations
+    #alfa.mailbox.trash
+    @conversations = current_user.mailbox.inbox.page(page).per(9)
 
     respond_to do |format|
       format.html # index.html.erb
