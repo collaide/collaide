@@ -1,12 +1,9 @@
 .row
   .small-12.large-8.columns
     %h1= t 'document.documents.index.title'
-    %p#no-doc
 .row
   .small-12.columns.show-for-small
     =create_link(Document::Document, t('document.documents.index.new_link'), 'expand')
--if @document_documents.empty?
-  %p= t 'document.documents.index.no_document'
 
 -#FAIT: la pagination ne marche pas quand on séléction un domaine -> ça marche en principe
 -#FAIT: ajouter deux options de tris: classé par: notes et classer par: hits => seul les documentés pour les quels on a voté sont affichés
@@ -45,6 +42,7 @@
   .small-12.columns#paginate
     =paginate @document_documents, remote: true
 .row
+  %p#no-doc
   .large-4.columns.push-8.small-12.hide-for-small#form_to_hide
     .row.hide-for-small
       .small-12.columns
@@ -73,5 +71,8 @@
     .small-12.columns#paginate
       =paginate @document_documents, remote: true
   .small-12.large-8.columns.pull-4#documents
-    .row
-      =render @document_documents
+    -if @document_documents.empty?
+      %p= t 'document.documents.index.no_document'
+    -else
+      .row
+        =render @document_documents

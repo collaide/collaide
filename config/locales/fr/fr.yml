@@ -133,7 +133,7 @@ fr:
         subtitle: "%{type} en %{domains}"
         new_link: Déposer un nouveau document
         download: Télécharger
-        no_document: Il n'y a aucun documents pour le moment
+        no_document: Aucun documents ne corresspondent à vos critères de recherche. Elargissez votre champ de recherche.
         no_result: Aucun documents ne corresspondent à vos critères
         hits: "Hits :"
         show: Plus de détails
