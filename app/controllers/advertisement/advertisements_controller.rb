@@ -14,7 +14,8 @@ class Advertisement::AdvertisementsController < ApplicationController
 
   def index
     @message = MessageSending.new
-    @advertisement = Advertisement::Advertisement.order('id DESC').all
+    # Pour changer le nombre d'éléments par page, ajouter .per(5) après la méthode page
+    @advertisement = Advertisement::Advertisement.order('id DESC').page(params[:page])
   end
 
   def search

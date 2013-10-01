@@ -12,8 +12,11 @@ Collaide::Application.routes.draw do
   match 'reply', to: 'messages#reply', via: [:post]
 
   resources :advertisements, as: 'advertisement_advertisements', controller: 'advertisement/advertisements', :except => [:edit, :show] do
-    get 'search', action: :search, as: 'search', on: :collection
-    get 'autocomplete', action: :autocomplete, on: :collection, as: 'autocomplete'
+    collection do
+      get 'page', action: :page
+      get 'search', action: :search, as: 'search'
+      get 'autocomplete', action: :autocomplete, as: 'autocomplete'
+    end
   end
 
   namespace :advertisement do

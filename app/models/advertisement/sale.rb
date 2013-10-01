@@ -30,7 +30,7 @@ class Advertisement::Sale < Advertisement::Advertisement
   serialize :delivery_modes, Array
   enumerize :delivery_modes, in: [:hand, :post], multiple: true
 
-  validates_presence_of :price, :numericality => {
+  validates :price, presence: true, :numericality => {
       :greater_than => 0,
       :less_than_or_equal_to => 10000
   }
