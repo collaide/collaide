@@ -64,6 +64,8 @@ gem 'mailboxer'
 
 gem 'select2-rails'
 
+gem 'awesome_nested_set'
+
 group :development, :test do
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
