@@ -226,10 +226,6 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "position"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.integer  "depth"
-    t.integer  "parent_id"
   end
 
   add_index "domains", ["ancestry"], :name => "index_domains_on_ancestry"
