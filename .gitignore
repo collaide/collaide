@@ -10,6 +10,8 @@
 # Ignorer la config de la bdd
 /config/database.yml
 
+/config/development.sphinx.conf
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 

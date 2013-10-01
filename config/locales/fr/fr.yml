@@ -129,24 +129,25 @@ fr:
         description_meta: Téléchargez toutes sortes de documents scolaires gratuitement pour les étudiants de tous niveaux d'études
         key_words: liste, des, documents, document, Dissertations, Analyses, Documents, rapports, résumés, Exposers, Tests, Présentations, base de donnée, Collaide, Etudiants, document de maturité
         published_by: Publié par
-        title: Les documents scolaires
+        title: Tous les documents
         subtitle: "%{type} en %{domains}"
-        new_link: Nouveau document
+        new_link: Déposer un nouveau document
         download: Télécharger
-        no_document: Il n'y a aucun documents pour le moment
+        no_document: Aucun documents ne corresspondent à vos critères de recherche. Elargissez votre champ de recherche.
         no_result: Aucun documents ne corresspondent à vos critères
         hits: "Hits :"
         show: Plus de détails
-        display_search: Rechercher un document
+        display_search: Rechercher avancée
         page: Page %{nb_page}
         personlaized_search: Affichage personalisé
+        search_placeholder: rapport en pysique, liberté, etc. Essayez, ça marche !
         search: "Recherche de '%{search}'"
         no_result: "Aucun documents"
         title_type_document: Document
         title_type: "%{document} en %{domain}"
         forms:
           search:
-            label: Rechercher
+            label: Quels documents recherchez-vous ?
             submit: Go!
           order:
             label_type: Afficher un(e)

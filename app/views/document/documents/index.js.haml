@@ -7,8 +7,7 @@ $('#url_for_order').val("#{escape_javascript @url}");
 $('#paginate li a').on('click', function() {history.pushState('', null, this.href);});
 $('#breadcrumb').html("#{escape_javascript(render_breadcrumbs :builder => ::FoundationBreadcrumbsBuilder, :separator => "&raquo;")}");
 applyRaty();
-FB.XFBML.parse();
 -if @document_documents.empty?
-  $('#no-doc').html("#{t('document.documents.index.no_result')}")
+  $('#no-doc').html("#{t('document.documents.index.no_document')}")
 -else
   $('#no-doc').html('');
