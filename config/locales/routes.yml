@@ -33,5 +33,13 @@ fr:
     advertisements: annonces
     books: livres
     messages: messages
+
+    search: recherche
+    autocomplete: auto-completion
+    domain: domaine
+    domains: domaines
+    rate: note
+    query: requête
+    in: en
 en:
   routes:
