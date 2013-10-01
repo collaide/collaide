@@ -1,65 +1,77 @@
 .row
-  .small-12.columns
+  .small-12.large-8.columns
     %h1= t 'document.documents.index.title'
     %p#no-doc
 .row
-  .small-12.columns.large-3
+  .small-12.columns.show-for-small
     =create_link(Document::Document, t('document.documents.index.new_link'), 'expand')
 -if @document_documents.empty?
   %p= t 'document.documents.index.no_document'
--else
-  -#FAIT: la pagination ne marche pas quand on séléction un domaine -> ça marche en principe
-  -#FAIT: ajouter deux options de tris: classé par: notes et classer par: hits => seul les documentés pour les quels on a voté sont affichés
-  -#FAIT: téléchargement du document depuis la page d'index -> important!!!
-  -#FAIT: autocomplétion, recherche -> important!!!
-  -#TODO: utiliser friendlyid pour les urls
-  -#FAIT: réseaux sociaux sous les hits, facile, manque les droits
-  -#TODO: fil d'arianne -> juste avant ou après la sortie, important aussi pour bien naviguer.
-  -#FAIT: afficher plus de la recherche à volonté pour petit écran -> après mise en ligne
-  -#TODO: Penser à lier le dropdown avec la navigation entre les domaines. Dropdown dans le fil d'arianne ?
-  -#TODO: déroulement infin -> plus tard
-  -#TODO: afficher une screeshot de chaque document.
-  -#TODO: remplir la colonne de droite de trucs et de machins
-  -#TODO: De Yves: Faire que si on cherche dans un domaine, ça inclus ses sous domaines
-  .row
+
+-#FAIT: la pagination ne marche pas quand on séléction un domaine -> ça marche en principe
+-#FAIT: ajouter deux options de tris: classé par: notes et classer par: hits => seul les documentés pour les quels on a voté sont affichés
+-#FAIT: téléchargement du document depuis la page d'index -> important!!!
+-#FAIT: autocomplétion, recherche -> important!!!
+-#TODO: utiliser friendlyid pour les urls
+-#FAIT: réseaux sociaux sous les hits, facile, manque les droits
+-#FAIT: fil d'arianne -> juste avant ou après la sortie, important aussi pour bien naviguer.
+-#FAIT: afficher plus de la recherche à volonté pour petit écran -> après mise en ligne
+-#FAIT: Penser à lier le dropdown avec la navigation entre les domaines. Dropdown dans le fil d'arianne ?
+-#TODO: déroulement infin -> plus tard
+-#TODO: afficher une screeshot de chaque document.
+-#TODO: remplir la colonne de droite de trucs et de machins
+-#FAIT: De Yves: Faire que si on cherche dans un domaine, ça inclus ses sous domaines
+.row
+  .small-12.columns
+    %form{action: document_documents_path, method: :get, class: 'custom'}
+      .row.collapse
+        .large-3.small-12.columns
+          =label_tag :search, t('document.documents.index.forms.search.label'), id: 'important-label'
+        .large-7.small-9.columns
+          =search_field_tag :search, @searched_value, autofocus: true, placeholder: t('document.documents.index.search_placeholder')
+        .large-2.small-3.columns
+          =submit_tag t('document.documents.index.forms.search.submit'), class: 'button secondary prefix', name: nil, id: 'go-search'
+.row.show-for-small
+  .small-12.columns
+    #display-search
+      =label_tag :more_details, t('document.documents.index.display_search')
+      .switch
+        =radio_button_tag :x, 'no', true
+        =label_tag :x, t('sale_books.new.forms.more_details')
+        =radio_button_tag :x, 'yes'
+        =label_tag :x, t('sale_books.new.forms.less_details')
+        %span
+.row.hide-for-small
+  .small-12.columns#paginate
+    =paginate @document_documents, remote: true
+.row
+  .large-4.columns.push-8.small-12.hide-for-small#form_to_hide
+    .row.hide-for-small
+      .small-12.columns
+        =create_link(Document::Document, t('document.documents.index.new_link'), 'expand')
+    %fieldset
+      %form{action: search_document_documents_path, method: :get}
+        =hidden_field_tag :url_for_order, @url_for_js
+        =hidden_field_tag :url_for_ajax, @url_for_js
+        =hidden_field_tag :auto_complete_url, autocomplete_document_documents_path
+        .row
+          .large-6.small-12.columns
+            =label_tag :type, t('document.documents.index.forms.order.label_type')
+            =select_tag :type, options_from_collection_for_select(Document::Type.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_type'), class: 's2'
+          .large-6.small-12.columns
+            =label_tag :domains, t('document.documents.index.forms.order.label_domains')
+            =select_tag :domains, options_from_collection_for_select(Domain.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_domains'), class: 's2'
+        .row
+          .large-6.small-12.columns
+            =label_tag :order, t('document.documents.index.forms.order.label_order')
+            =select_tag :order, options_for_select([[t('document.documents.index.forms.order.select.newest'), 0], [t('document.documents.index.forms.order.select.notest'), 2], [t('document.documents.index.forms.order.select.hits'), 3], [t('document.documents.index.forms.order.select.alphabetic'), 1]]), class: 's2'
+          .large-6.small-12.columns
+            =label_tag :datepicker, t('document.documents.index.forms.order.label_datepicker')
+            =text_field_tag :datepicker, nil, class: :datepicker
+        %input{type: 'submit', value: 'Afficher', id: 'print-criter'}
+  .row.show-for-small
     .small-12.columns#paginate
       =paginate @document_documents, remote: true
-  .row.show-for-small
-    .small-12.columns
-      #display-search
-        =label_tag :more_details, t('document.documents.index.display_search')
-        .switch
-          =radio_button_tag :x, 'no', true
-          =label_tag :x, t('sale_books.new.forms.more_details')
-          =radio_button_tag :x, 'yes'
-          =label_tag :x, t('sale_books.new.forms.less_details')
-          %span
-  .row
-    .large-4.columns.push-8.small-12.hide-for-small#form_to_hide
-      %fieldset
-        %form{action: document_documents_path, method: :get, class: 'custom'}
-          =label_tag :search, t('document.documents.index.forms.search.label')
-          =search_field_tag :search, @searched_value
-          =submit_tag t('document.documents.index.forms.search.submit'), class: 'button secondary expand', name: nil, id: 'go-search'
-      %fieldset
-        %form{action: document_documents_path, method: :get}
-          =hidden_field_tag :url_for_order, @url_for_js
-          =hidden_field_tag :url_for_ajax, @url_for_js
-          =hidden_field_tag :auto_complete_url, autocomplete_document_documents_path
-          .row
-            .large-6.small-12.columns
-              =label_tag :type, t('document.documents.index.forms.order.label_type')
-              =select_tag :type, options_from_collection_for_select(Document::Type.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_type'), class: 's2'
-            .large-6.small-12.columns
-              =label_tag :domains, t('document.documents.index.forms.order.label_domains')
-              =select_tag :domains, options_from_collection_for_select(Domain.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_domains'), class: 's2'
-          .row
-            .large-6.small-12.columns
-              =label_tag :order, t('document.documents.index.forms.order.label_order')
-              =select_tag :order, options_for_select([[t('document.documents.index.forms.order.select.newest'), 0], [t('document.documents.index.forms.order.select.notest'), 2], [t('document.documents.index.forms.order.select.hits'), 3], [t('document.documents.index.forms.order.select.alphabetic'), 1]]), class: 's2'
-            .large-6.small-12.columns
-              =label_tag :datepicker, t('document.documents.index.forms.order.label_datepicker')
-              =text_field_tag :datepicker, nil, class: :datepicker
-          %input{type: 'submit', value: 'Afficher', id: 'print-criter'}
-    .small-12.large-8.columns.pull-4#documents
+  .small-12.large-8.columns.pull-4#documents
+    .row
       =render @document_documents
