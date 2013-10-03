@@ -60,7 +60,9 @@ gem 'thinking-sphinx', '3.0.5'
 gem 'breadcrumbs_on_rails'
 gem 'geocoder'
 gem 'country_select'
-gem 'mailboxer'
+#gem 'mailboxer'
+
+gem 'mailboxer', :github => 'facenord-sud/mailboxer', :branch => 'master'
 
 gem 'select2-rails'
 

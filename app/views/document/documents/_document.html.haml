@@ -1,5 +1,5 @@
 -if document_counter%2==0
-  <div class="row" id="document-container">
+  <div class="row columns" id="document-container">
 .index-document
   .columns.large-6
     .row
@@ -37,6 +37,7 @@
           .columns
             =link_to t('document.documents.index.download'), document_document_download_path(document_document_id: document), class: 'button secondary' if can? :download, Document::Document
             =show_link document, t('document.documents.index.show'), 'secondary'
+    %hr.show-for-small
 -if document_counter%2!=0 or document_counter == @document_documents.size
   </div>
-  %hr
+  %hr.hide-for-small

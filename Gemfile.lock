@@ -7,6 +7,16 @@ GIT
       rake (>= 0.8.7)
 
 GIT
+  remote: git://github.com/facenord-sud/mailboxer.git
+  revision: c49e48fb00c2285bea9e6da6abb759306b82a60a
+  branch: master
+  specs:
+    mailboxer (0.1)
+      carrierwave (>= 0.5.8)
+      foreigner (>= 0.9.1)
+      rails (> 3.0.0)
+
+GIT
   remote: git://github.com/nebirhos/activeadmin-sortable-tree.git
   revision: 53e60889f3c7a3e02686ea4285ca5ee020b277fa
   branch: master
@@ -232,10 +242,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mailboxer (0.11.0)
-      carrierwave (>= 0.5.8)
-      foreigner (>= 0.9.1)
-      rails (> 3.0.0)
     meta_request (0.2.7)
       callsite
       rack-contrib
@@ -387,7 +393,6 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.0.7)
-    win32console (1.3.2)
     win32console (1.3.2-x86-mingw32)
     xpath (0.1.4)
       nokogiri (~> 1.3)
@@ -440,7 +445,7 @@ DEPENDENCIES
   letsrate
   lorem-ipsum
   magic_encoding
-  mailboxer
+  mailboxer!
   meta_request
   mysql2 (= 0.3.13)
   paper_trail
