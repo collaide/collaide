@@ -1,8 +1,8 @@
 class Document::CreateDocumentNotification < Notification
 
-  def self.perform(doc_id)
+  def create(doc_id)
     document = Document::Document.find doc_id
     data = {message: "Le document #{document.title} a été créé par le membre #{document.user.name} à #{I18n.l(document.created_at, format: :long)}"}
-    send data
+    data
   end
 end
