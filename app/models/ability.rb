@@ -9,19 +9,19 @@ class Ability
     else
       # utilisateur normal, encore réfléchir comment exactement gérer, sinon un rôle 'normal' dans User ?
       if user.role.nil?
-        normal_user
+        normal_user user
       end
       if user.super_admin?
         super_admin
       end
 
       if user.admin?
-        normal_user
+        normal_user user
         admin
       end
 
       if user.validator?
-        normal_user
+        normal_user user
         validator
       end
     end
@@ -66,7 +66,7 @@ class Ability
       can :read, Advertisement::Advertisement
     end
 
-    def normal_user
+    def normal_user(user)
       can :manage, User, id: user.id #peut gérer uniquement son profil
       can :manage, GuestBook
       can :read, Domain

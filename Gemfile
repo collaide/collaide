@@ -71,6 +71,8 @@ gem 'awesome_nested_set'
 gem "resque"
 gem 'resque-web'
 
+gem 'gritter', '1.0.3'
+
 group :development, :test do
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'

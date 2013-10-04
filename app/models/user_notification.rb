@@ -10,6 +10,12 @@ class UserNotification < ActiveRecord::Base
    validates_presence_of :values
   validates_presence_of :user
 
+   def print_message
+     klass = class_name.constantize.new
+     klass.send(method_name.to_sym, JSON.parse(self.values))
+
+   end
+
   protected
     def notify_user
       u = User.find user_id

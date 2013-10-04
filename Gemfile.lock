@@ -183,6 +183,7 @@ GEM
       paper_trail (~> 2)
     googlebooks (0.0.7)
       httparty
+    gritter (1.0.3)
     guard (1.8.2)
       formatador (>= 0.2.4)
       listen (>= 1.0.0)
@@ -461,6 +462,7 @@ DEPENDENCIES
   geocoder
   globalize3
   googlebooks (~> 0.0.7)
+  gritter (= 1.0.3)
   guard-livereload
   guard-rspec (= 1.2.1)
   guard-spork (= 1.2.0)
