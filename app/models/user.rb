@@ -27,6 +27,7 @@
 # -*- encoding : utf-8 -*-
 # -*- encoding : utf-8 -*-
 class User < ActiveRecord::Base
+  extend Enumerize
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -35,6 +36,7 @@ class User < ActiveRecord::Base
 
    attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :avatar, :name, :points,
                    :last_sign_in_at, :created_at
+  enumerize :role, in: [:admin, :moderator, :author, :banned, :super_admin, :validator], scope: true, predicates: true
 
   #https://github.com/ging/mailboxer
   acts_as_messageable
@@ -76,39 +78,10 @@ class User < ActiveRecord::Base
   geocoded_by :current_sign_in_ip   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
 
-  validate :points, numericality: {
-      greater_than_or_equal_to: 0,
+  validates :points, numericality: {
       only_integer: true
   }
 
-  # Plus d'infos : https://github.com/ryanb/cancan/wiki/Role-Based-Authorization
-  #ne pas modifier, ajouter
-  ROLES = %w[admin moderator author banned super-admin]
-
-  def roles=(roles)
-    self.role_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
-  end
-
-  def roles
-    ROLES.reject do |r|
-      ((role_mask || 0) & 2**ROLES.index(r)).zero?
-    end
-  end
-
-  def zero?
-      no_roles?
-  end
-
-  def is?(role)
-    self.roles.each do |r|
-      return true if r == role
-    end
-    false
-  end
-
-  def no_roles?
-    role_mask.nil?
-  end
 
   #Returning the email address of the model if an email should be sent for this object (Message or Notification).
   #If no mail has to be sent, return nil.

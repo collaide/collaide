@@ -5,32 +5,24 @@ class Ability
   def initialize(user)
     #utilisateur non connecté, à voir si ça va comme ça
     if user.nil?
-      can :manage, GuestBook
-      can :read, Domain
-      can :index, Document::Document
-      can :read, Advertisement::Advertisement
+       no_connected
     else
-      if user.no_roles? #utilisateur normal, encore réfléchir comment exactement gérer, sinon un rôle normal dans User
-        can :manage, User, id: user.id #peut gérer uniquement son profil
-        can :manage, GuestBook
-        can :read, Domain
-        can :read, Document::Document
-        can :download, Document::Document
-        can :manage, Document::Document, user_id: user.id
-        can :manage, Advertisement::Advertisement, user_id: user.id
-      else
-        if user.is? 'super-admin'
-          can :manage, :all
-        end
+      # utilisateur normal, encore réfléchir comment exactement gérer, sinon un rôle 'normal' dans User ?
+      if user.role.nil?
+        normal_user
+      end
+      if user.super_admin?
+        super_admin
+      end
 
-        if user.is? 'admin'
-          #can :read, User par exemple
-          #etc on continue de définir des permissions pour chaque rôles
-        end
+      if user.admin?
+        normal_user
+        admin
+      end
 
-        if user.is? 'validator'
-          can :manage, Document::Document
-        end
+      if user.validator?
+        normal_user
+        validator
       end
     end
     #etc
@@ -65,4 +57,34 @@ class Ability
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
   end
+
+  private
+    def no_connected
+      can :manage, GuestBook
+      can :read, Domain
+      can :index, Document::Document
+      can :read, Advertisement::Advertisement
+    end
+
+    def normal_user
+      can :manage, User, id: user.id #peut gérer uniquement son profil
+      can :manage, GuestBook
+      can :read, Domain
+      can :read, Document::Document
+      can :download, Document::Document
+      can :manage, Document::Document, user_id: user.id
+      can :manage, Advertisement::Advertisement, user_id: user.id
+    end
+
+    def super_admin
+      can :manage, :all
+    end
+
+    def validator
+
+    end
+
+    def admin
+
+    end
 end
