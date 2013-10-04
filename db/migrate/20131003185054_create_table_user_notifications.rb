@@ -4,6 +4,7 @@ class CreateTableUserNotifications < ActiveRecord::Migration
       t.string :class_name
       t.string :method_name
       t.string :values
+      t.boolean :is_viewed, default: false
       t.belongs_to :user
 
       t.timestamps

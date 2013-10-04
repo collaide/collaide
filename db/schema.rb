@@ -434,9 +434,10 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.string   "class_name"
     t.string   "method_name"
     t.string   "values"
+    t.boolean  "is_viewed",   :default => false
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "user_parameters", :force => true do |t|
@@ -483,8 +484,8 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   add_index "user_studies", ["member_scolarity_id"], :name => "index_member_studies_on_member_scolarity_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "name"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -494,8 +495,8 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -504,6 +505,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "role"
+    t.boolean  "has_notifications",      :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
