@@ -1,4 +1,4 @@
-class Document::CreateDocumentNotification < Notification
+class UserNotification::DocumentNotifications < UserNotification::AbstractClass
 
   def create(doc_id)
     document = Document::Document.find doc_id
