@@ -82,22 +82,4 @@ class MessagesController < ApplicationController
   def update
   end
 
-  private
-  def getConversations(page=1)
-    #@conversations = current_user.mailbox.inbox
-
-    ##alfa wants to retrieve all his conversations
-    #alfa.mailbox.conversations
-    #
-    ##A wants to retrieve his inbox
-    #alfa.mailbox.inbox
-    #
-    ##A wants to retrieve his sent conversations
-    #alfa.mailbox.sentbox
-    #
-    ##alfa wants to retrieve his trashed conversations
-    #alfa.mailbox.trash
-    current_user.mailbox.inbox.page(page).per(9)
-  end
-
 end

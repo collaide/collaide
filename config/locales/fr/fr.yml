@@ -164,7 +164,7 @@ fr:
       new:
         title_page: "Envoyer un nouveau document et gagnez 3 points !"
         bc: Envoyer un document
-        title_page: Déposer
+        #title_page: Déposer
         title: Nouveau document
       form:
         submit: Déposer le document
@@ -215,8 +215,9 @@ fr:
     dico:
       page: "page"
   advertisements:
+    title_page: Annonces étudiants
     index:
-      meta_title: Achetez un grand nombre de livres étudiants d'occasions à bas prix mis en vente par des étudiants !
+      title_page: Achetez un grand nombre de livres étudiants d'occasions à bas prix mis en vente par des étudiants !
       breadcrumb: Les petites annonces
       title: Les petites annonces
       new_link: Publier une annonce
@@ -228,11 +229,14 @@ fr:
           fieldset: Rechercher
           submit: Chercher
     new:
-      title: Publier une annonces
+      title_page: Publier une annonce
+      title: Publier une annonce
       description: Quelle genre d'annonce voulez-vous publier ?
       sale_book: Vendre un livre
   sale_books:
+    title_page: Livres étudiants d'occasion
     index:
+      #title_page: Achetez un grand nombre de livres étudiants d'occasions à bas prix mis en vente par des étudiants !
       buy: Acheter
       note: Note
       subtitle1: "Livre: %{book}"
@@ -244,6 +248,7 @@ fr:
       textarea: "Bonjour,\n\nJe désire acheter votre livre %{book}.\n\n[...Donnez les informations nécessaires pour procéder à la transaction...]\n\nCordialement,\nPrenom Nom"
       subject: "[Achat] %{book}"
     new:
+      title_page: Vendre un livre
       title: Vendre un livre
       joy_ride:
         joy_presentation:
@@ -284,7 +289,7 @@ fr:
           study_level: A quel degré scolaire ce livre est-il le mieux adapté ?
     show:
       title: "Vente du livre étudiant: %{book}"
-      meta_title: Achetez %{book}, livre étudiant d'occasion pour seulement %{price} !
+      title_page: Achetez %{book}, livre étudiant d'occasion pour seulement %{price} !
       sale_title: "Vente de %{book}"
       authors: "De %{authors}"
       publisher: " par %{publisher}"
@@ -302,12 +307,15 @@ fr:
       advertisement: Annonce
       edit: *edit
     edit:
+      title_page: Modifier une vendre
       title: Modifier la vente de %{book}
       forms:
         submit: Modifier la vente
         succes: Vos modifications ont bien été enregistrées !
   messages:
+    title_page: Messagerie privée
     index:
+      title_page: Vos messages
       h1_title: Vos messages
       breadcrumb: Messagerie
       new_link: Nouveau message
@@ -318,7 +326,7 @@ fr:
       with: "Avec: "
       menu:
         all: Tous les messages
-        inbox: Messages entrants
+        inbox: Messages reçus
         sendbox: Messages envoyés
         trash: Messages supprimés
       table:
@@ -327,6 +335,7 @@ fr:
         participants: Participants
         last: Dernier message
     new:
+      title_page: Nouveau message
       h1_title: Envoyer un message
       forms:
         success: Votre message a bien été envoyé !
@@ -334,6 +343,7 @@ fr:
         tooltips:
           users: Vous pouvez choisir plusieurs utilisateurs en tapant leur pseudo ici.
     show:
+      title_page: Lire un message
       participants: "Participant(s):"
       since: il y a
     reply:
