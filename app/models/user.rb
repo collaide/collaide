@@ -123,6 +123,14 @@ class User < ActiveRecord::Base
   def name_to_show
     self.name
   end
+
+  def avatar
+    if self.avatar_file_name
+      self.avatar_file_name
+    else
+      'users/no-avatar.png'
+    end
+  end
 end
 
 class Point

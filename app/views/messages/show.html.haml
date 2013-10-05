@@ -24,7 +24,7 @@
               %blockquote.message{class: "#{is_sender} #{unread}"}
                 .row
                   .large-1.columns.hide-for-small
-                    %p=image_tag 'annonces/no_cover_thumb.gif'
+                    %p=image_tag r.message.sender.avatar
                   .large-11.columns
                     =simple_format(r.message.body)
                     %cite

@@ -26,7 +26,7 @@
                   .large-1.columns.hide-for-small
                     -#=link_to (image_tag'annonces/no_cover_thumb.gif', c.last_message.sender, class: 'th')
                     %a{href: message_path(c),class: 'th'}
-                      =image_tag 'annonces/no_cover_thumb.gif'
+                      =image_tag c.last_message.sender.avatar
                   .large-11.columns
                     %h6.subheader=truncate((c.last_message.body), length: 255)
                     %cite
