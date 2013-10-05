@@ -335,7 +335,7 @@ fr:
           users: Vous pouvez choisir plusieurs utilisateurs en tapant leur pseudo ici.
     show:
       participants: "Participant(s):"
-      #h1_title: %{title}
+      since: il y a
     reply:
       no_conversation: Réponse non envoyée ! Cette conversation n'existe pas ou plus...
       succed: Votre réponse a bien été envoyée !

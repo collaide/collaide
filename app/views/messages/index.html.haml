@@ -19,7 +19,7 @@
                 -c.recipients.each do |r|
                   -unless r==current_user
                     =link_to(r.name_to_show, r)
-              %h6.subheader=c.last_message.body
+              %h6.subheader=truncate((c.last_message.body), length: 255)
           %hr
 
 
