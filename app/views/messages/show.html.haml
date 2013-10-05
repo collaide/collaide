@@ -1,7 +1,34 @@
-.row
-  .small-12.columns
-    %h1= @conversation.subject
--#using the receipts (i.e. in the view)
--@receipts.each do |receipt|
-  = receipt.inspect
-  = receipt.is_unread? #or message.is_unread?(alfa)
+=render(:layout => 'layout_messages') do
+  .row
+    .small-12.columns
+      .row
+        .small-12.columns
+          %h1= @conversation.subject_to_show
+          %h6.subheader
+            =t'messages.show.participants'
+            -@conversation.recipients.each do |r|
+              -unless r==current_user
+                =link_to(r.name_to_show, r)
+      .row
+        .small-12.colums
+          #show_messages
+            -@receipts.order.each do |r|
+              -if r.mailbox_type == 'sentbox'
+                -is_sender= 'sender'
+              -else
+                -is_sender= 'receiver'
+              -if r.is_unread?
+                -unread = 'unread'
+              -else
+                -unread = 'read'
+              %blockquote.message{class: "#{is_sender} #{unread}"}
+                =r.message.body
+                %cite=link_to(r.message.sender.name_to_show, r.message.sender)
+
+          -@conversation.mark_as_read current_user
+
+          -#formulair de réponse
+          =form_tag(controller: 'messages', action: 'reply') do
+            =text_area_tag(:reply, nil, placeholder: t('messages.index.reply'))
+            =hidden_field_tag(:conversation, @conversation.id)
+            =submit_tag(t('messages.index.submit'))

@@ -1,24 +1,25 @@
 -#LAYOUT DES MESSAGES
-.row
-  .small-12.columns
-    %h1= t('messages.index.h1_title')
 =render(:layout => 'layout_messages') do
-  -if @conversations.empty?
-    %p= t'messages.index.no_message'
-  -else
-    -@conversations.each do |c|
-      .row.conversation_index
-        .large-1.columns.small-12
-          =image_tag 'annonces/no_cover_thumb.gif'
-        .large-11.columns.small-12
-          -unless c.subject.empty?
-            %h5=link_to c.subject, message_path(c.id)
-          %h6.subheader
-            Avec:
-            -c.recipients.each do |r|
-              -unless r==current_user
-                =link_to(r.name_to_show, r)
-          %h6.subheader=c.last_message.body
-      %hr
+  .row
+    .small-12.columns
+      %h1= t('messages.index.h1_title')
+  .row
+    .small-12.columns
+      -if @conversations.empty?
+        %p= t'messages.index.no_message'
+      -else
+        -@conversations.each do |c|
+          .row.conversation_index
+            .large-1.columns.small-12
+              =image_tag 'annonces/no_cover_thumb.gif'
+            .large-11.columns.small-12
+              %h5=link_to c.subject_to_show, message_path(c.id)
+              %h6.subheader
+                =t'messages.index.with'
+                -c.recipients.each do |r|
+                  -unless r==current_user
+                    =link_to(r.name_to_show, r)
+              %h6.subheader=c.last_message.body
+          %hr
 
 

@@ -2,14 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#messages_box {
-  //message.sprite-message{ background-position: 0 0; width: 24px; height: 25px; }
-  //message.sprite-messagec_non_lus{ background-position: 0 -26px; width: 24px; height: 25px; }
-  //message.sprite-messagep_lu{ background-position: 0 -52px; width: 24px; height: 25px; }
-  //message.sprite-messagep_non_lu{ background-position: 0 -78px; width: 24px; height: 25px; }
-  min-height: (48*9)+20px;
-
-
-
-
+#show_messages {
+  blockquote.sender {
+      //border-left: 2px; //solid orangered;
+      margin-left: 1em;
+  }
+  blockquote.unread {
+    border-left: 2px solid blue;
+  }
 }

@@ -315,6 +315,7 @@ fr:
       reply: Votre réponse...
       submit: Répondre
       no_message: Vous n'avez aucun message...
+      with: "Avec: "
       menu:
         all: Tous les messages
         inbox: Messages entrants
@@ -331,8 +332,9 @@ fr:
         success: Votre message a bien été envoyé !
         submit: Envoyer
         tooltips:
-          users: Vous pouvez choisir plusieurs utilisateurs en maintenant la touche CTRL enfoncée
+          users: Vous pouvez choisir plusieurs utilisateurs en tapant leur pseudo ici.
     show:
+      participants: "Participant(s):"
       #h1_title: %{title}
     reply:
       no_conversation: Réponse non envoyée ! Cette conversation n'existe pas ou plus...

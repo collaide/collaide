@@ -25,6 +25,10 @@ fr:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
     labels:
+      user_message:
+        users: À
+        subject: Sujet
+        body: Contenu
       book:
         isbn_13: Code ISBN
         title: Titre du livre
@@ -59,6 +63,10 @@ fr:
         file: Ajouter un fichier
 
     placeholders:
+      user_message:
+        users: Pseudo
+        subject: Titre (optionel)
+        body: Message...
       book:
         isbn_13: 9781781100820
       advertisement_sale_book:

@@ -8,7 +8,14 @@ Collaide::Application.routes.draw do
   get 'change-lang', to: 'static_pages#change_lang', as: 'change_lang'
   match '/rate' => 'rater#create', :as => 'rate'
 
-  resources 'messages'
+  resources 'messages' do
+    collection do
+      get 'page/:page', action: :index
+      get 'box/:box', action: :index
+      #get 'search', action: :search, as: 'search'
+      #get 'autocomplete', action: :autocomplete, as: 'autocomplete'
+    end
+  end
   match 'reply', to: 'messages#reply', via: [:post]
 
   resources :advertisements, as: 'advertisement_advertisements', controller: 'advertisement/advertisements', :except => [:edit, :show] do
@@ -23,7 +30,7 @@ Collaide::Application.routes.draw do
     #resources :delivery_mode
     #resources :payment_mode
     resources :books, :controller => "sale_books", as: 'sale_books', :except => [:index, :destroy] #on affiche tous les livres par advertisement#index
-    get "test", to: "advertisements#test"
+    #get "test", to: "advertisements#test"
   end
 
   resources :'documents', as: 'document_documents', controller: 'document/documents' do
