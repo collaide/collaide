@@ -21,11 +21,11 @@
                 -unread = 'unread'
               -else
                 -unread = 'read'
-              .row
-                .large-1.columns.hide-for-small
-                  %p=image_tag 'annonces/no_cover_thumb.gif'
-                .large-11.columns
-                  %blockquote.message{class: "#{is_sender} #{unread}"}
+              %blockquote.message{class: "#{is_sender} #{unread}"}
+                .row
+                  .large-1.columns.hide-for-small
+                    %p=image_tag 'annonces/no_cover_thumb.gif'
+                  .large-11.columns
                     =simple_format(r.message.body)
                     %cite
                       =link_to(r.message.sender.name_to_show, r.message.sender)

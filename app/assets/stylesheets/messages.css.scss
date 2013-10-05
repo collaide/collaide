@@ -1,13 +1,15 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$messages-unread-border-left: 2px solid blue;
 
 #show_messages {
   blockquote.sender {
       //border-left: 2px; //solid orangered;
       margin-left: 1em;
   }
-  blockquote.unread {
-    border-left: 2px solid blue;
-  }
+}
+
+blockquote.message.unread{
+  border-left: $messages-unread-border-left;
 }
