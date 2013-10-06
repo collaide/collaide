@@ -98,7 +98,8 @@ Collaide::Application.routes.draw do
   end
   resources :users do
     get 'no_credit', action: :no_credit, as: 'no_credit', on: :collection
-    get 'documents', action: :documents, as: 'documents'#, on: :collection
+    get 'page', action: :page, as: 'page', on: :collection
+    get 'documents', action: :documents, as: 'documents'
     get 'advertisements', action: :advertisements, as: 'advertisements'
   end
 

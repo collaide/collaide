@@ -359,8 +359,12 @@ fr:
     show:
       meta_title: Profil de %{user}
       breadcrumb: Profil de %{user}
+      since: Inscrit il y a
     documents:
       title: Documents de %{user}
+      breadcrumb: Documents de %{user}
+      meta_title: Documents de %{user}
+      no-document: "%{user} n'a encore envoyé aucun document..."
       table:
         title: Titre
         type: Type
@@ -368,6 +372,8 @@ fr:
         status: Status
     advertisements:
       title: Annonces de %{user}
+      breadcrumb: Annonces de %{user}
+      meta_title: Annonces de %{user}
       no-advertisement: "%{user} n'a encore publié aucune annonce..."
       table:
         title: Titre
