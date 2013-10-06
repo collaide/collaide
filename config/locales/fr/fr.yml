@@ -82,12 +82,17 @@ fr:
     guest_book: "Livre d'or"
     document: "Documents"
     advertisement: "Annonces"
+    inbox: Messagerie
     user:
       profil: "Mon profil"
       edit: *edit
       logout: "Déconnexion"
     lang: "Langues"
     connection: *connection
+  footer:
+    help: Aide
+    contact: Contact
+    about: A propos
   domains:
     link:
       all: "Liste des domaines"

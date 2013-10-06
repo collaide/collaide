@@ -1,0 +1,33 @@
+%nav.top-bar
+  %ul.title-area
+    / Title Area
+    %li.name
+      %h1= link_to t("app_name"), eval("root_#{I18n.locale}_path")
+    / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+    %li.toggle-topbar.menu-icon
+      %a{href: "#"}
+        %span Menu
+  %section.top-bar-section
+    / Left Nav Section
+    %ul.left
+      %li.divider
+      %li= link_to t("header.document"), document_documents_path
+      %li.divider
+      %li= link_to t("header.advertisement"), advertisement_advertisements_path
+      %li.divider
+    / Right Nav Section
+    %ul.right
+      %li.divider.hide-for-small
+      - if user_signed_in?
+        %li= link_to t('header.inbox'), messages_path
+        %li.has-dropdown
+          %a{href: "#"}= link_to current_user.name_to_show, current_user
+          %ul.dropdown
+            %li= link_to t("header.user.edit"), edit_user_registration_path
+            %li.divider
+            %li= link_to t("header.user.repo"), structure_c_files_path(current_user.repository) unless current_user.repository.nil?
+            %li= link_to t("header.user.repo"), new_structure_path(current_user) if current_user.repository.nil?
+            %li.divider
+            %li= link_to t("header.user.logout"), destroy_user_session_path, method: :delete
+      - else
+        %li.has-form= link_to t("header.connection"), new_user_session_path, class: "button"
