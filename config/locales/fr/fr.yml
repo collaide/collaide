@@ -44,6 +44,7 @@ fr:
     txt: Document Text
     unknow: Type de fichier inconnu
   app_name: *app_name
+  app_name_long: *app_name_long
   next: *next
   back: *back
   confirm: Etes-vous sûre ?
@@ -92,11 +93,11 @@ fr:
       all: "Liste des domaines"
   static_pages:
     home:
-      title_page: Accueil
-      key_words: "accueil, bienvenue"
-      description_meta: vous êtes sur la page d'accueil
+      title_page: Collaide.com - Partagez vos documents étudiants avec vos collègues de classe, échangez dans un espace privé, achetez et vendez vos livres scolaires d'occasions et bénéficiez de nombreuses fonctionnalités.
+      key_words: "collaide, partage, documents, Dissertations, Analyses, Documents, rapports, résumés, Exposers, Tests, Présentations, base de donnée, Collaide, Etudiants, document de maturité, Domaines, Allemand, Anglais, Architecture, Art visuel, Biologie, Bureautique, Chimie, Droit, Economie, Espagnol, Français, Géographie, Grec, Histoire, Informatique, Italien, Latin, Mathématiques, Musique, Pédagogie, Philosophie, Physique, Politique, Psychologie, Sports, Théologie, Autres"
+      description_meta: Collaide a pour but de rassembler des étudiants de tous niveaux scolaires afin de les aider dans leurs études. Nous proposons une plateforme de partage de documents scolaires, l'achat et la vente de livres scolaires d'occasions, la création de groupes d'étudiants afin de rester en contact avec vos collègues de classes et bien d'autres.
       h1:
-        title: Bienvenue sur %{app_name} !!!
+        title: "%{app_name}"
         connection: *connection
         inscription: *inscription
     about:
@@ -350,3 +351,29 @@ fr:
       no_conversation: Réponse non envoyée ! Cette conversation n'existe pas ou plus...
       succed: Votre réponse a bien été envoyée !
       empty_message: Les réponses vides ne sont pas envoyées
+  users:
+    title_page: Les membres
+    index:
+      title_page: Liste des membres
+      breadcrumb: Membres
+    show:
+      meta_title: Profil de %{user}
+      breadcrumb: Profil de %{user}
+    documents:
+      title: Documents de %{user}
+      table:
+        title: Titre
+        type: Type
+        domain: Domaine
+        status: Status
+    advertisements:
+      title: Annonces de %{user}
+      no-advertisement: "%{user} n'a encore publié aucune annonce..."
+      table:
+        title: Titre
+        type: Type
+    menu:
+      edit: Modifier
+      profil: Profil
+      documents: Documents
+      advertisements: Annonces

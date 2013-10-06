@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class MessagesController < ApplicationController
+  load_and_authorize_resource
 
   add_breadcrumb I18n.t("messages.index.breadcrumb"),  :messages_path
   add_breadcrumb I18n.t("messages.new.h1_title"), :new_message_path, :only => %w(new create)

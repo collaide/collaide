@@ -39,7 +39,8 @@ fr:
     domain: domaine
     domains: domaines
     rate: note
-    query: requête
+    query: requete
     in: en
+    download: telecharger
 en:
   routes:

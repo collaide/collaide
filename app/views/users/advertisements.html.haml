@@ -1,0 +1,12 @@
+=render(:layout => 'layout') do
+  %h1= t'users.advertisements.title', user: @user.name_to_show
+  -if @user.advertisements.empty?
+    =t'users.advertisements.no-advertisement', user: @user.name_to_show
+  -else
+    -#%table
+    -#  %thead
+    -#    %tr
+    -#      %th= t'users.advertisements.table.title'
+    -#      %th= t'users.advertisements.table.type'
+    -#  %tbody
+    =render @user.advertisements

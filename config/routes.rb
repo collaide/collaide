@@ -9,6 +9,7 @@ Collaide::Application.routes.draw do
   match '/rate' => 'rater#create', :as => 'rate'
 
   resources 'messages' do
+    #get 'reply', action: :reply
     collection do
       get 'page/:page', action: :index
       get 'box/:box', action: :index
@@ -95,8 +96,10 @@ Collaide::Application.routes.draw do
   resources :guest_books, :only => [:show, :index, :create, :new] do
     get 'page/:page', :action => :index, :on => :collection
   end
-  resources :users, :only => [:show] do
+  resources :users do
     get 'no_credit', action: :no_credit, as: 'no_credit', on: :collection
+    get 'documents', action: :documents, as: 'documents'#, on: :collection
+    get 'advertisements', action: :advertisements, as: 'advertisements'
   end
 
   devise_for :user

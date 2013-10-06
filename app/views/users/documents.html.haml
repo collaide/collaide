@@ -1,0 +1,33 @@
+=render(:layout => 'layout') do
+  %h1= t'users.documents.title', user: @user.name_to_show
+  -if @user.advertisements.empty?
+    =t'users.advertisements.no-advertisement', user: @user.name_to_show
+  -else
+    =render @user.documents, count: @user.documents.size
+    -#%table
+    -#  %thead
+    -#    %tr
+    -#      %th= t'users.documents.table.title'
+    -#      %th= t'users.documents.table.type'
+    -#      %th= t'users.documents.table.domain'
+    -#      %th= t'users.documents.table.status'
+    -#      -if can? :download, Document::Document
+    -#        %th
+    -#      -if can?(:update, Document::Document)
+    -#        %th
+    -#      -if can?(:delete, Document::Document)
+    -#        %th
+    -#  %tbody
+    -#    -@user.documents.each do |d|
+    -#      %tr
+    -#        %td=link_to(d.title, d)
+    -#        %td=link_to((d.document_type.name), type_document_documents_path(d.document_type))
+    -#        %td
+    -#          -d.domains.each do |dom|
+    -#            =link_to((dom.name), domain_document_documents_path(dom))
+    -#            %br
+    -#        %td.doc_status
+    -#          %span{class:d.status}=d.status.text
+    -#        %td= link_to(t('document.documents.index.download'), document_document_download_path(document_document_id: d), class: 'button tiny success') if can? :download, Document::Document
+    -#        %td= edit_link(d, t('document.documents.show.modify'), 'button tiny') if can?(:update, Document::Document)
+    -#        %td= destroy_link(d, t('document.documents.show.delete'), 'button alert tiny') if can?(:delete, Document::Document)

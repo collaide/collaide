@@ -70,3 +70,15 @@
   padding-top: emCalc(7px);
   font-weight: 400;
 }
+
+.doc_status {
+  .refused{
+    color:red;
+  }
+  .pending{
+    color:gray;
+  }
+  .accepted{
+    color:green;
+  }
+}

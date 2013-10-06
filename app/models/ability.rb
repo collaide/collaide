@@ -6,18 +6,20 @@ class Ability
     #utilisateur non connecté, à voir si ça va comme ça
     if user.nil?
       can :manage, GuestBook
+      can :read, User
       can :read, Domain
-      can :index, Document::Document
+      can :read, Document::Document
       can :read, Advertisement::Advertisement
     else
       if user.no_roles? #utilisateur normal, encore réfléchir comment exactement gérer, sinon un rôle normal dans User
-        can :manage, User, id: user.id #peut gérer uniquement son profil
+        can :manage, User, user_id: user.id #peut gérer uniquement son profil
         can :manage, GuestBook
         can :read, Domain
         can :read, Document::Document
         can :download, Document::Document
         can :manage, Document::Document, user_id: user.id
         can :manage, Advertisement::Advertisement, user_id: user.id
+        can :manage, Message, user_id: user.id
       else
         if user.is? 'super-admin'
           can :manage, :all
@@ -28,8 +30,11 @@ class Ability
           #etc on continue de définir des permissions pour chaque rôles
         end
 
-        if user.is? 'validator'
+        if user.is? 'doc-validator'
           can :manage, Document::Document
+        end
+        if user.is? 'ad-validator'
+          can :manage, Advertisement::Advertisement
         end
       end
     end

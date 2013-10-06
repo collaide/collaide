@@ -1,0 +1,11 @@
+-content_for :title, t('users.show.meta_title', user: @user.name_to_show)
+=render(:layout => 'layout') do
+  %h1= @user.name
+
+  %p Inscrit le #{@user.created_at}
+  %p=image_tag @user.avatar
+  Le membre a publié #{@user.advertisements.count} annonces
+  %br
+  Il a envové #{@user.documents.count} documents
+  %br
+  =link_to "Edtion", edit_user_registration_path(current_user), class: "button"

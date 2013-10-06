@@ -1,29 +1,13 @@
--#<h1><%= t('static_pages.home.h1.title', app_name: t('app_name'))%></h1>
--#<% if user_signed_in? %>
--#    <%= link_to current_user.name, edit_user_registration_path %>
--#<% else %>
--#    <%= link_to "Inscription", new_user_registration_path, class: "button success" %>
--#    <%= link_to "Connexion", new_user_session_path, class: "button" %>
--#<% end %>
+%h1= t('static_pages.home.h1.title', app_name: t('app_name_long'))
 
-%h1= t('static_pages.home.h1.title', app_name: t('app_name'))
-
--if user_signed_in?
-  =link_to(current_user.name, edit_user_registration_path)
--else
-  =link_to t("static_pages.home.h1.inscription"), new_user_registration_path, class: "button success"
-  =link_to t("static_pages.home.h1.connection"), new_user_session_path, class: "button"
-%h3 Administrations:
-%p
-  pour essayer en mode super administrateur, utiliser le compte admin@example.com et le mot de passe password
-%p
-  pour voir les fonctionalités du site rendez-vous sur la page
-  =link_to "A propos", about_path
-%p
-  désolé, tout n'est pas traduit...
-%p
-  normalement seulement une partie du menu doit s'afficher suivant les rôles de l'utilisateur. Ce n'est pas encore fait
-%form.salut.hhihi#haha{action: about_path, select: "selected"}
-  %label ça vaut la peine de cliquer sur le champ de texte
-  %input{type: "text", class: 'datepicker'}
-%p.toggle En une seule ligne de code
+%ul{'data-orbit'=> true}
+  %li
+    %h4 Titre 1
+    %p "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed facilisis sapien. Proin facilisis, erat in hendrerit scelerisque, libero tortor faucibus nunc, id condimentum tortor risus non lorem. Maecenas ullamcorper lorem ac porta dignissim. Integer ultrices elit mi, ac euismod felis lobortis id. Etiam vitae tellus leo. Praesent est diam, lacinia id urna vel, faucibus lacinia libero. Ut vitae diam sem. Cras sem purus, interdum id neque eget, tempor molestie erat. Maecenas auctor posuere felis eget accumsan. Suspendisse vel risus vitae justo malesuada auctor. Ut diam libero, tincidunt non nibh non, porttitor elementum dui. Donec blandit magna ornare mi tincidunt, rutrum interdum lacus rhoncus. Morbi sed imperdiet lacus, vitae placerat velit. Sed nec tellus vehicula, mattis lectus eu, convallis magna. Fusce est felis, dictum ac bibendum sed, vehicula malesuada diam. Etiam lacinia urna eget nibh accumsan, sed feugiat dui egestas. Duis laoreet est a malesuada tempus. Vivamus quis aliquam lacus. Aenean aliquam ipsum fermentum, sagittis neque non, suscipit lorem. Sed eu posuere est. Cras quis justo eget velit dapibus rhoncus. Curabitur tortor libero, elementum in nibh imperdiet, rutrum mollis lectus."
+    .orbit-caption ...
+  %li
+    %h4 Titre 2
+    %p "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed facilisis sapien. Proin facilisis, erat in hendrerit scelerisque, libero tortor faucibus nunc, id condimentum tortor risus non lorem. Maecenas ullamcorper lorem ac porta dignissim. Integer ultrices elit mi, ac euismod felis lobortis id. Etiam vitae tellus leo. Praesent est diam, lacinia id urna vel, faucibus lacinia libero. Ut vitae diam sem. Cras sem purus, interdum id neque eget, tempor molestie erat. Maecenas auctor posuere felis eget accumsan. Suspendisse vel risus vitae justo malesuada auctor. Ut diam libero, tincidunt non nibh non, porttitor elementum dui. Donec blandit magna ornare mi tincidunt, rutrum interdum lacus rhoncus. Morbi sed imperdiet lacus, vitae placerat velit. Sed nec tellus vehicula, mattis lectus eu, convallis magna. Fusce est felis, dictum ac bibendum sed, vehicula malesuada diam. Etiam lacinia urna eget nibh accumsan, sed feugiat dui egestas. Duis laoreet est a malesuada tempus. Vivamus quis aliquam lacus. Aenean aliquam ipsum fermentum, sagittis neque non, suscipit lorem. Sed eu posuere est. Cras quis justo eget velit dapibus rhoncus. Curabitur tortor libero, elementum in nibh imperdiet, rutrum mollis lectus."
+    .orbit-caption ...
+  %li
+    .orbit-caption ...

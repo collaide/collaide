@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   has_many :advertisements, :class_name => 'Advertisement::Advertisement'
 
   #paperclip https://github.com/thoughtbot/paperclip
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "rails.png"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "users/no-avatar.png"
 
   # permet à un utilisateur de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   letsrate_rater
@@ -124,13 +124,6 @@ class User < ActiveRecord::Base
     self.name
   end
 
-  def avatar
-    if self.avatar_file_name
-      self.avatar_file_name
-    else
-      'users/no-avatar.png'
-    end
-  end
 end
 
 class Point

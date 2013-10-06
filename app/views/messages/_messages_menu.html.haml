@@ -1,16 +1,10 @@
 -active = ''
-.row
-  .small-12.columns
-    =link_to( t('messages.index.new_link'), new_message_path, class: 'button secondary small')
 %ul.side-nav
+  %li=link_to( t('messages.index.new_link'), new_message_path, class: 'button secondary small')
   %li.divider
-  %li
-    =link_to(t('messages.index.menu.inbox'), messages_path())
-  %li
-    =link_to(t('messages.index.menu.sendbox'), messages_path(box: 'sentbox'), class: active)
+  %li=link_to(t('messages.index.menu.inbox'), messages_path())
+  %li=link_to(t('messages.index.menu.sendbox'), messages_path(box: 'sentbox'), class: active)
   -#%li.divider
-  -#%li
-  -#  =link_to(t('messages.index.menu.trash'), messages_path(box: 'trash'), class: active)
+  -#%li=link_to(t('messages.index.menu.trash'), messages_path(box: 'trash'), class: active)
   %li.divider
-    %li
-      =link_to(t('messages.index.menu.all'), messages_path(box: 'all'), class: active)
+  %li=link_to(t('messages.index.menu.all'), messages_path(box: 'all'), class: active)
