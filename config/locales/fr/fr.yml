@@ -11,8 +11,8 @@ fr:
     app_name_long: &app_name_long Collaide, apprenons ensemble !
     back: &back Retour
     next: &next Suivant
-    connection: &connection Connexion
-    inscription: &inscription Inscription
+    sign_in: &sign_in Connexion
+    sign_up: &sign_up Inscription
     password: &password Mot de passse
     email: &email Adresse de courriel
     password_confirmation: &password_confirmation Confirmation du mot de passe
@@ -88,7 +88,8 @@ fr:
       edit: *edit
       logout: "Déconnexion"
     lang: "Langues"
-    connection: *connection
+    sign_in: *sign_in
+    sign_up: *sign_up
   footer:
     help: Aide
     contact: Contact
@@ -103,8 +104,6 @@ fr:
       description_meta: Collaide a pour but de rassembler des étudiants de tous niveaux scolaires afin de les aider dans leurs études. Nous proposons une plateforme de partage de documents scolaires, l'achat et la vente de livres scolaires d'occasions, la création de groupes d'étudiants afin de rester en contact avec vos collègues de classes et bien d'autres.
       h1:
         title: "%{app_name}"
-        connection: *connection
-        inscription: *inscription
     about:
       title: A propos
       text: Ce site a été réalisé dans le but de d'essayer le framework ruby on rails pour collaide. Construit en moins de deux jours
@@ -253,6 +252,9 @@ fr:
       content: Vous êtes sur le point de contacter %{user} pour acheter son livre %{book} au prix de %{price}.
       textarea: "Bonjour,\n\nJe désire acheter votre livre %{book}.\n\n[...Donnez les informations nécessaires pour procéder à la transaction...]\n\nCordialement,\nPrenom Nom"
       subject: "[Achat] %{book}"
+      not_connected:
+        title: Connectez-vous pour acheter ce livre !
+        content: Vous devez être connecté pour contacter le revendeur afin d'acheter ce livre.
     new:
       title_page: Vendre un livre
       title: Vendre un livre

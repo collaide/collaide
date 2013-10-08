@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def advertisements
-    @message = UserMessage.new
+    #@message = UserMessage.new
     @user = User.find(params[:user_id])
     add_breadcrumb I18n.t('users.show.breadcrumb', user: @user.name_to_show), user_path(@user)
     add_breadcrumb I18n.t('users.advertisements.breadcrumb', user: @user.name_to_show), user_advertisements_path(@user)

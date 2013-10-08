@@ -13,7 +13,7 @@ class Advertisement::AdvertisementsController < ApplicationController
   end
 
   def index
-    @message = UserMessage.new
+    #@message = UserMessage.new
     # Pour changer le nombre d'éléments par page, ajouter .per(5) après la méthode page
     @advertisement = Advertisement::Advertisement.order('id DESC').page(params[:page])
   end
