@@ -2,28 +2,16 @@
 class MessagesController < ApplicationController
   load_and_authorize_resource
 
-  add_breadcrumb I18n.t("messages.index.breadcrumb"),  :messages_path
+  add_breadcrumb I18n.t("messages.index.breadcrumb"), :messages_path
   add_breadcrumb I18n.t("messages.new.h1_title"), :new_message_path, :only => %w(new create)
+
 
   def index()
     #user = User.find(2)
     #user.send_message(current_user, 'contenu du messag2e')
     #current_user.send_message(current_user, "Salut Yves, je t'envoie ce mail car j'ai un soucis")
 
-    per=9
-
-    case params[:box]
-      when 'inbox'
-        @conversations = current_user.mailbox.inbox.page(params[:page]).per(per)
-      when 'sentbox'
-        @conversations = current_user.mailbox.sentbox.page(params[:page]).per(per)
-      when 'trash'
-        @conversations = current_user.mailbox.trash.page(params[:page]).per(per)
-      when 'all'
-        @conversations = current_user.mailbox.conversations.page(params[:page]).per(per)
-      else
-        @conversations = current_user.mailbox.inbox.page(params[:page]).per(per)
-    end
+    @conversations = current_user.mailbox.inbox.page(params[:page]).per(@per)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,10 +19,21 @@ class MessagesController < ApplicationController
         render json: @conversation
       }
     end
-
   end
 
-  #Cette methode sert juste à traiter la réponse, elle n'aura pas de vue
+  def sentbox
+    @conversations = current_user.mailbox.sentbox.page(params[:page]).per(@per)
+  end
+
+  def trash
+    @conversations = current_user.mailbox.trash.page(params[:page]).per(@per)
+  end
+
+  def all
+    @conversations = current_user.mailbox.conversations.page(params[:page]).per(@per)
+  end
+
+#Cette methode sert juste à traiter la réponse, elle n'aura pas de vue
   def reply
     c = Conversation.find(params[:conversation])
     unless c

@@ -12,7 +12,9 @@ Collaide::Application.routes.draw do
     #get 'reply', action: :reply
     collection do
       get 'page/:page', action: :index
-      get 'box/:box', action: :index
+      get 'sentbox', action: :sentbox
+      get 'trash', action: :trash
+      get 'all', action: :all
       #get 'search', action: :search, as: 'search'
       #get 'autocomplete', action: :autocomplete, as: 'autocomplete'
     end
