@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.text     "description"
     t.boolean  "active"
     t.string   "type"
-    t.decimal  "price",          :precision => 6, :scale => 2
+    t.decimal  "price",          :precision => 9, :scale => 2
     t.string   "currency"
     t.string   "state"
     t.string   "annotation"
@@ -324,7 +324,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   end
 
   create_table "user_comments", :force => true do |t|
-    t.text     "message"
+    t.text     "message2"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "member_status_id"
@@ -346,7 +346,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   add_index "user_contacts", ["user_id"], :name => "index_member_contacts_on_user_id"
 
   create_table "user_friend_demands", :force => true do |t|
-    t.text     "message"
+    t.text     "message2"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "user_has_sent_id"
@@ -360,7 +360,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   end
 
   create_table "user_group_demands", :force => true do |t|
-    t.text     "message"
+    t.text     "message2"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
@@ -409,7 +409,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   end
 
   create_table "user_statues", :force => true do |t|
-    t.text     "message"
+    t.text     "message2"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "user_id"

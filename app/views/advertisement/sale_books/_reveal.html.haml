@@ -1,7 +1,7 @@
 -if current_user.nil?
   #buy_book.reveal-modal
     %h2=t('sale_books.buy.not_connected.title')
-    %p=t('sale_books.buy.not_connected.content')
+    %p=raw(t('sale_books.buy.not_connected.content', connect: link_to(t("dico.connected"), new_user_session_path)))
     %a.close-reveal-modal &#215;
 -else
   #buy_book.reveal-modal

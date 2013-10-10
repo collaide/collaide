@@ -13,6 +13,8 @@ fr:
     next: &next Suivant
     sign_in: &sign_in Connexion
     sign_up: &sign_up Inscription
+    connected: &connected connecté
+    suscribe: "Inscrivez-vous"
     password: &password Mot de passse
     email: &email Adresse de courriel
     password_confirmation: &password_confirmation Confirmation du mot de passe
@@ -254,7 +256,10 @@ fr:
       subject: "[Achat] %{book}"
       not_connected:
         title: Connectez-vous pour acheter ce livre !
-        content: Vous devez être connecté pour contacter le revendeur afin d'acheter ce livre.
+        content: "Vous devez être %{connect} pour contacter le revendeur afin d'acheter ce livre.
+        <br/>
+        <br/>
+        Si vous n'avez pas encore de compte, inscrivez-vous !"
     new:
       title_page: Vendre un livre
       title: Vendre un livre
