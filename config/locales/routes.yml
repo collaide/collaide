@@ -42,5 +42,8 @@ fr:
     query: requete
     in: en
     download: telecharger
+
+    all: tous
+    sentbox: envoyes
 en:
   routes:

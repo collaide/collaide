@@ -10,7 +10,6 @@ class MessagesController < ApplicationController
     #user = User.find(2)
     #user.send_message(current_user, 'contenu du messag2e')
     #current_user.send_message(current_user, "Salut Yves, je t'envoie ce mail car j'ai un soucis")
-
     @conversations = current_user.mailbox.inbox.page(params[:page]).per(@per)
 
     respond_to do |format|
@@ -22,14 +21,17 @@ class MessagesController < ApplicationController
   end
 
   def sentbox
+    add_breadcrumb I18n.t("messages.sentbox.breadcrumb"), :sentbox_messages_path
     @conversations = current_user.mailbox.sentbox.page(params[:page]).per(@per)
   end
 
   def trash
+    add_breadcrumb I18n.t("messages.trash.breadcrumb"), :trash_messages_path
     @conversations = current_user.mailbox.trash.page(params[:page]).per(@per)
   end
 
   def all
+    add_breadcrumb I18n.t("messages.all.breadcrumb"), :all_messages_path
     @conversations = current_user.mailbox.conversations.page(params[:page]).per(@per)
   end
 

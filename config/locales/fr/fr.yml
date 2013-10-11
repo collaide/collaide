@@ -328,8 +328,8 @@ fr:
   messages:
     title_page: Messagerie privée
     index:
-      title_page: Vos messages
-      h1_title: Vos messages
+      title_page: Vos messages reçu
+      h1_title: Vos messages reçu
       breadcrumb: Messagerie
       new_link: Nouveau message
       no_message: Vous n'avez aucun message
@@ -347,6 +347,16 @@ fr:
         reply: Rép.
         participants: Participants
         last: Dernier message
+    all:
+      title_page: Tous les messages
+      h1_title: Tous les messages
+      breadcrumb: Tous les message
+    sentbox:
+      title_page: Messages envoyés
+      h1_title: Messages envoyés
+      breadcrumb: Messages envoyés
+
+
     new:
       title_page: Nouveau message
       h1_title: Envoyer un message
