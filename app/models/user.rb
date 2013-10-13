@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
    attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :avatar, :name, :points,
                    :last_sign_in_at, :created_at, :has_notifications
-  enumerize :role, in: [:admin, :moderator, :author, :banned, :super_admin, :validator], scope: true, predicates: true
+  enumerize :role, in: [:admin, :moderator, :author, :banned, :super_admin, :doc_validator, :add_validator], scope: true, predicates: true
 
   #https://github.com/ging/mailboxer
   acts_as_messageable
@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   has_many :advertisements, :class_name => 'Advertisement::Advertisement'
 
   #paperclip https://github.com/thoughtbot/paperclip
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "rails.png"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "users/no-avatar.png"
 
   # permet à un utilisateur de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   letsrate_rater
@@ -96,6 +96,7 @@ class User < ActiveRecord::Base
   def name_to_show
     self.name
   end
+
 end
 
 class Point

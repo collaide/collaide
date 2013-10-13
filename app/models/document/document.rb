@@ -24,7 +24,7 @@
 class Document::Document < ActiveRecord::Base
   extend Enumerize
 
-  enumerize :status, in: %w[accepted pending refused], default: 'pending', predicates: true
+  enumerize :status, in: [:accepted, :pending, :refused], default: :pending, predicates: true
 
   #permte aux utilisateurs de commenter un document. https://github.com/jackdempsey/acts_as_commentable
   acts_as_commentable

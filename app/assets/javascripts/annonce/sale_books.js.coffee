@@ -68,8 +68,8 @@ initializeBuy = () ->
   $('#buy_book').find('.buy_book_title').empty();
   $('#buy_book').find('.buy_book_content').empty();
   $('#buy_book').find('textarea').empty();
-  $('#buy_book').find('#message_sending_user_ids').empty();
-  $('#buy_book').find('#message_sending_subject').empty();
+  $('#message_sending_user_ids').find('input').empty;
+  $('#buy_book').find('#user_message_subject').empty();
 
 
 $('.button_buy_book').click ->
@@ -91,7 +91,7 @@ $('.button_buy_book').click ->
   $('#buy_book').find('.buy_book_title').html(title_text);
   $('#buy_book').find('.buy_book_content').html(content_text);
   $('#buy_book').find('textarea').val(content_textarea);
-  $('#buy_book').find('#message_sending_user_ids').val(user_id);
-  $('#buy_book').find('#message_sending_subject').val(content_subject);
+  $('#message_sending_user_ids').find('input').val(user_id);
+  $('#buy_book').find('#user_message_subject').val(content_subject);
 
-  $(this).find('span').text()
+  #$(this).find('span').text()

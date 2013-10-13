@@ -1,5 +1,10 @@
 fr:
   enumerize:
+    document/document:
+      status:
+        refused: Refusé
+        accepted: Accepté
+        pending: En attente
     advertisement/sale:
       payment_modes:
         cash: Espèce

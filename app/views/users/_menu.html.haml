@@ -1,0 +1,11 @@
+%ul.side-nav
+  %li
+    %a{href: user_path(@user), title: @user.name_to_show}
+      =image_tag @user.avatar, class: 'th'
+      =@user.name_to_show
+  -if can?(:update, @user)
+    %li.divider
+    %li=link_to(t('users.menu.edit'), edit_user_registration_path(@user), class: 'small button secondary')
+  %li.divider
+  %li=link_to(t('users.menu.documents'), user_documents_path(@user))
+  %li=link_to(t('users.menu.advertisements'), user_advertisements_path(@user))

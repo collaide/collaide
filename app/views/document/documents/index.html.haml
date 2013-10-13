@@ -76,4 +76,4 @@
       %p= t 'document.documents.index.no_document'
     -else
       .row
-        =render @document_documents
+        =render @document_documents, count: @document_documents.size

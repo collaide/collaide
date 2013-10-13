@@ -1,20 +1,20 @@
 GIT
+  remote: git://github.com/Texicitys/mailboxer-without-notification.git
+  revision: 59a60a242e7170cea8705c564e7812fb867d1512
+  branch: master
+  specs:
+    mailboxer (0.11.0)
+      carrierwave (>= 0.5.8)
+      foreigner (>= 0.9.1)
+      rails (> 3.0.0)
+
+GIT
   remote: git://github.com/ctran/annotate_models.git
   revision: 18a4e2eb77c8f3ef695b563e4a7ca45dfede819b
   specs:
     annotate (2.6.0.beta2)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
-
-GIT
-  remote: git://github.com/facenord-sud/mailboxer.git
-  revision: c49e48fb00c2285bea9e6da6abb759306b82a60a
-  branch: master
-  specs:
-    mailboxer (0.1)
-      carrierwave (>= 0.5.8)
-      foreigner (>= 0.9.1)
-      rails (> 3.0.0)
 
 GIT
   remote: git://github.com/nebirhos/activeadmin-sortable-tree.git

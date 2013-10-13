@@ -14,7 +14,7 @@ class Advertisement::SaleBooksController < ApplicationController
   # GET /advertisement/sale_books/1
   # GET /advertisement/sale_books/1.json
   def show
-    @message = MessageSending.new
+    @message = UserMessage.new
 
     @sale_book = Advertisement::SaleBook.find(params[:id])
     @message.users<<@sale_book.user

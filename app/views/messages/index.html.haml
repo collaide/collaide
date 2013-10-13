@@ -1,24 +1,40 @@
 -#LAYOUT DES MESSAGES
-.row
-  .small-12.columns
-    %h1= t('messages.index.h1_title')
 =render(:layout => 'layout_messages') do
-  -if @conversations.empty?
-    %p= t'messages.index.no_message'
-  -else
-    -@conversations.each do |c|
-      .row.conversation_index
-        .large-1.columns.small-12
-          =image_tag 'annonces/no_cover_thumb.gif'
-        .large-11.columns.small-12
-          -unless c.subject.empty?
-            %h5=link_to c.subject, message_path(c.id)
-          %h6.subheader
-            Avec:
-            -c.recipients.each do |r|
-              -unless r==current_user
-                =link_to(r.name_to_show, r)
-          %h6.subheader=c.last_message.body
-      %hr
-
-
+  .row
+    .small-12.columns
+      %h1= t('messages.index.h1_title')
+  .row
+    .small-12.columns
+      -if @conversations.empty?
+        %p= t'messages.index.no_message'
+      -else
+        -@conversations.each do |c|
+          .row.conversation_index
+            -if c.is_unread?(current_user)
+              -unread = 'unread'
+            -else
+              -unread = 'read'
+            .small-12.columns
+              %h5=link_to c.subject_to_show, message_path(c)
+              %dl.sub-nav
+                %dt=t'messages.index.with'
+                -c.recipients.each do |r|
+                  -unless r==current_user
+                    %dd=link_to(r.name_to_show, r)
+              %blockquote.message{class:unread}
+                .row
+                  .large-1.columns.hide-for-small
+                    %a{href: message_path(c),class: 'th'}
+                      =image_tag c.last_message.sender.avatar
+                  .large-11.columns
+                    %h6.subheader=truncate((c.last_message.body), length: 255)
+                    %cite
+                      =link_to(c.last_message.sender.name_to_show, c.last_message.sender)
+                      %span{title: l(c.last_message.created_at, format: :long)}
+                        =t'messages.show.since'
+                        =time_ago_in_words(c.last_message.created_at)
+              -#%p.subheader
+              -#  %span{title: l(c.last_message.created_at, format: :long)}
+              -#    =t'messages.show.since'
+              -#    =time_ago_in_words(c.last_message.created_at)
+          %hr

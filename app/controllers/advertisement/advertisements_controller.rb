@@ -13,13 +13,13 @@ class Advertisement::AdvertisementsController < ApplicationController
   end
 
   def index
-    @message = MessageSending.new
+    #@message = UserMessage.new
     # Pour changer le nombre d'éléments par page, ajouter .per(5) après la méthode page
     @advertisement = Advertisement::Advertisement.order('id DESC').page(params[:page])
   end
 
   def search
-    @message = MessageSending.new
+    @message = UserMessage.new
     @advertisement = Advertisement::SaleBook.search(
         Riddle::Query.escape(params[:search])
     )

@@ -11,8 +11,10 @@ fr:
     app_name_long: &app_name_long Collaide, apprenons ensemble !
     back: &back Retour
     next: &next Suivant
-    connection: &connection Connexion
-    inscription: &inscription Inscription
+    sign_in: &sign_in Connexion
+    sign_up: &sign_up Inscription
+    connected: &connected connecté
+    suscribe: "Inscrivez-vous"
     password: &password Mot de passse
     email: &email Adresse de courriel
     password_confirmation: &password_confirmation Confirmation du mot de passe
@@ -44,6 +46,7 @@ fr:
     txt: Document Text
     unknow: Type de fichier inconnu
   app_name: *app_name
+  app_name_long: *app_name_long
   next: *next
   back: *back
   confirm: Etes-vous sûre ?
@@ -81,24 +84,28 @@ fr:
     guest_book: "Livre d'or"
     document: "Documents"
     advertisement: "Annonces"
+    inbox: Messagerie
     user:
       profil: "Mon profil"
       edit: *edit
       logout: "Déconnexion"
     lang: "Langues"
-    connection: *connection
+    sign_in: *sign_in
+    sign_up: *sign_up
+  footer:
+    help: Aide
+    contact: Contact
+    about: A propos
   domains:
     link:
       all: "Liste des domaines"
   static_pages:
     home:
-      title_page: Accueil
-      key_words: "accueil, bienvenue"
-      description_meta: vous êtes sur la page d'accueil
+      title_page: Collaide.com - Partagez vos documents étudiants avec vos collègues de classe, échangez dans un espace privé, achetez et vendez vos livres scolaires d'occasions et bénéficiez de nombreuses fonctionnalités.
+      key_words: "collaide, partage, documents, Dissertations, Analyses, Documents, rapports, résumés, Exposers, Tests, Présentations, base de donnée, Collaide, Etudiants, document de maturité, Domaines, Allemand, Anglais, Architecture, Art visuel, Biologie, Bureautique, Chimie, Droit, Economie, Espagnol, Français, Géographie, Grec, Histoire, Informatique, Italien, Latin, Mathématiques, Musique, Pédagogie, Philosophie, Physique, Politique, Psychologie, Sports, Théologie, Autres"
+      description_meta: Collaide a pour but de rassembler des étudiants de tous niveaux scolaires afin de les aider dans leurs études. Nous proposons une plateforme de partage de documents scolaires, l'achat et la vente de livres scolaires d'occasions, la création de groupes d'étudiants afin de rester en contact avec vos collègues de classes et bien d'autres.
       h1:
-        title: Bienvenue sur %{app_name} !!!
-        connection: *connection
-        inscription: *inscription
+        title: "%{app_name}"
     about:
       title: A propos
       text: Ce site a été réalisé dans le but de d'essayer le framework ruby on rails pour collaide. Construit en moins de deux jours
@@ -164,7 +171,7 @@ fr:
       new:
         title_page: "Envoyer un nouveau document et gagnez 3 points !"
         bc: Envoyer un document
-        title_page: Déposer
+        #title_page: Déposer
         title: Nouveau document
       form:
         submit: Déposer le document
@@ -215,8 +222,9 @@ fr:
     dico:
       page: "page"
   advertisements:
+    title_page: Annonces étudiants
     index:
-      meta_title: Achetez un grand nombre de livres étudiants d'occasions à bas prix mis en vente par des étudiants !
+      title_page: Achetez un grand nombre de livres étudiants d'occasions à bas prix mis en vente par des étudiants !
       breadcrumb: Les petites annonces
       title: Les petites annonces
       new_link: Publier une annonce
@@ -228,11 +236,14 @@ fr:
           fieldset: Rechercher
           submit: Chercher
     new:
-      title: Publier une annonces
+      title_page: Publier une annonce
+      title: Publier une annonce
       description: Quelle genre d'annonce voulez-vous publier ?
       sale_book: Vendre un livre
   sale_books:
+    title_page: Livres étudiants d'occasion
     index:
+      #title_page: Achetez un grand nombre de livres étudiants d'occasions à bas prix mis en vente par des étudiants !
       buy: Acheter
       note: Note
       subtitle1: "Livre: %{book}"
@@ -243,7 +254,14 @@ fr:
       content: Vous êtes sur le point de contacter %{user} pour acheter son livre %{book} au prix de %{price}.
       textarea: "Bonjour,\n\nJe désire acheter votre livre %{book}.\n\n[...Donnez les informations nécessaires pour procéder à la transaction...]\n\nCordialement,\nPrenom Nom"
       subject: "[Achat] %{book}"
+      not_connected:
+        title: Connectez-vous pour acheter ce livre !
+        content: "Vous devez être %{connect} pour contacter le revendeur afin d'acheter ce livre.
+        <br/>
+        <br/>
+        Si vous n'avez pas encore de compte, inscrivez-vous !"
     new:
+      title_page: Vendre un livre
       title: Vendre un livre
       joy_ride:
         joy_presentation:
@@ -284,7 +302,7 @@ fr:
           study_level: A quel degré scolaire ce livre est-il le mieux adapté ?
     show:
       title: "Vente du livre étudiant: %{book}"
-      meta_title: Achetez %{book}, livre étudiant d'occasion pour seulement %{price} !
+      title_page: Achetez %{book}, livre étudiant d'occasion pour seulement %{price} !
       sale_title: "Vente de %{book}"
       authors: "De %{authors}"
       publisher: " par %{publisher}"
@@ -302,22 +320,26 @@ fr:
       advertisement: Annonce
       edit: *edit
     edit:
+      title_page: Modifier une vendre
       title: Modifier la vente de %{book}
       forms:
         submit: Modifier la vente
         succes: Vos modifications ont bien été enregistrées !
   messages:
+    title_page: Messagerie privée
     index:
-      h1_title: Vos messages
+      title_page: Vos messages reçu
+      h1_title: Vos messages reçu
       breadcrumb: Messagerie
       new_link: Nouveau message
       no_message: Vous n'avez aucun message
       reply: Votre réponse...
       submit: Répondre
       no_message: Vous n'avez aucun message...
+      with: "Avec: "
       menu:
         all: Tous les messages
-        inbox: Messages entrants
+        inbox: Messages reçus
         sendbox: Messages envoyés
         trash: Messages supprimés
       table:
@@ -325,16 +347,61 @@ fr:
         reply: Rép.
         participants: Participants
         last: Dernier message
+    all:
+      title_page: Tous les messages
+      h1_title: Tous les messages
+      breadcrumb: Tous les message
+    sentbox:
+      title_page: Messages envoyés
+      h1_title: Messages envoyés
+      breadcrumb: Messages envoyés
+
+
     new:
+      title_page: Nouveau message
       h1_title: Envoyer un message
       forms:
         success: Votre message a bien été envoyé !
         submit: Envoyer
         tooltips:
-          users: Vous pouvez choisir plusieurs utilisateurs en maintenant la touche CTRL enfoncée
+          users: Vous pouvez choisir plusieurs utilisateurs en tapant leur pseudo ici.
     show:
-      #h1_title: %{title}
+      title_page: Lire un message
+      participants: "Participant(s):"
+      since: il y a
     reply:
       no_conversation: Réponse non envoyée ! Cette conversation n'existe pas ou plus...
       succed: Votre réponse a bien été envoyée !
       empty_message: Les réponses vides ne sont pas envoyées
+  users:
+    title_page: Les membres
+    index:
+      title_page: Liste des membres
+      breadcrumb: Membres
+    show:
+      meta_title: Profil de %{user}
+      breadcrumb: Profil de %{user}
+      since: Inscrit il y a
+    documents:
+      title: Documents de %{user}
+      breadcrumb: Documents de %{user}
+      meta_title: Documents de %{user}
+      no-document: "%{user} n'a encore envoyé aucun document..."
+      table:
+        title: Titre
+        type: Type
+        domain: Domaine
+        status: Status
+    advertisements:
+      title: Annonces de %{user}
+      breadcrumb: Annonces de %{user}
+      meta_title: Annonces de %{user}
+      no-advertisement: "%{user} n'a encore publié aucune annonce..."
+      table:
+        title: Titre
+        type: Type
+    menu:
+      edit: Modifier
+      profil: Profil
+      documents: Documents
+      advertisements: Annonces

@@ -1,29 +1,29 @@
-
-
-
-
-
--#%section
--#  %p.title{'data-section-title' => true}
--#    %a{'href'=>messages_path(:anchor => c.id)}=c.subject
--#  .content{'data-slug'=>c.id, 'data-section-content' => true}
--#    -receipts = c.receipts_for current_user
--#    -receipts.order.each do |r|
--#      -if r.mailbox_type == 'sentbox'
--#        -text_align= ''#'text-right'
--#      -else
--#        -text_align= ''#'text-left'
--#      -if r.is_unread?
--#        -unread = ''
--#      -else
--#        -unread = ''
--#      .message{class: "#{text_align} #{unread}"}
--#        %p=link_to(r.message.sender.name_to_show, r.message.sender)
--#        %p=r.message.body
--#        -#=link_to_message_sender(r)
--#      %hr
--#    -#formulair de réponse
--#    =form_tag(controller: 'messages', action: 'reply') do
--#      =text_area_tag(:reply, nil, placeholder: t('messages.index.reply'))
--#      =hidden_field_tag(:conversation, c.id)
--#      =submit_tag(t('messages.index.submit'))
+.row.conversation_index
+  -if conversation.is_unread?(current_user)
+    -unread = 'unread'
+  -else
+    -unread = 'read'
+  .small-12.columns
+    %h5=link_to conversation.subject_to_show, message_path(conversation)
+    %dl.sub-nav
+      %dt=t'messages.index.with'
+      -conversation.recipients.each do |r|
+        -unless r==current_user
+          %dd=link_to(r.name_to_show, r)
+    %blockquote.message{class:unread}
+      .row
+        .large-1.columns.hide-for-small
+          %a{href: message_path(conversation),class: 'th'}
+            =image_tag conversation.last_message.sender.avatar
+        .large-11.columns
+          %h6.subheader=truncate((conversation.last_message.body), length: 255)
+          %cite
+            =link_to(conversation.last_message.sender.name_to_show, conversation.last_message.sender)
+            %span{title: l(conversation.last_message.created_at, format: :long)}
+              =t'messages.show.since'
+              =time_ago_in_words(conversation.last_message.created_at)
+    -#%p.subheader
+    -#  %span{title: l(conversation.last_message.created_at, format: :long)}
+    -#    =t'messages.show.since'
+    -#    =time_ago_in_words(conversation.last_message.created_at)
+%hr

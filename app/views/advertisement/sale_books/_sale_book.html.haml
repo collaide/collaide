@@ -16,9 +16,10 @@
       .small-12.columns
         %a.th{href: advertisement_sale_book_path(sale_book)}
           =book_image(sale_book.book)
-    .row
-      .small-12.columns
+        %br
         %p= rating_for sale_book.book, 'note', star: 5
+        =edit_link(sale_book, t('sale_books.show.edit'), 'button tiny secondary')
+        -#%a.button.tiny.secondary{href: edit_advertisement_sale_book_path(sale_book)}=t'sale_books.show.edit'
     -#.row
     -#  .small-12.columns
     -#    %p

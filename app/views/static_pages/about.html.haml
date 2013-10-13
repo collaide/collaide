@@ -1,40 +1,32 @@
-<h1><%= t "static_pages.about.title"  %></h1>
- <p><%= t "static_pages.about.text" %></p>
-
-<h3>Fonctionalitées</h3>
-<p>Pour l'instant, ce site implémente les fonctionalités de base suivantes :</p>
-<%= image_tag 'rails.png' %>
-<ul>
-  <li>Internatinalisation et localisation, tout le contenu du site peut être traduit suivant la langue passée en paramètre,
-  ou si le paramètre est absent, suivant la langue du navigateur ou la langue par défaut. Les urls Sont également traduites.
-  La localisation permet d'afficher les dates, heures et unités selon le bon format. Pour l'instant c'est déterminé en fonction
-  de la langue</li>
-  <li>
+%h1= t "static_pages.about.title"
+%p= t "static_pages.about.text"
+%h3 Fonctionalitées
+%p Pour l'instant, ce site implémente les fonctionalités de base suivantes :
+= image_tag 'rails.png'
+%ul
+  %li
+    Internatinalisation et localisation, tout le contenu du site peut être traduit suivant la langue passée en paramètre,
+    ou si le paramètre est absent, suivant la langue du navigateur ou la langue par défaut. Les urls Sont également traduites.
+    La localisation permet d'afficher les dates, heures et unités selon le bon format. Pour l'instant c'est déterminé en fonction
+    de la langue
+  %li
     Gestion des utilisateurs avec la gem "devise". Plus d'infos sur devise sur le repo github de devise
-  </li>
-  <li>
+  %li
     Gestion des permissions et des rôles grâce à "cancan". Pour l'instant, permet de définir certains rôles et de les attribuer
     à des utilisateurs depuis le panneau d'administration. Ensuite certaines ressources sont bloquées si l'utilisateurs n'a
     pas les droits. Pour plus d'infos, le repo github de cancan. regarder aussi le fichier app/models/ability.rb pour voir
     les permissions définies en fonction des rôles d'un utilisateur. Les rôles sont gérés dans le model user.rb grâce à
     un bitmask.
-  </li>
-  <li>
+  %li
     Administration du site poussé avec active admin. Permet d'administrer très facilement une ressource. De plus,
     toutes l'interface est personalisable. L'ajout de la gestion d'une nouvelle ressource au backend est faite en moins de 5
     secondes, pour les fonctionalités de base. Le backend gère également les traductions dans la base de donné avec
     active_admin_globalize inputs et gère les arbres de manière très simple avec active-admin-ancestry
-  </li>
-  <li>
+  %li
     Gestion des structure en arbre grâce à la gem "ancestry". consuller son dépot github
-  </li>
-  <li>
+  %li
     Permet une base de donné multilingue grâce à globalize3. Gem extrêmement puissante, pouvant être totalement configurée
-  </li>
-  <li>
+  %li
     Utilisation de foundation pour le layout du site
-  </li>
-  <li>
+  %li
     les vues sont gérées par deux languages de templates différents au choix: haml ou erb
-  </li>
-</ul>

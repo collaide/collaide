@@ -1,17 +1,25 @@
-#buy_book.reveal-modal
-  %h2.buy_book_title
-    -if sale_book
-      =t('sale_books.buy.title', book: sale_book.book.title)
-  %p.buy_book_content
-    -if sale_book
-      -#Attention avec raw, de tout escape dedans !
-      =raw(t('sale_books.buy.content', user: link_to(h(sale_book.user.name_to_show), sale_book.user), book: link_to(h(sale_book.book.title),sale_book), price:number_to_currency(h(sale_book.price), :unit => h(sale_book.currency.text))))
-  =simple_form_for(@message, :url => messages_path, html: {class: 'buy_book_form', data_abide: true}) do |f|
-    =f.error_notification
-    .form-inputs
-      .hide=f.association :users
-      =f.input :subject, :as => :hidden
-      =f.input :body, input_html: {class: 'buy_book_form_textarea', rows: 8}, :as => :text
-    .form-actions
-      =f.button :submit, t('messages.new.forms.submit')
-  %a.close-reveal-modal &#215;
+-if current_user.nil?
+  #buy_book.reveal-modal
+    %h2=t('sale_books.buy.not_connected.title')
+    %p=raw(t('sale_books.buy.not_connected.content', connect: link_to(t("dico.connected"), new_user_session_path)))
+    %a.close-reveal-modal &#215;
+-else
+  #buy_book.reveal-modal
+    %h2.buy_book_title
+      -if sale_book
+        =t('sale_books.buy.title', book: sale_book.book.title)
+    %p.buy_book_content
+      -if sale_book
+        -#Attention avec raw, de tout escape dedans !
+        =raw(t('sale_books.buy.content', user: link_to(h(sale_book.user.name_to_show), sale_book.user), book: link_to(h(sale_book.book.title),sale_book), price:number_to_currency(h(sale_book.price), :unit => h(sale_book.currency.text))))
+    -unless @message
+      -@message = UserMessage.new
+    =simple_form_for(@message, :url => messages_path, html: {class: 'buy_book_form', data_abide: true}) do |f|
+      =f.error_notification
+      .form-inputs
+        .hide=f.association :users, wrapper_html: {id: 'message_sending_user_ids'}
+        =f.input :subject, :as => :hidden
+        =f.input :body, input_html: {class: 'buy_book_form_textarea', rows: 8}, :as => :text
+      .form-actions
+        =f.button :submit, t('messages.new.forms.submit')
+    %a.close-reveal-modal &#215;

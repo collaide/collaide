@@ -62,7 +62,7 @@ gem 'geocoder'
 gem 'country_select'
 #gem 'mailboxer'
 
-gem 'mailboxer', :github => 'facenord-sud/mailboxer', :branch => 'master'
+gem 'mailboxer', :github => 'Texicitys/mailboxer-without-notification', :branch => 'master'
 
 gem 'select2-rails'
 
