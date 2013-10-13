@@ -1,4 +1,2 @@
 development:
-  port: 9306
-  mysql41: 9306
   min_prefix_len: 3
