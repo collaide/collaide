@@ -1,45 +1,48 @@
 -#.panel#sale_book_index
-.row.sale_book_index{'class'=>"sale_book_id_#{sale_book.id}"}
-  .hide
-    .sale_book_text_title
-      =t('sale_books.buy.title', book: sale_book.book.title)
-    .sale_book_text_content
-      -#Attention avec raw, de tout escape dedans !
-      =raw(t('sale_books.buy.content', user: link_to(h(sale_book.user.name_to_show), sale_book.user), book: link_to(h(sale_book.book.title),sale_book), price:number_to_currency(h(sale_book.price), :unit => h(sale_book.currency.text))))
-    %pre.sale_book_textarea_content~t('sale_books.buy.textarea', book: sale_book.book.title)
-    .sale_book_user_id
-      =sale_book.user.id
-    .sale_book_subject_content
-      =t('sale_books.buy.subject', book: sale_book.book.title)
-  .large-2.columns.small-12
-    .row
-      .small-12.columns
-        %a.th{href: advertisement_sale_book_path(sale_book)}
-          =book_image(sale_book.book)
-        %br
-        %p= rating_for sale_book.book, 'note', star: 5
-        =edit_link(sale_book, t('sale_books.show.edit'), 'button tiny secondary')
-        -#%a.button.tiny.secondary{href: edit_advertisement_sale_book_path(sale_book)}=t'sale_books.show.edit'
-    -#.row
-    -#  .small-12.columns
-    -#    %p
-    -#      =raw("<span>#{t('advertisements.index.hits')}</span>")
-    -#      =sale_book.hits
-    #star
-  .small-12.columns.large-10
-    %h5= link_to sale_book_title(sale_book), sale_book
-    %h6.subheader= t('sale_books.index.subtitle1', book:sale_book.book.title)
-    %h6.subheader
-      =link_to(sale_book.user.name_to_show, sale_book.user)
-      =t('sale_books.index.subtitle2', price: number_to_currency(sale_book.price, :unit => sale_book.currency.text))
-    -if sale_book.description
-      %p= sale_book.description.truncate(100, separator: ' ', omission: ' ...')
-    -elsif sale_book.book.description
-      %p= sale_book.book.description.truncate(100, separator: ' ', omission: ' ...')
-    -else
-      %p= t('sale_books.index.no_description')
-    -# ATTENTION NE PAS CHANGER LE ID DU LINK DESSOUS, LIE AU JS DANS SALE_BOOK.JS
-    %a.button.secondary{'href'=>'#', 'data-reveal-id'=>'buy_book', 'class' => 'button_buy_book', 'id' => "button_buy_book_#{sale_book.id}"}=t('sale_books.index.buy')
-    =show_link sale_book, t('advertisements.index.show'), 'secondary'
-  %hr
+%li
+  .row.sale_book_index{'class'=>"sale_book_id_#{sale_book.id}"}
+    .hide
+      .sale_book_text_title
+        =t('sale_books.buy.title', book: sale_book.book.title)
+      .sale_book_text_content
+        -#Attention avec raw, de tout escape dedans !
+        =raw(t('sale_books.buy.content', user: link_to(h(sale_book.user.name_to_show), sale_book.user), book: link_to(h(sale_book.book.title),sale_book), price:number_to_currency(h(sale_book.price), :unit => h(sale_book.currency.text))))
+      %pre.sale_book_textarea_content~t('sale_books.buy.textarea', book: sale_book.book.title)
+      .sale_book_user_id
+        =sale_book.user.id
+      .sale_book_subject_content
+        =t('sale_books.buy.subject', book: sale_book.book.title)
+    .large-4.columns.small-12
+      .row
+        .small-12.columns
+          %a.th{href: advertisement_sale_book_path(sale_book)}
+            =book_image(sale_book.book)
+          %br
+          %p= rating_for sale_book.book, 'note', star: 5
+          =edit_link(sale_book, t('sale_books.show.edit'), 'button tiny secondary')
+          -#%a.button.tiny.secondary{href: edit_advertisement_sale_book_path(sale_book)}=t'sale_books.show.edit'
+      -#.row
+      -#  .small-12.columns
+      -#    %p
+      -#      =raw("<span>#{t('advertisements.index.hits')}</span>")
+      -#      =sale_book.hits
+      #star
+    .small-12.columns.large-8
+      %h5= link_to sale_book_title(sale_book), sale_book
+      %h6.subheader= t('sale_books.index.subtitle1', book:sale_book.book.title)
+      %h6.subheader
+        =link_to(sale_book.user.name_to_show, sale_book.user)
+        =t('sale_books.index.subtitle2', price: number_to_currency(sale_book.price, :unit => sale_book.currency.text))
+      -if sale_book.description
+        %p= sale_book.description.truncate(100, separator: ' ', omission: ' ...')
+      -elsif sale_book.book.description
+        %p= sale_book.book.description.truncate(100, separator: ' ', omission: ' ...')
+      -else
+        %p= t('sale_books.index.no_description')
+      -# ATTENTION NE PAS CHANGER LE ID DU LINK DESSOUS, LIE AU JS DANS SALE_BOOK.JS
+      %a.button.secondary{'href'=>'#', 'data-reveal-id'=>'buy_book', 'class' => 'button_buy_book', 'id' => "button_buy_book_#{sale_book.id}"}=t('sale_books.index.buy')
+      =show_link sale_book, t('advertisements.index.show'), 'secondary'
+    %hr.show-for-small
+-if (@parity+=1)%2==0
+  %hr.hide-for-small
 =render 'advertisement/sale_books/reveal', sale_book: nil

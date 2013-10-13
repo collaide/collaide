@@ -19,7 +19,8 @@ class Ability
         can [:read, :download], Document::Document
         can :manage, Document::Document, user_id: user.id
         can :manage, Advertisement::Advertisement, user_id: user.id
-        can :manage, Message, user_id: user.id
+        #TODO FAIRE FONCTIONNER çA
+        can :manage, Message#, recipient: user
       else
         if user.is? 'super-admin'
           can :manage, :all

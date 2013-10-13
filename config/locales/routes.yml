@@ -23,11 +23,11 @@ fr:
 
     domains: "domaines"
 
-    member: "membre"
+    member: membre
 
-    cFile: "fichier"
-    c_files: "mes-fichiers"
-    structures: "dossier"
+    cFile: fichier
+    c_files: mes-fichiers
+    structures: dossier
 
     advertisement: annonce
     advertisements: annonces

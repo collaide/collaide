@@ -35,6 +35,10 @@ class MessagesController < ApplicationController
     @conversations = current_user.mailbox.conversations.page(params[:page]).per(@per)
   end
 
+  def newParticipant
+
+  end
+
 #Cette methode sert juste à traiter la réponse, elle n'aura pas de vue
   def reply
     c = Conversation.find(params[:conversation])
