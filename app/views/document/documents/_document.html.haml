@@ -35,8 +35,8 @@
         %p= document.description.truncate(100, separator: ' ', omission: ' ...')
         .row
           .columns
-            =link_to t('document.documents.index.download'), document_document_download_path(document_document_id: document), class: 'button secondary expand'
-            =link_to t('document.documents.index.show'), document, class: 'button secondary expand'
+            -#link_to t('document.documents.index.download'), document_document_download_path(document_document_id: document), class: 'button secondary expand'
+            -#link_to t('document.documents.index.show'), document, class: 'button secondary expand'
     %hr.show-for-small
 -if document_counter%2!=0 or document_counter == @document_documents.size
   </div>
