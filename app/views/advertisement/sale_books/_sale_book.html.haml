@@ -40,8 +40,8 @@
       -else
         %p= t('sale_books.index.no_description')
       -# ATTENTION NE PAS CHANGER LE ID DU LINK DESSOUS, LIE AU JS DANS SALE_BOOK.JS
-      %a.button.secondary{'href'=>'#', 'data-reveal-id'=>'buy_book', 'class' => 'button_buy_book', 'id' => "button_buy_book_#{sale_book.id}"}=t('sale_books.index.buy')
-      =show_link sale_book, t('advertisements.index.show'), 'secondary'
+      %a.button.small.secondary{'href'=>'#', 'data-reveal-id'=>'buy_book', 'class' => 'button_buy_book', 'id' => "button_buy_book_#{sale_book.id}"}=t('sale_books.index.buy')
+      =show_link sale_book, t('advertisements.index.show'), 'small secondary'
     %hr.show-for-small
 -if (@parity+=1)%2==0
   %hr.hide-for-small
