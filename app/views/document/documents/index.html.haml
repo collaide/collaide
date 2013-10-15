@@ -47,7 +47,7 @@
   .large-4.columns.push-8.small-12.hide-for-small#form_to_hide
     .row.hide-for-small
       .small-12.columns
-        =create_link(Document::Document, t('document.documents.index.new_link'), 'expand')
+        =link_to t('document.documents.index.new_link'), new_document_document_path, class: 'expand button'
     %fieldset
       %form{action: search_document_documents_path, method: :get}
         =hidden_field_tag :url_for_order, @url_for_js
