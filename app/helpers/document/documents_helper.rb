@@ -28,8 +28,8 @@ module Document::DocumentsHelper
     asc = options[:asc] || 'asc'
     desc = options[:desc] || 'desc'
     links = ""
-    links = "#{link_to(asc, document_documents_path(sort: attribute, order: 'asc', page: params[:page], format: :json), remote: remote)}" unless options[:only] == :asc
-    links+=" / #{link_to(desc, document_documents_path(sort: attribute, order: 'desc', page: params[:page], format: :json), remote: remote)}" unless options[:only] == :desc
+    links = "#{link_to(asc, document_documents_path(sort: attribute, order: 'asc', page: h(params[:page]), format: :json), remote: remote)}" unless options[:only] == :asc
+    links+=" / #{link_to(desc, document_documents_path(sort: attribute, order: 'desc', page: h(params[:page]), format: :json), remote: remote)}" unless options[:only] == :desc
     raw links
   end
 
@@ -37,7 +37,8 @@ module Document::DocumentsHelper
     name = ""
     domains.map.with_index do |a_domain, key|
       sep = " #{I18n.translate('dico.and')} " if domains.size >=2 and key+2 == domains.size
-      name += "#{link_to a_domain.name document_domain_path(a_domain)}#{sep} "
+      #Changé par Yves, à test
+      name += "#{link_to(h(a_domain.name), document_domain_path(a_domain))}#{sep} "
     end
     raw name.chop.chop
   end

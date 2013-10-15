@@ -10,6 +10,7 @@
       %a{href: document_document_download_path(document_document_id: @document), class: 'th wrap-text'}
         =image_tag show_icon(@document), width: 100, height: 100
       %h2.panel-subtitle
+        -#TODO A vérifier si sûr
         =raw(doc_sub_title(@document))
         =t('document.documents.show.realized_by', author: @document.author)
       %p= @document.description
