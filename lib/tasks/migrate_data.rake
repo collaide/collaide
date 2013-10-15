@@ -3,8 +3,8 @@ namespace :migrate_data do
 
   require 'Nokogiri'
   #le chemin global. Change si tes pas sur mon beau mac ;-)
-  @dir = 'D:\Collaide\old\\'
-  @upload = "#{@dir}uploads\\"  #deux \\ pour echaper le "
+  @dir = '/Users/leo/Documents/collaide/back_up/db/'
+  @upload = "#{@dir}uploads/"  #deux \\ pour echaper le "
 
   # Ce fichier permet de lancer différentes tâches rake pour migrer de la version actuelle du site
   # à la nouvelle. Chaque tâche permet de migrer un type de donnée. Les noms sont explicites.
@@ -29,10 +29,85 @@ namespace :migrate_data do
   @default_study_level = 1
   @default_user = 1
 
+  desc "Migrate all"
+  task all: :environment do
+    puts 'start the all migrations'
+
+  end
+
+  desc "rename the files"
+  task rename_files: :environment do
+    puts 'start to rename the files...'
+    I18n.locale = :fr
+    read_table('tab_works.xml', @dir, 'tab_works').each do |entry|
+      old_file_name = @upload + read_column('doc_name_serv', entry)
+      new_file_name = @upload + read_column('work_name', entry).parameterize('_') + '.' + read_column('doc_format', entry)
+      File.rename(old_file_name, new_file_name)
+    end
+  end
+
+  desc "add comments to documents"
+  task documents_add_comments: :environment do
+    puts 'not implemented yet ...'
+
+  end
+
+  # Attention!!!
+  # commenter la ligne 38 de models/book.rb
+  desc 'Migrate the books'
+  task books: :environment do
+    I18n.locale = :fr
+    books_xml = load_xml('bookinfo.xml')
+    users_xml = load_xml('membres.xml')
+    read_table('bookstock.xml', @dir, 'bookstock').each do |entry|
+      id_book = read_column 'vente_book', entry
+      isbn = find_xml(books_xml, id_book, 'book_id', 'book_isbn')
+      parse_isbn(isbn)
+      google_book = GoogleBooks.search("isbn:#{isbn}").first
+
+      if google_book && !isbn.empty?
+        puts 'retrieving book from google ...'
+        #On cherche si le livre est déja dans la bdd, si il l'est, on le met à jour, si il ne l'ai pas, onle crée
+        book = Book.find_by_isbn_13(google_book.isbn_13) || Book.find_by_isbn_10(google_book.isbn_10) || Book.new(isbn_13: google_book.isbn_13, isbn_10: google_book.isbn_10)
+        fillBook(book, google_book)
+      else
+        puts 'filling book by hand...'
+        # On crée le livre avec le isbn entrée dans le formulaire
+        book = Book.new
+        published_date = find_xml(books_xml, id_book, 'book_id', 'book_year')
+        book.title = find_xml(books_xml, id_book, 'book_id', 'book_title')
+        #isbn.size==10 ? book.isbn_10 = isbn : book.isbn_13 = isbn
+        book.authors = find_xml(books_xml, id_book, 'book_id', 'book_author') || 'moi'
+        book.publisher = find_xml(books_xml, id_book, 'book_id', 'book_editor')
+        published_date.size == 4 ?
+            book.published_date = DateTime.parse("#{published_date.to_i}-01-01") :
+            book.published_date = Time.at(published_date.to_i).to_datetime
+        book.image_link = find_xml(books_xml, id_book, 'book_id', 'book_img')
+        book.save!
+      end
+      id_user = read_column 'vente_mem', entry
+      price = read_column 'vente_price', entry
+      devise = read_column 'vente_devise', entry
+
+
+      ads_sale_book = Advertisement::SaleBook.new(
+          price: price,
+          currency: devise
+      )
+
+      ads_sale_book.book = book
+      ads_sale_book.user = find(users_xml, id_user, 'mem_ID', 'mem_pseudo', User)|| User.find(@default_user)
+      ads_sale_book.save!
+      puts 'new ads selled !'
+    end
+
+    puts 'finished'
+  end
+
   desc "Migrate the documents from the old version"
   task documents: :environment do
     I18n.locale = :fr
-    puts 'strating migartion'
+    puts 'starting migration of documents'
     xml_users = load_xml('membres.xml')
     xml_domains = load_xml('domains.xml')
     read_table('tab_works.xml', @dir, 'tab_works').each do |entry|
@@ -199,16 +274,39 @@ namespace :migrate_data do
   def find(xml_file, equal_to, parent_id, parent_name, klass, find_for_sql='name')
     parent = nil
     xml_file.xpath("//column[@name='#{parent_id}']").each do |node|
-      parent = node if node.children.first.to_s.to_i == equal_to
+      parent = node if node.children.first.to_s.to_i == equal_to.to_i
       #puts "#{node.children.first.to_s.to_i} = #{equal_to} pour #{parent_name} -> #{parent.inspect}"
     end
     parent_name = parent.xpath("../column[@name='#{parent_name}']").children.first.to_s if parent.present?
     klass.send("find_by_#{find_for_sql}", parent_name)
   end
 
+  def find_xml(xml_file, equal_to, parent_id, parent_name)
+    parent = nil
+    xml_file.xpath("//column[@name='#{parent_id}']").each do |node|
+      #puts "#{node.children.to_s.to_i} == #{equal_to.to_i}"
+      parent = node if node.children.to_s.to_i == equal_to.to_i
+      #puts "#{node.children.to_s.to_i} = #{equal_to.to_i} pour #{parent_name} -> #{parent.inspect}"
+    end
+    parent.xpath("../column[@name='#{parent_name}']").children.first.to_s if parent.present?
+  end
+
+  def get(xml_file, field_for_select, fields_to_find = [])
+    all_result = []
+    xml_file.xpath("//column[@name='#{field_for_select}']").each do |a_node|
+      result = {}
+      fields_to_find.each do |a_field|
+        result[a_field.to_sym] = a_node.xpath("../columns[@name='#{a_field}']")
+      end
+      all_result << result
+    end
+    all_result
+  end
+
   # permet de lire une table.
   # utiliser la méthode each pour lire chaque ligne de la table.
   def read_table(file_name, path, table_name)
+
      file = File.open path+'/'+file_name
     xml = Nokogiri::XML file.read
     file.close
@@ -243,5 +341,48 @@ namespace :migrate_data do
     xml = Nokogiri::XML(file.read)
     file.close
     xml
+  end
+
+  def parse_isbn(isbn)
+    isbn.gsub!('-','')
+    isbn.gsub!('.','')
+    isbn.gsub!('_','')
+    isbn.gsub!(' ','')
+  end
+
+  def fillBook(book, google_book)
+
+    # mettre à jour book
+    book.title = google_book.title
+    book.description = google_book.description
+    book.average_rating = google_book.average_rating
+    book.ratings_count = google_book.ratings_count
+    book.isbn_10 = google_book.isbn_10
+    book.isbn_13 = google_book.isbn_13
+    book.authors = google_book.authors
+    book.language = google_book.language
+    book.page_count = google_book.page_count
+    # si c'est juste 2000, j'ajoute 2000-01-01
+    if google_book.published_date.length == 4
+      book.published_date = "#{google_book.published_date}-01-01".to_date
+    else
+      book.published_date = google_book.published_date
+    end
+    book.publisher = google_book.publisher
+    book.image_link = google_book.image_link
+
+=begin
+      if google_book.image_link(:zoom => 2)
+        book.image_link = google_book.image_link(:zoom => 2)
+      elsif google_book.image_link(:zoom => 5)
+        book.image_link = google_book.image_link(:zoom => 5)
+      elsif google_book.image_link(:zoom => 1)
+        book.image_link = google_book.image_link(:zoom => 1)
+      else
+        book.image_link = google_book.image_link(:zoom => 4)
+      end
+=end
+    book.preview_link = google_book.preview_link
+    book.info_link = google_book.info_link
   end
 end

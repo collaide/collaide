@@ -26,7 +26,7 @@
               = pluralize @document.note_average.qty, t('dico.personne')
               = @document.note_average.qty <= 1 ? t('document.documents.show.has_voted') : t('document.documents.show.have_voted')
           .columns.small-6.push-3.hide-for-small.show-for-small
-            = link_to(t('document.documents.index.download'), document_document_download_path(document_document_id: @document), class: 'button success') if can? :download, Document::Document
+            = link_to(t('document.documents.index.download'), document_document_download_path(document_document_id: @document), class: 'button success')
   .columns.large-4
     .row
       .columns.small-12

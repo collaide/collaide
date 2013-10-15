@@ -20,8 +20,8 @@ class Ability
 
       if user.doc_validator?
         normal user
-        #can :manage, Document::Document
-        can :manage, ActiveAdmin::Page, :name => "Domain"
+        can :manage, Document::Document
+        can :read, ActiveAdmin::Page, :name => "Dashboard"
       end
       if user.add_validator?
         normal user
@@ -38,15 +38,15 @@ class Ability
     def no_connected
       can :manage, GuestBook
       can [:read, :documents, :advertisements], User
-      can :read, Domain
-      can :index, Document::Document
+      #can :read, Domain
+      can :read, Document::Document
       can :read, Advertisement::Advertisement
     end
 
     def normal(user)
       no_connected
       can :manage, User, id: user.id #peut gérer uniquement son profil
-      can [:read, :downlaod], Document::Document
+      can :downlaod, Document::Document
       can :manage, Document::Document, user_id: user.id #uniquement les documents créés par l'utilisateur
       can :manage, Advertisement::Advertisement, user_id: user.id #uniquement les annonces créées par l'utilisateur
       can :manage, Message, user_id: user.id #uniquement les messages de l'utilisateur
