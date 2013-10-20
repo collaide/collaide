@@ -71,7 +71,7 @@ namespace :migrate_data do
         book = Book.find_by_isbn_13(google_book.isbn_13) || Book.find_by_isbn_10(google_book.isbn_10) || Book.new(isbn_13: google_book.isbn_13, isbn_10: google_book.isbn_10)
         fillBook(book, google_book)
       else
-        puts 'filling book by hand...'
+        puts "filling book by hand... #{isbn}"
         # On crée le livre avec le isbn entrée dans le formulaire
         book = Book.new
         published_date = find_xml(books_xml, id_book, 'book_id', 'book_year')
@@ -112,9 +112,10 @@ namespace :migrate_data do
     xml_domains = load_xml('domains.xml')
     read_table('tab_works.xml', @dir, 'tab_works').each do |entry|
       #les données de base
+      next if read_column('work_access', entry).to_i == 1
       id = read_column('work_id', entry ).to_i
-      title = read_column 'work_name', entry
-      description = read_column 'work_desc', entry
+      title = read_column 'work_name', entry || 'pas de titre'
+      description = read_column 'work_desc', entry || 'pas de déscription'
       number_of_pages = read_column('work_pages', entry).to_i
       number_of_pages = 1 if number_of_pages<=0
       author = read_column 'work_autors', entry

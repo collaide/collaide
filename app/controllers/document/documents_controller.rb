@@ -187,8 +187,9 @@ class Document::DocumentsController < ApplicationController
     #le document a-t-il déjà été téléchargé par l'utilisateur ?
     download =  Document::Download.where(document_documents_id: doc.id).where(user_id: current_user.id)
     if download.empty?
-      # si l'utilisateur n'a plus assez de points et que ce n'est pas un document qu'il a déposé, on redirige et on arrête
-      if current_user.points-Point::DOWNLOAD_DOCUMENT<=0 and doc.user.id != current_user.id
+      # si l'utilisateur n'a plus assez de points, que ce n'est pas un document qu'il a déposé et qu'il n'a pas encore
+      # été averti, on redirige et on arrête
+      if current_user.points-Point::DOWNLOAD_DOCUMENT<=0 and doc.user.id != current_user.id and !params[:try].nil? and params[:try] != 'true'
         redirect_to no_credit_users_path, alert: t('document.documents.download.no_credit', doc_name: doc.title) and return
       else
         # on lui enlève le bon nombre de points si ce n'est pas un de ses documents

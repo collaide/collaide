@@ -9,6 +9,7 @@ class GuestBooksController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @guest_books }
+      format.xml { render xml: @guest_books}
     end
   end
 
@@ -20,6 +21,7 @@ class GuestBooksController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @guest_book }
+      format.xml { render xml: @guest_book}
     end
   end
 
@@ -31,6 +33,7 @@ class GuestBooksController < ApplicationController
     respond_to do |format|
       format.html # new.html.haml
       format.json { render json: @guest_book }
+      format.xml { render xml: @guest_book }
     end
   end
 
@@ -46,6 +49,7 @@ class GuestBooksController < ApplicationController
       else
         format.html { render action: "new" }
         format.json { render json: @guest_book.errors, status: :unprocessable_entity }
+        format.xml { render xml: @guest_book.errors, status: :unprocessable_entity }
       end
     end
   end

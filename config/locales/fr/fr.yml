@@ -53,6 +53,13 @@ fr:
   access_denied: Vous n'avez pas le droit de voir cette page. Désolé
   default_key_words: "collaide, étudier, documents scolaires"
   default_description_meta: Collaide est un réseau d'étudiant
+  errors:
+      messages:
+        not_a_date: "n'est pas une date"
+        after: "doit être après %{date}"
+        after_or_equal_to: "doit être supérieur ou égal à %{date}"
+        before: "doit être avant %{date}"
+        before_or_equal_to: "doit être inférieur ou égal à %{date}"
   activerecord:
     models:
       user: profil

@@ -6,11 +6,11 @@
     -if @document.files.empty? or @document.files.first.id.nil?
       -@document.files.build if @document.files.empty?
       =f.simple_fields_for :files do |file|
-        =file.input :file, label_html: tooltip(t('document.documents.forms.tooltips.file'))
+        =file.input :file, label: t('simple_form.labels.c_file_c_file.file'), label_html: tooltip(t('document.documents.forms.tooltips.file'))
     .row
-      =f.input :author, label_html: tooltip(t('document.documents.forms.tooltips.author')), wrapper_html: {class: 'columns large-5'}
+      =f.input :author, required: false, label_html: tooltip(t('document.documents.forms.tooltips.author')), wrapper_html: {class: 'columns large-5'}
       =f.input :number_of_pages, default: 1, label_html: tooltip(t('document.documents.forms.tooltips.number_of_pages')), wrapper_html: {class: 'columns large-2'}
-      =f.input :realized_at, as: :string, input_html: {class: 'datepicker'}, required: true, label_html: tooltip(t('document.documents.forms.tooltips.realized_at')), wrapper_html: {class: 'columns large-5'}
+      =f.input :realized_at, input_html: {id: 'populate-datepicker'}, required: true, label_html: tooltip(t('document.documents.forms.tooltips.realized_at')), wrapper_html: {class: 'columns large-5'}
     .row
       =f.input :language, collection: languages_list, prompt: t("document.documents.form.choose_language"), label_html: tooltip(t('document.documents.forms.tooltips.language')), wrapper_html: {class: 'columns large-4'}, input_html: {class: 's2'}
       =f.association :study_level, prompt: t('document.documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations), label_html: tooltip(t('document.documents.forms.tooltips.study_level')), wrapper_html: {class: 'columns large-4'}, input_html: {class: 's2'}

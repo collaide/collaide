@@ -54,6 +54,9 @@ class Document::Document < ActiveRecord::Base
 
   accepts_nested_attributes_for :files
   accepts_nested_attributes_for :domains
+
+  before_validation :add_author
+
   #validation du type de fichier
   #création d'une image en fonction du fichier
   validates :author, presence: true, length: {minimum: 3, maximum: 30}
@@ -71,4 +74,9 @@ class Document::Document < ActiveRecord::Base
   def show_extension
     I18n.t("application_name.#{Document::DocumentsController.helpers.find_extension(files.first.file_content_type)}")
   end
+
+  private
+    def add_author
+      self.author = user.name_to_show if author.blank?
+    end
 end

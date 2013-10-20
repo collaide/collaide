@@ -15,6 +15,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require jquery.ui.datepicker-fr
 //= require tree.jquery
 //= require foundation
 //= require select2
