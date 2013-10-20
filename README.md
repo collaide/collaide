@@ -97,6 +97,17 @@ Comme méthode de travail à l'intérieur d'un module, nous procédons de la sor
 9. création des vues
 10. amélioration de l'interface (à plusieurs, suivant les retours)
 
+
+
+License Collaide
+-------
+Copyright (c) 2009-2013 All rights reserved.
+Fondateur : Yves Baumann
+Cofondateur : Numa de Montmollin 
+
+
+
+
 ##Documentation
 
 à faire / à compléter
