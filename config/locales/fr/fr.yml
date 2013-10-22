@@ -108,18 +108,30 @@ fr:
       all: "Liste des domaines"
   static_pages:
     home:
+      bc: Page d'accueil
       title_page: Collaide.com - Partagez vos documents étudiants avec vos collègues de classe, échangez dans un espace privé, achetez et vendez vos livres scolaires d'occasions et bénéficiez de nombreuses fonctionnalités.
       key_words: "collaide, partage, documents, Dissertations, Analyses, Documents, rapports, résumés, Exposers, Tests, Présentations, base de donnée, Collaide, Etudiants, document de maturité, Domaines, Allemand, Anglais, Architecture, Art visuel, Biologie, Bureautique, Chimie, Droit, Economie, Espagnol, Français, Géographie, Grec, Histoire, Informatique, Italien, Latin, Mathématiques, Musique, Pédagogie, Philosophie, Physique, Politique, Psychologie, Sports, Théologie, Autres"
       description_meta: Collaide a pour but de rassembler des étudiants de tous niveaux scolaires afin de les aider dans leurs études. Nous proposons une plateforme de partage de documents scolaires, l'achat et la vente de livres scolaires d'occasions, la création de groupes d'étudiants afin de rester en contact avec vos collègues de classes et bien d'autres.
-      h1:
-        title: "%{app_name}"
+      title:
+        h1: "%{app_name}"
+        h2: Apprenons ensemble
+        h3: Partagez des documents. Achetez et vendez des livres scolaires d'occasions. Bientôt, vous pourrez créer des groupes de travail , échanger des fichiers, être sociable. Bref, rester connecté entre étudiant.
+      last_doc:
+        h4: Derniers documents
+      last_ads:
+        h4: Dernières annonces
+      last_news:
+        h4: Dernières nouvelles
     about:
+      bc: A propos de nous
       title: A propos
       text: Ce site a été réalisé dans le but de d'essayer le framework ruby on rails pour collaide. Construit en moins de deux jours
     contact:
+      bc: Contacter nous
       title: Contactez-moi
       text: Si tu veux plus d'infos d'infos, contacte-moi à l'adresse facenord.sud at gmail point com
     help:
+      bc: Aide
       title: Aide et liens utiles
       text1: Ce site a été développé grâce au farmework Ruby On Rails, basé sur le langage Ruby. Il utilise une foule de librairies additionels nécessaires au bon fonctionement du site.
       text2: "Pour voir le code source, rendez-vous sur  github à l'adresse %{github}"

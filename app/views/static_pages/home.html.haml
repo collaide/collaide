@@ -1,23 +1,54 @@
-%h1= t('static_pages.home.h1.title', app_name: t('app_name_long'))
-
-.panel.callout.radius
-  %h5 Collaide
-  %p Partagez vos documents avec vos collègues de classe, échangez dans un espace privé, achetez et vendez vos livres scolaires d'occasions et bénéficiez de nombreuses fonctionnalités.
-
-Mise en ligne:
-.radius.progress.success
-  %span.meter{'style'=> 'width: 80%'}
-
-%p Pour la page d'accueil voila ce que je propose:
-%ul
-  %li Pour le visiteur qui n'est pas connecté:
-  %ul
-    %li Présentation en quelque mot du contenu du site
-    %li Possibilité de s'inscrir ou de se connecté vu qu'on ne l'est pas
-  %li Pour le membre connecté
-  %ul
-    %li Présentation des choses qui NOUS concerne
-    %li Actualité des établissements, des groupes, de nos amis (document, annonce postée, etc..)
+=image_tag 'home/essai2.jpg'
+#home
+  .panel
+    .row
+      .columns.small-12
+        %h1.text-center= t('static_pages.home.title.h1', app_name: t('app_name_long'))
+        %h4.subheader.text-center= t('static_pages.home.title.h3')
+  .row
+    .columns.small-6
+      =link_to 'Inscription', new_user_registration_path, class: 'expand button success'
+    .columns.small-6
+      =link_to 'Connexion', new_user_session_path, class: 'expand button'
+  .row
+    .columns.large-4
+      .panel
+        %h5= t('.last_doc.h4')
+        %ul
+          -@documents.each do |a_doc|
+            %li= link_to "#{a_doc.title}, #{a_doc.description}".truncate(40, separator: '', omission: '... '), document_document_path(a_doc)
+    .columns.large-4
+      .panel
+        %h5= t('.last_ads.h4')
+        %ul
+          -@ads.each do |an_ads|
+            %li= link_to "#{an_ads.book.title}, #{an_ads.book.description}".truncate(40, separator: '', omission: '... '), advertisement_sale_book_path(an_ads)
+    .columns.large-4
+      .panel
+        %h5= t('.last_news.h4')
+        %ul
+          -@news.each do |a_new|
+            %li= link_to "#{a_new.title}".truncate(40, separator: '', omission: '... '), a_new.url
+-#%h1= t('static_pages.home.h1.title', app_name: t('app_name_long'))
+-#
+-#.panel.callout.radius
+-#  %h5 Collaide
+-#  %p Partagez vos documents avec vos collègues de classe, échangez dans un espace privé, achetez et vendez vos livres scolaires d'occasions et bénéficiez de nombreuses fonctionnalités.
+-#
+-#Mise en ligne:
+-#.radius.progress.success
+-#  %span.meter{'style'=> 'width: 80%'}
+-#
+-#%p Pour la page d'accueil voila ce que je propose:
+-#%ul
+-#  %li Pour le visiteur qui n'est pas connecté:
+-#  %ul
+-#    %li Présentation en quelque mot du contenu du site
+-#    %li Possibilité de s'inscrir ou de se connecté vu qu'on ne l'est pas
+-#  %li Pour le membre connecté
+-#  %ul
+-#    %li Présentation des choses qui NOUS concerne
+-#    %li Actualité des établissements, des groupes, de nos amis (document, annonce postée, etc..)
 
 
 -#%ul{'data-orbit'=> true}
