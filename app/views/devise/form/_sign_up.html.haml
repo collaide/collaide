@@ -1,0 +1,7 @@
+= simple_form_for(User.new, as: :user, :url => user_registration_path) do |f|
+    = f.input :email, label: false, placeholder: t('devise.form.new.email')
+    = f.input :name, label: false, required: false, placeholder: t('devise.form.new.name')
+    = f.input :password, label: false, required: false, placeholder: t('devise.form.new.password')
+    = f.input :password_confirmation, label: false, required: false, placeholder: t('devise.form.new.password_confirmation')
+
+    = f.button :submit, t("devise.registrations.new.sign_up"), class: 'expand success'

@@ -115,13 +115,19 @@ fr:
       title:
         h1: "%{app_name}"
         h2: Apprenons ensemble
-        h3: Partagez des documents. Achetez et vendez des livres scolaires d'occasions. Bientôt, vous pourrez créer des groupes de travail , échanger des fichiers, être sociable. Bref, rester connecté entre étudiant.
+        h3: Partagez des documents. Achetez et vendez des livres d'occasions. Bientôt, vous pourrez créer des groupes de travail , échanger des fichiers, être sociable. Bref, rester connecté entre étudiant.
       last_doc:
         h4: Derniers documents
+        all: Tous les documents >>
+        button: Envoyer un document
       last_ads:
         h4: Dernières annonces
+        all: Toutes les annnonces >>
+        button: Vendre un livre
       last_news:
         h4: Dernières nouvelles
+        all: Consulter le blog >>
+        button: S'abonner
     about:
       bc: A propos de nous
       title: A propos
@@ -187,6 +193,8 @@ fr:
               hits: Les plus téléchargés
               alphabetic: Par ordre alphabétique
             label_datepicker: Publié après le
+        fieldset_legend:
+          advanced_search: "Recherche avancée"
       new:
         title_page: "Envoyer un nouveau document et gagnez 3 points !"
         bc: Envoyer un document

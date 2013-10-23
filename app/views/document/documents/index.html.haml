@@ -49,6 +49,7 @@
       .small-12.columns
         =link_to t('document.documents.index.new_link'), new_document_document_path, class: 'expand button'
     %fieldset
+      %legend= t('.fieldset_legend.advanced_search')
       %form{action: search_document_documents_path, method: :get}
         =hidden_field_tag :url_for_order, @url_for_js
         =hidden_field_tag :url_for_ajax, @url_for_js

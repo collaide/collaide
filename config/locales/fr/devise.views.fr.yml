@@ -1,5 +1,11 @@
 fr:
   devise:
+    form:
+      new:
+        email: Votre e-mail
+        name:  Choisissez un pseudo
+        password: Taper un mot de passe
+        password_confirmation: Confirmez le mot de passe
     confirmations:
       new:
         resend_confirmation_instructions: Renvoyer les instructions de confirmation

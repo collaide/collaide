@@ -1,3 +1,54 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "foundation_and_overrides";
+
+$font-size : 1.1em;
+
+::-webkit-input-placeholder { font-size:$font-size; }
+::-moz-placeholder { font-size:$font-size; } /* firefox 19+ */
+:-ms-input-placeholder { font-size:$font-size; } /* ie */
+input:-moz-placeholder { font-size:$font-size; }
+
+.signup-panel { @include panel(#4b4b4b);
+  padding-bottom: 0px;
+  .center-to-form {
+    padding-bottom: 50px;
+    padding-top: 25px;
+  }
+}
+
+.last-title {
+  background-color: #4b4b4b;
+  padding-left: emCalc(10px);
+  color: white;
+  margin-bottom: 0px;
+  padding-top: emCalc(5px);
+  padding-bottom: emCalc(5px);
+}
+
+#news {
+  background-color: #196177;
+}
+
+#ads {
+  background-color: #812820;
+}
+
+#doc {
+  background-color: #3C978C;
+}
+
+.last-panel { @include panel($panel-bg);
+  ul {
+    padding-left: emCalc(20px);
+  }
+  li {
+    a {
+      color: lighten($header-font-color, 5%);
+    }
+    a:hover {
+      color: $primary-color;
+    }
+  }
+}

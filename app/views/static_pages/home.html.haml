@@ -1,34 +1,46 @@
-=image_tag 'home/essai2.jpg'
+-#=image_tag 'home/essai1.jpg'
 #home
-  .panel
+  .signup-panel
     .row
       .columns.small-12
         %h1.text-center= t('static_pages.home.title.h1', app_name: t('app_name_long'))
-        %h4.subheader.text-center= t('static_pages.home.title.h3')
-  .row
-    .columns.small-6
-      =link_to 'Inscription', new_user_registration_path, class: 'expand button success'
-    .columns.small-6
-      =link_to 'Connexion', new_user_session_path, class: 'expand button'
+    .row
+      .columns.large-9
+        %h3.subheader.center-to-form= t('static_pages.home.title.h3')
+      .columns.large-3
+        = render 'devise/form/sign_up'
   .row
     .columns.large-4
-      .panel
-        %h5= t('.last_doc.h4')
+      %h4.last-title#doc= t('.last_doc.h4')
+      .last-panel
         %ul
           -@documents.each do |a_doc|
-            %li= link_to "#{a_doc.title}, #{a_doc.description}".truncate(40, separator: '', omission: '... '), document_document_path(a_doc)
+            %li
+              %h5.subheader= link_to "#{a_doc.title}, #{a_doc.description}".truncate(40, separator: '', omission: '... '), document_document_path(a_doc)
+        %p.text-right
+          = link_to t('.last_doc.all'), document_documents_path
+        =link_to t('.last_doc.button'), new_document_document_path, class: 'button secondary'
     .columns.large-4
-      .panel
-        %h5= t('.last_ads.h4')
+      %h4.last-title#ads= t('.last_ads.h4')
+      .last-panel
         %ul
           -@ads.each do |an_ads|
-            %li= link_to "#{an_ads.book.title}, #{an_ads.book.description}".truncate(40, separator: '', omission: '... '), advertisement_sale_book_path(an_ads)
+            %li
+              %h5.subheader= link_to "#{an_ads.book.title}, #{an_ads.book.description}".truncate(40, separator: '', omission: '... '), advertisement_sale_book_path(an_ads)
+        %p.text-right
+          = link_to t('.last_ads.all'), advertisement_advertisements_path
+        =link_to t('.last_ads.button'), new_advertisement_advertisement_path, class: 'button secondary'
     .columns.large-4
-      .panel
-        %h5= t('.last_news.h4')
+      %h4.last-title#news= t('.last_news.h4')
+      .last-panel
         %ul
           -@news.each do |a_new|
-            %li= link_to "#{a_new.title}".truncate(40, separator: '', omission: '... '), a_new.url
+            %li
+              %h5.subheader= link_to "#{a_new.title}".truncate(40, separator: '', omission: '... '), a_new.url
+        %p.text-right
+          -# TODO : change this !!!!
+          = link_to t('.last_news.all'), 'http://blog-oj-laneuveville.herokuapp.com'
+        =link_to t('.last_news.button'), '', class: 'button secondary'
 -#%h1= t('static_pages.home.h1.title', app_name: t('app_name_long'))
 -#
 -#.panel.callout.radius
