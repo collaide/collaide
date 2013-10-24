@@ -55,6 +55,7 @@ class JsonResponse
         p.slug = a_post['slug']
         p.status = a_post['status']
         p.content = a_post['content']
+        p.date = a_post['date']
         p
       end
     end

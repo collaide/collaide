@@ -1026,6 +1026,15 @@ $document-subtitle-font-size: emCalc(16px);
 //$sale-book-subtitle-color: #a03b32;
 $sale-book-subtitle-font-size: emCalc(3px);
 
+//home
+//colors for last resource panels
+$panel-document-color: #3C978C;
+$panel-ads-color: #812820;
+$panel-news-color: #196177;
+
+//footer
+$footer-background-color: #a3a3a3;
+
 .row {
   max-width: $row-width;
 }

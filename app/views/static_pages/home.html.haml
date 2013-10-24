@@ -11,7 +11,8 @@
         = render 'devise/form/sign_up'
   .row
     .columns.large-4
-      %h4.last-title#doc= t('.last_doc.h4')
+      %h4.last-title#doc
+        =link_to t('.last_doc.h4'), document_documents_path
       .last-panel
         %ul
           -@documents.each do |a_doc|
@@ -21,7 +22,8 @@
           = link_to t('.last_doc.all'), document_documents_path
         =link_to t('.last_doc.button'), new_document_document_path, class: 'button secondary'
     .columns.large-4
-      %h4.last-title#ads= t('.last_ads.h4')
+      %h4.last-title#ads
+        =link_to t('.last_ads.h4'), advertisement_advertisements_path
       .last-panel
         %ul
           -@ads.each do |an_ads|
@@ -31,12 +33,13 @@
           = link_to t('.last_ads.all'), advertisement_advertisements_path
         =link_to t('.last_ads.button'), new_advertisement_advertisement_path, class: 'button secondary'
     .columns.large-4
-      %h4.last-title#news= t('.last_news.h4')
+      %h4.last-title#news
+        =link_to t('.last_news.h4'), 'http://blog-oj-laneuveville.herokuapp.com'
       .last-panel
         %ul
           -@news.each do |a_new|
             %li
-              %h5.subheader= link_to "#{a_new.title}".truncate(40, separator: '', omission: '... '), a_new.url
+              %h5.subheader= link_to "#{l a_new.date.to_date, format: :short} : #{a_new.title}".truncate(40, separator: '', omission: '... '), a_new.url
         %p.text-right
           -# TODO : change this !!!!
           = link_to t('.last_news.all'), 'http://blog-oj-laneuveville.herokuapp.com'

@@ -25,18 +25,24 @@ input:-moz-placeholder { font-size:$font-size; }
   margin-bottom: 0px;
   padding-top: emCalc(5px);
   padding-bottom: emCalc(5px);
+  a {
+    color: white;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 #news {
-  background-color: #196177;
+  background-color: $panel-news-color;
 }
 
 #ads {
-  background-color: #812820;
+  background-color: $panel-ads-color;
 }
 
 #doc {
-  background-color: #3C978C;
+  background-color: $panel-document-color;
 }
 
 .last-panel { @include panel($panel-bg);
@@ -50,5 +56,23 @@ input:-moz-placeholder { font-size:$font-size; }
     a:hover {
       color: $primary-color;
     }
+  }
+}
+
+$footer-middle-color: lighten($footer-background-color, 20%);
+$footer-end-color: lighten($footer-background-color, 30%);
+footer {
+  .panel { @include panel($footer-background-color);
+    border: none;
+    border-top: 1px solid darken($panel-bg, 10%);
+    background: $footer-background-color; /* Old browsers */
+    background: -moz-linear-gradient(top,  $footer-background-color 0%, $footer-background-color 43%, $footer-end-color 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$footer-background-color), color-stop(43%,$footer-background-color), color-stop(100%,$footer-end-color)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $footer-background-color 0%,$footer-background-color 43%,$footer-end-color 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $footer-background-color 0%,$footer-background-color 43%,$footer-end-color 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $footer-background-color 0%,$footer-background-color 43%,$footer-end-color 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  $footer-background-color 0%,$footer-background-color 43%,$footer-end-color 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$footer-background-color', endColorstr='$footer-end-color',GradientType=0 ); /* IE6-9 */
+
   }
 }
