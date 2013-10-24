@@ -115,7 +115,7 @@ fr:
       title:
         h1: "%{app_name}"
         h2: Apprenons ensemble
-        h3: Partagez des documents. Achetez et vendez des livres d'occasions. Bientôt, vous pourrez créer des groupes de travail , échanger des fichiers, être sociable. Bref, rester connecté entre étudiant.
+        h3: Partagez des documents. Achetez et vendez des livres d'occasions. Bientôt, vous pourrez ajouter vos collègues, créer des groupes de travail, échanger des fichiers. Bref, rester connecté entres étudiants.
       last_doc:
         h4: Derniers documents
         all: Tous les documents >>
