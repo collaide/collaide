@@ -88,8 +88,6 @@
 }
 
 #doc-title-index {
-  background-color: $panel-document-color;
+  border-bottom: solid 8px $panel-document-color;
   padding-left: 10px;
-  color: white;
-  margin-bottom: 0px;
 }

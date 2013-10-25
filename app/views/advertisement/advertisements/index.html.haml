@@ -1,26 +1,30 @@
 -content_for :title, t('advertisements.index.title_page')
 .row
-  .small-12.columns
-    %h1= t 'advertisements.index.title'
+  .small-12.large-9.columns
+    %h1#ads-index-title= t 'advertisements.index.title'
+    %blockquote Besoin d'un livre ? vous êtes au bon endroit. Trop de vieux livres ? c'est parfait. Vendez-les !
+  .small-12.columns.large-3#new-book
+    =link_to t('advertisements.index.new_link'), new_advertisement_advertisement_path, class: 'button expand'
+
 .row
-  .small-12.columns.large-6
-    =create_link(Advertisement::Advertisement, t('advertisements.index.new_link'), 'expand')
+  .small-12.columns
+    =hidden_field_tag :auto_complete_url, autocomplete_advertisement_advertisements_path
+    %form{action: search_advertisement_advertisements_path, method: :get, class: 'custom'}
+      .row.collapse
+        .large-2.small-12.columns
+          =label_tag :search, t('advertisements.index.forms.search.label'), id: 'important-label'
+        .large-8.small-9.columns
+          =search_field_tag :search, @searched_value, autofocus: true, placeholder: t('advertisements.index.forms.search.placeholder')
+        .large-2.small-3.columns
+          =submit_tag t('document.documents.index.forms.search.submit'), class: 'button secondary prefix', name: nil, id: 'go-search'
 
 -if @advertisement.empty?
   %p= t 'advertisements.index.no_advertisement'
 -else
-  .row.hide-for-small
+  .row
     .small-12.columns#paginate
       =paginate @advertisement
-  .row
-    .large-4.columns.push-8.small-12
-      =field_set_tag t('advertisements.index.forms.search.fieldset') do
-        =hidden_field_tag :auto_complete_url, autocomplete_advertisement_advertisements_path
-        %form{action: search_advertisement_advertisements_path, method: :get, class: 'custom'}
-          -#=label_tag :search, t('advertisements.index.forms.search.fieldset')
-          =search_field_tag :search, @searched_value
-          =submit_tag t('advertisements.index.forms.search.submit'), class: 'button secondary expand', name: nil, id: 'go-search'
-    .small-12.large-8.columns.pull-4#advertisements
-      %ul.large-block-grid-2
+    .small-12.columns#advertisements
+      %ul.large-block-grid-3
         -@parity=0
         =render @advertisement
