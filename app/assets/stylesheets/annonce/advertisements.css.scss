@@ -1,3 +1,12 @@
 // Place all the styles related to the advertisement/advertisements controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'foundation_and_overrides';
+
+#ads-index-title {
+  border-bottom: 8px solid $panel-ads-color;
+}
+
+#new-book {
+  padding-top: 50px;
+}

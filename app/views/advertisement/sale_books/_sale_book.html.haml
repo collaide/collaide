@@ -43,6 +43,6 @@
       %a.button.small.secondary{'href'=>'#', 'data-reveal-id'=>'buy_book', 'class' => 'button_buy_book', 'id' => "button_buy_book_#{sale_book.id}"}=t('sale_books.index.buy')
       =show_link sale_book, t('advertisements.index.show'), 'small secondary'
     %hr.show-for-small
--if (@parity+=1)%2==0
+-if (@parity+=1)%3==0
   %hr.hide-for-small
 =render 'advertisement/sale_books/reveal', sale_book: nil

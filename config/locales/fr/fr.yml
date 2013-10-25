@@ -364,7 +364,8 @@ fr:
       hits: "Hits :"
       forms:
         search:
-          fieldset: Rechercher
+          label: Vous cherchez un livre ?
+          placeholder: Rechercher par titre, isbn et / ou auteur
           submit: Chercher
     new:
       title_page: Publier une annonce

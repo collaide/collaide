@@ -23,6 +23,7 @@ class Advertisement::AdvertisementsController < ApplicationController
     @advertisement = Advertisement::SaleBook.search(
         Riddle::Query.escape(params[:search])
     )
+    @searched_value=params[:search]
     render 'advertisement/advertisements/index'
   end
 
