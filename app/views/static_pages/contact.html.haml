@@ -1,2 +1,25 @@
 %h1= t "static_pages.contact.title"
-%p= t "static_pages.contact.text"
+%blockquote
+  = t "static_pages.contact.text"
+  =mail_to 'contact@collaide.com'
+-if @reply.nil?
+  %fieldset
+    %legend= t('.form.legend')
+    =form_tag send_email_contact_path, method: :post do
+      =label_tag :email, t('.form.email')
+      =email_field_tag :email
+      =label_tag :subject, t('.form.subject')
+      =text_field_tag :subject
+      =label_tag :mail_content, t('.form.content')
+      =text_area_tag :mail_content, nil, rows: 8
+      =button_tag t('.form.button')
+-else
+  .panel
+    %h6= t('.recap')
+    %dl
+      %dt= t('.form.email')
+      %dd= @reply[:email]
+      %dt= t('.form.subject')
+      %dd= @reply[:subject]
+      %dt= t('.form.content')
+      %dd= @reply[:mail_content]

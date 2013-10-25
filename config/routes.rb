@@ -8,6 +8,7 @@ Collaide::Application.routes.draw do
   get 'partners', to: 'static_pages#partners', as: 'partners'
   get 'rules', to: 'static_pages#rules', as: 'rules'
   get 'change-lang', to: 'static_pages#change_lang', as: 'change_lang'
+  post 'contact/send', to: 'static_pages#send_email', as: 'send_email_contact'
   match '/rate' => 'rater#create', :as => 'rate'
 
   resources 'messages' do

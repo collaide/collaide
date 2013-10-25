@@ -145,13 +145,52 @@ fr:
         all: Consulter le blog >>
         button: S'abonner
     about:
-      bc: A propos de nous
+      title_page: A propos
+      description_meta: Présentation des auteurs et des outils utilisés
+      key_words: a props, présentation, auteurs, outils
+      bc: A propos
       title: A propos
-      text: Ce site a été réalisé dans le but de d'essayer le framework ruby on rails pour collaide. Construit en moins de deux jours
+      blockquote: Cette page présente les auteurs du site et les outils utilisés.
+      the_authors: Les auteurs
+      text:
+        numa: |
+          Etudiant en Bachelor en Informatique avec une opton journalisme et médias, je suis passioné par la montagne, l'escalade et le ski de reandonnée.
+
+          Fan de l'idée du site de collaide, j'ai rejoint Yves il y a un an. Depuis, nous n'avons pas cessé de développer des projets.
+
+          Découvert il y a trois mois, je suis un grand amateur du framework Rails.
+        yves: |
+          Je suis yves
+      utils:
+        title: Les outils
+        text: Voici une liste non exhaustive des différents outils utilisés
+        list: |
+          Ruby on rails|http://rubyonrails.org/
+          Git|http://git-scm.com/
+          JQuery|http://jquery.com/
+          JQuery UI|http://jqueryui.com/
+          Foundation|http://foundation.zurb.com/
+          PostgresSQL|http://www.postgresql.org/
+          Redis|http://redis.io/
+          Sphinx|http://sphinxsearch.com/
+          MySql|http://www.mysql.fr/
     contact:
-      bc: Contacter nous
-      title: Contactez-moi
-      text: Si tu veux plus d'infos d'infos, contacte-moi à l'adresse facenord.sud at gmail point com
+      bc: Nous contacter
+      title: Contact
+      title_page: Contact
+      description_meta: Vous pouvez nous contacter avec le formulaire de contact
+      key_words: contact
+      text: |
+        Ce site est fait par des étudiants pour des étudiants. Il est donc possible qu'il y ait quelques erreurs, bugs ou dysfonctionnements. Merci de nous en faire part.
+        Pour nous contacter, il vous suffit de remplir le formulaire suivant ou de nous écrire un e-mail à l'adresse
+      form:
+        legend: Formulaire de contact
+        email: Adresse e-mail de contact
+        subject: Sujet du message
+        content: Contenu du message
+        button: Envoyer
+      success: "Votre message avec le sujet \"%{subject}\" : a bien été envoyé. E-mail pour la réponse: %{email}"
+      recap: Récapitulatif
     help:
       bc: Aide
       title: Aide et liens utiles

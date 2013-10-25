@@ -35,4 +35,17 @@ class StaticPagesController < ApplicationController
   def partners
     add_breadcrumb(t('static_pages.partners.bc'))
   end
+
+  def send_email
+    @reply = {}
+    @reply[:subject] = params[:subject]
+    @reply[:email] = params[:email]
+    @reply[:mail_content] = params[:mail_content]
+    ActionMailer::Base.mail(
+        from: @reply[:email], :to => 'contact@collaide.com',
+        subject: @reply[:subject],
+        body: @reply[:email_content]
+    ).deliver
+    redirect_to contact_path, notice: t('static_pages.contact.success', email: @reply[:email], subject: @reply[:subject])
+  end
 end
