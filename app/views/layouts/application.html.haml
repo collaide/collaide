@@ -40,11 +40,10 @@
           .alert-box{class: key, :'data-alert' =>  true}
             = value
             %a{href: '#', class: 'close'}= "&times;".html_safe
-  .row
+  .row#content
     .columns.small-12
       = yield
-  .row
-    .columns.small-12
-      = render 'layouts/footer'
+  .row#footer
+    = render 'layouts/footer'
 
   = javascript_include_tag 'application'

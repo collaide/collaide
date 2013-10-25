@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
-  before_filter :set_locale_from_url
+  before_filter :get_documents
 
   #rescue_from ActionController::RoutingError, :with => :render_not_found
 
@@ -71,5 +71,8 @@ class ApplicationController < ActionController::Base
     add_breadcrumb(I18n.t('app_name'), :root_path)
   end
 
+  def get_documents
+    @footer_document = Document::Document.order('created_at DESC').limit(6).all
+  end
 
 end

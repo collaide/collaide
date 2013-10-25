@@ -5,6 +5,8 @@ Collaide::Application.routes.draw do
   get "about", to: "static_pages#about", as: "about"
   get "contact", to: "static_pages#contact", as: "contact"
   get "help", to: "static_pages#help", as: "help"
+  get 'partners', to: 'static_pages#partners', as: 'partners'
+  get 'rules', to: 'static_pages#rules', as: 'rules'
   get 'change-lang', to: 'static_pages#change_lang', as: 'change_lang'
   match '/rate' => 'rater#create', :as => 'rate'
 

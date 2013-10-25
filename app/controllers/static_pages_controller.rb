@@ -27,4 +27,12 @@ class StaticPagesController < ApplicationController
   def change_lang
 
   end
+
+  def rules
+    add_breadcrumb(t('static_pages.rules.bc'))
+  end
+
+  def partners
+    add_breadcrumb(t('static_pages.partners.bc'))
+  end
 end

@@ -34,7 +34,7 @@
         =link_to t('.last_ads.button'), new_advertisement_advertisement_path, class: 'button secondary'
     .columns.large-4
       %h4.last-title#news
-        =link_to t('.last_news.h4'), 'http://blog-oj-laneuveville.herokuapp.com'
+        =link_to t('.last_news.h4'), blog_path
       .last-panel
         %ul
           -@news.each do |a_new|
@@ -42,7 +42,7 @@
               %h5.subheader= link_to "#{l a_new.date.to_date, format: :short} : #{a_new.title}".truncate(40, separator: '', omission: '... '), a_new.url
         %p.text-right
           -# TODO : change this !!!!
-          = link_to t('.last_news.all'), 'http://blog-oj-laneuveville.herokuapp.com'
+          = link_to t('.last_news.all'), blog_path
         =link_to t('.last_news.button'), '', class: 'button secondary'
 -#%h1= t('static_pages.home.h1.title', app_name: t('app_name_long'))
 -#

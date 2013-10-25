@@ -59,6 +59,10 @@ module ApplicationHelper
         t('sale_books.show.published_date', published_date: l(date, format: :long))
   end
 
+  def blog_path
+    'http://blog-oj-laneuveville.herokuapp.com'
+  end
+
   private
     def find_t_for_meta(meta, options={})
       action_name = params[:action]

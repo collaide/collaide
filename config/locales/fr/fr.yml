@@ -17,6 +17,7 @@ fr:
     suscribe: "Inscrivez-vous"
     password: &password Mot de passse
     email: &email Adresse de courriel
+    name: &name Pseudo
     password_confirmation: &password_confirmation Confirmation du mot de passe
     current_password: &current_password Mot de passe actuel
     remember_me: &remember_me Se souvenir de moi
@@ -24,6 +25,10 @@ fr:
     time_ago: &time_ago il y a %{date}
     download: télécharger
     free: gratuitement
+    documents: &documents Documents
+    books: &books Livres
+    news: &news News
+    partners: &partners Partenaires
     documents:
       title: &doc_title Titre
       description: &doc_description Déscription
@@ -67,6 +72,7 @@ fr:
     attributes:
       user:
         email: *email
+        name: *name
         password: *password
         password_confirmation: *password_confirmation
         current_password: *current_password
@@ -100,9 +106,19 @@ fr:
     sign_in: *sign_in
     sign_up: *sign_up
   footer:
-    help: Aide
-    contact: Contact
-    about: A propos
+    titles:
+      documents: Documents étudiants
+      partners: Partenaires
+      follow_us: Nous suivre
+    collaide:
+      documents: *documents
+      books: *books
+      news: *news
+      rules: Règlements
+      partners: Partenaires
+      help: Aide
+      contact: Contact
+      about: A propos
   domains:
     link:
       all: "Liste des domaines"
@@ -142,6 +158,55 @@ fr:
       text1: Ce site a été développé grâce au farmework Ruby On Rails, basé sur le langage Ruby. Il utilise une foule de librairies additionels nécessaires au bon fonctionement du site.
       text2: "Pour voir le code source, rendez-vous sur  github à l'adresse %{github}"
       text3: Il y a plusieurs liens utiles qui fournissent une bonne documentation pour comprndre le fonctionement de ruby et ruby on rails. Je mettrai les liens prochainement
+    partners:
+      title_page: *partners
+      bc: *partners
+      key_words: partenaires, liens
+      description_meta: ". Vous trouverez ici la liste des partenaires de Collaide"
+      h1_title: *partners
+      blockquote: "Vous trouverez ici les liens vers toutes nos pages partenaires ainsi que les sites personnels des personnes qui m'ont aidées dans le developpement du site.
+                  Si vous êtes intéressé par un partenariat, n'hésitez pas à nous <a href='%{link}'>contacter</a>."
+    rules:
+      title_page: Réglement du site
+      bc: réglement
+      key_words: "règlement, conditions d'utilisation"
+      description_meta: "Vous trouvererz ici le réglement d'utilisation du site"
+      h1_title: Règlement
+      blockquote: "Ce site contient un espace membres, un système de news, un système de commentaire ainsi que d'autres modules.
+                  En vous inscrivant, vous reconnaissez avoir pris connaissance de cette charte et l'avoir acceptée. Si tel n'est pas le cas, vous ne pouvez vous inscrire."
+      h3_title: Règlement général du site
+      documents:
+        title: Les documents
+        text: |
+         Les documents disponibles sur ce site sont envoyés par les utilisateurs. Avant d'être disponible en téléchargement, chaque document public doit être validé par un administrateur. Ce dernier vérifie que le document peut être rendu public, c'est à dire que le titre, la description et toutes les informations envoyées par l'utilisateur respect les règles du site. Il vérifie aussi que le fichier envoyé est bien d'un document scolaire et qu'il peut être utile aux autres membres du site. Le contenu et l'auteur des documents ne sont en aucun cas vérifiés. L'utilisateur s'engage à ce que les documents envoyés ne soient pas de nature à porter atteinte aux intérêts légitimes de tiers quels qu'ils soient. N'hésitez pas à signaler un document si celui-ci va à l'encontre du règlement. Nous nous réservant le droit d'accepter ou de refuser n'importe quel type de document sans devoir nous en justifier. Cependant, si nous refusons un travail, généralement, nous vous informons de la cause du refus. Rien de vous empêche de réessayer de le renvoyer lorsque les corrections nécessaire ont étés effectuées. Les modérateurs sont aussi autorisé à supprimer un travail si cela est nécessaire (contenu illicite, par exemple).
+
+         L'utilisateur qui envoie un document, certifie que le contenu de celui-ci ne va pas à l'encontre du règlement du site (se référer ci-dessous). Le site ne peut en aucun cas être tenu responsable du contenu publié par ses membres. L’auteur du document envoyé doit être au courant et accepter que le contenu de ce dernier soit mis à disposition et libre de téléchargement sur le site. Les documents appartiennent à leur auteur respectif, il est strictement interdit de copier partiellement ou intégralement le contenu de ces derniers sans citer l’auteur. Le contenu de ce site ne peut en aucun cas être utilisé à des fins commerciales. Si vous désirez supprimer un de vos documents vous pouvez le faire depuis la page de gestion des documents de votre compte. Si cela ne vous est pas possible depuis votre compte, n'hésitez pas à nous contacter.
+      site:
+        title: Le site
+        text: |
+          Ce site et toutes ses pages sont soumis à la loi européenne, par conséquent, il est interdit d'y tenir des propos ou d'y publier du contenu illégal aux yeux de la loi, sont considérés illégaux entres autres les contenus suivants : contenu à caractère raciste, contenu diffamatoire, contenu incitant à la haine, à la violence, contenu expliquant comment pirater (i.e. : à des fins néfastes ou non), contenu violant les droits d'auteur.
+
+          À cette liste non exhaustive vient s'ajouter l'interdiction de publier du contenu à caractère sexuel.
+
+          Cette liste étant non exhaustive, nous faisons appel à votre bon sens pour discerner ce que vous pouvez publier et / ou dire de ce que vous ne pouvez publier / dire.
+
+          Les propos insultants, dégradants, agressifs ou tout comportement néfaste à une ambiance correcte sur l'ensemble du site sont interdits.
+
+          Le thème de ce site n'est pas restreint, bien que les études soient le thème principal, libre à vous de parler de couture si ça vous chante.
+
+          Les forums de discussions sont des espaces importants pour un site à caractère communautaire, mais c'est aussi un espace d'entraide, par conséquent, n'hésitez pas à y poser vos questions si vous en avez. Cependant, pensez à faire une recherche avant de poser une question, peut-être que la question a déjà été posée par un autre membre. De plus, votre discussion devra avoir un titre clair et concis.
+
+          Partout sur les parties publiques du site, vous devrez écrire dans un français correct, toute forme de langage SMS (abrégé) est interdite.
+
+          Il est important de noter que pour votre confort, et le nôtre, les forums de discussions, qu'ils soient public ou privé sont surveillé par une équipe de modération bénévole, qui peut être amenée à sanctionner tout membre enfreignant le règlement, ceci allant de l'avertissement à l'interdiction d'accéder au site. N'hésitez pas à nous contacter si un contenu va à l'encontre du règlement.
+
+          Vous reconnaissez que ce site est la propriété de son créateur, qui est, par conséquent libre de faire ce qu'il veut de celui-ci, tout en respectant le caractère privé des informations que vous, ou tout autre membre, lui donnez en vous inscrivant et en utilisant le site.
+
+          Vous êtes donc propriétaire de votre compte et responsable de celui-ci (ainsi que des propos tenus avec), vous pouvez à tout moment demander sa suppression. Veuillez noter qu'à aucun moment, l'équipe du site ne vous demandera votre mot de passe.
+      evolution:
+        title: Evolution du présent réglement
+        text: |
+          Collaide se réserve le droit de modifier les termes, conditions et mentions du présent règlement à tout moment. Par conséquent, vous devriez revoir ce règlement périodiquement.
   guest_books:
     new:
       title: "Nouveau commentaire dans le livre d'or"

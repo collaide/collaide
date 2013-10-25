@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "foundation_and_overrides";
 
+#content {
+  min-height: emCalc(850px);
+}
+
 $font-size : 1.1em;
 
 ::-webkit-input-placeholder { font-size:$font-size; }
@@ -61,18 +65,38 @@ input:-moz-placeholder { font-size:$font-size; }
 
 $footer-middle-color: lighten($footer-background-color, 20%);
 $footer-end-color: lighten($footer-background-color, 30%);
+
+#footer {
+  min-width: 100%;
+}
+
+#partners {
+  h4 {
+    a {
+      color: black;
+    }
+    a:hover {
+      color: $primary-color;
+    }
+  }
+}
+
 footer {
   .panel { @include panel($footer-background-color);
     border: none;
-    border-top: 1px solid darken($panel-bg, 10%);
-    background: $footer-background-color; /* Old browsers */
-    background: -moz-linear-gradient(top,  $footer-background-color 0%, $footer-background-color 43%, $footer-end-color 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$footer-background-color), color-stop(43%,$footer-background-color), color-stop(100%,$footer-end-color)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  $footer-background-color 0%,$footer-background-color 43%,$footer-end-color 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  $footer-background-color 0%,$footer-background-color 43%,$footer-end-color 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  $footer-background-color 0%,$footer-background-color 43%,$footer-end-color 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  $footer-background-color 0%,$footer-background-color 43%,$footer-end-color 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$footer-background-color', endColorstr='$footer-end-color',GradientType=0 ); /* IE6-9 */
-
+    background: url('home/footer_bg.png') repeat-x;
+    li {
+      list-style: none;
+    }
+    a {
+      color: black;
+    }
+    a:hover {
+      color: $primary-color
+    }
+    .row {
+      max-width: $row-width;
+      margin: auto;
+    }
   }
 }
