@@ -29,7 +29,7 @@
   .row
     .columns.small-12
       -if !current_user.nil? and current_user.has_notifications?
-        -#%p Vous avez des notifs !!
+        %p Vous avez des notifs !!
   .row
     #breadcrumb.columns.small-12
       = render_breadcrumbs :builder => ::FoundationBreadcrumbsBuilder, :separator => "&raquo;"

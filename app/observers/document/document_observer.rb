@@ -1,10 +1,9 @@
 # -*- encoding : utf-8 -*-
-class DocumentObserver < ActiveRecord::Observer
+class Document::DocumentObserver < ActiveRecord::Observer
 
   def after_create(document)
-     UserNotification::DocumentNotifications.perform_later :create, document.id, user: current_user, users: [1, 2, 3]
-     Document::DocumentNotification.perform_later :create, document.id, role_group: 'admin'
-     Document::DocumentNotification.perform_later :create, document.id, group: Member::Group.all.first
-     Document::DocumentNotification.perform_later :create, document.id, groups: Member::Group.all
+    DocumentNotifications.perform_later :create_for_admin, [document.title, document.id], user_role: 'super_admin', user_roles: %w[doc_validator admin]
+    DocumentNotifications.perform_later :create_for_user, [document.title, document.id], user: document.user.id
+
   end
 end

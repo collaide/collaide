@@ -26,7 +26,7 @@
 
 # -*- encoding : utf-8 -*-
 # -*- encoding : utf-8 -*-
-class User < ActiveRecord::Base
+class   User < ActiveRecord::Base
   extend Enumerize
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
