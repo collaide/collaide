@@ -547,4 +547,7 @@ fr:
     documents:
       create_for_admin: "%{user} a déposé un nouveau document '%{title}'. Il nécessite encore une validation. Tu peux le faire en suivant ce %{link}"
       link: lien
-      create_for_user: "Vous avez déposé le nouveau document '%{title}'. Il te rapporte 5 points "
+      create_for_user: "Vous avez déposé le nouveau document '%{title}'. Il te rapporte 5 points"
+  user_notifications_mailer:
+    document_crreated:
+      subject: Nouveau document déposé sur collaide !
