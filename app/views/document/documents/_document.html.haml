@@ -39,5 +39,5 @@
             -#link_to t('document.documents.index.download'), document_document_download_path(document_document_id: document), class: 'button secondary expand'
             -#link_to t('document.documents.index.show'), document, class: 'button secondary expand'
     %hr.show-for-small
--if (@parity+=1)%3==0
+-if (@parity+=1)%2==0
   %hr.hide-for-small

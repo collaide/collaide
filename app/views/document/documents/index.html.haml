@@ -5,7 +5,7 @@
         %h1#doc-title-index= t 'document.documents.index.title'
         %blockquote Téléchargez tous les documents que vous voulez. C'est gratuit à volonté et pour tous.
       .small-12.large-3.columns#new-book
-        =create_link(Document::Document, t('document.documents.index.new_link'), 'expand')
+        =link_to t('.new_link'), new_document_document_path, class: 'expand button'
     / Formulaire de recherche
     .row
       .small-12.columns
@@ -54,6 +54,6 @@
           %p= t 'document.documents.index.no_document'
         -else
           .row.columns
-            %ul.large-block-grid-3#documents
+            %ul.large-block-grid-2#documents
               -@parity=0
               = render @document_documents, count: @document_documents.size
