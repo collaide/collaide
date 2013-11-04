@@ -12,8 +12,18 @@
           = render 'devise/form/sign_up'
   -else
     .connected-panel
-      .user
-        =link_to(image_tag(current_user.avatar.url), current_user, class: 'th')
+      .row
+        .columns.small-1
+          .user
+            =link_to(image_tag(current_user.avatar.url(:medium)), current_user, class: 'th')
+        .columns.small-11
+          %h2.text-center= t('.connected_panel.title')
+          -if current_user.notifications.empty?
+            %h4.text-center= t('.connected_panel.no_notifications')
+          -else
+            %ul.text-left
+              -current_user.notifications.each do |a_notif|
+                %li= a_notif.print_message
   .row
     .columns.large-4
       %h4.last-title#doc

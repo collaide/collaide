@@ -82,10 +82,23 @@ $footer-end-color: lighten($footer-background-color, 30%);
 }
 
 .connected-panel {
-  background-image: url("home/essai1.jpg");
-  height: 310px;
-  .user {
+  background-color: #090909;
+  height: emCalc(310px);
+  h2, h3, p, h4 {
+    color: white;
+    font-family: Savoye LET;
+    font-size: 2.5em;
+    font-weight: normal;
   }
+
+  h2 {
+    text-decoration: underline;
+    font-size: 3em;
+  }
+  .user {
+    padding-top: emCalc(230px);
+  }
+  margin-bottom: emCalc(25px);
 }
 
 footer {

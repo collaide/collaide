@@ -144,6 +144,9 @@ fr:
         h4: Dernières nouvelles
         all: Consulter le blog >>
         button: S'abonner
+      connected_panel:
+        title: Ton tableau noir
+        no_notifications: Aucun événement à retracer au tableau noir
     about:
       title_page: A propos
       description_meta: Présentation des auteurs et des outils utilisés

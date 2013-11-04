@@ -61,13 +61,17 @@ class   User < ActiveRecord::Base
   has_many :created_friend_demands, :class_name => 'Member::Friend::Demand', foreign_key: :user_has_sent_id
   has_many :friend_demands, class_name: 'Member::Friend::Demand', foreign_key: :user_is_invited_id
 
+  has_many :notifications, class_name: 'UserNotification'
+
   has_and_belongs_to_many :group_demands, :class_name => 'Member::Group::Demand', join_table: 'group_demands_users'
   has_and_belongs_to_many :addresses, :class_name => 'Member::Address', join_table: 'member_addresses_users'
 
   has_many :advertisements, :class_name => 'Advertisement::Advertisement'
 
   #paperclip https://github.com/thoughtbot/paperclip
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "users/no-avatar.png"
+  has_attached_file :avatar,
+                    :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                    :default_url => "users/no-avatar.png"
 
   # permet à un utilisateur de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   letsrate_rater
