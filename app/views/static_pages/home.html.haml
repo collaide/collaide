@@ -16,7 +16,7 @@
         .columns.small-1
           .user
             =link_to(image_tag(current_user.avatar.url(:medium)), current_user, class: 'th')
-        .columns.small-11
+        .columns.small-11.small-centered
           %h2.text-center= t('.connected_panel.title')
           -if current_user.notifications.empty?
             %h4.text-center= t('.connected_panel.no_notifications')
