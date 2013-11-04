@@ -145,7 +145,7 @@ fr:
         all: Consulter le blog >>
         button: S'abonner
       connected_panel:
-        title: Ton tableau noir
+        title: Mon tableau noir
         no_notifications: Aucun événement à retracer au tableau noir
     about:
       title_page: A propos
@@ -295,9 +295,9 @@ fr:
             label: Quels documents recherchez-vous ?
             submit: Go!
           order:
-            label_type: Afficher un(e)
+            label_type: Type de document
             select_type: Choissiez le type
-            label_domains: en
+            label_domains: Domaine d'étude
             select_domains: Choisissez le domaine
             label_order: Classé par
             select:

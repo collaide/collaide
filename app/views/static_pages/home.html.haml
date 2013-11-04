@@ -52,10 +52,9 @@
         =link_to t('.last_news.h4'), blog_path
       .last-panel
         %ul
-          -unless @news.nil?
-            -@news.each do |a_new|
-              %li
-                %h5.subheader= link_to "#{l a_new.date.to_date, format: :short} : #{a_new.title}".truncate(40, separator: '', omission: '... '), a_new.url
+          -@site_news.get_recent_posts(count: 5).get(:posts).each do |a_new|
+            %li
+              %h5.subheader= link_to "#{l a_new.date.to_date, format: :short} : #{a_new.title}".truncate(40, separator: '', omission: '... '), a_new.url
         %p.text-right
           -# TODO : change this !!!!
           = link_to t('.last_news.all'), blog_path
