@@ -8,7 +8,7 @@ class StaticPagesController < ApplicationController
     @documents = Document::Document.order('created_at DESC').limit(5).all
     @ads = Advertisement::Advertisement.order('created_at DESC').limit(5).includes(:book).all
     site_news = SiteNew.new
-    @news = site_news.get_recent_posts(count: 5).get(:posts)
+    @news = nil #= site_news.get_recent_posts(count: 5).get(:posts)
     add_breadcrumb(t('static_pages.home.bc'))
   end
 
@@ -22,6 +22,7 @@ class StaticPagesController < ApplicationController
 
   def contact
     add_breadcrumb(t('static_pages.contact.bc'))
+    @contact = Contact.new
   end
 
   def change_lang
@@ -37,15 +38,16 @@ class StaticPagesController < ApplicationController
   end
 
   def send_email
-    @reply = {}
-    @reply[:subject] = params[:subject]
-    @reply[:email] = params[:email]
-    @reply[:mail_content] = params[:mail_content]
-    ActionMailer::Base.mail(
-        from: @reply[:email], :to => 'contact@collaide.com',
-        subject: @reply[:subject],
-        body: @reply[:email_content]
-    ).deliver
-    redirect_to contact_path, notice: t('static_pages.contact.success', email: @reply[:email], subject: @reply[:subject])
+    @action = Contact.new params[:contact]
+    if @action.save
+      ActionMailer::Base.mail(
+          from: @action.email, :to => 'contact@collaide.com',
+          subject: @action.subject,
+          body: @action.content
+      ).deliver
+      redirect_to contact_path, notice: t('static_pages.contact.success', email: @action.email, subject: @action.subject)
+    else
+      render action: :contact
+    end
   end
 end

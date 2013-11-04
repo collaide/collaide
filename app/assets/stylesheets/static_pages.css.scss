@@ -81,6 +81,13 @@ $footer-end-color: lighten($footer-background-color, 30%);
   }
 }
 
+.connected-panel {
+  background-image: url("home/essai1.jpg");
+  height: 310px;
+  .user {
+  }
+}
+
 footer {
   .panel { @include panel($footer-background-color);
     border: none;
