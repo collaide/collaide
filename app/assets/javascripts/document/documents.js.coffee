@@ -6,7 +6,7 @@
 if history && history.pushState
   $('#print-criter').hide()
   $(window).on 'hashchange', ->
-    alert location.href
+    #alert location.href
 
   $ ->
     $('#paginate li a').on 'click', ->
@@ -69,12 +69,8 @@ if history && history.pushState
     addAnd = (attr) ->
       ajaxUrl += '&' if attr and ajaxUrl != ''
 
-$('#more_infos').click ->
-  $('#more_details').toggle('slow')
-
-$ ->
-  $('#display-search').click ->
-    $('#form_to_hide').toggleClass('hide-for-small');
+$('#show_advanced_search').click ->
+  $('#advanced_search').toggle('slow')
 
 $ ->
   # enable select2 js

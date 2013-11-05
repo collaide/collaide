@@ -1,45 +1,26 @@
 .row
   .columns.small-12
-    %h1#doc-title-index= t 'document.documents.index.title'
-    %blockquote Téléchargez tous les documents que vous voulez. C'est gratuit à volonté et pour tous.
-    / déposer un document pour les mobiles
     .row
-      .small-12.columns.show-for-small
-        =create_link(Document::Document, t('document.documents.index.new_link'), 'expand')
+      .small-12.large-9.columns
+        %h1#doc-title-index= t 'document.documents.index.title'
+        %blockquote Téléchargez tous les documents que vous voulez. C'est gratuit à volonté et pour tous.
+      .small-12.large-3.columns#new-book
+        =link_to t('.new_link'), new_document_document_path, class: 'expand button'
     / Formulaire de recherche
     .row
       .small-12.columns
         %form{action: document_documents_path, method: :get, class: 'custom'}
           .row.collapse
-            .large-3.small-12.columns
+            .large-3.small-11.columns
               =label_tag :search, t('document.documents.index.forms.search.label'), id: 'important-label'
+            .large-1.small-1.columns
+              =link_to('', '#', class: 'button secondary prefix fi-zoom-in medium', id: 'show_advanced_search')
             .large-7.small-9.columns
               =search_field_tag :search, @searched_value, autofocus: true, placeholder: t('document.documents.index.search_placeholder')
-            .large-2.small-3.columns
+            .large-1.small-3.columns
               =submit_tag t('document.documents.index.forms.search.submit'), class: 'button secondary prefix', name: nil, id: 'go-search'
-    /pour cacher la recherche avancé sur mobile
-    .row.show-for-small
+    .row.hide#advanced_search
       .small-12.columns
-        #display-search
-          =label_tag :more_details, t('document.documents.index.display_search')
-          .switch
-            =radio_button_tag :x, 'no', true
-            =label_tag :x, t('sale_books.new.forms.more_details')
-            =radio_button_tag :x, 'yes'
-            =label_tag :x, t('sale_books.new.forms.less_details')
-            %span
-    /afficher la pagination à cet endroit seulement pour les ordis
-    .row.hide-for-small
-      .small-12.columns#paginate
-        =paginate @document_documents, remote: true
-    /le contenu
-    .row
-      %p#no-doc
-      /cacher déposer un doc pour les mobiles
-      .large-4.columns.push-8.small-12.hide-for-small#form_to_hide
-        .row.hide-for-small
-          .small-12.columns
-            =link_to t('document.documents.index.new_link'), new_document_document_path, class: 'expand button'
         %fieldset
           %legend= t('.fieldset_legend.advanced_search')
           %form{action: search_document_documents_path, method: :get}
@@ -47,30 +28,32 @@
             =hidden_field_tag :url_for_ajax, @url_for_js
             =hidden_field_tag :auto_complete_url, autocomplete_document_documents_path
             .row
-              .large-6.small-12.columns
+              .large-3.small-12.columns
                 =label_tag :type, t('document.documents.index.forms.order.label_type')
                 =select_tag :type, options_from_collection_for_select(Document::Type.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_type'), class: 's2'
-              .large-6.small-12.columns
+              .large-3.small-12.columns
                 =label_tag :domains, t('document.documents.index.forms.order.label_domains')
                 =select_tag :domains, options_from_collection_for_select(Domain.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_domains'), class: 's2'
-            .row
-              .large-6.small-12.columns
+              .large-3.small-12.columns
                 =label_tag :order, t('document.documents.index.forms.order.label_order')
                 =select_tag :order, options_for_select([[t('document.documents.index.forms.order.select.newest'), 0], [t('document.documents.index.forms.order.select.notest'), 2], [t('document.documents.index.forms.order.select.hits'), 3], [t('document.documents.index.forms.order.select.alphabetic'), 1]]), class: 's2'
-              .large-6.small-12.columns
+              .large-3.small-12.columns
                 =label_tag :datepicker, t('document.documents.index.forms.order.label_datepicker')
                 =text_field_tag :datepicker, nil, class: :datepicker
             %input{type: 'submit', value: 'Afficher', id: 'print-criter'}
-      /pagination pour mobile
-      .row.show-for-small
-        .small-12.columns#paginate
-          =paginate @document_documents, remote: true
+    /afficher la pagination à cet endroit seulement pour les ordis
+    .row
+      .small-12.columns#paginate
+        =paginate @document_documents, remote: true
+    /le contenu
+    .row
+      %p#no-doc
       / les documents
-      .small-12.large-8.columns.pull-4#documents
+      .small-12.columns
         -if @document_documents.empty?
           %p= t 'document.documents.index.no_document'
         -else
           .row.columns
-            %ul.large-block-grid-2
+            %ul.large-block-grid-2#documents
               -@parity=0
               = render @document_documents, count: @document_documents.size

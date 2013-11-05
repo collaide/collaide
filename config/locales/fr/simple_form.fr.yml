@@ -58,6 +58,10 @@ fr:
         study_level: Niveau d'étude
         document_type: Type de document
         domains: Domaines d'études
+      contact:
+        subject: Sujet du message
+        email: Adresse e-mail afin de vous contacter
+        content: Contenu du message
 
       c_file_c_file:
         file: Ajouter un fichier

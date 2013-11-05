@@ -1,1 +1,1 @@
-rake resque:work[ENV['QUEUE'] ||= '*']
+bundle exec env rake resque:workers QUEUE='*' COUNT='3'

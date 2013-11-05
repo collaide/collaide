@@ -1,14 +1,29 @@
 -#=image_tag 'home/essai1.jpg'
 #home
-  .signup-panel
-    .row
-      .columns.small-12
-        %h1.text-center= t('static_pages.home.title.h1', app_name: t('app_name_long'))
-    .row
-      .columns.large-9
-        %h3.subheader.center-to-form= t('static_pages.home.title.h3')
-      .columns.large-3
-        = render 'devise/form/sign_up'
+  -if current_user.nil?
+    .signup-panel
+      .row
+        .columns.small-12
+          %h1.text-center= t('static_pages.home.title.h1', app_name: t('app_name_long'))
+      .row
+        .columns.large-9
+          %h3.subheader.center-to-form= t('static_pages.home.title.h3')
+        .columns.large-3
+          = render 'devise/form/sign_up'
+  -else
+    .connected-panel
+      .row
+        .columns.small-1
+          .user
+            =link_to(image_tag(current_user.avatar.url(:medium)), current_user, class: 'th')
+        .columns.small-11.small-centered
+          %h2.text-center= t('.connected_panel.title')
+          -if current_user.notifications.empty?
+            %h4.text-center= t('.connected_panel.no_notifications')
+          -else
+            %ul.text-left
+              -current_user.notifications.each do |a_notif|
+                %li= a_notif.print_message
   .row
     .columns.large-4
       %h4.last-title#doc
@@ -37,7 +52,7 @@
         =link_to t('.last_news.h4'), blog_path
       .last-panel
         %ul
-          -@news.each do |a_new|
+          -@site_news.get_recent_posts(count: 5).get(:posts).each do |a_new|
             %li
               %h5.subheader= link_to "#{l a_new.date.to_date, format: :short} : #{a_new.title}".truncate(40, separator: '', omission: '... '), a_new.url
         %p.text-right

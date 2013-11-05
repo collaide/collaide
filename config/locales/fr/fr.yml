@@ -144,6 +144,9 @@ fr:
         h4: Dernières nouvelles
         all: Consulter le blog >>
         button: S'abonner
+      connected_panel:
+        title: Mon tableau noir
+        no_notifications: Aucun événement à retracer au tableau noir
     about:
       title_page: A propos
       description_meta: Présentation des auteurs et des outils utilisés
@@ -292,9 +295,9 @@ fr:
             label: Quels documents recherchez-vous ?
             submit: Go!
           order:
-            label_type: Afficher un(e)
+            label_type: Type de document
             select_type: Choissiez le type
-            label_domains: en
+            label_domains: Domaine d'étude
             select_domains: Choisissez le domaine
             label_order: Classé par
             select:
@@ -543,3 +546,11 @@ fr:
       profil: Profil
       documents: Documents
       advertisements: Annonces
+  notifications:
+    documents:
+      create_for_admin: "%{user} a déposé un nouveau document '%{title}'. Il nécessite encore une validation. Tu peux le faire en suivant ce %{link}"
+      link: lien
+      create_for_user: "Vous avez déposé le nouveau document '%{title}'. Il te rapporte 5 points"
+  user_notifications_mailer:
+    document_crreated:
+      subject: Nouveau document déposé sur collaide !

@@ -19,7 +19,6 @@
   %meta{name: 'author', content: 'Yves Bauman et Numa de Montmollin'}
 
   %title= full_title(yield(:title))
-
   = stylesheet_link_tag "application"
   = javascript_include_tag "vendor/custom.modernizr"
   = csrf_meta_tag
@@ -29,7 +28,7 @@
   .row
     .columns.small-12
       -if !current_user.nil? and current_user.has_notifications?
-        -#%p Vous avez des notifs !!
+        %p Vous avez des notifs !!
   .row
     #breadcrumb.columns.small-12
       = render_breadcrumbs :builder => ::FoundationBreadcrumbsBuilder, :separator => "&raquo;"

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'therubyracer'
+#gem 'therubyracer'
 
 gem 'bcrypt-ruby', '3.0.1'
 
@@ -70,6 +70,7 @@ gem 'awesome_nested_set'
 
 gem 'resque'
 gem 'resque-web'
+gem 'resque_mailer'
 
 gem 'gritter', '1.0.3'
 
