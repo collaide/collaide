@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-#gem 'therubyracer'
+gem 'therubyracer'
 
 gem 'bcrypt-ruby', '3.0.1'
 
@@ -54,8 +54,8 @@ gem 'enumerize'
 
 gem 'acts_as_commentable', '3.0.1'
 
-gem 'mysql2',          '0.3.13'
-gem 'thinking-sphinx', '3.0.5'
+#gem 'mysql2',          '0.3.13'
+#gem 'thinking-sphinx', '3.0.5'
 
 gem 'breadcrumbs_on_rails'
 gem 'geocoder'
@@ -66,11 +66,12 @@ gem 'mailboxer', :github => 'Texicitys/mailboxer-without-notification', :branch 
 
 gem 'select2-rails'
 
-gem 'awesome_nested_set'
+#gem 'awesome_nested_set'
 
+gem 'repository_manager', github: 'Texicitys/Repository-Manager'
 gem 'resque'
 gem 'resque-web'
-gem 'resque_mailer'
+#gem 'resque_mailer'
 
 gem 'gritter', '1.0.3'
 
