@@ -41,6 +41,8 @@ class   User < ActiveRecord::Base
   #https://github.com/ging/mailboxer
   acts_as_messageable
 
+  #has_repository
+
   has_one :contact, :class_name => 'Member::Contact', inverse_of: :user
   has_one :parameter, :class_name => 'Member::Parameter'
   has_one :repository, :class_name => 'CFile::Structure'

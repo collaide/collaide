@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/Texicitys/Repository-Manager.git
-  revision: 9087a4dd91a05b25a2e56f4031be0cda18ff5085
-  specs:
-    repository_manager (0.0.1)
-      rails (> 3.0.0)
-
-GIT
   remote: git://github.com/Texicitys/mailboxer-without-notification.git
   revision: 59a60a242e7170cea8705c564e7812fb867d1512
   branch: master
@@ -13,6 +6,16 @@ GIT
     mailboxer (0.11.0)
       carrierwave (>= 0.5.8)
       foreigner (>= 0.9.1)
+      rails (> 3.0.0)
+
+GIT
+  remote: git://github.com/Texicitys/repository-manager.git
+  revision: d98ac01ed532adb6b00afab3ff6214b83d8391a3
+  specs:
+    repository-manager (0.0.2)
+      ancestry
+      carrierwave
+      enumerize
       rails (> 3.0.0)
 
 GIT
@@ -231,7 +234,7 @@ GEM
     jquery-ui-rails (4.0.4)
       jquery-rails
       railties (>= 3.1.0)
-    json (1.8.0)
+    json (1.8.1)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -257,7 +260,7 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     method_source (0.8.2)
-    mime-types (1.23)
+    mime-types (1.25)
     mini_portile (0.5.1)
     mono_logger (1.1.0)
     multi_json (1.7.9)
@@ -404,7 +407,7 @@ GEM
       ref
     thor (0.18.1)
     tilt (1.4.1)
-    treetop (1.4.14)
+    treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
     twitter-bootstrap-rails (2.2.8)
@@ -412,7 +415,7 @@ GEM
       execjs
       rails (>= 3.1)
       railties (>= 3.1)
-    tzinfo (0.3.37)
+    tzinfo (0.3.38)
     uglifier (1.2.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
@@ -486,7 +489,7 @@ DEPENDENCIES
   rails-erd
   rails-i18n
   rails-translate-routes
-  repository_manager!
+  repository-manager!
   resque
   resque-web
   rspec-rails (= 2.11.0)

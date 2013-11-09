@@ -68,7 +68,7 @@ gem 'select2-rails'
 
 #gem 'awesome_nested_set'
 
-gem 'repository_manager', github: 'Texicitys/Repository-Manager'
+gem 'repository-manager', github: 'Texicitys/repository-manager'
 gem 'resque'
 gem 'resque-web'
 #gem 'resque_mailer'
