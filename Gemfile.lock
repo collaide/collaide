@@ -1,18 +1,8 @@
 GIT
-  remote: git://github.com/Texicitys/mailboxer-without-notification.git
-  revision: 59a60a242e7170cea8705c564e7812fb867d1512
-  branch: master
-  specs:
-    mailboxer (0.11.0)
-      carrierwave (>= 0.5.8)
-      foreigner (>= 0.9.1)
-      rails (> 3.0.0)
-
-GIT
   remote: git://github.com/Texicitys/repository-manager.git
-  revision: d98ac01ed532adb6b00afab3ff6214b83d8391a3
+  revision: adf9bcf89ea938e702453f5793a97700d57e220a
   specs:
-    repository-manager (0.0.2)
+    repository-manager (0.0.5)
       ancestry
       carrierwave
       enumerize
@@ -174,7 +164,7 @@ GEM
     fastercsv (1.5.5)
     ffi (1.9.0)
     ffi (1.9.0-x86-mingw32)
-    foreigner (1.5.0)
+    foreigner (1.6.0)
       activerecord (>= 3.0.0)
     formatador (0.2.4)
     formtastic (2.2.1)
@@ -250,6 +240,10 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailboxer-without-notification (0.11.2)
+      carrierwave (>= 0.5.8)
+      foreigner (>= 0.9.1)
+      rails (> 3.0.0)
     meta_request (0.2.7)
       callsite
       rack-contrib
@@ -479,7 +473,7 @@ DEPENDENCIES
   letsrate
   lorem-ipsum
   magic_encoding
-  mailboxer!
+  mailboxer-without-notification
   meta_request
   paper_trail
   paperclip (~> 3.0)
