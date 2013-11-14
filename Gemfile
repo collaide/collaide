@@ -71,7 +71,7 @@ gem 'select2-rails'
 gem 'repository-manager', github: 'Texicitys/repository-manager'
 gem 'resque'
 gem 'resque-web'
-#gem 'resque_mailer'
+gem 'resque_mailer'
 
 gem 'gritter', '1.0.3'
 
