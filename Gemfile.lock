@@ -1,11 +1,11 @@
 GIT
-  remote: git://github.com/Texicitys/mailboxer-without-notification.git
-  revision: 59a60a242e7170cea8705c564e7812fb867d1512
-  branch: master
+  remote: git://github.com/Texicitys/repository-manager.git
+  revision: adf9bcf89ea938e702453f5793a97700d57e220a
   specs:
-    mailboxer (0.11.0)
-      carrierwave (>= 0.5.8)
-      foreigner (>= 0.9.1)
+    repository-manager (0.0.5)
+      ancestry
+      carrierwave
+      enumerize
       rails (> 3.0.0)
 
 GIT
@@ -76,8 +76,6 @@ GEM
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
-    awesome_nested_set (2.1.6)
-      activerecord (>= 3.0.0)
     aws-sdk (1.5.8)
       httparty (~> 0.7)
       json (~> 1.4)
@@ -166,7 +164,7 @@ GEM
     fastercsv (1.5.5)
     ffi (1.9.0)
     ffi (1.9.0-x86-mingw32)
-    foreigner (1.5.0)
+    foreigner (1.6.0)
       activerecord (>= 3.0.0)
     formatador (0.2.4)
     formtastic (2.2.1)
@@ -216,7 +214,6 @@ GEM
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
-    innertube (1.1.0)
     journey (1.0.4)
     jqtree-rails (0.1.5.0)
       railties (>= 3.2.0, < 5.0)
@@ -227,7 +224,7 @@ GEM
     jquery-ui-rails (4.0.4)
       jquery-rails
       railties (>= 3.1.0)
-    json (1.8.0)
+    json (1.8.1)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -243,6 +240,10 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailboxer-without-notification (0.11.2)
+      carrierwave (>= 0.5.8)
+      foreigner (>= 0.9.1)
+      rails (> 3.0.0)
     meta_request (0.2.7)
       callsite
       rack-contrib
@@ -253,14 +254,12 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     method_source (0.8.2)
-    middleware (0.1.0)
-    mime-types (1.23)
+    mime-types (1.25)
     mini_portile (0.5.1)
     mono_logger (1.1.0)
     multi_json (1.7.9)
     multi_test (0.0.2)
     multi_xml (0.5.4)
-    mysql2 (0.3.13)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     nokogiri (1.6.0-x86-mingw32)
@@ -336,6 +335,7 @@ GEM
     redis (3.0.5)
     redis-namespace (1.3.1)
       redis (~> 3.0.0)
+    ref (1.0.5)
     responders (1.0.0.rc)
       railties (>= 3.2, < 5)
     resque (1.25.1)
@@ -350,9 +350,6 @@ GEM
       resque
       sass-rails
       twitter-bootstrap-rails
-    resque_mailer (2.2.5)
-      actionmailer (>= 3.0)
-    riddle (1.5.8)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
       rspec-expectations (~> 2.11.0)
@@ -398,15 +395,13 @@ GEM
     sqlite3 (1.3.5-x86-mingw32)
     sys-proctable (0.9.3)
     sys-proctable (0.9.3-x86-mingw32)
-    thinking-sphinx (3.0.5)
-      activerecord (>= 3.1.0)
-      builder (>= 2.1.2)
-      innertube (>= 1.0.2)
-      middleware (>= 0.1.0)
-      riddle (>= 1.5.8)
+    therubyracer (0.11.0beta1)
+      ref
+    therubyracer (0.11.0beta1-x86-mingw32)
+      ref
     thor (0.18.1)
     tilt (1.4.1)
-    treetop (1.4.14)
+    treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
     twitter-bootstrap-rails (2.2.8)
@@ -414,7 +409,7 @@ GEM
       execjs
       rails (>= 3.1)
       railties (>= 3.1)
-    tzinfo (0.3.37)
+    tzinfo (0.3.38)
     uglifier (1.2.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
@@ -425,6 +420,7 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.0.7)
+    win32console (1.3.2)
     win32console (1.3.2-x86-mingw32)
     xpath (0.1.4)
       nokogiri (~> 1.3)
@@ -442,7 +438,6 @@ DEPENDENCIES
   acts_as_commentable (= 3.0.1)
   ancestry
   annotate!
-  awesome_nested_set
   aws-sdk (~> 1.5.7)
   bcrypt-ruby (= 3.0.1)
   breadcrumbs_on_rails
@@ -478,9 +473,8 @@ DEPENDENCIES
   letsrate
   lorem-ipsum
   magic_encoding
-  mailboxer!
+  mailboxer-without-notification
   meta_request
-  mysql2 (= 0.3.13)
   paper_trail
   paperclip (~> 3.0)
   pg (= 0.12.2)
@@ -489,16 +483,16 @@ DEPENDENCIES
   rails-erd
   rails-i18n
   rails-translate-routes
+  repository-manager!
   resque
   resque-web
-  resque_mailer
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)
   select2-rails
   simple_form
   spork (= 0.9.2)
   sqlite3 (= 1.3.5)
-  thinking-sphinx (= 3.0.5)
+  therubyracer
   uglifier (= 1.2.3)
   ui_datepicker-rails3
   zurb-foundation
