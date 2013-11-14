@@ -12,7 +12,7 @@ class UserNotification < ActiveRecord::Base
 
    def print_message
      klass = class_name.constantize.new
-     klass.send(method_name.to_sym, JSON.parse(self.values))
+     klass.send(method_name.to_sym, *(JSON.parse(self.values)))
 
    end
 

@@ -83,8 +83,8 @@ $footer-end-color: lighten($footer-background-color, 30%);
 
 .connected-panel {
   background-color: #090909;
-  height: emCalc(310px);
-  h2, h3, p, h4 {
+  min-height: emCalc(310px);
+  h2, h3, p, h4, ul, li {
     color: white;
     font-family: Savoye LET;
     font-size: 2.5em;
@@ -94,6 +94,10 @@ $footer-end-color: lighten($footer-background-color, 30%);
   h2 {
     text-decoration: underline;
     font-size: 3em;
+  }
+
+  ul, li {
+    font-size: 1.3em;
   }
   .user {
     padding-top: emCalc(230px);

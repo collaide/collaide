@@ -1,17 +1,17 @@
 class DocumentNotifications < NotificationSystem::AbstractClass
-  require 'yaml'
-  def create_for_admin(doc_name)
-    return I18n.t(
+
+  def create_for_admin(doc_title, doc_id)
+    return raw I18n.t(
         'notifications.documents.create_for_admin',
-        user: doc_name[2],
-        title: doc_name[0],
-        link: helper.link_to(I18n.t('notifications.documents.link'), app.edit_admin_document_document_path(doc_name[1])))
+        user: 'user_id',
+        title: doc_title,
+        link: link_to(I18n.t('notifications.documents.link'), edit_admin_document_document_path(doc_id)))
   end
 
-  def create_for_user(document)
-    return I18n.t(
+  def create_for_user(doc_title, doc_id)
+    return raw I18n.t(
         'notifications.documents.create_for_user',
-        title: helper.link_to(document[0], app.document_document_path(document[1]))
+        title: link_to(doc_title, document_document_path(doc_id))
     )
   end
 end
