@@ -102,8 +102,9 @@ Comme méthode de travail à l'intérieur d'un module, nous procédons de la sor
 License Collaide
 -------
 Copyright (c) 2009-2013 All rights reserved.
-Fondateur : Yves Baumann
-Cofondateur : Numa de Montmollin 
+
+- Fondateur : Yves Baumann
+- Cofondateur : Numa de Montmollin 
 
 
 
