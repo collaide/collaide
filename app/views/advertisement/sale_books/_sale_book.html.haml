@@ -6,7 +6,7 @@
         =t('sale_books.buy.title', book: sale_book.book.title)
       .sale_book_text_content
         -#Attention avec raw, de tout escape dedans !
-        =raw(t('sale_books.buy.content', user: link_to(h(sale_book.user.name_to_show), sale_book.user), book: link_to(h(sale_book.book.title),sale_book), price:number_to_currency(h(sale_book.price), :unit => h(sale_book.currency.text))))
+        =raw(t('sale_books.buy.content', user: link_to(h(sale_book.user.to_s), sale_book.user), book: link_to(h(sale_book.book.title),sale_book), price:number_to_currency(h(sale_book.price), :unit => h(sale_book.currency.text))))
       %pre.sale_book_textarea_content~t('sale_books.buy.textarea', book: sale_book.book.title)
       .sale_book_user_id
         =sale_book.user.id
@@ -31,7 +31,7 @@
       %h5= link_to sale_book_title(sale_book), sale_book
       %h6.subheader= t('sale_books.index.subtitle1', book:sale_book.book.title)
       %h6.subheader
-        =link_to(sale_book.user.name_to_show, sale_book.user)
+        =link_to(sale_book.user.to_s, sale_book.user)
         =t('sale_books.index.subtitle2', price: number_to_currency(sale_book.price, :unit => sale_book.currency.text))
       -if sale_book.description
         %p= sale_book.description.truncate(100, separator: ' ', omission: ' ...')

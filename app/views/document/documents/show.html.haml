@@ -16,7 +16,7 @@
       %p= @document.description
       %p
         =t('document.documents.index.published_by')
-        =link_to(@document.user.name_to_show, @document.user)
+        =link_to(@document.user.to_s, @document.user)
         =t('dico.time_ago', date: time_ago_in_words(@document.created_at))
         .row
           .columns.small-6

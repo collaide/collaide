@@ -12,4 +12,16 @@ class Document::DocumentObserver < ActiveRecord::Observer
     DocumentNotifications.perform_later :create_for_user, [document.title, document.id], user: document.user.id
     UserNotificationsMailer.document_created(document).deliver # On envoi un e-mail à celui qui à déposé le document.
   end
+
+  def before_save(document)
+    # OPTIMIZE
+
+    if document.is_accepted?
+      DocumentNotifications.perform_later(
+          :valid_document,
+          [document.id],
+          user: document.user.id
+      )
+    end
+  end
 end

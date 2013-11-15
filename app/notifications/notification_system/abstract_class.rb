@@ -5,4 +5,5 @@ class NotificationSystem::AbstractClass < ActionView::Base
   def self.perform_later(method, values, options)
     Resque.enqueue(NotificationSystem::Save, self.to_s, method, values, options)
   end
+
 end

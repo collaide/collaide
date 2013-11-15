@@ -1,10 +1,10 @@
 -#content_for :title, t('users.show.meta_title', user: @user.name_to_show)
--content_for :title, t('users.advertisements.meta_title', user: @user.name_to_show)
+-content_for :title, t('users.advertisements.meta_title', user: @user.to_s)
 
 =render(:layout => 'layout') do
-  %h1= t'users.advertisements.title', user: @user.name_to_show
+  %h1= t'users.advertisements.title', user: @user.to_s
   -if @user.advertisements.empty?
-    =t'users.advertisements.no-advertisement', user: @user.name_to_show
+    =t'users.advertisements.no-advertisement', user: @user.to_s
   -else
     -#%table
     -#  %thead

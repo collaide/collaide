@@ -36,7 +36,7 @@ class Document::Document < ActiveRecord::Base
 
   attr_accessible :author, :description, :language, :number_of_pages, :realized_at, :title, :study_level_id,
                   :document_type_id, :user_id, :files_attributes, :domains_attributes, :domain_ids,
-                  :hits, :status, :is_deleted, :created_at, :updated_at
+                  :hits, :status, :is_deleted, :created_at, :updated_at, :is_accepted
 
   has_many :files, :class_name => 'CFile::CFile', dependent: :delete_all
   has_many :document_downloads, :class_name => 'Document::Download'
@@ -56,6 +56,7 @@ class Document::Document < ActiveRecord::Base
   accepts_nested_attributes_for :domains
 
   before_validation :add_author
+  before_save :check_is_accepted
 
   #validation du type de fichier
   #création d'une image en fonction du fichier
@@ -76,7 +77,14 @@ class Document::Document < ActiveRecord::Base
   end
 
   private
+
+    def check_is_accepted
+      unless is_accepted?
+        self.is_accepted = true if accepted? and Document::Document.find(id).pending?
+      end
+    end
+
     def add_author
-      self.author = user.name_to_show if author.blank?
+      self.author = user.to_s if author.blank?
     end
 end
