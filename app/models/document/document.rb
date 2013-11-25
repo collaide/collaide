@@ -80,7 +80,9 @@ class Document::Document < ActiveRecord::Base
 
     def check_is_accepted
       unless is_accepted?
-        self.is_accepted = true if accepted? and Document::Document.find(id).pending?
+        if accepted? and Document::Document.find(id).pending?
+          self.is_accepted = true
+        end
       end
     end
 

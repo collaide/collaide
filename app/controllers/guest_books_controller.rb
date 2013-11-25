@@ -5,7 +5,6 @@ class GuestBooksController < ApplicationController
   # GET /guest_books.json
   def index
     @guest_books = GuestBook.order('created_at DESC').page(params[:page])
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @guest_books }

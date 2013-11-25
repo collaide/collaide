@@ -10,18 +10,19 @@ class Document::DocumentObserver < ActiveRecord::Observer
         user_roles: %w[doc_validator admin],# On notifie les admin et les validateurs de documents
     )
     DocumentNotifications.perform_later :create_for_user, [document.title, document.id], user: document.user.id
-    UserNotificationsMailer.document_created(document).deliver # On envoi un e-mail à celui qui à déposé le document.
+    UserNotificationsMailer.document_created(document.id).deliver # On envoi un e-mail à celui qui à déposé le document.
   end
 
   def before_save(document)
-    # OPTIMIZE
-
-    if document.is_accepted?
-      DocumentNotifications.perform_later(
-          :valid_document,
-          [document.id],
-          user: document.user.id
-      )
+    if !document.is_accepted?
+      if document.accepted? and Document::Document.find(id).pending?
+        document.is_accepted = true
+        DocumentNotifications.perform_later(
+            :valid_document,
+            [document.id, document.user.id],
+            user: document.user.id
+        )
+      end
     end
   end
 end
