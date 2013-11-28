@@ -15,7 +15,7 @@
  *= require foundation_and_overrides
  *= require jqtree
  *= require select2
- *= require_tree .
+ *= require_tree ./front
  */
 
 textarea { height: auto; min-height: 50px;}

@@ -38,6 +38,8 @@ class Document::Document < ActiveRecord::Base
                   :document_type_id, :user_id, :files_attributes, :domains_attributes, :domain_ids,
                   :hits, :status, :is_deleted, :created_at, :updated_at, :is_accepted
 
+  scope :valid, -> { where(status: :accepted) }
+
   has_many :files, :class_name => 'CFile::CFile', dependent: :delete_all
   has_many :document_downloads, :class_name => 'Document::Download'
   has_many :user_downloader, :class_name => 'User', through: :document_downloads, source: :user

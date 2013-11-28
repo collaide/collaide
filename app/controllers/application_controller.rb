@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_documents
-    @footer_document = Document::Document.order('created_at DESC').limit(6).all
+    @footer_document = Document::Document.valid.order('created_at DESC').limit(6).all
   end
 
 end
