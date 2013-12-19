@@ -27,5 +27,5 @@ production:
   host: localhost
   pool: 5
   timeout: 5000
-  username: postgres
-  password: root
+  username: blupblup
+  password: jonction
