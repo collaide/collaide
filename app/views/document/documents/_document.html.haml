@@ -24,7 +24,7 @@
               %li= pluralize document.number_of_pages, t('document.dico.page')
               %li.show-for-small
                 =t('document.documents.index.published_by')
-                =link_to(document.user.name_to_show, document.user)
+                =link_to(document.user.to_s, document.user)
         #star
       .small-12.columns.large-8
         .hide-for-small
@@ -32,7 +32,7 @@
           %h6.doc-subtitle= doc_sub_title document
           .hide-for-small
             =t('document.documents.index.published_by')
-            =link_to(document.user.name_to_show, document.user)
+            =link_to(document.user.to_s, document.user)
         %p= document.description.truncate(100, separator: ' ', omission: ' ...')
         .row
           .columns

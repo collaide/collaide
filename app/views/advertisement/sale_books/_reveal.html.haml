@@ -11,7 +11,7 @@
     %p.buy_book_content
       -if sale_book
         -#Attention avec raw, de tout escape dedans !
-        =raw(t('sale_books.buy.content', user: link_to(h(sale_book.user.name_to_show), sale_book.user), book: link_to(h(sale_book.book.title),sale_book), price:number_to_currency(h(sale_book.price), :unit => h(sale_book.currency.text))))
+        =raw(t('sale_books.buy.content', user: link_to(h(sale_book.user.to_s), sale_book.user), book: link_to(h(sale_book.book.title),sale_book), price:number_to_currency(h(sale_book.price), :unit => h(sale_book.currency.text))))
     -unless @message
       -@message = UserMessage.new
     =simple_form_for(@message, :url => messages_path, html: {class: 'buy_book_form', data_abide: true}) do |f|

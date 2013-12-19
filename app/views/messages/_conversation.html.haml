@@ -9,7 +9,7 @@
       %dt=t'messages.index.with'
       -conversation.recipients.each do |r|
         -unless r==current_user
-          %dd=link_to(r.name_to_show, r)
+          %dd=link_to(r.to_s, r)
     %blockquote.message{class:unread}
       .row
         .large-1.columns.hide-for-small
@@ -18,7 +18,7 @@
         .large-11.columns
           %h6.subheader=truncate((conversation.last_message.body), length: 255)
           %cite
-            =link_to(conversation.last_message.sender.name_to_show, conversation.last_message.sender)
+            =link_to(conversation.last_message.sender.to_s, conversation.last_message.sender)
             %span{title: l(conversation.last_message.created_at, format: :long)}
               =t'messages.show.since'
               =time_ago_in_words(conversation.last_message.created_at)

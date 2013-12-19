@@ -21,7 +21,7 @@
       - if user_signed_in?
         %li= link_to t('header.inbox'), messages_path
         %li.has-dropdown
-          %a{href: "#"}= link_to current_user.name_to_show, current_user
+          %a{href: "#"}= link_to current_user.to_s, current_user
           %ul.dropdown
             %li= link_to t("header.user.edit"), edit_user_registration_path
             %li.divider

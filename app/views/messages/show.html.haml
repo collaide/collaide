@@ -8,7 +8,7 @@
             %dt=t'messages.show.participants'
             -@conversation.recipients.each do |r|
               -unless r==current_user
-                %dd=link_to(r.name_to_show, r)
+                %dd=link_to(r.to_s, r)
       .row
         .small-12.colums
           #show_messages
@@ -28,7 +28,7 @@
                   .large-11.columns
                     =simple_format(r.message.body)
                     %cite
-                      =link_to(r.message.sender.name_to_show, r.message.sender)
+                      =link_to(r.message.sender.to_s, r.message.sender)
                       %span{title: l(r.created_at, format: :long)}
                         =t'messages.show.since'
                         =time_ago_in_words(r.created_at)

@@ -37,7 +37,7 @@
       %li.title=sale_book_title(@sale_book)
       %li.bullet-item
         =(t('sale_books.show.sale_user'))
-        =link_to(@sale_book.user.name_to_show, @sale_book.user)
+        =link_to(@sale_book.user.to_s, @sale_book.user)
       %li.price=price
       -unless @sale_book.description.blank?
         %li.description=@sale_book.description
@@ -73,7 +73,7 @@
           -@sale_book.book.sale_books.order('price ASC').each do |s|
             -unless s==@sale_book
               %tr
-                %td=link_to(s.user.name_to_show, s.user)
+                %td=link_to(s.user.to_s, s.user)
                 %td=link_to(number_to_currency(s.price, :unit => s.currency.text), s)
                 %td=show_link(s, t('sale_books.show.show'), 'small secondary')
 

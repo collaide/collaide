@@ -15,7 +15,7 @@
         %h6= link_to t('footer.titles.documents'), document_documents_path
         %ul
           -@footer_document.each do |a_doc|
-            %li= link_to a_doc.title, document_documents_path
+            %li= link_to a_doc.title, a_doc
       .columns.large-3
         %h6= link_to t('footer.titles.partners'), partners_path
         %ul

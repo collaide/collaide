@@ -1,8 +1,8 @@
 %ul.side-nav
   %li
-    %a{href: user_path(@user), title: @user.name_to_show}
+    %a{href: user_path(@user), title: @user.to_s}
       =image_tag @user.avatar, class: 'th'
-      =@user.name_to_show
+      =@user.to_s
   -if can?(:update, @user)
     %li.divider
     %li=link_to(t('users.menu.edit'), edit_user_registration_path(@user), class: 'small button secondary')

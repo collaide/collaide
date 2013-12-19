@@ -9,7 +9,7 @@ Mailboxer.setup do |config|
   #Configures the methods needed by mailboxer
   config.email_method = :mailboxer_email
   #config.name_method = :name
-  config.name_method = :name_to_show
+  config.name_method = :to_s
 
   #Configures if you use or not a search engine and wich one are you using
   #Supported enignes: [:solr,:sphinx]

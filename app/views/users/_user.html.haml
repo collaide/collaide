@@ -1,6 +1,6 @@
 %li
   .panel.user_box
-    %a{href: user_path(user), title: user.name_to_show, class: 'th'}
+    %a{href: user_path(user), title: user.to_s, class: 'th'}
       =image_tag user.avatar
     %br
-    =link_to(user.name_to_show, user_path(user))
+    =link_to(user.to_s, user_path(user))

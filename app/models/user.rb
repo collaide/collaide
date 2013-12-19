@@ -99,7 +99,7 @@ class   User < ActiveRecord::Base
     #return nil
   end
 
-  def name_to_show
+  def to_s
     self.name
   end
 

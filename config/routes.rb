@@ -115,7 +115,6 @@ end
 Collaide::Application.routes.draw do
 
   match '/rate' => 'rater#create', :as => 'rate'
-
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
   #match "*path", :to => "application#routing_error"
