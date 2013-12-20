@@ -28,3 +28,5 @@
 
 # ingorer les documents uploader
 /download
+
+/Gemfile.lock
