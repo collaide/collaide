@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 
 #gem 'therubyracer'
 
-gem 'bcrypt-ruby', '3.0.1'
+#gem 'bcrypt-ruby', '3.0.1'
 
 gem 'nokogiri'
 gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
