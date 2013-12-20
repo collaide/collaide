@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 namespace :migrate_data do
 
-  require 'Nokogiri'
+  require 'nokogiri'
   #le chemin global. Change si tes pas sur mon beau mac ;-)
   @dir = '/Users/leo/Documents/collaide/back_up/db/'
   @upload = "#{@dir}uploads/"  #deux \\ pour echaper le "
