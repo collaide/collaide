@@ -25,6 +25,12 @@ GIT
       activeadmin
       rails (>= 3.2)
 
+GIT
+  remote: https://github.com/codahale/bcrypt-ruby.git
+  revision: df09e4c73f2f3d9a134b2abf536ca5f159f33075
+  specs:
+    bcrypt-ruby (3.1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -81,8 +87,6 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
-    bcrypt-ruby (3.0.1)
-    bcrypt-ruby (3.0.1-x86-mingw32)
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
@@ -465,7 +469,7 @@ DEPENDENCIES
   ancestry
   annotate!
   aws-sdk (~> 1.5.7)
-  bcrypt-ruby (= 3.0.1)
+  bcrypt-ruby!
   breadcrumbs_on_rails
   cancan
   capistrano
