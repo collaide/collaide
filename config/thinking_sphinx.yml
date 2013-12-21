@@ -1,2 +1,5 @@
 developement:
   min_prefix_len: 3
+production:
+  min_prefix_len: 3
+  utf8: true
