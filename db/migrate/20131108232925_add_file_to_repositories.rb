@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddFileToRepositories < ActiveRecord::Migration
   def change
     #add_column :repositories, :file, :string

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class NotificationSystem::Save
   require 'yaml'
   @queue = 'user_notifications'

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # This gist was inspired by bootstrap breadcrumbs builder
 
 # https://gist.github.com/chourobin/4219700

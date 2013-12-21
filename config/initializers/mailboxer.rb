@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Mailboxer.setup do |config|
 
   #Configures if you applications uses or no the email sending for Notifications and Messages

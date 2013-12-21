@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateDocumentDownloads < ActiveRecord::Migration
   def change
     create_table :document_downloads do |t|

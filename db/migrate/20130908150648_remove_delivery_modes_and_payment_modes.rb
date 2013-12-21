@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveDeliveryModesAndPaymentModes < ActiveRecord::Migration
   def change
     drop_table :advertisement_delivery_mode_translations

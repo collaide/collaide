@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DocumentNotifications < NotificationSystem::AbstractClass
 
   def create_for_admin(doc_id)

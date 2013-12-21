@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserNotificationsMailer < ActionMailer::Base
   include Resque::Mailer
   default from: "contact@collaide.com"

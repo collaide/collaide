@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserMessage < ActiveRecord::Base
   def self.columns() @columns ||= []; end
 
