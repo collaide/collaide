@@ -247,4 +247,21 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
+
+  config.omniauth :facebook, '227783287393190', 'f9a394da4c16e475a6692545ad41aa92'
+
+  # Add by Yves : http://www.synbioz.com/blog/integrer_les_reseaux_sociaux_dans_son_application_rails_avec_oauth
+  #if Rails.env.development?
+  #  #config.omniauth :twitter, 'CONSUMER_KEY', 'CONSUMER_SECRET'
+  #  config.omniauth :facebook, '227783287393190', 'f9a394da4c16e475a6692545ad41aa92'#, :scope => 'email'
+  #  #config.omniauth :linked_in, 'CONSUMER_KEY', 'CONSUMER_SECRET'
+  #  #config.omniauth :viadeo, 'CONSUMER_KEY', 'CONSUMER_SECRET'
+  #  #config.omniauth :google_apps, OpenID::Store::Filesystem.new('/tmp'), :domain => 'gmail.com'
+  #else
+  #  #config.omniauth :twitter, 'CONSUMER_KEY', 'CONSUMER_SECRET'
+  #  config.omniauth :facebook, '227783287393190', 'f9a394da4c16e475a6692545ad41aa92'#, :scope => 'email'
+  #  #config.omniauth :linked_in, 'CONSUMER_KEY', 'CONSUMER_SECRET'
+  #  #config.omniauth :viadeo, 'CONSUMER_KEY', 'CONSUMER_SECRET'
+  #  #config.omniauth :google_apps, OpenID::Store::Filesystem.new('/tmp'), :domain => 'gmail.com'
+  #end
 end

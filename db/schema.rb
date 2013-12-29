@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130830185456423) do
+ActiveRecord::Schema.define(:version => 20131229161824) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -47,31 +47,6 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.string   "payment_modes"
     t.integer  "study_level_id"
   end
-
-  create_table "blog_comments", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "email",      :null => false
-    t.string   "website"
-    t.text     "body",       :null => false
-    t.integer  "post_id",    :null => false
-    t.string   "state"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "blog_comments", ["post_id"], :name => "index_blog_comments_on_post_id"
-
-  create_table "blog_posts", :force => true do |t|
-    t.string   "title",                         :null => false
-    t.text     "body",                          :null => false
-    t.integer  "blogger_id"
-    t.string   "blogger_type"
-    t.integer  "comments_count", :default => 0, :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-  end
-
-  add_index "blog_posts", ["blogger_type", "blogger_id"], :name => "index_blog_posts_on_blogger_type_and_blogger_id"
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -370,23 +345,6 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.boolean "can_remove", :default => false
   end
 
-  create_table "taggings", :force => true do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context"
-    t.datetime "created_at"
-  end
-
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
-
-  create_table "tags", :force => true do |t|
-    t.string "name"
-  end
-
   create_table "user_addresses", :force => true do |t|
     t.string   "country"
     t.string   "street"
@@ -404,7 +362,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   end
 
   create_table "user_comments", :force => true do |t|
-    t.text     "message"
+    t.text     "message2"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "member_status_id"
@@ -426,7 +384,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   add_index "user_contacts", ["user_id"], :name => "index_member_contacts_on_user_id"
 
   create_table "user_friend_demands", :force => true do |t|
-    t.text     "message"
+    t.text     "message2"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "user_has_sent_id"
@@ -440,7 +398,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   end
 
   create_table "user_group_demands", :force => true do |t|
-    t.text     "message"
+    t.text     "message2"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
@@ -499,7 +457,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   end
 
   create_table "user_statues", :force => true do |t|
-    t.text     "message"
+    t.text     "message2"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "user_id"
@@ -540,6 +498,8 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.float    "longitude"
     t.string   "role"
     t.boolean  "has_notifications",      :default => false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

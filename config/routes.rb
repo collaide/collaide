@@ -108,7 +108,12 @@ Collaide::Application.routes.draw do
     get 'advertisements', action: :advertisements, as: 'advertisements'
   end
 
-  devise_for :user
+  devise_for :user, :controllers => { :omniauth_callbacks => "user/omniauth_callbacks" }
+
+  #devise_scope :user do
+  #  get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  #end
+
   ActionDispatch::Routing::Translator.translate_from_file('config/locales/routes.yml', {:prefix_on_default_locale => true})
 end
 

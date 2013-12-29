@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-#gem 'therubyracer'
+gem 'therubyracer'
 
 gem 'bcrypt-ruby', '3.0.1'
 
@@ -74,6 +74,13 @@ gem 'resque-web'
 gem 'resque_mailer'
 
 gem 'gritter', '1.0.3'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+#gem 'omniauth-google'
+#gem 'oa-core'
+#gem 'oa-openid', :require => 'omniauth/openid'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
