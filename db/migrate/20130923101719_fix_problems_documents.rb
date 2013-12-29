@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class FixProblemsDocuments < ActiveRecord::Migration
   def change
     change_column :document_documents, :hits, :integer, default: 0

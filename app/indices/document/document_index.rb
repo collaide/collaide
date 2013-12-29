@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ThinkingSphinx::Index.define 'document/document', with: :active_record do
   indexes title, sortable: true
   indexes description

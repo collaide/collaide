@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserNotification < ActiveRecord::Base
    attr_accessible :class_name, :method_name, :values, :user_id, :is_viewed
 

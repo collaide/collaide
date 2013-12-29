@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class SiteNew
   require 'net/http'
   attr_accessor :host

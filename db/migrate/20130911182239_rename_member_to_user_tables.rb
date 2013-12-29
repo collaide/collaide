@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RenameMemberToUserTables < ActiveRecord::Migration
   def change
     rename_table :member_addresses, :user_addresses

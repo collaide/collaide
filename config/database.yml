@@ -23,9 +23,9 @@ test:
 
 production:
   adapter: postgresql
-  database: collaide-prod
+  database: <%= ENV['RAILS_DB_NAME'] %>
   host: localhost
   pool: 5
   timeout: 5000
-  username: postgres
-  password: root
+  username: <%= ENV['RAILS_DB_USER'] %>
+  password: <%= ENV['RAILS_DB_PSSWD'] %>

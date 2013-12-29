@@ -11,7 +11,9 @@
 /config/database.yml
 
 /config/development.sphinx.conf
-
+/config/production.spinx.conf
+/db/schema.rb
+/public/assets/
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
@@ -28,3 +30,5 @@
 
 # ingorer les documents uploader
 /download
+
+/Gemfile.lock

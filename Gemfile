@@ -4,7 +4,10 @@ gem 'rails', '3.2.13'
 
 gem 'therubyracer'
 
-gem 'bcrypt-ruby', '3.0.1'
+#gem 'bcrypt-ruby', '3.0.1'
+
+gem 'nokogiri'
+gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 gem 'faker', '1.0.1'
 
@@ -26,7 +29,7 @@ gem 'devise-i18n-views'
 gem 'rails-i18n'
 gem 'i18n'
 gem 'rails-translate-routes'
-gem 'globalize3'
+gem 'globalize'
 
 gem 'ancestry'
 gem 'activeadmin-sortable-tree', :github => 'nebirhos/activeadmin-sortable-tree', :branch => 'master'
@@ -93,6 +96,7 @@ group :development, :test do
   gem 'meta_request'
   gem 'guard-livereload'
   gem 'rails-erd'
+  gem 'capistrano'
 end
 
 # Gems used only for assets and not required

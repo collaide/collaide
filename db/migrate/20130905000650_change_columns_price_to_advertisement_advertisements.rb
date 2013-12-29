@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeColumnsPriceToAdvertisementAdvertisements < ActiveRecord::Migration
   def change
     # pour sale_book (héritée de sale)

@@ -1,9 +1,9 @@
 # -*- encoding : utf-8 -*-
 namespace :migrate_data do
 
-  require 'Nokogiri'
+  require 'nokogiri'
   #le chemin global. Change si tes pas sur mon beau mac ;-)
-  @dir = '/Users/leo/Documents/collaide/back_up/db/'
+  @dir = '/home/prod/backup/'
   @upload = "#{@dir}uploads/"  #deux \\ pour echaper le "
 
   # Ce fichier permet de lancer différentes tâches rake pour migrer de la version actuelle du site

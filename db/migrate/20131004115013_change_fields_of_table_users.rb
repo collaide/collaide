@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeFieldsOfTableUsers < ActiveRecord::Migration
   def up
     remove_column :users, :role_mask
