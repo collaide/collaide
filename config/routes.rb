@@ -108,7 +108,7 @@ Collaide::Application.routes.draw do
     get 'advertisements', action: :advertisements, as: 'advertisements'
   end
 
-  devise_for :user, :controllers => { :omniauth_callbacks => "user/omniauth_callbacks" }
+  devise_for :user#, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   #devise_scope :user do
   #  get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session

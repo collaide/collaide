@@ -80,7 +80,7 @@ gem 'gritter', '1.0.3'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'omniauth-twitter'
+#gem 'omniauth-twitter'
 #gem 'omniauth-google'
 #gem 'oa-core'
 #gem 'oa-openid', :require => 'omniauth/openid'
