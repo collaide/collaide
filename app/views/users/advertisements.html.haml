@@ -6,10 +6,7 @@
   -if @user.advertisements.empty?
     =t'users.advertisements.no-advertisement', user: @user.to_s
   -else
-    -#%table
-    -#  %thead
-    -#    %tr
-    -#      %th= t'users.advertisements.table.title'
-    -#      %th= t'users.advertisements.table.type'
-    -#  %tbody
-    =render @user.advertisements
+    .small-12.columns#advertisements
+      %ul.large-block-grid-3
+        -@parity=0
+        =render @user.advertisements
