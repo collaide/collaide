@@ -34,7 +34,7 @@
       -if can?(:update, @sale_book)
         %li.cta-button
           %a.button.small.secondary{href: edit_advertisement_sale_book_path(@sale_book)}=t'sale_books.show.edit'
-      %li.title=sale_book_title(@sale_book)
+      %li.title=@sale_book.title
       %li.bullet-item
         =(t('sale_books.show.sale_user'))
         =link_to(@sale_book.user.to_s, @sale_book.user)

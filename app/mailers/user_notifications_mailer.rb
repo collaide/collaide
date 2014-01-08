@@ -10,6 +10,7 @@ class UserNotificationsMailer < ActionMailer::Base
   #
   def document_created(document_id)
     @document = Document::Document.find document_id
+
     mail to: @document.user.email
   end
 end
