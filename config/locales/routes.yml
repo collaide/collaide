@@ -44,6 +44,7 @@ fr:
     query: requete
     in: en
     download: telecharger
+    downloaded: telecharge
 
     all: tous
     sentbox: envoyes

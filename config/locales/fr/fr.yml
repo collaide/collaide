@@ -308,6 +308,18 @@ fr:
             label_datepicker: Publié après le
         fieldset_legend:
           advanced_search: "Recherche avancée"
+      downloaded:
+        title_page: Vous aussi, aidez les étudiants en partageant vos documents scolaires
+        description_meta: Collaide est un site de partage de documents scolaires entres étudiants. Pour que ce site fonctionne, nous avons besoin de votre participation. Envoyez vos documents étudiants !
+        bc: "Participez à la vie du site"
+        h1_title: Aidez à votre tour !
+        h1_sub_title: Collaide ne peux fonctionner sans vous
+        description: Le saviez-vous ? Le contenu que vous pouvez trouver sur ce site a été envoyé par des étudiants comme vous. Afin que le site continue à exister, nous avons besoin de vous !
+        how: Comment puis-je aider les étudiants ?
+        send_document: En envoyant un document étudiant
+        send_document_infos: Dissertations travaux de fin d'études, résumés, tous types de documents sont les bienvenues ! Plutôt que de les laisser mourir sur votre disque dur, redonnez leur une nouvelle vie et partagez les !
+        post_advertisement: En publiant une annonce
+        post_advertisement_infos: Un livre scolaire, annoté ou non, peut être utile à d'autres... N'hésitez pas à revendre vos livres étudiants d'occasion afin de vous faire un peu de cash ! Bientôt vous pourrez publier des annonces pour trouver un job, rechercher une colocation, et bien d'autres !
       new:
         title_page: "Envoyer un nouveau document et gagnez 3 points !"
         bc: Envoyer un document
