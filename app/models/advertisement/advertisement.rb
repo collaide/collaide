@@ -24,7 +24,7 @@
 class Advertisement::Advertisement < ActiveRecord::Base
   attr_accessible :active, :description, :title, :language, :hits
 
-  validate_presence_of :title
+  validates_presence_of :title
 
   #Liaisons
   belongs_to :user

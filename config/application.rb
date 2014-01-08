@@ -12,6 +12,9 @@ end
 
 module Collaide
   class Application < Rails::Application
+    # ATTENTION Ajouter pour contrer le bug de GoogleBooks
+    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

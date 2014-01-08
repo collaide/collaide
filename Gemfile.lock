@@ -513,7 +513,7 @@ DEPENDENCIES
   faker (= 1.0.1)
   geocoder
   globalize
-  googlebooks (~> 0.0.7)
+  googlebooks (~> 0.0.8)
   gritter (= 1.0.3)
   guard-livereload
   guard-rspec (= 1.2.1)

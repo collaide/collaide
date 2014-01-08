@@ -49,7 +49,7 @@ gem 'aws-sdk', '~> 1.5.7'
 gem 'zurb-foundation'
 gem 'language_list'
 
-gem 'googlebooks', '~> 0.0.7'
+gem 'googlebooks', '~> 0.0.8'
 
 gem 'letsrate'
 
