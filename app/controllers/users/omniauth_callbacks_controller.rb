@@ -27,10 +27,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
-  def google
-    # TODO
-  end
-
   #def passthru
   #  puts 'ok'
   #end
