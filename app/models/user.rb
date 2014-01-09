@@ -29,13 +29,17 @@
 # -*- encoding : utf-8 -*-
 class   User < ActiveRecord::Base
   extend Enumerize
+
+  # For connexion via FB and others
+  devise :omniauthable, :omniauth_providers => [:facebook]
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :registerable
 
-   attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :avatar, :name, :points,
+  attr_accessible :provider, :uid, :email, :password, :password_confirmation, :remember_me, :roles, :avatar, :name, :points,
                    :last_sign_in_at, :created_at, :has_notifications
   enumerize :role, in: [:admin, :moderator, :author, :banned, :super_admin, :doc_validator, :add_validator], scope: true, predicates: true
 
@@ -89,7 +93,6 @@ class   User < ActiveRecord::Base
       only_integer: true
   }
 
-
   #Returning the email address of the model if an email should be sent for this object (Message or Notification).
   #If no mail has to be sent, return nil.
   def mailboxer_email(object)
@@ -102,6 +105,32 @@ class   User < ActiveRecord::Base
 
   def to_s
     self.name
+  end
+
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    unless user
+      user = User.create(name:auth.extra.raw_info.name,
+                         provider:auth.provider,
+                         uid:auth.uid,
+                         email:auth.info.email,
+                         password:Devise.friendly_token[0,20]
+      )
+    end
+    user
+  end
+
+  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
+    data = access_token.info
+    user = User.where(:email => data["email"]).first
+
+    unless user
+      user = User.create(name: data["name"],
+                         email: data["email"],
+                         password: Devise.friendly_token[0,20]
+      )
+    end
+    user
   end
 
 end

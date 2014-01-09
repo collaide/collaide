@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-#gem 'therubyracer'
+gem 'therubyracer'
 
 #gem 'bcrypt-ruby', '3.0.1'
 
@@ -49,7 +49,7 @@ gem 'aws-sdk', '~> 1.5.7'
 gem 'zurb-foundation'
 gem 'language_list'
 
-gem 'googlebooks', '~> 0.0.7'
+gem 'googlebooks', '~> 0.0.8'
 
 gem 'letsrate'
 
@@ -77,6 +77,13 @@ gem 'resque-web'
 gem 'resque_mailer'
 
 gem 'gritter', '1.0.3'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+#gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
+#gem 'oa-core'
+#gem 'oa-openid', :require => 'omniauth/openid'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

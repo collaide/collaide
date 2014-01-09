@@ -35,6 +35,10 @@ class Advertisement::SaleBooksController < ApplicationController
     book = Book.new
     @advertisement_sale_book.book = book
 
+    # A décommenter pour voir le bug de googlebooks !
+
+    test = GoogleBooks.search('isbn:9781443411080')
+
     respond_to do |format|
       format.html # new.html.haml
       format.json {

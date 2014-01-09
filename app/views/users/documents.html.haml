@@ -3,10 +3,13 @@
 
 =render(:layout => 'layout') do
   %h1= t'users.documents.title', user: @user.to_s
-  -if @user.advertisements.empty?
+  -if @user.documents.empty?
     =t'users.documents.no-document', user: @user.to_s
   -else
-    =render @user.documents, count: @user.documents.size
+    .row.columns
+      %ul.large-block-grid-2#documents
+        -@parity=0
+        =render @user.documents
     -#%table
     -#  %thead
     -#    %tr

@@ -28,7 +28,7 @@
       -#      =sale_book.hits
       #star
     .small-12.columns.large-8
-      %h5= link_to sale_book_title(sale_book), sale_book
+      %h5= link_to sale_book.title, sale_book
       %h6.subheader= t('sale_books.index.subtitle1', book:sale_book.book.title)
       %h6.subheader
         =link_to(sale_book.user.to_s, sale_book.user)

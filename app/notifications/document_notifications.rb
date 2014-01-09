@@ -3,11 +3,11 @@ class DocumentNotifications < NotificationSystem::AbstractClass
 
   def create_for_admin(doc_id)
     document = Document::Document.find doc_id
-   raw I18n.t(
+    raw I18n.t(
         'notifications.documents.create_for_admin',
         user: h(document.user.to_s),
         title: h(document.title),
-        link: link_to(I18n.t('notifications.documents.link'), edit_admin_document_document_path(document)))
+        link: link_to(I18n.t('notifications.link'), edit_admin_document_document_path(document)))
   end
 
   def create_for_user(doc_id)

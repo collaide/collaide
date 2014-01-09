@@ -1,6 +1,11 @@
 # -*- encoding : utf-8 -*-
 class Document::DocumentObserver < ActiveRecord::Observer
 
+  # MaClasseDeNotification.perform_later(
+  # :la_méthode_contenant_le_texte_de_la_notification,
+  # [les_paramètres_de_la_méthode],
+  # <pour qui elle doit être créée>)
+
   def after_create(document)
     #On créé une notification pour les administrateurs
     DocumentNotifications.perform_later(

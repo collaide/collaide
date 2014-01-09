@@ -1,0 +1,21 @@
+-# coding: UTF-8
+%h1
+  =t'document.documents.downloaded.h1_title'
+  %small= t'document.documents.downloaded.h1_sub_title'
+.panel-subtitle
+  =t'document.documents.downloaded.description'
+%blockquote
+  =t'document.documents.downloaded.how'
+.row
+  .large-6.columns
+    .panel
+      %h4=t'document.documents.downloaded.send_document'
+      %blockquote
+        =t'document.documents.downloaded.send_document_infos'
+      =link_to t('document.documents.index.new_link'), new_document_document_path, class: 'expand button'
+  .large-6.columns
+    .panel
+      %h4=t'document.documents.downloaded.post_advertisement'
+      %blockquote
+        =t'document.documents.downloaded.post_advertisement_infos'
+      =link_to t('advertisements.index.new_link'), new_advertisement_advertisement_path, class: 'button expand'

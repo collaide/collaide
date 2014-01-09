@@ -36,4 +36,13 @@ class Advertisement::SaleBook < Advertisement::Sale
   accepts_nested_attributes_for :domains
   accepts_nested_attributes_for :book
 
+  before_validation :add_title
+
+  private
+
+    #Add a default title to the advertisement
+    def add_title
+      self.title = t'sale_books.show.sale_title',  book: book.title if title.blank?
+    end
+
 end

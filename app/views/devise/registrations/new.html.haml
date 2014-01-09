@@ -1,0 +1,12 @@
+-add_breadcrumb(I18n.t('devise.registrations.new.sign_up'))
+%h1= t "devise.registrations.new.sign_up"
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :email, :required => true, :autofocus => true
+    = f.input :name
+    = f.input :password, :required => true
+    = f.input :password_confirmation, :required => true
+  .form-actions
+    = f.button :submit, t("devise.registrations.new.sign_up")
+= render "devise/shared/links"

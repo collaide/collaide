@@ -47,6 +47,7 @@ Collaide::Application.routes.draw do
     get ':type_id/in/:domain_id', action: :index, on: :collection, as: 'domain_type'
     get 'search', action: :search, on: :collection, as: 'search'
     get 'autocomplete', action: :autocomplete, on: :collection, as: 'autocomplete'
+    get 'downloaded', action: :downloaded, on: :collection, as: 'downloaded'
     member do
       post :rate
     end
@@ -108,7 +109,14 @@ Collaide::Application.routes.draw do
     get 'advertisements', action: :advertisements, as: 'advertisements'
   end
 
-  devise_for :user
+  #devise_for :user
+  #A voir...
+  devise_for :user, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  #devise_scope :user do
+  #  get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  #end
+
   ActionDispatch::Routing::Translator.translate_from_file('config/locales/routes.yml', {:prefix_on_default_locale => true})
 end
 

@@ -46,7 +46,10 @@ fr:
         sign_up: Inscription
     sessions:
       new:
+        title_page: Connexion
         sign_in: Connexion
+        via_omniauth: Via votre compte Facebook
+        via_app: Via votre compte Collaide
     shared:
       links:
         didn_t_receive_confirmation_instructions: Vous n'avez pas reçu le mail de confirmation ?
