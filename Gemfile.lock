@@ -300,6 +300,9 @@ GEM
       rack
     omniauth-facebook (1.5.1)
       omniauth-oauth2 (~> 1.1.0)
+    omniauth-google-oauth2 (0.2.2)
+      omniauth (~> 1.0)
+      omniauth-oauth2
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
@@ -534,6 +537,7 @@ DEPENDENCIES
   nokogiri
   omniauth
   omniauth-facebook
+  omniauth-google-oauth2
   paper_trail
   paperclip (~> 3.0)
   pg (= 0.12.2)
