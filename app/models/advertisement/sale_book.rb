@@ -42,7 +42,7 @@ class Advertisement::SaleBook < Advertisement::Sale
 
     #Add a default title to the advertisement
     def add_title
-      self.title = t'sale_books.show.sale_title',  book: book.title if title.blank?
+      self.title = I18n.t'sale_books.show.sale_title',  book: book.title if title.blank?
     end
 
 end

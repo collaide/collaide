@@ -198,7 +198,7 @@ fr:
         subject: Sujet du message
         content: Contenu du message
         button: Envoyer
-      success: "Votre message avec le sujet \"%{subject}\" : a bien été envoyé. E-mail pour la réponse: %{email}"
+      success: "Votre message avec le sujet \"%{subject}\" : a bien été envoyé. E-mail pour la réponse : %{email}"
       recap: Récapitulatif
     help:
       bc: Aide
@@ -435,6 +435,7 @@ fr:
         choose_delivery_mode: Veuillez choisir vos modes de livraison
         submit: Mettre ce livre en vente
         succes: Félicitation ! Votre livre a bien été mis en vente !
+        infos_isbn: Le code isbn est le nombre qui se situe sous le code barre de votre livre.
         valid_isbn: Désolé, nous n'avons trouvé aucun livre avec ce code ISBN
         other_solution: Vous pouvez entrer manuellement le titre et l'auteur de votre livre !
         details_label: Augmentez vos chances de vente
@@ -454,16 +455,16 @@ fr:
           domain: Cela vous permet de préciser dans quels domaines ce livre est utile
           study_level: A quel degré scolaire ce livre est-il le mieux adapté ?
     show:
-      title: "Vente du livre étudiant: %{book}"
+      title: "Vente du livre étudiant : %{book}"
       title_page: Achetez %{book}, livre étudiant d'occasion pour seulement %{price} !
-      sale_title: "Vente de %{book}"
+      sale_title: "A vendre : %{book}"
       authors: "De %{authors}"
       publisher: " par %{publisher}"
       published_date: " le %{published_date}"
       published_date_year: " en %{published_date}"
       edited: Publié
-      payment_modes: "Mode de payement:"
-      delivery_modes: "Mode de livraison:"
+      payment_modes: "Mode de payement :"
+      delivery_modes: "Mode de livraison :"
       sale_user: En vente par
       buy: Acheter
       others_sales: Autres ventes pour %{book}

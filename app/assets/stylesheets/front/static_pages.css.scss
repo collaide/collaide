@@ -4,7 +4,8 @@
 @import "foundation_and_overrides";
 
 #main-content {
-  min-height: emCalc(850px);
+  // Yves : J'ai enlevé, pourquoi t'as mis ?
+  //min-height: emCalc(850px);
 }
 
 $font-size : 1.1em;

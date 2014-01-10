@@ -5,6 +5,7 @@
     %h1.sale_book_title= t'sale_books.show.title', book: @sale_book.book.title
 .row
   .small-12.large-6.columns
+    %a.show-for-small.button.success{'href'=>'#', 'data-reveal-id'=>'buy_book'}=t'sale_books.show.buy'
     .panel#book_infos
       .row
         .large-4.columns
@@ -55,8 +56,9 @@
           =t'sale_books.show.delivery_modes'
           -@sale_book.delivery_modes.each do |p|
             = "#{p.text}, "
-      %li.cta-button
-        %a.button.success{'href'=>'#', 'data-reveal-id'=>'buy_book'}=t'sale_books.show.buy'
+      .hide-for-small
+        %li.cta-button
+          %a.button.success{'href'=>'#', 'data-reveal-id'=>'buy_book'}=t'sale_books.show.buy'
 
 -#Si il y a d'autres ventes pour ce livre
 -if @sale_book.book.sale_books.count>1
