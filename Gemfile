@@ -108,7 +108,7 @@ group :assets do
   gem 'coffee-script-source'
 
   gem 'compass-rails'
-  gem 'zurb-foundation'
+  gem 'foundation-icons-sass-rails'
 end
 
 group :test do

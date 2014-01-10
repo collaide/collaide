@@ -2,13 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "foundation_and_overrides";
+@import 'foundation-icons';
 
 #main-content {
-  // Yves : J'ai enlevé, pourquoi t'as mis ?
-  //min-height: emCalc(850px);
+  min-height: emCalc(300px);
 }
 
-$font-size : 1.1em;
+$font-size : 1em;
 
 ::-webkit-input-placeholder { font-size:$font-size; }
 ::-moz-placeholder { font-size:$font-size; } /* firefox 19+ */

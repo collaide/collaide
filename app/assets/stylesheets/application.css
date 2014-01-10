@@ -12,11 +12,8 @@
 
  /* require_self
  *= require jquery.ui.all
- *= require foundation_and_overrides
  *= require jqtree
  *= require select2
  *= require_tree ./front
  */
-
-textarea { height: auto; min-height: 50px;}
 
