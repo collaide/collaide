@@ -49,7 +49,8 @@ class Ability
       can :downlaod, Document::Document
       can :manage, Document::Document, user_id: user.id #uniquement les documents créés par l'utilisateur
       can :manage, Advertisement::Advertisement, user_id: user.id #uniquement les annonces créées par l'utilisateur
-      can :manage, Message, user_id: user.id #uniquement les messages de l'utilisateur
+      # TODO Gérer les messages avec le firewall
+      can :manage, Message#, user_id: user.id #uniquement les messages de l'utilisateur
     end
 
     def admin(user)

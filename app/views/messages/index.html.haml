@@ -8,33 +8,5 @@
       -if @conversations.empty?
         %p= t'messages.index.no_message'
       -else
-        -@conversations.each do |c|
-          .row.conversation_index
-            -if c.is_unread?(current_user)
-              -unread = 'unread'
-            -else
-              -unread = 'read'
-            .small-12.columns
-              %h5=link_to c.subject_to_show, message_path(c)
-              %dl.sub-nav
-                %dt=t'messages.index.with'
-                -c.recipients.each do |r|
-                  -unless r==current_user
-                    %dd=link_to(r.to_s, r)
-              %blockquote.message{class:unread}
-                .row
-                  .large-1.columns.hide-for-small
-                    %a{href: message_path(c),class: 'th'}
-                      =image_tag c.last_message.sender.avatar
-                  .large-11.columns
-                    %h6.subheader=truncate((c.last_message.body), length: 255)
-                    %cite
-                      =link_to(c.last_message.sender.to_s, c.last_message.sender)
-                      %span{title: l(c.last_message.created_at, format: :long)}
-                        =t'messages.show.since'
-                        =time_ago_in_words(c.last_message.created_at)
-              -#%p.subheader
-              -#  %span{title: l(c.last_message.created_at, format: :long)}
-              -#    =t'messages.show.since'
-              -#    =time_ago_in_words(c.last_message.created_at)
-          %hr
+        %hr
+        =render partial: 'conversation', collection: @conversations

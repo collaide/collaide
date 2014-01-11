@@ -4,6 +4,8 @@
 @import "foundation_and_overrides";
 @import 'foundation-icons';
 
+textarea { height: auto; min-height: 50px;}
+
 #main-content {
   min-height: emCalc(300px);
 }
@@ -67,10 +69,6 @@ input:-moz-placeholder { font-size:$font-size; }
 $footer-middle-color: lighten($footer-background-color, 20%);
 $footer-end-color: lighten($footer-background-color, 30%);
 
-#footer {
-  min-width: 100%;
-}
-
 #partners {
   h4 {
     a {
@@ -106,10 +104,14 @@ $footer-end-color: lighten($footer-background-color, 30%);
   margin-bottom: emCalc(25px);
 }
 
+#footer {
+  min-width: 100%;
+}
+
 footer {
-  .panel { @include panel($footer-background-color);
+  .panel { //@include panel($footer-background-color);
     border: none;
-    background: url('home/footer_bg.png') repeat-x;
+    background: #FFFFFF image-url('home/footer_bg.png') repeat-x;
     li {
       list-style: none;
     }
@@ -124,5 +126,18 @@ footer {
       margin: auto;
     }
   }
+}
+
+.tableau_bord_horizontal_bottom{ background-position: 0 0; width: 6px; height: 34px; }
+.tableau_bord_horizontal_top{ background-position: 0 -39px; width: 23px; height: 36px; }
+.tableau_border_vertical_left{ background-position: 0 -80px; width: 34px; height: 10px; }
+.tableau_border_vertical_right{ background-position: 0 -95px; width: 33px; height: 5px; }
+.tableau_coin_gauche{ background-position: 0 -105px; width: 96px; height: 94px; }
+.tableau_corner_bottom_left{ background-position: 0 -204px; width: 88px; height: 89px; }
+.tableau_corner_bottom_right{ background-position: 0 -298px; width: 84px; height: 90px; }
+.tableau_corner_top_right{ background-position: 0 -393px; width: 87px; height: 89px; }
+
+#blackboard {
+  background: image-url('board.png') no-repeat top left;
 }
 

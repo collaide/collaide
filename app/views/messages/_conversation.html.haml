@@ -16,7 +16,7 @@
           %a{href: message_path(conversation),class: 'th'}
             =image_tag conversation.last_message.sender.avatar
         .large-11.columns
-          %h6.subheader=truncate((conversation.last_message.body), length: 255)
+          %h6.subheader=simple_format(truncate(conversation.last_message.body, length: 50))
           %cite
             =link_to(conversation.last_message.sender.to_s, conversation.last_message.sender)
             %span{title: l(conversation.last_message.created_at, format: :long)}
@@ -26,4 +26,4 @@
     -#  %span{title: l(conversation.last_message.created_at, format: :long)}
     -#    =t'messages.show.since'
     -#    =time_ago_in_words(conversation.last_message.created_at)
-%hr
+%hr/

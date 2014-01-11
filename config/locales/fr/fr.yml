@@ -399,7 +399,7 @@ fr:
       #title_page: Achetez un grand nombre de livres étudiants d'occasions à bas prix mis en vente par des étudiants !
       buy: Acheter
       note: Note
-      subtitle1: "Livre: %{book}"
+      subtitle1: "Livre : %{book}"
       subtitle2: " vend ce livre %{price}"
       no_description: Il n'y a pas de description pour ce livre...
     buy:

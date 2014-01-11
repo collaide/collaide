@@ -19,6 +19,10 @@ class StaticPagesController < ApplicationController
     add_breadcrumb(t('static_pages.about.bc'))
   end
 
+  def board
+
+  end
+
   def contact
     add_breadcrumb(t('static_pages.contact.bc'))
     @contact = Contact.new

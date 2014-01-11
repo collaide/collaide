@@ -8,4 +8,5 @@
       -if @conversations.empty?
         %p= t'messages.index.no_message'
       -else
+        %hr
         =render partial: 'conversation', collection: @conversations
