@@ -11,19 +11,38 @@
         .columns.large-3
           = render 'devise/form/sign_up'
   -else
-    .connected-panel
+    #blackboard
       .row
-        .columns.small-1
-          .user
-            =link_to(image_tag(current_user.avatar.url(:medium)), current_user, class: 'th')
-        .columns.small-11.small-centered
-          %h2.text-center= t('.connected_panel.title')
-          -if current_user.notifications.empty?
-            %h4.text-center= t('.connected_panel.no_notifications')
-          -else
-            %ul.text-left
-              -current_user.notifications.each do |a_notif|
-                %li= a_notif.print_message
+        .columns.small-12
+          .board-corner-top-left.left
+          .board-corner-top-right.right
+          .board-top
+          .board-content
+            %h2.text-center= t('.connected_panel.title')
+            -if current_user.notifications.empty?
+              %h4.text-center= t('.connected_panel.no_notifications')
+            -else
+              %ul.text-left
+                -current_user.notifications.each do |a_notif|
+                  %li= a_notif.print_message
+      .row
+        .columns.small-12
+          .board-corner-bottom-left.left
+          .board-corner-bottom-right.right
+          .board-bottom
+    -#.connected-panel
+    -#  .row
+    -#    .columns.small-1
+    -#      .user
+    -#        =link_to(image_tag(current_user.avatar.url(:medium)), current_user, class: 'th')
+    -#    .columns.small-11.small-centered
+    -#      %h2.text-center= t('.connected_panel.title')
+    -#      -if current_user.notifications.empty?
+    -#        %h4.text-center= t('.connected_panel.no_notifications')
+    -#      -else
+    -#        %ul.text-left
+    -#          -current_user.notifications.each do |a_notif|
+    -#            %li= a_notif.print_message
   .row
     .columns.large-4
       %h4.last-title#doc
