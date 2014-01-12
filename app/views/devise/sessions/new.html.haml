@@ -10,6 +10,7 @@
         .row
           - resource_class.omniauth_providers.each do |provider|
             .large-6.columns
+              = link_to 'salut', user_omniauth_authorize_path(:facebook)
               = link_to t("devise.shared.links.sign_in_with_provider", provider: provider.to_s.titleize), omniauth_authorize_path(resource_name, provider), class: 'button expand'
       %h4.panel-subtitle
         = t'devise.sessions.new.via_app'

@@ -28,7 +28,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   #def passthru
-  #  puts 'ok'
+  #
   #end
 
 end
