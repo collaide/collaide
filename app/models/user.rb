@@ -30,14 +30,13 @@
 class   User < ActiveRecord::Base
   extend Enumerize
 
-  # For connexion via FB and others
-  devise :omniauthable, :omniauth_providers => [:facebook]
-
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, 
-         :recoverable, :rememberable, :trackable, :validatable, :registerable
+         :recoverable, :rememberable, :trackable, :validatable, :registerable,
+         # For connexion via FB and others
+         :omniauthable, :omniauth_providers => [:facebook, :google]
 
   attr_accessible :provider, :uid, :email, :password, :password_confirmation, :remember_me, :roles, :avatar, :name, :points,
                    :last_sign_in_at, :created_at, :has_notifications
