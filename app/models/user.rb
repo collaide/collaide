@@ -31,7 +31,7 @@ class   User < ActiveRecord::Base
   extend Enumerize
 
   # For connexion via FB and others
-  devise :omniauthable, :omniauth_providers => [:facebook]
+  devise :omniauthable, :omniauth_providers => [:facebook, :google]
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

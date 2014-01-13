@@ -33,7 +33,7 @@ class Book < ActiveRecord::Base
 
   # permet de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   letsrate_rateable 'note'
-
+  has_one :note_average, :as => :cacheable, :class_name => "RatingCache", :dependent => :destroy, :conditions => {:dimension => 'note'}
   validates_presence_of :title
   validates_presence_of :authors
   #validate :has_a_valid_isbn

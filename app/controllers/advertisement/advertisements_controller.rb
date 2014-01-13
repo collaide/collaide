@@ -15,7 +15,7 @@ class Advertisement::AdvertisementsController < ApplicationController
   def index
     #@message = UserMessage.new
     # Pour changer le nombre d'éléments par page, ajouter .per(5) après la méthode page
-    @advertisement = Advertisement::Advertisement.order('id DESC').page(params[:page])
+    @advertisement = Advertisement::Advertisement.order('created_at DESC').includes(:user, {book: :note_average}).page(params[:page])
   end
 
   def search
