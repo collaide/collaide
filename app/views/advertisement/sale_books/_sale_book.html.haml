@@ -14,7 +14,7 @@
         =t('sale_books.buy.subject', book: sale_book.book.title)
     .large-4.columns.small-12
       .row
-        .small-12.columns
+        .small-12.columns.small-centered
           %a.th{href: advertisement_sale_book_path(sale_book)}
             =book_image(sale_book.book)
           %br
@@ -28,21 +28,21 @@
       -#      =sale_book.hits
       #star
     .small-12.columns.large-8
-      %h5= link_to sale_book.title, sale_book
-      %h6.subheader= t('sale_books.index.subtitle1', book:sale_book.book.title)
-      %h6.subheader
-        =link_to(sale_book.user.to_s, sale_book.user)
+      %h5= link_to sale_book.book.title.truncate(80, separator: '', omission: '...'), sale_book
+      -#%h6.subheader= t('sale_books.index.subtitle1', book:sale_book.book.title)
+      %h5.subheader
         =t('sale_books.index.subtitle2', price: number_to_currency(sale_book.price, :unit => sale_book.currency.text))
+        =link_to(sale_book.user.to_s, sale_book.user)
       -if sale_book.description
-        %p= sale_book.description.truncate(100, separator: ' ', omission: ' ...')
+        %p= sale_book.description.truncate(200, separator: ' ', omission: ' ...')
       -elsif sale_book.book.description
-        %p= sale_book.book.description.truncate(100, separator: ' ', omission: ' ...')
+        %p= sale_book.book.description.truncate(200, separator: ' ', omission: ' ...')
       -else
         %p= t('sale_books.index.no_description')
-      -# ATTENTION NE PAS CHANGER LE ID DU LINK DESSOUS, LIE AU JS DANS SALE_BOOK.JS
-      %a.button.small.secondary{'href'=>'#', 'data-reveal-id'=>'buy_book', 'class' => 'button_buy_book', 'id' => "button_buy_book_#{sale_book.id}"}=t('sale_books.index.buy')
-      =show_link sale_book, t('advertisements.index.show'), 'small secondary'
+      .small-12.large-4
+        -# ATTENTION NE PAS CHANGER LE ID DU LINK DESSOUS, LIE AU JS DANS SALE_BOOK.JS
+        %a.button.small.expand.secondary{'href'=>'#', 'data-reveal-id'=>'buy_book', 'class' => 'button_buy_book', 'id' => "button_buy_book_#{sale_book.id}"}=t('sale_books.index.buy')
     %hr.show-for-small
--if (@parity+=1)%3==0
+-if (@parity+=1)%2==0
   %hr.hide-for-small
 =render 'advertisement/sale_books/reveal', sale_book: nil

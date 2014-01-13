@@ -400,7 +400,7 @@ fr:
       buy: Acheter
       note: Note
       subtitle1: "Livre : %{book}"
-      subtitle2: " vend ce livre %{price}"
+      subtitle2: "Vendu %{price} par "
       no_description: Il n'y a pas de description pour ce livre...
     buy:
       title: Achât du livre %{book}
