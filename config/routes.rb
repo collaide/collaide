@@ -27,7 +27,7 @@ Collaide::Application.routes.draw do
 
   resources :advertisements, as: 'advertisement_advertisements', controller: 'advertisement/advertisements', :except => [:edit, :show] do
     collection do
-      get 'page', action: :page
+      get 'page/:page', :action => :index, as: 'pager'
       get 'search', action: :search, as: 'search'
       get 'autocomplete', action: :autocomplete, as: 'autocomplete'
     end
@@ -60,9 +60,9 @@ Collaide::Application.routes.draw do
     #resources :study_levels
   end
 
-  resources :structures, only: [:index] do
-    resources :c_files
-  end
+  #resources :structures, only: [:index] do
+  #  resources :c_files
+  #end
 
   scope 'user/group/:id' do
     resources :structures

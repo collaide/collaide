@@ -46,7 +46,11 @@ module Document::DocumentsHelper
   def show_icon(document)
     paperclip = document.files.first.file_content_type
     #FIXME: aucune image pour les doc en .txt
-    "documents/#{find_extension(paperclip).to_s}.png"
+    type = find_extension(paperclip).to_s
+    if type == 'image'
+      return document.files.first.file.url
+    end
+    "documents/#{type}.png"
   end
 
   def find_extension(application_type)

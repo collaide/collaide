@@ -11,6 +11,8 @@ if history && history.pushState
   $ ->
     $('#paginate li a').on 'click', ->
       history.pushState '', null, this.href
+    $('#paginate1 li a').on 'click', ->
+      history.pushState '', null, this.href
 
   $ ->
     type = false
