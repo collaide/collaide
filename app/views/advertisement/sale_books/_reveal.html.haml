@@ -1,8 +1,9 @@
 -if current_user.nil?
   #buy_book.reveal-modal
     %h2=t('sale_books.buy.not_connected.title')
-    %p=raw(t('sale_books.buy.not_connected.content', connect: link_to(t("dico.connected"), new_user_session_path)))
+    %p=raw(t('sale_books.buy.not_connected.content', connect: t("dico.connected")))
     %a.close-reveal-modal &#215;
+    =render 'devise/sessions/new'
 -else
   #buy_book.reveal-modal
     %h2.buy_book_title
