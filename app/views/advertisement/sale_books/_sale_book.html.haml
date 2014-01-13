@@ -41,7 +41,10 @@
         %p= t('sale_books.index.no_description')
       .small-12.large-4
         -# ATTENTION NE PAS CHANGER LE ID DU LINK DESSOUS, LIE AU JS DANS SALE_BOOK.JS
-        %a.button.small.expand.secondary{'href'=>'#', 'data-reveal-id'=>'buy_book', 'class' => 'button_buy_book', 'id' => "button_buy_book_#{sale_book.id}"}=t('sale_books.index.buy')
+        -if current_user.nil?
+          =link_to(t('sale_books.index.buy'), user_session_path, class: 'button secondary small expand')
+        -else
+          %a.button.small.expand.secondary{'href'=>'#', 'data-reveal-id'=>'buy_book', 'class' => 'button_buy_book', 'id' => "button_buy_book_#{sale_book.id}"}=t('sale_books.index.buy')
     %hr.show-for-small
 -if (@parity+=1)%2==0
   %hr.hide-for-small
