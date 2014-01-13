@@ -25,6 +25,8 @@
     .small-12.columns#paginate
       =paginate @advertisement
     .small-12.columns#advertisements
-      %ul.large-block-grid-3.medium-block-grid-2
+      %ul.large-block-grid-2
         -@parity=0
         =render @advertisement
+    .small-12.columns#paginate
+      =paginate @advertisement

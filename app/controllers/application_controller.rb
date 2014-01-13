@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
     if !request.env["HTTP_REFERER"]
       redirect_to root_url
     else
-      redirect_to :back, alert: t('access_denied')
+      redirect_to user_session_path, alert: t('access_denied')
     end
   end
 

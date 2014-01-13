@@ -55,7 +55,7 @@ fr:
   next: *next
   back: *back
   confirm: Etes-vous sûre ?
-  access_denied: Vous n'avez pas le droit de voir cette page. Désolé
+  access_denied: Cette page requiert d'être connecté. Ci-dessous, vous pouvez vous connecter ou vous inscrire gratuitement.
   default_key_words: "collaide, étudier, documents scolaires"
   default_description_meta: Collaide est un réseau d'étudiant
   errors:
@@ -271,6 +271,7 @@ fr:
       title_page: Documents scolaires
       bc: Les documents scolaires
       index:
+        more_search: " Plus"
         description_meta: Téléchargez toutes sortes de documents scolaires gratuitement pour les étudiants de tous niveaux d'études
         key_words: liste, des, documents, document, Dissertations, Analyses, Documents, rapports, résumés, Exposers, Tests, Présentations, base de donnée, Collaide, Etudiants, document de maturité
         published_by: Publié par
@@ -400,7 +401,7 @@ fr:
       buy: Acheter
       note: Note
       subtitle1: "Livre : %{book}"
-      subtitle2: " vend ce livre %{price}"
+      subtitle2: "Vendu %{price} par "
       no_description: Il n'y a pas de description pour ce livre...
     buy:
       title: Achât du livre %{book}
