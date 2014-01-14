@@ -250,8 +250,8 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 
-  config.omniauth :facebook, '132067100312533', 'a4381852c26255d2e8267a665a8814d7'
- # config.omniauth :google_oauth2, '202057750514-uh0t8491gb3jfn8ld9ar4capaurh96av.apps.googleusercontent.com', 'pass_envoyé_par_mail'
+  config.omniauth :facebook, '227783287393190', 'pass_envoyé_par_mail'
+  config.omniauth :google_oauth2, '202057750514-uh0t8491gb3jfn8ld9ar4capaurh96av.apps.googleusercontent.com', 'pass_envoyé_par_mail'
 
   # Add by Yves : http://www.synbioz.com/blog/integrer_les_reseaux_sociaux_dans_son_application_rails_avec_oauth
   #if Rails.env.development?
