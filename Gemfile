@@ -2,12 +2,12 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'therubyracer'
+#gem 'therubyracer'
 
 #gem 'bcrypt-ruby', '3.0.1'
 
 gem 'nokogiri'
-#gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 gem 'faker', '1.0.1'
 
@@ -46,7 +46,6 @@ gem 'haml'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.5.7'
 
-gem 'foundation-rails'
 gem 'language_list'
 
 gem 'googlebooks', '~> 0.0.8'
@@ -71,7 +70,7 @@ gem 'select2-rails'
 
 #gem 'awesome_nested_set'
 
-gem 'repository-manager'#, github: 'Texicitys/repository-manager'
+gem 'repository-manager', github: 'Texicitys/repository-manager'
 gem 'resque'
 gem 'resque-web'
 gem 'resque_mailer'
@@ -102,6 +101,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'foundation-rails'
   gem 'sass-rails',   '3.2.5'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'

@@ -9,6 +9,14 @@ class ApplicationController < ActionController::Base
 
   #rescue_from ActionController::RoutingError, :with => :render_not_found
 
+  def after_sign_in_path_for(resource)
+    #sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')
+
+      logger.debug(stored_location_for(resource).inspect)
+      logger.debug('salkjdvajksd')
+      request.env['omniauth.origin'] ||stored_location_for(resource) || request.referer || root_path
+  end
+
   def routing_error
     raise ActionController::RoutingError.new(params[:path])
   end
@@ -74,5 +82,4 @@ class ApplicationController < ActionController::Base
   def get_documents
     @footer_document = Document::Document.valid.order('created_at DESC').limit(6).all
   end
-
 end

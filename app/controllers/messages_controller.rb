@@ -62,6 +62,7 @@ class MessagesController < ApplicationController
 
   def new
     @message = UserMessage.new
+    pre_full_message(@message)
     #current_user.send_message(current_user, '@message.body', '@message.subject')
   end
 
@@ -88,4 +89,14 @@ class MessagesController < ApplicationController
   def update
   end
 
+  private
+  def pre_full_message(message)
+    unless params[:id_book].nil?
+      sale_book = Advertisement::SaleBook.find(params[:id_book])
+      message.users<<sale_book.user
+      message.subject=t('sale_books.buy.subject', book: sale_book.book.title)
+      message.body=t('sale_books.buy.textarea', book: sale_book.book.title)
+    end
+    message
+  end
 end
