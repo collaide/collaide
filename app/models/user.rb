@@ -52,19 +52,31 @@ class   User < ActiveRecord::Base
   has_one :parameter, :class_name => 'Member::Parameter'
 
   has_many :documents, :class_name => 'Document::Document'
+  # Quels documents sont téléchargés
   has_many :document_downloads, :class_name => 'Document::Download'
   has_many :downloads, class_name: 'Document::Document', through: :document_downloads, source: :document
+  #------
 
+  # Status de l'utilisateur sur son mur
   has_many :statues, :class_name => 'Member::Status', inverse_of: :user
+
+  # Un user a plusieurs études (gymnase, uni, etc) chaque études à une établissement scolaire, une période et une orientation
   has_many :scolarities, :class_name => 'Member::Scolarity'
 
+  # Un user a plusieurs groupes et un groupe a plusieurs utilisateurs
   has_many :group_members, :class_name => 'Member::Group::Member'
   has_many :groups, :class_name => 'Member::Group::Group', through: :group_members, source: :member_group
+  #########
+  #invitation a rejoindre un groupe
   has_many :created_group_demands, :class_name => 'Member::Group::Demand'
 
+  #many-to-many
   has_many :member_friend_friends, :class_name => 'Member::Friend::Friend'
   has_many :friends, :class_name => 'Member::Friend::Friend', through: :member_friend_friends, source: :user
+  #####
+  #demande envoyée
   has_many :created_friend_demands, :class_name => 'Member::Friend::Demand', foreign_key: :user_has_sent_id
+  #demande reçues
   has_many :friend_demands, class_name: 'Member::Friend::Demand', foreign_key: :user_is_invited_id
 
   has_many :notifications, class_name: 'UserNotification'

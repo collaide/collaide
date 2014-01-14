@@ -104,16 +104,16 @@ Collaide::Application.routes.draw do
   resources :guest_books, :only => [:show, :index, :create, :new] do
     get 'page/:page', :action => :index, :on => :collection
   end
-  #resources :users do
-  #  get 'no_credit', action: :no_credit, as: 'no_credit', on: :collection
-  #  get 'page', action: :page, as: 'page', on: :collection
-  #  get 'documents', action: :documents, as: 'documents'
-  #  get 'advertisements', action: :advertisements, as: 'advertisements'
-  #end
+  resources :users do
+    get 'no_credit', action: :no_credit, as: 'no_credit', on: :collection
+    get 'page', action: :page, as: 'page', on: :collection
+    get 'documents', action: :documents, as: 'documents'
+    get 'advertisements', action: :advertisements, as: 'advertisements'
+  end
 
   #devise_for :user
   #A voir...
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :user, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   #devise_scope :user do
   #  get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session

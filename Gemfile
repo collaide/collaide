@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'therubyracer'
+#gem 'therubyracer'
 
 #gem 'bcrypt-ruby', '3.0.1'
 
@@ -46,7 +46,6 @@ gem 'haml'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.5.7'
 
-gem 'zurb-foundation'
 gem 'language_list'
 
 gem 'googlebooks', '~> 0.0.8'
@@ -102,6 +101,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'foundation-rails'
   gem 'sass-rails',   '3.2.5'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
