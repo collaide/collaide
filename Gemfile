@@ -7,7 +7,7 @@ gem 'therubyracer'
 #gem 'bcrypt-ruby', '3.0.1'
 
 gem 'nokogiri'
-gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+#gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 gem 'faker', '1.0.1'
 
@@ -46,7 +46,7 @@ gem 'haml'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.5.7'
 
-gem 'zurb-foundation'
+gem 'foundation-rails'
 gem 'language_list'
 
 gem 'googlebooks', '~> 0.0.8'
@@ -71,7 +71,7 @@ gem 'select2-rails'
 
 #gem 'awesome_nested_set'
 
-gem 'repository-manager', github: 'Texicitys/repository-manager'
+gem 'repository-manager'#, github: 'Texicitys/repository-manager'
 gem 'resque'
 gem 'resque-web'
 gem 'resque_mailer'
