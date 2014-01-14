@@ -50,7 +50,6 @@ class   User < ActiveRecord::Base
 
   has_one :contact, :class_name => 'Member::Contact', inverse_of: :user
   has_one :parameter, :class_name => 'Member::Parameter'
-  has_one :repository, :class_name => 'CFile::Structure'
 
   has_many :documents, :class_name => 'Document::Document'
   has_many :document_downloads, :class_name => 'Document::Download'

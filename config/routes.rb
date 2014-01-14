@@ -19,6 +19,7 @@ Collaide::Application.routes.draw do
       get 'sentbox', action: :sentbox
       get 'trash', action: :trash
       get 'all', action: :all
+      get 'contact-for/book/:id_book', action: :new, as: :contact_book
       #get 'search', action: :search, as: 'search'
       #get 'autocomplete', action: :autocomplete, as: 'autocomplete'
     end

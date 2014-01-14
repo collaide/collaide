@@ -42,7 +42,7 @@
       .small-12.large-4
         -# ATTENTION NE PAS CHANGER LE ID DU LINK DESSOUS, LIE AU JS DANS SALE_BOOK.JS
         -if current_user.nil?
-          =link_to(t('sale_books.index.buy'), user_session_path, class: 'button secondary small expand')
+          =link_to(t('sale_books.index.buy'), contact_book_messages_path(sale_book.id), class: 'button secondary small expand')
         -else
           %a.button.small.expand.secondary{'href'=>'#', 'data-reveal-id'=>'buy_book', 'class' => 'button_buy_book', 'id' => "button_buy_book_#{sale_book.id}"}=t('sale_books.index.buy')
     %hr.show-for-small
