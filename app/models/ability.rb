@@ -40,6 +40,8 @@ class Ability
       can [:read, :documents, :advertisements], User
       #can :read, Domain
       can :read, Document::Document
+      can :search, Document::Document
+      can :autocomplete, Document::Document
       can :read, Advertisement::Advertisement
     end
 
