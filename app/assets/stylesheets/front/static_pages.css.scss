@@ -1,175 +1,175 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import "foundation_and_overrides";
+//@import "foundation_and_overrides";
 @import 'foundation-icons';
 
-textarea { height: auto; min-height: 50px;}
-
-#main-content {
-  min-height: emCalc(300px);
-}
-
-$font-size : 1em;
-
-::-webkit-input-placeholder { font-size:$font-size; }
-::-moz-placeholder { font-size:$font-size; } /* firefox 19+ */
-:-ms-input-placeholder { font-size:$font-size; } /* ie */
-input:-moz-placeholder { font-size:$font-size; }
-
-.signup-panel { @include panel(#4b4b4b);
-  padding-bottom: 0px;
-  .center-to-form {
-    padding-bottom: 50px;
-    padding-top: 25px;
-  }
-}
-
-.last-title {
-  background-color: #4b4b4b;
-  padding-left: emCalc(10px);
-  color: white;
-  margin-bottom: 0px;
-  padding-top: emCalc(5px);
-  padding-bottom: emCalc(5px);
-  a {
-    color: white;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-}
-
-#news {
-  background-color: $panel-news-color;
-}
-
-#ads {
-  background-color: $panel-ads-color;
-}
-
-#doc {
-  background-color: $panel-document-color;
-}
-
-.last-panel { @include panel($panel-bg);
-  ul {
-    padding-left: emCalc(20px);
-  }
-  li {
-    a {
-      color: lighten($header-font-color, 5%);
-    }
-    a:hover {
-      color: $primary-color;
-    }
-  }
-}
-
-$footer-middle-color: lighten($footer-background-color, 20%);
-$footer-end-color: lighten($footer-background-color, 30%);
-
-#partners {
-  h4 {
-    a {
-      color: black;
-    }
-    a:hover {
-      color: $primary-color;
-    }
-  }
-}
-
-.connected-panel {
-  background-color: #090909;
-  min-height: emCalc(310px);
-  h2, h3, p, h4, ul, li {
-    color: white;
-    font-family: Savoye LET;
-    font-size: 2.5em;
-    font-weight: normal;
-  }
-
-  h2 {
-    text-decoration: underline;
-    font-size: 3em;
-  }
-
-  ul, li {
-    font-size: 1.3em;
-  }
-  .user {
-    padding-top: emCalc(230px);
-  }
-  margin-bottom: emCalc(25px);
-}
-
-#footer {
-  min-width: 100%;
-}
-
-footer {
-  .panel { //@include panel($footer-background-color);
-    border: none;
-    background: #FFFFFF image-url('home/footer_bg.png') repeat-x;
-    li {
-      list-style: none;
-    }
-    a {
-      color: black;
-    }
-    a:hover {
-      color: $primary-color
-    }
-    .row {
-      max-width: $row-width;
-      margin: auto;
-    }
-  }
-}
-
-#blackboard {
-  .board-corner-top-left {
-    background: image-url('board/corners.gif') no-repeat top left;
-    width: 96px;
-    height: 94px;
-  }
-  .board-corner-top-right {
-    background: image-url('board/corners.gif') no-repeat;
-    background-position: 0 -297px;
-    width: 96px;
-    height: 94px;
-  }
-  .board-top {
-    background: image-url('board/board-top.gif'); background-position: 0 0px; background-repeat: repeat-x;
-    margin-right: 87px;
-    margin-left: 96px;
-    height: 34px;
-  }
-  .board-bottom {
-    background: image-url('board/board-bottom.gif'); background-position: 0 0px; background-repeat: repeat-x;
-    margin-right: 88px;
-    margin-left: 88px;
-    margin-top: 58px;
-    height: 34px;
-  }
-  .board-content {
-    margin-left: 50px;
-    margin-right:50px;
-
-  }
-  .board-corner-bottom-left {
-    background: image-url('board/corners.gif') no-repeat;
-    background-position: 0 -99px;
-    width: 96px; height: 94px;
-  }
-  .board-corner-bottom-right {
-    background: image-url('board/corners.gif') no-repeat;
-    background-position: 0 -198px;
-    width: 96px; height: 94px;
-  }
-  .board-bottom {
-    height: 94px;
-  }
-}
+//textarea { height: auto; min-height: 50px;}
+//
+//#main-content {
+//  min-height: emCalc(300px);
+//}
+//
+//$font-size : 1em;
+//
+//::-webkit-input-placeholder { font-size:$font-size; }
+//::-moz-placeholder { font-size:$font-size; } /* firefox 19+ */
+//:-ms-input-placeholder { font-size:$font-size; } /* ie */
+//input:-moz-placeholder { font-size:$font-size; }
+//
+//.signup-panel { @include panel(#4b4b4b);
+//  padding-bottom: 0px;
+//  .center-to-form {
+//    padding-bottom: 50px;
+//    padding-top: 25px;
+//  }
+//}
+//
+//.last-title {
+//  background-color: #4b4b4b;
+//  padding-left: emCalc(10px);
+//  color: white;
+//  margin-bottom: 0px;
+//  padding-top: emCalc(5px);
+//  padding-bottom: emCalc(5px);
+//  a {
+//    color: white;
+//  }
+//  a:hover {
+//    text-decoration: underline;
+//  }
+//}
+//
+//#news {
+//  background-color: $panel-news-color;
+//}
+//
+//#ads {
+//  background-color: $panel-ads-color;
+//}
+//
+//#doc {
+//  background-color: $panel-document-color;
+//}
+//
+//.last-panel { @include panel($panel-bg);
+//  ul {
+//    padding-left: emCalc(20px);
+//  }
+//  li {
+//    a {
+//      color: lighten($header-font-color, 5%);
+//    }
+//    a:hover {
+//      color: $primary-color;
+//    }
+//  }
+//}
+//
+//$footer-middle-color: lighten($footer-background-color, 20%);
+//$footer-end-color: lighten($footer-background-color, 30%);
+//
+//#partners {
+//  h4 {
+//    a {
+//      color: black;
+//    }
+//    a:hover {
+//      color: $primary-color;
+//    }
+//  }
+//}
+//
+//.connected-panel {
+//  background-color: #090909;
+//  min-height: emCalc(310px);
+//  h2, h3, p, h4, ul, li {
+//    color: white;
+//    font-family: Savoye LET;
+//    font-size: 2.5em;
+//    font-weight: normal;
+//  }
+//
+//  h2 {
+//    text-decoration: underline;
+//    font-size: 3em;
+//  }
+//
+//  ul, li {
+//    font-size: 1.3em;
+//  }
+//  .user {
+//    padding-top: emCalc(230px);
+//  }
+//  margin-bottom: emCalc(25px);
+//}
+//
+//#footer {
+//  min-width: 100%;
+//}
+//
+//footer {
+//  .panel { //@include panel($footer-background-color);
+//    border: none;
+//    background: #FFFFFF image-url('home/footer_bg.png') repeat-x;
+//    li {
+//      list-style: none;
+//    }
+//    a {
+//      color: black;
+//    }
+//    a:hover {
+//      color: $primary-color
+//    }
+//    .row {
+//      max-width: $row-width;
+//      margin: auto;
+//    }
+//  }
+//}
+//
+//#blackboard {
+//  .board-corner-top-left {
+//    background: image-url('board/corners.gif') no-repeat top left;
+//    width: 96px;
+//    height: 94px;
+//  }
+//  .board-corner-top-right {
+//    background: image-url('board/corners.gif') no-repeat;
+//    background-position: 0 -297px;
+//    width: 96px;
+//    height: 94px;
+//  }
+//  .board-top {
+//    background: image-url('board/board-top.gif'); background-position: 0 0px; background-repeat: repeat-x;
+//    margin-right: 87px;
+//    margin-left: 96px;
+//    height: 34px;
+//  }
+//  .board-bottom {
+//    background: image-url('board/board-bottom.gif'); background-position: 0 0px; background-repeat: repeat-x;
+//    margin-right: 88px;
+//    margin-left: 88px;
+//    margin-top: 58px;
+//    height: 34px;
+//  }
+//  .board-content {
+//    margin-left: 50px;
+//    margin-right:50px;
+//
+//  }
+//  .board-corner-bottom-left {
+//    background: image-url('board/corners.gif') no-repeat;
+//    background-position: 0 -99px;
+//    width: 96px; height: 94px;
+//  }
+//  .board-corner-bottom-right {
+//    background: image-url('board/corners.gif') no-repeat;
+//    background-position: 0 -198px;
+//    width: 96px; height: 94px;
+//  }
+//  .board-bottom {
+//    height: 94px;
+//  }
+//}
 
