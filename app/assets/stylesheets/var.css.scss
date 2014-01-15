@@ -1,0 +1,33 @@
+//@import "foundation_and_overrides";
+$price-title-weight: normal;
+$row-width: emCalc(1280px);
+
+$document-subtitle-color: black;//: $subheader-font-color;
+$document-subtitle-font-size: emCalc(16px);
+
+//annonces
+
+//sub title to show sale_book
+
+//$sale-book-subtitle-color: #a03b32;
+$sale-book-subtitle-font-size: emCalc(3px);
+
+//home
+//colors for last resource panels
+$panel-document-color: #0A5F33;
+$panel-ads-color: #812820;
+$panel-news-color: #244D7A;
+
+//footer
+$footer-background-color: #a3a3a3;
+
+$messages-unread-border-left: 2px solid blue;
+
+$footer-middle-color: lighten($footer-background-color, 20%);
+$footer-end-color: lighten($footer-background-color, 30%);
+
+$font-size : 1em;
+
+.row {
+  max-width: $row-width;
+}

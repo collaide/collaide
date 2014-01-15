@@ -1,13 +1,13 @@
 // Place all the styles related to the advertisement/advertisements controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import 'foundation_and_overrides';
+//@import 'foundation_and_overrides';
 
 // INDEX <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 #sale_book_index{
   h5 {
     a{
-      color: $header-font-color;
+      color: black;//$header-font-color;
     }
   }
 }

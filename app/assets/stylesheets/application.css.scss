@@ -11,8 +11,11 @@
  */
 
  /* require_self
- *= require jquery.ui.all
+
  *= require jqtree
+ *= require jquery.ui.datepicker
  *= require select2
- *= require_tree ./front
+ *= require foundation_and_overrides
  */
+
+//  jquery.ui.all
