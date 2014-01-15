@@ -35,18 +35,16 @@ class Advertisement::SaleBooksController < ApplicationController
     book = Book.new
     @advertisement_sale_book.book = book
 
-    # A décommenter pour voir le bug de googlebooks !
-
-    test = GoogleBooks.search('isbn:9781443411080')
-
     respond_to do |format|
       format.html # new.html.haml
       format.json {
         isbn = params[:isbn]
         parse_isbn(isbn)
-        #logger.info(isbn.inspect)
+        logger.debug(isbn.inspect)
         google_book = GoogleBooks.search("isbn:#{isbn}").first
+        logger.debug(google_book.inspect)
         if google_book && !isbn.blank?
+          logger.debug('Here we fill the book with the google infos')
           fillBook(@advertisement_sale_book.book, google_book)
         end
         render json: @advertisement_sale_book.book
