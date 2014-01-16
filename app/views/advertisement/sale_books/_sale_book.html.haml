@@ -1,5 +1,4 @@
--#.panel#sale_book_index
-%li
+%li.sale_book_index
   .row.sale_book_index{'class'=>"sale_book_id_#{sale_book.id}"}
     .hide
       .sale_book_text_title
@@ -28,9 +27,11 @@
       -#      =sale_book.hits
       #star
     .small-12.columns.large-8
-      %h5= link_to sale_book.book.title.truncate(80, separator: '', omission: '...'), sale_book
+      %h3= link_to sale_book.title.truncate(80, separator: '', omission: '...'), sale_book
+      %h6.ads-subtitle= link_to sale_book.book.title.truncate(80, separator: '', omission: '...'), sale_book
       -#%h6.subheader= t('sale_books.index.subtitle1', book:sale_book.book.title)
-      %h5.subheader
+      -#%h5.subheader
+      %p
         =t('sale_books.index.subtitle2', price: number_to_currency(sale_book.price, :unit => sale_book.currency.text))
         =link_to(sale_book.user.to_s, sale_book.user)
       -if sale_book.description

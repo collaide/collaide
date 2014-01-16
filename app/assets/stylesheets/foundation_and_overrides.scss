@@ -991,12 +991,13 @@
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
 @import 'foundation';
-@import "var.css.scss";
+@import 'foundation-icons';
+@import 'var.css.scss';
 
 
 //documents
 .index-document {
-  h1 {
+  h3 {
     a {
       color: $header-font-color;
       font-size: emCalc(25px);
@@ -1095,14 +1096,35 @@
 
 // sale books
 // INDEX <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-#sale_book_index{
-  h5 {
-    a{
+.sale_book_index{
+  h3 {
+    a {
+      color: $header-font-color;
+      font-size: emCalc(25px);
+      line-height: 0.5em;
+    }
+    margin-bottom: emCalc(5px);
+    line-height: .85em;
+    a:hover {
+      text-decoration: underline;
       color: $header-font-color;
     }
   }
+  .ads-subtitle {
+    margin-top: $subheader-top-margin;
+    margin-bottom: $subheader-bottom-margin;
+    color: $document-subtitle-color;
+    font-weight: $subheader-font-weight;
+    a {
+      color: $document-subtitle-color;
+      font-weight: $subheader-font-weight;
+    }
+    a:hover {
+      color: $primary-color;
+    }
+  }
 }
-// END INDEX <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+// Sale_book END INDEX <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 // SHOW <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 .sale_book_title {
