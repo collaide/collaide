@@ -13,7 +13,9 @@ end
 module Collaide
   class Application < Rails::Application
     # ATTENTION Ajouter pour contrer le bug de GoogleBooks
-    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+    # Je l'ai mis dans environnements/development.rb --> comme ça le serveur prod ne quinte pas.
+    # Et Si ça bug en production, je dois pouvoir le configurer facilement
+    #OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
