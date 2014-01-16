@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Advertisement::SaleBooksController < ApplicationController
+  load_and_authorize_resource class: Advertisement::SaleBook
 
   include BooksHelper
 

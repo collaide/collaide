@@ -152,21 +152,25 @@ class Document::DocumentsController < ApplicationController
   end
 
   def show
-     @document = Document::Document.find params[:id]
+     @document = Document::Document.includes(:domains).find params[:id]
      add_breadcrumb(@document.title)
     @top_docs = {}
-    Document::Document.all.each do |a_doc|
+    @suggest = []
+    Document::Document.includes(:note_average, :domains).all.each do |a_doc|
       unless a_doc.id == @document.id
         @top_docs[:hit] = a_doc if @top_docs[:hit].nil? or @top_docs[:hit].hits < a_doc.hits
         @top_docs[:created_at] = a_doc if @top_docs[:created_at].nil? or @top_docs[:created_at].created_at < a_doc.created_at
         @top_docs[:notest] = a_doc if !a_doc.note_average.nil? and(@top_docs[:notest].nil? or @top_docs[:notest].note_average.avg < a_doc.note_average.avg)
       end
+      if a_doc.id != @document.id && @suggest.size < 3 && @document.domains.first.id == a_doc.domains.first.id
+        @suggest << a_doc
+      end
     end
 
-    @suggest = []
-    Document::Document.joins(:domains).where("domains.id=#{@document.domains.first.id}").all.each do |a_doc|
-      @suggest << a_doc if a_doc.id != @document.id and @suggest.size <3
-    end
+
+    #Document::Document.joins(:domains).where("domains.id=#{@document.domains.first.id}").all.each do |a_doc|
+    #  @suggest << a_doc if a_doc.id != @document.id and @suggest.size <3
+    #end
     content_for(:title, t('document.documents.show.meta_title',
                          doc_name: @document.title,
                          title_type: t('document.documents.index.title_type',

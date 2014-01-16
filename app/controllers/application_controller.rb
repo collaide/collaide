@@ -9,12 +9,28 @@ class ApplicationController < ActionController::Base
 
   #rescue_from ActionController::RoutingError, :with => :render_not_found
 
-  def after_sign_in_path_for(resource)
-    #sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')
+  before_filter :store_location
 
-      logger.debug(stored_location_for(resource).inspect)
-      logger.debug('salkjdvajksd')
-      request.env['omniauth.origin'] ||stored_location_for(resource) || request.referer || root_path
+  def store_location
+    # store last url - this is needed for post-login redirect to whatever the user last visited.
+    if (request.fullpath != new_user_session_path &&
+        request.fullpath != new_user_registration_path &&
+        request.fullpath != user_password_path &&
+        request.fullpath != destroy_user_session_path &&
+        request.fullpath != user_registration_path &&
+        !request.xhr?) # don't store ajax calls
+      session[:previous_url] = request.fullpath
+    end
+  end
+
+  def after_sign_in_path_for(resource)
+    session[:previous_url] || root_path
+  end
+
+  def after_sign_out_path_for(resource)
+    flash[:login_out] = 'true'
+    logger.debug(flash[:login_out])
+    session[:previous_url] || root_path
   end
 
   def routing_error
@@ -59,7 +75,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    if !request.env["HTTP_REFERER"]
+    if !request.env["HTTP_REFERER"] || !flash[:notice].nil?
       redirect_to root_url
     else
       redirect_to user_session_path, alert: t('access_denied')
