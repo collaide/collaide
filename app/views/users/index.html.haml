@@ -1,4 +1,7 @@
-%h1= t'users.index.title_page'
+%h1= t 'users.index.title_page'
 
-%ul.large-block-grid-5
+
+%ul.large-block-grid-4.medium-block-grid-3.small-block-grid-2#users
   =render @users
+#paginate.hide
+  =paginate @users

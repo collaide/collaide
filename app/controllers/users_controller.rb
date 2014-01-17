@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   add_breadcrumb I18n.t('users.index.breadcrumb'),  :users_path
 
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(32)
   end
 
   def show
