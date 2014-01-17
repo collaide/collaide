@@ -186,6 +186,8 @@ GEM
     foundation-rails (5.0.2.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
+    friendly_id (4.0.10.1)
+      activerecord (>= 3.0, < 4.0)
     fssm (0.2.10)
     geocoder (1.1.8)
     gherkin (2.12.2)
@@ -517,6 +519,7 @@ DEPENDENCIES
   faker (= 1.0.1)
   foundation-icons-sass-rails
   foundation-rails
+  friendly_id (~> 4.0.10)
   geocoder
   globalize
   googlebooks (~> 0.0.8)

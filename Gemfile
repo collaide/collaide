@@ -16,7 +16,7 @@ gem 'kaminari'
 gem 'magic_encoding'
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git' # <a href="https://github.com/ctran/annotate_models" target="_blank">https://github.com/ctran/annotate_models</a>
 
-
+gem "friendly_id", "~> 4.0.10"
 gem 'jquery-rails'
 gem 'jqtree-rails'
 gem 'jquery-ui-rails'
