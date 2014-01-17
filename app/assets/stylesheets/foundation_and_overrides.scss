@@ -996,6 +996,17 @@
 
 
 //documents
+.no-border {
+  border: none;
+}
+
+.full {
+  width: 50%;
+  .button {
+    width: 100%;
+  }
+}
+
 .index-document {
   h3 {
     a {
