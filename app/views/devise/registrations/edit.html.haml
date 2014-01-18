@@ -1,3 +1,7 @@
+-content_for(:title, t("devise.registrations.edit.title", resource: t("activerecord.models.#{resource_name.to_s}")))
+-add_breadcrumb I18n.t('users.show.breadcrumb', user: @user.to_s), user_path(@user)
+-add_breadcrumb t("devise.registrations.edit.title", resource: t("activerecord.models.#{resource_name.to_s}"))
+
 %h2= t("devise.registrations.edit.title", resource: t("activerecord.models.#{resource_name.to_s}"))
 = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, multipart: true }) do |f|
   = f.error_notification
