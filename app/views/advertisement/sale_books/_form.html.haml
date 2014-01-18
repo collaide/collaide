@@ -1,4 +1,3 @@
--#TODO : Ajouter des tooltips foundation
 =simple_form_for(@advertisement_sale_book, html: {data_abide: true}) do |f|
   =f.error_notification
   .form-inputs
@@ -10,6 +9,7 @@
               =p.input :isbn_13, input_html: {id: 'book_isbn'}, label_html: tooltip(t('sale_books.new.forms.tooltips.isbn'))
             .hide-for-small.large-4.columns
               =t('sale_books.new.forms.infos_isbn')
+              =link_to t('sale_books.new.forms.isbn_not_found'), '#', id:'isbn_not_found'
             .hide-for-small.large-2.columns
               =image_tag 'annonces/isbn_wiki.gif'
         -disabledTitle = false

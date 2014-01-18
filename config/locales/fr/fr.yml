@@ -437,8 +437,9 @@ fr:
         submit: Mettre ce livre en vente
         succes: Félicitation ! Votre livre a bien été mis en vente !
         infos_isbn: Le code isbn est le nombre qui se situe sous le code barre de votre livre.
+        isbn_not_found: Pas trouvé le code ISBN ?
         valid_isbn: Désolé, nous n'avons trouvé aucun livre avec ce code ISBN
-        other_solution: Vous pouvez entrer manuellement le titre et l'auteur de votre livre !
+        other_solution: Vous pouvez entrer manuellement le titre et l'auteur de votre livre ci-dessous !
         details_label: Augmentez vos chances de vente
         more_details: *no
         less_details: *yes

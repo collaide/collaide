@@ -5,7 +5,13 @@
 $('#more_details').click ->
   $('#form_to_hide').toggle 'slow'
 
-$("#book_isbn").click -> $('#book_title_to_hide').hide 'slow'
+$('#book_isbn').click ->
+  $('#book_title_to_hide').hide 'slow'
+  initializeIsbn()
+
+
+# Affiche les champs de Titre et Auteur si le user trouve pas le isbn
+$('#isbn_not_found').click -> otherSolution()
 
 addErrorToIsbn = () ->
   $('.advertisement_sale_book_book_isbn_13').addClass('error')
@@ -33,6 +39,7 @@ initializeIsbn = () ->
 #    disabledInput('#book_title')
 #    disabledInput('#book_authors')
 
+
 $('#book_isbn').blur ->
   initializeIsbn()
   isbn = $('#book_isbn').val()
@@ -59,8 +66,15 @@ $('#book_isbn').blur ->
 #    addErrorToIsbn()
 #    $('#book_title_to_hide').show 'slow'
   else
-    $('#book_isbn').after("<small class='small_book_isbn_error'>"+$('#ajax_book_isbn_other_solution').val()+"</small>");
-    $('#book_title_to_hide').show 'slow'
+    otherSolution()
+
+
+# Mettre manuellement le titre et l'auteur
+otherSolution = () ->
+  initializeIsbn()
+  $('.advertisement_sale_book_book_isbn_13').addClass('error')
+  $('#book_isbn').after("<small class='small_book_isbn_error'>"+$('#ajax_book_isbn_other_solution').val()+"</small>");
+  $('#book_title_to_hide').show 'slow'
 
 # ACHAT D UN LIVRE
 
