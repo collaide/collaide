@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 # == Schema Information
 #
-# Table name: User_group_groups
+# Table name: group_groups
 #
 #  id          :integer          not null, primary key
 #  name        :string(255)
@@ -13,16 +13,14 @@
 #
 
 # -*- encoding : utf-8 -*-
-class User::Group::Group < ActiveRecord::Base
+class Group::Group < ActiveRecord::Base
   attr_accessible :description, :is_public, :name, :password
 
-  has_one :repository, :class_name => 'CFile::Structure'
-
   has_many :statuses, :class_name => 'User::Status'
-  has_many :Users, :class_name => 'User::Group::User'
-  has_many :demands, :class_name => 'User::Group::Demand'
+  has_many :users, :class_name => 'Group::User'
+  has_many :demands, :class_name => 'Group::Demand'
 
   validates_presence_of :name
 
-  validates :password, length: {minimum: 5}
+  validates :password, length: {minimum: 4}
 end

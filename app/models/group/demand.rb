@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 # == Schema Information
 #
-# Table name: User_group_demands
+# Table name: group_demands
 #
 #  id         :integer          not null, primary key
 #  message    :text
@@ -12,12 +12,12 @@
 #
 
 # -*- encoding : utf-8 -*-
-class User::Group::Demand < ActiveRecord::Base
+class Group::Demand < ActiveRecord::Base
   attr_accessible :message
 
   belongs_to :user_has_sent, class_name: 'User'
 
-  belongs_to :group, :class_name => 'User::Group::Group'
+  belongs_to :group, :class_name => 'Group::Group'
 
   has_and_belongs_to_many :users_are_invited, class_name:  'User'
 end

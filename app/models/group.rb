@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
-module CFile
+module Group
   def self.table_name_prefix
-    'c_file_'
+    'group_'
   end
 end

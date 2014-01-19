@@ -4,19 +4,15 @@
 # Table name: User_statuses
 #
 #  id              :integer          not null, primary key
-#  message         :text
+#  content         :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  user_id         :integer
-#  User_group_id :integer
+#  owner           :reference
 #
 
 # -*- encoding : utf-8 -*-
 class User::Status < ActiveRecord::Base
-  attr_accessible :message
+  attr_accessible :content
 
-  belongs_to :user, inverse_of: :statuses
-  belongs_to :group, :class_name => 'User::Group', inverse_of: :statuses
-
-  has_many :comments, :class_name => 'User::Comment', inverse_of: :statuses
+  belongs_to :owner, polymorphic: true, inverse_of: :statuses
 end

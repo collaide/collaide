@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131229161824) do
+ActiveRecord::Schema.define(:version => 20140119144611) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -66,62 +66,6 @@ ActiveRecord::Schema.define(:version => 20131229161824) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
-
-  create_table "c_file_c_files", :force => true do |t|
-    t.integer  "rights"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.integer  "document_id"
-    t.integer  "bit_mask"
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
-  end
-
-  create_table "c_file_folders", :force => true do |t|
-    t.integer  "c_file_id"
-    t.integer  "structure_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "c_file_owners", :force => true do |t|
-    t.string   "name"
-    t.integer  "rights"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "c_file_structures", :force => true do |t|
-    t.string   "name"
-    t.integer  "size"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "user_id"
-    t.integer  "member_group_id"
-    t.integer  "c_file_c_file_id"
-    t.string   "ancestry"
-    t.integer  "position"
-  end
-
-  add_index "c_file_structures", ["ancestry"], :name => "index_c_file_structures_on_ancestry"
-  add_index "c_file_structures", ["member_group_id"], :name => "index_c_file_structures_on_member_group_id"
-  add_index "c_file_structures", ["user_id"], :name => "index_c_file_structures_on_user_id"
-
-  create_table "comments", :force => true do |t|
-    t.string   "title",            :limit => 50, :default => ""
-    t.text     "comment"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.integer  "user_id"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
-  end
-
-  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
-  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "contacts", :force => true do |t|
     t.string   "email"
@@ -244,9 +188,36 @@ ActiveRecord::Schema.define(:version => 20131229161824) do
     t.integer "sale_book_id"
   end
 
+  create_table "group_demands", :force => true do |t|
+    t.text     "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.integer  "group_id"
+  end
+
   create_table "group_demands_users", :force => true do |t|
     t.integer "demand_id"
     t.integer "user_id"
+  end
+
+  create_table "group_groups", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "is_public",   :default => true
+    t.string   "password"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "type"
+  end
+
+  create_table "group_users", :force => true do |t|
+    t.boolean  "is_admin"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "member_id"
+    t.integer  "group_id"
+    t.string   "member_type"
   end
 
   create_table "guest_books", :force => true do |t|
@@ -361,16 +332,6 @@ ActiveRecord::Schema.define(:version => 20131229161824) do
     t.integer "user_id"
   end
 
-  create_table "user_comments", :force => true do |t|
-    t.text     "message2"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "member_status_id"
-    t.integer  "user_id"
-  end
-
-  add_index "user_comments", ["user_id"], :name => "index_member_comments_on_user_id"
-
   create_table "user_contacts", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -397,31 +358,6 @@ ActiveRecord::Schema.define(:version => 20131229161824) do
     t.integer  "user_id"
   end
 
-  create_table "user_group_demands", :force => true do |t|
-    t.text     "message2"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "user_id"
-    t.integer  "group_id"
-  end
-
-  create_table "user_group_groups", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.boolean  "is_public",   :default => true
-    t.string   "password"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-  end
-
-  create_table "user_group_users", :force => true do |t|
-    t.boolean  "is_admin"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "user_id"
-    t.integer  "member_group_id"
-  end
-
   create_table "user_notifications", :force => true do |t|
     t.string   "class_name"
     t.string   "method_name"
@@ -442,13 +378,6 @@ ActiveRecord::Schema.define(:version => 20131229161824) do
 
   add_index "user_parameters", ["user_id"], :name => "index_member_parameters_on_user_id"
 
-  create_table "user_schools", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "user_scolarities", :force => true do |t|
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
@@ -457,23 +386,23 @@ ActiveRecord::Schema.define(:version => 20131229161824) do
   end
 
   create_table "user_statues", :force => true do |t|
-    t.text     "message2"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "user_id"
-    t.integer  "member_group_id"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "owner_id"
+    t.string   "owner_type"
   end
 
   create_table "user_studies", :force => true do |t|
     t.date     "started_at"
     t.date     "ended_at"
     t.string   "orientation"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.integer  "member_scolarity_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "group_id"
   end
 
-  add_index "user_studies", ["member_scolarity_id"], :name => "index_member_studies_on_member_scolarity_id"
+  add_index "user_studies", ["group_id"], :name => "index_member_studies_on_member_scolarity_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

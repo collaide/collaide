@@ -1,20 +1,23 @@
 # -*- encoding : utf-8 -*-
 # == Schema Information
 #
-# Table name: User_group_Users
+# Table name: group_users
 #
 #  id              :integer          not null, primary key
 #  is_admin        :boolean
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  user_id         :integer
-#  User_group_id :integer
+#  group_id :integer
 #
 
 # -*- encoding : utf-8 -*-
-class User::Group::User < ActiveRecord::Base
+class Group::User < ActiveRecord::Base
   attr_accessible :is_admin
 
-  belongs_to :user
-  belongs_to :User_group, :class_name => 'User::Group::Group'
+  # Les membres du group
+  belongs_to :member, polymorphic: true
+
+  # Le group
+  belongs_to :user_group, :class_name => 'Group::Group'
 end

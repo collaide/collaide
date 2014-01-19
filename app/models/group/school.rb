@@ -1,18 +1,15 @@
 # -*- encoding : utf-8 -*-
 # == Schema Information
 #
-# Table name: User_schools
+# Table name: group_groups
 #
 #  id          :integer          not null, primary key
-#  name        :string(255)
-#  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 # -*- encoding : utf-8 -*-
-class User::School < ActiveRecord::Base
-  attr_accessible :description, :name
+class Group::School < Group::Group
 
-  has_many :scolarities, :class_name => 'User::Scolarity'
+  has_many :user_studies, :class_name => 'User::Study'
 end
