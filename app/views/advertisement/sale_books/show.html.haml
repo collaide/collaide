@@ -58,7 +58,10 @@
             = "#{p.text}, "
       .hide-for-small
         %li.cta-button
-          %a.button.success{'href'=>'#', 'data-reveal-id'=>'buy_book'}=t'sale_books.show.buy'
+          -if current_user.nil?
+            =link_to(t('sale_books.index.buy'), contact_book_messages_path(@sale_book.id), class: 'button success')
+          -else
+            %a.button.success{'href'=>'#', 'data-reveal-id'=>'buy_book'}=t'sale_books.show.buy'
 
 -#Si il y a d'autres ventes pour ce livre
 -if @sale_book.book.sale_books.count>1
