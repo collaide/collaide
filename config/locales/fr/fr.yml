@@ -216,7 +216,7 @@ fr:
                   Si vous êtes intéressé par un partenariat, n'hésitez pas à nous <a href='%{link}'>contacter</a>."
     rules:
       title_page: Réglement du site
-      bc: réglement
+      bc: Réglement
       key_words: "règlement, conditions d'utilisation"
       description_meta: "Vous trouvererz ici le réglement d'utilisation du site"
       h1_title: Règlement
