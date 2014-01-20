@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 # == Schema Information
 #
-# Table name: group_users
+# Table name: group_members
 #
 #  id              :integer          not null, primary key
 #  is_admin        :boolean
@@ -12,12 +12,12 @@
 #
 
 # -*- encoding : utf-8 -*-
-class Group::User < ActiveRecord::Base
+class Group::Member < ActiveRecord::Base
   attr_accessible :is_admin
 
   # Les membres du group
   belongs_to :member, polymorphic: true
 
   # Le group
-  belongs_to :user_group, :class_name => 'Group::Group'
+  belongs_to :group, :class_name => 'Group::Group'
 end
