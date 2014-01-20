@@ -58,6 +58,10 @@ class Advertisement::SaleBooksController < ApplicationController
     @advertisement_sale_book = Advertisement::SaleBook.find(params[:id])
     add_breadcrumb I18n.t("sale_books.show.title", book: @advertisement_sale_book.book.title), advertisement_sale_book_path(@advertisement_sale_book)
     add_breadcrumb I18n.t("sale_books.edit.title", book: @advertisement_sale_book.book.title), edit_advertisement_sale_book_path(@advertisement_sale_book)
+
+    #content_for(:key_words, t('document.documents.index.key_words') + ', ' + title_a.join(', '))
+    #content_for(:meta_description, t('document.documents.index.description_meta') + '. ' + title_a.map {|an_elem| "#{an_elem.titleize}"}.join('. '))
+
   end
 
   # POST /advertisement/sale_books

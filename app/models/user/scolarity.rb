@@ -14,7 +14,7 @@
 class User::Scolarity < ActiveRecord::Base
 
   belongs_to :user
-  belongs_to :school, :class_name => 'User::School'
+  belongs_to :school, :class_name => 'Group::School'
 
   has_one :study, :class_name => 'User::Study'
 

@@ -9,12 +9,13 @@
 #  orientation         :string(255)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
-#  User_scolarity_id :integer
+#  user_scolarity_id :integer
 #
 
 # -*- encoding : utf-8 -*-
 class User::Study < ActiveRecord::Base
   attr_accessible :ended_at, :orientation, :started_at
 
-  belongs_to :scolarity, :class_name => 'User::Scolarity'
+  belongs_to :user
+  belongs_to :school, :class_name => 'Group::School'
 end

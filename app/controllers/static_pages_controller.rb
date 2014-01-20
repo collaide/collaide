@@ -42,7 +42,7 @@ class StaticPagesController < ApplicationController
 
   def send_email
     @action = Contact.new params[:contact]
-    if @action.save
+    if @action.valid?
       ActionMailer::Base.mail(
           from: @action.email, :to => 'contact@collaide.com',
           subject: @action.subject,

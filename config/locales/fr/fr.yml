@@ -153,7 +153,7 @@ fr:
       key_words: a props, présentation, auteurs, outils
       bc: A propos
       title: A propos
-      blockquote: Cette page présente les auteurs du site et les outils utilisés.
+      blockquote: Collaide est un projet developpé bénévolement par deux étudiants. Cette page présente les auteurs du site et les outils utilisés.
       the_authors: Les auteurs
       text:
         numa: |
@@ -216,7 +216,7 @@ fr:
                   Si vous êtes intéressé par un partenariat, n'hésitez pas à nous <a href='%{link}'>contacter</a>."
     rules:
       title_page: Réglement du site
-      bc: réglement
+      bc: Réglement
       key_words: "règlement, conditions d'utilisation"
       description_meta: "Vous trouvererz ici le réglement d'utilisation du site"
       h1_title: Règlement
@@ -438,8 +438,9 @@ fr:
         submit: Mettre ce livre en vente
         succes: Félicitation ! Votre livre a bien été mis en vente !
         infos_isbn: Le code isbn est le nombre qui se situe sous le code barre de votre livre.
+        isbn_not_found: Pas trouvé le code ISBN ?
         valid_isbn: Désolé, nous n'avons trouvé aucun livre avec ce code ISBN
-        other_solution: Vous pouvez entrer manuellement le titre et l'auteur de votre livre !
+        other_solution: Vous pouvez entrer manuellement le titre et l'auteur de votre livre ci-dessous !
         details_label: Augmentez vos chances de vente
         more_details: *no
         less_details: *yes

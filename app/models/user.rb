@@ -48,8 +48,8 @@ class   User < ActiveRecord::Base
 
   has_repository
 
-  has_one :contact, :class_name => 'Member::Contact', inverse_of: :user
-  has_one :parameter, :class_name => 'Member::Parameter'
+  has_one :contact, :class_name => 'User::Contact', inverse_of: :user
+  has_one :parameter, :class_name => 'User::Parameter'
 
   has_many :documents, :class_name => 'Document::Document'
   # Quels documents sont téléchargés
@@ -58,31 +58,31 @@ class   User < ActiveRecord::Base
   #------
 
   # Status de l'utilisateur sur son mur
-  has_many :statues, :class_name => 'Member::Status', inverse_of: :user
+  has_many :statues, :class_name => 'User::Status', inverse_of: :user
 
   # Un user a plusieurs études (gymnase, uni, etc) chaque études à une établissement scolaire, une période et une orientation
-  has_many :scolarities, :class_name => 'Member::Scolarity'
+  has_many :studies, :class_name => 'User::Scolarity'
 
   # Un user a plusieurs groupes et un groupe a plusieurs utilisateurs
-  has_many :group_members, :class_name => 'Member::Group::Member'
-  has_many :groups, :class_name => 'Member::Group::Group', through: :group_members, source: :member_group
+  has_many :group_members, :class_name => 'Group::Member'
+  has_many :groups, :class_name => 'Group::Group', through: :group_members, source: :group
   #########
   #invitation a rejoindre un groupe
-  has_many :created_group_demands, :class_name => 'Member::Group::Demand'
+  has_many :created_group_demands, :class_name => 'Group::Demand'
 
   #many-to-many
-  has_many :member_friend_friends, :class_name => 'Member::Friend::Friend'
-  has_many :friends, :class_name => 'Member::Friend::Friend', through: :member_friend_friends, source: :user
+  has_many :user_friend_friends, :class_name => 'User::Friend::Friend'
+  has_many :friends, :class_name => 'User::Friend::Friend', through: :user_friend_friends, source: :user
   #####
   #demande envoyée
-  has_many :created_friend_demands, :class_name => 'Member::Friend::Demand', foreign_key: :user_has_sent_id
+  has_many :created_friend_demands, :class_name => 'User::Friend::Demand', foreign_key: :user_has_sent_id
   #demande reçues
-  has_many :friend_demands, class_name: 'Member::Friend::Demand', foreign_key: :user_is_invited_id
+  has_many :friend_demands, class_name: 'User::Friend::Demand', foreign_key: :user_is_invited_id
 
   has_many :notifications, class_name: 'UserNotification'
 
-  has_and_belongs_to_many :group_demands, :class_name => 'Member::Group::Demand', join_table: 'group_demands_users'
-  has_and_belongs_to_many :addresses, :class_name => 'Member::Address', join_table: 'member_addresses_users'
+  has_and_belongs_to_many :group_demands, :class_name => 'Group::Demand', join_table: 'group_demands_users'
+  has_and_belongs_to_many :addresses, :class_name => 'User::Address', join_table: 'user_addresses_users'
 
   has_many :advertisements, :class_name => 'Advertisement::Advertisement'
 

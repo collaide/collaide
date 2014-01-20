@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class GuestBooksController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource class: Document::GuestBook
   # GET /guest_books
   # GET /guest_books.json
   def index
