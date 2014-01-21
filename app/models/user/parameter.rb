@@ -13,7 +13,6 @@
 
 # -*- encoding : utf-8 -*-
 class User::Parameter < ActiveRecord::Base
-  attr_accessible :language, :localization
 
   belongs_to :user
 end

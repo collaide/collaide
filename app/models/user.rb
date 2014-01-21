@@ -39,8 +39,6 @@ class   User < ActiveRecord::Base
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :registerable
 
-  attr_accessible :provider, :uid, :email, :password, :password_confirmation, :remember_me, :roles, :avatar, :name, :points,
-                   :last_sign_in_at, :created_at, :has_notifications
   enumerize :role, in: [:admin, :moderator, :author, :banned, :super_admin, :doc_validator, :add_validator], scope: true, predicates: true
 
   #https://github.com/ging/mailboxer

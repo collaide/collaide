@@ -6,7 +6,6 @@ class UserMessage < ActiveRecord::Base
     columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
   end
 
-  attr_accessible :subject, :body, :user_ids
 
   column :subject, :string
   column :body, :text

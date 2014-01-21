@@ -14,7 +14,6 @@
 
 # -*- encoding : utf-8 -*-
 class Domain < ActiveRecord::Base
-  attr_accessible :description, :name, :position, :translations_attributes
 
   has_paper_trail
 

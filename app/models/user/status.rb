@@ -12,7 +12,6 @@
 
 # -*- encoding : utf-8 -*-
 class User::Status < ActiveRecord::Base
-  attr_accessible :content
 
   belongs_to :owner, polymorphic: true, inverse_of: :statuses
 end

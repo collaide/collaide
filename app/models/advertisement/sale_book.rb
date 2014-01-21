@@ -22,8 +22,6 @@
 
 # -*- encoding : utf-8 -*-
 class Advertisement::SaleBook < Advertisement::Sale
-  attr_accessible :state, :annotation, :domain_ids, :study_level_id
-
   extend Enumerize
   enumerize :annotation, in: [:not_annotated, :slightly_annotated, :annotated, :very_annotated]
   enumerize :state, in: [:new, :like_new, :normal, :damaged, :very_damaged]

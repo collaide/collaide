@@ -14,7 +14,6 @@
 
 # -*- encoding : utf-8 -*-
 class Group::Group < ActiveRecord::Base
-  attr_accessible :description, :is_public, :name, :password
 
   has_many :statuses, :class_name => 'User::Status'
   has_many :users, :class_name => 'Group::User'

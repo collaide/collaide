@@ -14,7 +14,6 @@
 
 # -*- encoding : utf-8 -*-
 class User::Study < ActiveRecord::Base
-  attr_accessible :ended_at, :orientation, :started_at
 
   belongs_to :user
   belongs_to :school, :class_name => 'Group::School'

@@ -35,10 +35,6 @@ class Document::Document < ActiveRecord::Base
   # permet de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   letsrate_rateable 'note'
 
-  attr_accessible :author, :description, :language, :number_of_pages, :realized_at, :title, :study_level_id,
-                  :document_type_id, :user_id, :files_attributes, :domains_attributes, :domain_ids,
-                  :hits, :status, :is_deleted, :created_at, :updated_at, :is_accepted
-
   scope :valid, -> { where(status: :accepted) }
 
   has_many :files, :class_name => 'CFile::CFile', dependent: :delete_all
