@@ -11,5 +11,5 @@
 # -*- encoding : utf-8 -*-
 class Group::School < Group::Group
 
-  has_many :user_studies, :class_name => 'User::Study'
+  has_many :studies, :class_name => 'User::Study'
 end
