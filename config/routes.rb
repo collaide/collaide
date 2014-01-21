@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 Collaide::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  root to: 'static_pages#home', as: 'root'
   localized do
     root :to => "static_pages#home", as: 'root'
 

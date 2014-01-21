@@ -65,7 +65,7 @@ class   User < ActiveRecord::Base
   has_many :group_members, :class_name => 'Group::Member'
   has_many :groups, :class_name => 'Group::Group', through: :group_members, source: :group
   #########
-  #invitation a rejoindre un groupe
+  #invitations créées  qui invite d'autres personnes à rejoindre un groupe
   has_many :created_group_demands, :class_name => 'Group::Demand'
 
   #many-to-many

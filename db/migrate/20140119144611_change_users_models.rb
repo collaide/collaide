@@ -1,7 +1,7 @@
 class ChangeUsersModels < ActiveRecord::Migration
   def change
-    rename_column :user_statues, :message2, :content
-    rename_column :user_group_demands, :message2, :message
+    rename_column :user_statues, :message, :content
+    #rename_column :user_group_demands, :message, :message
     remove_column :user_statues, :user_id
     remove_column :user_statues, :member_group_id
     # Liaison with users or groups or else

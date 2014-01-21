@@ -30,7 +30,6 @@ class Document::StudyLevel < ActiveRecord::Base
   end
 
   class Translation
-    attr_accessible :locale, :name, :description
   end
 
 end

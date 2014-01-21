@@ -14,7 +14,6 @@
 
 # -*- encoding : utf-8 -*-
 class Domain < ActiveRecord::Base
-
   has_paper_trail
 
   has_ancestry :orphan_strategy => :rootify
@@ -74,6 +73,5 @@ class Domain < ActiveRecord::Base
     end
 
   class Translation
-    attr_accessible :locale, :name, :description
   end
 end

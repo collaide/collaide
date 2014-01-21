@@ -44,7 +44,7 @@ class Document::Document < ActiveRecord::Base
   belongs_to :study_level, :class_name => 'Document::StudyLevel', include: :translations
   belongs_to :document_type, :class_name => 'Document::Type', include: :translations
 
-  has_and_belongs_to_many :domains, order: 'position ASC'
+  has_and_belongs_to_many :domains, class_name: 'Domain', order: 'position ASC'
 
   belongs_to :user
 

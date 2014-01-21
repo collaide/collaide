@@ -30,6 +30,5 @@ class Document::Type < ActiveRecord::Base
   end
 
   class Translation
-    attr_accessible :locale, :name, :description
   end
 end

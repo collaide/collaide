@@ -40,6 +40,7 @@ gem 'ancestry'
 #
 #gem 'activeadmin'
 #gem 'ActiveAdmin-Globalize3-inputs'
+gem "rails_admin", "~> 0.6.0"
 gem 'paper_trail', '~> 3.0.0'
 
 gem 'date_validator'
@@ -58,7 +59,7 @@ gem 'letsrate'
 
 gem 'enumerize'
 
-gem 'acts_as_commentable', '3.0.1'
+gem 'acts_as_commentable'
 
 gem 'mysql2',          '0.3.13'
 gem 'thinking-sphinx', '3.0.6'
