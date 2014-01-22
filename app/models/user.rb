@@ -61,11 +61,11 @@ class   User < ActiveRecord::Base
   has_many :statues, :class_name => 'User::Status', inverse_of: :user
 
   # Un user a plusieurs études (gymnase, uni, etc) chaque études à une établissement scolaire, une période et une orientation
-  has_many :studies, :class_name => 'User::Scolarity'
+  has_many :studies, :class_name => 'User::Study'
 
   # Un user a plusieurs groupes et un groupe a plusieurs utilisateurs
-  has_many :group_members, :class_name => 'Group::Member'
-  has_many :groups, :class_name => 'Group::Group', through: :group_members, source: :group
+  has_many :group_members, as: :member, :class_name => 'Group::GroupMember'
+  has_many :groups, :class_name => 'Group::Group', as: :member, through: :group_members#, source: :group
   #########
   #invitation a rejoindre un groupe
   has_many :created_group_demands, :class_name => 'Group::Demand'
