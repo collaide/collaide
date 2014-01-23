@@ -26,6 +26,7 @@ class Document::Document < ActiveRecord::Base
   extend Enumerize
 
   enumerize :status, in: [:accepted, :pending, :refused], default: :pending, predicates: true
+  enumerize :study_level, in: [:university, :college]
 
   #permte aux utilisateurs de commenter un document. https://github.com/jackdempsey/acts_as_commentable
   acts_as_commentable
@@ -37,11 +38,11 @@ class Document::Document < ActiveRecord::Base
 
   scope :valid, -> { where(status: :accepted) }
 
-  has_many :files, :class_name => 'CFile::CFile', dependent: :delete_all
+  mount_uploader :file, DocumentUploader
+
   has_many :document_downloads, :class_name => 'Document::Download'
   has_many :user_downloader, :class_name => 'User', through: :document_downloads, source: :user
 
-  belongs_to :study_level, -> {include(:translations)}, :class_name => 'Document::StudyLevel'
   belongs_to :document_type, -> {include(:translations)}, :class_name => 'Document::Type'
 
   has_and_belongs_to_many :domains, -> {order('position ASC')}, class_name: 'Domain'
@@ -50,8 +51,6 @@ class Document::Document < ActiveRecord::Base
 
   has_one :note_average, -> {where :dimension => 'note'}, :as => :cacheable, :class_name => "RatingCache", :dependent => :destroy
 
-
-  accepts_nested_attributes_for :files
   accepts_nested_attributes_for :domains
 
   before_validation :add_author

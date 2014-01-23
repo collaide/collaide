@@ -75,14 +75,14 @@ ActiveRecord::Schema.define(version: 20140123152321) do
     t.text     "comment"
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.integer  "user_id"
+    t.integer  "owner_id"
+    t.string   "owner_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
-  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["owner_id", "owner_type"], name: "index_comments_on_owner_id_and_owner_type", using: :btree
 
   create_table "contacts", force: true do |t|
     t.string   "subject"
@@ -102,43 +102,27 @@ ActiveRecord::Schema.define(version: 20140123152321) do
     t.string   "title"
     t.text     "description"
     t.string   "author"
-    t.integer  "number_of_pages",  default: 1
+    t.integer  "number_of_pages"
     t.date     "realized_at"
     t.string   "language"
+    t.boolean  "is_accepted",     default: false
+    t.string   "status",          default: "pending"
+    t.integer  "hits",            default: 0
+    t.boolean  "is_deleted",      default: false
+    t.string   "study_level"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "study_level_id"
-    t.integer  "document_type_id"
-    t.integer  "user_id"
-    t.string   "status",           default: "pending"
-    t.integer  "hits",             default: 0
-    t.boolean  "is_deleted",       default: false
-    t.boolean  "is_accepted",      default: false
+  end
+
+  create_table "document_documents_domains", id: false, force: true do |t|
+    t.integer "document_document_id", null: false
+    t.integer "domain_id",            null: false
   end
 
   create_table "document_downloads", force: true do |t|
     t.integer  "user_id"
     t.integer  "document_documents_id"
     t.integer  "number_of_downloads"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "document_study_level_translations", force: true do |t|
-    t.integer  "document_study_level_id", null: false
-    t.string   "locale",                  null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.text     "description"
-  end
-
-  add_index "document_study_level_translations", ["document_study_level_id"], name: "index_08175c174282bb635bbe8dc32fbc2d2926bb130d", using: :btree
-  add_index "document_study_level_translations", ["locale"], name: "index_document_study_level_translations_on_locale", using: :btree
-
-  create_table "document_study_levels", force: true do |t|
-    t.string   "name"
-    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -160,11 +144,6 @@ ActiveRecord::Schema.define(version: 20140123152321) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "documents_domains", force: true do |t|
-    t.integer "domain_id"
-    t.integer "document_id"
   end
 
   create_table "domain_translations", force: true do |t|

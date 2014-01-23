@@ -6,10 +6,10 @@ FactoryGirl.define do
 
   factory :user do
     sequence(:name)  { |n| "Person #{n}" }
-    sequence(:email) { |n| "person_#{n}@example.com"}
-    roles %w[super-admin]
-    password "foobar"
-    password_confirmation "foobar"
+    sequence(:email) { |n| "admin#{n}@example.com"}
+    role :super_admin
+    password "password"
+    password_confirmation "password"
   end
 
   factory :domain do  |domain|

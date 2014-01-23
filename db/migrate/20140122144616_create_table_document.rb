@@ -44,7 +44,7 @@ class CreateTableDocument < ActiveRecord::Migration
         t.string :title, :limit => 50, :default => ""
         t.text :comment
         t.references :commentable, :polymorphic => true, index: true
-        t.references :owner, polymorphic: trus, index: true
+        t.references :owner, polymorphic: true, index: true
         t.timestamps
       end
 
