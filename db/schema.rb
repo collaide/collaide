@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130830185456423) do
-
+ActiveRecord::Schema.define(:version => 20140122144613) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -49,41 +48,6 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.integer  "study_level_id"
   end
 
-  create_table "advertisement_delivery_modes", :force => true do |t|
-    t.integer "delivery_mode_id"
-    t.integer "sale_id"
-  end
-
-  create_table "advertisement_payment_modes", :force => true do |t|
-    t.integer "payment_mode_id"
-    t.integer "sale_id"
-  end
-
-  create_table "blog_comments", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "email",      :null => false
-    t.string   "website"
-    t.text     "body",       :null => false
-    t.integer  "post_id",    :null => false
-    t.string   "state"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "blog_comments", ["post_id"], :name => "index_blog_comments_on_post_id"
-
-  create_table "blog_posts", :force => true do |t|
-    t.string   "title",                         :null => false
-    t.text     "body",                          :null => false
-    t.integer  "blogger_id"
-    t.string   "blogger_type"
-    t.integer  "comments_count", :default => 0, :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-  end
-
-  add_index "blog_posts", ["blogger_type", "blogger_id"], :name => "index_blog_posts_on_blogger_type_and_blogger_id"
-
   create_table "books", :force => true do |t|
     t.string   "title"
     t.string   "authors"
@@ -103,32 +67,23 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.datetime "updated_at",     :null => false
   end
 
-  create_table "comments", :force => true do |t|
-    t.string   "title",            :limit => 50, :default => ""
-    t.text     "comment"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
-  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
-
   create_table "contacts", :force => true do |t|
     t.string   "email"
     t.string   "subject"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "conversations", :force => true do |t|
     t.string   "subject",    :default => ""
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "delivery_modes_sales", :force => true do |t|
+    t.integer "delivery_mode_id"
+    t.integer "sale_id"
   end
 
   create_table "demands_users", :force => true do |t|
@@ -151,15 +106,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.string   "status",           :default => "pending"
     t.integer  "hits",             :default => 0
     t.boolean  "is_deleted",       :default => false
-    t.string   "slug"
     t.boolean  "is_accepted",      :default => false
-  end
-
-  add_index "document_documents", ["slug"], :name => "index_document_documents_on_slug", :unique => true
-
-  create_table "document_documents_domains", :force => true do |t|
-    t.integer "domain_id"
-    t.integer "document_id"
   end
 
   create_table "document_downloads", :force => true do |t|
@@ -172,11 +119,11 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
 
   create_table "document_study_level_translations", :force => true do |t|
     t.integer  "document_study_level_id"
-    t.string   "locale"
-    t.string   "name"
-    t.text     "description"
+    t.string   "locale",                  :null => false
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+    t.string   "name"
+    t.text     "description"
   end
 
   add_index "document_study_level_translations", ["document_study_level_id"], :name => "index_08175c174282bb635bbe8dc32fbc2d2926bb130d"
@@ -191,11 +138,11 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
 
   create_table "document_type_translations", :force => true do |t|
     t.integer  "document_type_id"
-    t.string   "locale"
-    t.string   "name"
-    t.text     "description"
+    t.string   "locale",           :null => false
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "name"
+    t.text     "description"
   end
 
   add_index "document_type_translations", ["document_type_id"], :name => "index_document_type_translations_on_document_type_id"
@@ -206,18 +153,20 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "slug"
   end
 
-  add_index "document_types", ["slug"], :name => "index_document_types_on_slug", :unique => true
+  create_table "documents_domains", :force => true do |t|
+    t.integer "domain_id"
+    t.integer "document_id"
+  end
 
   create_table "domain_translations", :force => true do |t|
     t.integer  "domain_id"
-    t.string   "locale"
-    t.string   "name"
-    t.text     "description"
+    t.string   "locale",      :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "name"
+    t.text     "description"
   end
 
   add_index "domain_translations", ["domain_id"], :name => "index_domain_translations_on_domain_id"
@@ -230,11 +179,9 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "position"
-    t.string   "slug"
   end
 
   add_index "domains", ["ancestry"], :name => "index_domains_on_ancestry"
-  add_index "domains", ["slug"], :name => "index_domains_on_slug", :unique => true
 
   create_table "domains_sale_books", :force => true do |t|
     t.integer "domain_id"
@@ -296,6 +243,11 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
 
   add_index "messages", ["conversation_id"], :name => "index_notifications_on_conversation_id"
 
+  create_table "payment_modes_sales", :force => true do |t|
+    t.integer "payment_mode_id"
+    t.integer "sale_id"
+  end
+
   create_table "rates", :force => true do |t|
     t.integer  "rater_id"
     t.integer  "rateable_id"
@@ -333,7 +285,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.datetime "updated_at",                                     :null => false
   end
 
-  add_index "receipts", ["message_id"], :name => "index_receipts_on_message_id"
+  add_index "receipts", ["message_id"], :name => "index_receipts_on_notification_id"
 
   create_table "repositories", :force => true do |t|
     t.integer "owner_id"
@@ -362,23 +314,6 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.string  "item_type"
     t.boolean "can_add",    :default => false
     t.boolean "can_remove", :default => false
-  end
-
-  create_table "taggings", :force => true do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context"
-    t.datetime "created_at"
-  end
-
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
-
-  create_table "tags", :force => true do |t|
-    t.string "name"
   end
 
   create_table "user_addresses", :force => true do |t|
@@ -410,7 +345,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
   add_index "user_contacts", ["user_id"], :name => "index_member_contacts_on_user_id"
 
   create_table "user_friend_demands", :force => true do |t|
-    t.text     "message"
+    t.text     "message2"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "user_has_sent_id"
@@ -493,14 +428,12 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.float    "longitude"
     t.string   "role"
     t.boolean  "has_notifications",      :default => false
-    t.string   "slug"
     t.string   "provider"
     t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
   create_table "versions", :force => true do |t|
     t.string   "item_type",  :null => false
