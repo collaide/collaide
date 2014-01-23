@@ -12,7 +12,6 @@
 
 # -*- encoding : utf-8 -*-
 class Document::Type < ActiveRecord::Base
-  attr_accessible :description, :name, :translations_attributes
 
   has_many :documents, :class_name => 'Document::Document'
 
@@ -31,6 +30,5 @@ class Document::Type < ActiveRecord::Base
   end
 
   class Translation
-    attr_accessible :locale, :name, :description
   end
 end

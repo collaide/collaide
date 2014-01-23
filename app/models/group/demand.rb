@@ -13,7 +13,6 @@
 
 # -*- encoding : utf-8 -*-
 class Group::Demand < ActiveRecord::Base
-  attr_accessible :message
 
   belongs_to :user_has_sent, class_name: 'User'
 

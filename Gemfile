@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
-gem 'rails', '3.2.13'
+gem 'rails', '~> 4.0.2'
 
-gem 'therubyracer'
+gem 'turbolinks'
+gem 'jbuilder', '~> 1.2'
+
+#gem 'therubyracer'
 
 #gem 'bcrypt-ruby', '3.0.1'
 
@@ -16,7 +20,7 @@ gem 'kaminari'
 gem 'magic_encoding'
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git' # <a href="https://github.com/ctran/annotate_models" target="_blank">https://github.com/ctran/annotate_models</a>
 
-gem "friendly_id", "~> 4.0.10"
+gem "friendly_id", "~> 5.0.0"
 gem 'jquery-rails'
 gem 'jqtree-rails'
 gem 'jquery-ui-rails'
@@ -26,22 +30,24 @@ gem 'cancan'
 gem 'devise'
 gem 'devise-i18n-views'
 
-gem 'rails-i18n'
+gem 'rails-i18n', '~> 4.0.0'
 gem 'i18n'
-gem 'rails-translate-routes'
+gem 'route_translator'
 gem 'globalize'
 
 gem 'ancestry'
-gem 'activeadmin-sortable-tree', :github => 'nebirhos/activeadmin-sortable-tree', :branch => 'master'
-
-gem 'activeadmin'
-gem 'ActiveAdmin-Globalize3-inputs'
-gem 'paper_trail'
+#gem 'activeadmin-sortable-tree', :github => 'nebirhos/activeadmin-sortable-tree', :branch => 'master'
+#
+#gem 'activeadmin'
+#gem 'ActiveAdmin-Globalize3-inputs'
+gem "rails_admin", "~> 0.6.0"
+gem 'paper_trail', '~> 3.0.0'
 
 gem 'date_validator'
-gem 'simple_form'
+gem 'simple_form', "~> 3.0.1"
 
 gem 'haml'
+gem "active_model_serializers", "~> 0.8.0"
 
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.5.7'
@@ -54,7 +60,7 @@ gem 'letsrate'
 
 gem 'enumerize'
 
-gem 'acts_as_commentable', '3.0.1'
+gem 'acts_as_commentable'
 
 gem 'mysql2',          '0.3.13'
 gem 'thinking-sphinx', '3.0.6'
@@ -85,8 +91,9 @@ gem 'omniauth-google-oauth2'
 #gem 'oa-openid', :require => 'omniauth/openid'
 gem 'foundation-rails'
 
+gem 'rails-observers'
+
 group :development, :test do
-  gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '1.2.1'
   gem 'guard-spork', '1.2.0'
@@ -101,15 +108,14 @@ end
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '3.2.5'
-  gem 'coffee-rails', '3.2.2'
-  gem 'uglifier', '1.2.3'
-  gem 'coffee-script-source'
+gem "sass-rails", "~> 4.0.1"
+gem "coffee-rails", "~> 4.0.1"
+gem "uglifier", "~> 2.4.0"
+gem 'coffee-script-source'
 
-  gem 'compass-rails'
-  gem 'foundation-icons-sass-rails'
-end
+gem 'compass-rails'
+gem 'foundation-icons-sass-rails'
+gem 'sqlite3', '1.3.6'
 
 group :test do
   gem 'capybara', '1.1.2'
@@ -121,7 +127,4 @@ group :test do
   # gem 'rb-fsevent', '0.9.1', :require => false
   # gem 'growl', '1.0.3'
 end
-
-group :production do
-  gem 'pg', '0.12.2'
-end
+gem 'pg', '~> 0.17.1'

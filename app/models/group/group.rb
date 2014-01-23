@@ -14,6 +14,7 @@
 
 # -*- encoding : utf-8 -*-
 class Group::Group < ActiveRecord::Base
+
   ROLES = [:admin, :writer]
   attr_accessible :description, :name, :password, :password_confirmation,
 

@@ -6,8 +6,6 @@ class Contact < ActiveRecord::Base
     columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
   end
 
-  attr_accessible :content, :email, :subject
-
   column :subject, :string
   column :email, :string
   column :content, :text
