@@ -41,14 +41,14 @@ class Document::Document < ActiveRecord::Base
   has_many :document_downloads, :class_name => 'Document::Download'
   has_many :user_downloader, :class_name => 'User', through: :document_downloads, source: :user
 
-  belongs_to :study_level, :class_name => 'Document::StudyLevel', include: :translations
-  belongs_to :document_type, :class_name => 'Document::Type', include: :translations
+  belongs_to :study_level, -> {include(:translations)}, :class_name => 'Document::StudyLevel'
+  belongs_to :document_type, -> {include(:translations)}, :class_name => 'Document::Type'
 
-  has_and_belongs_to_many :domains, class_name: 'Domain', order: 'position ASC'
+  has_and_belongs_to_many :domains, -> {order('position ASC')}, class_name: 'Domain'
 
   belongs_to :user
 
-  has_one :note_average, :as => :cacheable, :class_name => "RatingCache", :dependent => :destroy, :conditions => {:dimension => 'note'}
+  has_one :note_average, -> {where :dimension => 'note'}, :as => :cacheable, :class_name => "RatingCache", :dependent => :destroy
 
 
   accepts_nested_attributes_for :files
