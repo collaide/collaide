@@ -45,7 +45,7 @@ class Document::Document < ActiveRecord::Base
 
   belongs_to :document_type, -> {include(:translations)}, :class_name => 'Document::Type'
 
-  has_and_belongs_to_many :domains, -> {order('position ASC')}, class_name: 'Domain'
+  has_and_belongs_to_many :domains
 
   belongs_to :user
 

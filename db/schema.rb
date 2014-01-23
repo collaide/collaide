@@ -105,14 +105,18 @@ ActiveRecord::Schema.define(version: 20140123152321) do
     t.integer  "number_of_pages"
     t.date     "realized_at"
     t.string   "language"
-    t.boolean  "is_accepted",     default: false
-    t.string   "status",          default: "pending"
-    t.integer  "hits",            default: 0
-    t.boolean  "is_deleted",      default: false
+    t.boolean  "is_accepted",      default: false
+    t.integer  "document_type_id"
+    t.integer  "user_id"
+    t.string   "status",           default: "pending"
+    t.integer  "hits",             default: 0
+    t.boolean  "is_deleted",       default: false
     t.string   "study_level"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "document_documents", ["document_type_id"], name: "index_document_documents_on_document_type_id", using: :btree
 
   create_table "document_documents_domains", id: false, force: true do |t|
     t.integer "document_document_id", null: false

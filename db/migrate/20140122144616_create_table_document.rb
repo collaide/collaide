@@ -16,6 +16,9 @@ class CreateTableDocument < ActiveRecord::Migration
         t.string :language
         t.boolean :is_accepted, default: false
 
+        t.belongs_to :document_type, index: true
+        t.belongs_to :user
+
         t.string :status, default: 'pending'
         t.integer :hits, default: 0
         t.boolean :is_deleted, default: false

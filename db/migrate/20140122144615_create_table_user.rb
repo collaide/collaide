@@ -70,11 +70,7 @@ class CreateTableUser < ActiveRecord::Migration
       t.timestamps
     end
 
-    Domain.create_translation_table!({
-                                         :name => :string,
-                                         :description => :text}, {
-                                         :migrate_data => true
-                                     })
+    Domain.create_translation_table! name: :string, description: :text
 
     create_table :member_studies do |t|
       t.date :started_at

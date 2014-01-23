@@ -21,6 +21,7 @@ class Document::DocumentsController < ApplicationController
   def new
 
     @document = Document::Document.new
+    #@document.document_type_id
     #@document.files.build
   end
 
@@ -285,5 +286,9 @@ class Document::DocumentsController < ApplicationController
     respond_to do |format|
       format.js { render json: res }
     end
+  end
+
+  private
+  def permit_attributes
   end
 end

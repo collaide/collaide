@@ -33,7 +33,7 @@ gem 'devise-i18n-views'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'i18n'
 gem 'route_translator'
-gem 'globalize'
+gem 'globalize', '~> 4.0.0'
 
 gem 'ancestry'
 #gem 'activeadmin-sortable-tree', :github => 'nebirhos/activeadmin-sortable-tree', :branch => 'master'
@@ -44,7 +44,7 @@ gem "rails_admin", "~> 0.6.0"
 gem 'paper_trail', '~> 3.0.0'
 
 gem 'date_validator'
-gem 'simple_form', "~> 3.0.1"
+gem 'simple_form'
 
 gem 'haml'
 gem "active_model_serializers", "~> 0.8.0"
