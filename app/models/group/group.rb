@@ -17,7 +17,7 @@ class Group::Group < ActiveRecord::Base
   attr_accessible :description, :is_public, :name, :password
 
   has_many :statuses, :class_name => 'User::Status'
-  has_many :users, :class_name => 'Group::User'
+  has_many :members, through: :group_members
   has_many :demands, :class_name => 'Group::Demand'
 
   validates_presence_of :name

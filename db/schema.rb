@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20130830185456423) do
 
+
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
     t.string   "resource_type", :null => false
@@ -253,6 +254,15 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.integer "user_id"
   end
 
+  create_table "group_group_members", :force => true do |t|
+    t.boolean  "is_admin"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "member_id"
+    t.integer  "group_id"
+    t.string   "member_type"
+  end
+
   create_table "group_groups", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -261,15 +271,6 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.string   "type"
-  end
-
-  create_table "group_users", :force => true do |t|
-    t.boolean  "is_admin"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "member_id"
-    t.integer  "group_id"
-    t.string   "member_type"
   end
 
   create_table "guest_books", :force => true do |t|
@@ -464,6 +465,7 @@ ActiveRecord::Schema.define(:version => 20130830185456423) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "group_id"
+    t.integer  "user_id"
   end
 
   add_index "user_studies", ["group_id"], :name => "index_member_studies_on_member_scolarity_id"
