@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123131805) do
+ActiveRecord::Schema.define(version: 20140123152321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -349,31 +349,34 @@ ActiveRecord::Schema.define(version: 20140123131805) do
 
   add_index "receipts", ["message_id"], name: "index_receipts_on_message_id", using: :btree
 
-  create_table "repositories", force: true do |t|
+  create_table "repo_items", force: true do |t|
     t.integer "owner_id"
     t.string  "owner_type"
     t.string  "ancestry"
     t.string  "name"
+    t.float   "file_size"
+    t.string  "content_type"
+    t.string  "file"
     t.string  "type"
   end
 
-  create_table "shares", force: true do |t|
+  create_table "sharings", force: true do |t|
     t.integer "owner_id"
     t.string  "owner_type"
-    t.integer "repository_id"
-    t.boolean "can_create",    default: false
-    t.boolean "can_read",      default: false
-    t.boolean "can_update",    default: false
-    t.boolean "can_delete",    default: false
-    t.boolean "can_share",     default: false
+    t.integer "repo_item_id"
+    t.boolean "can_create",   default: false
+    t.boolean "can_read",     default: false
+    t.boolean "can_update",   default: false
+    t.boolean "can_delete",   default: false
+    t.boolean "can_share",    default: false
   end
 
-  create_table "shares_items", force: true do |t|
-    t.integer "share_id"
-    t.integer "item_id"
-    t.string  "item_type"
-    t.boolean "can_add",    default: false
-    t.boolean "can_remove", default: false
+  create_table "sharings_members", force: true do |t|
+    t.integer "sharing_id"
+    t.integer "member_id"
+    t.string  "member_type"
+    t.boolean "can_add",     default: false
+    t.boolean "can_remove",  default: false
   end
 
   create_table "statuses", force: true do |t|
@@ -385,6 +388,16 @@ ActiveRecord::Schema.define(version: 20140123131805) do
   end
 
   add_index "statuses", ["owner_id", "owner_type"], name: "index_statuses_on_owner_id_and_owner_type", using: :btree
+
+  create_table "user_messages", force: true do |t|
+    t.text   "body"
+    t.string "subject"
+  end
+
+  create_table "user_messages_users", id: false, force: true do |t|
+    t.integer "user_id",         null: false
+    t.integer "user_message_id", null: false
+  end
 
   create_table "user_notifications", force: true do |t|
     t.string   "class_name"

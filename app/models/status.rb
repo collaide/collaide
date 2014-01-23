@@ -11,7 +11,7 @@
 #
 
 # -*- encoding : utf-8 -*-
-class Member::Status < ActiveRecord::Base
+class Status < ActiveRecord::Base
 
   belongs_to :owner, polymorphic: true, inverse_of: :statuses
 end

@@ -100,6 +100,13 @@ class CreateTableUser < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table :user_messages do |t|
+      t.text :body
+      t.string :subject
+    end
+
+    create_join_table :users, :user_messages
+
     create_table :addresses do |t|
       t.string :country
       t.string :street
