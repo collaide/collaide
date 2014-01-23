@@ -12,11 +12,11 @@
 #
 
 # -*- encoding : utf-8 -*-
-class Group::Demand < ActiveRecord::Base
+class Group::Invitation < ActiveRecord::Base
 
   belongs_to :user_has_sent, class_name: 'User'
 
   belongs_to :group, :class_name => 'Group::Group'
 
-  has_and_belongs_to_many :users_are_invited, class_name:  'User'
+  #has_and_belongs_to_many :users_are_invited, class_name:  'User'
 end

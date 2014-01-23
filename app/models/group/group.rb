@@ -16,23 +16,23 @@
 class Group::Group < ActiveRecord::Base
 
   ROLES = [:admin, :writer]
-  attr_accessible :description, :name, :password, :password_confirmation,
-
-                  :can_index_members,
-                  :can_read_member,
-                  :can_delete_member,
-
-                  :can_write_file,
-                  :can_index_files,
-                  :can_read_file,
-                  :can_delete_file,
-
-                  :can_index_statuses,
-                  :can_write_status,
-                  :can_delete_status,
-
-                  :can_create_invitation,
-                  :can_manage_invitations
+  #attr_accessible :description, :name, :password, :password_confirmation,
+  #
+  #                :can_index_members,
+  #                :can_read_member,
+  #                :can_delete_member,
+  #
+  #                :can_write_file,
+  #                :can_index_files,
+  #                :can_read_file,
+  #                :can_delete_file,
+  #
+  #                :can_index_statuses,
+  #                :can_write_status,
+  #                :can_delete_status,
+  #
+  #                :can_create_invitation,
+  #                :can_manage_invitations
   has_repository
 
   serialize :can_index_members, Array
@@ -53,14 +53,25 @@ class Group::Group < ActiveRecord::Base
 
   belongs_to :main_group, class_name: 'Group::Group'
   has_many :sub_groups, class_name: 'Group::Group'
-  has_many :statuses, :class_name => 'Status'
+  has_many :statuses, class_name: 'Status', as: :owner
   has_many :members, through: :group_members
-  has_many :invitation, :class_name => 'Group::Demand'
+  has_many :invitation, class_name: 'Group::Demand'
 
   validates :name, precense: true, length: {minimum: 3}
 
   validates :password, length: {minimum: 4}, confirmation: true
   validates_presence_of :password_confirmation
+
+  after_initialize :init
+
+  def init
+    self.can_delete_member << Group::Roles::ADMIN
+    self.can_write_file << Group::Roles::MEMBER
+    self.can_delete_file << Group::Roles::MEMBER
+    self.can_delete_status << Group::Roles::ADMIN
+    self.can_manage_invitations << Group::Role::ADMIN
+  end
+
 end
 
 class Group::Roles
