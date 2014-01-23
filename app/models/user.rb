@@ -28,6 +28,7 @@
 # -*- encoding : utf-8 -*-
 # -*- encoding : utf-8 -*-
 
+
 class   User < ActiveRecord::Base
   extend Enumerize
 
@@ -37,7 +38,7 @@ class   User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, 
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable, :registerable
 
   enumerize :role, in: [:admin, :moderator, :author, :banned, :super_admin, :doc_validator, :add_validator], scope: true, predicates: true
@@ -142,9 +143,9 @@ class   User < ActiveRecord::Base
     end
     user
   end
-
 end
 
 class Point
   DOWNLOAD_DOCUMENT = 3
 end
+

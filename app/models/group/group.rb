@@ -57,7 +57,7 @@ class Group::Group < ActiveRecord::Base
   has_many :members, through: :group_members
   has_many :invitation, class_name: 'Group::Demand'
 
-  validates :name, precense: true, length: {minimum: 3}
+  validates :name, presence: true, length: {minimum: 3}
 
   validates :password, length: {minimum: 4}, confirmation: true
   validates_presence_of :password_confirmation
