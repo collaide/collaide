@@ -27,6 +27,8 @@
 
 # -*- encoding : utf-8 -*-
 # -*- encoding : utf-8 -*-
+
+
 class   User < ActiveRecord::Base
   extend Enumerize
 
@@ -36,11 +38,9 @@ class   User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, 
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable, :registerable
 
-  attr_accessible :provider, :uid, :email, :password, :password_confirmation, :remember_me, :roles, :avatar, :name, :points,
-                   :last_sign_in_at, :created_at, :has_notifications
   enumerize :role, in: [:admin, :moderator, :author, :banned, :super_admin, :doc_validator, :add_validator], scope: true, predicates: true
 
   #https://github.com/ging/mailboxer
@@ -55,7 +55,7 @@ class   User < ActiveRecord::Base
   # Quels documents sont téléchargés
   has_many :document_downloads, :class_name => 'Document::Download'
   has_many :downloads, class_name: 'Document::Document', through: :document_downloads, source: :document
-  #------
+#------
 
   # Status de l'utilisateur sur son mur
   has_many :statues, :class_name => 'User::Status', inverse_of: :user
@@ -67,7 +67,7 @@ class   User < ActiveRecord::Base
   has_many :group_members, as: :member, :class_name => 'Group::GroupMember'
   has_many :groups, :class_name => 'Group::Group', as: :member, through: :group_members#, source: :group
   #########
-  #invitation a rejoindre un groupe
+  #invitations créées  qui invite d'autres personnes à rejoindre un groupe
   has_many :created_group_demands, :class_name => 'Group::Demand'
 
   #many-to-many
@@ -143,9 +143,9 @@ class   User < ActiveRecord::Base
     end
     user
   end
-
 end
 
 class Point
   DOWNLOAD_DOCUMENT = 3
 end
+

@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   #sécu
   protect_from_forgery
 
-  before_filter :set_locale
-  before_filter :get_documents
+  before_action :set_locale
+  before_action :get_documents
 
   #rescue_from ActionController::RoutingError, :with => :render_not_found
 
@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
+    if(request.fullpath.start_with? '/admin')
+      logger.error('salut')
+      return
+    end
     if (request.fullpath != new_user_session_path &&
         request.fullpath != new_user_registration_path &&
         request.fullpath != user_password_path &&
