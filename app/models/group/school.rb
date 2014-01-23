@@ -10,6 +10,16 @@
 
 # -*- encoding : utf-8 -*-
 class Group::School < Group::Group
+  has_one :address, :class_name => 'Address', as: :owner
 
-  has_many :studies, :class_name => 'User::Study'
+  after_initialize :init
+
+  def init()
+    self.can_delete_member << Group::Roles::ADMIN
+    self.can_write_file << Group::Roles::MEMBER
+    self.can_delete_file << Group::Roles::ADMIN
+    self.can_delete_status << Group::Roles::ADMIN
+    self.can_manage_invitations << Group::Role::ADMIN
+  end
+
 end
