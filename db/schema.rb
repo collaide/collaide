@@ -256,6 +256,15 @@ ActiveRecord::Schema.define(version: 20130830185456423) do
     t.integer "user_id"
   end
 
+  create_table "group_group_members", force: true do |t|
+    t.boolean  "is_admin"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "member_id"
+    t.integer  "group_id"
+    t.string   "member_type"
+  end
+
   create_table "group_groups", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -264,15 +273,6 @@ ActiveRecord::Schema.define(version: 20130830185456423) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.string   "type"
-  end
-
-  create_table "group_users", force: true do |t|
-    t.boolean  "is_admin"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "member_id"
-    t.integer  "group_id"
-    t.string   "member_type"
   end
 
   create_table "guest_books", force: true do |t|
@@ -337,6 +337,17 @@ ActiveRecord::Schema.define(version: 20130830185456423) do
 
   add_index "receipts", ["message_id"], name: "index_receipts_on_message_id", using: :btree
 
+  create_table "repo_items", force: true do |t|
+    t.integer "owner_id"
+    t.string  "owner_type"
+    t.string  "ancestry"
+    t.string  "name"
+    t.float   "file_size"
+    t.string  "content_type"
+    t.string  "file"
+    t.string  "type"
+  end
+
   create_table "repositories", force: true do |t|
     t.integer "owner_id"
     t.string  "owner_type"
@@ -364,6 +375,25 @@ ActiveRecord::Schema.define(version: 20130830185456423) do
     t.string  "item_type"
     t.boolean "can_add",    default: false
     t.boolean "can_remove", default: false
+  end
+
+  create_table "sharings", force: true do |t|
+    t.integer "owner_id"
+    t.string  "owner_type"
+    t.integer "repo_item_id"
+    t.boolean "can_create",   default: false
+    t.boolean "can_read",     default: false
+    t.boolean "can_update",   default: false
+    t.boolean "can_delete",   default: false
+    t.boolean "can_share",    default: false
+  end
+
+  create_table "sharings_members", force: true do |t|
+    t.integer "sharing_id"
+    t.integer "member_id"
+    t.string  "member_type"
+    t.boolean "can_add",     default: false
+    t.boolean "can_remove",  default: false
   end
 
   create_table "taggings", force: true do |t|
@@ -425,6 +455,11 @@ ActiveRecord::Schema.define(version: 20130830185456423) do
     t.integer  "user_id"
   end
 
+  create_table "user_messages", force: true do |t|
+    t.string "subject"
+    t.text   "body"
+  end
+
   create_table "user_notifications", force: true do |t|
     t.string   "class_name"
     t.string   "method_name"
@@ -452,7 +487,7 @@ ActiveRecord::Schema.define(version: 20130830185456423) do
     t.integer  "member_school_id"
   end
 
-  create_table "user_statues", force: true do |t|
+  create_table "user_statuses", force: true do |t|
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -467,6 +502,7 @@ ActiveRecord::Schema.define(version: 20130830185456423) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "group_id"
+    t.integer  "user_id"
   end
 
   add_index "user_studies", ["group_id"], name: "index_member_studies_on_member_scolarity_id", using: :btree

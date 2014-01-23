@@ -8,5 +8,10 @@ describe "Advertisement::SaleBooks" do
       get advertisement_sale_books_path
       response.status.should be(200)
     end
+    describe 'get new ads'  do
+      get new_advertisement_advertisement_fr_path
+      response.status.should be 200
+    end
+
   end
 end

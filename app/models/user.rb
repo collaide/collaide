@@ -27,6 +27,7 @@
 
 # -*- encoding : utf-8 -*-
 # -*- encoding : utf-8 -*-
+
 class   User < ActiveRecord::Base
   extend Enumerize
 
@@ -53,7 +54,7 @@ class   User < ActiveRecord::Base
   # Quels documents sont téléchargés
   has_many :document_downloads, :class_name => 'Document::Download'
   has_many :downloads, class_name: 'Document::Document', through: :document_downloads, source: :document
-  #------
+#------
 
   # Status de l'utilisateur sur son mur
   has_many :statues, :class_name => 'User::Status', inverse_of: :user
