@@ -23,11 +23,8 @@ Document::Type.create([
     {name: '', description: 'A compléter'},
     {name: 'Réponses exa', description: 'A compléter'},
     {name: 'Annale d\'examen', description: 'A compléter'}
-                                       ])
-Document::StudyLevel.create([
-    {name: 'universitaire', description: 'A compléter'},
-    {name: 'supérieur', description: 'A compléter'},
-    {name: 'secondaire', description: 'A compléter'},
-    {name: 'primaire', description: 'A compléter'},
-    {name: '', description: 'A compléter'}
-                            ])
+])
+User.create([
+    {name: 'admin', email: 'admin@example.com', password: 'password', role: :super_admin},
+    {name: 'user', email: 'user@example.com', password: 'password'}
+            ])
