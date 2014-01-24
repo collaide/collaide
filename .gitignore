@@ -22,7 +22,7 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
-/
+
 /tmp
 /public/system
 /.idea
