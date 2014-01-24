@@ -28,3 +28,7 @@ User.create([
     {name: 'admin', email: 'admin@example.com', password: 'password', role: :super_admin},
     {name: 'user', email: 'user@example.com', password: 'password'}
             ])
+Domain.create([
+    {name: 'domain 1', description: 'premier domaine', position: 0},
+    {name: 'domain 2', description: 'deuxième domaine', position: 1}
+              ])

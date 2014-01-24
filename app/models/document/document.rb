@@ -43,7 +43,7 @@ class Document::Document < ActiveRecord::Base
   has_many :document_downloads, :class_name => 'Document::Download'
   has_many :user_downloader, :class_name => 'User', through: :document_downloads, source: :user
 
-  belongs_to :document_type, -> {include(:translations)}, :class_name => 'Document::Type'
+  belongs_to :document_type, -> {includes(:translations)}, :class_name => 'Document::Type'
 
   has_and_belongs_to_many :domains
 
@@ -64,7 +64,7 @@ class Document::Document < ActiveRecord::Base
   validates_presence_of :domains
   validates_presence_of :study_level
   validates_presence_of :document_type
-  validates_presence_of :files
+  validates_presence_of :file
   validates :number_of_pages, numericality: true, inclusion: {in: 1..300}
   #TODO conversion du format de la date en format de type SQL (YYY-mm-dd)
   validates :realized_at, date: {before: Proc.new {Time.now}}

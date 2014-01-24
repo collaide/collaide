@@ -4,6 +4,7 @@
     =f.input :title, label_html: tooltip(t('document.documents.forms.tooltips.title'))
     =f.input :description, input_html: {rows: 3}, label_html: tooltip(t('document.documents.forms.tooltips.description'))
     =f.input :file, label: t('simple_form.labels.c_file_c_file.file'), label_html: tooltip(t('document.documents.forms.tooltips.file'))
+    =f.input :file_cache, as: :hidden
     .row
       =f.input :author, required: false, label_html: tooltip(t('document.documents.forms.tooltips.author')), wrapper_html: {class: 'columns large-5'}
       =f.input :number_of_pages, default: 1, label_html: tooltip(t('document.documents.forms.tooltips.number_of_pages')), wrapper_html: {class: 'columns large-2'}

@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20140123152321) do
     t.integer  "number_of_pages"
     t.date     "realized_at"
     t.string   "language"
+    t.string   "file"
     t.boolean  "is_accepted",      default: false
     t.integer  "document_type_id"
     t.integer  "user_id"
@@ -118,9 +119,9 @@ ActiveRecord::Schema.define(version: 20140123152321) do
 
   add_index "document_documents", ["document_type_id"], name: "index_document_documents_on_document_type_id", using: :btree
 
-  create_table "document_documents_domains", id: false, force: true do |t|
-    t.integer "document_document_id", null: false
-    t.integer "domain_id",            null: false
+  create_table "document_documents_domains", force: true do |t|
+    t.integer "document_id"
+    t.integer "domain_id"
   end
 
   create_table "document_downloads", force: true do |t|

@@ -12,6 +12,16 @@ namespace :db do
   end
 end
 
+namespace :db do
+  desc "Drop database, create a new one, migrate and seed"
+  task recreate: :environment do
+    Rake::Task['db:drop'].invoke
+    Rake::Task['db:create'].invoke
+    Rake::Task['db:migrate'].invoke
+    Rake::Task['db:seed'].invoke
+  end
+end
+
 def make_users
   500.times do |n|
     name  = Faker::Internet.user_name

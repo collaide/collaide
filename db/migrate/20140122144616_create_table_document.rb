@@ -14,6 +14,7 @@ class CreateTableDocument < ActiveRecord::Migration
         t.integer :number_of_pages
         t.date :realized_at
         t.string :language
+        t.string :file
         t.boolean :is_accepted, default: false
 
         t.belongs_to :document_type, index: true
@@ -29,7 +30,10 @@ class CreateTableDocument < ActiveRecord::Migration
         t.timestamps
       end
 
-      create_join_table :document_documents, :domains
+      create_table :document_documents_domains do |t|
+        t.integer :document_id, index: true
+        t.integer :domain_id, index: true
+      end
 
       Document::Type.create_translation_table!({
                                                    name: :string,
