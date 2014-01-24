@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 20140123152321) do
 
   create_table "document_downloads", force: true do |t|
     t.integer  "user_id"
-    t.integer  "documents_id"
+    t.integer  "document_id"
     t.integer  "number_of_downloads"
     t.datetime "created_at"
     t.datetime "updated_at"

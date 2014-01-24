@@ -34,7 +34,8 @@ class Document::Document < ActiveRecord::Base
   SORT_ARGS = {title: 'title', lang: 'language', author: 'author', created_at: 'created_at', type: 'document_types.name',
                domain: 'domain.name', study_level: 'document_study_levels.name', domain: 'domains.name'}
   # permet de donner une note à un document. voir : https://github.com/muratguzel/letsrate
-  letsrate_rateable 'note'
+  #FIXME voilà de quoi aider ... https://github.com/muratguzel/letsrate/issues/38
+  #letsrate_rateable 'note'
 
   scope :valid, -> { where(status: :accepted) }
 
@@ -49,7 +50,8 @@ class Document::Document < ActiveRecord::Base
 
   belongs_to :user
 
-  has_one :note_average, -> {where :dimension => 'note'}, :as => :cacheable, :class_name => "RatingCache", :dependent => :destroy
+  #FIXME when lets_rate is done
+  #has_one :note_average, -> {where :dimension => 'note'}, :as => :cacheable, :class_name => "RatingCache", :dependent => :destroy
 
   accepts_nested_attributes_for :domains
 

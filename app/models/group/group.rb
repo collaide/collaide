@@ -55,7 +55,7 @@ class Group::Group < ActiveRecord::Base
   has_many :sub_groups, class_name: 'Group::Group'
   has_many :statuses, class_name: 'Status', as: :owner
   has_many :members, through: :group_members
-  has_many :invitation, class_name: 'Group::Demand'
+  has_many :invitation, class_name: 'Group::invitation'
 
   validates :name, presence: true, length: {minimum: 3}
 

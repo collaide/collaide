@@ -196,7 +196,7 @@ class Document::DocumentsController < ApplicationController
     raise ActiveRecord::RecordNotFound  and return if (doc.nil?)
 
     #le document a-t-il déjà été téléchargé par l'utilisateur ?
-    download =  Document::Download.where(document_documents_id: doc.id).where(user_id: current_user.id)
+    download =  Document::Download.where(document_id: doc.id).where(user_id: current_user.id)
     if download.empty?
       # si l'utilisateur n'a plus assez de points, que ce n'est pas un document qu'il a déposé et qu'il n'a pas encore
       # été averti, on redirige et on arrête
@@ -224,7 +224,7 @@ class Document::DocumentsController < ApplicationController
     end
 
     # le chemin du fichier à télécharger. Pour l'instant, un fichier par document -> le premier
-    path = doc.files.first.file.path
+    path = doc.asset.file.path
 
     # Si le fichier n'est pas trouvé
     render status: :bad_request and return unless File.exist?(path)

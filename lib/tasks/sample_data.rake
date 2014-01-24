@@ -10,9 +10,7 @@ namespace :db do
     #make_files
     #make_documents
   end
-end
 
-namespace :db do
   desc "Drop database, create a new one, migrate and seed"
   task recreate: :environment do
     Rake::Task['db:drop'].invoke
