@@ -25,7 +25,7 @@ class CreateTableAdvertisement < ActiveRecord::Migration
       t.timestamps
     end
 
-    #create_join_table :domains, :advertisement_advertisements
+    create_join_table :domains, :advertisement_advertisements
 
     create_table :books do |t|
       t.string :title

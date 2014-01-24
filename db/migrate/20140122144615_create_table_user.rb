@@ -138,7 +138,7 @@ class CreateTableUser < ActiveRecord::Migration
       t.timestamps
     end
 
-    #create_join_table :user_users, :user_friend_demands
+    create_join_table :user_users, :user_friend_demands
 
     create_table :member_users_addresses do |t|
       t.belongs_to :owner, polymorphic: true, index: true
