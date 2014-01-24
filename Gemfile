@@ -94,14 +94,15 @@ gem 'foundation-rails'
 gem 'rails-observers'
 
 group :development, :test do
-  gem 'rspec-rails', '2.11.0'
-  gem 'guard-rspec', '1.2.1'
-  gem 'guard-spork', '1.2.0'
-  gem 'childprocess', '0.3.6'
-  gem 'spork', '0.9.2'
+  gem 'commands'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'spork-rails'
+  gem 'guard-spork'
+  gem 'childprocess'
   gem 'quiet_assets', '>= 1.0.1' # <a href="https://github.com/evrone/quiet_assets" target="_blank">https://github.com/evrone/quiet_assets</a>
   gem 'meta_request'
-  gem 'guard-livereload'
   gem 'rails-erd'
   gem 'capistrano'
 end
@@ -121,7 +122,7 @@ group :test do
   gem 'capybara', '1.1.2'
   gem 'factory_girl_rails', '4.1.0'
   gem 'cucumber-rails', '1.2.1', :require => false
-  gem 'database_cleaner', '0.7.0'
+  gem 'database_cleaner', "~> 1.2.0"
   gem 'lorem-ipsum'
   # gem 'launchy', '2.1.0'
   # gem 'rb-fsevent', '0.9.1', :require => false

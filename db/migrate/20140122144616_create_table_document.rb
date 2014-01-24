@@ -41,8 +41,8 @@ class CreateTableDocument < ActiveRecord::Migration
                                                })
 
       create_table :document_downloads do |t|
-        t.belongs_to :user
-        t.belongs_to :document_documents
+        t.belongs_to :user, index: true
+        t.integer :document_id, index: true
         t.integer :number_of_downloads
         t.timestamps
       end

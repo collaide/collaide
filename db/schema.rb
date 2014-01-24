@@ -126,11 +126,13 @@ ActiveRecord::Schema.define(version: 20140123152321) do
 
   create_table "document_downloads", force: true do |t|
     t.integer  "user_id"
-    t.integer  "document_documents_id"
+    t.integer  "document_id"
     t.integer  "number_of_downloads"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "document_downloads", ["user_id"], name: "index_document_downloads_on_user_id", using: :btree
 
   create_table "document_type_translations", force: true do |t|
     t.integer  "document_type_id", null: false
