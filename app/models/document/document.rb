@@ -38,7 +38,7 @@ class Document::Document < ActiveRecord::Base
 
   scope :valid, -> { where(status: :accepted) }
 
-  mount_uploader :file, DocumentUploader
+  mount_uploader :asset, DocumentUploader
 
   has_many :document_downloads, :class_name => 'Document::Download'
   has_many :user_downloader, :class_name => 'User', through: :document_downloads, source: :user
@@ -64,16 +64,12 @@ class Document::Document < ActiveRecord::Base
   validates_presence_of :domains
   validates_presence_of :study_level
   validates_presence_of :document_type
-  validates_presence_of :file
+  validates_presence_of :asset
   validates :number_of_pages, numericality: true, inclusion: {in: 1..300}
   #TODO conversion du format de la date en format de type SQL (YYY-mm-dd)
   validates :realized_at, date: {before: Proc.new {Time.now}}
   validates :title, presence: true, length: {minimum: 3, maximum: 60}
   validates_presence_of :user
-
-  def show_extension
-    I18n.t("application_name.#{Document::DocumentsController.helpers.find_extension(files.first.file_content_type)}")
-  end
 
   private
 

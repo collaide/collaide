@@ -27,7 +27,7 @@ FactoryGirl.define do
     domains { [(FactoryGirl.create :domain)] }
     study_level :university
     document_type { FactoryGirl.create :document_type }
-    file { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'download', 'asDF.tiff')) }
+    asset { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'download', 'asDF.tiff')) }
     user {FactoryGirl.create(:user)}
   end
 

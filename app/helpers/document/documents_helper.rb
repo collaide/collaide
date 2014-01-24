@@ -44,18 +44,19 @@ module Document::DocumentsHelper
   end
 
   def show_icon(document)
-    paperclip = document.files.first.file_content_type
     #FIXME: aucune image pour les doc en .txt
-    type = find_extension(paperclip).to_s
-    if type == 'image'
-      return document.files.first.file.url
-    end
+    type = find_extension(document).to_s
     "documents/#{type}.png"
   end
 
-  def find_extension(application_type)
+  def show_extension(document)
+    t("application_name.#{Document::DocumentsController.helpers.find_extension(document)}")
+  end
+
+  def find_extension(document)
+    application_type = MIME::Types.type_for(document.asset.url).first.content_type
     doc_types = {
-        image: %w(image/jpg image/jpeg image/pjpeg image/png image/x-png image/gif),
+        image: %w(image/jpg image/jpeg image/jpeg image/png image/x-png image/gif),
         pdf: %w(application/pdf),
         doc: %w(application/msword applicationvnd.ms-word applicaiton/vnd.openxmlformats-officedocument.wordprocessingm1.document),
         docx: %w[application/vnd.openxmlformats-officedocument.wordprocessingml.document],

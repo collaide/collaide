@@ -14,7 +14,7 @@ class CreateTableDocument < ActiveRecord::Migration
         t.integer :number_of_pages
         t.date :realized_at
         t.string :language
-        t.string :file
+        t.string :asset
         t.boolean :is_accepted, default: false
 
         t.belongs_to :document_type, index: true
@@ -41,8 +41,8 @@ class CreateTableDocument < ActiveRecord::Migration
                                                })
 
       create_table :document_downloads do |t|
-        t.belongs_to :user, index: true
-        t.integer :document_id, index: true
+        t.belongs_to :user
+        t.integer :documents_id
         t.integer :number_of_downloads
         t.timestamps
       end

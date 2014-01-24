@@ -28,9 +28,10 @@
 /.idea
 /nbproject/private/
 
-# ingorer les documents uploader
+# ingorer les documents uploadé
+/uploads
+
+/public/uploads
+public/uploads/
 /download
-
-/public/upload
-
 /Gemfile.lock

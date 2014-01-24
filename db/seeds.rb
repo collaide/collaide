@@ -32,3 +32,4 @@ Domain.create([
     {name: 'domain 1', description: 'premier domaine', position: 0},
     {name: 'domain 2', description: 'deuxième domaine', position: 1}
               ])
+#Document::Document.create([s

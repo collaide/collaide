@@ -1,10 +1,10 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
-    make_users
+    #make_users
     #add_avatar_to_user
     make_guest_books
-    make_study_levels
+    #make_study_levels
     make_document_types
     make_domains
     #make_files
@@ -19,6 +19,7 @@ namespace :db do
     Rake::Task['db:create'].invoke
     Rake::Task['db:migrate'].invoke
     Rake::Task['db:seed'].invoke
+    Rake::Task['db:test:prepare'].invoke
   end
 end
 

@@ -17,7 +17,7 @@
               %li
                 =raw("<important class='label secondary'>#{t('document.documents.index.hits')}</important>")
                 =document.hits
-              %li= document.show_extension
+              %li= show_extension(document)
               %li= pluralize document.number_of_pages, t('document.dico.page')
               %li.show-for-small
                 =t('document.documents.index.published_by')

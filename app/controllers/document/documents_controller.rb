@@ -74,7 +74,7 @@ class Document::DocumentsController < ApplicationController
     end
     #la requête. Joli, non ?
      @document_documents = Document::Document.order("#{attr} #{sort}").
-         includes([:study_level, :document_type, {domains: :translations}], :user, :files, :note_average).
+         includes([:document_type, {domains: :translations}], :user, :note_average).
          joins(joins).joins(rates).
          where(where, {domain: domain, type: type, created_at: params[:created_at]}).
          where(status: 'accepted').
@@ -180,7 +180,7 @@ class Document::DocumentsController < ApplicationController
     key_words = []
     key_words << @document.title
     key_words << @document.document_type.name
-    key_words << @document.study_level.name
+    key_words << @document.study_level
     @document.domains.each {|a_domain| key_words << a_domain.name}
     key_words << t('dico.download')
     key_words << t('dico.free')
@@ -294,7 +294,7 @@ class Document::DocumentsController < ApplicationController
  :description,
  :author,
  :number_of_pages,
- :file,
+ :asset,
  :file_cache,
  :realized_at,
  :language,
