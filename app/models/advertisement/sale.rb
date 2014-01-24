@@ -22,8 +22,6 @@
 
 # -*- encoding : utf-8 -*-
 class Advertisement::Sale < Advertisement::Advertisement
-  attr_accessible :currency, :price, :payment_modes, :delivery_modes
-
   extend Enumerize
   enumerize :currency, in: [:EUR, :CHF, :USD]
   serialize :payment_modes, Array

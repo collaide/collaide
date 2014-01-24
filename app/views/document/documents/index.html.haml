@@ -4,22 +4,22 @@
     .row
       .small-12.large-9.columns
         %h1#doc-title-index= t 'document.documents.index.title'
-        %blockquote Téléchargez tous les documents que vous voulez. C'est gratuit à volonté et pour tous.
+        %blockquote= t('document.documents.index.blockquote')
       .small-12.large-3.columns#new-book
         =link_to t('.new_link'), new_document_document_path, class: 'expand button'
-    / Formulaire de recherche
+    -#Formulaire de recherche
     .row
       .small-12.columns
         %form{action: document_documents_path, method: :get, class: 'custom'}
           .row.collapse
-            .large-3.small-11.columns
+            .large-3.small-12.columns
               =label_tag :search, t('document.documents.index.forms.search.label'), id: 'important-label'
-            .large-7.small-9.columns
+            .large-7.small-7.columns
               =search_field_tag :search, @searched_value, autofocus: true, placeholder: t('document.documents.index.search_placeholder')
-            .large-1.small-3.columns
-              =submit_tag t('document.documents.index.forms.search.submit'), class: 'button secondary prefix', name: nil, id: 'go-search'
-            .large-1.small-3.columns
-              =link_to(t('document.documents.index.more_search'), '#', class: 'button secondary prefix fi-zoom-in medium', id: 'show_advanced_search')
+            .large-2.small-5.columns
+              %ul.button-group.postfix.no-border
+                %li.full= submit_tag t('document.documents.index.forms.search.submit'), class: 'button small secondary', name: nil, id: 'go-search'
+                %li= link_to('', '#', class: 'button secondary small fi-zoom-in medium', id: 'show_advanced_search')
     .row.hide#advanced_search
       .small-12.columns
         %fieldset
@@ -42,14 +42,14 @@
                 =label_tag :datepicker, t('document.documents.index.forms.order.label_datepicker')
                 =text_field_tag :datepicker, nil, class: :datepicker
             %input{type: 'submit', value: 'Afficher', id: 'print-criter'}
-    /afficher la pagination à cet endroit seulement pour les ordis
+    -#afficher la pagination à cet endroit seulement pour les ordis
     .row
       .small-12.columns#paginate
         =paginate @document_documents, remote: true
-    /le contenu
+    -#le contenu
     .row
       %p#no-doc
-      / les documents
+      -#les documents
       .small-12.columns
         -if @document_documents.empty?
           %p= t 'document.documents.index.no_document'

@@ -31,4 +31,6 @@
 # ingorer les documents uploader
 /download
 
+/public/upload
+
 /Gemfile.lock

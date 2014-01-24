@@ -4,15 +4,27 @@ class ApplicationController < ActionController::Base
   #sécu
   protect_from_forgery
 
-  before_filter :set_locale
-  before_filter :get_documents
+  before_action do
+    resource = controller_path.singularize.gsub('/', '_').to_sym # => 'blog/posts' => 'blog/post' => 'blog_post' => :blog_post
+    method = "#{resource}_params" # => 'blog_post_params'
+    params[resource] &&= send(method) if respond_to?(method, true)
+    logger.debug(resource.inspect)
+    logger.debug(method.inspect)
+  end
+
+  before_action :set_locale
+  before_action :get_documents
 
   #rescue_from ActionController::RoutingError, :with => :render_not_found
 
-  before_filter :store_location
+  before_action :store_location
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
+    if(request.fullpath.start_with? '/admin')
+      logger.error('salut')
+      return
+    end
     if (request.fullpath != new_user_session_path &&
         request.fullpath != new_user_registration_path &&
         request.fullpath != user_password_path &&

@@ -4,7 +4,7 @@ class Document::DocumentsController < ApplicationController
   add_breadcrumb(I18n.t('document.documents.bc'), :document_documents_path)
   add_breadcrumb(I18n.t('document.documents.new.bc'), :new_document_document_path, only: [:new, :create])
   def create
-    @document = Document::Document.new params[:document_document]
+    @document = Document::Document.new(document_document_params)
     @document.user = current_user
     if @document.save
       redirect_to document_documents_path, notice: t("document.documents.create.notice")
@@ -21,6 +21,7 @@ class Document::DocumentsController < ApplicationController
   def new
 
     @document = Document::Document.new
+    #@document.document_type_id
     #@document.files.build
   end
 
@@ -285,5 +286,20 @@ class Document::DocumentsController < ApplicationController
     respond_to do |format|
       format.js { render json: res }
     end
+  end
+
+  private
+  def document_document_params
+    params.require(:document_document).permit(:title,
+ :description,
+ :author,
+ :number_of_pages,
+ :file,
+ :file_cache,
+ :realized_at,
+ :language,
+ :study_level,
+ :document_type_id,
+ domain_ids: [])
   end
 end

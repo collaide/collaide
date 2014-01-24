@@ -26,6 +26,7 @@ class Document::Document < ActiveRecord::Base
   extend Enumerize
 
   enumerize :status, in: [:accepted, :pending, :refused], default: :pending, predicates: true
+  enumerize :study_level, in: [:university, :college]
 
   #permte aux utilisateurs de commenter un document. https://github.com/jackdempsey/acts_as_commentable
   acts_as_commentable
@@ -35,27 +36,21 @@ class Document::Document < ActiveRecord::Base
   # permet de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   letsrate_rateable 'note'
 
-  attr_accessible :author, :description, :language, :number_of_pages, :realized_at, :title, :study_level_id,
-                  :document_type_id, :user_id, :files_attributes, :domains_attributes, :domain_ids,
-                  :hits, :status, :is_deleted, :created_at, :updated_at, :is_accepted
-
   scope :valid, -> { where(status: :accepted) }
 
-  has_many :files, :class_name => 'CFile::CFile', dependent: :delete_all
+  mount_uploader :file, DocumentUploader
+
   has_many :document_downloads, :class_name => 'Document::Download'
   has_many :user_downloader, :class_name => 'User', through: :document_downloads, source: :user
 
-  belongs_to :study_level, :class_name => 'Document::StudyLevel', include: :translations
-  belongs_to :document_type, :class_name => 'Document::Type', include: :translations
+  belongs_to :document_type, -> {includes(:translations)}, :class_name => 'Document::Type'
 
-  has_and_belongs_to_many :domains, order: 'position ASC'
+  has_and_belongs_to_many :domains
 
   belongs_to :user
 
-  has_one :note_average, :as => :cacheable, :class_name => "RatingCache", :dependent => :destroy, :conditions => {:dimension => 'note'}
+  has_one :note_average, -> {where :dimension => 'note'}, :as => :cacheable, :class_name => "RatingCache", :dependent => :destroy
 
-
-  accepts_nested_attributes_for :files
   accepts_nested_attributes_for :domains
 
   before_validation :add_author
@@ -69,7 +64,7 @@ class Document::Document < ActiveRecord::Base
   validates_presence_of :domains
   validates_presence_of :study_level
   validates_presence_of :document_type
-  validates_presence_of :files
+  validates_presence_of :file
   validates :number_of_pages, numericality: true, inclusion: {in: 1..300}
   #TODO conversion du format de la date en format de type SQL (YYY-mm-dd)
   validates :realized_at, date: {before: Proc.new {Time.now}}

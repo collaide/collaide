@@ -39,7 +39,7 @@ class GuestBooksController < ApplicationController
   # POST /guest_books
   # POST /guest_books.json
   def create
-    @guest_book = GuestBook.new(params[:guest_book])
+    @guest_book = GuestBook.create(guest_book_params)
 
     respond_to do |format|
       if @guest_book.save
@@ -53,4 +53,10 @@ class GuestBooksController < ApplicationController
     end
   end
 
+
+  private
+
+  def guest_book_params
+    params.require(:guest_book).permit(:name, :comment)
+  end
 end

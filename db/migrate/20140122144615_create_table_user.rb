@@ -1,6 +1,6 @@
 class CreateTableUser < ActiveRecord::Migration
   def change
-    create_table(:user_users) do |t|
+    create_table(:users) do |t|
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
@@ -14,7 +14,7 @@ class CreateTableUser < ActiveRecord::Migration
       t.string :uid
 
       t.float :latitude
-      t.float :users
+      t.float :longitude
 
       ## Recoverable
       t.string   :reset_password_token
@@ -48,95 +48,108 @@ class CreateTableUser < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :user_users, :email,                :unique => true
-    add_index :user_users, :reset_password_token, :unique => true
-    add_index :user_users, :confirmation_token,   :unique => true
-    add_index :user_users, :unlock_token,         :unique => true
-    add_index :user_users, :authentication_token, :unique => true
+    add_index :users, :email,                :unique => true
+    add_index :users, :reset_password_token, :unique => true
+    add_index :users, :confirmation_token,   :unique => true
+    add_index :users, :unlock_token,         :unique => true
+    add_index :users, :authentication_token, :unique => true
+
+    create_table :guest_books do |t|
+      t.string :name
+      t.text :comment
+
+      t.timestamps
+    end
+
+    create_table :domains do |t|
+      t.string :name
+      t.text :description
+      t.string :ancestry, index: true
+      t.integer :position
+
+      t.timestamps
+    end
+
+    Domain.create_translation_table! name: :string, description: :text
+
+    create_table :member_studies do |t|
+      t.date :started_at
+      t.date :ended_at
+      t.string :orientation
+      t.belongs_to :users, index: true
+
+      t.timestamps
+    end
+
+    create_table :statuses do |t|
+      t.text :message
+      t.belongs_to :owner, polymorphic: true, index: true
+
+      t.timestamps
+    end
+
+    create_table :contacts do |t|
+      t.string :subject
+      t.string :email
+      t.string :content
+
+      t.timestamps
+    end
+
+    create_table :user_messages do |t|
+      t.text :body
+      t.string :subject
+    end
+
+    create_join_table :users, :user_messages
+
+    create_table :addresses do |t|
+      t.string :country
+      t.string :street
+      t.integer :street_number
+      t.integer :city_code
+      t.string :country_code
+      t.boolean :is_actual, default: true
+
+      t.timestamps
+    end
+
+    create_table :member_contacts do |t|
+      t.string :first_name
+      t.string :last_name
+      t.date :date_of_birth
+      t.string :gender
+      t.belongs_to :users, index: true
+
+      t.timestamps
+    end
+
+    create_table :member_friend_friends do |t|
+      t.belongs_to :users, index: true
+
+      t.timestamps
+    end
+
+    create_table :member_friend_demands do |t|
+      t.text :message
+      t.integer :user_has_sent_id
+      t.integer :user_is_invited_id
+
+      t.timestamps
+    end
+
+    #create_join_table :user_users, :user_friend_demands
+
+    create_table :member_users_addresses do |t|
+      t.belongs_to :owner, polymorphic: true, index: true
+      t.belongs_to :addresses
+
+      t.timestamps
+    end
 
   end
 
-  create_table :guest_books do |t|
-    t.string :name
-    t.text :comment
 
-    t.timestamps
-  end
-
-  create_table :domains do |t|
-    t.string :name
-    t.text :description
-    t.string :ancestry, index: true
-    t.integer :position
-
-    t.timestamps
-  end
-
-  Domain.create_translation_table!({
-                                       :name => :string,
-                                       :description => :text}, {
-                                       :migrate_data => true
-                                   })
-
-  create_table :user_studies do |t|
-    t.date :started_at
-    t.date :ended_at
-    t.string :orientation
-    t.belongs_to :user_users, index: true
-
-    t.timestamps
-  end
-
-  create_table :statuses do |t|
-    t.text :message
-    t.belongs_to :owner, polymorphic: true, index: true
-
-    t.timestamps
-  end
-
-  create_table :addresses do |t|
-    t.string :country
-    t.string :street
-    t.integer :street_number
-    t.integer :city_code
-    t.string :country_code
-    t.boolean :is_actual, default: true
-
-    t.timestamps
-  end
-
-  create_table :user_contacts do |t|
-    t.string :first_name
-    t.string :last_name
-    t.date :date_of_birth
-    t.string :gender
-    t.belongs_to :user_users, index: true
-
-    t.timestamps
-  end
-
-  create_table :user_friend_friends do |t|
-    t.belongs_to :user_users, index: true
-
-    t.timestamps
-  end
-
-  create_table :user_friend_demands do |t|
-    t.text :message
-    t.integer :user_has_sent_id
-    t.integer :user_is_invited_id
-
-    t.timestamps
-  end
-
-  #create_join_table :user_users, :user_friend_demands
-
-  create_table :user_users_addresses do |t|
-    t.belongs_to :owner, polymorphic: true, index: true
-    t.belongs_to :addresses
-
-    t.timestamps
-  end
 
 
 end
