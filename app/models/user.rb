@@ -44,55 +44,55 @@ class   User < ActiveRecord::Base
   enumerize :role, in: [:admin, :moderator, :author, :banned, :super_admin, :doc_validator, :add_validator], scope: true, predicates: true
 
   #https://github.com/ging/mailboxer
-  acts_as_messageable
+  #acts_as_messageable
+  #
+  #has_repository
 
-  has_repository
+  #has_one :contact, :class_name => 'User::Contact', inverse_of: :user
+  #has_one :parameter, :class_name => 'User::Parameter'
 
-  has_one :contact, :class_name => 'User::Contact', inverse_of: :user
-  has_one :parameter, :class_name => 'User::Parameter'
-
-  has_many :documents, :class_name => 'Document::Document'
+  #has_many :documents, :class_name => 'Document::Document'
   # Quels documents sont téléchargés
-  has_many :document_downloads, :class_name => 'Document::Download'
-  has_many :downloads, class_name: 'Document::Document', through: :document_downloads, source: :document
+  #has_many :document_downloads, :class_name => 'Document::Download'
+ # has_many :downloads, class_name: 'Document::Document', through: :document_downloads, source: :document
 #------
 
   # Status de l'utilisateur sur son mur
-  has_many :statues, :class_name => 'User::Status', inverse_of: :user
+  #has_many :statues, :class_name => 'User::Status', inverse_of: :user
 
   # Un user a plusieurs études (gymnase, uni, etc) chaque études à une établissement scolaire, une période et une orientation
-  has_many :studies, :class_name => 'User::Study'
+  #has_many :studies, :class_name => 'User::Study'
 
   # Un user a plusieurs groupes et un groupe a plusieurs utilisateurs
-  has_many :group_members, as: :member, :class_name => 'Group::GroupMember'
-  has_many :groups, :class_name => 'Group::Group', as: :member, through: :group_members#, source: :group
+  #has_many :group_members, as: :member, :class_name => 'Group::GroupMember'
+  #has_many :groups, :class_name => 'Group::Group', as: :member, through: :group_members#, source: :group
   #########
   #invitations créées  qui invite d'autres personnes à rejoindre un groupe
-  has_many :created_group_demands, :class_name => 'Group::Invitation'
+  #has_many :created_group_demands, :class_name => 'Group::Invitation'
 
   #many-to-many
-  has_many :user_friend_friends, :class_name => 'User::Friend::Friend'
-  has_many :friends, :class_name => 'User::Friend::Friend', through: :user_friend_friends, source: :user
+  #has_many :user_friend_friends, :class_name => 'User::Friend::Friend'
+  #has_many :friends, :class_name => 'User::Friend::Friend', through: :user_friend_friends, source: :user
   #####
   #demande envoyée
-  has_many :created_friend_demands, :class_name => 'User::Friend::Demand', foreign_key: :user_has_sent_id
+ # has_many :created_friend_demands, :class_name => 'User::Friend::Demand', foreign_key: :user_has_sent_id
   #demande reçues
-  has_many :friend_demands, class_name: 'User::Friend::Demand', foreign_key: :user_is_invited_id
+  #has_many :friend_demands, class_name: 'User::Friend::Demand', foreign_key: :user_is_invited_id
 
-  has_many :notifications, class_name: 'UserNotification'
+  #has_many :notifications, class_name: 'UserNotification'
 
-  has_and_belongs_to_many :group_demands, :class_name => 'Group::Invitation', join_table: 'group_demands_users'
-  has_and_belongs_to_many :addresses, :class_name => 'User::Address', join_table: 'user_addresses_users'
+  #has_and_belongs_to_many :group_demands, :class_name => 'Group::Invitation', join_table: 'group_demands_users'
+  #has_and_belongs_to_many :addresses, :class_name => 'User::Address', join_table: 'user_addresses_users'
 
-  has_many :advertisements, :class_name => 'Advertisement::Advertisement'
+  #has_many :advertisements, :class_name => 'Advertisement::Advertisement'
 
   #paperclip https://github.com/thoughtbot/paperclip
-  has_attached_file :avatar,
-                    :styles => { :medium => "300x300>", :thumb => "100x100>" },
-                    :default_url => "users/no-avatar.png"
+  #has_attached_file :avatar,
+  #                  :styles => { :medium => "300x300>", :thumb => "100x100>" },
+  #                  :default_url => "users/no-avatar.png"
 
   # permet à un utilisateur de donner une note à un document. voir : https://github.com/muratguzel/letsrate
-  letsrate_rater
+  #letsrate_rater
 
   validates :name, presence: true
 
