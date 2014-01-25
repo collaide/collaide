@@ -19,10 +19,11 @@ class ApplicationController < ActionController::Base
 
   before_action :store_location
 
+  before_action :current_ability
+
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
     if(request.fullpath.start_with? '/admin')
-      logger.error('salut')
       return
     end
     if (request.fullpath != new_user_session_path &&
@@ -88,7 +89,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     if !request.env["HTTP_REFERER"] || !flash[:notice].nil?
-      redirect_to root_url
+      redirect_to main_app.root_url
     else
       redirect_to user_session_path, alert: t('access_denied')
     end
@@ -109,5 +110,10 @@ class ApplicationController < ActionController::Base
 
   def get_documents
     @footer_document = Document::Document.valid.order('created_at DESC').limit(6).all
+  end
+
+  def current_ability
+
+    @current_ability ||= Ability.new(current_user, request)
   end
 end

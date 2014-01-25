@@ -2,7 +2,7 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
+  def initialize(user, request)
     #utilisateur non connecté, à voir si ça va comme ça
     if user.nil?
        no_connected
@@ -29,9 +29,10 @@ class Ability
         #La même chose que pour les documents —> créé la page adverstissement dans activeadmin
       end
     end
-    #etc
-    # Pour active admin:
-    #can :manage, ActiveAdmin::Page, :name => "Domain"
+
+    #!!! Enlève des action pour certains modèles. Laisser à la fin!!!
+    rails_admin(request)
+
   end
 
   private
@@ -58,4 +59,11 @@ class Ability
     def admin(user)
       normal user
     end
+
+  def rails_admin(request)
+    return unless request.fullpath.start_with? '/admin'
+    cannot :new, Document::Download
+    cannot :edit, Document::Download
+    cannot :destroy, Document::Download
+  end
 end
