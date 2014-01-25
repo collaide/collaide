@@ -17,6 +17,7 @@ describe "Document::Document" do
 
   describe 'one document' do
     it 'renders a document' do
+      I18n.locale = :fr
       sign_in_as_a_valid_user
       doc = create_valid_doc
       visit document_documents_path

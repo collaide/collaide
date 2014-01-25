@@ -44,17 +44,17 @@ class   User < ActiveRecord::Base
   enumerize :role, in: [:admin, :moderator, :author, :banned, :super_admin, :doc_validator, :add_validator], scope: true, predicates: true
 
   #https://github.com/ging/mailboxer
-  #acts_as_messageable
+  acts_as_messageable
   #
-  #has_repository
+  has_repository
 
   #has_one :contact, :class_name => 'User::Contact', inverse_of: :user
   #has_one :parameter, :class_name => 'User::Parameter'
 
-  #has_many :documents, :class_name => 'Document::Document'
+  has_many :documents, :class_name => 'Document::Document'
   # Quels documents sont téléchargés
-  #has_many :document_downloads, :class_name => 'Document::Download'
- # has_many :downloads, class_name: 'Document::Document', through: :document_downloads, source: :document
+  has_many :document_downloads, :class_name => 'Document::Download'
+  has_many :downloads, class_name: 'Document::Document', through: :document_downloads, source: :document
 #------
 
   # Status de l'utilisateur sur son mur
@@ -79,12 +79,12 @@ class   User < ActiveRecord::Base
   #demande reçues
   #has_many :friend_demands, class_name: 'User::Friend::Demand', foreign_key: :user_is_invited_id
 
-  #has_many :notifications, class_name: 'UserNotification'
+  has_many :notifications, class_name: 'UserNotification'
 
   #has_and_belongs_to_many :group_demands, :class_name => 'Group::Invitation', join_table: 'group_demands_users'
   #has_and_belongs_to_many :addresses, :class_name => 'User::Address', join_table: 'user_addresses_users'
 
-  #has_many :advertisements, :class_name => 'Advertisement::Advertisement'
+  has_many :advertisements, :class_name => 'Advertisement::Advertisement'
 
   #paperclip https://github.com/thoughtbot/paperclip
   #has_attached_file :avatar,
@@ -92,7 +92,7 @@ class   User < ActiveRecord::Base
   #                  :default_url => "users/no-avatar.png"
 
   # permet à un utilisateur de donner une note à un document. voir : https://github.com/muratguzel/letsrate
-  #letsrate_rater
+  letsrate_rater
 
   validates :name, presence: true
 

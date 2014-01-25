@@ -35,4 +35,24 @@ FactoryGirl.define do
     sequence(:name) { |n| "Document type  #{n}"}
     sequence(:description) {|n| "Lorem ipsume #{n}" }
   end
+
+  factory :sale_book, class: 'Advertisement::SaleBook' do
+    sequence(:title) { |n| "Livre #{n}"}
+    description 'Une annonce'
+    active true
+    price 20
+    currency :CHF
+    #study_level :university
+    #domains { [(FactoryGirl.create :domain)] }
+    #user {FactoryGirl.create(:user)}
+    book {FactoryGirl.create(:book)}
+  end
+
+  factory :book, class: 'Book' do
+    sequence(:title) { |n| "Livre #{n}"}
+    authors 'moi'
+    description 'salut'
+    isbn_10 3333333333
+    isbn_13 3333333333333
+  end
 end

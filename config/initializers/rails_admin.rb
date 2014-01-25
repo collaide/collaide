@@ -10,5 +10,6 @@ RailsAdmin.config do |config|
   config.current_user_method &:current_user
   config.authorize_with :cancan
 
-  config.excluded_models = %w(Group)
+  #config.excluded_models = %w(Group)
+  config.excluded_models = Dir.glob(Rails.root.join('app/models/concerns/**.rb')).map {|p| 'Concerns::' + File.basename(p, '.rb').camelize }
 end

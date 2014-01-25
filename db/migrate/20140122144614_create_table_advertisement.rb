@@ -6,7 +6,7 @@ class CreateTableAdvertisement < ActiveRecord::Migration
       t.boolean :active
       t.string :type
       t.belongs_to :user, index: true
-      t.belongs_to :book_id, index: true
+      t.belongs_to :book, index: true
       t.string :language
       t.integer :hits
 
@@ -20,12 +20,15 @@ class CreateTableAdvertisement < ActiveRecord::Migration
       t.string :state
       t.string :annotation
 
-      t.belongs_to :study_level, index:true
+      t.string :study_level
 
       t.timestamps
     end
 
-    create_join_table :domains, :advertisement_advertisements
+    create_table :advertisement_advertisements_domains do |t|
+      t.belongs_to :sale_book, index: true
+      t.belongs_to :domain, index: true
+    end
 
     create_table :books do |t|
       t.string :title

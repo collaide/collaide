@@ -35,7 +35,7 @@ class Document::Document < ActiveRecord::Base
                domain: 'domain.name', study_level: 'document_study_levels.name', domain: 'domains.name'}
   # permet de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   #FIXME voilà de quoi aider ... https://github.com/muratguzel/letsrate/issues/38
-  #letsrate_rateable 'note'
+  letsrate_rateable 'note'
 
   scope :valid, -> { where(status: :accepted) }
 

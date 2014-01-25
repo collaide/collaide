@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20140123152321) do
     t.boolean  "active"
     t.string   "type"
     t.integer  "user_id"
-    t.integer  "book_id_id"
+    t.integer  "book_id"
     t.string   "language"
     t.integer  "hits"
     t.decimal  "price",          precision: 9, scale: 2
@@ -42,19 +42,21 @@ ActiveRecord::Schema.define(version: 20140123152321) do
     t.string   "payment_modes"
     t.string   "state"
     t.string   "annotation"
-    t.integer  "study_level_id"
+    t.string   "study_level"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "advertisement_advertisements", ["book_id_id"], name: "index_advertisement_advertisements_on_book_id_id", using: :btree
-  add_index "advertisement_advertisements", ["study_level_id"], name: "index_advertisement_advertisements_on_study_level_id", using: :btree
+  add_index "advertisement_advertisements", ["book_id"], name: "index_advertisement_advertisements_on_book_id", using: :btree
   add_index "advertisement_advertisements", ["user_id"], name: "index_advertisement_advertisements_on_user_id", using: :btree
 
-  create_table "advertisement_advertisements_domains", id: false, force: true do |t|
-    t.integer "domain_id",                      null: false
-    t.integer "advertisement_advertisement_id", null: false
+  create_table "advertisement_advertisements_domains", force: true do |t|
+    t.integer "sale_book_id"
+    t.integer "domain_id"
   end
+
+  add_index "advertisement_advertisements_domains", ["domain_id"], name: "index_advertisement_advertisements_domains_on_domain_id", using: :btree
+  add_index "advertisement_advertisements_domains", ["sale_book_id"], name: "index_advertisement_advertisements_domains_on_sale_book_id", using: :btree
 
   create_table "books", force: true do |t|
     t.string   "title"
