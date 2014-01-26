@@ -52,15 +52,15 @@ class Group::Group < ActiveRecord::Base
   serialize :can_manage_invitations, Array
 
   belongs_to :main_group, class_name: 'Group::Group'
-  has_many :sub_groups, class_name: 'Group::Group'
+  has_many :sub_groups, class_name: 'Group::Group', foreign_key: "main_group_id"
   has_many :statuses, class_name: 'Status', as: :owner
   has_many :members, through: :group_members
   has_many :invitation, class_name: 'Group::invitation'
 
-  validates :name, presence: true, length: {minimum: 3}
+  validates :name, presence: true, length: {minimum: 2}
 
-  validates :password, length: {minimum: 4}, confirmation: true
-  validates_presence_of :password_confirmation
+  #validates :password, length: {minimum: 1}, confirmation: true
+  #validates_presence_of :password_confirmation
 
   after_initialize :init
 
@@ -69,12 +69,13 @@ class Group::Group < ActiveRecord::Base
     self.can_write_file << Group::Roles::MEMBER
     self.can_delete_file << Group::Roles::MEMBER
     self.can_delete_status << Group::Roles::ADMIN
-    self.can_manage_invitations << Group::Role::ADMIN
+    self.can_manage_invitations << Group::Roles::ADMIN
   end
 
 end
 
 class Group::Roles
+  ALL = :all
   ADMIN = :admin
   WRITER = :writer
   MEMBER = :member

@@ -81,7 +81,7 @@ class   User < ActiveRecord::Base
 
   has_many :notifications, class_name: 'UserNotification'
 
-  #has_and_belongs_to_many :group_demands, :class_name => 'Group::Invitation', join_table: 'group_demands_users'
+  #has_and_belongs_to_many :group_invitations, as: :receivers, :class_name => 'Group::Invitation', join_table: 'group_invitations_users'
   #has_and_belongs_to_many :addresses, :class_name => 'User::Address', join_table: 'user_addresses_users'
 
   has_many :advertisements, :class_name => 'Advertisement::Advertisement'

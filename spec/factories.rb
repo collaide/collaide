@@ -55,4 +55,10 @@ FactoryGirl.define do
     isbn_10 3333333333
     isbn_13 3333333333333
   end
+
+  factory :group, class: 'Group::Group' do |group|
+    name "Name group"
+    description "c'est une déscription"
+  end
+
 end

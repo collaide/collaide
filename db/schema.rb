@@ -182,7 +182,6 @@ ActiveRecord::Schema.define(version: 20140123152321) do
   create_table "group_groups", force: true do |t|
     t.string   "name"
     t.string   "password"
-    t.string   "password_confirmation"
     t.string   "type"
     t.string   "can_index_members"
     t.string   "can_read_member"
@@ -197,10 +196,21 @@ ActiveRecord::Schema.define(version: 20140123152321) do
     t.string   "can_create_invitation"
     t.string   "can_manage_invitations"
     t.text     "description"
+    t.integer  "main_group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "group_groups_group_invitations", force: true do |t|
+    t.integer  "sender_id"
+    t.string   "sender_type"
     t.integer  "group_groups_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "group_groups_group_invitations", ["group_groups_id"], name: "index_group_groups_group_invitations_on_group_groups_id", using: :btree
+  add_index "group_groups_group_invitations", ["sender_id"], name: "invitation_sender_index", using: :btree
 
   create_table "group_groups_group_members", force: true do |t|
     t.integer  "group_groups_id"
@@ -214,20 +224,14 @@ ActiveRecord::Schema.define(version: 20140123152321) do
   add_index "group_groups_group_members", ["group_groups_id"], name: "index_group_groups_group_members_on_group_groups_id", using: :btree
   add_index "group_groups_group_members", ["group_members_id"], name: "group_member_index", using: :btree
 
-  create_table "group_invitations", force: true do |t|
-    t.integer  "user_users_id"
-    t.integer  "group_groups_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "group_invitations_receivers", force: true do |t|
+    t.integer "receiver_id"
+    t.string  "receiver_type"
+    t.integer "group_invitation_id"
   end
 
-  add_index "group_invitations", ["group_groups_id"], name: "index_group_invitations_on_group_groups_id", using: :btree
-  add_index "group_invitations", ["user_users_id"], name: "index_group_invitations_on_user_users_id", using: :btree
-
-  create_table "group_invitations_user_users", id: false, force: true do |t|
-    t.integer "group_invitation_id", null: false
-    t.integer "user_user_id",        null: false
-  end
+  add_index "group_invitations_receivers", ["group_invitation_id"], name: "index_group_invitations_receivers_on_group_invitation_id", using: :btree
+  add_index "group_invitations_receivers", ["receiver_id"], name: "invitation_receiver_index", using: :btree
 
   create_table "guest_books", force: true do |t|
     t.string   "name"

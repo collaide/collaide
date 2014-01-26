@@ -3,7 +3,7 @@ class CreateGroupModule < ActiveRecord::Migration
     create_table :group_groups do |t|
       t.string :name
       t.string :password
-      t.string :password_confirmation
+      #t.string :password_confirmation
       t.string :type
       t.string :can_index_members
       t.string :can_read_member
@@ -20,7 +20,7 @@ class CreateGroupModule < ActiveRecord::Migration
 
       t.text :description
 
-      t.belongs_to :group_groups
+      t.belongs_to :main_group
 
       t.timestamps
     end
@@ -32,16 +32,21 @@ class CreateGroupModule < ActiveRecord::Migration
 
       t.timestamps
     end
-
     add_index :group_groups_group_members, :group_members_id, name: :group_member_index
 
-    create_table :group_invitations do |t|
-      t.belongs_to :user_users, index: true
+    create_table :group_groups_group_invitations do |t|
+      t.belongs_to :sender, polymorphic: true
       t.belongs_to :group_groups, index: true
 
       t.timestamps
     end
+    add_index :group_groups_group_invitations, :sender_id, name: :invitation_sender_index
 
-    create_join_table :group_invitations, :user_users
+
+    create_table :group_invitations_receivers do |t|
+      t.belongs_to :receiver, polymorphic: true
+      t.belongs_to :group_invitation, index:true
+    end
+    add_index :group_invitations_receivers, :receiver_id, name: :invitation_receiver_index
   end
 end
