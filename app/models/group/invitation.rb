@@ -19,7 +19,9 @@ class Group::Invitation < ActiveRecord::Base
 
   belongs_to :group, :class_name => 'Group::Group'
 
-  has_many :receivers, :class_name => 'Group::InvitationReceiver'
+  has_many :propositions, :class_name => 'Group::InvitationProposition'
+
+  has_many :receivers, :through => :propositions
 
   #has_and_belongs_to_many :receivers
   #
