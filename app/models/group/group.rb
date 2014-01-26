@@ -55,7 +55,12 @@ class Group::Group < ActiveRecord::Base
   has_many :sub_groups, class_name: 'Group::Group', foreign_key: "main_group_id"
   has_many :statuses, class_name: 'Status', as: :owner
   has_many :members, through: :group_members
-  has_many :invitation, class_name: 'Group::invitation'
+  has_many :sent_invitations, class_name: 'Group::invitation', as: 'sender'
+  has_many :invitations, class_name: 'Group::invitation', :through => 'Group::InvitationReceiver'
+  # A mettre dans User aussi
+  has_many :received_invitations, class_name: 'Group::invitation', as: 'receiver'
+
+
 
   validates :name, presence: true, length: {minimum: 2}
 

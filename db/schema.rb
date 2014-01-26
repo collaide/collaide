@@ -201,17 +201,6 @@ ActiveRecord::Schema.define(version: 20140123152321) do
     t.datetime "updated_at"
   end
 
-  create_table "group_groups_group_invitations", force: true do |t|
-    t.integer  "sender_id"
-    t.string   "sender_type"
-    t.integer  "group_groups_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "group_groups_group_invitations", ["group_groups_id"], name: "index_group_groups_group_invitations_on_group_groups_id", using: :btree
-  add_index "group_groups_group_invitations", ["sender_id"], name: "invitation_sender_index", using: :btree
-
   create_table "group_groups_group_members", force: true do |t|
     t.integer  "group_groups_id"
     t.integer  "group_members_id"
@@ -224,14 +213,23 @@ ActiveRecord::Schema.define(version: 20140123152321) do
   add_index "group_groups_group_members", ["group_groups_id"], name: "index_group_groups_group_members_on_group_groups_id", using: :btree
   add_index "group_groups_group_members", ["group_members_id"], name: "group_member_index", using: :btree
 
-  create_table "group_invitations_receivers", force: true do |t|
-    t.integer "receiver_id"
-    t.string  "receiver_type"
-    t.integer "group_invitation_id"
+  create_table "group_invitations", force: true do |t|
+    t.text     "message"
+    t.integer  "sender_id"
+    t.string   "sender_type"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "group_invitations_receivers", ["group_invitation_id"], name: "index_group_invitations_receivers_on_group_invitation_id", using: :btree
-  add_index "group_invitations_receivers", ["receiver_id"], name: "invitation_receiver_index", using: :btree
+  add_index "group_invitations", ["group_id"], name: "index_group_invitations_on_group_id", using: :btree
+  add_index "group_invitations", ["sender_id", "sender_type"], name: "index_group_invitations_on_sender_id_and_sender_type", using: :btree
+
+  create_table "group_invitations_receivers", id: false, force: true do |t|
+    t.integer "group_invitation_id"
+    t.integer "receiver_id"
+    t.string  "receiver_type"
+  end
 
   create_table "guest_books", force: true do |t|
     t.string   "name"

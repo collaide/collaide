@@ -19,5 +19,11 @@ class Group::Invitation < ActiveRecord::Base
 
   belongs_to :group, :class_name => 'Group::Group'
 
-  has_and_belongs_to_many :receivers, polymorphic: true
+  has_many :receivers, :class_name => 'Group::InvitationReceiver'
+
+  #has_and_belongs_to_many :receivers
+  #
+  #scope :receivers, lambda { |receiver|
+  #  joins(:group_invitations_receivers).where('group_invitations_receivers.member_id' => receiver.id,'group_invitations_receivers.member_type' => receiver.class.base_class.to_s)
+  #}
 end

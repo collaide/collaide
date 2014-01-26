@@ -7,7 +7,7 @@ describe Advertisement::SaleBook do
       s = FactoryGirl.build(:sale_book)
       s.book = b
       s.save
-      puts s.errors.inspect
+      #puts s.errors.inspect
       s.reload.book.should eq(b)
     end
 

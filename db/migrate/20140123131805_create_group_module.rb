@@ -34,19 +34,24 @@ class CreateGroupModule < ActiveRecord::Migration
     end
     add_index :group_groups_group_members, :group_members_id, name: :group_member_index
 
-    create_table :group_groups_group_invitations do |t|
-      t.belongs_to :sender, polymorphic: true
-      t.belongs_to :group_groups, index: true
+    create_table :group_invitations do |t|
+      t.text :message
+      t.belongs_to :sender, polymorphic: true, index: true
+      t.belongs_to :group, index: true
 
       t.timestamps
     end
-    add_index :group_groups_group_invitations, :sender_id, name: :invitation_sender_index
+    #add_index :group_groups_group_invitations, :sender_id, name: :invitation_sender_index
 
-
-    create_table :group_invitations_receivers do |t|
+    create_join_table :group_invitations, :receivers do |t|
       t.belongs_to :receiver, polymorphic: true
-      t.belongs_to :group_invitation, index:true
+      t.belongs_to :group_invitation
     end
-    add_index :group_invitations_receivers, :receiver_id, name: :invitation_receiver_index
+
+    #create_table :group_invitation_receivers do |t|
+    #  t.belongs_to :receiver, polymorphic: true
+    #  t.belongs_to :group_invitation, index:true
+    #end
+    #add_index :group_invitation_receivers, :receiver_id, name: :invitation_receiver_index
   end
 end

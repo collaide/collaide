@@ -21,5 +21,22 @@ describe Group::Group do
       g.reload.sub_groups.should eq([g2,g3])
     end
 
+    it 'Group can send an invitation' do
+      g = FactoryGirl.create(:group)
+      g2 = FactoryGirl.create(:group)
+      u = FactoryGirl.create(:user)
+      i = Group::Invitation.create(message: 'Venez rejoindre le groupe !')
+      i.sender = g
+      i.group = g
+      i.receivers << g2
+      i.receivers << u
+
+      #i.save
+      g.invitations << i
+      g.save
+
+      g.reload.invitations.should eq([i])
+    end
+
   end
 end
