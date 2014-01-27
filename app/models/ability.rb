@@ -38,7 +38,7 @@ class Ability
   private
     def no_connected
       can :manage, GuestBook
-      can [:read, :documents, :groups], User
+      can [:read, :documents, :advertisements], User
       #can :read, Domain
       can :read, Document::Document
       can :search, Document::Document

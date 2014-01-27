@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   add_breadcrumb I18n.t('users.index.breadcrumb'),  :users_path
-  add_breadcrumb I18n.t('users.show.breadcrumb', user: @user.to_s), user_path(@user), :only => %w(show documents groups)
+  add_breadcrumb I18n.t('users.show.breadcrumb', user: @user.to_s), user_path(@user), :only => %w(show documents advertisements)
 
 
   def index
@@ -20,7 +20,6 @@ class UsersController < ApplicationController
   end
 
   def advertisements
-    #@message = UserMessage.new
     @user = User.find(params[:user_id])
     add_breadcrumb I18n.t('users.advertisements.breadcrumb', user: @user.to_s), user_advertisements_path(@user)
   end

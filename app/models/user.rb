@@ -74,7 +74,7 @@ class   User < ActiveRecord::Base
 
   has_many :notifications, class_name: 'UserNotification'
 
-  # Invitation pour les groups
+  # Invitation pour les advertisements
   has_many :sent_group_invitations, class_name: 'Group::Invitation', as: 'sender'
   has_many :received_group_invitations, class_name: 'Group::Invitation', as: 'receiver'
   # Un user a plusieurs groupes et un groupe a plusieurs utilisateurs

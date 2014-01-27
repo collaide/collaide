@@ -5,7 +5,7 @@ require 'rails/all'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
- # Bundler.require(*Rails.groups(:assets => %w(development test)))
+ # Bundler.require(*Rails.advertisements(:assets => %w(development test)))
  # Require the gems listed in Gemfile, including any gems
  # you've limited to :test, :development, or :production.
   Bundler.require(:default, Rails.env)

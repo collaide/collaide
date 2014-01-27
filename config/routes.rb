@@ -97,7 +97,7 @@ Collaide::Application.routes.draw do
     #    resources :inboxes
     #  end
     #
-    #  resources :groups
+    #  resources :advertisements
     #  namespace :group do
     #    resources :users
     #    resources :demands

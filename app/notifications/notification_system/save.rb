@@ -83,8 +83,8 @@ class NotificationSystem::Save
       #    users << User.find(a_user) if a_user.is_a? Integer
       #  end
       #end
-      #unless owners['groups'].nil? and owners['groups'].empty?
-      #  owners['groups'].each do |a_group|
+      #unless owners['advertisements'].nil? and owners['advertisements'].empty?
+      #  owners['advertisements'].each do |a_group|
       #    if a_group.is_a? Member::Group
       #      a_group.users.each do |a_user|
       #        users << a_user
