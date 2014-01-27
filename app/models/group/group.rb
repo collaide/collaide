@@ -56,9 +56,24 @@ class Group::Group < ActiveRecord::Base
   #has_many :statuses, class_name: 'Status', as: :owner
   has_many :group_members, class_name: 'Group::GroupMember'
 
+  # Renvoi les membres user et group
+  has_many :u_members, through: :group_members, source: :member, source_type: 'User'
+  has_many :g_members, through: :group_members, source: :member, source_type: 'Group'
+
+  has_many :sent_group_invitations, class_name: 'Group::Invitation', as: 'sender'
+  has_many :group_invitations, class_name: 'Group::Invitation'
+  # A mettre dans User aussi
+  has_many :received_group_invitations, class_name: 'Group::Invitation', as: 'receiver'
+
   ##################################################
-  # POUR AFFICHER TOUT LES MEMBRES ##############
+  # POUR AFFICHER TOUT LES MEMBRES (group et user ensemble) ##############
   ################################################
+
+  # returns all members
+  def members
+    self.u_members + self.g_members
+  end
+
   #attr_accessor :members
   #
   #scope :participant, lambda {|participant|
@@ -77,19 +92,9 @@ class Group::Group < ActiveRecord::Base
   #  joins(:group_members).where('group_group_members.member_id' => member.id,'group_group_members.member_type' => member.class.base_class.to_s)
   #}
 
-  #has_many :u_members, through: :group_members, source: :member, source_type: 'User'#, as: 'member'
-  #has_many :g_members, through: :group_members, source: :member, source_type: 'Group'
-
   ##################################################
   # FIN ##############
   ################################################
-
-  has_many :sent_group_invitations, class_name: 'Group::Invitation', as: 'sender'
-  has_many :group_invitations, class_name: 'Group::Invitation'
-  # A mettre dans User aussi
-  has_many :received_group_invitations, class_name: 'Group::Invitation', as: 'receiver'
-
-
 
   validates :name, presence: true, length: {minimum: 2}
 
