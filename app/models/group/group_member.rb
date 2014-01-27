@@ -24,4 +24,6 @@ class Group::GroupMember < ActiveRecord::Base
 
   # Le group
   belongs_to :group, :class_name => 'Group::Group'
+
+
 end

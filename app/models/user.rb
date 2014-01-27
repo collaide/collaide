@@ -81,7 +81,10 @@ class   User < ActiveRecord::Base
 
   has_many :notifications, class_name: 'UserNotification'
 
-  #has_and_belongs_to_many :group_invitations, as: :receivers, :class_name => 'Group::Invitation', join_table: 'group_invitations_users'
+  # Invitation pour les groups
+  has_many :sent_group_invitations, class_name: 'Group::Invitation', as: 'sender'
+  has_many :received_group_invitations, class_name: 'Group::Invitation', as: 'receiver'
+
   #has_and_belongs_to_many :addresses, :class_name => 'User::Address', join_table: 'user_addresses_users'
 
   has_many :advertisements, :class_name => 'Advertisement::Advertisement'
@@ -116,6 +119,11 @@ class   User < ActiveRecord::Base
 
   def to_s
     self.name
+  end
+
+  # Envoie une invitation a rejoindre le group aux receivers
+  def send_group_invitations(group, receivers, message = '')
+    group.send_invitations(receivers, message, self)
   end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)

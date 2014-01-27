@@ -55,10 +55,11 @@ class Group::Group < ActiveRecord::Base
   has_many :sub_groups, class_name: 'Group::Group', foreign_key: "main_group_id"
   has_many :statuses, class_name: 'Status', as: :owner
   has_many :members, through: :group_members
-  has_many :sent_invitations, class_name: 'Group::invitation', as: 'sender'
-  has_many :invitations, class_name: 'Group::invitation', :through => 'Group::InvitationReceiver'
+
+  has_many :sent_group_invitations, class_name: 'Group::Invitation', as: 'sender'
+  has_many :group_invitations, class_name: 'Group::Invitation'
   # A mettre dans User aussi
-  has_many :received_invitations, class_name: 'Group::invitation', as: 'receiver'
+  has_many :received_group_invitations, class_name: 'Group::Invitation', as: 'receiver'
 
 
 
@@ -75,6 +76,24 @@ class Group::Group < ActiveRecord::Base
     self.can_delete_file << Group::Roles::MEMBER
     self.can_delete_status << Group::Roles::ADMIN
     self.can_manage_invitations << Group::Roles::ADMIN
+  end
+
+  # send an invitation to the receivers
+  def send_invitations(receivers, message = '', sender = self)
+    if receivers.kind_of?(Array)
+      receivers.each do |r|
+        invitation = Group::Invitation.new(message: message)
+        invitation.sender = sender
+        invitation.receiver = r
+        self.group_invitations << invitation
+      end
+    else
+      invitation = Group::Invitation.new(message: message)
+      invitation.sender = sender
+      invitation.receiver = receivers
+
+      self.group_invitations << invitation
+    end
   end
 
 end

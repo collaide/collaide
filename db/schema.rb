@@ -211,25 +211,22 @@ ActiveRecord::Schema.define(version: 20140123152321) do
   end
 
   add_index "group_groups_group_members", ["group_groups_id"], name: "index_group_groups_group_members_on_group_groups_id", using: :btree
-  add_index "group_groups_group_members", ["group_members_id"], name: "group_member_index", using: :btree
+  add_index "group_groups_group_members", ["group_members_id", "group_members_type"], name: "group_member_index", using: :btree
 
   create_table "group_invitations", force: true do |t|
     t.text     "message"
     t.integer  "sender_id"
     t.string   "sender_type"
     t.integer  "group_id"
+    t.integer  "receiver_id"
+    t.string   "receiver_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "group_invitations", ["group_id"], name: "index_group_invitations_on_group_id", using: :btree
+  add_index "group_invitations", ["receiver_id", "receiver_type"], name: "index_group_invitations_on_receiver_id_and_receiver_type", using: :btree
   add_index "group_invitations", ["sender_id", "sender_type"], name: "index_group_invitations_on_sender_id_and_sender_type", using: :btree
-
-  create_table "group_invitations_receivers", id: false, force: true do |t|
-    t.integer "group_invitation_id"
-    t.integer "receiver_id"
-    t.string  "receiver_type"
-  end
 
   create_table "guest_books", force: true do |t|
     t.string   "name"
