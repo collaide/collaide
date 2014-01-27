@@ -21,7 +21,7 @@ describe Group::Group do
       g.reload.sub_groups.should eq([g2,g3])
     end
 
-    it 'Group and user can send one and many invitation' do
+    it 'Group and user can send one and many invitations' do
       g = FactoryGirl.create(:group)
       g2 = FactoryGirl.create(:group)
       u = FactoryGirl.create(:user)
@@ -39,7 +39,18 @@ describe Group::Group do
 
       u2.reload.received_group_invitations.first.group.should eq(g2)
       u2.reload.received_group_invitations.first.sender.should eq(u)
+    end
 
+    it 'can accept or decline an invitation' do
+      g = FactoryGirl.create(:group)
+      g2 = FactoryGirl.create(:group)
+      u = FactoryGirl.create(:user)
+      u2 = FactoryGirl.create(:user)
+
+      g.send_invitations([g2,u], 'Venez rejoindre le groupe !')
+
+      u.received_group_invitations.first.accept
+      u.groups.last.should eq(g)
     end
 
   end

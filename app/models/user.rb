@@ -63,13 +63,6 @@ class   User < ActiveRecord::Base
   # Un user a plusieurs études (gymnase, uni, etc) chaque études à une établissement scolaire, une période et une orientation
   #has_many :studies, :class_name => 'User::Study'
 
-  # Un user a plusieurs groupes et un groupe a plusieurs utilisateurs
-  #has_many :group_members, as: :member, :class_name => 'Group::GroupMember'
-  #has_many :groups, :class_name => 'Group::Group', as: :member, through: :group_members#, source: :group
-  #########
-  #invitations créées  qui invite d'autres personnes à rejoindre un groupe
-  #has_many :created_group_demands, :class_name => 'Group::Invitation'
-
   #many-to-many
   #has_many :user_friend_friends, :class_name => 'User::Friend::Friend'
   #has_many :friends, :class_name => 'User::Friend::Friend', through: :user_friend_friends, source: :user
@@ -84,6 +77,9 @@ class   User < ActiveRecord::Base
   # Invitation pour les groups
   has_many :sent_group_invitations, class_name: 'Group::Invitation', as: 'sender'
   has_many :received_group_invitations, class_name: 'Group::Invitation', as: 'receiver'
+  # Un user a plusieurs groupes et un groupe a plusieurs utilisateurs
+  has_many :group_members, as: :member, :class_name => 'Group::GroupMember'
+  has_many :groups, :class_name => 'Group::Group', through: :group_members#, source: :group
 
   #has_and_belongs_to_many :addresses, :class_name => 'User::Address', join_table: 'user_addresses_users'
 

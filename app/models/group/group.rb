@@ -53,7 +53,8 @@ class Group::Group < ActiveRecord::Base
 
   belongs_to :main_group, class_name: 'Group::Group'
   has_many :sub_groups, class_name: 'Group::Group', foreign_key: "main_group_id"
-  has_many :statuses, class_name: 'Status', as: :owner
+  #has_many :statuses, class_name: 'Status', as: :owner
+  has_many :group_members#, class_name: 'Group::GroupMember'
   has_many :members, through: :group_members
 
   has_many :sent_group_invitations, class_name: 'Group::Invitation', as: 'sender'
@@ -93,6 +94,25 @@ class Group::Group < ActiveRecord::Base
       invitation.receiver = receivers
 
       self.group_invitations << invitation
+    end
+  end
+
+  def add_members(members, role = Group::Roles::MEMBER, joined_method = :by_itself)
+    if members.kind_of?(Array)
+      members.each do |m|
+        gm = Group::GroupMember.new
+        gm.member = m
+        gm.role = role
+        gm.joined_method = joined_method
+        self.group_members << gm
+      end
+    else
+      gm = Group::GroupMember.new
+      gm.member = members
+      gm.role = role
+      gm.joined_method = joined_method
+
+      self.group_members << gm
     end
   end
 

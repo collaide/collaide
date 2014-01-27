@@ -17,13 +17,18 @@ class Group::GroupMember < ActiveRecord::Base
   extend Enumerize
   enumerize :role, in: [Group::Roles::ADMIN,
                         Group::Roles::WRITER,
+                        Group::Roles::MEMBER,
                         Group::Roles::ALL]
+
+  # Comment il a rejoint le groupe
+  enumerize :joined_method, in: [:was_invited,
+                                  :was_added,
+                                  :by_itself], default: :by_itself
 
   # Les membres du group
   belongs_to :member, polymorphic: true
 
   # Le group
   belongs_to :group, :class_name => 'Group::Group'
-
 
 end

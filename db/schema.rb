@@ -179,6 +179,19 @@ ActiveRecord::Schema.define(version: 20140123152321) do
     t.datetime "updated_at"
   end
 
+  create_table "group_group_members", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "member_id"
+    t.string   "member_type"
+    t.string   "role"
+    t.string   "joined_method"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "group_group_members", ["group_id"], name: "index_group_group_members_on_group_id", using: :btree
+  add_index "group_group_members", ["member_id", "member_type"], name: "index_group_group_members_on_member_id_and_member_type", using: :btree
+
   create_table "group_groups", force: true do |t|
     t.string   "name"
     t.string   "password"
@@ -201,20 +214,10 @@ ActiveRecord::Schema.define(version: 20140123152321) do
     t.datetime "updated_at"
   end
 
-  create_table "group_groups_group_members", force: true do |t|
-    t.integer  "group_groups_id"
-    t.integer  "group_members_id"
-    t.string   "group_members_type"
-    t.string   "role"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "group_groups_group_members", ["group_groups_id"], name: "index_group_groups_group_members_on_group_groups_id", using: :btree
-  add_index "group_groups_group_members", ["group_members_id", "group_members_type"], name: "group_member_index", using: :btree
-
   create_table "group_invitations", force: true do |t|
     t.text     "message"
+    t.string   "status"
+    t.string   "role"
     t.integer  "sender_id"
     t.string   "sender_type"
     t.integer  "group_id"

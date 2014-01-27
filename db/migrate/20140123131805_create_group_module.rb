@@ -25,17 +25,21 @@ class CreateGroupModule < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :group_groups_group_members do |t|
-      t.belongs_to :group_groups, index: true
-      t.belongs_to :group_members, polymorphic: true
+    create_table :group_group_members do |t|
+      t.belongs_to :group, index: true
+      t.belongs_to :member, polymorphic: true, index: true
       t.string :role
+      t.string :joined_method
 
       t.timestamps
     end
-    add_index :group_groups_group_members, [:group_members_id, :group_members_type], name: :group_member_index
+    #add_index :group_group_members, [:group_members_id, :group_members_type], name: :group_member_index
 
     create_table :group_invitations do |t|
       t.text :message
+      t.string :status
+      t.string :role
+
       t.belongs_to :sender, polymorphic: true, index: true
       t.belongs_to :group, index: true
       t.belongs_to :receiver, polymorphic: true, index: true

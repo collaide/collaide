@@ -14,10 +14,33 @@
 # -*- encoding : utf-8 -*-
 class Group::Invitation < ActiveRecord::Base
 
+  extend Enumerize
+  enumerize :status, in: [:accepted, :pending, :later, :refused], default: :pending, predicates: true
+
+  enumerize :role, in: [Group::Roles::ADMIN,
+                        Group::Roles::WRITER,
+                        Group::Roles::MEMBER,
+                        Group::Roles::ALL], default: Group::Roles::MEMBER
+
+
   # Who sent the invitation
   belongs_to :sender, polymorphic: true
 
   belongs_to :group, :class_name => 'Group::Group'
 
   belongs_to :receiver, polymorphic: true
+
+  # The receiver is added to the group
+  def accept
+    self.status = :accepted
+    self.group.add_members(self.receiver, self.role, :was_invited)
+  end
+
+  def decline
+    self.status = :refused
+  end
+
+  def chose_later
+    self.status = :later
+  end
 end
