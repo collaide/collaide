@@ -27,14 +27,14 @@ fr:
 
     member: membre
 
-    cFile: fichier
-    c_files: mes-fichiers
-    structures: dossier
-
     advertisement: annonce
     advertisements: annonces
+    book: livre
     books: livres
     messages: messages
+
+    group: groupe
+    groups: groupes
 
     search: recherche
     autocomplete: auto-completion
@@ -49,6 +49,5 @@ fr:
     all: tous
     sentbox: envoyes
     contact-for: contact
-    book: livre
 en:
   routes:
