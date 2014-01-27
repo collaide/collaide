@@ -26,8 +26,8 @@
 class Book < ActiveRecord::Base
 
 
-  has_many :sale_books, :class_name => 'Advertisement::SaleBook'
-  accepts_nested_attributes_for :sale_books
+  has_many :work_groups, :class_name => 'Advertisement::SaleBook'
+  accepts_nested_attributes_for :work_groups
 
   # permet de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   letsrate_rateable 'note'

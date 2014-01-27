@@ -22,6 +22,9 @@ class Group::Invitation < ActiveRecord::Base
                         Group::Roles::MEMBER,
                         Group::Roles::ALL], default: Group::Roles::MEMBER
 
+  scope :pending, -> { where(status: :pending) }
+  scope :later, -> { where(status: :later) }
+
 
   # Who sent the invitation
   belongs_to :sender, polymorphic: true

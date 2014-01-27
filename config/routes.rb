@@ -38,11 +38,17 @@ Collaide::Application.routes.draw do
     end
 
     namespace :advertisement do
-      #resources :delivery_mode
-      #resources :payment_mode
-      resources :books, :controller => "sale_books", as: 'sale_books', :except => [:index, :destroy] #on affiche tous les livres par advertisement#index
-      #get "test", to: "advertisements#test"
+      resources :books, :controller => 'sale_books', as: 'sale_books', :except => [:index, :destroy] #on affiche tous les livres par advertisement#index
     end
+
+    resources :groups, as: 'group_groups', controller: 'group/groups' do
+      collection do
+        #get 'page/:page', :action => :index, as: 'pager'
+        #get 'search', action: :search, as: 'search'
+        #get 'autocomplete', action: :autocomplete, as: 'autocomplete'
+      end
+    end
+
 
     resources :'documents', as: 'document_documents', controller: 'document/documents' do
       get 'download', action: :download, as: 'download'
@@ -111,7 +117,7 @@ Collaide::Application.routes.draw do
       get 'no_credit', action: :no_credit, as: 'no_credit', on: :collection
       get 'page', action: :page, as: 'page', on: :collection
       get 'documents', action: :documents, as: 'documents'
-      get 'advertisements', action: :advertisements, as: 'advertisements'
+      get 'groups', action: :groups, as: 'groups'
     end
 
     #devise_for :user

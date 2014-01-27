@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class Advertisement::AdvertisementsController < ApplicationController
+class Advertisement::GroupsController < ApplicationController
   load_and_authorize_resource class: Advertisement::Advertisement
 
   #breadcrumb
@@ -7,7 +7,7 @@ class Advertisement::AdvertisementsController < ApplicationController
 
   def new
     add_breadcrumb I18n.t("advertisements.new.title"), :new_advertisement_advertisement_path
-    #Il n'y a pas de création de nouvea advertisements, car c'est un object abstrait qui doit être hérité (par SaleBook, par ex)
+    #Il n'y a pas de création de nouvea groups, car c'est un object abstrait qui doit être hérité (par SaleBook, par ex)
     # La page new propose donc ce que le user veut créer
     redirect_to :new_advertisement_sale_book
   end
@@ -24,7 +24,7 @@ class Advertisement::AdvertisementsController < ApplicationController
         Riddle::Query.escape(params[:search])
     )
     @searched_value=params[:search]
-    render 'advertisement/advertisements/index'
+    render 'advertisement/groups/index'
   end
 
   def autocomplete

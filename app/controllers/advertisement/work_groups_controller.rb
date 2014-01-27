@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class Advertisement::SaleBooksController < ApplicationController
+class Advertisement::WorkGroupsController < ApplicationController
   load_and_authorize_resource class: Advertisement::SaleBook
 
   include BooksHelper
@@ -12,8 +12,8 @@ class Advertisement::SaleBooksController < ApplicationController
   add_breadcrumb I18n.t("advertisements.new.title"), :new_advertisement_advertisement_path, :only => %w(new create)
   add_breadcrumb I18n.t("sale_books.new.title"), :new_advertisement_sale_book_path, :only => %w(new create)
 
-  # GET /advertisement/sale_books/1
-  # GET /advertisement/sale_books/1.json
+  # GET /advertisement/work_groups/1
+  # GET /advertisement/work_groups/1.json
   def show
     @message = UserMessage.new
 
@@ -29,8 +29,8 @@ class Advertisement::SaleBooksController < ApplicationController
     end
   end
 
-  # GET /advertisement/sale_books/new
-  # GET /advertisement/sale_books/new.json
+  # GET /advertisement/work_groups/new
+  # GET /advertisement/work_groups/new.json
   def new
     @advertisement_sale_book = Advertisement::SaleBook.new
     book = Book.new
@@ -53,7 +53,7 @@ class Advertisement::SaleBooksController < ApplicationController
     end
   end
 
-  # GET /advertisement/sale_books/1/edit
+  # GET /advertisement/work_groups/1/edit
   def edit
     @advertisement_sale_book = Advertisement::SaleBook.find(params[:id])
     add_breadcrumb I18n.t("sale_books.show.title", book: @advertisement_sale_book.book.title), advertisement_sale_book_path(@advertisement_sale_book)
@@ -64,8 +64,8 @@ class Advertisement::SaleBooksController < ApplicationController
 
   end
 
-  # POST /advertisement/sale_books
-  # POST /advertisement/sale_books.json
+  # POST /advertisement/work_groups
+  # POST /advertisement/work_groups.json
   def create
 
     # ON CHERCHE SUR LE ISBN CORRESPOND
@@ -146,8 +146,8 @@ class Advertisement::SaleBooksController < ApplicationController
     book.info_link = google_book.info_link
   end
 
-  # PUT /advertisement/sale_books/1
-  # PUT /advertisement/sale_books/1.json
+  # PUT /advertisement/work_groups/1
+  # PUT /advertisement/work_groups/1.json
   def update
     # on enlève le book des parametres
     #params[:advertisement_sale_book].delete(:book)

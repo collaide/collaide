@@ -137,6 +137,7 @@ class Group::Group < ActiveRecord::Base
         gm.role = role
         gm.joined_method = joined_method
         self.group_members << gm
+        self.save
       end
     else
       gm = Group::GroupMember.new
@@ -145,6 +146,7 @@ class Group::Group < ActiveRecord::Base
       gm.joined_method = joined_method
 
       self.group_members << gm
+      self.save
     end
   end
 
