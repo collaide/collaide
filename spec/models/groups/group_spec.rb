@@ -49,8 +49,18 @@ describe Group::Group do
 
       g.send_invitations([g2,u], 'Venez rejoindre le groupe !')
 
+      #g.reload.members.count eq(0)
+
       u.received_group_invitations.first.accept
+      u.reload.received_group_invitations.first.status.should eq('accepted')
       u.groups.last.should eq(g)
+      g.reload.u_members.count eq(1)
+      g2.received_group_invitations.first.chose_later
+      g2.received_group_invitations.first.decline
+      #g.reload.g_members.count eq(0)
+
+      u.group_members.last.joined_method.should eq('was_invited')
+      u.group_members.last.role.should eq('member')
     end
 
   end

@@ -54,8 +54,35 @@ class Group::Group < ActiveRecord::Base
   belongs_to :main_group, class_name: 'Group::Group'
   has_many :sub_groups, class_name: 'Group::Group', foreign_key: "main_group_id"
   #has_many :statuses, class_name: 'Status', as: :owner
-  has_many :group_members#, class_name: 'Group::GroupMember'
-  has_many :members, through: :group_members
+  has_many :group_members, class_name: 'Group::GroupMember'
+
+  ##################################################
+  # POUR AFFICHER TOUT LES MEMBRES ##############
+  ################################################
+  #attr_accessor :members
+  #
+  #scope :participant, lambda {|participant|
+  #  select('DISTINCT mailboxer_conversations.*').
+  #      where('mailboxer_notifications.type'=> Mailboxer::Message.name).
+  #      order("mailboxer_conversations.updated_at DESC").
+  #      joins(:receipts).merge(Mailboxer::Receipt.recipient(participant))
+  #}
+  #
+  #scope :recipient, lambda { |recipient|
+  #  where(:receiver_id => recipient.id,:receiver_type => recipient.class.base_class.to_s)
+  #}
+  #
+  #
+  #scope :member, lambda { |member|
+  #  joins(:group_members).where('group_group_members.member_id' => member.id,'group_group_members.member_type' => member.class.base_class.to_s)
+  #}
+
+  #has_many :u_members, through: :group_members, source: :member, source_type: 'User'#, as: 'member'
+  #has_many :g_members, through: :group_members, source: :member, source_type: 'Group'
+
+  ##################################################
+  # FIN ##############
+  ################################################
 
   has_many :sent_group_invitations, class_name: 'Group::Invitation', as: 'sender'
   has_many :group_invitations, class_name: 'Group::Invitation'

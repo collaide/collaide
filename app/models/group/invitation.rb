@@ -34,13 +34,16 @@ class Group::Invitation < ActiveRecord::Base
   def accept
     self.status = :accepted
     self.group.add_members(self.receiver, self.role, :was_invited)
+    self.save
   end
 
   def decline
     self.status = :refused
+    self.save
   end
 
   def chose_later
     self.status = :later
+    self.save
   end
 end
