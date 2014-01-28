@@ -97,6 +97,7 @@ fr:
     guest_book: "Livre d'or"
     document: "Documents"
     advertisement: "Annonces"
+    group: Groupes
     inbox: Messagerie
     user:
       profil: "Mon profil"

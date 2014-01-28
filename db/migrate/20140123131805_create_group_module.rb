@@ -31,10 +31,11 @@ class CreateGroupModule < ActiveRecord::Migration
       t.belongs_to :member, polymorphic: true, index: true
       t.string :role
       t.string :joined_method
+      t.belongs_to :invited_or_added_by, polymorphic: true
 
       t.timestamps
     end
-    #add_index :group_group_members, [:group_members_id, :group_members_type], name: :group_member_index
+    add_index :group_group_members, [:invited_or_added_by_id, :invited_or_added_by_type], name: :invited_or_added_by_index
 
     create_table :group_invitations do |t|
       t.text :message

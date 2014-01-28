@@ -185,11 +185,14 @@ ActiveRecord::Schema.define(version: 20140123152321) do
     t.string   "member_type"
     t.string   "role"
     t.string   "joined_method"
+    t.integer  "invited_or_added_by_id"
+    t.string   "invited_or_added_by_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "group_group_members", ["group_id"], name: "index_group_group_members_on_group_id", using: :btree
+  add_index "group_group_members", ["invited_or_added_by_id", "invited_or_added_by_type"], name: "invited_or_added_by_index", using: :btree
   add_index "group_group_members", ["member_id", "member_type"], name: "index_group_group_members_on_member_id_and_member_type", using: :btree
 
   create_table "group_groups", force: true do |t|

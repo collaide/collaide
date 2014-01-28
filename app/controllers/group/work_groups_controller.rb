@@ -88,6 +88,10 @@ class Group::WorkGroupsController < ApplicationController
   def members
     @work_group = Group::WorkGroup.find(params[:work_group_id])
 
+    puts "Ajout d'un membre pour test.. OK"
+    u = User.find 2
+    @work_group.add_members(u, Group::Roles::MEMBER, :was_added, current_user)
+
   end
 
   private

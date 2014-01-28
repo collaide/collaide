@@ -130,24 +130,31 @@ class Group::Group < ActiveRecord::Base
     end
   end
 
-  def add_members(members, role = Group::Roles::MEMBER, joined_method = :by_itself)
+  # Ajoute un membre au groupe avec le role, la methode et le user qui l'a ajouté ou invité
+  # On ne peux pas ajouter deux fois le même membre.
+  def add_members(members, role = Group::Roles::MEMBER, joined_method = :by_itself, invited_or_added_by = nil)
     if members.kind_of?(Array)
       members.each do |m|
+        unless Group::GroupMember.where(group: self, member: m).take
+          gm = Group::GroupMember.new
+          gm.member = m
+          gm.role = role
+          gm.joined_method = joined_method
+          gm.invited_or_added_by = invited_or_added_by
+          self.group_members << gm
+          self.save
+        end
+      end
+    else
+      unless Group::GroupMember.where(group: self, member: members).take
         gm = Group::GroupMember.new
-        gm.member = m
+        gm.member = members
         gm.role = role
         gm.joined_method = joined_method
+        gm.invited_or_added_by = invited_or_added_by
         self.group_members << gm
         self.save
       end
-    else
-      gm = Group::GroupMember.new
-      gm.member = members
-      gm.role = role
-      gm.joined_method = joined_method
-
-      self.group_members << gm
-      self.save
     end
   end
 

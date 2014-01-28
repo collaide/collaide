@@ -25,6 +25,9 @@ class Group::GroupMember < ActiveRecord::Base
                                   :was_added,
                                   :by_itself], default: :by_itself
 
+  # Le membre qui l'a ajouté ou invité
+  belongs_to :invited_or_added_by, polymorphic: true
+
   # Les membres du group
   belongs_to :member, polymorphic: true
 

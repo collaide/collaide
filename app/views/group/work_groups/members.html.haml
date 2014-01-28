@@ -21,4 +21,8 @@
         %li
           -gm = m.group_members.where(group: @work_group).take
           =link_to m.to_s, m
-          ="(Role : #{gm.role}, Joined : #{gm.joined_method})"
+          ="occupe le rôle de #{gm.role.text} et a rejoint le groupe #{gm.joined_method.text}"
+          -if gm.invited_or_added_by
+            (par :
+            =link_to gm.invited_or_added_by.to_s, gm.invited_or_added_by
+            )

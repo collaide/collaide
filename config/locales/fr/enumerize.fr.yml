@@ -29,3 +29,11 @@ fr:
         normal: Normal
         damaged: Abimé
         very_damaged: Très abimé
+    group/group_member:
+      joined_method:
+        was_invited: sur invitation
+        was_added: par ajout de l'administrateur
+        by_itself: pas sa propre initiative
+      role:
+        admin: Administrateur
+        member: Membre

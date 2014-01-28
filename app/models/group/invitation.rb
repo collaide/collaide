@@ -36,7 +36,7 @@ class Group::Invitation < ActiveRecord::Base
   # The receiver is added to the group
   def accept
     self.status = :accepted
-    self.group.add_members(self.receiver, self.role, :was_invited)
+    self.group.add_members(self.receiver, self.role, :was_invited, self.sender)
     self.save
   end
 
