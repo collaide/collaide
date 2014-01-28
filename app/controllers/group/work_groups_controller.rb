@@ -13,33 +13,33 @@ class Group::WorkGroupsController < ApplicationController
   # GET /group/work_groups/1
   # GET /group/work_groups/1.json
   def show
-    @work_group = Group::WorkGroup.find(params[:id])
+    @group = Group::WorkGroup.find(params[:id])
 
-    add_breadcrumb @work_group.name, group_work_group_path(@work_group)
+    add_breadcrumb @group.name, group_work_group_path(@group)
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @work_group }
+      format.json { render json: @group }
     end
   end
 
   # GET /group/work_groups/new
   # GET /group/work_groups/new.json
   def new
-    @work_group = Group::WorkGroup.new
+    @group = Group::WorkGroup.new
 
     respond_to do |format|
       format.html # new.html.haml
       format.json {
-        render json: @work_group
+        render json: @group
       }
     end
   end
 
   # GET /group/work_groups/1/edit
   def edit
-    @work_group = Group::WorkGroup.find(params[:id])
-    add_breadcrumb @work_group.name, group_work_group_path(@work_group)
-    add_breadcrumb I18n.t("group.work_groups.edit.title_page", group: @work_group.name), edit_group_work_group_path(@work_group)
+    @group = Group::WorkGroup.find(params[:id])
+    add_breadcrumb @group.name, group_work_group_path(@group)
+    add_breadcrumb I18n.t("group.work_groups.edit.title_page", group: @group.name), edit_group_work_group_path(@group)
   end
 
   # POST /group/work_groups
@@ -86,11 +86,15 @@ class Group::WorkGroupsController < ApplicationController
 
   # Show members of the group
   def members
-    @work_group = Group::WorkGroup.find(params[:work_group_id])
+    @group = Group::Group.find(params[:work_group_id])
+    #puts "Ajout d'un membre pour test.. OK"
+    #u = User.find 2
+    #@group.add_members(u, Group::Roles::MEMBER, :was_added, current_user)
+  end
 
-    puts "Ajout d'un membre pour test.. OK"
-    u = User.find 2
-    @work_group.add_members(u, Group::Roles::MEMBER, :was_added, current_user)
+  # Tout ce qui gère le répository
+  def repository
+    @group = Group::Group.find(params[:work_group_id])
 
   end
 

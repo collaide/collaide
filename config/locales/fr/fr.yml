@@ -517,9 +517,14 @@ fr:
         edit: Modifier
         board: Tableau
         members: Membres
+        repository: Dépôt de fichiers
     members:
       title_page: Membres de %{group}
       empty: Ce groupe n'a aucun membre.
+    repository:
+      title_page: Dépôt de fichiers de %{group}
+      no_repo_item: Ce groupe n'a aucun fichier déposé.
+      no_shared_repo_item: Ce groupe n'a aucun fichier partagé.
 
   messages:
     title_page: Messagerie privée

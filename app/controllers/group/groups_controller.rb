@@ -21,4 +21,9 @@ class Group::GroupsController < ApplicationController
     @group.destroy()
     redirect_to group_groups_path, notice: t('group.destroy.notice')
   end
+
+  # Show members of the group
+  def members
+    @group = Group::Group.find(params[:group_id])
+  end
 end

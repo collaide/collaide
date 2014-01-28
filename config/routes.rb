@@ -52,6 +52,7 @@ Collaide::Application.routes.draw do
     namespace :group do
       resources :work_groups, :controller => 'work_groups', as: 'work_groups', :only => [:new, :create, :edit, :update, :show] do
         get 'members', action: :members, as: 'members'
+        get 'repository', action: :repository, as: 'repository'
       end
     end
 

@@ -1,15 +1,14 @@
 %ul.side-nav
-  %li.heading= @work_group.name
-  %li=link_to t('group.work_groups.menu.board'), group_work_group_path(@work_group)
-  %li=link_to t('group.work_groups.menu.members'), group_work_group_members_path(@work_group)
+  %li
+    .heading= @group.name
+  %li=link_to t('group.work_groups.menu.board'), group_work_group_path(@group)
+  %li=link_to t('group.work_groups.menu.members'), group_work_group_members_path(@group)
+  %li=link_to t('group.work_groups.menu.repository'), group_work_group_repository_path(@group)
 
 
-
-
-
-  -if can?(:update, @work_group)
+  -if can?(:update, @group)
     %li.divider
-    %li=link_to(t('group.work_groups.menu.edit'), edit_group_work_group_path(@work_group), class: 'small button secondary')
+    %li=link_to(t('group.work_groups.menu.edit'), edit_group_work_group_path(@group), class: 'small button secondary')
   %li.divider
   -#%li=link_to(t('users.menu.documents'), user_documents_path(@user))
   -#%li=link_to(t('users.menu.advertisements'), user_advertisements_path(@user))
