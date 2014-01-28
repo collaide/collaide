@@ -1,9 +1,9 @@
--content_for :title, t('groups.index.title_page')
-
-=link_to t('groups.index.new_link'), new_group_group_path, class: 'button expand'
+-content_for :title, t('group.groups.index.title_page')
+%h1=t('group.groups.index.h1_title')
+=link_to t('group.groups.index.new_link'), new_group_group_path, class: 'button expand'
 
 -if @group.empty?
-  %p= t 'groups.index.no_group'
+  %p= t 'group.groups.index.no_group'
 -else
   .row
     .small-12.columns.paginate

@@ -482,6 +482,20 @@ fr:
       forms:
         submit: Modifier la vente
         succes: Vos modifications ont bien été enregistrées !
+  group:
+    destroy:
+      notice: Le groupe a bien été supprimé
+    groups:
+      index:
+        title_page: Les groupes d'étudiants permettant de travailler entres étudiants
+        h1_title: Les groupes
+        breadcrumb: Les groupes
+        new_link: Créer un groupe
+        no_group: Il n'y actuellement aucun groupe
+      new:
+        title_page: Créer un groupe
+        description: Restez en contact avec vos collègues de classe, votre école ou votre réseau universitaire ! Vous bénéficierez de nombreuses fonctionnalités pour échanger, discuter et travailler ensemble !
+        blockquote: Quel genre de groupe voulez-vous créer ?
   messages:
     title_page: Messagerie privée
     index:
@@ -512,8 +526,6 @@ fr:
       title_page: Messages envoyés
       h1_title: Messages envoyés
       breadcrumb: Messages envoyés
-
-
     new:
       title_page: Nouveau message
       h1_title: Envoyer un message

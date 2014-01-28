@@ -4,11 +4,11 @@ class Group::WorkGroupsController < ApplicationController
 
 
   #breadcrumb
-  add_breadcrumb I18n.t("group.groups.index.breadcrumb"),  :group_groups_path
+  add_breadcrumb I18n.t("groups.index.breadcrumb"),  :group_groups_path
 
 
-  add_breadcrumb I18n.t("group.groups.new.title"), :new_group_group_path, :only => %w(new create)
-  add_breadcrumb I18n.t("group.work_groups.new.title"), :new_group_work_group_path, :only => %w(new create)
+  add_breadcrumb I18n.t("groups.new.title"), :new_group_group_path, :only => %w(new create)
+  add_breadcrumb I18n.t("work_groups.new.title"), :new_group_work_group_path, :only => %w(new create)
 
   # GET /group/work_groups/1
   # GET /group/work_groups/1.json
@@ -17,7 +17,7 @@ class Group::WorkGroupsController < ApplicationController
 
     @work_group = Group::WorkGroup.find(params[:id])
 
-    add_breadcrumb I18n.t("group.work_groups.show.title", book: @work_group.name), group_work_group_path(@work_group)
+    add_breadcrumb I18n.t("work_groups.show.title", book: @work_group.name), group_work_group_path(@work_group)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @work_group }
@@ -40,8 +40,8 @@ class Group::WorkGroupsController < ApplicationController
   # GET /group/work_groups/1/edit
   def edit
     @work_group = Group::WorkGroup.find(params[:id])
-    add_breadcrumb I18n.t("group.work_groups.show.title", book: @work_group.name), group_work_group_path(@work_group)
-    add_breadcrumb I18n.t("group.work_groups.edit.title", book: @work_group.name), edit_group_work_group_path(@work_group)
+    add_breadcrumb I18n.t("work_groups.show.title", book: @work_group.name), group_work_group_path(@work_group)
+    add_breadcrumb I18n.t("work_groups.edit.title", book: @work_group.name), edit_group_work_group_path(@work_group)
   end
 
   # POST /group/work_groups
@@ -55,7 +55,7 @@ class Group::WorkGroupsController < ApplicationController
     #
     respond_to do |format|
       if @group_work_group.save
-        format.html { redirect_to @group_work_group, notice: t('group.work_groups.new.forms.succes') }
+        format.html { redirect_to @group_work_group, notice: t('work_groups.new.forms.succes') }
         format.json { render json: @group_work_group, status: :created, location: @group_work_group }
       else
         format.html { render action: "new" }
@@ -73,11 +73,11 @@ class Group::WorkGroupsController < ApplicationController
 
     respond_to do |format|
       if @group_work_group.update_attributes(params[:group_work_group])
-        format.html { redirect_to @group_work_group, notice: t('group.work_groups.edit.forms.succes') }
+        format.html { redirect_to @group_work_group, notice: t('work_groups.edit.forms.succes') }
         format.json { head :no_content }
       else
-        add_breadcrumb I18n.t("group.work_groups.show.title", book: @group_work_group.name), group_work_group_path(@group_work_group)
-        add_breadcrumb I18n.t("group.work_groups.edit.title", book: @group_work_group.name), edit_group_work_group_path(@group_work_group)
+        add_breadcrumb I18n.t("work_groups.show.title", book: @group_work_group.name), group_work_group_path(@group_work_group)
+        add_breadcrumb I18n.t("work_groups.edit.title", book: @group_work_group.name), edit_group_work_group_path(@group_work_group)
         format.html { render action: 'edit' }
         format.json { render json: @group_work_group.errors, status: :unprocessable_entity }
       end

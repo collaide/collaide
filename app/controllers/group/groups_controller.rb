@@ -3,13 +3,10 @@ class Group::GroupsController < ApplicationController
   load_and_authorize_resource class: Group::Group
 
   #breadcrumb
-  add_breadcrumb I18n.t("groups.index.breadcrumb"),  :group_groups_path
+  add_breadcrumb I18n.t("group.groups.index.breadcrumb"),  :group_groups_path
 
   def new
-    add_breadcrumb I18n.t("groups.new.title"), :new_group_group_path
-    #Il n'y a pas de création de nouvea groups, car c'est un object abstrait qui doit être hérité (par WorkGroup, par ex)
-    # La page new propose donc ce que le user veut créer
-    redirect_to :new_group_group_path
+    add_breadcrumb I18n.t("group.groups.new.title_page"), :new_group_group_path
   end
 
   def index
