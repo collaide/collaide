@@ -21,6 +21,7 @@ class CreateGroupModule < ActiveRecord::Migration
       t.text :description
 
       t.belongs_to :main_group
+      t.belongs_to :user
 
       t.timestamps
     end

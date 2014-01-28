@@ -51,6 +51,7 @@ class Group::Group < ActiveRecord::Base
   serialize :can_create_invitation, Array
   serialize :can_manage_invitations, Array
 
+  belongs_to :user
   belongs_to :main_group, class_name: 'Group::Group'
   has_many :sub_groups, class_name: 'Group::Group', foreign_key: "main_group_id"
   #has_many :statuses, class_name: 'Status', as: :owner

@@ -16,7 +16,7 @@ Collaide::Application.routes.draw do
     post '/rate' => 'rater#create', :as => 'rate'
 
     resources 'messages' do
-      #get 'reply', action: :reply
+      #post 'reply', action: :reply
       collection do
         get 'page/:page', action: :index
         get 'sentbox', action: :sentbox
@@ -50,7 +50,9 @@ Collaide::Application.routes.draw do
     end
 
     namespace :group do
-      resources :work_groups, :controller => 'work_groups', as: 'work_groups', :only => [:new, :show]
+      resources :work_groups, :controller => 'work_groups', as: 'work_groups', :only => [:new, :create, :edit, :update, :show] do
+        get 'members', action: :members, as: 'members'
+      end
     end
 
 
@@ -121,7 +123,7 @@ Collaide::Application.routes.draw do
       get 'no_credit', action: :no_credit, as: 'no_credit', on: :collection
       get 'page', action: :page, as: 'page', on: :collection
       get 'documents', action: :documents, as: 'documents'
-      get 'groups', action: :groups, as: 'groups'
+      get 'advertisements', action: :advertisements, as: 'advertisements'
     end
 
     #devise_for :user

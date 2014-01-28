@@ -501,6 +501,24 @@ fr:
       new:
         title_page: Créer un groupe de travail
         h1_title: Créer un groupe de travail
+        forms:
+          submit: Créer le groupe
+          success: Votre groupe a été créé
+          tooltips:
+            name: Quel sera le nom de votre groupe ?
+      show:
+      edit:
+        title_page: Modifier %{group}
+        forms:
+          success: Vos modifications en été enregistrées
+          submit: Enregistrer
+      menu:
+        edit: Modifier
+        board: Tableau
+        members: Membres
+    members:
+      title_page: Membres de %{group}
+      empty: Ce groupe n'a aucun membre.
 
   messages:
     title_page: Messagerie privée

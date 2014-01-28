@@ -13,11 +13,9 @@ class Group::WorkGroupsController < ApplicationController
   # GET /group/work_groups/1
   # GET /group/work_groups/1.json
   def show
-    @message = UserMessage.new
-
     @work_group = Group::WorkGroup.find(params[:id])
 
-    add_breadcrumb I18n.t("group.work_groups.show.title", book: @work_group.name), group_work_group_path(@work_group)
+    add_breadcrumb @work_group.name, group_work_group_path(@work_group)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @work_group }
@@ -40,8 +38,8 @@ class Group::WorkGroupsController < ApplicationController
   # GET /group/work_groups/1/edit
   def edit
     @work_group = Group::WorkGroup.find(params[:id])
-    add_breadcrumb I18n.t("group.work_groups.show.title", book: @work_group.name), group_work_group_path(@work_group)
-    add_breadcrumb I18n.t("group.work_groups.edit.title", book: @work_group.name), edit_group_work_group_path(@work_group)
+    add_breadcrumb @work_group.name, group_work_group_path(@work_group)
+    add_breadcrumb I18n.t("group.work_groups.edit.title_page", group: @work_group.name), edit_group_work_group_path(@work_group)
   end
 
   # POST /group/work_groups
@@ -49,13 +47,15 @@ class Group::WorkGroupsController < ApplicationController
   def create
 
     # on crée le work_group avec les parametres du form
-    @group_work_group = Group::WorkGroup.new(params[:group_work_group])
-    #On ajoute le livre dans la vente
+    @group_work_group = Group::WorkGroup.new(group_work_group_params)
     @group_work_group.user = current_user
-    #
+
     respond_to do |format|
       if @group_work_group.save
-        format.html { redirect_to @group_work_group, notice: t('group.work_groups.new.forms.succes') }
+        # On ajoute le créateur en tant que ADMIN
+        @group_work_group.add_members(current_user, role = Group::Roles::ADMIN)
+
+        format.html { redirect_to @group_work_group, notice: t('group.work_groups.new.forms.success') }
         format.json { render json: @group_work_group, status: :created, location: @group_work_group }
       else
         format.html { render action: "new" }
@@ -73,15 +73,26 @@ class Group::WorkGroupsController < ApplicationController
 
     respond_to do |format|
       if @group_work_group.update_attributes(params[:group_work_group])
-        format.html { redirect_to @group_work_group, notice: t('group.work_groups.edit.forms.succes') }
+        format.html { redirect_to @group_work_group, notice: t('group.work_groups.edit.forms.success') }
         format.json { head :no_content }
       else
-        add_breadcrumb I18n.t("group.work_groups.show.title", book: @group_work_group.name), group_work_group_path(@group_work_group)
-        add_breadcrumb I18n.t("group.work_groups.edit.title", book: @group_work_group.name), edit_group_work_group_path(@group_work_group)
+        add_breadcrumb @group_work_group.name, group_work_group_path(@group_work_group)
+        add_breadcrumb I18n.t("group.work_groups.edit.title_page", group: @group_work_group.name), edit_group_work_group_path(@group_work_group)
         format.html { render action: 'edit' }
         format.json { render json: @group_work_group.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # Show members of the group
+  def members
+    @work_group = Group::WorkGroup.find(params[:work_group_id])
+
+  end
+
+  private
+  def group_work_group_params
+    params.require(:group_work_group).permit(:name)
   end
 
 end

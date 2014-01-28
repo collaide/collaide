@@ -210,6 +210,7 @@ ActiveRecord::Schema.define(version: 20140123152321) do
     t.string   "can_manage_invitations"
     t.text     "description"
     t.integer  "main_group_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
