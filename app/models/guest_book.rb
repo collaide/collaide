@@ -12,7 +12,7 @@
 
 # -*- encoding : utf-8 -*-
 class GuestBook < ActiveRecord::Base
-  paginates_per 5
+  paginates_per 50
   validates :name, presence: true, length: {minimum: 3, maximum: 50}
-  validates :comment, presence: true, length: {minimum:3, maximum: 500}, :uniqueness => {:if => GuestBook.find_by_name(:name)}
+  validates :comment, presence: true, length: {minimum:3, maximum: 500}#, :uniqueness => {:if => GuestBook.find_by_name(:name)}
 end

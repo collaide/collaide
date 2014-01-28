@@ -356,7 +356,7 @@ fr:
       update:
         notice: Le document a été modifié
       create:
-        notice: Le document a été créé
+        notice: Votre document a bien été envoyé. Il doit être validé par un administrateur avant d'être accessible sur le site.
       destroy:
         notice: Le document a été supprimé
       forms:

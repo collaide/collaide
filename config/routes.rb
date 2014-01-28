@@ -78,9 +78,9 @@ Collaide::Application.routes.draw do
     #  resources :c_files
     #end
 
-    scope 'user/group/:id' do
-      resources :structures
-    end
+    #scope 'user/group/:id' do
+    #  resources :structures
+    #end
 
     #scope 'user/:id' do
     #  resources :structures
