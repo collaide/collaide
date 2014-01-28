@@ -116,7 +116,7 @@ fr:
       news: *news
       rules: Règlements
       partners: Partenaires
-      help: Aide
+      guest_book: Livre d'or
       contact: Contact
       about: A propos
   domains:
