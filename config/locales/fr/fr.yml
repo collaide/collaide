@@ -496,6 +496,12 @@ fr:
         title_page: Créer un groupe
         description: Restez en contact avec vos collègues de classe, votre école ou votre réseau universitaire ! Vous bénéficierez de nombreuses fonctionnalités pour échanger, discuter et travailler ensemble !
         blockquote: Quel genre de groupe voulez-vous créer ?
+        new_work_group: Créer un groupe de travail
+    work_groups:
+      new:
+        title_page: Créer un groupe de travail
+        h1_title: Créer un groupe de travail
+
   messages:
     title_page: Messagerie privée
     index:

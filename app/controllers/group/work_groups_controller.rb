@@ -7,8 +7,8 @@ class Group::WorkGroupsController < ApplicationController
   add_breadcrumb I18n.t("group.groups.index.breadcrumb"),  :group_groups_path
 
 
-  add_breadcrumb I18n.t("group.groups.new.title"), :new_group_group_path, :only => %w(new create)
-  add_breadcrumb I18n.t("group.work_groups.new.title"), :new_group_work_group_path, :only => %w(new create)
+  add_breadcrumb I18n.t("group.groups.new.title_page"), :new_group_group_path, :only => %w(new create)
+  add_breadcrumb I18n.t("group.work_groups.new.h1_title"), :new_group_work_group_path, :only => %w(new create)
 
   # GET /group/work_groups/1
   # GET /group/work_groups/1.json

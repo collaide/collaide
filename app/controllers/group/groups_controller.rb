@@ -7,6 +7,7 @@ class Group::GroupsController < ApplicationController
 
   def new
     add_breadcrumb I18n.t("group.groups.new.title_page"), :new_group_group_path
+    @group = Group::Group.new
   end
 
   def index

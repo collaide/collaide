@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+ruby# -*- encoding : utf-8 -*-
 # == Schema Information
 #
 # Table name: group_groups
@@ -13,7 +13,7 @@ class Group::School < Group::Group
   has_one :address, :class_name => 'Address', as: :owner
 
   def init()
-    super.init
+    super
     self.can_delete_member << Group::Roles::ADMIN
     self.can_write_file << Group::Roles::MEMBER
     self.can_delete_file << Group::Roles::ADMIN

@@ -35,6 +35,8 @@ fr:
 
     group: groupe
     groups: groupes
+    work_group: travail
+    work_groups: travaux
 
     search: recherche
     autocomplete: auto-completion

@@ -49,6 +49,10 @@ Collaide::Application.routes.draw do
       end
     end
 
+    namespace :group do
+      resources :work_groups, :controller => 'work_groups', as: 'work_groups', :only => [:new, :show]
+    end
+
 
     resources :'documents', as: 'document_documents', controller: 'document/documents' do
       get 'download', action: :download, as: 'download'

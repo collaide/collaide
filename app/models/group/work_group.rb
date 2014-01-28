@@ -1,7 +1,7 @@
 class Group::WorkGroup < Group::Group
 
   def init
-    super.init
+    super
     self.can_index_members << Group::Roles::MEMBER
     self.can_read_member << Group::Roles::MEMBER
     self.can_write_file << Group::Roles::MEMBER
