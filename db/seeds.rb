@@ -33,5 +33,6 @@ Domain.create([
     {name: 'domain 2', description: 'deuxième domaine', position: 1}
               ])
 Document::Document.create([
-                              {"title"=>"Doc 1", "description"=>"Blabla", "author"=>"Moi", "number_of_pages"=>1, "realized_at"=>Time.now-1.years, "language"=>"fr", "asset"=>Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'download', 'asDF.tiff')), "is_accepted"=>false, "document_type_id"=>4, "user_id"=>1, "study_level"=>"university"}
+                              {"title"=>"Doc 1", "description"=>"c'est une déscription 1", "author"=>"salut", "number_of_pages"=>"2", "realized_at"=>"2012-01-24", "language"=>"Français", "asset"=>Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'download', 'asDF.tiff')), "document_type_id"=>"1",  "study_level"=>"university", domain_ids: [1]},
+                              {"title"=>"Doc 2", "description"=>"c'est une déscription 2", "author"=>"salut", "number_of_pages"=>"23", "realized_at"=>"2012-01-25", "language"=>"Français", "asset"=>Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'download', 'asDF.tiff')), "document_type_id"=>"1",  "study_level"=>"university", domain_ids: [1]}
                           ])

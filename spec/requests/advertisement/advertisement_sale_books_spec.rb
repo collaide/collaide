@@ -4,6 +4,7 @@ require 'spec_helper'
 describe "Advertisement::SaleBooks" do
   describe "visit the books" do
     it "renders an empty list" do
+      I18n.locale = :fr
       visit(advertisement_advertisements_path)
       page.should have_content('Il n\'y a aucune annonce')
     end
