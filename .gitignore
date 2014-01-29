@@ -9,6 +9,7 @@
 
 # Ignorer la config de la bdd
 /config/database.yml
+/config/social_keys.yml
 
 /config/development.sphinx.conf
 /config/production.spinx.conf

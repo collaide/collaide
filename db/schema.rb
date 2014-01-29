@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(version: 20140129204405) do
   add_index "advertisement_advertisements_domains", ["domain_id"], name: "index_advertisement_advertisements_domains_on_domain_id", using: :btree
   add_index "advertisement_advertisements_domains", ["sale_book_id"], name: "index_advertisement_advertisements_domains_on_sale_book_id", using: :btree
 
+  create_table "authorizations", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.string   "token"
+    t.string   "secret"
+    t.string   "username"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "books", force: true do |t|
     t.string   "title"
     t.string   "authors"

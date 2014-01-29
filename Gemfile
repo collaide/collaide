@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-#ruby '2.0.0'
+ruby '2.0.0'
 
 gem 'rails', '~> 4.0.2'
 
@@ -83,12 +83,13 @@ gem 'resque_mailer'
 
 gem 'gritter', '1.0.3'
 
-#gem 'omniauth'
+gem 'omniauth'
 gem 'omniauth-facebook'
-#gem 'omniauth-twitter'
+#gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
-#gem 'oa-core'
-#gem 'oa-openid', :require => 'omniauth/openid'
+#gem 'omniauth-linkedin'
+#gem 'omniauth-twitter'
+
 gem 'foundation-rails'
 
 gem 'rails-observers'

@@ -61,6 +61,17 @@ class CreateTableUser < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table :authorizations do |t|
+      t.string :provider
+      t.string :uid
+      t.integer :user_id
+      t.string :token
+      t.string :secret
+      t.string :username
+
+      t.timestamps
+    end
+
     create_table :domains do |t|
       t.string :name
       t.text :description

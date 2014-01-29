@@ -4,6 +4,7 @@
 
 OmniAuth.config.logger = Rails.logger
 Devise.setup do |config|
+  require "omniauth-google-oauth2"
 
   config.secret_key = 'b506c18e17836db67d4d2efc8a778f85135d9701e655b2fa07f3c2e867aa782b9dc45585526fb7f54531703c21428735d0d3f3a462a3544107d8aa0e2f90e93c'
 
@@ -249,8 +250,15 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 
-  config.omniauth :facebook, '227783287393190', 'pass_envoyé_par_mail'
-  config.omniauth :google_oauth2, '202057750514-uh0t8491gb3jfn8ld9ar4capaurh96av.apps.googleusercontent.com', 'pass_envoyé_par_mail'
+  config.omniauth :facebook, "227783287393190", "f9a394da4c16e475a6692545ad41aa92", { :scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  #config.omniauth :twitter, ENV["TWITTER_KEY"], ENV["TWITTER_SECRET"], { :scope => 'r_fullprofile, r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  #config.omniauth :linkedin, ENV["LINKEDIN_KEY"], ENV["LINKEDIN_SECRET"], { :scope => 'r_fullprofile r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  #config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user, public_repo"
+  config.omniauth :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {}
+
+
+  #config.omniauth :facebook, '227783287393190', 'pass_envoyé_par_mail'
+  #config.omniauth :google_oauth2, '202057750514-uh0t8491gb3jfn8ld9ar4capaurh96av.apps.googleusercontent.com', 'pass_envoyé_par_mail'
 
   # Add by Yves : http://www.synbioz.com/blog/integrer_les_reseaux_sociaux_dans_son_application_rails_avec_oauth
   #if Rails.env.development?
