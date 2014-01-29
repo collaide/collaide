@@ -69,7 +69,7 @@ class MessagesController < ApplicationController
     @message = UserMessage.new(message_params)
     respond_to do |format|
       if @message.valid?
-        receipts = current_user.send_message(@message.users, @message.body, @message.subject)
+        receipts = current_user.send_message(@message.users.to_a, @message.body, @message.subject)
         format.html { redirect_to message_path(receipts.conversation.id), notice: t('messages.new.forms.success') }
         format.json { render json: :messages, status: :created, location: @message }
       else
