@@ -57,13 +57,12 @@ class MessagesController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
     @receipts = @conversation.receipts_for current_user
-    add_breadcrumb @conversation.subject_to_show
+    add_breadcrumb @conversation.subject
   end
 
   def new
     @message = UserMessage.new
     pre_full_message(@message)
-    #current_user.send_message(current_user, '@message.body', '@message.subject')
   end
 
   def create

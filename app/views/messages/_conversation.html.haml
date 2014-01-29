@@ -4,7 +4,7 @@
   -else
     -unread = 'read'
   .small-12.columns
-    %h5=link_to conversation.subject_to_show, message_path(conversation)
+    %h5=link_to conversation.subject, message_path(conversation)
     %dl.sub-nav
       %dt=t'messages.index.with'
       -conversation.recipients.each do |r|
