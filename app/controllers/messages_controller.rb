@@ -67,7 +67,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = UserMessage.new(params[:user_message])
+    @message = UserMessage.new(message_params)
     respond_to do |format|
       if @message.valid?
         receipts = current_user.send_message(@message.users, @message.body, @message.subject)
@@ -98,5 +98,9 @@ class MessagesController < ApplicationController
       message.body=t('sale_books.buy.textarea', book: sale_book.book.title)
     end
     message
+  end
+  def message_params
+    p = params.require(:user_message)
+    {user_ids: p[:user_ids], subject: p[:subject], body: p[:body]}
   end
 end
