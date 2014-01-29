@@ -59,7 +59,7 @@ describe "Document::Document" do
       puts response.body
       response.status.should eq(302)
        follow_redirect!
-       expect(response.body).to include('document a été créé')
+       expect(response.body).to include('Votre document a bien été envoyé')
     end
 
   end

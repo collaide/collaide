@@ -24,13 +24,15 @@
 
 # -*- encoding : utf-8 -*-
 class Book < ActiveRecord::Base
+  include Concerns::Letsrate_2
 
+  letsrate_rateable_2 'note'
 
   has_many :sale_books, :class_name => 'Advertisement::SaleBook'
   accepts_nested_attributes_for :sale_books
 
   # permet de donner une note à un document. voir : https://github.com/muratguzel/letsrate
-  letsrate_rateable 'note'
+  #letsrate_rateable 'note'
   has_one :note_average, -> {where :dimension => 'note'}, :as => :cacheable, :class_name => "RatingCache", :dependent => :destroy
   validates_presence_of :title
   validates_presence_of :authors

@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   add_breadcrumb I18n.t('users.index.breadcrumb'),  :users_path
-  add_breadcrumb I18n.t('users.show.breadcrumb', user: @user.to_s), user_path(@user), :only => %w(show documents advertisements)
+  #FIXME le path ne marche pas...
+ # add_breadcrumb I18n.t('users.show.breadcrumb', user: @user.to_s), user_path, :only => %w(show documents advertisements)
 
 
   def index

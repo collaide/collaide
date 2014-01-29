@@ -67,7 +67,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = UserMessage.new(user_message_params)
+    @message = UserMessage.new(message_params)
     respond_to do |format|
       if @message.valid?
         receipts = current_user.send_message(@message.users, @message.body, @message.subject)
@@ -99,8 +99,8 @@ class MessagesController < ApplicationController
     end
     message
   end
-
-  def user_message_params
-    params.require(:user_message).permit(:subject, :body)
+  def message_params
+    p = params.require(:user_message)
+    {user_ids: p[:user_ids], subject: p[:subject], body: p[:body]}
   end
 end
