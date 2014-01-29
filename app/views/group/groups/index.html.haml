@@ -11,6 +11,8 @@
     .small-12.columns#groups
       %ul.large-block-grid-2
         -@parity=0
-        =render @group
+        -@group.each do |g|
+          %li= link_to g.name, g
+        -#=render @group
     .small-12.columns.paginate
       =paginate @group

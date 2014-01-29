@@ -70,7 +70,7 @@ gem 'geocoder'
 gem 'country_select'
 #gem 'mailboxer'
 
-gem 'mailboxer-without-notification'
+gem 'mailboxer'
 
 gem 'select2-rails'
 
