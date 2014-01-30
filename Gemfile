@@ -84,7 +84,7 @@ gem 'resque_mailer'
 gem 'gritter', '1.0.3'
 
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 #gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 #gem 'omniauth-linkedin'
