@@ -166,6 +166,7 @@ class Advertisement::SaleBooksController < ApplicationController
     end
   end
 
+  private
   def advertisement_sale_book_params
     params[:book] = book_params
     params.require(:advertisement_sale_book).permit(

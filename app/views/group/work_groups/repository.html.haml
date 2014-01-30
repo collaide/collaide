@@ -19,7 +19,8 @@
       =t'group.repository.no_repo_item'
     -else
       =render partial: 'repository_manager/repo_item', collection: @group.repo_items
-    = render 'repository_manager/folder_form'
+    =render 'repository_manager/folder_form', object: @group
+    =render 'repository_manager/file_form', object: @group
   .large-6.columns
     %h6.subheader Fichiers partagés
     -if @group.shared_repo_items.empty?

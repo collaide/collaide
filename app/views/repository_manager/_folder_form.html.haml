@@ -2,7 +2,10 @@
   -@repo_folder = RepoItem::RepoFolder.new
 =simple_form_for(@repo_folder, :url => new_repository_manager_repo_folder_path, :method => :post) do |f|
   =f.error_notification
-  .form-inputs
-    f.input :name
-  .form-submit
-    =f.button :submit
+  =f.input :name, label: t('repository_manager.form.new.repo_folder')
+  =hidden_field_tag("object[class]", object.class.base_class.to_s)
+  =hidden_field_tag("object[table_name]", object.class.table_name.to_s)
+  =hidden_field_tag("object[id]", object.id)
+
+  -#=hidden_field_tag("object[]", object.id)
+  =f.button :submit

@@ -1,0 +1,12 @@
+fr:
+  repository_manager:
+    success:
+      repo_folder:
+        created: Le dossier a été créé avec succès !
+    errors:
+      repo_folder:
+        not_created: Erreur, le dossier n'a pas été créé !
+    form:
+      new:
+        repo_folder: Créer un dossier
+        repo_file: Envoyer un fichier
