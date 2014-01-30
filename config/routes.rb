@@ -123,7 +123,7 @@ Collaide::Application.routes.draw do
 
     #devise_for :user
     #A voir...
-    devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+    #devise_for :users#, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
     resources :users do
       get 'no_credit', action: :no_credit, as: 'no_credit', on: :collection
@@ -137,4 +137,6 @@ Collaide::Application.routes.draw do
     #end
   end
   post '/rate' => 'rater#create', :as => 'rate'
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
 end
