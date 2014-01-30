@@ -1,0 +1,7 @@
+-if repo_item.type == 'RepoFolder'
+  %i.fi-folder
+  =link_to(repo_item.name, request.fullpath + "/#{repo_item.id}")
+-else
+  %i.fi-download
+  =link_to(repo_item.name, request.fullpath + "/#{repo_item.id}")
+%br/

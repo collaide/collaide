@@ -94,7 +94,9 @@ class Group::WorkGroupsController < ApplicationController
 
   # Tout ce qui gère le répository
   def repository
+
     @group = Group::Group.find(params[:work_group_id])
+    #@group.create_folder('Root folder')
 
   end
 

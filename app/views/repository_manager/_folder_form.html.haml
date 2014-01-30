@@ -1,0 +1,8 @@
+-unless @repo_folder
+  -@repo_folder = RepoItem::RepoFolder.new
+=simple_form_for(@repo_folder, :url => new_repository_manager_repo_folder_path, :method => :post) do |f|
+  =f.error_notification
+  .form-inputs
+    f.input :name
+  .form-submit
+    =f.button :submit

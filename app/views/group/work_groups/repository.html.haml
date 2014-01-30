@@ -10,18 +10,19 @@
 -#    #paginate.hide
 -#      =paginate @group.u_members.to_a
 
-=render(:layout => 'layout') do
-  %h1= t('group.repository.title_page', group: @group.name)
-  .row
-    .large-6.columns
-      %h6.subheader Fichiers déposés
-      -if @group.repo_items.empty?
-        =t'group.repository.no_repo_item'
-      -else
-        les repo_items
-    .large-6.columns
-      %h6.subheader Fichiers partagés
-      -if @group.shared_repo_items.empty?
-        =t'group.repository.no_shared_repo_item'
-      -else
-        les shared repo items
+-#=render(:layout => 'layout') do
+%h1= t('group.repository.title_page', group: @group.name)
+.row
+  .large-6.columns
+    %h6.subheader Fichiers déposés
+    -if @group.repo_items.empty?
+      =t'group.repository.no_repo_item'
+    -else
+      =render partial: 'repository_manager/repo_item', collection: @group.repo_items
+    = render 'repository_manager/folder_form'
+  .large-6.columns
+    %h6.subheader Fichiers partagés
+    -if @group.shared_repo_items.empty?
+      =t'group.repository.no_shared_repo_item'
+    -else
+      les shared repo items
