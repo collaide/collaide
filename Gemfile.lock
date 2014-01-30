@@ -509,7 +509,7 @@ DEPENDENCIES
   mysql2 (= 0.3.13)
   nokogiri
   omniauth
-  omniauth-facebook (= 1.4.0)
+  omniauth-facebook
   omniauth-google-oauth2
   paper_trail (~> 3.0.0)
   paperclip (~> 3.0)

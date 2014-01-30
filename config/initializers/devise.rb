@@ -4,7 +4,6 @@
 
 OmniAuth.config.logger = Rails.logger
 Devise.setup do |config|
-  require "omniauth-google-oauth2"
 
   config.secret_key = 'b506c18e17836db67d4d2efc8a778f85135d9701e655b2fa07f3c2e867aa782b9dc45585526fb7f54531703c21428735d0d3f3a462a3544107d8aa0e2f90e93c'
 
