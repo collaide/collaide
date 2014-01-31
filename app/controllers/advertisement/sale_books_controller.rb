@@ -170,7 +170,7 @@ class Advertisement::SaleBooksController < ApplicationController
   def advertisement_sale_book_params
     params[:book] = book_params
     params.require(:advertisement_sale_book).permit(
-        :price, :currency, :payement_modes, :delivery_modes, :state, :annotation, :title, :description, :domain_ids,
+        :price, :currency, :payment_modes, :delivery_modes, :state, :annotation, :title, :description, :domain_ids,
         :study_level
     )
   end

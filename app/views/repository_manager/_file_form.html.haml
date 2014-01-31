@@ -4,8 +4,6 @@
   =f.error_notification
   =f.input :file, label: t('repository_manager.form.new.repo_file')
   =f.input :file_cache, as: :hidden
-  =hidden_field_tag(:object_class, object.class.base_class.to_s)
-  -#=hidden_field_tag(:object_table, object.class.table_name)
-
-  =hidden_field_tag(:object_id, object.id)
+  =hidden_field_tag("object[class]", object.class.base_class.to_s)
+  =hidden_field_tag("object[id]", object.id)
   =f.button :submit

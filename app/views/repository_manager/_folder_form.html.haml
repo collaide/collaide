@@ -4,8 +4,5 @@
   =f.error_notification
   =f.input :name, label: t('repository_manager.form.new.repo_folder')
   =hidden_field_tag("object[class]", object.class.base_class.to_s)
-  =hidden_field_tag("object[table_name]", object.class.table_name.to_s)
   =hidden_field_tag("object[id]", object.id)
-
-  -#=hidden_field_tag("object[]", object.id)
   =f.button :submit
