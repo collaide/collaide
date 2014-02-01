@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateTableUser < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
@@ -6,6 +7,7 @@ class CreateTableUser < ActiveRecord::Migration
       t.string :encrypted_password, :null => false, :default => ""
       t.string :name
       t.string :role
+      t.string :avatar
 
       ## Add by us
       t.integer :points, default: 5

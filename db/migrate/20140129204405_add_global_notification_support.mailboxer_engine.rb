@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # This migration comes from mailboxer_engine (originally 20130305144212)
 class AddGlobalNotificationSupport < ActiveRecord::Migration
 

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'active_support/concern'
 module Concerns::Letsrate_2  extend  ActiveSupport::Concern
   module ClassMethods

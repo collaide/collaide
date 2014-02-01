@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 RepositoryManager.setup do |config|
 
   # Default repo_item permissions that an object has on the repo_item after a sharing.

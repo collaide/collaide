@@ -8,7 +8,7 @@
   .form-inputs
     = f.input :email, :required => true, :autofocus => true
     = f.input :name
-    -#= f.input :avatar
+    = f.input :avatar
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       %p= t("devise.registrations.edit.waiting_confirmation", resource: resource.unconfirmed_email)
     = f.input :password, :autocomplete => "off", :hint => t("devise.registrations.edit.leave_blank_if_you_don_t_want_to_change_it"), :required => false

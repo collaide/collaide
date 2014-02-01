@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ThinkingSphinx::Middlewares::DEFAULT.delete ThinkingSphinx::Middlewares::UTF8
 
 class ThinkingSphinx::Excerpter

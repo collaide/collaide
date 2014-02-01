@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ValidUserRequestHelper
   # Define a method which signs in as a valid user.
   def sign_in_as_a_valid_user

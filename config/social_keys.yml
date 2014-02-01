@@ -14,6 +14,22 @@ development:
   google_key: "202057750514-uh0t8491gb3jfn8ld9ar4capaurh96av.apps.googleusercontent.com"
   google_secret: "LzortcY9Kt3Phw4bjp6pfv73"
 
+test:
+  facebook_key: "227783287393190"
+  facebook_secret: "f9a394da4c16e475a6692545ad41aa92"
+
+  twitter_key: "Enter your keys here. Check Read me file to know how to get keys"
+  twitter_secret: "Enter your keys here. Check Read me file to know how to get keys"
+
+  github_key: "Enter your keys here. Check Read me file to know how to get keys"
+  github_secret: "Enter your keys here. Check Read me file to know how to get keys"
+
+  linkedin_key: "Enter your keys here. Check Read me file to know how to get keys"
+  linkedin_secret: "Enter your keys here. Check Read me file to know how to get keys"
+
+  google_key: "202057750514-uh0t8491gb3jfn8ld9ar4capaurh96av.apps.googleusercontent.com"
+  google_secret: "LzortcY9Kt3Phw4bjp6pfv73"
+
 production:
   facebook_key: "227783287393190"
   facebook_secret: "f9a394da4c16e475a6692545ad41aa92"

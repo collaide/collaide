@@ -70,8 +70,15 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.valid?
         receipts = current_user.send_message(@message.users.to_a, @message.body, @message.subject)
-        format.html { redirect_to message_path(receipts.conversation.id), notice: t('messages.new.forms.success') }
-        format.json { render json: :messages, status: :created, location: @message }
+        if receipts.valid?
+          logger.debug(receipts.save.inspect)
+          format.html { redirect_to message_path(receipts.conversation.id), notice: t('messages.new.forms.success') }
+          format.json { render json: :messages, status: :created, location: @message }
+        else
+          logger.debug(receipts.errors)
+          format.html { render action: 'new' }
+          format.json { render json: @message.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render action: 'new' }
         format.json { render json: @message.errors, status: :unprocessable_entity }

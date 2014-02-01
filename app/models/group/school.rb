@@ -1,4 +1,4 @@
-ruby# -*- encoding : utf-8 -*-
+# -*- encoding : utf-8 -*-
 # == Schema Information
 #
 # Table name: group_groups

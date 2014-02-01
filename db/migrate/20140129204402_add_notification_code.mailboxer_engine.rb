@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # This migration comes from mailboxer_engine (originally 20110912163911)
 class AddNotificationCode < ActiveRecord::Migration
   def self.up

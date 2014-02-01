@@ -32,7 +32,7 @@
 class   User < ActiveRecord::Base
   extend Enumerize
 
-  #mount_uploader :avatar, UserUploader
+  mount_uploader :avatar, UserUploader
   # For connexion via FB and others
   #devise :omniauthable, :omniauth_providers => [:facebook, :google]
 

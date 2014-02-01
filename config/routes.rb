@@ -140,5 +140,5 @@ Collaide::Application.routes.draw do
   # Repository Manager
   post '/repository-manager/create/folder' => 'repository_manager#create_folder', :as => 'new_repository_manager_repo_folder'
   post '/repository-manager/create/file' => 'repository_manager#create_file', :as => 'new_repository_manager_repo_file'
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, :controllers => {omniauth_callbacks: 'omniauth_callbacks', registrations: 'users/registrations' }
 end

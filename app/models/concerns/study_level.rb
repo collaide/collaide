@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'active_support/concern'
 module Concerns::StudyLevel  extend  ActiveSupport::Concern
   module ClassMethods
