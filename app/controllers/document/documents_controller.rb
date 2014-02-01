@@ -7,7 +7,7 @@ class Document::DocumentsController < ApplicationController
     @document = Document::Document.new(document_document_params)
     @document.user = current_user
     if @document.save
-      redirect_to document_documents_path, notice: t("document.documents.create.notice")
+      redirect_to @document, notice: t("document.documents.create.notice")
     else
       render action: 'new'
     end
@@ -300,6 +300,7 @@ class Document::DocumentsController < ApplicationController
  :language,
  :study_level,
  :document_type_id,
+ :asset_cache,
  domain_ids: [])
   end
 end
