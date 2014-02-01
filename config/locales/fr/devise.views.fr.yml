@@ -42,6 +42,7 @@ fr:
         we_need_your_current_password_to_confirm_your_changes: nous avons besoin de votre mot de passe actuel pour valider ces modifications
         update: "Mise à jour"
         unhappy: "Pas satisafait ?"
+        change_password: Modifier le mot de passe
       new:
         sign_up: Inscription
     sessions:
