@@ -103,6 +103,7 @@ fr:
     user:
       profil: "Mon profil"
       edit: *edit
+      settings: Paramètres
       logout: "Déconnexion"
     lang: "Langues"
     sign_in: *sign_in
