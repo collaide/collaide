@@ -55,6 +55,7 @@ fr:
   next: *next
   back: *back
   confirm: Etes-vous sûre ?
+  not_enough_role: Vous n'avez pas la permission de voir la page requise.
   access_denied: Cette page requiert d'être connecté. Ci-dessous, vous pouvez vous connecter ou vous inscrire gratuitement.
   default_key_words: "collaide, étudier, documents scolaires"
   default_description_meta: Collaide est un réseau d'étudiant

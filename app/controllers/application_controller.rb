@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
         request.fullpath != user_password_path &&
         request.fullpath != destroy_user_session_path &&
         request.fullpath != user_registration_path &&
+        !request.fullpath.start_with?('/users/auth/') &&
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath
     end
@@ -89,8 +90,10 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     if !request.env["HTTP_REFERER"] || !flash[:notice].nil?
-      redirect_to main_app.root_url
-    else
+      redirect_to main_app.root_url, alert: t('not_enough_role')
+    elsif request.env['HTTP_REFERER'] and !current_user.nil?
+      redirect_to :back, alert: t('not_enough_role')
+    elsif current_user.nil?
       redirect_to user_session_path, alert: t('access_denied')
     end
   end
