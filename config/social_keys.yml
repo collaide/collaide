@@ -43,5 +43,5 @@ production:
   linkedin_key: "Enter your keys here. Check Read me file to know how to get keys"
   linkedin_secret: "Enter your keys here. Check Read me file to know how to get keys"
 
-  google_key: "Enter your keys here. Check Read me file to know how to get keys"
-  google_secret: "Enter your keys here. Check Read me file to know how to get keys"
+  google_key: "202057750514-uh0t8491gb3jfn8ld9ar4capaurh96av.apps.googleusercontent.com"
+  google_secret: "LzortcY9Kt3Phw4bjp6pfv73"
