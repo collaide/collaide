@@ -1,6 +1,6 @@
 %li
   .panel.user_box
     %a{href: user_path(user), title: user.to_s, class: 'th'}
-      =image_tag user.avatar.mini
+      =image_tag user.avatar.mini, width: 50, height: 50
     %br
     =link_to(user.to_s, user_path(user))
