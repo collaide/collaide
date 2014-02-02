@@ -1,5 +1,3 @@
 git add .
 git commit -m "déploiment production"
 git push origin master
-ssh prod@vps42634.ovh.net cd /www/collaide && git pull origin master
-ssh facenord@vps42634.ovh.net sudo /etc/init.d/apache2 restart

@@ -41,7 +41,7 @@ fr:
         title: Édition du %{resource}
         we_need_your_current_password_to_confirm_your_changes: nous avons besoin de votre mot de passe actuel pour valider ces modifications
         update: "Mise à jour"
-        unhappy: "Pas satisafait ? Envoyez un e-mail à contact[at]collaide.com afin de demander la suppression de votre compte."
+        unhappy: "Pas satisafait ? Envoyez un e-mail à contact@collaide.com afin de demander la suppression de votre compte."
         general_change: Général
         change_password: Modifier le mot de passe
       new:
