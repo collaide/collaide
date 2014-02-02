@@ -42,7 +42,8 @@ class Advertisement::SaleBooksController < ApplicationController
         isbn = params[:isbn]
         parse_isbn(isbn)
         logger.debug(isbn.inspect)
-        google_book = GoogleBooks.search("isbn:#{isbn}").first
+        google_book = GoogleBooks.search("isbn:#{isbn}", {}, request.remote_ip).first
+        logger.debug(GoogleBooks.search("isbn:#{isbn}", {}, request.remote_ip))
         logger.debug(google_book.inspect)
         if google_book && !isbn.blank?
           logger.debug('Here we fill the book with the google infos')
