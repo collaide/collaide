@@ -4,7 +4,7 @@ class UserUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-#   include CarrierWave::MiniMagick
+   include CarrierWave::MiniMagick
 
   storage :file
 
@@ -13,17 +13,13 @@ class UserUploader < CarrierWave::Uploader::Base
       ActionController::Base.helpers.asset_path('users/no-avatar.png')
   end
 
-  # Process files as they are uploaded:
-  # process :scale => [200, 300]
-  #
-  # def scale(width, height)
-  #   # do something
-  # end
+   version :large do
+    process :resize_to_fill => [200, 200]
+  end
 
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :scale => [50, 50]
-  # end
+  version :mini do
+    process resize_to_fill: [50, 50]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

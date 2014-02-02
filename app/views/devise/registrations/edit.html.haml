@@ -8,6 +8,8 @@
   .form-inputs
     = f.input :email, :required => true, :autofocus => true
     = f.input :name
+    = image_tag resource.avatar.mini
+    = f.input :avatar_cache, as: :hidden
     = f.input :avatar
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       %p= t("devise.registrations.edit.waiting_confirmation", resource: resource.unconfirmed_email)
@@ -16,10 +18,8 @@
       .columns.small-11.push-1
         = f.input :password, :autocomplete => "off", :required => false
         = f.input :password_confirmation, :required => false
-    = f.input :current_password, label_html: tooltip(t("devise.registrations.edit.we_need_your_current_password_to_confirm_your_changes")), :required => true
   .form-actions
     = f.button :submit, t("devise.registrations.edit.update")
-%h3= t "devise.registrations.edit.cancel_my_account"
+%h4= t "devise.registrations.edit.cancel_my_account"
 %p
   = t "devise.registrations.edit.unhappy"
-  = link_to t("devise.registrations.edit.cancel_my_account"), registration_path(resource_name), :data => { :confirm => t("devise.registrations.edit.are_you_sure") }, :method => :delete

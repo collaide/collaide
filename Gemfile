@@ -94,6 +94,8 @@ gem 'foundation-rails'
 
 gem 'rails-observers'
 
+gem 'mini_magick'
+
 group :development, :test do
   gem 'commands'
   gem 'rspec-rails'
