@@ -23,6 +23,7 @@
         %li= link_to t('header.inbox'), messages_path
         %li.divider.hide-for-small
         %li= link_to current_user.to_s, current_user
+        %li.divider.hide-for-small
         %li.has-dropdown
           %a{href: "#"}
             -#=t('header.user.settings')

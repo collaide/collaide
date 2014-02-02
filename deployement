@@ -1,4 +1,5 @@
-RAILS_ENV=production bundle exec rake assets:precompile
 git add .
-git commit -m "déploiment heroku"
-git push heroku master
+git commit -m "déploiment production"
+git push origin master
+ssh prod@vps42634.ovh.net cd /www/collaide && git pull
+ssh facenord@vps42634.ovh.net sudo /etc/init.d/apache2 restart

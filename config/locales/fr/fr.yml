@@ -102,7 +102,7 @@ fr:
     inbox: Messagerie
     user:
       profil: "Mon profil"
-      edit: *edit
+      edit: Modifier mon profil
       settings: Paramètres
       logout: "Déconnexion"
     lang: "Langues"
