@@ -72,7 +72,7 @@ class Advertisement::SaleBooksController < ApplicationController
     isbn = book_params[:isbn_13]
 
     parse_isbn(isbn)
-    google_book = GoogleBooks.search("isbn:#{isbn}").first
+    google_book = GoogleBooks.search("isbn:#{isbn}", {}, request.remote_ip).first
 
     if google_book && !isbn.empty?
       #On cherche si le livre est déja dans la bdd, si il l'est, on le met à jour, si il ne l'ai pas, onle crée
