@@ -1,5 +1,6 @@
 .row
   .large-6.columns
+    %h2= t "devise.sessions.new.sign_in"
     .panel
       - if devise_mapping.omniauthable?
         %h4.panel-subtitle
@@ -7,7 +8,10 @@
         .row
           - resource_class.omniauth_providers.each do |provider|
             .large-6.columns
-              = link_to t("devise.shared.links.sign_in_with_provider", provider: provider.to_s.titleize), omniauth_authorize_path(resource_name, provider), class: 'button expand'
+              -if provider.to_s.titleize == 'Google Oauth2'
+                = link_to t("devise.shared.links.sign_in_with_provider", provider: 'Google'), omniauth_authorize_path(resource_name, provider), class: 'button expand'
+              -else
+                = link_to t("devise.shared.links.sign_in_with_provider", provider: provider.to_s.titleize), omniauth_authorize_path(resource_name, provider), class: 'button expand'
       %h4.panel-subtitle
         = t'devise.sessions.new.via_app'
       = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
@@ -27,8 +31,9 @@
         = link_to t("devise.shared.links.didn_t_receive_unlock_instructions"), new_unlock_path(resource_name)
         %br/
   .large-6.columns
+    %h2= t "devise.sessions.new.sign_up"
     .panel
-      %h4.panel-subtitle= t "devise.registrations.new.sign_up"
+      %h4.panel-subtitle Pas de compte ? Créez en un gratuitement !
       = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
         = f.error_notification
         .form-inputs

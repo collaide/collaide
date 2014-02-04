@@ -50,7 +50,8 @@ fr:
       new:
         title_page: Connexion
         sign_in: Connexion
-        via_omniauth: Via votre compte Facebook
+        sign_up: Inscription
+        via_omniauth: Via votre compte Facebook ou Google
         via_app: Via votre compte Collaide
     shared:
       links:
