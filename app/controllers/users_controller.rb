@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    add_breadcrumb I18n.t('users.show.breadcrumb', user: @user.to_s), user_path(@user)
   end
 
   def documents
