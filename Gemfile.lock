@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/Texicitys/repository-manager.git
-  revision: f56b15d57344d21454084f6b3e719adb692ab6b1
+  revision: cc29f6f386824eecafeb590a6c323843329ecfb7
   specs:
-    repository-manager (0.0.21)
+    repository-manager (0.0.25)
       ancestry
       carrierwave (>= 0.5.8)
       rails (> 3.0.0)
@@ -253,7 +253,7 @@ GEM
     nested_form (0.3.2)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
-    net-ssh (2.7.0)
+    net-ssh (2.8.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     oauth2 (0.9.3)
@@ -320,7 +320,7 @@ GEM
       rails (~> 4.0)
     rails-observers (0.1.2)
       activemodel (~> 4.0)
-    rails_admin (0.6.0)
+    rails_admin (0.6.1)
       builder (~> 3.1)
       coffee-rails (~> 4.0)
       font-awesome-rails (>= 3.0)
@@ -330,9 +330,9 @@ GEM
       kaminari (~> 0.14)
       nested_form (~> 0.3)
       rack-pjax (~> 0.7)
-      rails (~> 4.0.0)
+      rails (~> 4.0)
       remotipart (~> 1.0)
-      safe_yaml (~> 0.9)
+      safe_yaml (~> 1.0)
       sass-rails (~> 4.0)
     railties (4.0.2)
       actionpack (= 4.0.2)
@@ -368,9 +368,9 @@ GEM
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
     rspec-core (2.14.7)
-    rspec-expectations (2.14.4)
+    rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.14.4)
+    rspec-mocks (2.14.5)
     rspec-rails (2.14.1)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
@@ -381,7 +381,7 @@ GEM
       rspec-mocks (~> 2.14.0)
     ruby-graphviz (1.0.9)
     rubyzip (1.1.0)
-    safe_yaml (0.9.7)
+    safe_yaml (1.0.1)
     sass (3.2.14)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -434,7 +434,7 @@ GEM
       atomic
     tilt (1.4.1)
     timers (1.1.0)
-    tins (0.13.1)
+    tins (0.13.2)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)

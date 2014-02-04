@@ -255,10 +255,6 @@ Devise.setup do |config|
   #config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user, public_repo"
   config.omniauth :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {}
 
-
-  #config.omniauth :facebook, '227783287393190', 'pass_envoyé_par_mail'
-  #config.omniauth :google_oauth2, '202057750514-uh0t8491gb3jfn8ld9ar4capaurh96av.apps.googleusercontent.com', 'pass_envoyé_par_mail'
-
   # Add by Yves : http://www.synbioz.com/blog/integrer_les_reseaux_sociaux_dans_son_application_rails_avec_oauth
   #if Rails.env.development?
   #  #config.omniauth :twitter, 'CONSUMER_KEY', 'CONSUMER_SECRET'
