@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204023303) do
+ActiveRecord::Schema.define(version: 20140205112962) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -361,10 +361,11 @@ ActiveRecord::Schema.define(version: 20140204023303) do
 
   add_index "receipts", ["notification_id"], name: "index_receipts_on_notification_id", using: :btree
 
-  create_table "repo_items", force: true do |t|
+  create_table "rm_repo_items", force: true do |t|
     t.integer "owner_id"
     t.string  "owner_type"
-    t.integer "user_id"
+    t.integer "sender_id"
+    t.string  "sender_type"
     t.string  "ancestry"
     t.string  "name"
     t.float   "file_size"
@@ -373,13 +374,9 @@ ActiveRecord::Schema.define(version: 20140204023303) do
     t.string  "type"
   end
 
-  add_index "repo_items", ["owner_id", "owner_type"], name: "index_repo_items_on_owner_id_and_owner_type", using: :btree
-  add_index "repo_items", ["user_id"], name: "index_repo_items_on_user_id", using: :btree
-
-  create_table "sharings", force: true do |t|
+  create_table "rm_sharings", force: true do |t|
     t.integer "owner_id"
     t.string  "owner_type"
-    t.integer "user_id"
     t.integer "repo_item_id"
     t.boolean "can_create",   default: false
     t.boolean "can_read",     default: false
@@ -388,11 +385,7 @@ ActiveRecord::Schema.define(version: 20140204023303) do
     t.boolean "can_share",    default: false
   end
 
-  add_index "sharings", ["owner_id", "owner_type"], name: "index_sharings_on_owner_id_and_owner_type", using: :btree
-  add_index "sharings", ["repo_item_id"], name: "index_sharings_on_repo_item_id", using: :btree
-  add_index "sharings", ["user_id"], name: "index_sharings_on_user_id", using: :btree
-
-  create_table "sharings_members", force: true do |t|
+  create_table "rm_sharings_members", force: true do |t|
     t.integer "sharing_id"
     t.integer "member_id"
     t.string  "member_type"

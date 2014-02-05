@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 # This migration comes from mailboxer_engine (originally 20110719110700)
 class AddNotifiedObject < ActiveRecord::Migration
   def self.up
