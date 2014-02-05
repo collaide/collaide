@@ -23,7 +23,6 @@ module Concerns::Letsrate_2  extend  ActiveSupport::Concern
                 :as => :cacheable, :class_name => "RatingCache",
                 :dependent => :destroy
       end
-
     end
   end
 end

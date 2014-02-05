@@ -34,11 +34,11 @@ class RepositoryManagerController < ActionController::Base
   end
 
   def repo_item_params
-    params.require(:repo_item).permit(:id)
+    params[:repo_item]
   end
 
   def get_repo_item
-    repo_item_params[:id] ? RepositoryManager::RepoItem.find(repo_item_params[:id]) : nil
+    repo_item_params ? RepositoryManager::RepoItem.find(repo_item_params[:id]) : nil
   end
 
 
