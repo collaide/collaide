@@ -2,10 +2,8 @@
 class Group::WorkGroupsController < ApplicationController
   #wload_and_authorize_resource class: Group::WorkGroup
 
-
   #breadcrumb
   add_breadcrumb I18n.t("group.groups.index.breadcrumb"),  :group_groups_path
-
 
   add_breadcrumb I18n.t("group.groups.new.title_page"), :new_group_group_path, :only => %w(new create)
   add_breadcrumb I18n.t("group.work_groups.new.h1_title"), :new_group_work_group_path, :only => %w(new create)
@@ -25,12 +23,12 @@ class Group::WorkGroupsController < ApplicationController
   # GET /group/work_groups/new
   # GET /group/work_groups/new.json
   def new
-    @group = Group::WorkGroup.new
+    @group_work_group = Group::WorkGroup.new
 
     respond_to do |format|
       format.html # new.html.haml
       format.json {
-        render json: @group
+        render json: @group_work_group
       }
     end
   end
