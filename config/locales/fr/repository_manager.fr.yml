@@ -17,3 +17,6 @@ fr:
       new:
         repo_folder: Créer un dossier
         repo_file: Envoyer un fichier
+    empty:
+      root: Ne contient aucun fichier...
+      repo_folder: Ce dossier ne contient aucun fichier.

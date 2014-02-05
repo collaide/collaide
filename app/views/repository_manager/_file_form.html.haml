@@ -6,4 +6,6 @@
   =f.input :file_cache, as: :hidden
   =hidden_field_tag("object[class]", object.class.base_class.to_s)
   =hidden_field_tag("object[id]", object.id)
+  -if repo_item
+    =hidden_field_tag("repo_item[id]", repo_item.id)
   =f.button :submit

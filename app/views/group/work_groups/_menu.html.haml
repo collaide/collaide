@@ -3,7 +3,7 @@
     .heading= @group.name
   %li=link_to t('group.work_groups.menu.board'), group_work_group_path(@group)
   %li=link_to t('group.work_groups.menu.members'), group_work_group_members_path(@group)
-  %li=link_to t('group.work_groups.menu.repository'), group_work_group_repository_path(@group)
+  %li=link_to t('group.work_groups.menu.repository'), group_work_group_repositories_path(@group)
 
 
   -if can?(:update, @group)

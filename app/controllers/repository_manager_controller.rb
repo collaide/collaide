@@ -4,9 +4,10 @@ class RepositoryManagerController < ActionController::Base
   def create_folder
     # Get the model
     object = get_object
+    repo_item = get_repo_item
 
     respond_to do |format|
-      if object.create_folder(repo_folder_params['name'], sender: current_user)
+      if object.create_folder(repo_folder_params['name'], source_folder: repo_item, sender: current_user)
         format.html { redirect_to :back, notice: t('repository_manager.success.repo_folder.created') }
         format.json { }
       else
@@ -18,9 +19,10 @@ class RepositoryManagerController < ActionController::Base
 
   def create_file
     object = get_object
+    repo_item = get_repo_item
     #repo_file = RepositoryManager::RepoFile.new(repo_file_params)
 
-      if object.create_file(repo_file_params, sender: current_user)
+      if object.create_file(repo_file_params, source_folder: repo_item, sender: current_user)
         redirect_to :back, notice: t('repository_manager.success.repo_file.created')
       else
         redirect_to :back, alert: t('repository_manager.errors.repo_file.not_created')
@@ -31,6 +33,15 @@ class RepositoryManagerController < ActionController::Base
   def object_params
     params.require(:object).permit(:id, :class)
   end
+
+  def repo_item_params
+    params.require(:repo_item).permit(:id)
+  end
+
+  def get_repo_item
+    repo_item_params[:id] ? RepositoryManager::RepoItem.find(repo_item_params[:id]) : nil
+  end
+
 
   def get_object!
     if object_params['class'].constantize.method_defined? :get_sharing_authorisations

@@ -15,9 +15,15 @@
 .row
   .large-6.columns
     %h6.subheader Fichiers déposés
-    -if @repo_item.empty?
-      %p=t'repository_manager.empty.root'
+    -unless @repo_item.has_children?
+      %p=t'repository_manager.empty.repo_folder'
     -else
-      =render partial: 'repository_manager/repo_item', locals: {object: @group}, collection: @group.repo_items
-    =render 'repository_manager/folder_form', object: @group
-    =render 'repository_manager/file_form', object: @group
+      =render partial: 'repository_manager/repo_item', locals: {object: @group}, collection: @repo_item.children
+    =render 'repository_manager/folder_form', object: @group, repo_item: @repo_item
+    =render 'repository_manager/file_form', object: @group, repo_item: @repo_item
+  .large-6.columns
+    %h6.subheader Fichiers partagés
+    -if @group.shared_repo_items.empty?
+      =t'group.repository.no_shared_repo_item'
+    -else
+      les shared repo items

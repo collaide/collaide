@@ -1,12 +1,6 @@
--url = request.fullpath.split('/')
--if url[-2] == 'item'
-  -url[-1] = repo_item.id
--else
-  -url << 'item'
-  -url << repo_item.id
 -if repo_item.type == 'RepositoryManager::RepoFolder'
   %i.fi-folder
 -else
   %i.fi-download
-=link_to(repo_item.name, url.join('/'))
+=link_to(repo_item.name, group_work_group_repository_path(object, repo_item))
 %br/

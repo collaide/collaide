@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Group::WorkGroupsController < ApplicationController
-  load_and_authorize_resource class: Group::WorkGroup
+  #wload_and_authorize_resource class: Group::WorkGroup
 
 
   #breadcrumb
@@ -95,9 +95,9 @@ class Group::WorkGroupsController < ApplicationController
   # Tout ce qui gère le répository
   def repository
     @group = Group::Group.find(params[:work_group_id])
-    #@selected_repo_item = RepositoryManager::RepoItem.find(params[:repo_item_id]) if params[:repo_item_id]
-    #puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-    #puts params[:repo_item_id]
+    @repo_item = RepositoryManager::RepoItem.find(params[:repo_item_id]) if params[:repo_item_id]
+    puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+    puts params[:repo_item_id]
   end
 
   private
