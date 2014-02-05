@@ -34,6 +34,7 @@ class Group::Group < ActiveRecord::Base
   #                :can_create_invitation,
   #                :can_manage_invitations
   has_repository
+  acts_as_commentable
 
   serialize :can_index_members, Array
   serialize :can_read_member, Array

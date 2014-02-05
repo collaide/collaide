@@ -13,4 +13,5 @@ RailsAdmin.config do |config|
 
   #config.excluded_models = %w(Comment)
   config.excluded_models = Dir.glob(Rails.root.join('app/models/concerns/**.rb')).map {|p| 'Concerns::' + File.basename(p, '.rb').camelize }
+
 end

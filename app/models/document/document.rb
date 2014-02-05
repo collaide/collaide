@@ -24,6 +24,9 @@
 # -*- encoding : utf-8 -*-
 class Document::Document < ActiveRecord::Base
   extend Enumerize
+  include Concerns::Letsrate_2
+
+  letsrate_rateable_2 'note'
 
   enumerize :status, in: [:accepted, :pending, :refused], default: :pending, predicates: true
   enumerize :study_level, in: [:university, :college]
@@ -35,7 +38,7 @@ class Document::Document < ActiveRecord::Base
                domain: 'domain.name', study_level: 'document_study_levels.name', domain: 'domains.name'}
   # permet de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   #FIXME voilà de quoi aider ... https://github.com/muratguzel/letsrate/issues/38
-  letsrate_rateable 'note'
+  #letsrate_rateable 'note'
 
   scope :valid, -> { where(status: :accepted) }
 

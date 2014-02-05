@@ -96,6 +96,8 @@ gem 'rails-observers'
 
 gem 'mini_magick'
 
+gem 'whenever', require: false
+
 group :development, :test do
   gem 'commands'
   gem 'rspec-rails'
