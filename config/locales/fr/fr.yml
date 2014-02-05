@@ -524,8 +524,11 @@ fr:
       empty: Ce groupe n'a aucun membre.
     repository:
       title_page: Dépôt de fichiers de %{group}
+      root_folder: Tous les fichiers déposés
+      in_folder: "Vous êtes dans le dossier : %{folder}"
       no_repo_item: Ce groupe n'a aucun fichier déposé.
       no_shared_repo_item: Ce groupe n'a aucun fichier partagé.
+
 
   messages:
     title_page: Messagerie privée

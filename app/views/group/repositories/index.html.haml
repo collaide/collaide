@@ -4,7 +4,7 @@
   %h1= t('group.repository.title_page', group: @group.name)
   .row
     .large-12.columns
-      %h6.subheader Fichiers déposés
+      %h3.subheader= t('group.repository.root_folder')
       -if @repo_item.empty?
         %p=t'repository_manager.empty.root'
       -else
