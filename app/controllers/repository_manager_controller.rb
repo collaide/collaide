@@ -6,7 +6,7 @@ class RepositoryManagerController < ActionController::Base
     object = get_object
 
     respond_to do |format|
-      if object.create_folder(repo_folder_params['name'])
+      if object.create_folder(repo_folder_params['name'], sender: current_user)
         format.html { redirect_to :back, notice: t('repository_manager.success.repo_folder.created') }
         format.json { }
       else
@@ -18,11 +18,9 @@ class RepositoryManagerController < ActionController::Base
 
   def create_file
     object = get_object
+    #repo_file = RepositoryManager::RepoFile.new(repo_file_params)
 
-
-    repo_file = RepoFile.new(repo_file_params)
-
-      if object.create_file(repo_file)
+      if object.create_file(repo_file_params, sender: current_user)
         redirect_to :back, notice: t('repository_manager.success.repo_file.created')
       else
         redirect_to :back, alert: t('repository_manager.errors.repo_file.not_created')
@@ -34,16 +32,28 @@ class RepositoryManagerController < ActionController::Base
     params.require(:object).permit(:id, :class)
   end
 
+  def get_object!
+    if object_params['class'].constantize.method_defined? :get_sharing_authorisations
+      object_params['class'].constantize.find(object_params['id'])
+    else
+      raise RepositoryManager::RepositoryManagerException.new("get_object failed. The class '#{object_params['class']}' is not authorised (try to put 'has_repository' on it model)")
+    end
+  end
+
   def get_object
-    object_params['class'].constantize.find(object_params['id'])
+    begin
+      get_object!
+    rescue RepositoryManager::RepositoryManagerException
+      false
+    end
   end
 
   def repo_folder_params
-    params.require(:repo_folder).permit(:name)
+    params.require(:repository_manager_repo_folder).permit(:name)
   end
 
   def repo_file_params
-    params.require(:repo_file).permit(:file, :file_cache)
+    params.require(:repository_manager_repo_file).permit(:file, :file_cache)
   end
 
 end

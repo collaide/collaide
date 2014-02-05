@@ -1,6 +1,6 @@
--unless @repo_file
-  -@repo_file = RepoItem::RepoFile.new
-=simple_form_for(@repo_file, :url => new_repository_manager_repo_file_path, :method => :post) do |f|
+-unless @new_repo_file
+  -@new_repo_file = RepositoryManager::RepoFile.new
+=simple_form_for(@new_repo_file, :url => new_repository_manager_repo_file_path, :method => :post) do |f|
   =f.error_notification
   =f.input :file, label: t('repository_manager.form.new.repo_file')
   =f.input :file_cache, as: :hidden

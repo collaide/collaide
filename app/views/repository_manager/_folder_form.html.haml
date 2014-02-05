@@ -1,6 +1,6 @@
--unless @repo_folder
-  -@repo_folder = RepoItem::RepoFolder.new
-=simple_form_for(@repo_folder, :url => new_repository_manager_repo_folder_path, :method => :post) do |f|
+-unless @new_repo_folder
+  -@new_repo_folder = RepositoryManager::RepoFolder.new
+=simple_form_for(@new_repo_folder, :url => new_repository_manager_repo_folder_path, :method => :post) do |f|
   =f.error_notification
   =f.input :name, label: t('repository_manager.form.new.repo_folder')
   =hidden_field_tag("object[class]", object.class.base_class.to_s)

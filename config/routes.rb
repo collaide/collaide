@@ -40,6 +40,10 @@ Collaide::Application.routes.draw do
     namespace :advertisement do
       resources :books, :controller => 'sale_books', as: 'sale_books', :except => [:index, :destroy] #on affiche tous les livres par advertisement#index
     end
+    #
+    #concern :has_repository do
+    #  resources :repositories, only: [:index, :show]
+    #end
 
     resources :groups, as: 'group_groups', controller: 'group/groups' do
       collection do
@@ -52,9 +56,11 @@ Collaide::Application.routes.draw do
     namespace :group do
       resources :work_groups, :controller => 'work_groups', as: 'work_groups', :only => [:new, :create, :edit, :update, :show] do
         get 'members', action: :members, as: 'members'
-        get 'repository', action: :repository, as: 'repository'
+        get 'repository/:repo_item_id', action: :repository, as: 'repository'
+        #get 'repository/item/:repo_item_id', action: :repository, as: 'repository_item'
       end
     end
+
 
 
     resources :'documents', as: 'document_documents', controller: 'document/documents' do
@@ -137,6 +143,7 @@ Collaide::Application.routes.draw do
     #end
   end
   post '/rate' => 'rater#create', :as => 'rate'
+
   # Repository Manager
   post '/repository-manager/create/folder' => 'repository_manager#create_folder', :as => 'new_repository_manager_repo_folder'
   post '/repository-manager/create/file' => 'repository_manager#create_file', :as => 'new_repository_manager_repo_file'

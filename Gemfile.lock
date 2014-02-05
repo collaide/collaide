@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/Texicitys/repository-manager.git
-  revision: fedfe598366c9c4e45553912bab3460175e89cf7
+  revision: afd4181134a4c373335fac9cbb148c83d30b449a
   specs:
-    repository-manager (0.1.1)
+    repository-manager (0.1.2)
       ancestry
       carrierwave (>= 0.5.8)
       rails (> 3.0.0)
