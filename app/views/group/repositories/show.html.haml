@@ -1,29 +1,13 @@
 -content_for :title, t('group.repository.title_page', group: @group.name)
 
--#=render(:layout => 'layout') do
--#  %h1= t('group.members.title_page', group: @group.name)
--#  -if @group.members.empty?
--#    =t'group.members.empty'
--#  -else
--#    %ul.large-block-grid-4.medium-block-grid-3.small-block-grid-2#users
--#      =render @group.u_members.to_a
--#    #paginate.hide
--#      =paginate @group.u_members.to_a
-
--#=render(:layout => 'layout') do
-%h1= t('group.repository.title_page', group: @group.name)
-.row
-  .large-6.columns
-    %h6.subheader Fichiers déposés
-    -unless @repo_item.has_children?
-      %p=t'repository_manager.empty.repo_folder'
-    -else
-      =render partial: 'repository_manager/repo_item', locals: {object: @group}, collection: @repo_item.children
-    =render 'repository_manager/folder_form', object: @group, repo_item: @repo_item
-    =render 'repository_manager/file_form', object: @group, repo_item: @repo_item
-  .large-6.columns
-    %h6.subheader Fichiers partagés
-    -if @group.shared_repo_items.empty?
-      =t'group.repository.no_shared_repo_item'
-    -else
-      les shared repo items
+=render(:layout => 'group/layouts/layout') do
+  %h1= t('group.repository.title_page', group: @group.name)
+  .row
+    .large-12.columns
+      %h6.subheader Fichiers déposés
+      -unless @repo_item.has_children?
+        %p=t'repository_manager.empty.repo_folder'
+      -else
+        =render partial: 'repository_manager/repo_item', locals: {object: @group}, collection: @repo_item.children
+      =render 'repository_manager/folder_form', object: @group, repo_item: @repo_item
+      =render 'repository_manager/file_form', object: @group, repo_item: @repo_item

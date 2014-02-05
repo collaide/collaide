@@ -1,4 +1,5 @@
 -content_for :title, t('group.work_groups.edit.title_page', group: @group.name)
 %h1= t('group.work_groups.edit.title_page', group: @group.name)
 
-=render 'form', edit: true
+=render(:layout => 'group/layouts/layout') do
+  =render 'form', edit: true

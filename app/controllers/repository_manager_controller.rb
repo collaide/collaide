@@ -20,7 +20,6 @@ class RepositoryManagerController < ActionController::Base
   def create_file
     object = get_object
     repo_item = get_repo_item
-    #repo_file = RepositoryManager::RepoFile.new(repo_file_params)
 
       if object.create_file(repo_file_params, source_folder: repo_item, sender: current_user)
         redirect_to :back, notice: t('repository_manager.success.repo_file.created')

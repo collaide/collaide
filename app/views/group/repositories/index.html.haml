@@ -1,13 +1,13 @@
 -content_for :title, t('group.repository.title_page', group: @group.name)
 
--#=render(:layout => 'layout') do
-%h1= t('group.repository.title_page', group: @group.name)
-.row
-  .large-6.columns
-    %h6.subheader Fichiers déposés
-    -if @repo_item.empty?
-      %p=t'repository_manager.empty.root'
-    -else
-      =render partial: 'repository_manager/repo_item', locals: {object: @group}, collection: @group.repo_items
-    =render 'repository_manager/folder_form', object: @group, repo_item: nil
-    =render 'repository_manager/file_form', object: @group, repo_item: nil
+=render(:layout => 'group/layouts/layout') do
+  %h1= t('group.repository.title_page', group: @group.name)
+  .row
+    .large-12.columns
+      %h6.subheader Fichiers déposés
+      -if @repo_item.empty?
+        %p=t'repository_manager.empty.root'
+      -else
+        =render partial: 'repository_manager/repo_item', locals: {object: @group}, collection: @group.repo_items
+      =render 'repository_manager/folder_form', object: @group, repo_item: nil
+      =render 'repository_manager/file_form', object: @group, repo_item: nil
