@@ -7,9 +7,9 @@
 #  name        :string(255)
 #  description :text
 #  ancestry    :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
 #  position    :integer
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 # -*- encoding : utf-8 -*-

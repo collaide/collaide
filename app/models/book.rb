@@ -18,8 +18,8 @@
 #  preview_link   :string(255)
 #  info_link      :string(255)
 #  image_link     :string(255)
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  created_at     :datetime
+#  updated_at     :datetime
 #
 
 # -*- encoding : utf-8 -*-

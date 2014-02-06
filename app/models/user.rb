@@ -7,7 +7,14 @@
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  name                   :string(255)
-#  role_mask              :integer
+#  role                   :string(255)
+#  avatar                 :string(255)
+#  points                 :integer          default(5)
+#  has_notifications      :boolean          default(FALSE)
+#  provider               :string(255)
+#  uid                    :string(255)
+#  latitude               :float
+#  longitude              :float
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
@@ -16,13 +23,16 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  avatar_file_name       :string(255)
-#  avatar_content_type    :string(255)
-#  avatar_file_size       :integer
-#  avatar_updated_at      :datetime
-#  points                 :integer          default(5)
+#  confirmation_token     :string(255)
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string(255)
+#  failed_attempts        :integer          default(0)
+#  unlock_token           :string(255)
+#  locked_at              :datetime
+#  authentication_token   :string(255)
+#  created_at             :datetime
+#  updated_at             :datetime
 #
 
 # -*- encoding : utf-8 -*-

@@ -3,38 +3,35 @@
 #
 # Table name: group_groups
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  description :text
-#  is_public   :boolean          default(TRUE)
-#  password    :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id                     :integer          not null, primary key
+#  name                   :string(255)
+#  password               :string(255)
+#  type                   :string(255)
+#  can_index_members      :string(255)
+#  can_read_member        :string(255)
+#  can_delete_member      :string(255)
+#  can_write_file         :string(255)
+#  can_index_files        :string(255)
+#  can_read_file          :string(255)
+#  can_delete_file        :string(255)
+#  can_index_statuses     :string(255)
+#  can_write_status       :string(255)
+#  can_delete_status      :string(255)
+#  can_create_invitation  :string(255)
+#  can_manage_invitations :string(255)
+#  description            :text
+#  main_group_id          :integer
+#  user_id                :integer
+#  created_at             :datetime
+#  updated_at             :datetime
 #
 
 # -*- encoding : utf-8 -*-
 class Group::Group < ActiveRecord::Base
 
   ROLES = [:admin, :writer]
-  #attr_accessible :description, :name, :password, :password_confirmation,
-  #
-  #                :can_index_members,
-  #                :can_read_member,
-  #                :can_delete_member,
-  #
-  #                :can_write_file,
-  #                :can_index_files,
-  #                :can_read_file,
-  #                :can_delete_file,
-  #
-  #                :can_index_statuses,
-  #                :can_write_status,
-  #                :can_delete_status,
-  #
-  #                :can_create_invitation,
-  #                :can_manage_invitations
+
   has_repository
-  acts_as_commentable
 
   serialize :can_index_members, Array
   serialize :can_read_member, Array
@@ -55,7 +52,7 @@ class Group::Group < ActiveRecord::Base
   belongs_to :user
   belongs_to :main_group, class_name: 'Group::Group'
   has_many :sub_groups, class_name: 'Group::Group', foreign_key: "main_group_id"
-  #has_many :statuses, class_name: 'Status', as: :owner
+  has_many :statuses, class_name: 'Status', as: :owner
   has_many :group_members, class_name: 'Group::GroupMember'
 
   # Renvoi les membres user et group

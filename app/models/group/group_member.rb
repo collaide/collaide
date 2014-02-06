@@ -1,14 +1,18 @@
 # -*- encoding : utf-8 -*-
 # == Schema Information
 #
-# Table name: group_members
+# Table name: group_group_members
 #
-#  id              :integer          not null, primary key
-#  is_admin        :boolean
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  user_id         :integer
-#  group_id :integer
+#  id                       :integer          not null, primary key
+#  group_id                 :integer
+#  member_id                :integer
+#  member_type              :string(255)
+#  role                     :string(255)
+#  joined_method            :string(255)
+#  invited_or_added_by_id   :integer
+#  invited_or_added_by_type :string(255)
+#  created_at               :datetime
+#  updated_at               :datetime
 #
 
 # -*- encoding : utf-8 -*-

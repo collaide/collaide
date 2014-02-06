@@ -7,17 +7,19 @@
 #  title            :string(255)
 #  description      :text
 #  author           :string(255)
-#  number_of_pages  :integer          default(1)
+#  number_of_pages  :integer
 #  realized_at      :date
 #  language         :string(255)
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  study_level_id   :integer
+#  asset            :string(255)
+#  is_accepted      :boolean          default(FALSE)
 #  document_type_id :integer
 #  user_id          :integer
-#  status           :string(255)      default("refused")
-#  hits             :integer
+#  status           :string(255)      default("pending")
+#  hits             :integer          default(0)
 #  is_deleted       :boolean          default(FALSE)
+#  study_level      :string(255)
+#  created_at       :datetime
+#  updated_at       :datetime
 #
 
 # -*- encoding : utf-8 -*-

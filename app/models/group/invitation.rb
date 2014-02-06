@@ -1,14 +1,19 @@
 # -*- encoding : utf-8 -*-
 # == Schema Information
 #
-# Table name: group_demands
+# Table name: group_invitations
 #
-#  id         :integer          not null, primary key
-#  message    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :integer
-#  group_id   :integer
+#  id            :integer          not null, primary key
+#  message       :text
+#  status        :string(255)
+#  role          :string(255)
+#  sender_id     :integer
+#  sender_type   :string(255)
+#  group_id      :integer
+#  receiver_id   :integer
+#  receiver_type :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 
 # -*- encoding : utf-8 -*-

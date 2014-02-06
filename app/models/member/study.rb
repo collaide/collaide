@@ -1,15 +1,15 @@
 # -*- encoding : utf-8 -*-
 # == Schema Information
 #
-# Table name: User_studies
+# Table name: member_studies
 #
-#  id                  :integer          not null, primary key
-#  started_at          :date
-#  ended_at            :date
-#  orientation         :string(255)
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#  user_scolarity_id :integer
+#  id          :integer          not null, primary key
+#  started_at  :date
+#  ended_at    :date
+#  orientation :string(255)
+#  users_id    :integer
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 # -*- encoding : utf-8 -*-

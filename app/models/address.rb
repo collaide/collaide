@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 # == Schema Information
 #
-# Table name: User_addresses
+# Table name: addresses
 #
 #  id            :integer          not null, primary key
 #  country       :string(255)
@@ -10,8 +10,8 @@
 #  city_code     :integer
 #  country_code  :string(255)
 #  is_actual     :boolean          default(TRUE)
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 
 # -*- encoding : utf-8 -*-
