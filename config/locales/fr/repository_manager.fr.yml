@@ -15,8 +15,11 @@ fr:
         not_created: Erreur, le fichier n'a pas été envoyé !
     form:
       new:
-        repo_folder: Créer un dossier
-        repo_file: Envoyer un fichier
+        repo_folder:
+          submit: Creer le dossier
+        repo_file:
+          file: Envoyer un fichier
+          submit: Envoyer le fichier
     empty:
       root: Ne contient aucun fichier...
       repo_folder: Ce dossier ne contient aucun fichier.
