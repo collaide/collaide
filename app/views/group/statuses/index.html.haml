@@ -1,0 +1,9 @@
+=render(layout: 'group/layouts/layout') do
+  %h1= t('group.status.h1_title')
+  .row
+    .columns.small-12
+      =render 'statuses/form', submit_text: t('group.status.new_discussion'), klass: Group::Group
+  -if @statuses.empty?
+    %p= t('group.status.empty')
+  -else
+

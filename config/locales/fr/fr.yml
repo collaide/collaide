@@ -518,6 +518,7 @@ fr:
         edit: Modifier
         board: Tableau
         members: Membres
+        statuses: Discussions
         repository: Dépôt de fichiers
     members:
       title_page: Membres de %{group}
@@ -528,6 +529,10 @@ fr:
       in_folder: "Vous êtes dans le dossier : %{folder}"
       no_repo_item: Ce groupe n'a aucun fichier déposé.
       no_shared_repo_item: Ce groupe n'a aucun fichier partagé.
+    status:
+      h1_title: Discussions
+      empty: Aucune discussions en cours.
+      new_discussion: Discuter
 
 
   messages:
