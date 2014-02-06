@@ -8,6 +8,6 @@
       -if @repo_item.empty?
         %p=t'repository_manager.empty.root'
       -else
-        =render partial: 'repository_manager/repo_item', locals: {object: @group}, collection: @group.repo_items
+        =render partial: 'repository_manager/repo_item', locals: {object: @group}, collection: @group.repo_items.root_repo_items
       =render 'repository_manager/folder_form', object: @group, repo_item: nil
       =render 'repository_manager/file_form', object: @group, repo_item: nil
