@@ -16,7 +16,7 @@ class Group::RepositoriesController < ApplicationController
   # Tout ce qui gère le repository
   def index
     @group = Group::Group.find(params[:work_group_id])
-    @repo_item = @group.repo_items
+    @repo_item = @group.repo_items.reorder(id: :desc)
     #puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     #puts params[:repo_item_id]
   end

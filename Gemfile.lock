@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/Texicitys/repository-manager.git
-  revision: afd4181134a4c373335fac9cbb148c83d30b449a
+  revision: 7c359fba40207db2075925f06e88611e7d3a2705
   specs:
-    repository-manager (0.1.2)
+    repository-manager (0.1.4)
       ancestry
       carrierwave (>= 0.5.8)
       rails (> 3.0.0)
@@ -54,7 +54,7 @@ GEM
     acts_as_commentable (4.0.1)
     ancestry (2.0.0)
       activerecord (>= 3.0.0)
-    arel (4.0.1)
+    arel (4.0.2)
     atomic (1.1.14)
     aws-sdk (1.5.8)
       httparty (~> 0.7)
@@ -159,7 +159,7 @@ GEM
     foundation-icons-sass-rails (3.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
-    foundation-rails (5.0.3.1)
+    foundation-rails (5.1.0.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
     friendly_id (5.0.2)

@@ -1,1 +1,3 @@
-class
+class Group::GroupCommentsController < ApplicationController
+
+end
