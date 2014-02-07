@@ -27,6 +27,28 @@ class Group::RepositoriesController < ApplicationController
     #puts params[:repo_item_id]
   end
 
+  def create_file
+    @group = Group::Group.find(params[:work_group_id])
+    repo_item = RepositoryManager::RepoItem.find(params[:repo_item]) if params[:repo_item]
+
+    if @group.create_file(params[:repo_file_file], source_folder: repo_item, sender: current_user)
+      redirect_to :back, notice: t('repository_manager.success.repo_file.created')
+    else
+      redirect_to :back, alert: t('repository_manager.errors.repo_file.not_created')
+    end
+  end
+
+  def create_folder
+    @group = Group::Group.find(params[:work_group_id])
+    repo_item = RepositoryManager::RepoItem.find(params[:repo_item]) if params[:repo_item]
+
+    if @group.create_folder(params[:repo_folder_name], source_folder: repo_item, sender: current_user)
+      redirect_to :back, notice: t('repository_manager.success.repo_folder.created')
+    else
+      redirect_to :back, alert: t('repository_manager.errors.repo_folder.not_created')
+    end
+  end
+
   def download
     @group = Group::Group.find(params[:work_group_id])
     @repo_item = RepositoryManager::RepoItem.find(params[:repository_id])
@@ -66,7 +88,7 @@ class Group::RepositoriesController < ApplicationController
     if @group.delete_repo_item(@repo_item)
       redirect_to :back, notice: notice
     else
-      redirect_to :back, notice: notice_failed
+      redirect_to :back, alert: notice_failed
     end
   end
 end
