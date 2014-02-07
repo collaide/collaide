@@ -1,0 +1,4 @@
+=simple_form_for @comment do |f|
+  =f.input :comment
+  =hidden_field_for_polymorphic 'comment', object
+  =f.button :submit, submit_text, class: 'secondary'

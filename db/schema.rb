@@ -397,11 +397,14 @@ ActiveRecord::Schema.define(version: 20140205112962) do
     t.text     "message"
     t.integer  "owner_id"
     t.string   "owner_type"
+    t.integer  "writer_id"
+    t.string   "writer_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "statuses", ["owner_id", "owner_type"], name: "index_statuses_on_owner_id_and_owner_type", using: :btree
+  add_index "statuses", ["writer_id", "writer_type"], name: "index_statuses_on_writer_id_and_writer_type", using: :btree
 
   create_table "user_friend_demands_user_users", id: false, force: true do |t|
     t.integer "user_user_id",          null: false

@@ -5,23 +5,23 @@ class StatusesController < ApplicationController
   def create
     raise  ActiveRecord::UnknownAttributeError unless status_params[:klass]
     klass = status_params[:klass].to_s.constantize
-    raise ActiveRecord::UnknownAttributeError unless klass.method_defined? :statuses
-    status = klass.send('statuses.new')
-    status.title = status_params[:title]
-    status.comment = status_params[:comment]
-    status.user = current_user
-    status.save
+    raise  ActiveRecord::UnknownAttributeError unless klass.method_defined? 'statuses'
+    object = klass.find(status_params[:id])
+    success = object.statuses.create(message: status_params[:message], writer: current_user)
+    respond_to do |format|
+      if success.save
+        logger.debug("#{status_params[:render_view].split('/').join('.')}.status.success")
+        format.html { redirect_to status_params[:path], notice: I18n.t("#{status_params[:render_view].split('/').join('.')}.status.success", default: t('status.success')) }
+      else
+        format.html{ redirect_to status_params[:path], notice: I18n.t("#{status_params[:render_view].split('/').join('.')}.status.error", default: t('status.error')) }
+      end
+    end
   end
 
 
   private
 
-  def test
-
-  end
-
   def status_params
-    logger.debug('salut')
-    params.require(:status).permit(:title, :message, :klass)
+    params.require(:status).permit(:message, :klass, :id, :path, :render_view)
   end
 end

@@ -50,6 +50,7 @@ Collaide::Application.routes.draw do
     end
 
     resources :statuses, only:[:create]
+    resources :comments, only: [:create]
 
     resources :groups, as: 'group_groups', controller: 'group/groups' do
       collection do

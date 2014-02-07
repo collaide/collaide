@@ -1,0 +1,13 @@
+.columns.small-12
+  %h6.subheader
+    -if status.writer.nil?
+      =t('group.statuses.index.no_author')
+    -else
+      =image_and_name_for status.writer
+  %p= status.message
+  %h6.subheader= t('group.statuses.index.time_ago', time_ago: time_ago_in_words(status.created_at))
+  .row
+    .columns.small-11.push-1
+      =render partial: 'comments/comment', collection: status.comments, as: 'comment'
+      =render 'comments/form', submit_text: t('group.statuses.index.reply'), object: status
+  %hr

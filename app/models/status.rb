@@ -17,7 +17,7 @@ class Status < ActiveRecord::Base
   acts_as_commentable
 
   belongs_to :owner, polymorphic: true, inverse_of: :statuses
-  belongs_to :user
+  belongs_to :writer, polymorphic: true
 
   validates_presence_of :message
 end

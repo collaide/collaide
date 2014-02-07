@@ -97,6 +97,7 @@ class CreateTableUser < ActiveRecord::Migration
     create_table :statuses do |t|
       t.text :message
       t.belongs_to :owner, polymorphic: true, index: true
+      t.belongs_to :writer, polymorphic: true, index: true
 
       t.timestamps
     end

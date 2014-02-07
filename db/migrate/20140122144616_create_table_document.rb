@@ -53,6 +53,7 @@ class CreateTableDocument < ActiveRecord::Migration
         t.text :comment
         t.references :commentable, :polymorphic => true, index: true
         t.references :owner, polymorphic: true, index: true
+
         t.timestamps
       end
 

@@ -529,12 +529,26 @@ fr:
       in_folder: "Vous êtes dans le dossier : %{folder}"
       no_repo_item: Ce groupe n'a aucun fichier déposé.
       no_shared_repo_item: Ce groupe n'a aucun fichier partagé.
-    status:
-      h1_title: Discussions
-      empty: Aucune discussions en cours.
-      new_discussion: Discuter
+    statuses:
+      index:
+        h1_title: Discussions
+        empty: Aucune discussions en cours.
+        new_discussion: Discuter
+        time_ago: Il y a %{time_ago}
+        reply: Répondre
+        no_author: Pas d'auteur
+        status:
+          success: Une nouvelle discussion a commencée
+          error: Impossible de commencer une nouvelle discussion.
+        comment:
+         no_author: Commentaire annonyme
 
-
+  status:
+   success: Le statut a bien été créé
+   error: Le statut n'a pas pu être créé
+  comment:
+    success: Le commentaire a bien été créé
+    error: le commentaire n'a pas pu être créé
   messages:
     title_page: Messagerie privée
     index:
@@ -582,6 +596,9 @@ fr:
       succed: Votre réponse a bien été envoyée !
       empty_message: Les réponses vides ne sont pas envoyées
   users:
+    avatar:
+      alt: "Image manquante pour %{user}"
+      title: "Image de %{user}"
     title_page: Les membres
     index:
       title_page: Liste des membres
