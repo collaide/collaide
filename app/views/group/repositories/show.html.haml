@@ -2,12 +2,19 @@
 
 =render(:layout => 'group/layouts/layout') do
   %h1= t('group.repository.title_page', group: @group.name)
+  %ul.breadcrumbs
+    %li=link_to t('group.work_groups.menu.repository'), group_work_group_repositories_path(@group)
+    =render 'repository_manager/breadcrumb', object: @group, repo_item: @repo_item
   .row
-    .large-12.columns
-      %h6.subheader= t('group.repository.in_folder', folder: @repo_item.name)
-      -unless @repo_item.has_children?
-        %p=t'repository_manager.empty.repo_folder'
-      -else
-        =render partial: 'repository_manager/repo_item', locals: {object: @group}, collection: @repo_item.children
-      =render 'repository_manager/folder_form', object: @group, repo_item: @repo_item
-      =render 'repository_manager/file_form', object: @group, repo_item: @repo_item
+    .large-6.columns
+      .panel
+        -if @children.empty?
+          %p=t'repository_manager.empty.repo_folder'
+        -else
+          =render partial: 'repository_manager/repo_item', locals: {object: @group}, collection: @children
+    .large-6.columns
+      .panel
+        %h5.panel-subtitle= t'repository_manager.form.new.repo_file.title'
+        =render 'repository_manager/file_form', object: @group, repo_item: @repo_item
+        %h5.panel-subtitle= t'repository_manager.form.new.repo_folder.title'
+        =render 'repository_manager/folder_form', object: @group, repo_item: @repo_item

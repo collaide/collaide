@@ -16,10 +16,18 @@ fr:
     form:
       new:
         repo_folder:
-          submit: Creer le dossier
+          title: Créer un dossier
+          submit: Créer le dossier
         repo_file:
-          file: Envoyer un fichier
+          title: Envoyer un fichier
           submit: Envoyer le fichier
     empty:
       root: Ne contient aucun fichier...
       repo_folder: Ce dossier ne contient aucun fichier.
+    destroy:
+      repo_folder:
+        success: Le dossier '%{item}' a bien été supprimé
+        failed: Le dossier '%{item}' n'a pas été supprimé
+      repo_file:
+        success: Le fichier '%{item}' a bien été supprimé
+        failed: Le fichier '%{item}' n'a pas été supprimé

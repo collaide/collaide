@@ -42,7 +42,9 @@ Collaide::Application.routes.draw do
     end
 
     concern :has_repository do
-      resources :repositories, only: [:index, :show]
+      resources :repositories, only: [:index, :show, :create, :destroy, :edit, :update] do
+        get 'download'
+      end
     end
 
     resources :groups, as: 'group_groups', controller: 'group/groups' do

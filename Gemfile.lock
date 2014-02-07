@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/Texicitys/repository-manager.git
-  revision: 22df89d4d7aca06539aa9bc88f4d5b23fd60212c
+  revision: 1a59c25e0c572921d3b87d623ac2428bfa2ab4fc
   specs:
-    repository-manager (0.1.7)
+    repository-manager (0.1.15)
       ancestry
       carrierwave (>= 0.5.8)
       rails (> 3.0.0)
@@ -159,7 +159,7 @@ GEM
     foundation-icons-sass-rails (3.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
-    foundation-rails (5.1.0.0)
+    foundation-rails (5.1.1.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
     friendly_id (5.0.2)
@@ -174,7 +174,7 @@ GEM
     googlebooks (0.0.8)
       httparty
     gritter (1.0.3)
-    guard (2.3.0)
+    guard (2.4.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
       lumberjack (~> 1.0)

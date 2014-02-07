@@ -2,12 +2,18 @@
 
 =render(:layout => 'group/layouts/layout') do
   %h1= t('group.repository.title_page', group: @group.name)
+  %ul.breadcrumbs
+    %li=link_to t('group.work_groups.menu.repository'), group_work_group_repositories_path(@group)
   .row
-    .large-12.columns
-      %h3.subheader= t('group.repository.root_folder')
-      -if @repo_item.empty?
-        %p=t'repository_manager.empty.root'
-      -else
-        =render partial: 'repository_manager/repo_item', locals: {object: @group}, collection: @group.repo_items.root_repo_items
-      =render 'repository_manager/folder_form', object: @group, repo_item: nil
-      =render 'repository_manager/file_form', object: @group, repo_item: nil
+    .large-6.columns
+      .panel
+        -if @repo_item.empty?
+          %p=t'repository_manager.empty.root'
+        -else
+          =render partial: 'repository_manager/repo_item', locals: {object: @group}, collection: @repo_item
+    .large-6.columns
+      .panel
+        %h5.panel-subtitle= t'repository_manager.form.new.repo_file.title'
+        =render 'repository_manager/file_form', object: @group, repo_item: nil
+        %h5.panel-subtitle= t'repository_manager.form.new.repo_folder.title'
+        =render 'repository_manager/folder_form', object: @group, repo_item: nil
