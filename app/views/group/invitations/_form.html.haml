@@ -1,0 +1,5 @@
+=simple_form_for @invitation, url: group_work_group_invitations_path do |f|
+  =f.input :sender, as: :hidden
+  =f.input :group, as: :hidden
+
+  =f.button :submit, t('group.invitations.create.submit')

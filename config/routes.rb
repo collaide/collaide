@@ -51,6 +51,10 @@ Collaide::Application.routes.draw do
       resources :statuses, only: [:index, :show]
     end
 
+    concern :invitation do
+      resources :invitations, only: [:create]
+    end
+
     resources :statuses, only:[:create]
     resources :comments, only: [:create]
 
@@ -65,6 +69,7 @@ Collaide::Application.routes.draw do
     namespace :group do
       resources :work_groups, :controller => 'work_groups', as: 'work_groups', :only => [:new, :create, :edit, :update, :show], concerns: :has_repository do
         concerns :status
+        concerns :invitation
         get 'members', action: :members, as: 'members'
       end
     end

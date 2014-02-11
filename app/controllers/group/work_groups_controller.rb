@@ -85,6 +85,7 @@ class Group::WorkGroupsController < ApplicationController
   # Show members of the group
   def members
     @group = Group::Group.find(params[:work_group_id])
+    @invitation = Group::Invitation.new(group: @group, sender: current_user)
     #puts "Ajout d'un membre pour test.. OK"
     #u = User.find 2
     #@group.add_members(u, Group::Roles::MEMBER, :was_added, current_user)

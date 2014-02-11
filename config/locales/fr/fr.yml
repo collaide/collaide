@@ -547,6 +547,9 @@ fr:
          no_author: Commentaire annonyme
       show:
         h1_title: Discussion du %{date}
+    invitations:
+      create:
+        submit: Nouvelle invitation
 
   status:
    success: Le statut a bien été créé

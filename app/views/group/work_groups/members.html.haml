@@ -3,6 +3,7 @@
 
 =render(:layout => 'group/layouts/layout') do
   %h1= t('group.members.title_page', group: @group.name)
+  =render partial: 'group/invitations/form'
   -if @group.members.empty?
     =t'group.members.empty'
   -else
