@@ -29,4 +29,27 @@ class UsersController < ApplicationController
   def no_credit
 
   end
+
+  def search
+    term = params[:term]
+    #email = params[:email]
+    #name = params[:name]
+    #if !email.blank? and !name.blank?
+    #  user = User.where email: email, name: name
+    #elsif !email.blank?
+    #  user = User.where email: email
+    #elsif !name.blank?
+    #  user = User.where name: name
+    #else
+    #  render status: 402
+    #  return
+    #end
+    user = User.search_for_autocomplete(term)
+    status = 200
+    status = 204 if user.nil?
+    #user_params = {id: user.id, name: user.name, email: user.email}
+    respond_to do |format|
+      format.json { render status: status, json: user }
+    end
+  end
 end

@@ -155,6 +155,7 @@ Collaide::Application.routes.draw do
     #  get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
     #end
   end
+  get 'users/search' => 'users#search', as: 'search_users'
   post '/rate' => 'rater#create', :as => 'rate'
 
   # Repository Manager

@@ -85,7 +85,7 @@ class   User < ActiveRecord::Base
 
   has_many :notifications, class_name: 'UserNotification'
 
-  # Invitation pour les advertisements
+  # Invitation pour les groupes
   has_many :sent_group_invitations, class_name: 'Group::Invitation', as: 'sender'
   has_many :received_group_invitations, class_name: 'Group::Invitation', as: 'receiver'
   # Un user a plusieurs groupes et un groupe a plusieurs utilisateurs
@@ -103,7 +103,14 @@ class   User < ActiveRecord::Base
 
   # permet à un utilisateur de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   letsrate_rater
+  scope :minimum_fields, -> { select(:id, :name, :email, :role) }
+  scope :search_by_email, -> (email) { where("email LIKE 'admin'", email: email).first }
 
+  def self.search_for_autocomplete(email)
+    user = self.minimum_fields.search_by_email(email).first
+    return {} if user.nil?
+    {id: user.id, name: user.name, email: user.email}
+  end
   validates :name, presence: true
 
   #https://github.com/alexreisner/geocoder
@@ -195,6 +202,8 @@ class   User < ActiveRecord::Base
   #  end
   #  authorization.user
   #end
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 end
 
 class Point
