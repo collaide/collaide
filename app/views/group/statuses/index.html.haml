@@ -4,6 +4,6 @@
     .columns.small-12
       =render 'statuses/form', submit_text: t('group.statuses.index.new_discussion'), object: @group
   .row
-    =render partial: 'statuses/status', collection: @statuses, as: 'status' || "<p>#{t('group.statuses.index.empty')}</p>"
+    =render partial: 'statuses/status', collection: @statuses, as: 'status', locals: {limit: 5} || "<p>#{t('group.statuses.index.empty')}</p>"
 
 

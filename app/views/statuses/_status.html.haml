@@ -5,9 +5,17 @@
     -else
       =image_and_name_for status.writer
   %p= status.message
-  %h6.subheader= t('group.statuses.index.time_ago', time_ago: time_ago_in_words(status.created_at))
+  %h6.subheader
+    = t('group.statuses.index.time_ago', time_ago: time_ago_in_words(status.created_at))
+    -#= link_to(t('group.statuses.index.edit'), '#', class: 'button small secondary')
+    -#= link_to(t('group.statuses.index.delete'), '#', class: 'button small secondary')
   .row
     .columns.small-11.push-1
-      =render partial: 'comments/comment', collection: status.comments, as: 'comment'
+      -collection = status.comments
+      -if limit.is_a? Fixnum and limit > 0
+        -collection = collection[0..limit]
+      =render partial: 'comments/comment', collection: collection, as: 'comment'
       =render 'comments/form', submit_text: t('group.statuses.index.reply'), object: status
+      -if limit.is_a? Fixnum and status.comments.size >= limit
+        = link_to t('group.statuses.index.show_more'), group_work_group_status_path(id: status)
   %hr

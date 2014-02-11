@@ -537,16 +537,21 @@ fr:
         time_ago: Il y a %{time_ago}
         reply: Répondre
         no_author: Pas d'auteur
+        edit: Modifier
+        delete: Supprimer
+        show_more: Afficher la suite de la discussion
         status:
           success: Une nouvelle discussion a commencée
           error: Impossible de commencer une nouvelle discussion.
         comment:
          no_author: Commentaire annonyme
+      show:
+        h1_title: Discussion du %{date}
 
   status:
    success: Le statut a bien été créé
    error: Le statut n'a pas pu être créé
-  comment:
+  comments:
     success: Le commentaire a bien été créé
     error: le commentaire n'a pas pu être créé
   messages:

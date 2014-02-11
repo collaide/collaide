@@ -52,7 +52,7 @@ Collaide::Application.routes.draw do
     end
 
     concern :status do
-      resources :statuses
+      resources :statuses, only: [:index, :show]
     end
 
     resources :statuses, only:[:create]

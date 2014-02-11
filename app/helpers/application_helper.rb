@@ -74,7 +74,7 @@ module ApplicationHelper
 
   def image_and_name_for(writer, img = 'avatar')
     img_tag =  image_tag(writer.send(img).mini.url, alt: t("users.#{img}.alt", user: h(writer)), title: t("users.#{img}.title", user: h(writer)), width: 30, height: 30) if !img.blank? and writer.respond_to?(img)
-    raw((img_tag+link_to(h(writer), writer)).html_safe)
+    raw((link_to(img_tag+ h(writer), writer)).html_safe)
   end
 
   private
