@@ -22,10 +22,10 @@ class Group::Invitation < ActiveRecord::Base
   extend Enumerize
   enumerize :status, in: [:accepted, :pending, :later, :refused], default: :pending, predicates: true
 
-  enumerize :role, in: [Group::Roles::ADMIN,
-                        Group::Roles::WRITER,
-                        Group::Roles::MEMBER,
-                        Group::Roles::ALL], default: Group::Roles::MEMBER
+  #enumerize :role, in: [Group::Roles::ADMIN,
+  #                      Group::Roles::WRITER,
+  #                      Group::Roles::MEMBER,
+  #                      Group::Roles::ALL], default: Group::Roles::MEMBER
 
   scope :pending, -> { where(status: :pending) }
   scope :later, -> { where(status: :later) }

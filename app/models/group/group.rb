@@ -111,12 +111,17 @@ class Group::Group < ActiveRecord::Base
   end
 
   # send an invitation to the receivers
-  def send_invitations(receivers, message = '', sender = self)
+  def send_invitations(receivers, message: '', sender: self, receiver_type: 'User')
     if receivers.kind_of?(Array)
       receivers.each do |r|
         invitation = Group::Invitation.new(message: message)
         invitation.sender = sender
-        invitation.receiver = r
+        if r.is_a? Fixnum or r.is_a? String
+          invitation.receiver_id = r.to_i
+          invitation.receiver_type = receiver_type
+        else
+          invitation.receiver = r
+        end
         self.group_invitations << invitation
       end
     else

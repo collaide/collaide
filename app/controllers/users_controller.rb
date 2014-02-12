@@ -31,25 +31,12 @@ class UsersController < ApplicationController
   end
 
   def search
-    term = params[:term]
-    #email = params[:email]
-    #name = params[:name]
-    #if !email.blank? and !name.blank?
-    #  user = User.where email: email, name: name
-    #elsif !email.blank?
-    #  user = User.where email: email
-    #elsif !name.blank?
-    #  user = User.where name: name
-    #else
-    #  render status: 402
-    #  return
-    #end
-    user = User.search_for_autocomplete(term)
-    status = 200
-    status = 204 if user.nil?
+    res = User.search_for_autocomplete(params[:term])
+    (res.nil? or res.empty?) ? status = 204 : status = 200
     #user_params = {id: user.id, name: user.name, email: user.email}
+    logger.debug res.inspect
     respond_to do |format|
-      format.json { render status: status, json: user }
+      format.json { render status: status, json: res.to_json.to_s }
     end
   end
 end

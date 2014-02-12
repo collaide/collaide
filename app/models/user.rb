@@ -103,13 +103,12 @@ class   User < ActiveRecord::Base
 
   # permet à un utilisateur de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   letsrate_rater
-  scope :minimum_fields, -> { select(:id, :name, :email, :role) }
-  scope :search_by_email, -> (email) { where("email LIKE 'admin'", email: email).first }
+  scope :search_by_email_or_name, -> (term) { where("email LIKE '#{term}' or name LIKE '#{term}'", email: term, name: term).limit 10 }
 
-  def self.search_for_autocomplete(email)
-    user = self.minimum_fields.search_by_email(email).first
-    return {} if user.nil?
-    {id: user.id, name: user.name, email: user.email}
+  def self.search_for_autocomplete(term)
+    self.search_by_email_or_name(term).map do |a_user|
+      {id: a_user.id, value: a_user.to_single_name}
+    end
   end
   validates :name, presence: true
 
@@ -131,9 +130,16 @@ class   User < ActiveRecord::Base
     #return nil
   end
 
+  # Renvoi le nom de l'utilisateur
   def to_s
     self.name
   end
+
+  # Essaie de donner un nom unique à l'utilisateur, basé sur l'adresse, mail
+  def to_single_name
+    self.name+" (#{self.email[0 ]}...@#{self.email.split('@').last.to_s})"
+  end
+
 
   # Envoie une invitation a rejoindre le group aux receivers
   def send_group_invitations(group, receivers, message = '')

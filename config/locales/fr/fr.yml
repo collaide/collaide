@@ -550,6 +550,7 @@ fr:
     invitations:
       create:
         submit: Nouvelle invitation
+        notice: Toutes les personnes on bien été invitées
 
   status:
    success: Le statut a bien été créé
