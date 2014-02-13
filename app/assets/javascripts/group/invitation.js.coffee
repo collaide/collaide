@@ -23,6 +23,6 @@ $ ->
         terms.push(ui.item.value)
         terms.push("")
         this.value = terms.join(', ')
-        $("<option value=\"#{ui.item.id}\">#{ui.item.value}</option>").appendTo('#group_invitation_users_ids')
+        $("<option value=\"#{ui.item.id}\" selected=\"selected\">#{ui.item.value}</option>").appendTo('#group_invitation_users_ids')
         false
     })

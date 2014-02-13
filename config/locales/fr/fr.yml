@@ -29,6 +29,7 @@ fr:
     books: &books Livres
     news: &news News
     partners: &partners Partenaires
+    delete: &delete Supprimer
     documents:
       title: &doc_title Titre
       description: &doc_description Déscription
@@ -59,6 +60,7 @@ fr:
   access_denied: Cette page requiert d'être connecté. Ci-dessous, vous pouvez vous connecter ou vous inscrire gratuitement.
   default_key_words: "collaide, étudier, documents scolaires"
   default_description_meta: Collaide est un réseau d'étudiant
+  delete: *delete
   errors:
       messages:
         not_a_date: "n'est pas une date"
@@ -521,8 +523,13 @@ fr:
         statuses: Discussions
         repository: Dépôt de fichiers
     members:
-      title_page: Membres de %{group}
+      title_page: Gestion des membres de %{group}
       empty: Ce groupe n'a aucun membre.
+      invitation_form: Inviter d'autres personnes
+      invitation_list: Personnes invitées
+      empty_invitation_list: Personne n'est invité à rejoindre ce groupe
+      members_list: Liste de membres
+      delete_invitation: Supprimer l'invitation
     repository:
       title_page: Dépôt de fichiers de %{group}
       #root_folder: Tous les fichiers déposés
@@ -551,6 +558,8 @@ fr:
       create:
         submit: Nouvelle invitation
         notice: Toutes les personnes on bien été invitées
+      destroy:
+        notice: Invitation supprimée
 
   status:
    success: Le statut a bien été créé

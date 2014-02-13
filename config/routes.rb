@@ -52,7 +52,7 @@ Collaide::Application.routes.draw do
     end
 
     concern :invitation do
-      resources :invitations, only: [:create]
+      resources :invitations, only: [:create, :destroy]
     end
 
     resources :statuses, only:[:create]
