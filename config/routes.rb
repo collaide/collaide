@@ -13,7 +13,7 @@ Collaide::Application.routes.draw do
     get 'change-lang', to: 'static_pages#change_lang', as: 'change_lang'
     post 'contact', to: 'static_pages#send_email', as: 'send_email_contact'
     #get 'board', to: 'static_pages#board', as: 'board'
-    post '/rate' => 'rater#create', :as => 'rate'
+    #post '/rate' => 'rater#create', :as => 'rate'
 
     resources 'messages' do
       #post 'reply', action: :reply
@@ -42,8 +42,12 @@ Collaide::Application.routes.draw do
     end
 
     concern :has_repository do
-      resources :repositories, only: [:index, :show, :create, :destroy, :edit, :update] do
+      resources :repositories, only: [:index, :show, :destroy] do
         get 'download'
+        collection do
+          post 'create/folder', action: :create_folder, :as => 'create_folder'
+          post 'create/file', action: :create_file, :as => 'create_file'
+        end
       end
     end
 
@@ -157,9 +161,5 @@ Collaide::Application.routes.draw do
   end
   get 'users/search' => 'users#search', as: 'search_users'
   post '/rate' => 'rater#create', :as => 'rate'
-
-  # Repository Manager
-  post '/repository-manager/create/folder' => 'repository_manager#create_folder', :as => 'new_repository_manager_repo_folder'
-  post '/repository-manager/create/file' => 'repository_manager#create_file', :as => 'new_repository_manager_repo_file'
   devise_for :users, :controllers => {omniauth_callbacks: 'omniauth_callbacks', registrations: 'users/registrations' }
 end

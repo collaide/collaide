@@ -10,10 +10,10 @@
         -if @repo_item.empty?
           %p=t'repository_manager.empty.root'
         -else
-          =render partial: 'repository_manager/repo_item', locals: {object: @group}, collection: @repo_item
+          =render partial: 'repo_item', locals: {object: @group}, collection: @repo_item
     .large-6.columns
       .panel
         %h5.panel-subtitle= t'repository_manager.form.new.repo_file.title'
-        =render 'repository_manager/file_form', object: @group, repo_item: nil
+        =render 'form_file', object: @group, repo_item: nil
         %h5.panel-subtitle= t'repository_manager.form.new.repo_folder.title'
-        =render 'repository_manager/folder_form', object: @group, repo_item: nil
+        =render 'form_folder', object: @group, repo_item: nil

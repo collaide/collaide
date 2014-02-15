@@ -12,7 +12,7 @@ class StatusesController < ApplicationController
       if success.save
         format.html { redirect_to status_params[:path], notice:  notice_after('success', on: 'create')}
       else
-        format.html{ redirect_to status_params[:path], notice: notice_after('error', on: 'create') }
+        format.html{ redirect_to status_params[:path], alert: notice_after('error', on: 'create') }
       end
     end
   end
@@ -23,7 +23,7 @@ class StatusesController < ApplicationController
       if status.update(message: status_params[:message])
         format.html { redirect_to status_params[:path], notice: notice_after('success', on: 'update') }
       else
-        format.html { redirect_to status_params[:path], notice: notice_after('error', on: 'update') }
+        format.html { redirect_to status_params[:path], alert: notice_after('error', on: 'update') }
       end
     end
   end
