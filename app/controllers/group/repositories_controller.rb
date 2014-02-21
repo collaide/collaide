@@ -55,7 +55,7 @@ class Group::RepositoriesController < ApplicationController
 
     # Pris chez Numa
     # méthode d'envoi de fichier :default -> pour le local
-    if Rails.env = :production
+    if Rails.env = 'production'
       send_file_method = :apache
     else
       send_file_method = :default
