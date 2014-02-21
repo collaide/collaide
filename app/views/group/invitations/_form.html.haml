@@ -1,6 +1,6 @@
 =simple_form_for @invitation, url: group_work_group_invitations_path do |f|
   .hide
-    =select_tag 'group_invitation[users_ids]', '', multiple: true
-  =search_field_tag 'group_invitation[users]'
+    =f.input :users_id, as: :select, input_html: {multiple: true}, collection: []
+  =f.input :email_list, as: :string
   =f.input :message
   =f.button :submit, t('group.invitations.create.submit')

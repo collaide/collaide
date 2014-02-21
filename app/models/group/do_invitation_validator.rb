@@ -2,27 +2,34 @@ class Group::DoInvitationValidator < ActiveModel::Validator
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   def validate(record)
     if record.email_list.blank?
-      record.errors.add :email_list, 'Not Blank'
+      record.errors.add :email_list, I18n.t('group.invitations.validation.not_blank')
     end
-    if validates_email_list(record) and record.users_id.blank?
-      record.errors.add :email_list, 'Pas valide'
+    if validates_email_list(record)
+      record.errors.add :email_list, I18n.t('group.invitations.validation.no_valid')
     end
     if (users_name = validates_users_id(record))
-      record.errors.add :email_list, users_name
+      record.errors.add :email_list, I18n.t('group.invitations.validation.already_invited', people: users_name)
     end
-    if
+    if (users_name = check_group_members(record))
+      record.errors.add :email_list, I18n.t('group.invitations.validation.already_member', people: users_name)
+    end
   end
 
   private
 
     def check_group_members(record)
       return false if record.users_id.nil? or record.users_id.empty?
+      ids = record.users_id
+      return false if ids.empty?
       group = Group::Group.find record.group_id
       return false if group.nil?
       members = []
       group.members.each do |a_mem|
-        members << a_mem unless record.users_id.index(a_mem.id).nil?
+        if ids.include?(a_mem.id.to_s)
+          members << a_mem
         end
+      end
+      members.empty? ? false  : members.map {|a_user| a_user.to_s}.join(', ')
     end
 
   def validates_users_id(record)
@@ -38,9 +45,12 @@ class Group::DoInvitationValidator < ActiveModel::Validator
   end
 
   def validates_email_list(record)
-    return true if record.email_list.nil?
+    record.users_id.each do |an_id|
+      return false if !an_id.blank?
+    end
+    return true if record.email_list.nil? or record.email_list.blank?
     addresses = record.email_list.split(', ')
-    return false if addresses.empty?
+    return true if addresses.empty?
     no_valid_addresses = true
     addresses.each do |an_email|
       if an_email =~ VALID_EMAIL_REGEX

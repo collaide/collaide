@@ -531,7 +531,7 @@ fr:
       invitation_list: Personnes invitées
       empty_invitation_list: Personne n'est invité à rejoindre ce groupe
       members_list: Liste de membres
-      delete_invitation: Supprimer l'invitation
+      delete_invitation: Annuler l'invitation
     repository:
       title_page: Dépôt de fichiers de %{group}
       #root_folder: Tous les fichiers déposés
@@ -562,6 +562,11 @@ fr:
         notice: Toutes les personnes on bien été invitées
       destroy:
         notice: Invitation supprimée
+      validation:
+        not_blank: Ne peut pas être vide
+        no_valid: Aucune adresses e-mail valides
+        already_invited: Les personnes %{people} ont déjà été invitées
+        already_member: Les personnes %{people} sont déjà membres
 
   status:
    success: Le statut a bien été créé

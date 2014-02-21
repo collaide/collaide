@@ -8,7 +8,7 @@ class Group::InvitationsController < ApplicationController
       redirect_to group_work_group_members_path(group), notice: t('group.invitations.create.notice')
     else
       @group = Group::Group.find(params[:work_group_id])
-      @invitation = Group::Invitation.new()
+      @invitation = do_invitation
       render 'group/work_groups/members'
     end
   end
@@ -22,6 +22,6 @@ class Group::InvitationsController < ApplicationController
   private
 
   def group_invitation_params
-    params.require(:group_invitation).permit({users_ids: []}, :users, :message)
+    params.require(:group_do_invitation).permit({users_id: []}, :email_list, :message)
   end
 end

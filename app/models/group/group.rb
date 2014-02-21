@@ -124,6 +124,8 @@ class Group::Group < ActiveRecord::Base
         end
         self.group_invitations << invitation
       end
+    elsif receivers.is_a? Group::DoInvitation
+      do_invitation receivers, message: message, sender: sender, receiver_type: receiver_type
     else
       invitation = Group::Invitation.new(message: message)
       invitation.sender = sender
@@ -133,7 +135,7 @@ class Group::Group < ActiveRecord::Base
     end
   end
 
-  # Ajoute un membre au groupe avec le role, la methode et le user qui l'a ajouté ou invité
+  # Ajoute un membre au groupe avec le role, la méthode et le user qui l'a ajouté ou invité
   # On ne peux pas ajouter deux fois le même membre.
   def add_members(members, role = Group::Roles::MEMBER, joined_method = :by_itself, invited_or_added_by = nil)
     if members.kind_of?(Array)
@@ -160,6 +162,27 @@ class Group::Group < ActiveRecord::Base
       end
     end
   end
+
+  private
+    def do_invitation(do_invitation, message: '', sender: self, receiver_type: 'User')
+      do_invitation.users_id.each do |an_id|
+        next if an_id.to_i < 1 or !an_id.to_i.is_a? Fixnum
+        invitation  = Group::Invitation.new message: message,  receiver_type: receiver_type, receiver_id: an_id, sender: sender
+        self.group_invitations << invitation
+      end
+      do_invitation.email_list.split(', ').each do |an_email|
+        if an_email =~ Group::DoInvitationValidator::VALID_EMAIL_REGEX
+          a_user = User find_by emai: an_email
+          if a_user
+            invitation  = Group::Invitation.new message: message,  receiver_type: receiver_type, receiver_id: a_user.id, sender: sender
+            self.group_invitations << invitation
+          else
+            #TODO
+
+          end
+        end
+      end
+    end
 
 end
 

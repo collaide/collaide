@@ -103,7 +103,7 @@ class   User < ActiveRecord::Base
 
   # permet à un utilisateur de donner une note à un document. voir : https://github.com/muratguzel/letsrate
   letsrate_rater
-  scope :search_by_email_or_name, -> (term) { where("email LIKE '#{term}' or name LIKE '#{term}'", email: term, name: term).limit 10 }
+  scope :search_by_email_or_name, -> (term) { where('email LIKE :email or name LIKE :name', email: "%#{term}%", name: "%#{term}%").limit 10 }
 
   def self.search_for_autocomplete(term)
     self.search_by_email_or_name(term).map do |a_user|

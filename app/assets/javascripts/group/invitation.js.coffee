@@ -3,7 +3,7 @@ $ ->
     value.split( /,\s*/ )
   extractLast = (term) ->
     splitInvitation(term).pop()
-  $('#group_invitation_users')
+  $('#group_do_invitation_email_list')
   .bind 'keydown', (event) ->
     if event.keyCode == $.ui.keyCode.TAB and $(this).data('ui-autocomplete').menu.active
       event.preventDefault()
@@ -23,6 +23,6 @@ $ ->
         terms.push(ui.item.value)
         terms.push("")
         this.value = terms.join(', ')
-        $("<option value=\"#{ui.item.id}\" selected=\"selected\">#{ui.item.value}</option>").appendTo('#group_invitation_users_ids')
+        $("<option value=\"#{ui.item.id}\" selected=\"selected\">#{ui.item.value}</option>").appendTo('#group_do_invitation_users_id')
         false
     })

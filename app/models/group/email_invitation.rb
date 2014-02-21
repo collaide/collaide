@@ -1,0 +1,3 @@
+class Group::EmailInvitation
+
+end

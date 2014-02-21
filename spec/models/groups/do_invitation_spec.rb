@@ -19,7 +19,7 @@ describe Group::Group do
       invitation = Group::DoInvitation.new email_list: 'asd, asdasd, sadasdƒ@'
       invitation.valid?.should be_false
     end
-    describe 'has an user invited twice' do
+    describe 'has a user invited twice' do
       before :each do
         group = FactoryGirl.create :group
         sender = FactoryGirl.create :user
@@ -32,7 +32,27 @@ describe Group::Group do
       end
       it 'has corresponding error message' do
         @invitation.valid?
-        @invitation.errors.messages[:email_list].first.should eq(@receiver.to_single_name)
+        @invitation.errors.messages[:email_list].first.should include(@receiver.to_single_name)
+      end
+    end
+    describe 'has a user already member of the group' do
+      before(:each) do
+        @group = FactoryGirl.create :group
+        @sender = FactoryGirl.create :user
+        @group.u_members << @sender
+        @group.save
+        @receiver = FactoryGirl.create :user
+        @invitation = Group::DoInvitation.new users_id: "#{@sender.id}, 409", email_list: 'asda...daßd.sd,  numa_m@bluewin.ch', group_id: @group.id
+      end
+      it 'has a member' do
+        @group.reload.members.should include(@sender)
+      end
+      it 'return false' do
+        @invitation.valid?.should be_false
+      end
+      it 'has correct error message' do
+        @invitation.valid?
+        @invitation.errors.messages[:email_list].first.should include(@sender.to_s)
       end
     end
   end
