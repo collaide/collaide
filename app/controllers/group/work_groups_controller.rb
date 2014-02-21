@@ -51,7 +51,7 @@ class Group::WorkGroupsController < ApplicationController
     respond_to do |format|
       if @group_work_group.save
         # On ajoute le créateur en tant que ADMIN
-        @group_work_group.add_members(current_user, role = Group::Roles::ADMIN)
+        @group_work_group.add_members(current_user, role: Group::Roles::ADMIN)
 
         format.html { redirect_to @group_work_group, notice: t('group.work_groups.new.forms.success') }
         format.json { render json: @group_work_group, status: :created, location: @group_work_group }
