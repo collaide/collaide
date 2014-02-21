@@ -567,7 +567,12 @@ fr:
         no_valid: Aucune adresses e-mail valides
         already_invited: Les personnes %{people} ont déjà été invitées
         already_member: Les personnes %{people} sont déjà membres
-
+      update:
+        notice:
+          accept: Bienvenue dans le groupe
+          later: Noubliez pas de donner une réponse plus tard...
+          refuse: Vous avez refusé l'invitation
+          bordel: Toi t'as foutu le bordel
   status:
    success: Le statut a bien été créé
    error: Le statut n'a pas pu être créé
@@ -650,11 +655,19 @@ fr:
       table:
         title: Titre
         type: Type
+    invitations:
+      title_page: Invitations
+      accept: Accepter
+      later: Plus tard
+      refuse: Décliner
+      sender: "%{sender} invite le membre %{member} à rejoindre le groupe %{group}. %{msg}"
+      no_invit: Personne ne vous a invité à rejoindre un groupe
     menu:
       edit: Modifier
       profil: Profil
       documents: Documents
       advertisements: Annonces
+      invitations: Invitations
   notifications:
     link: lien
     documents:

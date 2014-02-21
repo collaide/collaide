@@ -29,6 +29,7 @@ class Group::Invitation < ActiveRecord::Base
 
   scope :pending, -> { where(status: :pending) }
   scope :later, -> { where(status: :later) }
+  scope :give_a_reply, -> { where("group_invitations.status='later' OR group_invitations.status='pending'") }
 
 
   # Who sent the invitation

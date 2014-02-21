@@ -56,7 +56,7 @@ Collaide::Application.routes.draw do
     end
 
     concern :invitation do
-      resources :invitations, only: [:create, :destroy]
+      resources :invitations, only: [:create, :destroy, :update]
     end
 
     resources :statuses, only:[:create]
@@ -153,6 +153,7 @@ Collaide::Application.routes.draw do
       get 'page', action: :page, as: 'page', on: :collection
       get 'documents', action: :documents, as: 'documents'
       get 'advertisements', action: :advertisements, as: 'advertisements'
+      get 'invitations', action: :invitations, as: 'invitations'
     end
 
     #devise_scope :user do

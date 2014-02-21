@@ -11,11 +11,11 @@
     .columns.small-12.large-6
       .panel
         %h3= t('group.members.invitation_list')
-        -if @group.group_invitations.empty?
+        -if @group.p_or_l_group_invitations.empty?
           %p= t('group.members.empty_invitation_list')
         -else
           %ul
-          -@group.group_invitations.each do |an_invitation|
+          -@group.p_or_l_group_invitations.each do |an_invitation|
             %li
               -if an_invitation.receiver.is_a? User
                 =image_and_name_for(an_invitation.receiver)

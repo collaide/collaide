@@ -26,6 +26,11 @@ class UsersController < ApplicationController
     add_breadcrumb I18n.t('users.advertisements.breadcrumb', user: @user.to_s), user_advertisements_path(@user)
   end
 
+  def invitations
+    @user = User.find params[:user_id]
+    @invitations = Group::Invitation.where receiver: @user
+  end
+
   def no_credit
 
   end
