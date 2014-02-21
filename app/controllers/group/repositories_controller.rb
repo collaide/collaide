@@ -56,12 +56,14 @@ class Group::RepositoriesController < ApplicationController
     # Pris chez Numa
     # méthode d'envoi de fichier :default -> pour le local
     if Rails.env = 'production'
+      logger.debug 'salut'
       send_file_method = :apache
     else
       send_file_method = :default
     end
 
     path = @group.download(@repo_item)
+    logger.debug path.inspect
 
     # Si le fichier n'est pas trouvé
     render status: :bad_request and return unless File.exist?(path)
