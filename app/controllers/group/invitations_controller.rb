@@ -1,8 +1,16 @@
 class Group::InvitationsController < ApplicationController
   def create
-    group = Group::Group.find params[:work_group_id]
-    group.send_invitations(group_invitation_params[:users_ids], message: group_invitation_params[:message], sender: current_user)
-    redirect_to group_work_group_members_path(group), notice: t('group.invitations.create.notice')
+    do_invitation = Group::DoInvitation.new(group_invitation_params)
+    do_invitation.group_id = params[:work_group_id]
+    if do_invitation.valid?
+      group = Group::Group.find params[:work_group_id]
+      group.send_invitations(do_invitation)
+      redirect_to group_work_group_members_path(group), notice: t('group.invitations.create.notice')
+    else
+      @group = Group::Group.find(params[:work_group_id])
+      @invitation = Group::Invitation.new()
+      render 'group/work_groups/members'
+    end
   end
 
   def destroy
