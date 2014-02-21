@@ -75,5 +75,12 @@ Collaide::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.action_mailer.default_url_options = {:host => "vps42634.ovh.net"}
-
+  config.action_mailer.smtp_settings = {
+      :address   => "smtp.mandrillapp.com",
+      :port      => 25, # ports 587 and 2525 are also supported with STARTTLS
+      :enable_starttls_auto => true, # detects and uses STARTTLS
+      :user_name => ENV['RAILS_MAIL_USER'],
+      :password  => ENV['RAILS_MAIL_PSWD'], # SMTP password is any valid API key
+      :authentication => 'login', # Mandrill supports 'plain' or 'login'
+  }
 end
