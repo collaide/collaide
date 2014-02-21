@@ -180,7 +180,7 @@ class Group::Group < ActiveRecord::Base
       end
       do_invitation.email_list.split(', ').each do |an_email|
         if an_email =~ Group::DoInvitationValidator::VALID_EMAIL_REGEX
-          a_user = User.find_by emai: an_email
+          a_user = User.find_by email: an_email
           if a_user
             invitation  = Group::Invitation.new message: do_invitation.message,  receiver_type: receiver_type, receiver_id: a_user.id, sender: sender
             self.group_invitations << invitation
