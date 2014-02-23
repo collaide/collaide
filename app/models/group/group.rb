@@ -188,7 +188,7 @@ class Group::Group < ActiveRecord::Base
             self.group_invitations << invitation
           else
             ei = Group::EmailInvitation.new email: an_email, message: do_invitation.message, group_group: self, user: sender, secret_token: 'lalala'
-            GroupMailer.create_new_invitation ei
+            GroupMailer.new_invitation ei
             ei.save
           end
         end
