@@ -680,3 +680,11 @@ fr:
   user_notifications_mailer:
     document_created:
       subject: Nouveau document déposé sur collaide !
+  mailer:
+    group:
+      new_invitation:
+        subject: "%{user} vous invite à rejoindre le groupe %{groupe} sur collaide.com"
+        p1: Cliquez sur le lien ci-après pour rejoindre le groupe.
+        greetings: Avec nos salutations les meilleures et au plaisir de vous voir rapidement
+        sign: L'équipe Collaide
+

@@ -1,0 +1,8 @@
+%div
+  %h2= t('mailer.group.new_invitation.subject', user: @user.to_s, group: @group.to_s)
+  %p= @message
+  %p
+    = t('mailer.group.new_invitation.p1')
+    = 'http://www.collaide.com'
+  %p= t('mailer.group.new_invitation.greetings')
+  %p= t('mailer.group.new_invitation.sign')

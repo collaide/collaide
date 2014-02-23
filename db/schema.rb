@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205112962) do
+ActiveRecord::Schema.define(version: 20140223190334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -188,6 +188,14 @@ ActiveRecord::Schema.define(version: 20140205112962) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "group_email_invitations", force: true do |t|
+    t.string  "email"
+    t.text    "message"
+    t.string  "secret_token"
+    t.integer "group_group_id"
+    t.integer "user_id"
   end
 
   create_table "group_group_members", force: true do |t|
@@ -377,8 +385,6 @@ ActiveRecord::Schema.define(version: 20140205112962) do
   create_table "rm_sharings", force: true do |t|
     t.integer "owner_id"
     t.string  "owner_type"
-    t.integer "creator_id"
-    t.string  "creator_type"
     t.integer "repo_item_id"
     t.boolean "can_create",   default: false
     t.boolean "can_read",     default: false

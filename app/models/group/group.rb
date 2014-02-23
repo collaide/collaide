@@ -64,6 +64,8 @@ class Group::Group < ActiveRecord::Base
   # A mettre dans User aussi
   has_many :received_group_invitations, class_name: 'Group::Invitation', as: 'receiver'
 
+  has_many :email_invitations
+
   def p_or_l_group_invitations
     self.group_invitations.give_a_reply
   end
@@ -185,8 +187,9 @@ class Group::Group < ActiveRecord::Base
             invitation  = Group::Invitation.new message: do_invitation.message,  receiver_type: receiver_type, receiver_id: a_user.id, sender: sender
             self.group_invitations << invitation
           else
-            #TODO
-
+            ei = EmailInvitation.new email: an_email, message: do_invitation.message, group: self, user: sender
+            GroupMailer.create_new_invitation ei
+            ei.save
           end
         end
       end
