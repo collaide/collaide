@@ -12,6 +12,9 @@
   %i.fi-eye
   =link_to('show', group_work_group_repository_path(object, repo_item))
 |
+%i.fi-share
+=link_to('share', new_group_work_group_repository_sharing_path(object, repo_item))
+|
 %i.fi-x
 =link_to('delete', group_work_group_repository_path(object, repo_item), method: :delete)
 )

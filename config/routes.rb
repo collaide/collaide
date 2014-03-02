@@ -48,6 +48,9 @@ Collaide::Application.routes.draw do
           post 'create/folder', action: :create_folder, :as => 'create_folder'
           post 'create/file', action: :create_file, :as => 'create_file'
         end
+        resources :sharings, only: [:new, :create, :destroy] do
+
+        end
       end
     end
 
@@ -71,7 +74,8 @@ Collaide::Application.routes.draw do
     end
 
     namespace :group do
-      resources :work_groups, :controller => 'work_groups', as: 'work_groups', :only => [:new, :create, :edit, :update, :show], concerns: :has_repository do
+      resources :work_groups, :controller => 'work_groups', as: 'work_groups', :only => [:new, :create, :edit, :update, :show] do
+        concerns :has_repository
         concerns :status
         concerns :invitation
         get 'members', action: :members, as: 'members'

@@ -37,6 +37,8 @@ fr:
     groups: groupes
     work_group: travail
     work_groups: travaux
+    sharing: partage
+    sharings: partages
 
     search: recherche
     autocomplete: auto-completion

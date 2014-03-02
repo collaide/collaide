@@ -7,6 +7,9 @@ class Group::RepositoriesController < ApplicationController
   def show
     @group = Group::Group.find(params[:work_group_id])
     @repo_item = RepositoryManager::RepoItem.find(params[:id])
+
+    render status: :forbidden, :text => "No permission to see this repo_item" and return unless @group.can_read?(@repo_item)
+
     if @repo_item.is_folder?
       @children = @repo_item.children.order(name: :asc).order(file: :asc)
     else
@@ -56,7 +59,7 @@ class Group::RepositoriesController < ApplicationController
     # Pris chez Numa
     # méthode d'envoi de fichier :default -> pour le local
     if Rails.env = 'production'
-      logger.debug 'salut'
+      logger.debug 'On est en production, donc on utilise apache'
       send_file_method = :apache
     else
       send_file_method = :default
