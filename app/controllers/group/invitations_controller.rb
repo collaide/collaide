@@ -21,7 +21,7 @@ class Group::InvitationsController < ApplicationController
     invitation = Group::Invitation.find params[:id]
     if get_status == :accepted
       group = Group::Group.find params[:work_group_id]
-      group.add_members(invitation.receiver, invited_or_added_by: invitation.sender)
+      group.add_members(invitation.receiver, joined_method: :was_invited, invited_or_added_by: invitation.sender)
       group.save
       invitation.status = :accepted
       invitation.save
