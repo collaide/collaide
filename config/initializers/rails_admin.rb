@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'i18n'
 I18n.default_locale = :fr
 RailsAdmin.config do |config|
@@ -9,4 +10,8 @@ RailsAdmin.config do |config|
   end
   config.current_user_method &:current_user
   config.authorize_with :cancan
+
+  #config.excluded_models = %w(Comment)
+  config.excluded_models = Dir.glob(Rails.root.join('app/models/concerns/**.rb')).map {|p| 'Concerns::' + File.basename(p, '.rb').camelize }
+
 end

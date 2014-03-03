@@ -1,3 +1,4 @@
+
 -content_for :title, t('users.show.meta_title', user: @user.to_s)
 =render(:layout => 'layout') do
   %h1= @user.name
@@ -5,7 +6,7 @@
     %span{title: l(@user.created_at, format: :long)}
       =t'users.show.since'
       =time_ago_in_words(@user.created_at)
-  %p=image_tag @user.avatar
+  %p=image_tag @user.avatar.large
   Le membre a publié #{@user.advertisements.count} annonces
   %br
   Il a envové #{@user.documents.count} documents

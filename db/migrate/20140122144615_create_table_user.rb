@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateTableUser < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
@@ -6,6 +7,7 @@ class CreateTableUser < ActiveRecord::Migration
       t.string :encrypted_password, :null => false, :default => ""
       t.string :name
       t.string :role
+      t.string :avatar
 
       ## Add by us
       t.integer :points, default: 5
@@ -61,6 +63,17 @@ class CreateTableUser < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table :authorizations do |t|
+      t.string :provider
+      t.string :uid
+      t.integer :user_id
+      t.string :token
+      t.string :secret
+      t.string :username
+
+      t.timestamps
+    end
+
     create_table :domains do |t|
       t.string :name
       t.text :description
@@ -84,6 +97,7 @@ class CreateTableUser < ActiveRecord::Migration
     create_table :statuses do |t|
       t.text :message
       t.belongs_to :owner, polymorphic: true, index: true
+      t.belongs_to :writer, polymorphic: true, index: true
 
       t.timestamps
     end

@@ -36,13 +36,13 @@
             = t('document.documents.show.informations')
             = edit_link(@document, t('document.documents.show.modify'), 'button small')
             = destroy_link(@document, t('document.documents.show.delete'), 'button alert small')
-          %li.bullet-item= t('document.documents.show.degree', study_level: @document.study_level.name)
+          %li.bullet-item= t('document.documents.show.degree', study_level: @document.study_level)
           %li.bullet-item
             =t('dico.documents.realized').titleize
             =display_date_or_year @document.realized_at
           %li.bullet-item= pluralize @document.number_of_pages, t('document.dico.page')
           %li.bullet-item= pluralize @document.hits, t('dico.documents.download')
-          %li.bullet-item= @document.show_extension
+          %li.bullet-item= show_extension(@document)
 .row
   .columns.large-6.small-12
     .suggestion-panel

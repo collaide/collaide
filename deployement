@@ -1,4 +1,3 @@
-RAILS_ENV=production bundle exec rake assets:precompile
 git add .
-git commit -m "déploiment heroku"
-git push heroku master
+git commit -m "déploiment production"
+git push origin master

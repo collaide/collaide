@@ -23,17 +23,12 @@ FactoryGirl.define do
     language "Français"
     number_of_pages 2
     realized_at {2.years.ago}
-    sequence(:title) { |n| "Domain #{n}"}
+    sequence(:title) { |n| "Document #{n}"}
     domains { [(FactoryGirl.create :domain)] }
-    study_level { FactoryGirl.create :study_level }
+    study_level :university
     document_type { FactoryGirl.create :document_type }
-    files { [(FactoryGirl.create :files)] }
-
-  end
-
-  factory :study_level, class: 'Document::StudyLevel' do |study_level|
-    sequence(:name) { |n| "Study Level #{n}"}
-    sequence(:description) {|n| "Lorem ipsume #{n}" }
+    asset { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'download', 'asDF.tiff')) }
+    user {FactoryGirl.create(:user)}
   end
 
   factory :document_type, class: 'Document::Type' do
@@ -41,7 +36,29 @@ FactoryGirl.define do
     sequence(:description) {|n| "Lorem ipsume #{n}" }
   end
 
-  factory :files, class: 'CFile::CFile' do
-    rights %w[read write]
+  factory :sale_book, class: 'Advertisement::SaleBook' do
+    sequence(:title) { |n| "Livre #{n}"}
+    description 'Une annonce'
+    active true
+    price 20
+    currency :CHF
+    #study_level :university
+    #domains { [(FactoryGirl.create :domain)] }
+    #user {FactoryGirl.create(:user)}
+    book {FactoryGirl.create(:book)}
   end
+
+  factory :book, class: 'Book' do
+    sequence(:title) { |n| "Livre #{n}"}
+    authors 'moi'
+    description 'salut'
+    isbn_10 3333333333
+    isbn_13 3333333333333
+  end
+
+  factory :group, class: 'Group::Group' do |group|
+    name "Name group"
+    description "c'est une déscription"
+  end
+
 end

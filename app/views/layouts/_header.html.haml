@@ -15,13 +15,19 @@
       %li.divider
       %li= link_to t("header.advertisement"), advertisement_advertisements_path
       %li.divider
+      %li= link_to t("header.group"), group_groups_path
     / Right Nav Section
     %ul.right
       %li.divider.hide-for-small
       - if user_signed_in?
         %li= link_to t('header.inbox'), messages_path
+        %li.divider.hide-for-small
+        %li= link_to current_user.to_s, current_user
+        %li.divider.hide-for-small
         %li.has-dropdown
-          %a{href: "#"}= link_to current_user.to_s, current_user
+          %a{href: "#"}
+            -#=t('header.user.settings')
+            %i.fi-widget
           %ul.dropdown
             %li= link_to t("header.user.edit"), edit_user_registration_path
             %li.divider

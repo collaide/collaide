@@ -6,13 +6,13 @@
 #  id         :integer          not null, primary key
 #  name       :string(255)
 #  comment    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 # -*- encoding : utf-8 -*-
 class GuestBook < ActiveRecord::Base
-  paginates_per 5
+  paginates_per 50
   validates :name, presence: true, length: {minimum: 3, maximum: 50}
-  validates :comment, presence: true, length: {minimum:3, maximum: 500}, :uniqueness => {:if => GuestBook.find_by_name(:name)}
+  validates :comment, presence: true, length: {minimum:3, maximum: 500}#, :uniqueness => {:if => GuestBook.find_by_name(:name)}
 end

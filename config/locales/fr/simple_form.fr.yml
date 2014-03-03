@@ -62,10 +62,8 @@ fr:
         subject: Sujet du message
         email: Adresse e-mail afin de vous contacter
         content: Contenu du message
-
-      c_file_c_file:
-        file: Ajouter un fichier
-
+      group_work_group:
+        name: Nom du groupe
     placeholders:
       user_message:
         users: Pseudo
@@ -83,6 +81,8 @@ fr:
         author: Alfred Dupont
         number_of_pages: 1
         realized_at: "01/01/1984"
+      group_work_group:
+        #name: Nom
     prompts:
       advertisement_sale_book:
         currency: *choose

@@ -71,7 +71,7 @@
         =f.input :description, label_html: tooltip(t("sale_books.new.forms.tooltips.description")), input_html: {rows: 3}
 
         =f.association :domains, collection: Domain.select_tree, label_html: tooltip(t("sale_books.new.forms.tooltips.domain"))
-        =f.association :study_level, prompt: t('document.documents.form.choose_study_level'), collection: Document::StudyLevel.includes(:translations),  label_html: tooltip(t("sale_books.new.forms.tooltips.study_level"))
+        =f.input :study_level, prompt: t('document.documents.form.choose_study_level'),  label_html: tooltip(t("sale_books.new.forms.tooltips.study_level"))
   .form-actions
     -if edit
       =f.button :submit, t('sale_books.edit.forms.submit')

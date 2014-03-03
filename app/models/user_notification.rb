@@ -1,4 +1,18 @@
 # -*- encoding : utf-8 -*-
+# == Schema Information
+#
+# Table name: user_notifications
+#
+#  id          :integer          not null, primary key
+#  class_name  :string(255)
+#  method_name :string(255)
+#  values      :string(255)
+#  is_viewed   :boolean          default(FALSE)
+#  user_id     :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class UserNotification < ActiveRecord::Base
 
   belongs_to :user

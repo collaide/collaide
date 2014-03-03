@@ -57,22 +57,28 @@ class MessagesController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
     @receipts = @conversation.receipts_for current_user
-    add_breadcrumb @conversation.subject_to_show
+    add_breadcrumb @conversation.subject
   end
 
   def new
     @message = UserMessage.new
     pre_full_message(@message)
-    #current_user.send_message(current_user, '@message.body', '@message.subject')
   end
 
   def create
-    @message = UserMessage.new(params[:user_message])
+    @message = UserMessage.new(message_params)
     respond_to do |format|
       if @message.valid?
-        receipts = current_user.send_message(@message.users, @message.body, @message.subject)
-        format.html { redirect_to message_path(receipts.conversation.id), notice: t('messages.new.forms.success') }
-        format.json { render json: :messages, status: :created, location: @message }
+        receipts = current_user.send_message(@message.users.to_a, @message.body, @message.subject)
+        if receipts.valid?
+          logger.debug(receipts.save.inspect)
+          format.html { redirect_to message_path(receipts.conversation.id), notice: t('messages.new.forms.success') }
+          format.json { render json: :messages, status: :created, location: @message }
+        else
+          logger.debug(receipts.errors)
+          format.html { render action: 'new' }
+          format.json { render json: @message.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render action: 'new' }
         format.json { render json: @message.errors, status: :unprocessable_entity }
@@ -98,5 +104,9 @@ class MessagesController < ApplicationController
       message.body=t('sale_books.buy.textarea', book: sale_book.book.title)
     end
     message
+  end
+  def message_params
+    p = params.require(:user_message)
+    {user_ids: p[:user_ids], subject: p[:subject], body: p[:body]}
   end
 end

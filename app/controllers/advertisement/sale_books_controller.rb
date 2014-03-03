@@ -42,7 +42,8 @@ class Advertisement::SaleBooksController < ApplicationController
         isbn = params[:isbn]
         parse_isbn(isbn)
         logger.debug(isbn.inspect)
-        google_book = GoogleBooks.search("isbn:#{isbn}").first
+        google_book = GoogleBooks.search("isbn:#{isbn}", {}, request.remote_ip).first
+        logger.debug(GoogleBooks.search("isbn:#{isbn}", {}, request.remote_ip))
         logger.debug(google_book.inspect)
         if google_book && !isbn.blank?
           logger.debug('Here we fill the book with the google infos')
@@ -67,12 +68,11 @@ class Advertisement::SaleBooksController < ApplicationController
   # POST /advertisement/sale_books
   # POST /advertisement/sale_books.json
   def create
-
     # ON CHERCHE SUR LE ISBN CORRESPOND
-    isbn = params[:advertisement_sale_book][:book][:isbn_13]
+    isbn = book_params[:isbn_13]
 
     parse_isbn(isbn)
-    google_book = GoogleBooks.search("isbn:#{isbn}").first
+    google_book = GoogleBooks.search("isbn:#{isbn}", {}, request.remote_ip).first
 
     if google_book && !isbn.empty?
       #On cherche si le livre est déja dans la bdd, si il l'est, on le met à jour, si il ne l'ai pas, onle crée
@@ -81,19 +81,19 @@ class Advertisement::SaleBooksController < ApplicationController
       fillBook(book, google_book)
     else
       # Si il a entré un faux isbn, je met un espace a autheur pour voir qu'il a entré quelque chose
-      if params[:advertisement_sale_book][:book][:title] && params[:advertisement_sale_book][:book][:authors]
-        if !params[:advertisement_sale_book][:book][:title].empty? && !params[:advertisement_sale_book][:book][:authors].empty?
-          params[:advertisement_sale_book][:book][:isbn_13] = ''
+      if params[:book][:title] && params[:book][:authors]
+        if !params[:book][:title].empty? && !params[:book][:authors].empty?
+          params[:book][:isbn_13] = ''
         end
       end
       # On crée le book avec le isbn entrée dans le formulaire
-      book = Book.new(params[:advertisement_sale_book][:book])
+      book = Book.new(book_params)
     end
 
     # on enlève le book des parametres
-    params[:advertisement_sale_book].delete(:book)
+    #params[:advertisement_sale_book].delete(:book)
     # on crée le sale_book avec les parametres du form
-    @advertisement_sale_book = Advertisement::SaleBook.new(params[:advertisement_sale_book])
+    @advertisement_sale_book = Advertisement::SaleBook.new(advertisement_sale_book_params)
     #On ajoute le livre dans la vente
     @advertisement_sale_book.book = book
     @advertisement_sale_book.user = current_user
@@ -167,4 +167,16 @@ class Advertisement::SaleBooksController < ApplicationController
     end
   end
 
+  private
+  def advertisement_sale_book_params
+    params[:book] = book_params
+    params.require(:advertisement_sale_book).permit(
+        :price, :currency, :payment_modes, :delivery_modes, :state, :annotation, :title, :description, :domain_ids,
+        :study_level
+    )
+  end
+
+  def book_params
+   @book_params ||= params.require(:advertisement_sale_book).require(:book).permit(:isbn_13, :title, :authors)
+  end
 end

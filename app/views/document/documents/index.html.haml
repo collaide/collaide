@@ -54,10 +54,11 @@
         -if @document_documents.empty?
           %p= t 'document.documents.index.no_document'
         -else
-          .row.columns
-            %ul.large-block-grid-2#documents
-              -@parity=0
-              =render @document_documents
+          .row
+            .columns
+              %ul.large-block-grid-2#documents
+                -@parity=0
+                =render @document_documents
     .row
       .small-12.columns#paginate1
         =paginate @document_documents, remote: true

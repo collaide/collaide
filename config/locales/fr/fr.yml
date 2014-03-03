@@ -29,6 +29,7 @@ fr:
     books: &books Livres
     news: &news News
     partners: &partners Partenaires
+    delete: &delete Supprimer
     documents:
       title: &doc_title Titre
       description: &doc_description Déscription
@@ -55,9 +56,11 @@ fr:
   next: *next
   back: *back
   confirm: Etes-vous sûre ?
+  not_enough_role: Vous n'avez pas la permission de voir la page requise.
   access_denied: Cette page requiert d'être connecté. Ci-dessous, vous pouvez vous connecter ou vous inscrire gratuitement.
   default_key_words: "collaide, étudier, documents scolaires"
   default_description_meta: Collaide est un réseau d'étudiant
+  delete: *delete
   errors:
       messages:
         not_a_date: "n'est pas une date"
@@ -97,10 +100,12 @@ fr:
     guest_book: "Livre d'or"
     document: "Documents"
     advertisement: "Annonces"
+    group: Groupes
     inbox: Messagerie
     user:
       profil: "Mon profil"
-      edit: *edit
+      edit: Modifier mon profil
+      settings: Paramètres
       logout: "Déconnexion"
     lang: "Langues"
     sign_in: *sign_in
@@ -116,7 +121,7 @@ fr:
       news: *news
       rules: Règlements
       partners: Partenaires
-      help: Aide
+      guest_book: Livre d'or
       contact: Contact
       about: A propos
   domains:
@@ -356,7 +361,7 @@ fr:
       update:
         notice: Le document a été modifié
       create:
-        notice: Le document a été créé
+        notice: Votre document a bien été envoyé. Il doit être validé par un administrateur avant d'être accessible sur le site.
       destroy:
         notice: Le document a été supprimé
       forms:
@@ -417,7 +422,6 @@ fr:
         Si vous n'avez pas encore de compte, inscrivez-vous !"
     new:
       title_page: Vendre un livre
-      title: Vendre un livre
       joy_ride:
         joy_presentation:
           content: Pour vendre un livre, rien de plus simple !<br/>Il vous suffit de suivre les 3 étapes suivantes !
@@ -482,6 +486,99 @@ fr:
       forms:
         submit: Modifier la vente
         succes: Vos modifications ont bien été enregistrées !
+  group:
+    destroy:
+      notice: Le groupe a bien été supprimé
+    groups:
+      index:
+        description_meta: Liste de tous les groupes
+        key_words: Groupe, groupes de travail, liste, créer
+        title_page: Les groupes d'étudiants permettant de travailler entres étudiants
+        h1_title: Les groupes
+        breadcrumb: Les groupes
+        new_link: Créer un groupe
+        no_group: Il n'y actuellement aucun groupe
+      new:
+        title_page: Créer un groupe
+        description: Restez en contact avec vos collègues de classe, votre école ou votre réseau universitaire ! Vous bénéficierez de nombreuses fonctionnalités pour échanger, discuter et travailler ensemble !
+        blockquote: Quel genre de groupe voulez-vous créer ?
+        new_work_group: Créer un groupe de travail
+    work_groups:
+      new:
+        title_page: Créer un groupe de travail
+        h1_title: Créer un groupe de travail
+        forms:
+          submit: Créer le groupe
+          success: Votre groupe a été créé
+          tooltips:
+            name: Quel sera le nom de votre groupe ?
+      show:
+      edit:
+        title_page: Modifier %{group}
+        forms:
+          success: Vos modifications en été enregistrées
+          submit: Enregistrer
+      menu:
+        edit: Modifier
+        board: Tableau
+        members: Membres
+        statuses: Discussions
+        repository: Dépôt de fichiers
+    members:
+      title_page: Gestion des membres de %{group}
+      empty: Ce groupe n'a aucun membre.
+      invitation_form: Inviter d'autres personnes
+      invitation_list: Personnes invitées
+      empty_invitation_list: Personne n'est invité à rejoindre ce groupe
+      members_list: Liste de membres
+      delete_invitation: Annuler l'invitation
+    repository:
+      title_page: Dépôt de fichiers de %{group}
+      #root_folder: Tous les fichiers déposés
+      #in_folder: "Vous êtes dans le dossier : %{folder}"
+      no_repo_item: Ce groupe n'a aucun fichier déposé.
+      no_shared_repo_item: Ce groupe n'a aucun fichier partagé.
+    statuses:
+      index:
+        h1_title: Discussions
+        empty: Aucune discussions en cours.
+        new_discussion: Discuter
+        time_ago: Il y a %{time_ago}
+        reply: Répondre
+        no_author: Pas d'auteur
+        edit: Modifier
+        delete: Supprimer
+        show_more: Afficher la suite de la discussion
+        status:
+          success: Une nouvelle discussion a commencée
+          error: Impossible de commencer une nouvelle discussion.
+        comment:
+         no_author: Commentaire annonyme
+      show:
+        h1_title: Discussion du %{date}
+    invitations:
+      create:
+        submit: Nouvelle invitation
+        notice: Toutes les personnes on bien été invitées
+      destroy:
+        notice: Invitation supprimée
+      validation:
+        not_blank: Ne peut pas être vide
+        no_valid: Aucune adresses e-mail valides
+        already_invited: Les personnes %{people} ont déjà été invitées
+        already_member: Les personnes %{people} sont déjà membres
+      update:
+        notice:
+          accept: Bienvenue dans le groupe
+          later: Noubliez pas de donner une réponse plus tard...
+          refuse: Vous avez refusé l'invitation
+          bordel: Toi t'as foutu le bordel
+  status:
+   success: Le statut a bien été créé
+   error: Le statut n'a pas pu être créé
+  comments:
+    success: Le commentaire a bien été créé
+    error: le commentaire n'a pas pu être créé
   messages:
     title_page: Messagerie privée
     index:
@@ -512,8 +609,6 @@ fr:
       title_page: Messages envoyés
       h1_title: Messages envoyés
       breadcrumb: Messages envoyés
-
-
     new:
       title_page: Nouveau message
       h1_title: Envoyer un message
@@ -531,6 +626,9 @@ fr:
       succed: Votre réponse a bien été envoyée !
       empty_message: Les réponses vides ne sont pas envoyées
   users:
+    avatar:
+      alt: "Image manquante pour %{user}"
+      title: "Image de %{user}"
     title_page: Les membres
     index:
       title_page: Liste des membres
@@ -557,11 +655,19 @@ fr:
       table:
         title: Titre
         type: Type
+    invitations:
+      title_page: Invitations
+      accept: Accepter
+      later: Plus tard
+      refuse: Décliner
+      sender: "%{sender} invite le membre %{member} à rejoindre le groupe %{group}. %{msg}"
+      no_invit: Personne ne vous a invité à rejoindre un groupe
     menu:
       edit: Modifier
       profil: Profil
       documents: Documents
       advertisements: Annonces
+      invitations: Invitations
   notifications:
     link: lien
     documents:
@@ -574,3 +680,11 @@ fr:
   user_notifications_mailer:
     document_created:
       subject: Nouveau document déposé sur collaide !
+  mailer:
+    group:
+      new_invitation:
+        subject: "%{user} vous invite à rejoindre le groupe %{groupe} sur collaide.com"
+        p1: Cliquez sur le lien ci-après pour rejoindre le groupe.
+        greetings: Avec nos salutations les meilleures et au plaisir de vous voir rapidement
+        sign: L'équipe Collaide
+

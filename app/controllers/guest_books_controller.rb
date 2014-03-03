@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class GuestBooksController < ApplicationController
-  load_and_authorize_resource class: Document::GuestBook
+  load_and_authorize_resource
+  #before_action :guest_book_create_params, only: [:create]
   # GET /guest_books
   # GET /guest_books.json
   def index
@@ -39,7 +40,7 @@ class GuestBooksController < ApplicationController
   # POST /guest_books
   # POST /guest_books.json
   def create
-    @guest_book = GuestBook.create(guest_book_params)
+    @guest_book = GuestBook.new(name: guest_book_params[:name], comment: guest_book_params[:comment])
 
     respond_to do |format|
       if @guest_book.save

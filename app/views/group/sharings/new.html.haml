@@ -1,0 +1,4 @@
+-content_for :title, t('group.repository.title_page', group: @group.name)
+
+=render(:layout => 'group/layouts/layout') do
+  %h1= t('group.repository.title_page', group: @group.name)

@@ -1,0 +1,4 @@
+=simple_form_for @status do |f|
+  =f.input :message
+  =hidden_field_for_polymorphic 'status', object
+  =f.button :submit, submit_text

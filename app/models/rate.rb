@@ -9,8 +9,8 @@
 #  rateable_type :string(255)
 #  stars         :float            not null
 #  dimension     :string(255)
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 
 # -*- encoding : utf-8 -*-

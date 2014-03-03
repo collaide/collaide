@@ -7,7 +7,7 @@ class Document::DocumentsController < ApplicationController
     @document = Document::Document.new(document_document_params)
     @document.user = current_user
     if @document.save
-      redirect_to document_documents_path, notice: t("document.documents.create.notice")
+      redirect_to @document, notice: t("document.documents.create.notice")
     else
       render action: 'new'
     end
@@ -74,7 +74,7 @@ class Document::DocumentsController < ApplicationController
     end
     #la requête. Joli, non ?
      @document_documents = Document::Document.order("#{attr} #{sort}").
-         includes([:study_level, :document_type, {domains: :translations}], :user, :files, :note_average).
+         includes([:document_type, {domains: :translations}], :user, :note_average).
          joins(joins).joins(rates).
          where(where, {domain: domain, type: type, created_at: params[:created_at]}).
          where(status: 'accepted').
@@ -180,7 +180,7 @@ class Document::DocumentsController < ApplicationController
     key_words = []
     key_words << @document.title
     key_words << @document.document_type.name
-    key_words << @document.study_level.name
+    key_words << @document.study_level
     @document.domains.each {|a_domain| key_words << a_domain.name}
     key_words << t('dico.download')
     key_words << t('dico.free')
@@ -196,7 +196,7 @@ class Document::DocumentsController < ApplicationController
     raise ActiveRecord::RecordNotFound  and return if (doc.nil?)
 
     #le document a-t-il déjà été téléchargé par l'utilisateur ?
-    download =  Document::Download.where(document_documents_id: doc.id).where(user_id: current_user.id)
+    download =  Document::Download.where(document_id: doc.id).where(user_id: current_user.id)
     if download.empty?
       # si l'utilisateur n'a plus assez de points, que ce n'est pas un document qu'il a déposé et qu'il n'a pas encore
       # été averti, on redirige et on arrête
@@ -224,7 +224,7 @@ class Document::DocumentsController < ApplicationController
     end
 
     # le chemin du fichier à télécharger. Pour l'instant, un fichier par document -> le premier
-    path = doc.files.first.file.path
+    path = doc.asset.file.path
 
     # Si le fichier n'est pas trouvé
     render status: :bad_request and return unless File.exist?(path)
@@ -294,12 +294,13 @@ class Document::DocumentsController < ApplicationController
  :description,
  :author,
  :number_of_pages,
- :file,
+ :asset,
  :file_cache,
  :realized_at,
  :language,
  :study_level,
  :document_type_id,
+ :asset_cache,
  domain_ids: [])
   end
 end

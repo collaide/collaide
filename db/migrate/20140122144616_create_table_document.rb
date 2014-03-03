@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateTableDocument < ActiveRecord::Migration
   def change
       create_table :document_types do |t|
@@ -14,7 +15,7 @@ class CreateTableDocument < ActiveRecord::Migration
         t.integer :number_of_pages
         t.date :realized_at
         t.string :language
-        t.string :file
+        t.string :asset
         t.boolean :is_accepted, default: false
 
         t.belongs_to :document_type, index: true
@@ -42,7 +43,7 @@ class CreateTableDocument < ActiveRecord::Migration
 
       create_table :document_downloads do |t|
         t.belongs_to :user
-        t.belongs_to :document_documents
+        t.belongs_to :document
         t.integer :number_of_downloads
         t.timestamps
       end
@@ -52,6 +53,7 @@ class CreateTableDocument < ActiveRecord::Migration
         t.text :comment
         t.references :commentable, :polymorphic => true, index: true
         t.references :owner, polymorphic: true, index: true
+
         t.timestamps
       end
 

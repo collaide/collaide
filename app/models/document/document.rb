@@ -7,23 +7,28 @@
 #  title            :string(255)
 #  description      :text
 #  author           :string(255)
-#  number_of_pages  :integer          default(1)
+#  number_of_pages  :integer
 #  realized_at      :date
 #  language         :string(255)
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  study_level_id   :integer
+#  asset            :string(255)
+#  is_accepted      :boolean          default(FALSE)
 #  document_type_id :integer
 #  user_id          :integer
-#  status           :string(255)      default("refused")
-#  hits             :integer
+#  status           :string(255)      default("pending")
+#  hits             :integer          default(0)
 #  is_deleted       :boolean          default(FALSE)
+#  study_level      :string(255)
+#  created_at       :datetime
+#  updated_at       :datetime
 #
 
 # -*- encoding : utf-8 -*-
 # -*- encoding : utf-8 -*-
 class Document::Document < ActiveRecord::Base
   extend Enumerize
+  include Concerns::Letsrate_2
+
+  letsrate_rateable_2 'note'
 
   enumerize :status, in: [:accepted, :pending, :refused], default: :pending, predicates: true
   enumerize :study_level, in: [:university, :college]
@@ -34,11 +39,12 @@ class Document::Document < ActiveRecord::Base
   SORT_ARGS = {title: 'title', lang: 'language', author: 'author', created_at: 'created_at', type: 'document_types.name',
                domain: 'domain.name', study_level: 'document_study_levels.name', domain: 'domains.name'}
   # permet de donner une note à un document. voir : https://github.com/muratguzel/letsrate
-  letsrate_rateable 'note'
+  #FIXME voilà de quoi aider ... https://github.com/muratguzel/letsrate/issues/38
+  #letsrate_rateable 'note'
 
   scope :valid, -> { where(status: :accepted) }
 
-  mount_uploader :file, DocumentUploader
+  mount_uploader :asset, DocumentUploader
 
   has_many :document_downloads, :class_name => 'Document::Download'
   has_many :user_downloader, :class_name => 'User', through: :document_downloads, source: :user
@@ -49,7 +55,8 @@ class Document::Document < ActiveRecord::Base
 
   belongs_to :user
 
-  has_one :note_average, -> {where :dimension => 'note'}, :as => :cacheable, :class_name => "RatingCache", :dependent => :destroy
+  #FIXME when lets_rate is done
+  #has_one :note_average, -> {where :dimension => 'note'}, :as => :cacheable, :class_name => "RatingCache", :dependent => :destroy
 
   accepts_nested_attributes_for :domains
 
@@ -64,15 +71,12 @@ class Document::Document < ActiveRecord::Base
   validates_presence_of :domains
   validates_presence_of :study_level
   validates_presence_of :document_type
-  validates_presence_of :file
+  validates_presence_of :asset
   validates :number_of_pages, numericality: true, inclusion: {in: 1..300}
   #TODO conversion du format de la date en format de type SQL (YYY-mm-dd)
   validates :realized_at, date: {before: Proc.new {Time.now}}
   validates :title, presence: true, length: {minimum: 3, maximum: 60}
-
-  def show_extension
-    I18n.t("application_name.#{Document::DocumentsController.helpers.find_extension(files.first.file_content_type)}")
-  end
+  validates_presence_of :user
 
   private
 

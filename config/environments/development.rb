@@ -12,7 +12,6 @@ Collaide::Application.configure do
   config.cache_classes = false
 
   config.eager_load = false
-
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -52,6 +51,6 @@ Collaide::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.serve_static_assets = false
+  config.serve_static_assets = true
   Paperclip.options[:command_path] = "/opt/ImageMagick/bin"
 end

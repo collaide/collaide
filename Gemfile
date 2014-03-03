@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 1.2'
 #gem 'bcrypt-ruby', '3.0.1'
 
 gem 'nokogiri'
-gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 gem 'faker', '1.0.1'
 
@@ -70,7 +70,7 @@ gem 'geocoder'
 gem 'country_select'
 #gem 'mailboxer'
 
-gem 'mailboxer-without-notification'
+gem 'mailboxer'
 
 gem 'select2-rails'
 
@@ -83,25 +83,31 @@ gem 'resque_mailer'
 
 gem 'gritter', '1.0.3'
 
-#gem 'omniauth'
+gem 'omniauth'
 gem 'omniauth-facebook'
-#gem 'omniauth-twitter'
+#gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
-#gem 'oa-core'
-#gem 'oa-openid', :require => 'omniauth/openid'
+#gem 'omniauth-linkedin'
+#gem 'omniauth-twitter'
+
 gem 'foundation-rails'
 
 gem 'rails-observers'
 
+gem 'mini_magick'
+
+gem 'whenever', require: false
+
 group :development, :test do
-  gem 'rspec-rails', '2.11.0'
-  gem 'guard-rspec', '1.2.1'
-  gem 'guard-spork', '1.2.0'
-  gem 'childprocess', '0.3.6'
-  gem 'spork', '0.9.2'
+  gem 'commands'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'spork-rails'
+  gem 'guard-spork'
+  gem 'childprocess'
   gem 'quiet_assets', '>= 1.0.1' # <a href="https://github.com/evrone/quiet_assets" target="_blank">https://github.com/evrone/quiet_assets</a>
   gem 'meta_request'
-  gem 'guard-livereload'
   gem 'rails-erd'
   gem 'capistrano'
 end
@@ -121,7 +127,7 @@ group :test do
   gem 'capybara', '1.1.2'
   gem 'factory_girl_rails', '4.1.0'
   gem 'cucumber-rails', '1.2.1', :require => false
-  gem 'database_cleaner', '0.7.0'
+  gem 'database_cleaner', "~> 1.2.0"
   gem 'lorem-ipsum'
   # gem 'launchy', '2.1.0'
   # gem 'rb-fsevent', '0.9.1', :require => false

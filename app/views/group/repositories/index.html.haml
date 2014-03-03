@@ -1,0 +1,19 @@
+-content_for :title, t('group.repository.title_page', group: @group.name)
+
+=render(:layout => 'group/layouts/layout') do
+  %h1= t('group.repository.title_page', group: @group.name)
+  %ul.breadcrumbs
+    %li=link_to t('group.work_groups.menu.repository'), group_work_group_repositories_path(@group)
+  .row
+    .large-6.columns
+      .panel
+        -if @repo_item.empty?
+          %p=t'repository_manager.empty.root'
+        -else
+          =render partial: 'repo_item', locals: {object: @group}, collection: @repo_item
+    .large-6.columns
+      .panel
+        %h5.panel-subtitle= t'repository_manager.form.new.repo_file.title'
+        =render 'form_file', object: @group, repo_item: nil
+        %h5.panel-subtitle= t'repository_manager.form.new.repo_folder.title'
+        =render 'form_folder', object: @group, repo_item: nil

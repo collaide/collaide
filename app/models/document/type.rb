@@ -6,14 +6,14 @@
 #  id          :integer          not null, primary key
 #  name        :string(255)
 #  description :text
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 # -*- encoding : utf-8 -*-
 class Document::Type < ActiveRecord::Base
 
-  has_many :documents, :class_name => 'Document::Document'
+  has_many :documents, :class_name => 'Document::Document', foreign_key: :document_type_id
 
   translates :name, :description
 
@@ -22,13 +22,4 @@ class Document::Type < ActiveRecord::Base
 
   accepts_nested_attributes_for :translations
 
-  def translations_attributes=(attributes)
-    new_translations = attributes.values.reduce({}) do |new_values, translation|
-      new_values.merge! translation.delete("locale") => translation
-    end
-    set_translations new_translations
-  end
-
-  class Translation
-  end
 end

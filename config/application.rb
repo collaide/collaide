@@ -5,7 +5,7 @@ require 'rails/all'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
- # Bundler.require(*Rails.groups(:assets => %w(development test)))
+ # Bundler.require(*Rails.advertisements(:assets => %w(development test)))
  # Require the gems listed in Gemfile, including any gems
  # you've limited to :test, :development, or :production.
   Bundler.require(:default, Rails.env)
@@ -67,6 +67,12 @@ module Collaide
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    social_keys = File.join(Rails.root, 'config', 'social_keys.yml')
+    CONFIG = HashWithIndifferentAccess.new(YAML::load(IO.read(social_keys)))[Rails.env]
+    CONFIG.each do |k,v|
+      ENV[k.upcase] ||= v
+    end
+
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

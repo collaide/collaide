@@ -9,6 +9,7 @@
 
 # Ignorer la config de la bdd
 /config/database.yml
+/config/social_keys.yml
 
 /config/development.sphinx.conf
 /config/production.spinx.conf
@@ -21,16 +22,19 @@
 /log/*.pid
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/
+/log
+
 /tmp
 /public/system
 /.idea
 /nbproject/private/
 
-# ingorer les documents uploader
+# ingorer les documents uploadé
+/uploads
+
+/public/uploads
+public/uploads/
 /download
-
-/public/upload
-
 /Gemfile.lock
+
+/deployement

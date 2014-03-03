@@ -1,12 +1,12 @@
 # -*- encoding : utf-8 -*-
 # == Schema Information
 #
-# Table name: User_friend_friends
+# Table name: member_friend_friends
 #
 #  id         :integer          not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :integer
+#  users_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 # -*- encoding : utf-8 -*-

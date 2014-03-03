@@ -1,0 +1,29 @@
+-content_for :title, t('group.groups.new.title_page')
+%h1= t('group.groups.new.title_page')
+%h5.subheader= t('group.groups.new.description')
+%blockquote= t('group.groups.new.blockquote')
+
+.row
+  .large-4.columns
+    .panel
+      %h4.panel-subtitle
+        Un établissement scolaire
+      %ul
+        %li Rester au courant des dernières news
+        %li Répondre aux questions des futurs étudiants
+        %li Peut contenir des association et des classes
+  .large-4.columns
+    .panel
+      %h4.panel-subtitle
+        Une association / un réseau d'étudiants
+      %ul
+        %li Promouvoir les évènements de votre association
+        %li Peut contenir des classes
+  .large-4.columns
+    .panel
+      %h4.panel-subtitle
+        Une classe / Un groupe de travail
+      %ul
+        %li Echangez des documents et discutez dans un espace privé
+        %li etc / etc / etc
+      =link_to t('group.groups.new.new_work_group'), new_group_work_group_path, class: 'button expand'

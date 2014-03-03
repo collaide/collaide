@@ -13,10 +13,10 @@ Collaide::Application.routes.draw do
     get 'change-lang', to: 'static_pages#change_lang', as: 'change_lang'
     post 'contact', to: 'static_pages#send_email', as: 'send_email_contact'
     #get 'board', to: 'static_pages#board', as: 'board'
-    post '/rate' => 'rater#create', :as => 'rate'
+    #post '/rate' => 'rater#create', :as => 'rate'
 
     resources 'messages' do
-      #get 'reply', action: :reply
+      #post 'reply', action: :reply
       collection do
         get 'page/:page', action: :index
         get 'sentbox', action: :sentbox
@@ -38,11 +38,51 @@ Collaide::Application.routes.draw do
     end
 
     namespace :advertisement do
-      #resources :delivery_mode
-      #resources :payment_mode
-      resources :books, :controller => "sale_books", as: 'sale_books', :except => [:index, :destroy] #on affiche tous les livres par advertisement#index
-      #get "test", to: "advertisements#test"
+      resources :books, :controller => 'sale_books', as: 'sale_books', :except => [:index, :destroy] #on affiche tous les livres par advertisement#index
     end
+
+    concern :has_repository do
+      resources :repositories, only: [:index, :show, :destroy] do
+        get 'download'
+        collection do
+          post 'create/folder', action: :create_folder, :as => 'create_folder'
+          post 'create/file', action: :create_file, :as => 'create_file'
+        end
+        resources :sharings, only: [:new, :create, :destroy] do
+
+        end
+      end
+    end
+
+    concern :status do
+      resources :statuses, only: [:index, :show]
+    end
+
+    concern :invitation do
+      resources :invitations, only: [:create, :destroy, :update]
+    end
+
+    resources :statuses, only:[:create]
+    resources :comments, only: [:create]
+
+    resources :groups, as: 'group_groups', controller: 'group/groups' do
+      collection do
+        #get 'page/:page', :action => :index, as: 'pager'
+        #get 'search', action: :search, as: 'search'
+        #get 'autocomplete', action: :autocomplete, as: 'autocomplete'
+      end
+    end
+
+    namespace :group do
+      resources :work_groups, :controller => 'work_groups', as: 'work_groups', :only => [:new, :create, :edit, :update, :show] do
+        concerns :has_repository
+        concerns :status
+        concerns :invitation
+        get 'members', action: :members, as: 'members'
+      end
+    end
+
+
 
     resources :'documents', as: 'document_documents', controller: 'document/documents' do
       get 'download', action: :download, as: 'download'
@@ -68,9 +108,9 @@ Collaide::Application.routes.draw do
     #  resources :c_files
     #end
 
-    scope 'user/group/:id' do
-      resources :structures
-    end
+    #scope 'user/group/:id' do
+    #  resources :structures
+    #end
 
     #scope 'user/:id' do
     #  resources :structures
@@ -91,7 +131,7 @@ Collaide::Application.routes.draw do
     #    resources :inboxes
     #  end
     #
-    #  resources :groups
+    #  resources :advertisements
     #  namespace :group do
     #    resources :users
     #    resources :demands
@@ -107,20 +147,24 @@ Collaide::Application.routes.draw do
     resources :guest_books, :only => [:show, :index, :create, :new] do
       get 'page/:page', :action => :index, :on => :collection
     end
+
+    #devise_for :user
+    #A voir...
+    #devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
     resources :users do
       get 'no_credit', action: :no_credit, as: 'no_credit', on: :collection
       get 'page', action: :page, as: 'page', on: :collection
       get 'documents', action: :documents, as: 'documents'
       get 'advertisements', action: :advertisements, as: 'advertisements'
+      get 'invitations', action: :invitations, as: 'invitations'
     end
-
-    #devise_for :user
-    #A voir...
-    devise_for :user, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
     #devise_scope :user do
     #  get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
     #end
   end
+  get 'users/search' => 'users#search', as: 'search_users'
   post '/rate' => 'rater#create', :as => 'rate'
+  devise_for :users, :controllers => {omniauth_callbacks: 'omniauth_callbacks', registrations: 'users/registrations' }
 end

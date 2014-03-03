@@ -12,3 +12,4 @@ class CreateTableUserNotifications < ActiveRecord::Migration
     end
   end
 end
+
