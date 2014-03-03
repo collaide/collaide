@@ -71,8 +71,12 @@ class Group::RepositoriesController < ApplicationController
     # Si le fichier n'est pas trouvé
     render status: :bad_request and return unless File.exist?(path)
 
-    #send_file_options = { :type => MIME::Types.type_for(path).first.content_type, disposition: :inline }
-
+    #unless MIME::Types.type_for(path).empty?
+    #  send_file_options = { :type => MIME::Types.type_for(path).first.content_type, disposition: :inline }
+    #else
+    #  send_file_options = { :type => '', disposition: :inline }
+    #end
+    #
     #case send_file_method
     #  when :apache then send_file_options[:x_sendfile] = true
     #  when :nginx then head(:x_accel_redirect => path.gsub(Rails.root, ''), :content_type => send_file_options[:type]) and return
