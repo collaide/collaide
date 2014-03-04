@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Group::RepositoriesController < ApplicationController
-  #wload_and_authorize_resource class: Group::WorkGroup
+  #load_and_authorize_resource class: Group::RepositoriesController
 
   # GET /group/work_groups/1
   # GET /group/work_groups/1.json

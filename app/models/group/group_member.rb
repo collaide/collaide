@@ -27,7 +27,11 @@ class Group::GroupMember < ActiveRecord::Base
   # Comment il a rejoint le groupe
   enumerize :joined_method, in: [:was_invited,
                                   :was_added,
+                                  :was_invited_by_email,
                                   :by_itself], default: :by_itself
+  def self.get_a_member(member, group)
+    where(group: group, member_id: member.id, member_type: member.class.name).take
+  end
 
   # Le membre qui l'a ajouté ou invité
   belongs_to :invited_or_added_by, polymorphic: true

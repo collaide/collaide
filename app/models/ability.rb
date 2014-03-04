@@ -56,6 +56,7 @@ class Ability
       can :manage, Message#, user_id: user.id #uniquement les messages de l'utilisateur
       can :manage, Group::Group
       can :manage, Group::WorkGroup
+      can :update, Group::EmailInvitation
     end
 
     def admin(user)

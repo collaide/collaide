@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Group::WorkGroupsController < ApplicationController
-  load_and_authorize_resource class: Group::WorkGroup
+  #load_and_authorize_resource class: Group::WorkGroup
 
   #breadcrumb
   add_breadcrumb I18n.t("group.groups.index.breadcrumb"),  :group_groups_path
@@ -86,17 +86,12 @@ class Group::WorkGroupsController < ApplicationController
   def members
     @group = Group::Group.find(params[:work_group_id])
     @invitation = Group::DoInvitation.new()
-    #puts "Ajout d'un membre pour test.. OK"
-    #u = User.find 2
-    #@group.add_members(u, Group::Roles::MEMBER, :was_added, current_user)
   end
 
   # Tout ce qui gère le répository
   def repository
     @group = Group::Group.find(params[:work_group_id])
     @repo_item = RepositoryManager::RepoItem.find(params[:repo_item_id]) if params[:repo_item_id]
-    puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-    puts params[:repo_item_id]
   end
 
   private

@@ -573,6 +573,10 @@ fr:
           later: Noubliez pas de donner une réponse plus tard...
           refuse: Vous avez refusé l'invitation
           bordel: Toi t'as foutu le bordel
+          already_member: Vous êtes déjà membre de ce groupe
+    email_invitations:
+      member: "Vous êtes maintenant membre de ce groupe !"
+      error: "Impossible de vous ajouter dans ce groupe. Peut-être que vous êtes déjà membre ou que l'invitation a été supprimée"
   status:
    success: Le statut a bien été créé
    error: Le statut n'a pas pu être créé
@@ -683,8 +687,10 @@ fr:
   mailer:
     group:
       new_invitation:
-        subject: "%{user} vous invite à rejoindre le groupe %{groupe} sur collaide.com"
+        subject: "%{user} vous invite à rejoindre le groupe %{group} sur collaide.com"
+        message: "Message :"
         p1: Cliquez sur le lien ci-après pour rejoindre le groupe.
+        join_group: Rejoindre le groupe
         greetings: Avec nos salutations les meilleures et au plaisir de vous voir rapidement
         sign: L'équipe Collaide
 

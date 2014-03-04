@@ -64,10 +64,14 @@ class Group::Group < ActiveRecord::Base
   # A mettre dans User aussi
   has_many :received_group_invitations, class_name: 'Group::Invitation', as: 'receiver'
 
-  has_many :email_invitations
+  has_many :email_invitations, foreign_key: 'group_group_id'
 
   def p_or_l_group_invitations
     self.group_invitations.give_a_reply
+  end
+
+  def p_or_l_email_invitations
+    self.email_invitations.give_a_reply
   end
 
   ##################################################
@@ -157,15 +161,16 @@ class Group::Group < ActiveRecord::Base
         end
       end
     else
-      unless Group::GroupMember.where(group: self, member: members).take
-        gm = Group::GroupMember.new
-        gm.member = members
-        gm.role = role
-        gm.joined_method = joined_method
-        gm.invited_or_added_by = invited_or_added_by
-        self.group_members << gm
-        self.save
+      if Group::GroupMember.get_a_member members, self
+        return false
       end
+      gm = Group::GroupMember.new
+      gm.member = members
+      gm.role = role
+      gm.joined_method = joined_method
+      gm.invited_or_added_by = invited_or_added_by
+      self.group_members << gm
+      self.save
     end
   end
 
@@ -187,8 +192,10 @@ class Group::Group < ActiveRecord::Base
             invitation  = Group::Invitation.new message: do_invitation.message,  receiver_type: receiver_type, receiver_id: a_user.id, sender: sender
             self.group_invitations << invitation
           else
-            ei = Group::EmailInvitation.new email: an_email, message: do_invitation.message, group_group: self, user: sender, secret_token: 'lalala'
-            GroupMailer.new_invitation ei
+            ei = Group::EmailInvitation.create(
+                email: an_email, message: do_invitation.message, group_group: self, user: sender, secret_token: SecureRandom.hex(16)
+            )
+            GroupMailer.new_invitation(ei).deliver
             ei.save
           end
         end
