@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140223190334) do
+ActiveRecord::Schema.define(version: 20140303151115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -376,6 +376,7 @@ ActiveRecord::Schema.define(version: 20140223190334) do
     t.integer "sender_id"
     t.string  "sender_type"
     t.string  "ancestry"
+    t.integer "ancestry_depth", default: 0
     t.string  "name"
     t.float   "file_size"
     t.string  "content_type"
