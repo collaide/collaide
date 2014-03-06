@@ -24,27 +24,28 @@ class Group::RepoItemsController < ApplicationController
 
   def create_file
     repo_item = RepositoryManager::RepoItem.find(params[:repo_item]) if params[:repo_item]
-
+    options = {source_folder: repo_item, sender: current_user}
     respond_to do |format|
-      if @item = @group.create_file(params[:repo_file_file], source_folder: repo_item, sender: current_user)
+      if @item = @group.create_file(params[:repo_file_file], options)
         format.html { redirect_to back, notice: t('repository_manager.success.repo_file.created') }
         format.json { render template: 'group/repo_items/create', status: :created }
       else
         format.html { redirect_to back, alert: t('repository_manager.errors.repo_file.not_created') }
-        format.json { render json: {error: t('repository_manager.errors.repo_file.not_created')},  status: :unprocessable_entity }
+        format.json { render json: options[:errors],  status: :unprocessable_entity }
       end
     end
   end
 
   def create_folder
     repo_item = RepositoryManager::RepoItem.find(params[:repo_item]) if params[:repo_item]
+    options = {source_folder: repo_item, sender: current_user}
     respond_to do |format|
-      if @item = @group.create_folder(params[:repo_folder_name], source_folder: repo_item, sender: current_user)
+      if @item = @group.create_folder(params[:repo_folder_name], options)
         format.html { redirect_to back, notice: t('repository_manager.success.repo_folder.created') }
         format.json { render template: 'group/repo_items/create', status: :created }
       else
         format.html { redirect_to back, alert: t('repository_manager.errors.repo_folder.not_created') }
-        format.json { render json: {error: t('repository_manager.errors.repo_folder.not_created')}, status: :unprocessable_entity }
+        format.json { render json: options[:errors], status: :unprocessable_entity }
       end
     end
   end
