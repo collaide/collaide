@@ -17,16 +17,16 @@ class Group::RepoItemsController < ApplicationController
     end
   end
 
-  # Tout ce qui gère le repository
+  # Affiche le répertoire de base
   def index
     @repo_item = @group.root_repo_items.order(name: :asc).order(file: :asc)
   end
 
   def create_file
-    repo_item = RepositoryManager::RepoItem.find(params[:repo_item]) if params[:repo_item]
+    repo_item = RepositoryManager::RepoItem.find(params[:repo_file][:id]) if params[:repo_file][:id]
     options = {source_folder: repo_item, sender: current_user}
     respond_to do |format|
-      if @item = @group.create_file(params[:repo_file_file], options)
+      if @item = @group.create_file(params[:repo_file][:file], options)
         format.html { redirect_to back, notice: t('repository_manager.success.repo_file.created') }
         format.json { render template: 'group/repo_items/create', status: :created }
       else
@@ -36,11 +36,15 @@ class Group::RepoItemsController < ApplicationController
     end
   end
 
+  def create_files
+
+  end
+
   def create_folder
-    repo_item = RepositoryManager::RepoItem.find(params[:repo_item]) if params[:repo_item]
+    repo_item = RepositoryManager::RepoItem.find(params[:repo_folder][:id]) if params[:repo_folder][:id]
     options = {source_folder: repo_item, sender: current_user}
     respond_to do |format|
-      if @item = @group.create_folder(params[:repo_folder_name], options)
+      if @item = @group.create_folder(params[:repo_folder][:name], options)
         format.html { redirect_to back, notice: t('repository_manager.success.repo_folder.created') }
         format.json { render template: 'group/repo_items/create', status: :created }
       else
@@ -102,12 +106,24 @@ class Group::RepoItemsController < ApplicationController
     respond_to do |format|
       if @group.delete_repo_item(@repo_item)
         format.html { redirect_to :back, notice: notice }
-        format.json { render template: 'group/repo_items/show', status: :ok }
+        format.json { render :show, status: :ok }
       else
         format.html { redirect_to :back, alert: notice_failed }
-        format.json { render json: {error: notice_failed}, status: :unprocessable_entity}
+        format.json { render json: repo_item.errors, status: :unprocessable_entity}
       end
     end
+  end
+
+  def copy
+
+  end
+
+  def move
+
+  end
+
+  def rename
+
   end
 
   private
