@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
+# pour le monitoring de l'application
+gem 'newrelic_rpm'
 
 gem 'rails', '~> 4.0.2'
 
