@@ -1,11 +1,11 @@
 # -*- encoding : utf-8 -*-
 class Group::RepoItemsController < ApplicationController
   #load_and_authorize_resource class: Group::RepositoriesController
+  before_action :find_the_group
 
   # GET /group/work_groups/1
   # GET /group/work_groups/1.json
   def show
-    @group = Group::Group.find(params[:work_group_id])
     @repo_item = RepositoryManager::RepoItem.find(params[:id])
 
     render status: :forbidden, :text => "No permission to see this repo_item" and return unless @group.can_read?(@repo_item)
@@ -15,47 +15,41 @@ class Group::RepoItemsController < ApplicationController
     else
       @children = []
     end
-
-    #respond_to do |format|
-    #  format.html # show.html.erb
-    #  format.json { render json: @repo_item }
-    #end
   end
 
   # Tout ce qui gère le repository
   def index
-    @group = Group::Group.find(params[:work_group_id])
     @repo_item = @group.root_repo_items.order(name: :asc).order(file: :asc)
-    #respond_to do |format|
-    #  format.html
-    #  format.json { render json: @repo_item }
-    #end
   end
 
   def create_file
-    @group = Group::Group.find(params[:work_group_id])
     repo_item = RepositoryManager::RepoItem.find(params[:repo_item]) if params[:repo_item]
 
-    if @group.create_file(params[:repo_file_file], source_folder: repo_item, sender: current_user)
-      redirect_to :back, notice: t('repository_manager.success.repo_file.created')
-    else
-      redirect_to :back, alert: t('repository_manager.errors.repo_file.not_created')
+    respond_to do |format|
+      if @item = @group.create_file(params[:repo_file_file], source_folder: repo_item, sender: current_user)
+        format.html { redirect_to back, notice: t('repository_manager.success.repo_file.created') }
+        format.json { render template: 'group/repo_items/create', status: :created }
+      else
+        format.html { redirect_to back, alert: t('repository_manager.errors.repo_file.not_created') }
+        format.json { render json: {error: t('repository_manager.errors.repo_file.not_created')},  status: :unprocessable_entity }
+      end
     end
   end
 
   def create_folder
-    @group = Group::Group.find(params[:work_group_id])
     repo_item = RepositoryManager::RepoItem.find(params[:repo_item]) if params[:repo_item]
-
-    if @group.create_folder(params[:repo_folder_name], source_folder: repo_item, sender: current_user)
-      redirect_to :back, notice: t('repository_manager.success.repo_folder.created')
-    else
-      redirect_to :back, alert: t('repository_manager.errors.repo_folder.not_created')
+    respond_to do |format|
+      if @item = @group.create_folder(params[:repo_folder_name], source_folder: repo_item, sender: current_user)
+        format.html { redirect_to back, notice: t('repository_manager.success.repo_folder.created') }
+        format.json { render template: 'group/repo_items/create', status: :created }
+      else
+        format.html { redirect_to back, alert: t('repository_manager.errors.repo_folder.not_created') }
+        format.json { render json: {error: t('repository_manager.errors.repo_folder.not_created')}, status: :unprocessable_entity }
+      end
     end
   end
 
   def download
-    @group = Group::Group.find(params[:work_group_id])
     @repo_item = RepositoryManager::RepoItem.find(params[:repository_id])
 
     # Pris chez Numa
@@ -95,7 +89,6 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def destroy
-    @group = Group::Group.find(params[:work_group_id])
     @repo_item = RepositoryManager::RepoItem.find(params[:id])
 
     if @repo_item.is_folder?
@@ -105,11 +98,19 @@ class Group::RepoItemsController < ApplicationController
       notice = t'repository_manager.destroy.repo_file.success', item: @repo_item.name
       notice_failed = t'repository_manager.destroy.repo_folder.failed', item: @repo_item.name
     end
-
-    if @group.delete_repo_item(@repo_item)
-      redirect_to :back, notice: notice
-    else
-      redirect_to :back, alert: notice_failed
+    respond_to do |format|
+      if @group.delete_repo_item(@repo_item)
+        format.html { redirect_to :back, notice: notice }
+        format.json { render template: 'group/repo_items/show', status: :ok }
+      else
+        format.html { redirect_to :back, alert: notice_failed }
+        format.json { render json: {error: notice_failed}, status: :unprocessable_entity}
+      end
     end
+  end
+
+  private
+  def find_the_group
+    @group = Group::Group.find(params[:work_group_id])
   end
 end
