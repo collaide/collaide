@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class Group::RepositoriesController < ApplicationController
+class Group::RepoItemsController < ApplicationController
   #load_and_authorize_resource class: Group::RepositoriesController
 
   # GET /group/work_groups/1
@@ -16,18 +16,20 @@ class Group::RepositoriesController < ApplicationController
       @children = []
     end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @group }
-    end
+    #respond_to do |format|
+    #  format.html # show.html.erb
+    #  format.json { render json: @repo_item }
+    #end
   end
 
   # Tout ce qui gère le repository
   def index
     @group = Group::Group.find(params[:work_group_id])
     @repo_item = @group.root_repo_items.order(name: :asc).order(file: :asc)
-    #puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-    #puts params[:repo_item_id]
+    #respond_to do |format|
+    #  format.html
+    #  format.json { render json: @repo_item }
+    #end
   end
 
   def create_file

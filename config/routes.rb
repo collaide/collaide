@@ -42,11 +42,11 @@ Collaide::Application.routes.draw do
     end
 
     concern :has_repository do
-      resources :repositories, only: [:index, :show, :destroy] do
+      resources :repo_items, only: [:index, :show, :destroy] do
         get 'download'
         collection do
-          post 'create/folder', action: :create_folder, :as => 'create_folder'
-          post 'create/file', action: :create_file, :as => 'create_file'
+          post 'folders', action: :create_folder, :as => 'create_folder'
+          post 'files', action: :create_file, :as => 'create_file'
         end
         resources :sharings, only: [:new, :create, :destroy] do
 

@@ -3,9 +3,9 @@
 =render(:layout => 'group/layouts/layout') do
   %h1= t('group.repository.title_page', group: @group.name)
   %ul.breadcrumbs
-    %li=link_to t('group.work_groups.menu.repository'), group_work_group_repositories_path(@group)
+    %li=link_to t('group.work_groups.menu.repository'), group_work_group_repo_items_path(@group)
     -@repo_item.path.each do |path|
-      %li=link_to path.name, group_work_group_repository_path(@group, path)
+      %li=link_to path.name, group_work_group_repo_item_path(@group, path)
   .row
     .large-6.columns
       .panel
