@@ -44,9 +44,13 @@ Collaide::Application.routes.draw do
     concern :has_repository do
       resources :repo_items, only: [:index, :show, :destroy] do
         get 'download'
+        patch 'copy', action: :copy
+        patch 'move', action: :move
+        patch 'rename', action: :rename
         collection do
-          post 'folders', action: :create_folder, :as => 'create_folder'
-          post 'files', action: :create_file, :as => 'create_file'
+          post 'folder', action: :create_folder, :as => 'create_folder'
+          post 'file', action: :create_file, :as => 'create_file'
+          post 'files', action: :create_files
         end
         resources :sharings, only: [:new, :create, :destroy] do
 

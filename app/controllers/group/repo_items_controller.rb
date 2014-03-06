@@ -2,6 +2,7 @@
 class Group::RepoItemsController < ApplicationController
   #load_and_authorize_resource class: Group::RepositoriesController
   before_action :find_the_group
+  before_action :find_the_repo, only: [:download, :copy, :move, :rename]
 
   # GET /group/work_groups/1
   # GET /group/work_groups/1.json
@@ -55,8 +56,6 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def download
-    @repo_item = RepositoryManager::RepoItem.find(params[:repository_id])
-
     # Pris chez Numa
     # méthode d'envoi de fichier :default -> pour le local
     if Rails.env = 'production'
@@ -115,19 +114,53 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def copy
-
+    target = do_request(params[:repo_item][:id]) do  |id|
+      RepositoryManager::RepoItem.find id
+    end
+    respond_to do |format|
+      if @group.copy_repo_item(@repo_item, target)
+        format.json { render :show }
+      else
+        format.json { render json: @repo_item.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def move
-
+    source_folder = RepositoryManager::RepoFolder.find params[:repo_folder][:id]
+    respond_to do |format|
+      if @group.move_repo_item @repo_item, source_folder: source_folder
+        format.json { render :show }
+      else
+        format.json { render json: @repo_item.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def rename
-
+    respond_to do |format|
+      if @group.rename_repo_item @repo_item, params[:repo_item][:name]
+        format.json { render :show }
+      else
+        format.json { render json: @repo_item.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
   def find_the_group
     @group = Group::Group.find(params[:work_group_id])
+  end
+
+  def do_request(params)
+    if params and block_given?
+      yield params
+    else
+      nil
+    end
+  end
+
+  def find_the_repo
+    @repo_item = RepositoryManager::RepoItem.find(params[:repo_item_id])
   end
 end
