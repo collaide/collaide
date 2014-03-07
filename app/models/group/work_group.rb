@@ -30,6 +30,8 @@ class Group::WorkGroup < Group::Group
 
   def init
     super
+    self.can_read_status << Group::Roles::MEMBER
+    self.can_index_activity << Group::Roles::MEMBER
     self.can_index_members << Group::Roles::MEMBER
     self.can_read_member << Group::Roles::MEMBER
     self.can_write_file << Group::Roles::MEMBER

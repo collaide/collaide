@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Group::RepoItemsController < ApplicationController
-  #load_and_authorize_resource class: Group::RepositoriesController
+  #load_and_authorize_resource class: RepositoryManager::RepoItem
   before_action :find_the_group
   before_action :find_the_repo, only: [:download, :copy, :move, :rename]
 
@@ -42,7 +42,10 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def create_folder
-    repo_item = RepositoryManager::RepoItem.find(params[:repo_folder][:id]) if params[:repo_folder][:id]
+    folder_params = params.require(:repo_folder).permit(:id, :name)
+    repo_item = do_request(folder_params[:id]) do |id|
+      RepositoryManager::RepoItem.find id
+    end
     options = {source_folder: repo_item, sender: current_user}
     respond_to do |format|
       if @item = @group.create_folder(params[:repo_folder][:name], options)
@@ -114,9 +117,12 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def copy
-    target = do_request(params[:repo_item][:id]) do  |id|
+    copy_params = params.require(:repo_item).permit :id
+    target = do_request(copy_params[:id]) do  |id|
       RepositoryManager::RepoItem.find id
     end
+    logger.debug @repo_item.inspect
+    logger.debug target.inspect
     respond_to do |format|
       if @group.copy_repo_item(@repo_item, target)
         format.json { render :show }
@@ -127,9 +133,15 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def move
-    source_folder = RepositoryManager::RepoFolder.find params[:repo_folder][:id]
+    move_params = params.require(:repo_item).permit :id
+    source_folder =  do_request(move_params[:id]) do |id|
+      RepositoryManager::RepoFolder.find id
+    end
+    logger.debug 'source: '+source_folder.inspect
+    logger.debug 'item: '+@repo_item.inspect
+    logger.debug 'group: '+@group.inspect
     respond_to do |format|
-      if @group.move_repo_item @repo_item, source_folder: source_folder
+      if @group.move_repo_item(@repo_item, source_folder)
         format.json { render :show }
       else
         format.json { render json: @repo_item.errors, status: :unprocessable_entity }

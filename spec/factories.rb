@@ -11,6 +11,12 @@ FactoryGirl.define do
     password "password"
     password_confirmation "password"
   end
+  factory :normal_user, class: 'User' do
+    sequence(:name)  { |n| "Person #{n}" }
+    sequence(:email) { |n| "user#{n}@example.com"}
+    password "password"
+    password_confirmation "password"
+  end
 
   factory :domain do  |domain|
     sequence(:name) { |n| "Domain #{n}"}
@@ -61,4 +67,28 @@ FactoryGirl.define do
     description "c'est une déscription"
   end
 
+  factory :work_group, class: 'Group::WorkGroup' do
+    sequence(:name) { |n| "Public work group #{n}" }
+  end
+
+  factory :comment, class: 'Comment' do
+    sequence(:title) { |n| "Comment number #{n}"}
+    comment 'un commentaire'
+    owner { FactoryGirl.create :normal_user}
+  end
+
+  factory :status, class: 'Status' do
+    message 'un status'
+    writer { FactoryGirl.create :normal_user }
+  end
+  factory :invitation, class: 'Group::Invitation' do
+    sender { FactoryGirl.create :normal_user }
+    receiver { FactoryGirl.create :normal_user }
+  end
+  factory :email_invitation, class: 'Group::EmailInvitation' do
+    sequence(:email) { |n| "salut#{n}@example.com"}
+    message 'salut!'
+    secret_token 'aaa'
+    user { FactoryGirl.create :normal_user }
+  end
 end

@@ -1,5 +1,5 @@
 class Group::InvitationsController < ApplicationController
-  #load_and_authorize_resource class: Group::InvitationsController
+  load_and_authorize_resource class: Group::Invitation
 
   before_action :group_create_invitation_params, only: [:create]
   before_action :group_update_invitations_params, only: [:update]

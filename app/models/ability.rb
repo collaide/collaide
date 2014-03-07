@@ -44,6 +44,8 @@ class Ability
       can :search, Document::Document
       can :autocomplete, Document::Document
       can :read, Advertisement::Advertisement
+      can :index, Group::Group
+      can :new, Group::Group
     end
 
     def normal(user)
@@ -54,17 +56,27 @@ class Ability
       can :manage, Advertisement::Advertisement, user_id: user.id #uniquement les annonces créées par l'utilisateur
       # TODO Gérer les messages avec le firewall
       can :manage, Message#, user_id: user.id #uniquement les messages de l'utilisateur
-      can :manage, Group::Group
-      can :manage, Group::WorkGroup
-      can :update, Group::EmailInvitation
+      can :create, Group::WorkGroup
+      group_permisions user
     end
 
     def admin(user)
       normal user
     end
 
+  def group_permisions(user)
+    can :destroy, Group::Group do |group|
+      member = Group::GroupMember.get_a_member user, group
+      if member.nil? then
+        false
+      else
+        group.can_delete_group.include?(member.role.to_sym)
+      end
+    end
+  end
+
   def rails_admin(request)
-    return unless request.fullpath.start_with? '/admin'
+    return unless request.nil? or request.fullpath.start_with? '/admin'
     cannot :new, Document::Download
     cannot :edit, Document::Download
     cannot :destroy, Document::Download

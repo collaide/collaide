@@ -33,6 +33,10 @@ class Group::Group < ActiveRecord::Base
 
   has_repository
 
+  serialize :can_index_activity, Array
+
+  serialize :can_delete_group, Array
+
   serialize :can_index_members, Array
   serialize :can_read_member, Array
   serialize :can_delete_member, Array
@@ -43,6 +47,7 @@ class Group::Group < ActiveRecord::Base
   serialize :can_delete_file, Array
 
   serialize :can_index_statuses, Array
+  serialize :can_read_status, Array
   serialize :can_write_status, Array
   serialize :can_delete_status, Array
 
@@ -118,6 +123,7 @@ class Group::Group < ActiveRecord::Base
     self.can_delete_file << Group::Roles::MEMBER
     self.can_delete_status << Group::Roles::ADMIN
     self.can_manage_invitations << Group::Roles::ADMIN
+    self.can_delete_group << Group::Roles::ADMIN
   end
 
   # send an invitation to the receivers

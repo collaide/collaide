@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Group::WorkGroupsController < ApplicationController
-  #load_and_authorize_resource class: Group::WorkGroup
+  load_and_authorize_resource class: Group::WorkGroup
 
   #breadcrumb
   add_breadcrumb I18n.t("group.groups.index.breadcrumb"),  :group_groups_path

@@ -19,10 +19,11 @@
 class Group::GroupMember < ActiveRecord::Base
   #attr_accessible :is_admin
   extend Enumerize
-  enumerize :role, in: [Group::Roles::ADMIN,
-                        Group::Roles::WRITER,
-                        Group::Roles::MEMBER,
-                        Group::Roles::ALL]
+  enumerize :role,
+            in: [Group::Roles::ADMIN,
+                Group::Roles::WRITER,
+                Group::Roles::MEMBER,
+                Group::Roles::ALL]
 
   # Comment il a rejoint le groupe
   enumerize :joined_method, in: [:was_invited,
