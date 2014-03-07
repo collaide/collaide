@@ -134,14 +134,9 @@ class Group::RepoItemsController < ApplicationController
 
   def move
     move_params = params.require(:repo_item).permit :id
-    source_folder =  do_request(move_params[:id]) do |id|
-      RepositoryManager::RepoFolder.find id
-    end
-    logger.debug 'source: '+source_folder.inspect
-    logger.debug 'item: '+@repo_item.inspect
-    logger.debug 'group: '+@group.inspect
+    target = RepositoryManager::RepoFolder.find move_params[:id]
     respond_to do |format|
-      if @group.move_repo_item(@repo_item, source_folder)
+      if @group.move_repo_item @repo_item, target
         format.json { render :show }
       else
         format.json { render json: @repo_item.errors, status: :unprocessable_entity }
