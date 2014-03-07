@@ -184,7 +184,24 @@ class Group::Group < ActiveRecord::Base
     self.name
   end
 
+  def can?(can_action, can_type, actor)
+    member_actor = (actor.is_a?(Group::GroupMember) ? actor : Group::GroupMember.get_a_member(actor, self))
+    if member_actor.nil?
+      can_do(can_action, can_type).empty? ? true : false
+    elsif member_actor.role.to_sym == :admin
+      true
+    elsif member_actor.role.to_sym == :all and can_do(can_action, can_type).empty?
+      true
+    else
+      can_do(can_action, can_type).include?(member.role.to_sym)
+    end
+  end
+
   private
+    def can_do(action, type)
+      self.send("can_#{action.to_s}_#{type.to_s}")
+    end
+
     def do_invitation(do_invitation, sender: self, receiver_type: 'User')
       do_invitation.users_id.each do |an_id|
         next if an_id.to_i < 1 or !an_id.to_i.is_a? Fixnum

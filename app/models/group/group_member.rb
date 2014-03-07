@@ -23,7 +23,8 @@ class Group::GroupMember < ActiveRecord::Base
             in: [Group::Roles::ADMIN,
                 Group::Roles::WRITER,
                 Group::Roles::MEMBER,
-                Group::Roles::ALL]
+                Group::Roles::ALL],
+            predicates: true
 
   # Comment il a rejoint le groupe
   enumerize :joined_method, in: [:was_invited,

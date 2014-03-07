@@ -6,7 +6,7 @@ describe 'abilities of' do
     subject(:ability) { Ability.new(user, nil) }
     let(:user) { nil }
     let!(:group) { Group::Group.new }
-    context 'when a user is not connected he ' do
+    describe 'when a user is not connected he ' do
       context 'access to Group::Group#index and #new' do
         it { should be_able_to(:index, group) }
         it { should be_able_to(:new, group) }
@@ -24,7 +24,7 @@ describe 'abilities of' do
     let!(:new_work_group) { Group::WorkGroup.new }
     let!(:invitation) { FactoryGirl.create :invitation }
     let!(:email_invitation) { FactoryGirl.create :email_invitation }
-    context 'when a user is connected and not member of the work_group he ' do
+    describe 'when a user is connected and not member of the work_group he ' do
       context 'create a work_group' do
         it { should be_able_to :new, new_work_group }
         it { should be_able_to :create, new_work_group }
@@ -44,11 +44,13 @@ describe 'abilities of' do
         it { should_not be_able_to :destroy, email_invitation}
       end
     end
-    context 'when a user is admin of the work_group he ' do
+    describe 'when a user is admin of the work_group he ' do
+      before(:each) do
+        work_group.add_members user, role: Group::Roles::ADMIN
+        work_group.save
+      end
       context 'do what he want' do
         it 'destroy' do
-          work_group.add_members user, role: Group::Roles::ADMIN
-          work_group.save
           should be_able_to :destroy, work_group
         end
       end
