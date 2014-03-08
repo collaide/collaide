@@ -15,4 +15,11 @@ class UserMessage < ActiveRecord::Base
   validates_presence_of :users
 
   has_and_belongs_to_many :users
+
+  before_validation :default_title
+
+  private
+  def default_title
+    self.subject = I18n.t('messages.default.title') if subject.blank?
+  end
 end

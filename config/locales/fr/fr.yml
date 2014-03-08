@@ -624,6 +624,8 @@ fr:
         submit: Envoyer
         tooltips:
           users: Vous pouvez choisir plusieurs utilisateurs en tapant leur pseudo ici.
+    default:
+      title: Message sans titre
     show:
       title_page: Lire un message
       participants: "Participant(s):"
