@@ -77,9 +77,9 @@ class Group::RepoItemsController < ApplicationController
     p MIME::Types.type_for(path).inspect
 
     unless MIME::Types.type_for(path).empty?
-      send_file_options = { :type => MIME::Types.type_for(path).first.content_type, disposition: :inline }
+      send_file_options = { :type => MIME::Types.type_for(path).first.content_type, disposition: :inline, filename: @repo_item.name  }
     else
-      send_file_options = { disposition: :inline }
+      send_file_options = { disposition: :inline, filename: @repo_item.name }
     end
 
     case send_file_method
