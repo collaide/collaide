@@ -490,6 +490,9 @@ fr:
     destroy:
       notice: Le groupe a bien été supprimé
     groups:
+      repo_item:
+        empty:
+          root: Ce groupe ne contient aucun fichier...
       index:
         description_meta: Liste de tous les groupes
         key_words: Groupe, groupes de travail, liste, créer
