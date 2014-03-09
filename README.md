@@ -116,50 +116,50 @@ Copyright (c) 2009-2014 All rights reserved.
 à faire / à compléter
 
 en vrac :
-http://www.ct2c.fr/blog/starter-app-ruby-on-rails-partie-02
-https://github.com/Erol/yomu
-http://docs.ruby-doc.com/docs/ProgrammingRuby/
-https://devcenter.heroku.com/articles/paperclip-s3
-http://asciicasts.com/episodes/206-action-mailer-in-rails-3
-https://github.com/enriclluelles/route_translator
-http://rubylearning.com/blog/2012/07/24/minimal-i18n-with-rails-3-2/
-http://jqueryui.com/datepicker/#localization
-https://github.com/ryanb/cancan/wiki/Role-Based-Authorization
-https://github.com/ryanb/cancan/wiki/Separate-Role-Model
-https://github.com/ryanb/cancan/wiki/Abilities-in-Database
-http://www.ct2c.fr/blog/starter-app-ruby-on-rails-partie-02
-http://jsoup.org/cookbook/extracting-data/selector-syntax
-http://www.dandelionmood.com/Ruby-on-Rails-Vues-Controleur.html
-http://french.railstutorial.org/chapters/beginning#sec:install_rails
-http://techie.lucaspr.im/creating-class-macros/
-http://stackoverflow.com/questions/4113299/ruby-on-rails-server-options
-https://github.com/weppos/breadcrumbs_on_rails
-http://pusher.com/
-http://stackoverflow.com/questions/6772203/implementing-notifications-in-rails
-https://github.com/JangoSteve/remotipart
-http://railscasts.com/episodes/417-foundation?view=asciicast
-http://pat.github.io/thinking-sphinx/
-https://github.com/glebtv/rails-uploader
-http://www.localeapp.com/
-http://thepugautomatic.com/2012/07/rails-i18n-tips/
-http://rubysource.com/seeking-lovecraft-part-1-an-introduction-to-nlp-and-the-treat-gem/
-https://github.com/ging/mailboxer
-https://github.com/RobinBrouwer/gritter
-https://github.com/pusher/notify
-http://eggsonbread.com/2009/07/23/file-versioning-in-ruby-on-rails-with-paperclip-acts_as_versioned/
-http://kgsspot.blogspot.ch/2011/09/convert-doc-to-pdf-in-command-line.html
-http://railscasts.com/episodes/246-ajax-history-state?view=asciicast
-https://github.com/esilverberg/DocPdfToText/blob/master/lib/docpdftotext.rb
-https://github.com/crowdint/rails3-jquery-autocomplete
-https://github.com/norman/friendly_id
-http://rdoc.info/github/edgarjs/ajaxful-rating
-http://thewebfellas.com/blog/2009/8/29/protecting-your-paperclip-downloads
-http://dev.maxmind.com/geoip/legacy/geolite/
-https://github.com/brainspec/enumerize
-https://github.com/ricn/libreconv
-http://pikock.github.io/bootstrap-magic/app/index.html#!/editor
-http://git-scm.com/book/fr/Les-branches-avec-Git-Brancher-et-fusionner%C2%A0%3A-les-bases
-http://pat.github.io/thinking-sphinx/resources.html
-http://blog.ideematic.com/2011/11/creer-des-filtres-personnalises-avec-paperclip/
+* http://www.ct2c.fr/blog/starter-app-ruby-on-rails-partie-02
+* https://github.com/Erol/yomu
+* http://docs.ruby-doc.com/docs/ProgrammingRuby/
+* https://devcenter.heroku.com/articles/paperclip-s3
+* http://asciicasts.com/episodes/206-action-mailer-in-rails-3
+* https://github.com/enriclluelles/route_translator
+* http://rubylearning.com/blog/2012/07/24/minimal-i18n-with-rails-3-2/
+* http://jqueryui.com/datepicker/#localization
+* https://github.com/ryanb/cancan/wiki/Role-Based-Authorization
+* https://github.com/ryanb/cancan/wiki/Separate-Role-Model
+* https://github.com/ryanb/cancan/wiki/Abilities-in-Database
+* http://www.ct2c.fr/blog/starter-app-ruby-on-rails-partie-02
+* http://jsoup.org/cookbook/extracting-data/selector-syntax
+* http://www.dandelionmood.com/Ruby-on-Rails-Vues-Controleur.html
+* http://french.railstutorial.org/chapters/beginning#sec:install_rails
+* http://techie.lucaspr.im/creating-class-macros/
+* http://stackoverflow.com/questions/4113299/ruby-on-rails-server-options
+* https://github.com/weppos/breadcrumbs_on_rails
+* http://pusher.com/
+* http://stackoverflow.com/questions/6772203/implementing-notifications-in-rails
+* https://github.com/JangoSteve/remotipart
+* http://railscasts.com/episodes/417-foundation?view=asciicast
+* http://pat.github.io/thinking-sphinx/
+* https://github.com/glebtv/rails-uploader
+* http://www.localeapp.com/
+* http://thepugautomatic.com/2012/07/rails-i18n-tips/
+* http://rubysource.com/seeking-lovecraft-part-1-an-introduction-to-nlp-and-the-treat-gem/
+* https://github.com/ging/mailboxer
+* https://github.com/RobinBrouwer/gritter
+* https://github.com/pusher/notify
+* http://eggsonbread.com/2009/07/23/file-versioning-in-ruby-on-rails-with-paperclip-acts_as_versioned/
+* http://kgsspot.blogspot.ch/2011/09/convert-doc-to-pdf-in-command-line.html
+* http://railscasts.com/episodes/246-ajax-history-state?view=asciicast
+* https://github.com/esilverberg/DocPdfToText/blob/master/lib/docpdftotext.rb
+* https://github.com/crowdint/rails3-jquery-autocomplete
+* https://github.com/norman/friendly_id
+* http://rdoc.info/github/edgarjs/ajaxful-rating
+* http://thewebfellas.com/blog/2009/8/29/protecting-your-paperclip-downloads
+* http://dev.maxmind.com/geoip/legacy/geolite/
+* https://github.com/brainspec/enumerize
+* https://github.com/ricn/libreconv
+* http://pikock.github.io/bootstrap-magic/app/index.html#!/editor
+* http://git-scm.com/book/fr/Les-branches-avec-Git-Brancher-et-fusionner%C2%A0%3A-les-bases
+* http://pat.github.io/thinking-sphinx/resources.html
+* http://blog.ideematic.com/2011/11/creer-des-filtres-personnalises-avec-paperclip/
 
 
