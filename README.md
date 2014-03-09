@@ -6,6 +6,8 @@ Cette nouvelle version a pour but d'utiliser les technologies web modernes (Ajax
 le modèle de programmation REST, d'avoir une base de donnée unifiée (gerée avec un ORM), avec une seule logique et d'être
 multi-lingue.
 
+Version test sur : http://vps42634.ovh.net/
+
 ##Recherche
 
 Nous recherchons encore quelqu'un pour :
