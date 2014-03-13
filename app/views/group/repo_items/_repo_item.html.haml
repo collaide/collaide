@@ -1,0 +1,21 @@
+-if repo_item.is_folder?
+  %i.fi-folder
+  =link_to(repo_item.name, group_work_group_repo_item_path(object, repo_item))
+  (
+  %i.fi-download
+    =link_to('download', group_work_group_repo_item_download_path(object, repo_item))
+
+-else
+  %i.fi-download
+  =link_to(repo_item.name, group_work_group_repo_item_download_path(object, repo_item))
+  (
+  %i.fi-eye
+  =link_to('show', group_work_group_repo_item_path(object, repo_item))
+|
+%i.fi-share
+=link_to('share', new_group_work_group_repo_item_sharing_path(object, repo_item))
+|
+%i.fi-x
+=link_to('delete', group_work_group_repo_item_path(object, repo_item), method: :delete)
+)
+%br/

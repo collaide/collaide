@@ -11,7 +11,7 @@
     .columns.small-12.large-6
       .panel
         %h3= t('group.members.invitation_list')
-        -if @group.p_or_l_group_invitations.empty?
+        -if @group.p_or_l_group_invitations.empty? and @group.p_or_l_email_invitations.empty?
           %p= t('group.members.empty_invitation_list')
         -else
           %ul
@@ -22,6 +22,11 @@
               -else
                 = link_to an_invitation.receiver, an_invitation.receiver
               = link_to t('group.members.delete_invitation'), group_work_group_invitation_path(@group, an_invitation), method: :delete, data: {confirm: t('confirm')}, class: 'button small secondary'
+          %ul
+            -@group.p_or_l_email_invitations.each do |email_invit|
+              %li
+                = email_invit.email
+                =link_to t('group.members.delete_invitation'), group_work_group_email_invitation_path(work_group_id: @group, id: email_invit), method: :delete, data: {confirm: t('confirm')}, class: 'button small secondary'
   .row
     .columns.small-12
       %h3= t('group.members.members_list')

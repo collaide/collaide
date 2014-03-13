@@ -33,6 +33,10 @@ class Group::Group < ActiveRecord::Base
 
   has_repository
 
+  serialize :can_index_activity, Array
+
+  serialize :can_delete_group, Array
+
   serialize :can_index_members, Array
   serialize :can_read_member, Array
   serialize :can_delete_member, Array
@@ -43,6 +47,7 @@ class Group::Group < ActiveRecord::Base
   serialize :can_delete_file, Array
 
   serialize :can_index_statuses, Array
+  serialize :can_read_status, Array
   serialize :can_write_status, Array
   serialize :can_delete_status, Array
 
@@ -64,10 +69,14 @@ class Group::Group < ActiveRecord::Base
   # A mettre dans User aussi
   has_many :received_group_invitations, class_name: 'Group::Invitation', as: 'receiver'
 
-  has_many :email_invitations
+  has_many :email_invitations, foreign_key: 'group_group_id'
 
   def p_or_l_group_invitations
     self.group_invitations.give_a_reply
+  end
+
+  def p_or_l_email_invitations
+    self.email_invitations.give_a_reply
   end
 
   ##################################################
@@ -114,6 +123,7 @@ class Group::Group < ActiveRecord::Base
     self.can_delete_file << Group::Roles::MEMBER
     self.can_delete_status << Group::Roles::ADMIN
     self.can_manage_invitations << Group::Roles::ADMIN
+    self.can_delete_group << Group::Roles::ADMIN
   end
 
   # send an invitation to the receivers
@@ -157,15 +167,16 @@ class Group::Group < ActiveRecord::Base
         end
       end
     else
-      unless Group::GroupMember.where(group: self, member: members).take
-        gm = Group::GroupMember.new
-        gm.member = members
-        gm.role = role
-        gm.joined_method = joined_method
-        gm.invited_or_added_by = invited_or_added_by
-        self.group_members << gm
-        self.save
+      if Group::GroupMember.get_a_member members, self
+        return false
       end
+      gm = Group::GroupMember.new
+      gm.member = members
+      gm.role = role
+      gm.joined_method = joined_method
+      gm.invited_or_added_by = invited_or_added_by
+      self.group_members << gm
+      self.save
     end
   end
 
@@ -173,7 +184,24 @@ class Group::Group < ActiveRecord::Base
     self.name
   end
 
+  def can?(can_action, can_type, actor)
+    member_actor = (actor.is_a?(Group::GroupMember) ? actor : Group::GroupMember.get_a_member(actor, self))
+    if member_actor.nil?
+      can_do(can_action, can_type).empty? ? true : false
+    elsif member_actor.role.to_sym == :admin
+      true
+    elsif member_actor.role.to_sym == :all and can_do(can_action, can_type).empty?
+      true
+    else
+      can_do(can_action, can_type).include?(member.role.to_sym)
+    end
+  end
+
   private
+    def can_do(action, type)
+      self.send("can_#{action.to_s}_#{type.to_s}")
+    end
+
     def do_invitation(do_invitation, sender: self, receiver_type: 'User')
       do_invitation.users_id.each do |an_id|
         next if an_id.to_i < 1 or !an_id.to_i.is_a? Fixnum
@@ -187,8 +215,10 @@ class Group::Group < ActiveRecord::Base
             invitation  = Group::Invitation.new message: do_invitation.message,  receiver_type: receiver_type, receiver_id: a_user.id, sender: sender
             self.group_invitations << invitation
           else
-            ei = Group::EmailInvitation.new email: an_email, message: do_invitation.message, group_group: self, user: sender, secret_token: 'lalala'
-            GroupMailer.new_invitation ei
+            ei = Group::EmailInvitation.create(
+                email: an_email, message: do_invitation.message, group_group: self, user: sender, secret_token: SecureRandom.hex(16)
+            )
+            GroupMailer.new_invitation(ei).deliver
             ei.save
           end
         end

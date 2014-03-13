@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
+# pour le monitoring de l'application
+gem 'newrelic_rpm'
 
 gem 'rails', '~> 4.0.2'
 
@@ -122,6 +124,7 @@ gem 'coffee-script-source'
 gem 'compass-rails'
 gem 'foundation-icons-sass-rails'
 gem 'sqlite3', '1.3.6'
+gem 'public_activity'
 
 group :test do
   gem 'capybara', '1.1.2'

@@ -4,6 +4,7 @@ class CreateEmailInvitation < ActiveRecord::Migration
       t.string :email
       t.text :message
       t.string :secret_token
+      t.string :status
       t.belongs_to :group_group
       t.belongs_to :user
     end

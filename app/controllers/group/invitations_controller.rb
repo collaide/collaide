@@ -1,9 +1,11 @@
 class Group::InvitationsController < ApplicationController
+  load_and_authorize_resource class: Group::Invitation
 
   before_action :group_create_invitation_params, only: [:create]
   before_action :group_update_invitations_params, only: [:update]
 
   def create
+    logger.debug'salut'
     do_invitation = Group::DoInvitation.new(group_create_invitation_params)
     do_invitation.group_id = params[:work_group_id]
     if do_invitation.valid?
@@ -19,6 +21,9 @@ class Group::InvitationsController < ApplicationController
 
   def update
     invitation = Group::Invitation.find params[:id]
+    if invitation.status == :accepted
+      redirect_to user_path(invitation.user), notice: t('group.invitations.update.notice.already_member')
+    end
     if get_status == :accepted
       group = Group::Group.find params[:work_group_id]
       group.add_members(invitation.receiver, joined_method: :was_invited, invited_or_added_by: invitation.sender)

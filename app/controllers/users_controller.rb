@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   def invitations
     @user = User.find params[:user_id]
     @invitations = Group::Invitation.where receiver: @user
+    @email_invitations = Group::EmailInvitation.where email: @user.email
   end
 
   def no_credit

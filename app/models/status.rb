@@ -3,12 +3,14 @@
 #
 # Table name: statuses
 #
-#  id         :integer          not null, primary key
-#  message    :text
-#  owner_id   :integer
-#  owner_type :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer          not null, primary key
+#  message     :text
+#  owner_id    :integer
+#  owner_type  :string(255)
+#  writer_id   :integer
+#  writer_type :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 # -*- encoding : utf-8 -*-

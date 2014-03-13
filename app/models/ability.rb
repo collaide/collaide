@@ -44,6 +44,8 @@ class Ability
       can :search, Document::Document
       can :autocomplete, Document::Document
       can :read, Advertisement::Advertisement
+      can :index, Group::Group
+      can :new, Group::Group
     end
 
     def normal(user)
@@ -54,16 +56,35 @@ class Ability
       can :manage, Advertisement::Advertisement, user_id: user.id #uniquement les annonces créées par l'utilisateur
       # TODO Gérer les messages avec le firewall
       can :manage, Message#, user_id: user.id #uniquement les messages de l'utilisateur
-      can :manage, Group::Group
-      can :manage, Group::WorkGroup
+      can :create, Group::WorkGroup
+      group_permissions user
     end
 
     def admin(user)
       normal user
     end
 
+  def group_permissions(user)
+    can :destroy, Group::Group do |group|
+      group.can? :delete, :group, user
+    end
+    can :show, Group::WorkGroup do |wg|
+      wg.can? :index, :activity, user
+    end
+    can :edit, Group::WorkGroup do |wg|
+      member = Group::GroupMember.get_a_member(wg, user)
+      !member.nil? and member.admin?
+    end
+    can :members, Group::WorkGroup do |wg|
+      wg.can? :index, :members, user
+    end
+    can :index, Status do |status|
+      #TODO Gérer le polymorphisme avec cancan (cf doc)
+    end
+  end
+
   def rails_admin(request)
-    return unless request.fullpath.start_with? '/admin'
+    return unless request.nil? or request.fullpath.start_with? '/admin'
     cannot :new, Document::Download
     cannot :edit, Document::Download
     cannot :destroy, Document::Download

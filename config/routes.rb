@@ -42,11 +42,15 @@ Collaide::Application.routes.draw do
     end
 
     concern :has_repository do
-      resources :repositories, only: [:index, :show, :destroy] do
+      resources :repo_items, only: [:index, :show, :destroy] do
         get 'download'
+        patch 'copy', action: :copy
+        patch 'move', action: :move
+        patch 'rename', action: :rename
         collection do
-          post 'create/folder', action: :create_folder, :as => 'create_folder'
-          post 'create/file', action: :create_file, :as => 'create_file'
+          post 'folder', action: :create_folder, :as => 'create_folder'
+          post 'file', action: :create_file, :as => 'create_file'
+          post 'files', action: :create_files
         end
         resources :sharings, only: [:new, :create, :destroy] do
 
@@ -60,6 +64,17 @@ Collaide::Application.routes.draw do
 
     concern :invitation do
       resources :invitations, only: [:create, :destroy, :update]
+    end
+
+    concern :member do
+      resources :members, only: [:create]
+    end
+
+    concern :email_invitation do
+      resources :email_invitations, only: [:destroy] do
+        patch ':id/secret_token/:secret_token', action: :update, on: :collection, as: ''
+        get ':id/secret_token/:secret_token', action: :update, on: :collection, as: ''
+      end
     end
 
     resources :statuses, only:[:create]
@@ -78,6 +93,8 @@ Collaide::Application.routes.draw do
         concerns :has_repository
         concerns :status
         concerns :invitation
+        concerns :member
+        concerns :email_invitation
         get 'members', action: :members, as: 'members'
       end
     end

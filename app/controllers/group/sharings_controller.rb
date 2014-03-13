@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Group::SharingsController < ApplicationController
-  #wload_and_authorize_resource class: Group::WorkGroup
+  #load_and_authorize_resource class: Group::SharingsController
 
   def new
     @group = Group::Group.find(params[:work_group_id])

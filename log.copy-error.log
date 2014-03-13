@@ -1,0 +1,836 @@
+ Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+  CACHE (0.0ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18"], ["ancestry_depth", 2], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 19  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19"], ["ancestry_depth", 3], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 20  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.9ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20"], ["ancestry_depth", 4], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.9ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 21  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21"], ["ancestry_depth", 5], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 22  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22'
+  RepositoryManager::RepoItem Load (0.6ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22"], ["ancestry_depth", 6], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 23  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.9ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23"], ["ancestry_depth", 7], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.6ms)  COMMIT
+  Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.7ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 24  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24"], ["ancestry_depth", 8], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.6ms)  COMMIT
+  Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 25  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25"], ["ancestry_depth", 9], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 26  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26"], ["ancestry_depth", 10], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.5ms)  COMMIT
+  Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 27  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27"], ["ancestry_depth", 11], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.3ms)  BEGIN
+  SQL (0.8ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 28  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28"], ["ancestry_depth", 12], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 29  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.6ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29"], ["ancestry_depth", 13], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 30  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.2ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30"], ["ancestry_depth", 14], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.6ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 31  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31"], ["ancestry_depth", 15], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 32  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32"], ["ancestry_depth", 16], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.5ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 33  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32'
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33"], ["ancestry_depth", 17], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 34  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.9ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34"], ["ancestry_depth", 18], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 35  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35"], ["ancestry_depth", 19], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 36  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36"], ["ancestry_depth", 20], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 37  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36'
+  RepositoryManager::RepoItem Load (0.6ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37"], ["ancestry_depth", 21], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 38  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38"], ["ancestry_depth", 22], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 39  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.6ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39"], ["ancestry_depth", 23], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 40  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.6ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.2ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40"], ["ancestry_depth", 24], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 41  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41'
+  RepositoryManager::RepoItem Load (0.6ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41"], ["ancestry_depth", 25], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 42  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42"], ["ancestry_depth", 26], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 43  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43"], ["ancestry_depth", 27], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 44  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.6ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44"], ["ancestry_depth", 28], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 45  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45"], ["ancestry_depth", 29], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 46  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46"], ["ancestry_depth", 30], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 47  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.5ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47"], ["ancestry_depth", 31], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 48  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (1.0ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48"], ["ancestry_depth", 32], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.3ms)  BEGIN
+  SQL (0.9ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 49  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49"], ["ancestry_depth", 33], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 50  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50"], ["ancestry_depth", 34], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (1.0ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.8ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 51  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51"], ["ancestry_depth", 35], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 52  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52"], ["ancestry_depth", 36], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 53  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (1.0ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53"], ["ancestry_depth", 37], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 54  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54"], ["ancestry_depth", 38], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 55  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.6ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.6ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55"], ["ancestry_depth", 39], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 56  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (1.1ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56"], ["ancestry_depth", 40], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 57  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (1.1ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57"], ["ancestry_depth", 41], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.9ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 58  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (1.1ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.9ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58"], ["ancestry_depth", 42], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (1.0ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.8ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 59  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.5ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.7ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59"], ["ancestry_depth", 43], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.8ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 60  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.9ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60"], ["ancestry_depth", 44], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 61  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61"], ["ancestry_depth", 45], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.9ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 62  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62"], ["ancestry_depth", 46], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 63  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63"], ["ancestry_depth", 47], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 64  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64"], ["ancestry_depth", 48], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 65  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.6ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65"], ["ancestry_depth", 49], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 66  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66"], ["ancestry_depth", 50], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.6ms)  COMMIT
+  Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 67  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67'
+  RepositoryManager::RepoItem Load (0.6ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67"], ["ancestry_depth", 51], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 68  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68"], ["ancestry_depth", 52], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 69  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69"], ["ancestry_depth", 53], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 70  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70"], ["ancestry_depth", 54], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 71  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.9ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71"], ["ancestry_depth", 55], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.6ms)  COMMIT
+  Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 72  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.5ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72"], ["ancestry_depth", 56], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 73  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (1.0ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73"], ["ancestry_depth", 57], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 74  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74"], ["ancestry_depth", 58], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 75  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.6ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75"], ["ancestry_depth", 59], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 76  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76"], ["ancestry_depth", 60], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.6ms)  COMMIT
+  Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 77  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77"], ["ancestry_depth", 61], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.9ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 78  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78"], ["ancestry_depth", 62], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 79  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (1.1ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79"], ["ancestry_depth", 63], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 80  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.9ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80"], ["ancestry_depth", 64], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 81  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.6ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81"], ["ancestry_depth", 65], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 82  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.4ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82"], ["ancestry_depth", 66], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 83  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (1.1ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83"], ["ancestry_depth", 67], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 84  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.9ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84"], ["ancestry_depth", 68], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.5ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.7ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 85  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (1.0ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85"], ["ancestry_depth", 69], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.8ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 86  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86"], ["ancestry_depth", 70], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 87  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87"], ["ancestry_depth", 71], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 88  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.2ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88"], ["ancestry_depth", 72], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 89  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88'
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89"], ["ancestry_depth", 73], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.9ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 90  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90"], ["ancestry_depth", 74], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (398.2ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.3ms)  BEGIN
+  SQL (0.8ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 91  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91'
+  RepositoryManager::RepoItem Load (0.7ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91"], ["ancestry_depth", 75], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.5ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 92  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.5ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92"], ["ancestry_depth", 76], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 93  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.5ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93"], ["ancestry_depth", 77], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 94  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94"], ["ancestry_depth", 78], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 95  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.5ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95"], ["ancestry_depth", 79], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.6ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 96  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (1.8ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96"], ["ancestry_depth", 80], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.3ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 97  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97"], ["ancestry_depth", 81], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.9ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 98  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97/98'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97/98"], ["ancestry_depth", 82], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.8ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.6ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 99  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.8ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.5ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97/98'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97/98/99'
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97/98/99"], ["ancestry_depth", 83], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.9ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.2ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 100  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97/98/99'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97/98/99/100'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.1ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97/98/99/100"], ["ancestry_depth", 84], ["name", "salut"], ["type", "RepositoryManager::RepoFolder"]]
+   (0.7ms)  COMMIT
+  Group::Group Load (0.4ms)  SELECT "group_groups".* FROM "group_groups" WHERE "group_groups"."id" = $1 ORDER BY "group_groups"."id" ASC LIMIT 1  [["id", 2]]
+   (0.1ms)  BEGIN
+  SQL (0.5ms)  UPDATE "rm_repo_items" SET "owner_id" = $1, "owner_type" = $2, "sender_id" = $3, "sender_type" = $4 WHERE "rm_repo_items"."type" IN ('RepositoryManager::RepoFolder') AND "rm_repo_items"."id" = 101  [["owner_id", 2], ["owner_type", "Group::Group"], ["sender_id", 2], ["sender_type", "Group::Group"]]
+   (0.7ms)  COMMIT
+  RepositoryManager::RepoItem Load (0.4ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97/98/99/100'
+  RepositoryManager::RepoItem Load (0.2ms)  SELECT id FROM "rm_repo_items" WHERE "rm_repo_items"."ancestry" = '17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97/98/99/100/101'
+  RepositoryManager::RepoItem Load (0.3ms)  SELECT "rm_repo_items".* FROM "rm_repo_items" WHERE (name = 'salut' OR file = 'salut') AND 1=0 ORDER BY "rm_repo_items"."id" ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (70.9ms)  INSERT INTO "rm_repo_items" ("ancestry", "ancestry_depth", "name", "type") VALUES ($1, $2, $3, $4) RETURNING "id"  [["ancestry", "17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50/51/52/53/54/55/56/57/58/59/60/61/62/63/64/65/66/67/68/69/70/71/72/73/74/75/76/77/78/79/80/81/82/83/84/85/86/87/88/89/90/91/92/93/94/95/96/97/98/99/100/101"]

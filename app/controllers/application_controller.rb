@@ -89,7 +89,9 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    if !request.env["HTTP_REFERER"] || !flash[:notice].nil?
+    if !request.env["HTTP_REFERER"] and params[:work_group_id] and params[:secret_token] and params[:id] and current_user.nil?
+      redirect_to user_session_path, alert: t('access_denied')
+    elsif !request.env["HTTP_REFERER"] || !flash[:notice].nil?
       redirect_to main_app.root_url, alert: t('not_enough_role')
     elsif request.env['HTTP_REFERER'] and !current_user.nil?
       redirect_to :back, alert: t('not_enough_role')
@@ -103,10 +105,17 @@ class ApplicationController < ActionController::Base
   #  user_signed_in? ? current_user : 'Unknown user'
   #end
 
+  def back
+    return root_path unless request.env['HTTP_REFERER']
+    :back
+  end
+
   private
 
   def set_locale
-    I18n.locale = params[:locale] || ((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/])
+    I18n.locale = :fr
+    # uncomment this line to have multi linguale site do it to config/application.rb, too
+    #I18n.locale = params[:locale] || ((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/]) if Rails.env == 'development'
     logger.info "lang set to '#{I18n.locale}'"
     add_breadcrumb(I18n.t('app_name'), :root_path)
   end
