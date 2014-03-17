@@ -13,6 +13,10 @@
           %i{class: 'fi-page-edit'}
         -elsif activity.key == 'group_work_group.destroy'
           %i{class: 'fi-page-remove'}
+        -elsif activity.key == 'group_work_group.joined'
+          %i{class: 'fi-plus'}
+        -elsif activity.key == 'group_work_group.status'
+          %i{class: 'fi-pencil'}
 
         %span{title: l(activity.created_at, format: :long)}
           =t('dico.time_ago', date: time_ago_in_words(activity.created_at))

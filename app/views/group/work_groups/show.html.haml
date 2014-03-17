@@ -6,4 +6,5 @@
     .columns.small-12
       - @activities.each do |activity|
         .activity
-          = render_activity activity, layout: :activity
+          -# :specification says if it is specific for group or general, etc
+          = render_activity activity, layout: 'activity', locals: {specification: :group}

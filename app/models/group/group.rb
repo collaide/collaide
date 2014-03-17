@@ -168,6 +168,7 @@ class Group::Group < ActiveRecord::Base
           gm.invited_or_added_by = invited_or_added_by
           self.group_members << gm
           self.save
+          self.create_activity(:joined, owner: m)
         end
       end
     else
@@ -181,6 +182,7 @@ class Group::Group < ActiveRecord::Base
       gm.invited_or_added_by = invited_or_added_by
       self.group_members << gm
       self.save
+      self.create_activity(:joined, owner: members)
     end
   end
 

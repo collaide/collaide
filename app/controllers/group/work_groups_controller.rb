@@ -12,7 +12,7 @@ class Group::WorkGroupsController < ApplicationController
   # GET /group/work_groups/1.json
   def show
     @group = Group::WorkGroup.find(params[:id])
-    @activities = PublicActivity::Activity.order("created_at desc")
+    @activities = PublicActivity::Activity.order("created_at desc").where(trackable_id: @group.id, trackable_type: @group.class.base_class.to_s)
 
     add_breadcrumb @group.name, group_work_group_path(@group)
     respond_to do |format|
@@ -75,9 +75,6 @@ class Group::WorkGroupsController < ApplicationController
 
     respond_to do |format|
       if @group_work_group.update_attributes(params[:group_work_group])
-
-        @group_work_group.create_activity(:update, owner: current_user)
-
         format.html { redirect_to @group_work_group, notice: t('group.work_groups.edit.forms.success') }
         format.json { head :no_content }
       else
@@ -92,6 +89,8 @@ class Group::WorkGroupsController < ApplicationController
   # Show members of the group
   def members
     @group = Group::Group.find(params[:work_group_id])
+    @group.add_members User.find(2)
+
     @invitation = Group::DoInvitation.new()
   end
 

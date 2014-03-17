@@ -1,4 +1,6 @@
-="#{t'activity.group_work_group.update'}"
+="#{t'activity.group_work_group.status'}"
+-#- if activity.recipient
+-#  #{link_to 'activity.recipient.name', activity.recipient}.
 - if activity.trackable
   - if specification == nil
     #{link_to activity.trackable.name, activity.trackable}.

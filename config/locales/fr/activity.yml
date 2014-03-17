@@ -2,6 +2,8 @@ fr:
   activity:
     group_work_group:
       create: 'a créé le groupe de travail'
-      not_exist: 'mais il a été supprimé depuis.'
+      not_exist: "mais ce groupe n'existe plus"
       update: 'a modifier le groupe de travail'
-      destroy: 'a supprimé un groupe de travail.'
+      destroy: 'a supprimé un groupe de travail'
+      joined: 'a rejoint le groupe de travail'
+      status: 'a publié un status'
