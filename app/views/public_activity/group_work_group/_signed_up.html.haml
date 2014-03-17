@@ -1,0 +1,5 @@
+="#{t'activity.group_work_group.signed_up'}"
+- if activity.trackable
+  #{link_to activity.trackable.name, activity.trackable}.
+- else
+  =t'activity.group_work_group.not_exist'
