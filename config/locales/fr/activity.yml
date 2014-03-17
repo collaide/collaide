@@ -5,3 +5,4 @@ fr:
       not_exist: 'mais il a été supprimé depuis.'
       update: 'a modifier le groupe de travail'
       destroy: 'a supprimé un groupe de travail.'
+      signed_up: 'a rejoins le groupe'
