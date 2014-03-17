@@ -18,6 +18,7 @@ class Group::GroupsController < ApplicationController
 
   def destroy
     @group = Group::Group.find params[:id]
+    @group.create_activity(:destroy, owner: current_user, params: {name: @group.name})
     @group.destroy()
     redirect_to group_groups_path, notice: t('group.destroy.notice')
   end

@@ -1,7 +1,9 @@
 -content_for :title, @group.name
--#%h1=@group.name
-
 
 =render(:layout => 'group/layouts/layout') do
+  %h1= @group.name
   .row
     .columns.small-12
+      - @activities.each do |activity|
+        .activity
+          = render_activity activity, layout: :activity

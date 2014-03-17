@@ -12,6 +12,7 @@ class Group::WorkGroupsController < ApplicationController
   # GET /group/work_groups/1.json
   def show
     @group = Group::WorkGroup.find(params[:id])
+    @activities = PublicActivity::Activity.order("created_at desc")
 
     add_breadcrumb @group.name, group_work_group_path(@group)
     respond_to do |format|
@@ -50,6 +51,9 @@ class Group::WorkGroupsController < ApplicationController
 
     respond_to do |format|
       if @group_work_group.save
+
+        @group_work_group.create_activity(:create, owner: current_user)
+
         # On ajoute le créateur en tant que ADMIN
         @group_work_group.add_members(current_user, role: Group::Roles::ADMIN)
 
@@ -71,6 +75,9 @@ class Group::WorkGroupsController < ApplicationController
 
     respond_to do |format|
       if @group_work_group.update_attributes(params[:group_work_group])
+
+        @group_work_group.create_activity(:update, owner: current_user)
+
         format.html { redirect_to @group_work_group, notice: t('group.work_groups.edit.forms.success') }
         format.json { head :no_content }
       else

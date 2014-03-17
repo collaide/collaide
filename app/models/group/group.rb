@@ -33,6 +33,10 @@ class Group::Group < ActiveRecord::Base
 
   has_repository
 
+  #include PublicActivity::Model
+  include PublicActivity::Common
+  #tracked
+
   serialize :can_index_activity, Array
 
   serialize :can_delete_group, Array
