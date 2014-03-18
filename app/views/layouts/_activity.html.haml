@@ -16,6 +16,8 @@
           %i{class: 'fi-plus'}
         -elsif activity.key == 'status.create'
           %i{class: 'fi-pencil'}
+        -elsif activity.key == 'comment.create'
+          %i{class: 'fi-pencil'}
         %span{title: l(activity.created_at, format: :long)}
           =t('dico.time_ago', date: time_ago_in_words(activity.created_at))
 %hr

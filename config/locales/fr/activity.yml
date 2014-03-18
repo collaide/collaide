@@ -10,3 +10,7 @@ fr:
     status:
       create: 'a publié un status'
       not_exist: "mais ce status n'existe plus"
+      in: 'un status'
+    comment:
+      create: 'a commenté'
+      not_exist: "mais ce commentaire n'existe plus"

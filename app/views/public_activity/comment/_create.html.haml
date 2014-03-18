@@ -1,0 +1,13 @@
+="#{t'activity.comment.create'}"
+- if activity.trackable
+  -##{link_to activity.trackable.name, activity.trackable}.
+- else
+  #{t'activity.comment.not_exist'}.
+- if activity.recipient
+  - if specification == nil
+    -# On doit ajouter les détails
+    - if activity.recipient.class.to_s == 'Status'
+      #{t'activity.status.in'}
+      -##{link_to activity.recipient.name, activity.recipient}.
+- else
+  #{t'activity.status.not_exist'}.
