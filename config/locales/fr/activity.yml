@@ -3,7 +3,10 @@ fr:
     group_work_group:
       create: 'a créé le groupe de travail'
       not_exist: "mais ce groupe n'existe plus"
-      update: 'a modifier le groupe de travail'
+      update: 'a modifier le groupe'
       destroy: 'a supprimé un groupe de travail'
       joined: 'a rejoint le groupe de travail'
-      status: 'a publié un status'
+      in: 'dans le groupe de travail'
+    status:
+      create: 'a publié un status'
+      not_exist: "mais ce status n'existe plus"

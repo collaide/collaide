@@ -1,5 +1,6 @@
 class Group::StatusesController < ApplicationController
-  load_and_authorize_resource class: Group::Status
+  #load_and_authorize_resource class: Group::Status
+  load_and_authorize_resource class: Group::Group
   before_action :get_required_objects, only: [:index, :show]
 
   #GET /group/:id/statuses

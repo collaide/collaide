@@ -6,7 +6,6 @@
       =link_to activity.owner.name, activity.owner if activity.owner
       =yield
       %cite
-        -#=link_to(activity.owner.to_s, activity.owner)
         -if activity.key == 'group_work_group.create'
           %i{class: 'fi-page-add'}
         -elsif activity.key == 'group_work_group.update'
@@ -15,9 +14,8 @@
           %i{class: 'fi-page-remove'}
         -elsif activity.key == 'group_work_group.joined'
           %i{class: 'fi-plus'}
-        -elsif activity.key == 'group_work_group.status'
+        -elsif activity.key == 'status.create'
           %i{class: 'fi-pencil'}
-
         %span{title: l(activity.created_at, format: :long)}
           =t('dico.time_ago', date: time_ago_in_words(activity.created_at))
 %hr
