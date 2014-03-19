@@ -1,0 +1,6 @@
+="#{t'activity.advertisement.update'}"
+- if activity.trackable
+  - if specification == nil
+    #{link_to activity.trackable.title, activity.trackable}.
+- else
+  #{t'activity.advertisement.not_exist'}.

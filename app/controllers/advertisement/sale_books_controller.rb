@@ -99,7 +99,7 @@ class Advertisement::SaleBooksController < ApplicationController
     @advertisement_sale_book.user = current_user
     #
     respond_to do |format|
-      if @advertisement_sale_book.save
+      if @advertisement_sale_book.save && @advertisement_sale_book.create_activity(:create, owner: current_user)
         format.html { redirect_to @advertisement_sale_book, notice: t('sale_books.new.forms.succes') }
         format.json { render json: @advertisement_sale_book, status: :created, location: @advertisement_sale_book }
       else
