@@ -57,6 +57,7 @@ class MessagesController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
     @receipts = @conversation.receipts_for current_user
+    p @receipts
     add_breadcrumb @conversation.subject
   end
 

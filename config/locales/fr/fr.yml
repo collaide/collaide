@@ -137,6 +137,7 @@ fr:
         h1: "%{app_name}"
         h2: Apprenons ensemble
         h3: Partagez des documents. Achetez et vendez des livres d'occasions. Bientôt, vous pourrez ajouter vos collègues, créer des groupes de travail, échanger des fichiers. Bref, rester connecté entres étudiants.
+      site_activities: Les activités du site
       last_doc:
         h4: Derniers documents
         all: Tous les documents >>
@@ -490,6 +491,9 @@ fr:
     destroy:
       notice: Le groupe a bien été supprimé
     groups:
+      repo_item:
+        empty:
+          root: Ce groupe ne contient aucun fichier...
       index:
         description_meta: Liste de tous les groupes
         key_words: Groupe, groupes de travail, liste, créer
@@ -621,6 +625,8 @@ fr:
         submit: Envoyer
         tooltips:
           users: Vous pouvez choisir plusieurs utilisateurs en tapant leur pseudo ici.
+    default:
+      title: Message sans titre
     show:
       title_page: Lire un message
       participants: "Participant(s):"

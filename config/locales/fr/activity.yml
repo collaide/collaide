@@ -1,0 +1,22 @@
+fr:
+  activity:
+    group_work_group:
+      create: a créé le groupe de travail
+      not_exist: mais ce groupe n'existe plus
+      update: a modifier le groupe
+      destroy: a supprimé un groupe de travail
+      joined: a rejoint le groupe de travail
+      in: dans le groupe de travail
+    status:
+      create: a publié un status
+      not_exist: mais ce status n'existe plus
+      in: un status
+    comment:
+      create: a commenté
+      not_exist: mais ce commentaire n'existe plus
+    advertisement:
+      not_exist: mais cette annonce n'existe plus
+      create: a publié une annonce
+      update: a modifié une annonce
+      sale_book:
+        destroy: a supprimé une annonce de vente de livre d'occasion

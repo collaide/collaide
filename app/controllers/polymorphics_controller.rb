@@ -6,7 +6,7 @@ module PolymorphicsController
     object = klass.find(relation_params[:id])
     @success = object.send(relation).create(values)
     respond_to do |format|
-      if @success
+      if @success #&& @success.create_activity(:create, owner: current_user, recipient: object)
         format.html { redirect_to relation_params[:path], notice: I18n.t("#{relation_params[:render_view].split('/').join('.')}.#{relation}.success", default: t("#{relation}.success")) }
       else
         format.html{ redirect_to relation_params[:path], notice: I18n.t("#{relation_params[:render_view].split('/').join('.')}.#{relation}.error", default: t("#{relation}.error")) }

@@ -1,0 +1,6 @@
+="#{t'activity.group_work_group.joined'}"
+- if activity.trackable
+  - if specification == nil
+    #{link_to activity.trackable.name, activity.trackable}.
+- else
+  #{t'activity.group_work_group.not_exist'}.

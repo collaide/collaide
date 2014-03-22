@@ -8,9 +8,9 @@ class StatusesController < ApplicationController
     klass = status_params[:klass].to_s.constantize
     raise  ActiveRecord::UnknownAttributeError unless klass.method_defined? 'statuses'
     object = klass.find(status_params[:id])
-    success = object.statuses.create(message: status_params[:message], writer: current_user)
+    status = object.statuses.create(message: status_params[:message], writer: current_user)
     respond_to do |format|
-      if success.save
+      if status.save && status.create_activity(:create, owner: current_user, recipient: object)
         format.html { redirect_to status_params[:path], notice:  notice_after('success', on: 'create')}
       else
         format.html{ redirect_to status_params[:path], alert: notice_after('error', on: 'create') }

@@ -1,7 +1,10 @@
 -content_for :title, @group.name
--#%h1=@group.name
-
 
 =render(:layout => 'group/layouts/layout') do
+  %h1= @group.name
   .row
     .columns.small-12
+      - @activities.each do |activity|
+        .activity
+          -# :specification says if it is specific for group or general, etc
+          = render_activity activity, layout: 'activity', locals: {specification: :group}

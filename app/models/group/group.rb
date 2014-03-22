@@ -36,6 +36,10 @@ class Group::Group < ActiveRecord::Base
 
   has_repository
 
+  #include PublicActivity::Model
+  include PublicActivity::Common
+  #tracked
+
   serialize :can_index_activity, Array
 
   serialize :can_delete_group, Array
@@ -167,6 +171,7 @@ class Group::Group < ActiveRecord::Base
           gm.invited_or_added_by = invited_or_added_by
           self.group_members << gm
           self.save
+          self.create_activity(:joined, owner: m)
         end
       end
     else
@@ -180,6 +185,7 @@ class Group::Group < ActiveRecord::Base
       gm.invited_or_added_by = invited_or_added_by
       self.group_members << gm
       self.save
+      self.create_activity(:joined, owner: members)
     end
   end
 

@@ -68,7 +68,7 @@ class Group::RepoItemsController < ApplicationController
       send_file_method = :default
     end
 
-    path = @group.download(@repo_item)
+    path = @group.download_repo_item(@repo_item)
     logger.debug path.inspect
 
     # Si le fichier n'est pas trouvé
@@ -77,9 +77,9 @@ class Group::RepoItemsController < ApplicationController
     p MIME::Types.type_for(path).inspect
 
     unless MIME::Types.type_for(path).empty?
-      send_file_options = { :type => MIME::Types.type_for(path).first.content_type, disposition: :inline }
+      send_file_options = { :type => MIME::Types.type_for(path).first.content_type, disposition: :inline, filename: @repo_item.name  }
     else
-      send_file_options = { disposition: :inline }
+      send_file_options = { disposition: :inline, filename: @repo_item.name }
     end
 
     case send_file_method
@@ -124,7 +124,7 @@ class Group::RepoItemsController < ApplicationController
     logger.debug @repo_item.inspect
     logger.debug target.inspect
     respond_to do |format|
-      if @group.copy_repo_item(@repo_item, target)
+      if @group.copy_repo_item(@repo_item, source_folder: target)
         format.json { render :show }
       else
         format.json { render json: @repo_item.errors, status: :unprocessable_entity }
@@ -136,7 +136,7 @@ class Group::RepoItemsController < ApplicationController
     move_params = params.require(:repo_item).permit :id
     target = RepositoryManager::RepoFolder.find move_params[:id]
     respond_to do |format|
-      if @group.move_repo_item @repo_item, target
+      if @group.move_repo_item @repo_item, source_folder: target
         format.json { render :show }
       else
         format.json { render json: @repo_item.errors, status: :unprocessable_entity }
