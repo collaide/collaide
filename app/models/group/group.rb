@@ -32,13 +32,14 @@
 # -*- encoding : utf-8 -*-
 class Group::Group < ActiveRecord::Base
 
+  include Concerns::ActivityConcern
+
+
   ROLES = [:admin, :writer]
 
   has_repository
 
-  #include PublicActivity::Model
-  include PublicActivity::Common
-  #tracked
+  #include PublicActivity::Common
 
   serialize :can_index_activity, Array
 
@@ -171,7 +172,7 @@ class Group::Group < ActiveRecord::Base
           gm.invited_or_added_by = invited_or_added_by
           self.group_members << gm
           self.save
-          self.create_activity(:joined, owner: m)
+          create_activity(:joined, trackable: self, owner: m)
         end
       end
     else
@@ -185,7 +186,7 @@ class Group::Group < ActiveRecord::Base
       gm.invited_or_added_by = invited_or_added_by
       self.group_members << gm
       self.save
-      self.create_activity(:joined, owner: members)
+      create_activity(:joined, trackable: self, owner: members)
     end
   end
 

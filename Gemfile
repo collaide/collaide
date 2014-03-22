@@ -123,8 +123,7 @@ gem 'coffee-script-source'
 
 gem 'compass-rails'
 gem 'foundation-icons-sass-rails'
-gem 'sqlite3', '1.3.6'
-gem 'public_activity'
+#gem 'sqlite3', '1.3.6'
 
 group :test do
   gem 'capybara', '1.1.2'
