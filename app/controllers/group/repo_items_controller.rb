@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Group::RepoItemsController < ApplicationController
-  #load_and_authorize_resource class: RepositoryManager::RepoItem
+  load_and_authorize_resource class: RepositoryManager::RepoItem
   before_action :find_the_group
   before_action :find_the_repo, only: [:download, :copy, :move, :rename]
 
@@ -134,7 +134,9 @@ class Group::RepoItemsController < ApplicationController
 
   def move
     move_params = params.require(:repo_item).permit :id
-    target = RepositoryManager::RepoFolder.find move_params[:id]
+    target = do_request(move_params[:id]) do |id|
+      RepositoryManager::RepoFolder.find id
+    end
     respond_to do |format|
       if @group.move_repo_item @repo_item, source_folder: target
         format.json { render :show }

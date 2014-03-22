@@ -1,19 +1,21 @@
 class Group::InvitationsController < ApplicationController
   load_and_authorize_resource class: Group::Invitation
+  skip_authorize_resource only: :create
 
   before_action :group_create_invitation_params, only: [:create]
   before_action :group_update_invitations_params, only: [:update]
 
   def create
+    @group = Group::Group.find(params[:work_group_id])
+    invitation = Group::Invitation.new(group: @group)
+    authorize! :create, invitation
     logger.debug'salut'
     do_invitation = Group::DoInvitation.new(group_create_invitation_params)
     do_invitation.group_id = params[:work_group_id]
     if do_invitation.valid?
-      group = Group::Group.find params[:work_group_id]
-      group.send_invitations(do_invitation, sender: current_user)
-      redirect_to group_work_group_members_path(group), notice: t('group.invitations.create.notice')
+      @group.send_invitations(do_invitation, sender: current_user)
+      redirect_to group_work_group_members_path(@group), notice: t('group.invitations.create.notice')
     else
-      @group = Group::Group.find(params[:work_group_id])
       @invitation = do_invitation
       render 'group/work_groups/members'
     end

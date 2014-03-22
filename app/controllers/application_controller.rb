@@ -41,12 +41,6 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
-  def after_sign_out_path_for(resource)
-    flash[:login_out] = 'true'
-    logger.debug(flash[:login_out])
-    session[:previous_url] || root_path
-  end
-
   def routing_error
     raise ActionController::RoutingError.new(params[:path])
   end
@@ -89,6 +83,11 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
+    can_can_access_denied
+  end
+
+  protected
+  def can_can_access_denied
     if !request.env["HTTP_REFERER"] and params[:work_group_id] and params[:secret_token] and params[:id] and current_user.nil?
       redirect_to user_session_path, alert: t('access_denied')
     elsif !request.env["HTTP_REFERER"] || !flash[:notice].nil?
@@ -99,8 +98,6 @@ class ApplicationController < ActionController::Base
       redirect_to user_session_path, alert: t('access_denied')
     end
   end
-
-  protected
   #def user_for_paper_trail
   #  user_signed_in? ? current_user : 'Unknown user'
   #end

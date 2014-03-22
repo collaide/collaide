@@ -100,6 +100,9 @@ gem 'mini_magick'
 
 gem 'whenever', require: false
 
+gem 'eco'
+gem 'spine-rails'
+
 group :development, :test do
   gem 'commands'
   gem 'rspec-rails'

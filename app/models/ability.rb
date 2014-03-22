@@ -75,24 +75,28 @@ class Ability
       member = Group::GroupMember.get_a_member(user, wg)
       !member.nil? and member.admin?
     end
-    can :members, Group::WorkGroup do |wg|
+    can :members, Group::Group do |wg|
       wg.can? :index, :members, user
     end
-    can [:show, :index], Status, :group do |status|
+    can [:show, :index], Status do |status|
       polymorphic_status status, user, :index, :statuses
     end
     can [:create, :update], Status do |status|
       polymorphic_status status, user, :write, :status
     end
-    can [:update, :destroy], Group::EmailInvitation do |e_invitation|
+    can :destroy, Group::EmailInvitation do |e_invitation|
       e_invitation.group_group.can? :manage, :invitations, user
     end
+    can :update, Group::EmailInvitation
     can :create, Group::Invitation do |invitation|
       invitation.group.can? :create, :invitation, user
     end
-    can [:update, :destroy], Group::Invitation do |invitation|
+    can :destroy, Group::Invitation do |invitation|
       invitation.group.can? :manage, :invitations, user
     end
+    can :update, Group::Invitation
+
+
   end
 
   def polymorphic_status(status, user, action, subject)
