@@ -13,4 +13,10 @@ class UserNotificationsMailer < ActionMailer::Base
 
     mail to: @document.user.email
   end
+
+  def advertisement_created(advertisement_id)
+    #@advertiement = Advertisement::Advertisement.find advertisement_id
+    #
+    #mail to: @document.user.email
+  end
 end

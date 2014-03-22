@@ -43,7 +43,7 @@ module Collaide
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
      config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
      config.i18n.default_locale = :fr
-     config.i18n.available_locales = [:fr]
+     config.i18n.available_locales = [:fr, :en]
     # uncomment this 3 lines to have multi linguale site do it to application_controller.rb, too
     #if Rails.env == 'development'
     #  config.i18n.available_locales = [:fr, :en]
@@ -82,7 +82,7 @@ module Collaide
     config.assets.version = '1.0'
 
     # Enable observers
-    config.active_record.observers = :'document/document_observer'
+    config.active_record.observers = :'document/document_observer', :'advertisement/advertisement_observer'
 
   end
 end
