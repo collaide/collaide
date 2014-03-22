@@ -87,7 +87,7 @@ class Group::WorkGroupsController < ApplicationController
   # Show members of the group
   def members
     @group = Group::Group.find(params[:work_group_id])
-
+    authorize!(:members, @group)
     @invitation = Group::DoInvitation.new()
   end
 

@@ -22,7 +22,8 @@ class Group::EmailInvitationsController < ApplicationController
             @ei.status = :accepted
             @ei.save
           else
-            redirect_to back, notice: t('group.email_invitations.error')
+            redirect_to back, alert: t('group.email_invitations.error')
+            return
           end
           redirect_to group_work_group_path(@group), notice: t('group.email_invitations.member')
       end
