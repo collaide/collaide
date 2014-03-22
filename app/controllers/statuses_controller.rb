@@ -1,6 +1,7 @@
 class StatusesController < ApplicationController
 
   before_action :status_params
+  load_and_authorize_resource class: Status
 
   def create
     raise  ActiveRecord::UnknownAttributeError unless status_params[:klass]

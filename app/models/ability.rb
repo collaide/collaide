@@ -71,15 +71,33 @@ class Ability
     can :show, Group::WorkGroup do |wg|
       wg.can? :index, :activity, user
     end
-    can :edit, Group::WorkGroup do |wg|
-      member = Group::GroupMember.get_a_member(wg, user)
+    can :update, Group::WorkGroup do |wg|
+      member = Group::GroupMember.get_a_member(user, wg)
       !member.nil? and member.admin?
     end
     can :members, Group::WorkGroup do |wg|
       wg.can? :index, :members, user
     end
-    can :index, Status do |status|
-      #TODO Gérer le polymorphisme avec cancan (cf doc)
+    can [:show, :index], Status, :group do |status|
+      polymorphic_status status, user, :index, :statuses
+    end
+    can [:create, :update], Status do |status|
+      polymorphic_status status, user, :write, :status
+    end
+    can [:update, :destroy], Group::EmailInvitation do |e_invitation|
+      e_invitation.group_group.can? :manage, :invitations, user
+    end
+    can :create, Group::Invitation do |invitation|
+      invitation.group.can? :create, :invitation, user
+    end
+    can [:update, :destroy], Group::Invitation do |invitation|
+      invitation.group.can? :manage, :invitations, user
+    end
+  end
+
+  def polymorphic_status(status, user, action, subject)
+    if status.owner.is_a? Group::WorkGroup
+      status.owner.can? action, subject, user
     end
   end
 
