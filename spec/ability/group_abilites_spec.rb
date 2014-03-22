@@ -80,5 +80,21 @@ describe 'abilities of' do
         it { should be_able_to :destroy, invitation }
       end
     end
+    describe 'when a user is member of the group he ' do
+      before(:each) do
+        work_group.add_members user, role: Group::Roles::MEMBER
+        work_group.save
+        status.owner = work_group
+        status.save
+        invitation.group = work_group
+        email_invitation.group_group = work_group
+        invitation.save
+        email_invitation.save
+      end
+      context 'reads a status and creates an invitation' do
+        it { should be_able_to :index, status}
+        it { should be_able_to :create, invitation}
+      end
+    end
   end
 end

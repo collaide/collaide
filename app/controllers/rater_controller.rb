@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class RaterController < ApplicationController:w
+class RaterController < ApplicationController
   def create
     if current_user.present?
       obj = eval "#{params[:klass]}.find(#{params[:id]})"

@@ -6,6 +6,7 @@
 #  email          :string(255)
 #  message        :text
 #  secret_token   :string(255)
+#  status         :string(255)
 #  group_group_id :integer
 #  user_id        :integer
 #

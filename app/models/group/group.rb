@@ -7,6 +7,9 @@
 #  name                   :string(255)
 #  password               :string(255)
 #  type                   :string(255)
+#  can_index_activity     :string(255)
+#  can_delete_group       :string(255)
+#  can_read_status        :string(255)
 #  can_index_members      :string(255)
 #  can_read_member        :string(255)
 #  can_delete_member      :string(255)
@@ -187,13 +190,13 @@ class Group::Group < ActiveRecord::Base
   def can?(can_action, can_type, actor)
     member_actor = (actor.is_a?(Group::GroupMember) ? actor : Group::GroupMember.get_a_member(actor, self))
     if member_actor.nil?
-      can_do(can_action, can_type).empty? ? true : false
+      can_do(can_action, can_type).empty?
     elsif member_actor.role.to_sym == :admin
       true
     elsif member_actor.role.to_sym == :all and can_do(can_action, can_type).empty?
       true
     else
-      can_do(can_action, can_type).include?(member.role.to_sym)
+      can_do(can_action, can_type).include?(member_actor.role.to_sym)
     end
   end
 
