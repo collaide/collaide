@@ -3,7 +3,6 @@
     .large-1.columns.hide-for-small
       %p=image_tag activity.owner.avatar if activity.owner
     .large-11.columns
-      =link_to activity.owner.name, activity.owner if activity.owner
       =yield
       %cite
         -if activity.key == 'group_work_group.create'

@@ -1,4 +1,4 @@
-="#{t'activity.status.create'}"
+=raw(t('activity.status.create', owner: link_to(h(activity.owner.name), activity.owner)))
 - if activity.trackable
   -##{link_to activity.trackable.name, activity.trackable}.
 - else
