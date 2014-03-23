@@ -5,8 +5,8 @@ class StaticPagesController < ApplicationController
       # it takes I18n.locale from the previous example set_locale as before_filter in application controller
       redirect_to eval("root_#{I18n.locale}_path")
     end
-    @documents = Document::Document.valid.order('created_at DESC').limit(5).all
-    @ads = Advertisement::Advertisement.order('created_at DESC').limit(5).includes(:book).all
+    @documents = Document::Document.valid.order('created_at DESC').limit(5).to_a
+    @ads = Advertisement::Advertisement.order('created_at DESC').limit(5).includes(:book).to_a
     @activities = Activity::Activity.order("created_at desc")
     @site_news = SiteNew.new
     add_breadcrumb(t('static_pages.home.bc'))

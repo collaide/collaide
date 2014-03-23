@@ -26,8 +26,6 @@
 # -*- encoding : utf-8 -*-
 class Advertisement::Advertisement < ActiveRecord::Base
 
-  #include PublicActivity::Common
-
   validates_presence_of :title
 
   #Liaisons

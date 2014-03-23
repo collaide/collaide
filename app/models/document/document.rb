@@ -26,8 +26,6 @@
 # -*- encoding : utf-8 -*-
 class Document::Document < ActiveRecord::Base
 
-  #include PublicActivity::Common
-
   extend Enumerize
   include Concerns::Letsrate_2
 

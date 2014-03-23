@@ -39,8 +39,6 @@ class Group::Group < ActiveRecord::Base
 
   has_repository
 
-  #include PublicActivity::Common
-
   serialize :can_index_activity, Array
 
   serialize :can_delete_group, Array

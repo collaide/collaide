@@ -6,7 +6,7 @@ class AdvertisementNotifications < NotificationSystem::AbstractClass
     advertisement = Advertisement::Advertisement.find ad_id
     raw I18n.t(
         'notifications.advertisements.create_for_admin',
-        user: h(advertisement.user.to_s),
+        user: link_to(h(advertisement.user.to_s), advertisement.user),
         ad: link_to(h(advertisement.title), RailsAdmin::Engine.routes.url_helpers.edit_path('Advertisement::Advertisement', ad_id)))
   end
 
@@ -14,7 +14,7 @@ class AdvertisementNotifications < NotificationSystem::AbstractClass
     advertisement = Advertisement::Advertisement.find ad_id
     raw I18n.t(
         'notifications.advertisements.create_for_user',
-        title: link_to(h(advertisement.title), advertisements_advertisement_path(document))
+        title: link_to(h(advertisement.title), advertisement_advertisement_path(advertisement))
     )
   end
 end
