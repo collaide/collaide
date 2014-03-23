@@ -471,6 +471,7 @@ GEM
     uuidtools (2.1.4)
     vegas (0.1.11)
       rack (>= 1.0.0)
+    virb (0.1.1)
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.0.7)
@@ -564,4 +565,5 @@ DEPENDENCIES
   turbolinks
   uglifier (~> 2.4.0)
   ui_datepicker-rails3
+  virb
   whenever
