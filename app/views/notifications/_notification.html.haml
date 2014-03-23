@@ -1,0 +1,21 @@
+.row.conversation_index
+  -if notification.is_viewed?
+    -unread = 'read'
+  -else
+    -unread = 'unread'
+  .small-12.columns
+    %blockquote.message{class:unread}
+      .row
+        .large-1.columns
+          %a{href: user_path(notification.user),class: 'th'}
+            =image_tag notification.user.avatar
+        .large-11.columns
+          =notification.print_message
+          %cite
+            %span{title: l(notification.created_at, format: :long)}
+              =t'messages.show.since'
+              =time_ago_in_words(notification.created_at)
+%hr/
+-# Une fois affiché, on dit qu'elle a été vue.
+-notification.is_viewed = true
+-notification.save

@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
     end
     @documents = Document::Document.valid.order('created_at DESC').limit(5).to_a
     @ads = Advertisement::Advertisement.order('created_at DESC').limit(5).includes(:book).to_a
-    @activities = Activity::Activity.order("created_at desc")
+    @activities = Activity::Activity.order("created_at desc").limit(6)
     @site_news = SiteNew.new
     add_breadcrumb(t('static_pages.home.bc'))
   end
