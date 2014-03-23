@@ -33,6 +33,7 @@
   .row
     #breadcrumb.columns.small-12
       = render_breadcrumbs :builder => ::FoundationBreadcrumbsBuilder, :separator => "&raquo;"
+  #flash-msg
   -unless flash.empty?
     .row
       .columns.small-12
@@ -47,4 +48,4 @@
     = render 'layouts/footer'
 
   = javascript_include_tag 'application'
-  =content_for :spine
+  =content_for :get_repo_items

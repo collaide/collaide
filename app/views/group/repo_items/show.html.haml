@@ -1,5 +1,5 @@
 -content_for :title, t('group.repository.title_page', group: @group.name)
-
+-get_repo_items('true')
 =render(:layout => 'group/layouts/layout') do
   %h1= t('group.repository.title_page', group: @group.name)
   %ul.breadcrumbs
@@ -7,15 +7,18 @@
     -@repo_item.path.each do |path|
       %li=link_to path.name, group_work_group_repo_item_path(@group, path)
   .row
-    .large-6.columns
+    .small-12.columns
       .panel
-        -if @children.empty?
-          %p=t'repository_manager.empty.repo_folder'
-        -else
-          =render partial: 'repo_item', locals: {object: @group}, collection: @children
-    .large-6.columns
-      .panel
-        %h5.panel-subtitle= t'repository_manager.form.new.repo_file.title'
-        =render 'form_file', object: @group, repo_item: @repo_item
-        %h5.panel-subtitle= t'repository_manager.form.new.repo_folder.title'
-        =render 'form_folder', object: @group, repo_item: @repo_item
+        .row
+          .large-6.columns
+            %h5.panel-subtitle= t'repository_manager.form.new.repo_file.title'
+            =render 'form_file', object: @group, repo_item: @repo_item
+          .large-6.columns
+            %h5.panel-subtitle= t'repository_manager.form.new.repo_folder.title'
+            =render 'form_folder', object: @group, repo_item: @repo_item
+    .small-12.columns
+      .panel#panel-items
+        -#-if @children.empty?
+        -#  %p=t'repository_manager.empty.repo_folder'
+        -#-else
+        -#  =render partial: 'repo_item', locals: {object: @group}, collection: @children

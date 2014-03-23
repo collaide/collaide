@@ -1,20 +1,22 @@
 -content_for :title, t('group.repository.title_page', group: @group.name)
--use_spine
+-get_repo_items
 =render(:layout => 'group/layouts/layout') do
   %h1= t('group.repository.title_page', group: @group.name)
-  #url= 'qqq'
   %ul.breadcrumbs
     %li=link_to t('group.work_groups.menu.repository'), group_work_group_repo_items_path(@group)
   .row
-    .large-6.columns
+    .small-12.columns
       .panel
-        -if @repo_item.empty?
-          %p=t'group.groups.repo_item.empty.root'
-        -else
-          =render partial: 'repo_item', locals: {object: @group}, collection: @repo_item
-    .large-6.columns
-      .panel
-        %h5.panel-subtitle= t'repository_manager.form.new.repo_file.title'
-        =render 'form_file', object: @group, repo_item: nil
-        %h5.panel-subtitle= t'repository_manager.form.new.repo_folder.title'
-        =render 'form_folder', object: @group, repo_item: nil
+        .row
+          .large-6.columns
+            %h5.panel-subtitle= t'repository_manager.form.new.repo_file.title'
+            =render 'form_file', object: @group, repo_item: nil
+          .large-6.columns
+            %h5.panel-subtitle= t'repository_manager.form.new.repo_folder.title'
+            =render 'form_folder', object: @group, repo_item: nil
+    .small-12.columns
+      .panel#panel-items
+        -#-if @repo_item.empty?
+        -#  %p=t'group.groups.repo_item.empty.root'
+        -#-else
+        -#  =render partial: 'repo_item', locals: {object: @group}, collection: @repo_item

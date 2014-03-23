@@ -100,9 +100,11 @@ gem 'mini_magick'
 
 gem 'whenever', require: false
 
-gem 'eco'
-gem 'spine-rails'
-gem 'json2-rails'
+gem 'ejs'
+#gem 'spine-rails'
+#gem 'json2-rails'
+
+gem 'jquery-form-rails', '~> 1.0.1'
 
 group :development, :test do
   gem 'virb'
