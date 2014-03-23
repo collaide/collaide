@@ -10,7 +10,7 @@ class Advertisement::SaleBooksController < ApplicationController
   #add_breadcrumb I18n.t(""),  :advertisement_sale_books_path
 
   add_breadcrumb I18n.t("advertisements.new.title"), :new_advertisement_advertisement_path, :only => %w(new create)
-  add_breadcrumb I18n.t("sale_books.new.title"), :new_advertisement_sale_book_path, :only => %w(new create)
+  add_breadcrumb I18n.t("sale_books.new.title_page"), :new_advertisement_sale_book_path, :only => %w(new create)
 
   # GET /advertisement/sale_books/1
   # GET /advertisement/sale_books/1.json

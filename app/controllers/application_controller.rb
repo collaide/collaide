@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
   before_action :get_documents
+  before_action :get_notification_and_message_count
+
 
   #rescue_from ActionController::RoutingError, :with => :render_not_found
 
@@ -119,6 +121,13 @@ class ApplicationController < ActionController::Base
 
   def get_documents
     @footer_document = Document::Document.valid.order('created_at DESC').limit(6).all
+  end
+
+  def get_notification_and_message_count
+    if current_user
+      @nb_notifications = current_user.notifications.where(is_viewed: false).count
+      @nb_messages = current_user.mailbox.inbox.includes(:receipts).where('receipts.is_read' => false).count
+    end
   end
 
   def current_ability

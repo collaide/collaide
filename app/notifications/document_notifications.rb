@@ -5,9 +5,9 @@ class DocumentNotifications < NotificationSystem::AbstractClass
     document = Document::Document.find doc_id
     raw I18n.t(
         'notifications.documents.create_for_admin',
-        user: h(document.user.to_s),
-        title: h(document.title),
-        link: link_to(I18n.t('notifications.link'), edit_admin_document_document_path(document)))
+        user: link_to(h(document.user.to_s), user_path(document.user)),
+        title: link_to(h(document.title), document_document_path(document)),
+        link: link_to(I18n.t('notifications.link'), RailsAdmin::Engine.routes.url_helpers.edit_path('Document::Document', doc_id)))
   end
 
   def create_for_user(doc_id)

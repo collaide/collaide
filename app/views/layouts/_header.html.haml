@@ -20,7 +20,15 @@
     %ul.right
       %li.divider.hide-for-small
       - if user_signed_in?
-        %li= link_to t('header.inbox'), messages_path
+        -alert_notification = ''
+        -if @nb_notifications > 0
+          -alert_notification = "(#{@nb_notifications})"
+        -alert_message = ''
+        -if @nb_messages > 0
+          -alert_message = "(#{@nb_messages})"
+        %li.green= link_to "#{t('header.notifications')} #{alert_notification}", notifications_path
+        %li.divider.hide-for-small
+        %li= link_to "#{t('header.inbox')} #{alert_message}", messages_path
         %li.divider.hide-for-small
         %li= link_to current_user.to_s, current_user
         %li.divider.hide-for-small

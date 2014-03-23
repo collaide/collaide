@@ -11,10 +11,10 @@ class Document::DocumentObserver < ActiveRecord::Observer
     DocumentNotifications.perform_later(
         :create_for_admin, #la méthode de la notif
         [document.id], # les paramètres de la notification
-        user_role: 'super_admin',# on notifie les super-admin
-        user_roles: %w[doc_validator admin],# On notifie les admin et les validateurs de documents
+        'user_role' => 'super_admin',# on notifie les super-admin
+        'user_roles' => %w[doc_validator admin],# On notifie les admin et les validateurs de documents
     )
-    DocumentNotifications.perform_later :create_for_user, [document.id], user: document.user.id
+    DocumentNotifications.perform_later :create_for_user, [document.id], 'user'=> document.user.id
     UserNotificationsMailer.document_created(document.id).deliver # On envoi un e-mail à celui qui à déposé le document.
   end
 
@@ -24,7 +24,7 @@ class Document::DocumentObserver < ActiveRecord::Observer
       DocumentNotifications.perform_later(
           :valid_document,
           [document.id],
-          user: document.user.id
+          'user' => document.user.id
       )
     end
   end
