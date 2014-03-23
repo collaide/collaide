@@ -41,15 +41,28 @@ $ ->
     $('#repo_folder_name').val('')
     Utils.loaded()
   ).on('ajax:error', (data, xhr, status, e) ->
-    $('#flash-msg').html('')
     Utils.flash('alert', msg) for msg in xhr.responseJSON.repo_items
   )
   $('#repo_file_file').on('change', (e) ->
+    console.log(e.target.files[0])
+    $('#progress-bar').show()
+    $('#progress-bar-text').text("Téléchargement du fichier '#{e.target.files[0].name}'")
     $('#file-uploader').ajaxSubmit({
       beforeSubmit: (a, f, o) ->
         o.dataType = 'json'
-      complete: (XMLHttpRequest, status) ->
-        alert('salut')
+      clearForm: true,
+      resetForm: true,
+      error: (xhr, status) ->
+        Utils.flash('alert', msg) for msg in xhr.responseJSON.repo_items
+      success: (xhr, status) ->
+        Utils.add_item(xhr)
+        Utils.loaded()
+      uploadProgress: (event, position, total, percent) ->
+        console.log("p=#{position}, tot=#{total}, perc=#{percent}")
+        $('#progress-bar-meter').css('width', "#{percent}%")
+      complete: () ->
+        $('#progress-bar').hide()
+        $('#progress-bar-meter').css('width', "#0%")
     })
   )
 #  $('#file-uploader').on('ajax:success', (e, data, status, xhr) ->

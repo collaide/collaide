@@ -133,6 +133,7 @@ gem 'foundation-icons-sass-rails'
 #gem 'sqlite3', '1.3.6'
 
 group :test do
+  gem 'sqlite3'
   gem 'capybara', '1.1.2'
   gem 'factory_girl_rails', '4.1.0'
   gem 'cucumber-rails', '1.2.1', :require => false

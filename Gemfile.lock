@@ -428,6 +428,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    sqlite3 (1.3.8)
     sshkit (1.3.0)
       net-scp (>= 1.1.2)
       net-ssh
@@ -554,6 +555,7 @@ DEPENDENCIES
   select2-rails
   simple_form
   spork-rails
+  sqlite3
   thinking-sphinx (= 3.0.6)
   turbolinks
   uglifier (~> 2.4.0)
