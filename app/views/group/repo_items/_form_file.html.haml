@@ -1,9 +1,16 @@
 =form_tag(create_file_group_work_group_repo_items_path(object, format: :json), :method => :post, multipart: true, remote: true, id: 'file-uploader') do
   .row
-    .large-6.columns
+    .small-12.columns
       =file_field_tag 'repo_file[file]'
-    .large-6.columns
-      =submit_tag(t('repository_manager.form.new.repo_file.submit'), class: "button tiny", id: 'submit-file-form')
+    .small-12.columns
+      .row.hide#progress-bar
+        .columns.large-7
+          %p#progress-bar-text Téléchargement de 'Img_123123.jpg'
+        .columns.large-5
+          .progress
+            %span#progress-bar-meter.meter{style: 'width: 0%'}
+      %noscript
+        =submit_tag(t('repository_manager.form.new.repo_file.submit'), class: "button tiny", id: 'submit-file-form')
   -#=hidden_field_tag("object[class]", object.class.base_class.to_s)
   -#=hidden_field_tag("object[id]", object.id)
   =hidden_field_tag 'authenticity_token', form_authenticity_token

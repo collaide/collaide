@@ -21,6 +21,7 @@
 //= require tree.jquery
 //= require foundation
 //= require select2
+//= require jquery.form
 //= require_tree .
 
 $(document).foundation();
