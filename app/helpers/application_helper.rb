@@ -1,6 +1,12 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
 
+  def use_spine
+    content_for :spine do
+      javascript_include_tag 'include_spine'
+    end
+  end
+
   def full_title(page_title, sep = ' - ')
     options = {}
     options[:prepend] = t :app_name

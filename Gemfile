@@ -102,8 +102,10 @@ gem 'whenever', require: false
 
 gem 'eco'
 gem 'spine-rails'
+gem 'json2-rails'
 
 group :development, :test do
+  gem 'virb'
   gem 'commands'
   gem 'rspec-rails'
   gem 'guard-rspec'
