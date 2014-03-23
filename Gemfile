@@ -102,6 +102,7 @@ gem 'whenever', require: false
 
 gem 'eco'
 gem 'spine-rails'
+gem 'json2-rails'
 
 group :development, :test do
   gem 'commands'
