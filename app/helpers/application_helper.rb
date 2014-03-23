@@ -1,9 +1,9 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
 
-  def use_spine
-    content_for :spine do
-      javascript_include_tag 'include_spine'
+  def get_repo_items(show = 'false')
+    content_for :get_repo_items do
+      "<script>$(function() {RepoItem.start(#{show})});</script>".html_safe
     end
   end
 

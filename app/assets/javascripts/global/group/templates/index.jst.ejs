@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="columns small-12">
+        <ul class="no-bullet" id="items">
+            <% for(item in repo_items) {%>
+                <%= JST['global/group/templates/item']({item: repo_items[item]}) %>
+            <%} %>
+        </ul>
+    </div>
+</div>

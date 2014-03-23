@@ -1,10 +1,9 @@
-=form_tag(create_folder_group_work_group_repo_items_path(object), :method => :post) do
+=form_tag(create_folder_group_work_group_repo_items_path(object, format: :json), :method => :post, remote: true, id: 'form_folder') do
   .row
     .large-6.columns
       =text_field_tag('repo_folder[name]', nil, placeholder: t('repository_manager.models.repo_folder.name'))
     .large-6.columns
       =submit_tag(t('repository_manager.form.new.repo_folder.submit'), class: "button tiny")
-  =hidden_field_tag("folder_url", create_folder_group_work_group_repo_items_path(object))
   -#=hidden_field_tag("object[id]", object.id)
   -if repo_item
     =hidden_field_tag('repo_folder[id]', repo_item.id)

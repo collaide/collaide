@@ -1,0 +1,63 @@
+<li id="item-<%= item.id %>" class="an-item">
+    <div class="row">
+        <div class="small-4 columns">
+            <%if(item.is_folder) {%>
+            <i class="fi-folder"/>
+            <a href="<%= item.url %>"><%= item.name %></a>
+            <%} else {%>
+            <i class="fi-download"/>
+            <a href="<%= item.download %>"><%= item.name %></a>
+            <% } %>
+        </div>
+        <div class="small-8 columns">
+            <ul class="button-group">
+            <%if(item.is_folder) {%>
+                <li>
+                    <a class="button small secondary button-item" href="<%= item.download %>">
+                    <i class="fi-download"/>Télécharger
+                </a>
+                </li>
+                <%} else {%>
+
+                <li>
+                    <a class="button small secondary button-item" href="<%= item.url %>">
+                    <i class="fi-eye"/>
+                    Afficher
+                </a>
+                </li>
+                <% } %>
+                <li>
+                    <a class="button small secondary button-item" href="#">
+                    <i class="fi-share"/>
+                    Partager
+                </a>
+                </li>
+                <li>
+                    <a class="button small secondary button-item" href="<%= item.url %>.json" data-method="delete" data-remote="true" rel="nofollow">
+                    <i class="fi-x"/>
+                    Supprimer
+                </a>
+                </li>
+                <li>
+                    <a class="button small secondary button-item" href="<%= item.copy %>.json" data-remote="true">
+                        <i class="fi-page-copy"/>
+                        Copier
+                    </a>
+                </li>
+                <li>
+                    <a class="button small secondary button-item" href="<%= item.move %>.json" data-remote="true">
+                        <i class="fi-page-remove"/>
+                        Déplacer
+                    </a>
+                </li>
+                <li>
+                    <a class="button small secondary button-item" href="#" data-href="<%= item.rename %>.json" data-remote="true">
+                        <i class="fi-page-remove"/>
+                        Renommer
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr/>
+</li>

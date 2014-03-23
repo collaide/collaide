@@ -138,11 +138,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n-views (0.2.8)
     diff-lcs (1.2.5)
-    eco (1.0.0)
-      coffee-script
-      eco-source
-      execjs
-    eco-source (1.1.0.rc.1)
+    ejs (1.1.1)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
@@ -506,7 +502,7 @@ DEPENDENCIES
   date_validator
   devise
   devise-i18n-views
-  eco
+  ejs
   enumerize
   factory_girl_rails (= 4.1.0)
   faker (= 1.0.1)

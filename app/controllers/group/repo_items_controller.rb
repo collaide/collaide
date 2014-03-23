@@ -108,7 +108,7 @@ class Group::RepoItemsController < ApplicationController
     respond_to do |format|
       if @group.delete_repo_item(@repo_item)
         format.html { redirect_to :back, notice: notice }
-        format.json { render :show, status: :ok }
+        format.json { render json: {notice: notice} }
       else
         format.html { redirect_to :back, alert: notice_failed }
         format.json { render json: repo_item.errors, status: :unprocessable_entity}
