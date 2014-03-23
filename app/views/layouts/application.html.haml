@@ -25,11 +25,20 @@
   = csrf_meta_tag
 
 %body
-  / Vous êtes programmateur, webdesigner, graphiste, ou autre ? rejoignez l'équipe de collaide! ==> contact@collaide.com
+  / Vous êtes programmateur, webdesigner, graphiste, ou autre ? rejoignez l'équipe de collaide ! ==> contact@collaide.com
   = render 'layouts/header'
   .row
     .columns.small-12
       %p
+  .row
+    .columns.small-1
+    .columns.small-11
+  -if current_user
+    #user-persistent-menu
+      %h6 Mes groupes
+      %ul
+        -current_user.groups.each do |g|
+          %li=link_to g.name, g
   .row
     #breadcrumb.columns.small-12
       = render_breadcrumbs :builder => ::FoundationBreadcrumbsBuilder, :separator => "&raquo;"

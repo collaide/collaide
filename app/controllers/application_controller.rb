@@ -13,15 +13,15 @@ class ApplicationController < ActionController::Base
   end
 
   before_action :set_locale
+
+    #rescue_from ActionController::RoutingError, :with => :render_not_found
+
+  before_action :store_location
+  before_action :current_ability
+
   before_action :get_documents
   before_action :get_notification_and_message_count
 
-
-  #rescue_from ActionController::RoutingError, :with => :render_not_found
-
-  before_action :store_location
-
-  before_action :current_ability
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
@@ -120,7 +120,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_documents
-    @footer_document = Document::Document.valid.order('created_at DESC').limit(6).all
+    @footer_document = Document::Document.valid.order('created_at DESC').limit(6).to_a
   end
 
   def get_notification_and_message_count
