@@ -2,7 +2,7 @@
 class Advertisement::SaleBooksController < ApplicationController
   load_and_authorize_resource class: Advertisement::SaleBook
 
-  include BooksHelper
+  include BooksHelper, Concerns::ActivityConcern
 
   #breadcrumb
   add_breadcrumb I18n.t("advertisements.index.breadcrumb"),  :advertisement_advertisements_path
@@ -99,7 +99,7 @@ class Advertisement::SaleBooksController < ApplicationController
     @advertisement_sale_book.user = current_user
     #
     respond_to do |format|
-      if @advertisement_sale_book.save && @advertisement_sale_book.create_activity(:create, owner: current_user)
+      if @advertisement_sale_book.save && create_activity(:create, trackable: @advertisement_sale_book, owner: current_user)
         format.html { redirect_to @advertisement_sale_book, notice: t('sale_books.new.forms.succes') }
         format.json { render json: @advertisement_sale_book, status: :created, location: @advertisement_sale_book }
       else

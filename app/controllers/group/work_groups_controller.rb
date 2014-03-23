@@ -2,6 +2,8 @@
 class Group::WorkGroupsController < ApplicationController
   load_and_authorize_resource class: Group::WorkGroup
 
+  include Concerns::ActivityConcern
+
   #breadcrumb
   add_breadcrumb I18n.t("group.groups.index.breadcrumb"),  :group_groups_path
 
@@ -12,7 +14,7 @@ class Group::WorkGroupsController < ApplicationController
   # GET /group/work_groups/1.json
   def show
     @group = Group::WorkGroup.find(params[:id])
-    @activities = PublicActivity::Activity.order("created_at desc").where('(trackable_id = ? AND trackable_type = ?) OR (recipient_id = ? AND recipient_type = ?)', @group.id,  @group.class.base_class.to_s, @group.id,  @group.class.base_class.to_s)
+    @activities = Activity::Activity.order("created_at desc").where('(trackable_id = ? AND trackable_type = ?) OR (recipient_id = ? AND recipient_type = ?)', @group.id,  @group.class.base_class.to_s, @group.id,  @group.class.base_class.to_s)
 
     add_breadcrumb @group.name, group_work_group_path(@group)
     respond_to do |format|
@@ -50,7 +52,7 @@ class Group::WorkGroupsController < ApplicationController
     @group_work_group.user = current_user
 
     respond_to do |format|
-      if @group_work_group.save && @group_work_group.create_activity(:create, owner: current_user)
+      if @group_work_group.save && create_activity(:create, trackable: @group_work_group, owner: current_user)
 
         # On ajoute le créateur en tant que ADMIN
         @group_work_group.add_members(current_user, role: Group::Roles::ADMIN)
@@ -72,7 +74,7 @@ class Group::WorkGroupsController < ApplicationController
     @group_work_group = Group::WorkGroup.find(params[:id])
 
     respond_to do |format|
-      if @group_work_group.update_attributes(params[:group_work_group]) && @group_work_group.create_activity(:update, owner: current_user)
+      if @group_work_group.update_attributes(params[:group_work_group]) && create_activity(:update, trackable: @group_work_group, owner: current_user)
         format.html { redirect_to @group_work_group, notice: t('group.work_groups.edit.forms.success') }
         format.json { head :no_content }
       else

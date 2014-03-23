@@ -4,6 +4,7 @@ class NotificationSystem::Save
   @queue = 'user_notifications'
 
   def self.perform(class_name, method_name, values, owners)
+    puts '----------------------------------------------------------------------------'
     user_id = owners['user']
     users_ids = owners['users']
     user_role = owners['user_role']

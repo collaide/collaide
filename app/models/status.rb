@@ -17,7 +17,7 @@
 class Status < ActiveRecord::Base
 
   acts_as_commentable
-  include PublicActivity::Common
+  #include PublicActivity::Common
 
   belongs_to :owner, polymorphic: true, inverse_of: :statuses
   belongs_to :writer, polymorphic: true

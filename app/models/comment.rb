@@ -16,7 +16,7 @@
 
 class Comment < ActiveRecord::Base
 
-  include PublicActivity::Common
+  #include PublicActivity::Common
 
   include ActsAsCommentable::Comment
 

@@ -2,6 +2,8 @@
 class Group::GroupsController < ApplicationController
   load_and_authorize_resource class: Group::Group
 
+  include Concerns::ActivityConcern
+
   #breadcrumb
   add_breadcrumb I18n.t("group.groups.index.breadcrumb"),  :group_groups_path
 
@@ -18,7 +20,7 @@ class Group::GroupsController < ApplicationController
 
   def destroy
     @group = Group::Group.find params[:id]
-    @group.create_activity(:destroy, owner: current_user, params: {name: @group.name})
+    create_activity(:destroy, trackable: @group, owner: current_user, params: {name: @group.name})
     @group.destroy()
     redirect_to group_groups_path, notice: t('group.destroy.notice')
   end
