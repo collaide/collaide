@@ -24,7 +24,7 @@ class UserNotification < ActiveRecord::Base
   validates_presence_of :values
   validates_presence_of :user
 
-  default_scope order(:created_at => :desc)
+  default_scope { order(:created_at => :desc) }
 
   def print_message
     klass = class_name.constantize.new
