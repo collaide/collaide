@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Group::RepoItemsController < ApplicationController
-  load_and_authorize_resource class: RepositoryManager::RepoItem
+  #load_and_authorize_resource class: RepositoryManager::RepoItem
   before_action :find_the_group
   before_action :find_the_repo, only: [:download, :copy, :move, :rename]
 
