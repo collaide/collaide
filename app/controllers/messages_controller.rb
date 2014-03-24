@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class MessagesController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
   add_breadcrumb I18n.t("messages.index.breadcrumb"), :messages_path
   add_breadcrumb I18n.t("messages.new.h1_title"), :new_message_path, :only => %w(new create)
@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
 
 #Cette methode sert juste à traiter la réponse, elle n'aura pas de vue
   def reply
-    c = Conversation.find(params[:conversation])
+    c = Mailboxer::Conversation.find(params[:conversation])
     unless c
       redirect_to :messages, alert: t('messages.reply.no_conversation') and return
     end
@@ -55,7 +55,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.find(params[:id])
+    @conversation = Mailboxer::Conversation.find(params[:id])
     @receipts = @conversation.receipts_for current_user
     p @receipts
     add_breadcrumb @conversation.subject
