@@ -65,5 +65,15 @@ class CreateGroupModule < ActiveRecord::Migration
     #  t.belongs_to :group_invitation, index:true
     #end
     #add_index :group_invitation_receivers, :receiver_id, name: :invitation_receiver_index
+
+    create_table :group_email_invitations do |t|
+      t.string :email
+      t.text :message
+      t.string :secret_token
+      t.string :status
+      t.belongs_to :group_group
+      t.belongs_to :user
+    end
+
   end
 end
