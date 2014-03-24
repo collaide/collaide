@@ -55,7 +55,7 @@ class Ability
       can :manage, Document::Document, user_id: user.id #uniquement les documents créés par l'utilisateur
       can :manage, Advertisement::Advertisement, user_id: user.id #uniquement les annonces créées par l'utilisateur
       # TODO Gérer les messages avec le firewall
-      can :manage, Message#, user_id: user.id #uniquement les messages de l'utilisateur
+      #can :manage, Message#, user_id: user.id #uniquement les messages de l'utilisateur
       can :manage, UserNotification, user_id: user.id #uniquement les notifications de l'utilisateur
 
       can :create, Group::WorkGroup
