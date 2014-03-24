@@ -32,6 +32,7 @@ fr:
     group/group_member:
       joined_method:
         was_invited: sur invitation
+        was_invited_by_email: sur invitation par email
         was_added: par ajout de l'administrateur
         by_itself: pas sa propre initiative
       role:
