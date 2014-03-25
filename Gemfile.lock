@@ -17,6 +17,15 @@ GIT
       rake (>= 0.8.7)
 
 GIT
+  remote: git://github.com/mailboxer/mailboxer.git
+  revision: cdb826e16217fd610e8efda48becefe84632307d
+  specs:
+    mailboxer (0.11.0)
+      carrierwave (>= 0.5.8)
+      foreigner (>= 0.9.1)
+      rails (> 3.0.0)
+
+GIT
   remote: https://github.com/codahale/bcrypt-ruby.git
   revision: f167f92c702ea6b01a9995e3089f49b95c34eecb
   specs:
@@ -239,10 +248,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mailboxer (0.11.0)
-      carrierwave (>= 0.5.8)
-      foreigner (>= 0.9.1)
-      rails (> 3.0.0)
     meta_request (0.2.8)
       callsite
       rack-contrib
@@ -527,7 +532,7 @@ DEPENDENCIES
   letsrate
   lorem-ipsum
   magic_encoding
-  mailboxer
+  mailboxer!
   meta_request
   mini_magick
   mysql2 (= 0.3.13)

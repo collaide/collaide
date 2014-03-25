@@ -19,19 +19,22 @@ Collaide::Application.routes.draw do
       get 'page/:page', action: :index, on: :collection
     end
 
-    resources 'messages' do
-      #post 'reply', action: :reply
-      collection do
-        get 'page/:page', action: :index
-        get 'sentbox', action: :sentbox
-        get 'trash', action: :trash
-        get 'all', action: :all
-        get 'contact-for/book/:id_book', action: :new, as: :contact_book
-        #get 'search', action: :search, as: 'search'
-        #get 'autocomplete', action: :autocomplete, as: 'autocomplete'
-      end
-    end
-    match 'reply', to: 'messages#reply', via: [:post]
+    resources :messages
+    resources :conversations
+
+    #resources 'messages' do
+    #  #post 'reply', action: :reply
+    #  collection do
+    #    get 'page/:page', action: :index
+    #    get 'sentbox', action: :sentbox
+    #    get 'trash', action: :trash
+    #    get 'all', action: :all
+    #    get 'contact-for/book/:id_book', action: :new, as: :contact_book
+    #    #get 'search', action: :search, as: 'search'
+    #    #get 'autocomplete', action: :autocomplete, as: 'autocomplete'
+    #  end
+    #end
+    #match 'reply', to: 'messages#reply', via: [:post]
 
     resources :advertisements, as: 'advertisement_advertisements', controller: 'advertisement/advertisements', :except => [:edit, :show] do
       collection do
