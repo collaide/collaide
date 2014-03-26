@@ -1,6 +1,6 @@
 <li id="item-<%= item.id %>" class="an-item">
     <div class="row">
-        <div class="small-4 columns">
+        <div class="small-4 columns item-name">
             <%if(item.is_folder) {%>
             <i class="fi-folder"/>
             <a href="<%= item.url %>"><%= item.name %></a>
@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="button small secondary button-item" href="#" data-href="<%= item.rename %>.json" data-remote="true">
+                    <a class="button small secondary button-item rename-item" href="#" data-id="<%= item.id%>" data-href="<%= item.rename %>.json">
                         <i class="fi-page-remove"/>
                         Renommer
                     </a>

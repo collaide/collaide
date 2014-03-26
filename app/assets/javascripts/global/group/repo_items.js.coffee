@@ -24,8 +24,45 @@ class Utils
     })
   @add_item: (item) ->
     $('#items').prepend(JST['global/group/templates/item']({item: item}))
+  @get_auth: ->
+    $('#authenticity_token').val()
+  @select_range: (e, start, end) ->
+    return unless e
+    if(e.setSelectionRange)
+      e.focus()
+      e.setSelectionRange(start, end)
+    else if(e.createTextRange)
+      range = e.createTextRange()
+      range.collapse(true)
+      range.moveEnd('character', end)
+      range.moveStart('character', start)
+      range.select();
+    else if(e.selectionStart)
+      e.selectionStart = start
+      e.selectionEnd = end
+
+
 
 $(document).on('repo_items:loaded', () ->
+  $('.rename-item').on('click', ()->
+    item = $("#item-#{$(this).attr('data-id')} .item-name")
+    previous_html = item.children()
+    item_value =  item.find('a').text()
+    item.html(JST['global/group/templates/rename']({value: item_value, auth: Utils.get_auth(), action: $(this).attr('data-href')}))
+    Utils.select_range($('#form-repo-item-name'), 0, 4)
+    $('.rename-item-form').on('ajax:success', (e, data) ->
+      previous_html.last().text(data.name)
+      item.html(previous_html)
+      item_name = 'fichier'
+      item_name = 'dossier' if data.is_folder
+      Utils.flash('notice', "Le #{item_name} a bien été renommé")
+    ).on('ajax:error', ->
+      Utils.flash('alert', 'Impossible de renommer')
+    )
+    $('.cancel-rename').on('click', () ->
+      item.html(previous_html)
+    )
+  )
   console.log 'loaded'
 
   $('a[data-method]').on('ajax:success', (e, data, status, xhr) ->
@@ -45,9 +82,10 @@ $ ->
   )
   $('#repo_file_file').on('change', (e) ->
     console.log(e.target.files[0])
-    $('#progress-bar').show()
-    $('#progress-bar-text').text("Téléchargement du fichier '#{e.target.files[0].name}'")
-    $('#file-uploader').ajaxSubmit({
+    $('#all-progress-bar').append(JST['global/group/templates/progress_bar']({text: "Déchargement du fichier '#{e.target.files[0].name}'"}))
+    elem = $('.progress-bar').last()
+
+    upload = $('#file-uploader').ajaxSubmit({
       beforeSubmit: (a, f, o) ->
         o.dataType = 'json'
       clearForm: true,
@@ -59,12 +97,13 @@ $ ->
         Utils.loaded()
       uploadProgress: (event, position, total, percent) ->
         console.log("p=#{position}, tot=#{total}, perc=#{percent}")
-        $('#progress-bar-meter').css('width', "#{percent}%")
+        elem.find('.progress-bar-meter').css('width', "#{percent}%")
+        if percent == 100
+          elem.html('<div class="columns small-12"><p>Traitement du fichier en cours<img src="/assets/loading.gif" width="50" height="50"/></p></div>')
       complete: () ->
-        $('#progress-bar').hide()
-        $('#progress-bar-meter').css('width', "#0%")
+        elem.remove()
+        console.log('fini')
     })
+    elem.find('.cancel-upload').click ->
+      upload.abort()
   )
-#  $('#file-uploader').on('ajax:success', (e, data, status, xhr) ->
-#    Utils.add_item(data)
-#  )
