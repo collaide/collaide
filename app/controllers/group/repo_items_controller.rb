@@ -121,8 +121,6 @@ class Group::RepoItemsController < ApplicationController
     target = do_request(copy_params[:id]) do  |id|
       RepositoryManager::RepoItem.find id
     end
-    logger.debug @repo_item.inspect
-    logger.debug target.inspect
     respond_to do |format|
       if @group.copy_repo_item(@repo_item, source_folder: target)
         format.json { render :show }

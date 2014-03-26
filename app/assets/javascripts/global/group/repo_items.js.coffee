@@ -44,6 +44,7 @@ class Utils
 
 
 $(document).on('repo_items:loaded', () ->
+  #renommer
   $('.rename-item').on('click', ()->
     item = $("#item-#{$(this).attr('data-id')} .item-name")
     previous_html = item.children()
@@ -63,8 +64,7 @@ $(document).on('repo_items:loaded', () ->
       item.html(previous_html)
     )
   )
-  console.log 'loaded'
-
+  #supprimer
   $('a[data-method]').on('ajax:success', (e, data, status, xhr) ->
     Utils.flash('notice', data.notice)
     $(this).parents('.an-item').remove()
@@ -73,6 +73,7 @@ $(document).on('repo_items:loaded', () ->
   )
 )
 $ ->
+  #créer un dossier
   $('#form_folder').on('ajax:success', (e, data, status, xhr) ->
     Utils.add_item(data)
     $('#repo_folder_name').val('')
@@ -80,6 +81,7 @@ $ ->
   ).on('ajax:error', (data, xhr, status, e) ->
     Utils.flash('alert', msg) for msg in xhr.responseJSON.repo_items
   )
+  #créer un fichier
   $('#repo_file_file').on('change', (e) ->
     console.log(e.target.files[0])
     $('#all-progress-bar').append(JST['global/group/templates/progress_bar']({text: "Déchargement du fichier '#{e.target.files[0].name}'"}))
