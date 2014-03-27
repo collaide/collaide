@@ -1,3 +1,5 @@
+-unless @group
+  -@group = Group::WorkGroup.new
 =simple_form_for(@group, html: {data_abide: true}) do |f|
   =f.error_notification
   .form-inputs

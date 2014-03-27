@@ -1,18 +1,33 @@
 -content_for :title, t('group.groups.index.title_page')
 %h1=t('group.groups.index.h1_title')
-=link_to t('group.groups.index.new_link'), new_group_group_path, class: 'button expand'
-
--if @group.empty?
-  %p= t 'group.groups.index.no_group'
--else
-  .row
-    .small-12.columns.paginate
-      =paginate @group
-    .small-12.columns#groups
-      %ul.large-block-grid-2
-        -@parity=0
-        -@group.each do |g|
-          %li= link_to g.name, g
-        -#=render @group
-    .small-12.columns.paginate
-      =paginate @group
+-#=link_to t('group.groups.index.new_link'), new_group_group_path, class: 'button expand'
+%blockquote= t 'group.groups.index.description'
+.row
+  .columns.large-6
+    .panel
+      %h3.panel-subtitle= t 'group.groups.index.title_panel_create'
+      =render "/group/work_groups/form", edit: false
+  .columns.large-6
+    .panel
+      %h4.panel-subtitle= t 'group.groups.index.title_panel_last'
+      -if @groups.empty?
+        %p= t 'group.groups.index.no_group'
+      -else
+        %ul.large-block-grid-2
+          -@parity=0
+          -@groups.each do |g|
+            %li= link_to g.name, g
+-#-if @groups.empty?
+-#  %p= t 'group.groups.index.no_group'
+-#-else
+-#  .row
+-#    .small-12.columns.paginate
+-#      =paginate @groups
+-#    .small-12.columns#groups
+-#      %ul.large-block-grid-2
+-#        -@parity=0
+-#        -@groups.each do |g|
+-#          %li= link_to g.name, g
+-#        -#=render @group
+-#    .small-12.columns.paginate
+-#      =paginate @groups

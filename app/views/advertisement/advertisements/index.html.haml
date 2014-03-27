@@ -2,7 +2,7 @@
 .row
   .small-12.large-9.columns
     %h1#ads-index-title= t 'advertisements.index.title'
-    %blockquote Besoin d'un livre ? vous êtes au bon endroit. Trop de vieux livres ? c'est parfait. Vendez-les !
+    %blockquote= t 'advertisements.index.description'
   .small-12.columns.large-3#new-book
     =link_to t('advertisements.index.new_link'), new_advertisement_advertisement_path, class: 'button expand'
 

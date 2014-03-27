@@ -391,6 +391,7 @@ fr:
       new_link: Publier une annonce
       no_advertisement: Il n'y a aucune annonce
       show: Plus de détails
+      description: Besoin d'un livre ? vous êtes au bon endroit. Trop de vieux livres ? c'est parfait. Vendez-les !
       hits: "Hits :"
       forms:
         search:
@@ -499,10 +500,15 @@ fr:
         description_meta: Liste de tous les groupes
         key_words: Groupe, groupes de travail, liste, créer
         title_page: Les groupes d'étudiants permettant de travailler entres étudiants
+        description: Les groupes de travail vous permettent en un clique de créer un espace de travail idéal pour une
+         classe, un projet de groupe, etc.. Vous pourrez très facilement communiquer avec vos collègues
+         mais aussi échanger vos fichiers et les commenter.
         h1_title: Les groupes
         breadcrumb: Les groupes
         new_link: Créer un groupe
         no_group: Il n'y actuellement aucun groupe
+        title_panel_last: Les derniers groupes
+        title_panel_create: Créez un groupe de travail
       new:
         title_page: Créer un groupe
         description: Restez en contact avec vos collègues de classe, votre école ou votre réseau universitaire ! Vous bénéficierez de nombreuses fonctionnalités pour échanger, discuter et travailler ensemble !

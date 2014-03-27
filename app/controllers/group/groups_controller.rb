@@ -14,7 +14,7 @@ class Group::GroupsController < ApplicationController
 
   def index
     # Pour changer le nombre d'éléments par page, ajouter .per(5) après la méthode page
-    @group = Group::Group.order('created_at DESC').page(params[:page])
+    @groups = Group::Group.order('created_at DESC').page(params[:page])
   end
 
 
