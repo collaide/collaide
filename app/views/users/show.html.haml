@@ -7,6 +7,6 @@
       =t'users.show.since'
       =time_ago_in_words(@user.created_at)
   %p=image_tag @user.avatar
-  Le membre a publié #{@user.advertisements.count} annonces
+  =t'users.show.posted_advertisement', nb: @user.advertisements.count
   %br
-  Il a envoyé #{@user.documents.count} documents
+  =t'users.show.posted_documents', nb: @user.documents.count

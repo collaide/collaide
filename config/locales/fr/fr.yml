@@ -655,6 +655,8 @@ fr:
       meta_title: Profil de %{user}
       breadcrumb: Profil de %{user}
       since: Inscrit il y a
+      posted_advertisement: Ce membre a publié %{nb} annonces
+      posted_documents: Il a envoyé %{nb} documents
     documents:
       title: Documents de %{user}
       breadcrumb: Documents de %{user}
