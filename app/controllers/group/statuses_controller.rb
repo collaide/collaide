@@ -6,14 +6,14 @@ class Group::StatusesController < ApplicationController
 
   #GET /group/:id/statuses
   def index
-    authorize!(:index, @status)
     @status = Status.new
+    authorize!(:index, Group::Group.find(params[:work_group_id]))
     @statuses = Group::Group.find(params[:work_group_id]).statuses.order('created_at DESC').includes({comments: :owner}, :writer)
   end
 
   def show
-    authorize!(:show, @status)
     @status = Status.find params[:id]
+    authorize!(:show, @status)
   end
 
   private

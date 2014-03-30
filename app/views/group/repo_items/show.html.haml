@@ -18,6 +18,9 @@
             =render 'form_folder', object: @group, repo_item: @repo_item
     .small-12.columns
       .panel#panel-items
+        .p
+          = t('group.groups.index.loading')
+          =image_tag 'loading.gif'
         -#-if @children.empty?
         -#  %p=t'repository_manager.empty.repo_folder'
         -#-else

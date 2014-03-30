@@ -80,10 +80,16 @@ class Ability
     can :members, Group::Group do |wg|
       wg.can? :index, :members, user
     end
-    can [:show, :index], Status do |status|
+    can :index, Group::Group do |group|
+      group.can? :index, :statuses, user
+    end
+    can :show, Status do |status|
       polymorphic_status status, user, :index, :statuses
     end
-    can [:create, :update], Status do |status|
+    can :create, Group::Group do |group|
+      group.can? :write, :status, user
+    end
+    can :update, Status do |status|
       polymorphic_status status, user, :write, :status
     end
     can :destroy, Group::EmailInvitation do |e_invitation|

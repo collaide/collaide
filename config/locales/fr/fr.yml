@@ -509,6 +509,7 @@ fr:
         no_group: Il n'y actuellement aucun groupe
         title_panel_last: Les derniers groupes
         title_panel_create: Créez un groupe de travail
+        loading: Chargement en cours du contenu de votre dossier. Merci de patienter
       new:
         title_page: Créer un groupe
         description: Restez en contact avec vos collègues de classe, votre école ou votre réseau universitaire ! Vous bénéficierez de nombreuses fonctionnalités pour échanger, discuter et travailler ensemble !
