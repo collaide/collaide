@@ -6,7 +6,7 @@
     %span{title: l(@user.created_at, format: :long)}
       =t'users.show.since'
       =time_ago_in_words(@user.created_at)
-  %p=image_tag @user.avatar.large
+  %p=image_tag @user.avatar
   Le membre a publié #{@user.advertisements.count} annonces
   %br
-  Il a envové #{@user.documents.count} documents
+  Il a envoyé #{@user.documents.count} documents

@@ -3,7 +3,7 @@
     .large-1.columns.hide-for-small
       -if activity.owner
         %a{href: user_path(activity.owner),class: 'th'}
-          =image_tag activity.owner.avatar
+          =image_tag activity.owner.avatar.mini
     .large-11.columns
       =yield
       %cite

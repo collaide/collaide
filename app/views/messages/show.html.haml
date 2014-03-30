@@ -24,7 +24,7 @@
               %blockquote.message{class: "#{is_sender} #{unread}"}
                 .row
                   .large-1.columns.hide-for-small
-                    %p=image_tag r.message.sender.avatar
+                    %p=image_tag r.message.sender.avatar.mini
                   .large-11.columns
                     =simple_format(r.message.body)
                     %cite

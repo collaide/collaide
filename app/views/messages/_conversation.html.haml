@@ -14,7 +14,7 @@
       .row
         .large-1.columns.hide-for-small
           %a{href: message_path(conversation),class: 'th'}
-            =image_tag conversation.last_message.sender.avatar
+            =image_tag conversation.last_message.sender.avatar.mini
         .large-11.columns
           %h6.subheader=simple_format(truncate(conversation.last_message.body, length: 50))
           %cite
