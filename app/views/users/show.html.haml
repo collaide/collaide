@@ -1,12 +1,13 @@
 
--content_for :title, t('users.show.meta_title', user: @user.to_s)
+-content_for :title, t('users.show.title', user: @user.to_s)
 =render(:layout => 'layout') do
   %h1= @user.name
   %p.subheader
     %span{title: l(@user.created_at, format: :long)}
       =t'users.show.since'
       =time_ago_in_words(@user.created_at)
-  %a{href: user_avatar_path(@user), title: t('users.avatar.title', user: @user.to_s), class: 'th'}
-    =image_tag @user.avatar.large
   %p=t'users.show.posted_advertisement', nb: @user.advertisements.count
   %p=t'users.show.posted_documents', nb: @user.documents.count
+  %p
+    %a{href: user_avatar_path(@user), title: t('users.avatar.title', user: @user.to_s), class: 'th'}
+      =image_tag @user.avatar.large

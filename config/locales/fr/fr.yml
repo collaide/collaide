@@ -647,12 +647,12 @@ fr:
     avatar:
       alt: "Image manquante pour %{user}"
       title: "Image de %{user}"
-    title_page: Les membres
+    #title_page: Les membres
     index:
       title_page: Liste des membres
       breadcrumb: Membres
     show:
-      meta_title: Profil de %{user}
+      title: Profil de %{user}
       breadcrumb: Profil de %{user}
       since: Inscrit il y a
       posted_advertisement: Ce membre a publié %{nb} annonces
@@ -660,7 +660,7 @@ fr:
     documents:
       title: Documents de %{user}
       breadcrumb: Documents de %{user}
-      meta_title: Documents de %{user}
+      #meta_title: Documents de %{user}
       no-document: "%{user} n'a encore envoyé aucun document..."
       table:
         title: Titre
@@ -670,7 +670,7 @@ fr:
     advertisements:
       title: Annonces de %{user}
       breadcrumb: Annonces de %{user}
-      meta_title: Annonces de %{user}
+      #meta_title: Annonces de %{user}
       no-advertisement: "%{user} n'a encore publié aucune annonce..."
       table:
         title: Titre
