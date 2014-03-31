@@ -453,16 +453,6 @@ ActiveRecord::Schema.define(version: 20140331215845) do
     t.integer "user_friend_demand_id", null: false
   end
 
-  create_table "user_messages", force: true do |t|
-    t.text   "body"
-    t.string "subject"
-  end
-
-  create_table "user_messages_users", id: false, force: true do |t|
-    t.integer "user_id",         null: false
-    t.integer "user_message_id", null: false
-  end
-
   create_table "user_notifications", force: true do |t|
     t.string   "class_name"
     t.string   "method_name"

@@ -110,13 +110,6 @@ class CreateTableUser < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :user_messages do |t|
-      t.text :body
-      t.string :subject
-    end
-
-    create_join_table :users, :user_messages
-
     create_table :addresses do |t|
       t.string :country
       t.string :street
@@ -167,6 +160,16 @@ class CreateTableUser < ActiveRecord::Migration
       t.string  :key
       t.text    :parameters
       t.belongs_to :recipient, :polymorphic => true, index: true
+
+      t.timestamps
+    end
+
+    create_table :user_notifications do |t|
+      t.string :class_name
+      t.string :method_name
+      t.string :values
+      t.boolean :is_viewed, default: false
+      t.belongs_to :user
 
       t.timestamps
     end
