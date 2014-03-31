@@ -21,19 +21,21 @@
               .hide
                 =f.input :status, selected: 'later'
               =f.button :submit, t('users.invitations.later'), class: 'tiny secondary'
-    -email_reply.each do |email_invit|
-      %li
-        %p= t('users.invitations.sender', sender: link_to(h(email_invit.user), email_invit.user), member: link_to(h(@user), @user), group: link_to(h(email_invit.group_group), email_invit.group_group), msg: h(email_invit.message)).html_safe
-        #invit-form
-          =simple_form_for email_invit, url: group_work_group_email_invitations_path(work_group_id: email_invit.group_group.id, id: email_invit.id, secret_token: email_invit.secret_token), method: :patch do |f|
-            .hide
-              =f.input :status, selected: 'accepted'
-            =f.button :submit, t('users.invitations.accept'), class: 'tiny success'
-          =simple_form_for email_invit, url: group_work_group_email_invitation_path(work_group_id: email_invit.group_group.id, id: email_invit.id, secret_token: email_invit.secret_token), method: :patch do |f|
-            .hide
-              =f.input :status, selected: 'refused'
-            =f.button :submit, t('users.invitations.refuse'), class: 'tiny alert'
-          =simple_form_for email_invit, url: group_work_group_email_invitation_path(work_group_id: email_invit.group_group.id, id: email_invit.id, secret_token: email_invit.secret_token), method: :patch do |f|
-            .hide
-              =f.input :status, selected: 'later'
-            =f.button :submit, t('users.invitations.later'), class: 'tiny secondary'
+    -# ADD BY YVES
+    -if email_reply
+      -email_reply.each do |email_invit|
+        %li
+          %p= t('users.invitations.sender', sender: link_to(h(email_invit.user), email_invit.user), member: link_to(h(@user), @user), group: link_to(h(email_invit.group_group), email_invit.group_group), msg: h(email_invit.message)).html_safe
+          #invit-form
+            =simple_form_for email_invit, url: group_work_group_email_invitations_path(work_group_id: email_invit.group_group.id, id: email_invit.id, secret_token: email_invit.secret_token), method: :patch do |f|
+              .hide
+                =f.input :status, selected: 'accepted'
+              =f.button :submit, t('users.invitations.accept'), class: 'tiny success'
+            =simple_form_for email_invit, url: group_work_group_email_invitation_path(work_group_id: email_invit.group_group.id, id: email_invit.id, secret_token: email_invit.secret_token), method: :patch do |f|
+              .hide
+                =f.input :status, selected: 'refused'
+              =f.button :submit, t('users.invitations.refuse'), class: 'tiny alert'
+            =simple_form_for email_invit, url: group_work_group_email_invitation_path(work_group_id: email_invit.group_group.id, id: email_invit.id, secret_token: email_invit.secret_token), method: :patch do |f|
+              .hide
+                =f.input :status, selected: 'later'
+              =f.button :submit, t('users.invitations.later'), class: 'tiny secondary'
