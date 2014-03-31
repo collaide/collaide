@@ -7,12 +7,14 @@ class Group::InvitationObserver < ActiveRecord::Observer
   # <pour qui elle doit être créée>)
 
   def after_create(invitation)
-    #On créé une notification pour les administrateurs
-    DocumentNotifications.perform_later(
-        :create_for_user, #la méthode de la notif
-        [invitation.id], # les paramètres de la notification
-        'user' => invitation.receiver_id,# on notifie le receveur
-    )
-    UserNotificationsMailer.invitation_created(invitation.receiver_id).deliver # On envoi un e-mail à celui qui à recu l'invitation
+    if invitation.receiver_type == 'User'
+      #On créé une notification pour le receveur
+      GroupNotifications.perform_later(
+          :is_invited, #la méthode de la notif
+          [invitation.sender.id, invitation.group.id], # les paramètres de la notification
+          'user' => invitation.receiver_id,# on notifie le receveur
+      )
+      #UserNotificationsMailer.invitation_created(invitation.receiver_id).deliver # On envoi un e-mail à celui qui à recu l'invitation
+    end
   end
 end

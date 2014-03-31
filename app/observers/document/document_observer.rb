@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class Document::InvitationObserver < ActiveRecord::Observer
+class Document::DocumentObserver < ActiveRecord::Observer
 
   # MaClasseDeNotification.perform_later(
   # :la_méthode_contenant_le_texte_de_la_notification,
