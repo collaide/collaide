@@ -15,8 +15,8 @@ class UserNotificationsMailer < ActionMailer::Base
   end
 
   def advertisement_created(advertisement_id)
-    #@advertiement = Advertisement::Advertisement.find advertisement_id
+    #@advertisement = Advertisement::Advertisement.find advertisement_id
     #
-    #mail to: @document.user.email
+    #mail to: @advertisement.user.email
   end
 end

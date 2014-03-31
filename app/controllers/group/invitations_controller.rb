@@ -9,7 +9,7 @@ class Group::InvitationsController < ApplicationController
     @group = Group::Group.find(params[:work_group_id])
     invitation = Group::Invitation.new(group: @group)
     authorize! :create, invitation
-    logger.debug'salut'
+    logger.debug 'On est dans le create de invitations'
     do_invitation = Group::DoInvitation.new(group_create_invitation_params)
     do_invitation.group_id = params[:work_group_id]
     if do_invitation.valid?
