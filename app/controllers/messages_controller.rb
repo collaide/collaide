@@ -68,7 +68,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = UserMessage.new(message_params)
-    users = User.find(@message.user_ids.split(","))
+    users = User.find(@message.user_ids)
     @message.subject = I18n.t('messages.default.title') if @message.subject.blank?
     respond_to do |format|
       if @message.valid?
@@ -110,6 +110,6 @@ class MessagesController < ApplicationController
   end
   def message_params
     p = params.require(:user_message)
-    {user_ids: p[:user_ids], subject: p[:subject], body: p[:body]}
+    {user_ids: p[:user_ids].split(','), subject: p[:subject], body: p[:body]}
   end
 end
