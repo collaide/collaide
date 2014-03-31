@@ -1,7 +1,7 @@
 =simple_form_for(@message, :url => messages_path, html: {class: 'custom', data_abide: true}) do |f|
   =f.error_notification
   .form-inputs
-    =f.association :users, input_html: {class: 's2'}, label_html: tooltip(t("messages.new.forms.tooltips.users"))
+    =f.input :users, :as => :hidden, input_html: { class: 's2_users_select'}, label_html: tooltip(t("messages.new.forms.tooltips.users"))
     =f.input :subject
     =f.input :body, input_html: {rows: 10}
 

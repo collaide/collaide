@@ -21,6 +21,7 @@
 //= require tree.jquery
 //= require foundation
 //= require select2
+//= require select2_locale_fr
 //= require jquery.form
 //= require_tree .
 
