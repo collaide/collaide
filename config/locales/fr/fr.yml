@@ -675,6 +675,9 @@ fr:
       table:
         title: Titre
         type: Type
+    avatar:
+      title: Photo de %{user}
+      no-avatar: "%{user} n'a pas de photo de profile."
     invitations:
       title_page: Invitations
       accept: Accepter

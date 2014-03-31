@@ -6,7 +6,7 @@
     %span{title: l(@user.created_at, format: :long)}
       =t'users.show.since'
       =time_ago_in_words(@user.created_at)
-  %p=image_tag @user.avatar
-  =t'users.show.posted_advertisement', nb: @user.advertisements.count
-  %br
-  =t'users.show.posted_documents', nb: @user.documents.count
+  %a{href: user_avatar_path(@user), title: t('users.avatar.title', user: @user.to_s), class: 'th'}
+    =image_tag @user.avatar.large
+  %p=t'users.show.posted_advertisement', nb: @user.advertisements.count
+  %p=t'users.show.posted_documents', nb: @user.documents.count

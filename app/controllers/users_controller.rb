@@ -18,16 +18,25 @@ class UsersController < ApplicationController
 
   def documents
     @user = User.find(params[:user_id])
+    add_breadcrumb I18n.t('users.show.breadcrumb', user: @user.to_s), user_path(@user)
     add_breadcrumb I18n.t('users.documents.breadcrumb', user: @user.to_s), user_documents_path(@user)
   end
 
   def advertisements
     @user = User.find(params[:user_id])
+    add_breadcrumb I18n.t('users.show.breadcrumb', user: @user.to_s), user_path(@user)
     add_breadcrumb I18n.t('users.advertisements.breadcrumb', user: @user.to_s), user_advertisements_path(@user)
+  end
+
+  def avatar
+    @user = User.find(params[:user_id])
+    add_breadcrumb I18n.t('users.show.breadcrumb', user: @user.to_s), user_path(@user)
+    add_breadcrumb I18n.t('users.avatar.title', user: @user.to_s), user_avatar_path(@user)
   end
 
   def invitations
     @user = User.find params[:user_id]
+    add_breadcrumb I18n.t('users.show.breadcrumb', user: @user.to_s), user_path(@user)
     @invitations = Group::Invitation.where receiver: @user
     @email_invitations = Group::EmailInvitation.where email: @user.email
   end
