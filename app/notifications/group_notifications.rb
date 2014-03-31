@@ -8,7 +8,9 @@ class GroupNotifications < NotificationSystem::AbstractClass
     raw I18n.t(
         'notifications.groups.is_invited',
         sender: link_to(h(sender.to_s), sender),
-        group: link_to(h(group.name), group)
+        group: link_to(h(group.name), group),
+        # TODO Chopper le current_user
+        link: link_to(I18n.t('notifications.link'), '#')
     )
   end
 end

@@ -705,7 +705,7 @@ fr:
       create_for_admin: "%{user} a créé une nouvelle annonce: %{ad}."
       create_for_user: "Tu as déposé une annonce: %{title}."
     groups:
-      is_invited: "%{sender} vous invite à rejoindre le groupe : %{group}."
+      is_invited: "%{sender} vous invite à rejoindre le groupe : %{group}. Vous pouvez gérer vos invitations en suivant ce %{link}."
   user_notifications_mailer:
     document_created:
       subject: Nouveau document déposé sur collaide !
