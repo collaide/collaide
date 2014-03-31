@@ -632,7 +632,7 @@ fr:
         success: Votre message a bien été envoyé !
         submit: Envoyer
         tooltips:
-          users: Vous pouvez choisir plusieurs utilisateurs en tapant leur pseudo ici.
+          users: Vous pouvez choisir plusieurs destinataires en tapant leur nom ici.
     default:
       title: Message sans titre
     show:

@@ -26,7 +26,7 @@ fr:
     #     password: 'No special characters, please.'
     labels:
       user_message:
-        users: À
+        user_ids: À
         subject: Sujet
         body: Contenu
       book:

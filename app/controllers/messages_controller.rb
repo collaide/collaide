@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
 
 #Cette methode sert juste à traiter la réponse, elle n'aura pas de vue
   def reply
-    c = Mailboxer::Conversation.find(params[:conversation])
+    c = Conversation.find(params[:conversation])
     unless c
       redirect_to :messages, alert: t('messages.reply.no_conversation') and return
     end
@@ -55,7 +55,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @conversation = Mailboxer::Conversation.find(params[:id])
+    @conversation = Conversation.find(params[:id])
     @receipts = @conversation.receipts_for current_user
     p @receipts
     add_breadcrumb @conversation.subject
@@ -68,9 +68,11 @@ class MessagesController < ApplicationController
 
   def create
     @message = UserMessage.new(message_params)
+    users = User.find(@message.user_ids.split(","))
+    @message.subject = I18n.t('messages.default.title') if @message.subject.blank?
     respond_to do |format|
       if @message.valid?
-        receipts = current_user.send_message(@message.users.to_a, @message.body, @message.subject)
+        receipts = current_user.send_message(users, @message.body, @message.subject)
         if receipts.valid?
           logger.debug(receipts.save.inspect)
           format.html { redirect_to message_path(receipts.conversation.id), notice: t('messages.new.forms.success') }

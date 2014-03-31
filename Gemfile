@@ -71,7 +71,7 @@ gem 'breadcrumbs_on_rails'
 gem 'geocoder'
 gem 'country_select'
 
-gem 'mailboxer', github: 'mailboxer/mailboxer'
+gem 'mailboxer'#, github: 'mailboxer/mailboxer'
 
 gem 'select2-rails'
 

@@ -4,7 +4,7 @@
 $ ->
   $('.s2_users_select').select2({
     minimumInputLength: 2
-    placeholder: "Chosissez un destinataire"
+    placeholder: $('#placeholder_user_ids').text()
     multiple: true
     ajax: #instead of writing the function to execute the request we use Select2's convenient helper
       url: '/users/search'

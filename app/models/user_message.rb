@@ -8,18 +8,20 @@
 #  subject :string(255)
 #
 
-class UserMessage < ActiveRecord::Base
+class UserMessage
+  include ActiveModel::Model
+  include ActiveModel::Validations
+
+  #validates_with UserMessageValidator
 
   validates_presence_of :body
-  validates_presence_of :subject
-  validates_presence_of :users
+  #validates_presence_of :subject
+  validates_presence_of :user_ids
+  #
+  #has_and_belongs_to_many :users
 
-  has_and_belongs_to_many :users
+  attr_accessor :user_ids, :body, :subject
 
-  before_validation :default_title
+  #before_validation :default_title
 
-  private
-  def default_title
-    self.subject = I18n.t('messages.default.title') if subject.blank?
-  end
 end
