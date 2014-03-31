@@ -11,8 +11,18 @@ module Concerns::ActivityConcern
   def create_activity(action, options = {})
     activity = Activity::Activity.new
     activity.trackable = options[:trackable]
-    activity.owner = options[:owner]
-    activity.recipient = options[:recipient]
+    if options[:owner]
+      activity.owner = options[:owner]
+    elsif options[:owner_id] && options[:owner_type]
+      activity.owner_id = options[:owner_id]
+      activity.owner_type = options[:owner_type]
+    end
+    if options[:recipient]
+      activity.recipient = options[:recipient]
+    elsif options[:recipient_id] && options[:recipient_type]
+      activity.recipient_id = options[:recipient_id]
+      activity.recipient_type = options[:recipient_type]
+    end
     activity.parameters = options[:params]
     activity.key = get_key(action, options[:trackable])
     activity.save

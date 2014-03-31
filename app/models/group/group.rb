@@ -141,17 +141,22 @@ class Group::Group < ActiveRecord::Base
         if r.is_a? Fixnum or r.is_a? String
           invitation.receiver_id = r.to_i
           invitation.receiver_type = receiver_type
+          #create_activity(:create, trackable: invitation, owner_id: r.to_i, owner_type: receiver_type)
         else
           invitation.receiver = r
+          #create_activity(:create, trackable: invitation, recipient: r, owner: sender)
         end
         self.group_invitations << invitation
       end
     elsif receivers.is_a? Group::DoInvitation
       do_invitation receivers, sender: sender, receiver_type: receiver_type
+      # TODO demander à Numa comment récupérer les infos
     else
       invitation = Group::Invitation.new(message: message)
       invitation.sender = sender
       invitation.receiver = receivers
+
+      #create_activity(:create, trackable: invitation, recipient: receivers, owner: sender)
 
       self.group_invitations << invitation
     end
