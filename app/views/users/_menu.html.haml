@@ -3,10 +3,12 @@
     %a{href: user_path(@user), title: @user.to_s}
       =image_tag @user.avatar.mini, class: 'th'
       =@user.to_s
-  -if can?(:update, @user)
-    %li.divider
-    %li=link_to(t('users.menu.edit'), edit_user_registration_path(@user), class: 'small button secondary')
   %li.divider
   %li=link_to(t('users.menu.documents'), user_documents_path(@user))
   %li=link_to(t('users.menu.advertisements'), user_advertisements_path(@user))
-  %li= link_to(t('users.menu.invitations'), user_invitations_path(@user))
+  %li.divider
+  -if @user == current_user
+    %li=link_to(t('users.menu.invitations'), user_invitations_path(@user))
+  -if can?(:update, @user)
+    %li.divider
+    %li=link_to(t('users.menu.edit'), edit_user_registration_path(@user), class: 'small button secondary')
