@@ -1,10 +1,11 @@
 GIT
   remote: git://github.com/Texicitys/repository-manager.git
-  revision: 7153dc14b3934723af2d48ee18e88c111e34dbec
+  revision: b46b82c5ae9a390527d94d414be44e0d08bebcee
   specs:
-    repository-manager (0.2.1)
+    repository-manager (0.2.3)
       ancestry
       carrierwave (>= 0.5.8)
+      paper_trail (~> 3.0.1)
       rails (> 3.0.0)
       rubyzip (>= 1.0.0)
 
@@ -18,7 +19,7 @@ GIT
 
 GIT
   remote: git://github.com/mailboxer/mailboxer.git
-  revision: cdb826e16217fd610e8efda48becefe84632307d
+  revision: be49cb364477efc6f96aaf9e2b306ee4ae7e50ed
   specs:
     mailboxer (0.11.0)
       carrierwave (>= 0.5.8)
@@ -95,14 +96,14 @@ GEM
     celluloid-io (0.15.0)
       celluloid (>= 0.15.0)
       nio4r (>= 0.5.0)
-    childprocess (0.5.1)
+    childprocess (0.5.2)
       ffi (~> 1.0, >= 1.0.11)
     choice (0.1.6)
     chronic (0.10.2)
     chunky_png (1.3.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    cocaine (0.5.3)
+    cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -125,7 +126,7 @@ GEM
       currencies (~> 0.4.2)
     country_select (1.3.1)
       countries (= 0.9.3)
-    cucumber (1.3.13)
+    cucumber (1.3.14)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
       gherkin (~> 2.12)
@@ -183,7 +184,7 @@ GEM
     geocoder (1.1.9)
     gherkin (2.12.2)
       multi_json (~> 1.3)
-    globalize (4.0.0)
+    globalize (4.0.1)
       activemodel (>= 4.0.0, < 5)
       activerecord (>= 4.0.0, < 5)
     googlebooks (0.0.8)
@@ -356,7 +357,7 @@ GEM
       activesupport (= 4.0.4)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.2.1)
+    rake (10.2.2)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
@@ -407,7 +408,7 @@ GEM
       sprockets-rails (~> 2.0.0)
     select2-rails (3.5.4)
       thor (~> 0.14)
-    selenium-webdriver (2.40.0)
+    selenium-webdriver (2.41.0)
       childprocess (>= 0.5.0)
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
@@ -541,7 +542,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
-  paper_trail (~> 3.0.0)
+  paper_trail (~> 3.0)
   paperclip (~> 3.0)
   pg (~> 0.17.1)
   quiet_assets (>= 1.0.1)
