@@ -23,9 +23,4 @@ class GroupNotifications < NotificationSystem::AbstractClass
         )
 
   end
-
-  private
-    def current_user
-
-    end
 end
