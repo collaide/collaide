@@ -17,4 +17,16 @@ class Group::InvitationObserver < ActiveRecord::Observer
       #UserNotificationsMailer.invitation_created(invitation.receiver_id).deliver # On envoi un e-mail à celui qui à recu l'invitation
     end
   end
+
+  def after_destroy(invitation)
+    if invitation.receiver_type == 'User'
+      #On créé une notification pour le receveur
+      GroupNotifications.perform_later(
+          :is_no_longer_invited,
+          [invitation.sender.id, invitation.group.id], # les paramètres de la notification
+          'user' => invitation.receiver_id,# on notifie le receveur
+      )
+    end
+  end
 end
+
