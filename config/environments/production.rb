@@ -16,18 +16,15 @@ Collaide::Application.configure do
   config.assets.js_compressor  = :uglifier
   config.assets.css_compressor = :sass
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  config.assets.initialize_on_precompile = false
+  config.assets.initialize_on_precompile = true
 
   #rails 4
   config.eager_load = true
-
-  # Compress JavaScripts and CSS
-  config.assets.js_compressor = :uglifier
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
