@@ -14,7 +14,7 @@
 /config/development.sphinx.conf
 /config/production.spinx.conf
 /db/schema.rb
-/public/assets/
+#/public/assets/
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
@@ -35,7 +35,7 @@
 /public/uploads
 public/uploads/
 /download
-/Gemfile.lock
+Gemfile.lock
 
 /deployement
 /.virb
