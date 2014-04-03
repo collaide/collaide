@@ -20,7 +20,6 @@
 
   %title= full_title(yield(:title))
   = favicon_link_tag 'collaide_icon.ico'
-  = stylesheet_link_tag "application"
   = csrf_meta_tag
 
 %body
@@ -55,6 +54,7 @@
   .row#footer
     = render 'layouts/footer'
 
+  = stylesheet_link_tag "application"
   = javascript_include_tag 'application'
   = javascript_include_tag "vendor/modernizr"
   =content_for :get_repo_items
