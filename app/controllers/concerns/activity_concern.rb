@@ -7,8 +7,19 @@ module Concerns::ActivityConcern
   # :owner (Activist) — Owner
   # :recipient (Activist) — Recipient
   # :params (Hash) — Parameters, see PublicActivity.resolve_value
+  # :type (String) - For inheritance
 
   def create_activity(action, options = {})
+    if options[:type]
+      case options[:type]
+        when :workgroup
+          activity = Activity::WorkGroupActivity.new
+        else
+          activity = Activity::Activity.new
+      end
+    else
+      activity = Activity::Activity.new
+    end
     activity = Activity::Activity.new
     activity.trackable = options[:trackable]
     if options[:owner]

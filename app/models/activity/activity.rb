@@ -1,8 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Activity::Activity < ActiveRecord::Base
 
-  #include Renderable
-
   # Define polymorphic association to the parent
   belongs_to :trackable, :polymorphic => true
   # Define ownership to a resource responsible for this activity

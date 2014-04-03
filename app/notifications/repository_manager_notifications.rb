@@ -11,7 +11,7 @@ class RepositoryManagerNotifications < NotificationSystem::AbstractClass
         'notifications.repository_manager.repo_items.create_in_group',
         sender: link_to(h(sender.to_s), sender),
         group: link_to(h(group.name), group),
-        file: link_to(I18n.t('notifications.file'), group_work_group_repo_item_path(group, repo_item))
+        file: link_to(h(repo_item.name), group_work_group_repo_item_path(group, repo_item))
     )
   end
 end

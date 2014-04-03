@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140331215845) do
     t.integer  "owner_id"
     t.string   "owner_type"
     t.string   "key"
+    t.string   "type"
     t.text     "parameters"
     t.integer  "recipient_id"
     t.string   "recipient_type"
