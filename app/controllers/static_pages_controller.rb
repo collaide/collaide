@@ -42,14 +42,14 @@ class StaticPagesController < ApplicationController
   end
 
   def send_email
-    @action = Contact.new params[:contact]
-    if @action.valid?
+    @contact = Contact.new params[:contact]
+    if @contact.valid?
       ActionMailer::Base.mail(
-          from: @action.email, :to => 'contact@collaide.com',
-          subject: @action.subject,
-          body: @action.content
+          from: @contact.email, :to => 'contact@collaide.com',
+          subject: @contact.subject,
+          body: @contact.content
       ).deliver
-      redirect_to contact_path, notice: t('static_pages.contact.success', email: @action.email, subject: @action.subject)
+      redirect_to contact_path, notice: t('static_pages.contact.success', email: @contact.email, subject: @contact.subject)
     else
       render action: :contact
     end

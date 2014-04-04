@@ -198,14 +198,15 @@ fr:
       key_words: contact
       text: |
         Ce site est fait par des étudiants pour des étudiants. Il est donc possible qu'il y ait quelques erreurs, bugs ou dysfonctionnements. Merci de nous en faire part.
-        Pour nous contacter, il vous suffit de remplir le formulaire suivant ou de nous écrire un e-mail à l'adresse
+        Pour nous contacter, il vous suffit de remplir le formulaire suivant ou de nous écrire un e-mail à l'adresse %{mail}.
       form:
         legend: Formulaire de contact
         email: Adresse e-mail de contact
         subject: Sujet du message
         content: Contenu du message
         button: Envoyer
-      success: "Votre message avec le sujet \"%{subject}\" : a bien été envoyé. E-mail pour la réponse : %{email}"
+        no_valid_email: Merci d'entrer un email valide.
+      success: "Votre message avec le sujet \"%{subject}\" a bien été envoyé. E-mail pour la réponse : %{email}"
       recap: Récapitulatif
     help:
       bc: Aide
