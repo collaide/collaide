@@ -1,10 +1,9 @@
 %ul.side-nav
   %li
     .heading= link_to @group.name, group_work_group_path(@group)
-  %li=link_to t('group.work_groups.menu.members'), group_work_group_members_path(@group)
   %li= link_to t('group.work_groups.menu.topics'), group_work_group_topics_path(@group)
+  %li=link_to t('group.work_groups.menu.members'), group_work_group_members_path(@group)
   %li=link_to t('group.work_groups.menu.repository'), group_work_group_repo_items_path(@group)
-
 
   -if can?(:update, @group)
     %li.divider

@@ -554,8 +554,11 @@ fr:
     topics:
       index:
         h1_title: Discussions
+        description: Vous pouvez ici parler de tout ce que vous voulez avec vos collègues.
+        last_discussions: Les dernières discussions
         empty: Aucune discussions en cours.
         new_discussion: Discuter
+        begin_discussions: Lancer une discussion
         time_ago: Il y a %{time_ago}
         reply: Répondre
         no_author: Pas d'auteur
