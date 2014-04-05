@@ -1,4 +1,4 @@
-class Group::StatusesController < ApplicationController
+class Group::TopicsController < ApplicationController
   #load_and_autho
   #load_and_authorize_resource class: Group::Status, through: :group
 
@@ -6,14 +6,14 @@ class Group::StatusesController < ApplicationController
 
   #GET /group/:id/statuses
   def index
-    @status = Status.new
+    @topic = Topic.new
     authorize!(:index, Group::Group.find(params[:work_group_id]))
-    @statuses = Group::Group.find(params[:work_group_id]).statuses.order('created_at DESC').includes({comments: :owner}, :writer)
+    @topics = Group::Group.find(params[:work_group_id]).topics.order('created_at DESC').includes({comments: :owner}, :writer)
   end
 
   def show
-    @status = Status.find params[:id]
-    authorize!(:show, @status)
+    @topic = Topic.find params[:id]
+    authorize!(:show, @topic)
   end
 
   private

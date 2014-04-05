@@ -436,7 +436,8 @@ ActiveRecord::Schema.define(version: 20140331215845) do
   add_index "rm_sharings_members", ["member_id", "member_type"], name: "index_rm_sharings_members_on_member_id_and_member_type", using: :btree
   add_index "rm_sharings_members", ["sharing_id"], name: "index_rm_sharings_members_on_sharing_id", using: :btree
 
-  create_table "statuses", force: true do |t|
+  create_table "topics", force: true do |t|
+    t.string   "title"
     t.text     "message"
     t.integer  "owner_id"
     t.string   "owner_type"
@@ -446,8 +447,8 @@ ActiveRecord::Schema.define(version: 20140331215845) do
     t.datetime "updated_at"
   end
 
-  add_index "statuses", ["owner_id", "owner_type"], name: "index_statuses_on_owner_id_and_owner_type", using: :btree
-  add_index "statuses", ["writer_id", "writer_type"], name: "index_statuses_on_writer_id_and_writer_type", using: :btree
+  add_index "topics", ["owner_id", "owner_type"], name: "index_topics_on_owner_id_and_owner_type", using: :btree
+  add_index "topics", ["writer_id", "writer_type"], name: "index_topics_on_writer_id_and_writer_type", using: :btree
 
   create_table "user_friend_demands_user_users", id: false, force: true do |t|
     t.integer "user_user_id",          null: false

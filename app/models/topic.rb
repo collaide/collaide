@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 # == Schema Information
 #
-# Table name: statuses
+# Table name: threads
 #
 #  id          :integer          not null, primary key
 #  message     :text
@@ -14,12 +14,12 @@
 #
 
 # -*- encoding : utf-8 -*-
-class Status < ActiveRecord::Base
+class Topic < ActiveRecord::Base
 
   acts_as_commentable
   #include PublicActivity::Common
 
-  belongs_to :owner, polymorphic: true, inverse_of: :statuses
+  belongs_to :owner, polymorphic: true, inverse_of: :topics
   belongs_to :writer, polymorphic: true
 
   validates_presence_of :message

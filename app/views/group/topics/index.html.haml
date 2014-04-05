@@ -1,0 +1,9 @@
+=render(layout: 'group/layouts/layout') do
+  %h1= t('group.topics.index.h1_title')
+  .row
+    .columns.small-12
+      =render 'topics/form', submit_text: t('group.topics.index.new_discussion'), object: @group
+  .row
+    =render partial: 'topics/topic', collection: @topics, as: 'topic', locals: {limit: 5} || "<p>#{t('group.topics.index.empty')}</p>"
+
+

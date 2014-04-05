@@ -279,7 +279,7 @@ fr:
       title_page: Documents scolaires
       bc: Les documents scolaires
       index:
-        blockquote: Téléchargez tous les documents que vous voulez. C'est gratuit à volonté et pour tous.
+        blockquote: Téléchargez tous les documents que vous voulez. C'est gratuit, à volonté et pour tous !
         more_search: " Plus"
         description_meta: Téléchargez toutes sortes de documents scolaires gratuitement pour les étudiants de tous niveaux d'études
         key_words: liste, des, documents, document, Dissertations, Analyses, Documents, rapports, résumés, Exposers, Tests, Présentations, base de donnée, Collaide, Etudiants, document de maturité
@@ -535,7 +535,7 @@ fr:
         edit: Modifier
         board: Tableau
         members: Membres
-        statuses: Discussions
+        topics: Discussions
         repository: Dépôt de fichiers
     members:
       title_page: Gestion des membres de %{group}
@@ -551,7 +551,7 @@ fr:
       #in_folder: "Vous êtes dans le dossier : %{folder}"
       no_repo_item: Ce groupe n'a aucun fichier déposé.
       no_shared_repo_item: Ce groupe n'a aucun fichier partagé.
-    statuses:
+    topics:
       index:
         h1_title: Discussions
         empty: Aucune discussions en cours.
@@ -590,9 +590,9 @@ fr:
     email_invitations:
       member: "Vous êtes maintenant membre de ce groupe !"
       error: "Impossible de vous ajouter dans ce groupe. Peut-être que vous êtes déjà membre ou que l'invitation a été supprimée"
-  status:
-   success: Le statut a bien été créé
-   error: Le statut n'a pas pu être créé
+  topic:
+   success: La discussion a bien été créée
+   error: La discussion n'a pas pu être créée
   comments:
     success: Le commentaire a bien été créé
     error: le commentaire n'a pas pu être créé
@@ -646,7 +646,7 @@ fr:
       empty_message: Les réponses vides ne sont pas envoyées
   users:
     avatar:
-      alt: "Image manquante pour %{user}"
+      #alt: "Image manquante pour %{user}" # Le alt n'est pas un message d'erreur, mais une description de l'image
       title: "Image de %{user}"
     #title_page: Les membres
     index:

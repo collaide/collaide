@@ -1,0 +1,6 @@
+=render(layout: 'group/layouts/layout') do
+  %h1= t('group.topics.show.h1_title', date: l(@topic.created_at, format: :short))
+  .row
+    =render partial: 'topics/topic', locals: {topic: @topic, limit: nil}, as: 'topic'
+
+

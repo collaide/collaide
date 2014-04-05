@@ -1,0 +1,4 @@
+=simple_form_for @topic do |f|
+  =f.input :message
+  =hidden_field_for_polymorphic 'topic', object
+  =f.button :submit, submit_text
