@@ -1,0 +1,33 @@
+.editable {
+  //height: auto;
+  min-height: 80px;
+  padding: 10px;
+  -webkit-appearance: none;
+  background-color: white;
+  font-family: inherit;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.75);
+//  display: block;
+//  font-size: 0.875rem;
+//  margin: 0 0 1rem 0;
+//  padding: 0.5rem;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
+  -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
+  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
+
+}
+.editable:focus {
+  border-color: #999999;
+  outline: none;
+  background: #fafafa;
+  -webkit-box-shadow: 0 0 5px #999999;
+  -moz-box-shadow: 0 0 5px #999999;
+  box-shadow: 0 0 5px #999999;
+  border-color: #999999;
+}

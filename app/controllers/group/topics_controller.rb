@@ -11,6 +11,13 @@ class Group::TopicsController < ApplicationController
     @topics = Group::Group.find(params[:work_group_id]).topics.order('created_at DESC').includes({comments: :owner}, :writer)
   end
 
+  def new
+    @topic = Topic.new
+    @group = Group::Group.find(params[:work_group_id])
+
+    #authorize!(:new, Group::Group.find(params[:work_group_id]))
+  end
+
   def show
     @topic = Topic.find params[:id]
     authorize!(:show, @topic)

@@ -26,3 +26,8 @@
 //= require_tree .
 
 $(document).foundation();
+
+var elements = document.querySelectorAll('.editable'),
+    editor = new MediumEditor(elements, {
+        anchorInputPlaceholder: 'Type a ssslink'
+    });

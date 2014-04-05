@@ -1,0 +1,12 @@
+=render(layout: 'group/layouts/layout') do
+  %h1= t('group.topics.new.title')
+  %blockquote= t('group.topics.new.description')
+
+  %form
+    -#=field_set_tag t('group.topics.new.fieldset')
+    .row
+      .columns.large-2
+        =label_tag(:message, t('group.topics.new.message'))
+      .columns.large-10
+        .editable
+        -#=t('group.topics.new.example')

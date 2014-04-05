@@ -66,7 +66,7 @@ Collaide::Application.routes.draw do
     end
 
     concern :topic do
-      resources :topics, only: [:index, :show]
+      resources :topics, only: [:index, :show, :new]
     end
 
     concern :invitation do
