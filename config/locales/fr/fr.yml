@@ -576,8 +576,12 @@ fr:
         title: Lancer une nouvelle discussion
         description: Vous pouvez ici mettre en page une joli message. Séléctionnez la phrase que vous désirez modifier et laissez vous guider !
         example: Contenu de votre message
-        message: Votre message
-        fieldset: Nouvelle discussion
+        form:
+          message: Votre message
+          title: Titre
+          title_placeholder: (optionnel)
+          fieldset: Nouvelle discussion
+          submit: Lancer la discussion
     invitations:
       create:
         submit: Nouvelle invitation
