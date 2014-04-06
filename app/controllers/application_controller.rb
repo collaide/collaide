@@ -127,8 +127,8 @@ class ApplicationController < ActionController::Base
   def get_notification_and_message_count
     if current_user
       @nb_notifications = current_user.notifications.where(is_viewed: false).count
-      #@nb_messages = current_user.mailbox.inbox.includes(:mailboxer_receipts).where('mailboxer_receipts.is_read' => false).count
-      @nb_messages = current_user.mailbox.inbox(:unread => true).count
+      @nb_messages = current_user.mailbox.inbox.includes(:mailboxer_receipts).where('mailboxer_receipts.is_read' => false).count
+      #@nb_messages = current_user.mailbox.inbox(:unread => true).count
     end
   end
 
