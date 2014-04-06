@@ -106,7 +106,7 @@ gem 'ejs'
 gem 'jquery-form-rails', '~> 1.0.1'
 
 group :development, :test do
-  gem 'virb'
+  #gem 'virb'
   gem 'commands'
   gem 'rspec-rails'
   gem 'guard-rspec'
