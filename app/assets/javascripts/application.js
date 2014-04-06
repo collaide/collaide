@@ -29,5 +29,6 @@ $(document).foundation();
 
 var elements = document.querySelectorAll('.editable'),
     editor = new MediumEditor(elements, {
-        placeholder: ''
+        placeholder: '',
+        checkLinkFormat: true
     });

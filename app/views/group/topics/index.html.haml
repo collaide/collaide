@@ -1,7 +1,7 @@
 =render(layout: 'group/layouts/layout') do
   %h1= t('group.topics.index.h1_title')
   %blockquote= t('group.topics.index.description')
-
+  =link_to 'nouvelle discussion', new_group_work_group_topic_path(@group), class: 'button'
   .row
     .columns.small-12
       .panel
