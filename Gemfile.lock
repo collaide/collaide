@@ -373,6 +373,8 @@ GEM
       twitter-bootstrap-rails
     resque_mailer (2.2.6)
       actionmailer (>= 3.0)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     riddle (1.5.10)
     route_translator (3.2.0)
     rspec (2.14.1)
@@ -547,6 +549,7 @@ DEPENDENCIES
   resque
   resque-web
   resque_mailer
+  rest-client (~> 1.6.7)
   route_translator
   rspec-rails
   sass-rails (~> 4.0.1)
