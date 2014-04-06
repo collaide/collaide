@@ -127,7 +127,7 @@ class Group::Group < ActiveRecord::Base
     self.can_delete_member << Group::Roles::ADMIN
     self.can_write_file << Group::Roles::MEMBER
     self.can_delete_file << Group::Roles::MEMBER
-    self.can_delete_status << Group::Roles::ADMIN
+    self.can_delete_topic << Group::Roles::ADMIN
     self.can_manage_invitations << Group::Roles::ADMIN
     self.can_delete_group << Group::Roles::ADMIN
   end

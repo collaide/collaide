@@ -48,7 +48,7 @@ class Group::WorkGroup < Group::Group
 #  manage invitations   --> admin
   def init
     super
-    self.can_read_status << Group::Roles::MEMBER
+    self.can_read_topic << Group::Roles::MEMBER
     self.can_index_activity << Group::Roles::MEMBER
     self.can_index_members << Group::Roles::MEMBER
     self.can_read_member << Group::Roles::MEMBER
@@ -56,8 +56,8 @@ class Group::WorkGroup < Group::Group
     self.can_index_files << Group::Roles::MEMBER
     self.can_read_file << Group::Roles::MEMBER
     self.can_delete_file << Group::Roles::MEMBER
-    self.can_index_statuses << Group::Roles::MEMBER
-    self.can_write_status << Group::Roles::MEMBER
+    self.can_index_topics << Group::Roles::MEMBER
+    self.can_write_topic << Group::Roles::MEMBER
     self.can_create_invitation << Group::Roles::MEMBER
   end
 end
