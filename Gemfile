@@ -104,6 +104,7 @@ gem 'ejs'
 #gem 'json2-rails'
 
 gem 'jquery-form-rails', '~> 1.0.1'
+gem 'rest-client', '~> 1.6.7'
 
 group :development, :test do
   #gem 'virb'
