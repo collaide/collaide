@@ -63,7 +63,7 @@ class Group::Group < ActiveRecord::Base
   belongs_to :user
   belongs_to :main_group, class_name: 'Group::Group'
   has_many :sub_groups, class_name: 'Group::Group', foreign_key: "main_group_id"
-  has_many :statuses, class_name: 'Status', as: :owner
+  has_many :topics, class_name: 'Topic', as: :owner
   has_many :group_members, class_name: 'Group::GroupMember'
 
   # Renvoi les membres user et group

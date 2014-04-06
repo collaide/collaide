@@ -81,16 +81,16 @@ class Ability
       wg.can? :index, :members, user
     end
     can :index, Group::Group do |group|
-      group.can? :index, :statuses, user
+      group.can? :index, :topics, user
     end
-    can :show, Status do |status|
-      polymorphic_status status, user, :index, :statuses
+    can :show, Topic do |topic|
+      polymorphic_topic topic, user, :index, :topics
     end
     can :create, Group::Group do |group|
-      group.can? :write, :status, user
+      group.can? :write, :topic, user
     end
-    can :update, Status do |status|
-      polymorphic_status status, user, :write, :status
+    can :update, Topic do |topic|
+      polymorphic_topic topic, user, :write, :topic
     end
     can :destroy, Group::EmailInvitation do |e_invitation|
       e_invitation.group_group.can? :manage, :invitations, user
@@ -107,9 +107,9 @@ class Ability
 
   end
 
-  def polymorphic_status(status, user, action, subject)
-    if status.owner.is_a? Group::WorkGroup
-      status.owner.can? action, subject, user
+  def polymorphic_topic(topic, user, action, subject)
+    if topic.owner.is_a? Group::WorkGroup
+      topic.owner.can? action, subject, user
     end
   end
 

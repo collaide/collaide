@@ -1,9 +1,9 @@
 .columns.small-12
   %h6.subheader
     -if comment.owner.nil?
-      =t('group.statuses.index.comment.no_author')
+      =t('group.topics.index.comment.no_author')
     -else
       =image_and_name_for comment.owner
-      =t('group.statuses.index.time_ago', time_ago: time_ago_in_words(comment.created_at))
+      =t('group.topics.index.time_ago', time_ago: time_ago_in_words(comment.created_at))
   %p= comment.comment
   %hr

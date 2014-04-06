@@ -75,11 +75,12 @@ module ApplicationHelper
 
   def hidden_field_for_polymorphic(model, object, params = {})
     klass = params[:klass] || object.class.base_class.to_s
-    hidden_field_tag("#{model}[klass]", klass) + hidden_field_tag("#{model}[id]", object.id) + hidden_field_tag("#{model}[path]", request.fullpath) + hidden_field_tag("#{model}[render_view]", view_path)
+    path = params[:path] || request.fullpath
+    hidden_field_tag("#{model}[klass]", klass) + hidden_field_tag("#{model}[id]", object.id) + hidden_field_tag("#{model}[path]", path) + hidden_field_tag("#{model}[render_view]", view_path)
   end
 
   def image_and_name_for(writer, img = 'avatar')
-    img_tag =  image_tag(writer.send(img).mini.url, alt: t("users.#{img}.alt", user: h(writer)), title: t("users.#{img}.title", user: h(writer)), width: 30, height: 30) if !img.blank? and writer.respond_to?(img)
+    img_tag =  image_tag(writer.send(img).mini.url, alt: t("users.#{img}.title", user: h(writer)), title: t("users.#{img}.title", user: h(writer)), width: 30, height: 30) if !img.blank? and writer.respond_to?(img)
     raw((link_to(img_tag+ h(writer), writer)).html_safe)
   end
 

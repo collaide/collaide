@@ -73,7 +73,3 @@ if history && history.pushState
 
 $('#show_advanced_search').click ->
   $('#advanced_search').toggle('slow')
-
-$ ->
-  # enable select2 js
-  $('.s2').select2()
