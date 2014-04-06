@@ -52,10 +52,10 @@ class Group::Group < ActiveRecord::Base
   serialize :can_read_file, Array
   serialize :can_delete_file, Array
 
-  serialize :can_index_statuses, Array
-  serialize :can_read_status, Array
-  serialize :can_write_status, Array
-  serialize :can_delete_status, Array
+  serialize :can_index_topics, Array
+  serialize :can_read_topic, Array
+  serialize :can_write_topic, Array
+  serialize :can_delete_topic, Array
 
   serialize :can_create_invitation, Array
   serialize :can_manage_invitations, Array

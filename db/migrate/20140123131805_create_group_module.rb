@@ -16,9 +16,9 @@ class CreateGroupModule < ActiveRecord::Migration
       t.string :can_index_files
       t.string :can_read_file
       t.string :can_delete_file
-      t.string :can_index_statuses
-      t.string :can_write_status
-      t.string :can_delete_status
+      t.string :can_index_topics
+      t.string :can_write_topic
+      t.string :can_delete_topic
       t.string :can_create_invitation
       t.string :can_manage_invitations
 
