@@ -7,8 +7,8 @@
     %blockquote.message{class:unread}
       .row
         .large-1.columns
-          %a{href: user_path(notification.user),class: 'th'}
-            =image_tag notification.user.avatar
+          %a{href: user_path(notification.owner),class: 'th'}
+            =image_tag notification.owner.avatar
         .large-11.columns
           =notification.print_message
           %cite

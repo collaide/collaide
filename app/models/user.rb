@@ -83,7 +83,7 @@ class   User < ActiveRecord::Base
   #demande reçues
   #has_many :friend_demands, class_name: 'User::Friend::Demand', foreign_key: :user_is_invited_id
 
-  has_many :notifications, class_name: 'UserNotification'
+  has_many :notifications, class_name: 'AppNotification', as: :owner
 
   # Invitation pour les groupes
   has_many :sent_group_invitations, class_name: 'Group::Invitation', as: 'sender'

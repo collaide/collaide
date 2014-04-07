@@ -76,6 +76,19 @@ ActiveRecord::Schema.define(version: 20140331215845) do
   add_index "advertisement_advertisements_domains", ["domain_id"], name: "index_advertisement_advertisements_domains_on_domain_id", using: :btree
   add_index "advertisement_advertisements_domains", ["sale_book_id"], name: "index_advertisement_advertisements_domains_on_sale_book_id", using: :btree
 
+  create_table "app_notifications", force: true do |t|
+    t.string   "class_name"
+    t.string   "method_name"
+    t.string   "values"
+    t.boolean  "is_viewed",   default: false
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "app_notifications", ["owner_id", "owner_type"], name: "index_app_notifications_on_owner_id_and_owner_type", using: :btree
+
   create_table "authorizations", force: true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -239,7 +252,7 @@ ActiveRecord::Schema.define(version: 20140331215845) do
     t.string   "type"
     t.string   "can_index_activity"
     t.string   "can_delete_group"
-    t.string   "can_read_status"
+    t.string   "can_read_topic"
     t.string   "can_index_members"
     t.string   "can_read_member"
     t.string   "can_delete_member"
@@ -453,16 +466,6 @@ ActiveRecord::Schema.define(version: 20140331215845) do
   create_table "user_friend_demands_user_users", id: false, force: true do |t|
     t.integer "user_user_id",          null: false
     t.integer "user_friend_demand_id", null: false
-  end
-
-  create_table "user_notifications", force: true do |t|
-    t.string   "class_name"
-    t.string   "method_name"
-    t.string   "values"
-    t.boolean  "is_viewed",   default: false
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

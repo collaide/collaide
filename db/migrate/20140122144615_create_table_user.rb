@@ -166,12 +166,12 @@ class CreateTableUser < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :user_notifications do |t|
+    create_table :app_notifications do |t|
       t.string :class_name
       t.string :method_name
       t.string :values
       t.boolean :is_viewed, default: false
-      t.belongs_to :user
+      t.belongs_to :owner, polymorphic: true, index: true
 
       t.timestamps
     end
