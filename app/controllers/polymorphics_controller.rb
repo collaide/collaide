@@ -4,6 +4,10 @@ module PolymorphicsController
     klass = relation_params[:klass].to_s.constantize
     raise  ActiveRecord::UnknownAttributeError unless klass.method_defined? relation
     object = klass.find(relation_params[:id])
+    access_denied = yield object
+    if block_given? and access_denied
+      raise CanCan::AccessDenied
+    end
     @success = object.send(relation).create(values)
     respond_to do |format|
       if @success #&& @success.create_activity(:create, owner: current_user, recipient: object)

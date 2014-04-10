@@ -32,6 +32,7 @@ class Group::GroupMember < ActiveRecord::Base
                                   :was_invited_by_email,
                                   :by_itself], default: :by_itself
   def self.get_a_member(member, group)
+    return nil if member.nil?
     where(group: group, member_id: member.id, member_type: member.class.name).take
   end
 
