@@ -56,7 +56,6 @@ class GuestBooksController < ApplicationController
 
 
   private
-
   def guest_book_params
     params.require(:guest_book).permit(:name, :comment)
   end

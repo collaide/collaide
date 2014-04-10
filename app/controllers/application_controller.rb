@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   #sécu
   protect_from_forgery
 
+  prepend_before_action :auth_token_user
   before_action do
     resource = controller_path.singularize.gsub('/', '_').to_sym # => 'blog/posts' => 'blog/post' => 'blog_post' => :blog_post
     method = "#{resource}_params" # => 'blog_post_params'
@@ -112,6 +113,19 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def sign_in_user
+    raise CanCan::AccessDenied if current_user.nil?
+  end
+
+  def auth_token_user
+    if !params[:user_email].blank? and (user = User.find_by(email: params[:user_email]))
+      logger.debug('asssssssssssssssssssssssssssssssssssssssssssssssss')
+      if Devise.secure_compare(user.authentication_token, params[:user_token])
+        sign_in user, store: false
+        logger.debug('asDFsdfasdfsad')
+      end
+    end
+  end
   def set_locale
     I18n.locale = :fr
     # uncomment this line to have multi linguale site do it to config/application.rb, too

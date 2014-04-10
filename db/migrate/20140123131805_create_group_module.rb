@@ -8,7 +8,7 @@ class CreateGroupModule < ActiveRecord::Migration
       t.string :type
       t.string :can_index_activity
       t.string :can_delete_group
-      t.string :can_read_status
+      t.string :can_read_topic
       t.string :can_index_members
       t.string :can_read_member
       t.string :can_delete_member

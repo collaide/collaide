@@ -1,14 +1,16 @@
 class TopicsController < ApplicationController
-
   before_action :topic_params
-  load_and_authorize_resource class: Topic, only: [:update]
+  before_action :sign_in_user
+
 
   def create
     raise  ActiveRecord::UnknownAttributeError unless topic_params[:klass]
     klass = topic_params[:klass].to_s.constantize
     raise  ActiveRecord::UnknownAttributeError unless klass.method_defined? 'topics'
     object = klass.find(topic_params[:id])
-    authorize! :create, object
+    if object.is_a? Group::WorkGroup and object.can_not? :write, :topic, current_user
+      raise CanCan::AccessDenied
+    end
     status = object.topics.create(message: topic_params[:message], writer: current_user)
     respond_to do |format|
       if status.save #&& status.create_activity(:create, owner: current_user, recipient: object)
@@ -38,7 +40,6 @@ class TopicsController < ApplicationController
   end
 
   def topic_params
-    logger.debug('On recupere les topic params')
     params.require(:topic).permit(:message, :klass, :id, :path, :render_view)
   end
 

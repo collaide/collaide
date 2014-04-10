@@ -1,4 +1,22 @@
 # -*- encoding : utf-8 -*-
+# == Schema Information
+#
+# Table name: activity_activities
+#
+#  id             :integer          not null, primary key
+#  trackable_id   :integer
+#  trackable_type :string(255)
+#  owner_id       :integer
+#  owner_type     :string(255)
+#  key            :string(255)
+#  type           :string(255)
+#  parameters     :text
+#  recipient_id   :integer
+#  recipient_type :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
 class Activity::Activity < ActiveRecord::Base
 
   # Define polymorphic association to the parent

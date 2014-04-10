@@ -15,6 +15,8 @@ Collaide::Application.routes.draw do
     #get 'board', to: 'static_pages#board', as: 'board'
     #post '/rate' => 'rater#create', :as => 'rate'
 
+    resources :auth_token, only: [:create]
+
     resources 'notifications', only: [:index] do
       get 'page/:page', action: :index, on: :collection
     end

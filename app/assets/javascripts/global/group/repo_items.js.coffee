@@ -1,6 +1,6 @@
 class window.RepoItem
   @start: (index) ->
-    $.getJSON(document.URL, (data) ->
+    $.getJSON("#{document.URL}.json", (data) ->
       repo_items = data.repo_items
       repo_items = data.children if(index)
       $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
@@ -10,8 +10,7 @@ class Utils
   @type
   @flash: (key, msg) ->
     $('#flash-msg').html('')
-    $('#flash-msg').
-    append(JST['global/group/templates/flash']({text: msg, key: key}))
+    $('#flash-msg').append(JST['global/group/templates/flash']({text: msg, key: key}))
   @loaded: () ->
 #    if type == @type
 #      console.log 'stop'
@@ -70,6 +69,11 @@ $(document).on('repo_items:loaded', () ->
     $(this).parents('.an-item').remove()
   ).on('ajax:error', (data, xhr, status, e) ->
     Utils.flash('alert', xhr.responseJSON.repo_items)
+  )
+  $('.move-copy').on('click', () ->
+    $('#press-paper-content').append('<p>salut</p>')
+    if ($('#press-paper').hasClass('hide'))
+      $('#press-paper').show()
   )
 )
 $ ->

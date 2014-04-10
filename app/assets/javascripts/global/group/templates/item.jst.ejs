@@ -39,16 +39,7 @@
                 </a>
                 </li>
                 <li>
-                    <a class="button small secondary button-item" href="<%= item.copy %>.json" data-remote="true">
-                        <i class="fi-page-copy"/>
-                        Copier
-                    </a>
-                </li>
-                <li>
-                    <a class="button small secondary button-item" href="<%= item.move %>.json" data-remote="true">
-                        <i class="fi-page-remove"/>
-                        Déplacer
-                    </a>
+                    <a class="button small secondary button-item move-copy" href="#" data-copy="<%= item.copy %>.json" data-move="<%= item.move %>.json">Ajouter en haut</a>
                 </li>
                 <li>
                     <a class="button small secondary button-item rename-item" href="#" data-id="<%= item.id%>" data-href="<%= item.rename %>.json">

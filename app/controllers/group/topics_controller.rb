@@ -1,30 +1,28 @@
 class Group::TopicsController < ApplicationController
-  #load_and_autho
-  #load_and_authorize_resource class: Group::Status, through: :group
-
-  before_action :get_required_objects, only: [:index, :show]
+  #load_and_authorize_resource class: Group::WorkGroup, as: :group
+  #load_and_authorize_resource class: Topic
+  before_action :sign_in_user
+  before_action :get_required_objects
 
   #GET /group/:id/statuses
   def index
+    raise CanCan::AccessDenied unless @group.can? :index, :topics, current_user
     @topic = Topic.new
-    authorize!(:index, Group::Group.find(params[:work_group_id]))
-    @topics = Group::Group.find(params[:work_group_id]).topics.order('created_at DESC').includes({comments: :owner}, :writer)
+    @topics = @group.topics.order('created_at DESC').includes({comments: :owner}, :writer)
   end
 
   def new
+    raise CanCan::AccessDenied unless @group.can? :write, :topic, current_user
     @topic = Topic.new
-    @group = Group::Group.find(params[:work_group_id])
-
-    #authorize!(:new, Group::Group.find(params[:work_group_id]))
   end
 
   def show
+    raise CanCan::AccessDenied unless @group.can? :read, :topic, current_user
     @topic = Topic.find params[:id]
     authorize!(:show, @topic)
   end
 
   private
-
   def get_required_objects
     @comment = Comment.new
     @group = Group::Group.find(params[:work_group_id])

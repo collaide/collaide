@@ -1,9 +1,10 @@
 # -*- encoding : utf-8 -*-
 # == Schema Information
 #
-# Table name: threads
+# Table name: topics
 #
 #  id          :integer          not null, primary key
+#  title       :string(255)
 #  message     :text
 #  owner_id    :integer
 #  owner_type  :string(255)

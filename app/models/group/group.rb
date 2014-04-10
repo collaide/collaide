@@ -197,6 +197,10 @@ class Group::Group < ActiveRecord::Base
     self.name
   end
 
+  def can_not?(can_action, can_type, actor)
+    not can?(can_action, can_type, actor)
+  end
+
   def can?(can_action, can_type, actor)
     member_actor = (actor.is_a?(Group::GroupMember) ? actor : Group::GroupMember.get_a_member(actor, self))
     if member_actor.nil?

@@ -80,18 +80,6 @@ class Ability
     can :members, Group::Group do |wg|
       wg.can? :index, :members, user
     end
-    can :index, Group::Group do |group|
-      group.can? :index, :topics, user
-    end
-    can :show, Topic do |topic|
-      polymorphic_topic topic, user, :index, :topics
-    end
-    can :create, Group::Group do |group|
-      group.can? :write, :topic, user
-    end
-    can :update, Topic do |topic|
-      polymorphic_topic topic, user, :write, :topic
-    end
     can :destroy, Group::EmailInvitation do |e_invitation|
       e_invitation.group_group.can? :manage, :invitations, user
     end
@@ -103,7 +91,6 @@ class Ability
       invitation.group.can? :manage, :invitations, user
     end
     can :update, Group::Invitation
-
 
   end
 
