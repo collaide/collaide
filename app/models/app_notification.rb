@@ -13,16 +13,16 @@
 #  updated_at  :datetime
 #
 
-class UserNotification < ActiveRecord::Base
+class AppNotification < ActiveRecord::Base
 
-  belongs_to :user
+  belongs_to :owner, polymorphic: true
 
-  before_create :notify_user
+  #before_create :notify_user
 
   validates_presence_of :class_name
   validates_presence_of :method_name
   validates_presence_of :values
-  validates_presence_of :user
+  validates_presence_of :owner
 
   default_scope { order(:created_at => :desc) }
 
@@ -32,9 +32,9 @@ class UserNotification < ActiveRecord::Base
   end
 
   protected
-    def notify_user
-      u = User.find user_id
-      u.has_notifications=true
-      u.save
-    end
+    #def notify_user
+    #  u = User.find user_id
+    #  u.has_notifications=true
+    #  u.save
+    #end
 end

@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class NotificationsController < ApplicationController
-  load_and_authorize_resource class: UserNotification
+  load_and_authorize_resource class: AppNotification
 
   add_breadcrumb I18n.t("notifications.title_page"), :notifications_path
 

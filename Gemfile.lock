@@ -199,7 +199,7 @@ GEM
       spork (>= 0.8.4)
     haml (4.0.5)
       tilt
-    hashie (2.0.5)
+    hashie (2.1.0)
     hike (1.2.3)
     http_parser.rb (0.5.3)
     httparty (0.13.0)
@@ -373,8 +373,6 @@ GEM
       twitter-bootstrap-rails
     resque_mailer (2.2.6)
       actionmailer (>= 3.0)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     riddle (1.5.10)
     route_translator (3.2.0)
     rspec (2.14.1)
@@ -452,7 +450,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.1)
+    turbolinks (2.2.2)
       coffee-rails
     twitter-bootstrap-rails (2.2.8)
       actionpack (>= 3.1)
@@ -549,7 +547,6 @@ DEPENDENCIES
   resque
   resque-web
   resque_mailer
-  rest-client (~> 1.6.7)
   route_translator
   rspec-rails
   sass-rails (~> 4.0.1)

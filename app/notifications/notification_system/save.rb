@@ -10,32 +10,35 @@ class NotificationSystem::Save
     user_roles = owners['user_roles']
     json_values = values.to_json
     unless user_id.nil?
-      UserNotification.create!(
+      AppNotification.create!(
           class_name: class_name,
           method_name: method_name,
           values: json_values,
-          user_id: user_id
+          owner_id: user_id,
+          owner_type: 'User'
       )
       puts "User saved #{user_id}"
     end
     if users_ids.is_a?(Array)
       users_ids.each do |an_id|
-        UserNotification.create!(
+        AppNotification.create!(
             class_name: class_name,
             method_name: method_name,
             values: json_values,
-            user_id: an_id
+            owner_id: an_id,
+            owner_type: 'User'
         )
         puts "User saved #{an_id}"
       end
     end
     if user_role.is_a? String
       User.with_role(user_role.to_sym).each do |a_user|
-        UserNotification.create!(
+        AppNotification.create!(
             class_name: class_name,
             method_name: method_name,
             values: json_values,
-            user_id: a_user.id
+            owner_id: a_user.id,
+            owner_type: 'User'
         )
         puts "User saved #{a_user.id}"
       end
@@ -44,11 +47,12 @@ class NotificationSystem::Save
     if user_roles.is_a? Array
       where_conditions = user_roles.map { |a_role| "users.role='#{a_role}'" }.join(' OR ')
       User.where(where_conditions).all.each do |a_user|
-        UserNotification.create!(
+        AppNotification.create!(
             class_name: class_name,
             method_name: method_name,
             values: json_values,
-            user_id: a_user.id
+            owner_id: a_user.id,
+            owner_type: 'User'
         )
         puts "User saved #{a_user.id}"
       end

@@ -56,7 +56,7 @@ class Ability
       can :manage, Advertisement::Advertisement, user_id: user.id #uniquement les annonces créées par l'utilisateur
       # TODO Gérer les messages avec le firewall
       #can :manage, Message#, user_id: user.id #uniquement les messages de l'utilisateur
-      can :manage, UserNotification, user_id: user.id #uniquement les notifications de l'utilisateur
+      can :manage, AppNotification, owner_id: user.id, owner_type: 'User' #uniquement les notifications de l'utilisateur
 
       can :create, Group::WorkGroup
       group_permissions user
