@@ -1,4 +1,10 @@
-=simple_form_for @comment do |f|
-  =f.input :comment
-  =hidden_field_for_polymorphic 'comment', object
-  =f.button :submit, submit_text, class: 'secondary'
+=simple_form_for @comment, html: {class: 'medium_editor'} do |f|
+  .hide
+    =f.input :comment, input_html: {class: 'medium_text'}
+    =hidden_field_for_polymorphic 'comment', object
+  .row
+    .columns.large-12
+      .editable{'data-placeholder' => t('group.topics.index.comment.form')}
+  .row
+    .columns.large-12
+      =f.button :submit, submit_text, class: 'secondary'

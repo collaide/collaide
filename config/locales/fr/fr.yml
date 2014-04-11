@@ -554,7 +554,7 @@ fr:
     topics:
       index:
         h1_title: Discussions
-        description: Vous pouvez ici parler de tout ce que vous voulez avec vos collègues.
+        description: Vous pouvez ici mettre en page une joli message. Séléctionnez la phrase que vous désirez modifier et laissez vous guider !
         last_discussions: Les dernières discussions
         empty: Aucune discussions en cours.
         new_discussion: Discuter
@@ -569,6 +569,7 @@ fr:
           success: Une nouvelle discussion a commencée
           error: Impossible de commencer une nouvelle discussion.
         comment:
+         form: Votre réponse...
          no_author: Commentaire annonyme
       show:
         h1_title: Discussion du %{date}

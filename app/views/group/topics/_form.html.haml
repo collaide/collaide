@@ -1,0 +1,19 @@
+=simple_form_for @topic do |f|
+  .hide
+    =f.input :message#,  input_html: {class: 'editable'}
+    =hidden_field_for_polymorphic 'topic', @group, path: group_work_group_topics_path(@group)
+  =field_set_tag t('group.topics.new.form.fieldset') do
+    .row
+      .columns.large-2
+        =label_tag(:title, t('group.topics.new.form.title'))
+      .columns.large-10
+        =text_field_tag(:title, nil, placeholder: t('group.topics.new.form.title_placeholder'))
+    .row
+      .columns.large-2
+        =label_tag(:message, t('group.topics.new.form.message'))
+      .columns.large-10
+        .editable
+    .row
+      .columns.large-2
+      .columns.large-10
+        =f.button :submit, t('group.topics.new.form.submit')

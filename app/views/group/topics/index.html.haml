@@ -1,12 +1,7 @@
 =render(layout: 'group/layouts/layout') do
   %h1= t('group.topics.index.h1_title')
   %blockquote= t('group.topics.index.description')
-  =link_to 'nouvelle discussion', new_group_work_group_topic_path(@group), class: 'button'
-  .row
-    .columns.small-12
-      .panel
-        %h4.subheader= t('group.topics.index.begin_discussions')
-        =render 'topics/form', submit_text: t('group.topics.index.new_discussion'), object: @group
+  =render 'group/topics/form'
   .row
     .columns.small-12
       %h4.subheader= t('group.topics.index.last_discussions')
