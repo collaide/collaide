@@ -4,7 +4,7 @@ ThinkingSphinx::Index.define 'document/document', with: :active_record do
   indexes description
   indexes author
   indexes user(:name), as: :user
-  indexes document_type.translations.name, as: :document_type
+  #indexes document_type.translations.name, as: :document_type
   indexes study_level.translations.name, as: :study_level
   indexes domains.translations.name, as: :domains
 
@@ -14,6 +14,6 @@ ThinkingSphinx::Index.define 'document/document', with: :active_record do
   domain_translations.locale='fr'
 "
   #TODO: add stopwords
-  has created_at, updated_at, user_id, document_type_id, study_level_id
+  has created_at, updated_at, user_id, study_level_id#document_type_id, study_level_id
   has domains(:id), as: :domain_ids
 end

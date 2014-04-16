@@ -119,7 +119,6 @@ class ApplicationController < ActionController::Base
 
   def auth_token_user
     if !params[:user_email].blank? and (user = User.find_by(email: params[:user_email]))
-      logger.debug('asssssssssssssssssssssssssssssssssssssssssssssssss')
       if Devise.secure_compare(user.authentication_token, params[:user_token])
         sign_in user, store: false
         logger.debug('asDFsdfasdfsad')
