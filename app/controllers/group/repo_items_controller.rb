@@ -9,7 +9,7 @@ class Group::RepoItemsController < ApplicationController
   def show
     @repo_item = RepositoryManager::RepoItem.find(params[:id])
 
-    render status: :forbidden, :text => "No permission to see this repo_item" and return unless @group.can_read?(@repo_item)
+    raise CanCan::AccessDenied if !@group.can_read?(@repo_item) or (@repo_item.is_folder? and !@group.can? :index, :files, current_user) or (!@repo_item.is_folder? and !@group.can :read, :file, current_user)
 
     if @repo_item.is_folder?
       @children = @repo_item.children.order(name: :asc).order(file: :asc)
@@ -21,10 +21,12 @@ class Group::RepoItemsController < ApplicationController
   # Affiche le répertoire de base
   def index
     @repo_item = @group.root_repo_items.order(name: :asc).order(file: :asc)
+    raise CanCan::AccessDenied unless @group.can_read? @repo_item or @group.can? :index, :files, current_user
   end
 
   def create_file
     repo_item = RepositoryManager::RepoItem.find(params[:repo_file][:id]) if params[:repo_file][:id]
+    raise CanCan::AccessDenied unless @group.can? :write, :file, current_user or @group.can_create? repo_item
     options = {source_folder: repo_item, sender: current_user}
     respond_to do |format|
       if @item = @group.create_file(params[:repo_file][:file], options)
@@ -46,6 +48,7 @@ class Group::RepoItemsController < ApplicationController
     repo_item = do_request(folder_params[:id]) do |id|
       RepositoryManager::RepoItem.find id
     end
+    raise CanCan::AccessDenied unless @group.can? :write, :file, current_user or @group.can_create? repo_item
     options = {source_folder: repo_item, sender: current_user}
     respond_to do |format|
       if @item = @group.create_folder(params[:repo_folder][:name], options)
@@ -59,6 +62,7 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def download
+    raise CanCan::AccessDenied unless @group.can? :read, :file, current_user or @group.can_read? @repo_item
     # Pris chez Numa
     # méthode d'envoi de fichier :default -> pour le local
     if Rails.env = 'production'
@@ -97,6 +101,7 @@ class Group::RepoItemsController < ApplicationController
 
   def destroy
     @repo_item = RepositoryManager::RepoItem.find(params[:id])
+    raise CanCan::AccessDenied unless @group.can? :delete, :file, current_user or @group.can_destroy? @repo_item
 
     if @repo_item.is_folder?
       notice = t'repository_manager.destroy.repo_folder.success', item: @repo_item.name
@@ -121,6 +126,7 @@ class Group::RepoItemsController < ApplicationController
     target = do_request(copy_params[:id]) do  |id|
       RepositoryManager::RepoItem.find id
     end
+    raise CanCan::AccessDenied unless @group.can? :write, :file, current_user or @group.can_update? target
     respond_to do |format|
       if @group.copy_repo_item(@repo_item, source_folder: target)
         format.json { render :show }
@@ -135,6 +141,7 @@ class Group::RepoItemsController < ApplicationController
     target = do_request(move_params[:id]) do |id|
       RepositoryManager::RepoFolder.find id
     end
+    raise CanCan::AccessDenied unless @group.can? :write, :file, current_user or @group.can_update? target
     respond_to do |format|
       if @group.move_repo_item @repo_item, source_folder: target
         format.json { render :show }
@@ -145,6 +152,7 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def rename
+    raise CanCan::AccessDenied unless @group.can? :write, :file, current_user or @group.can_update? @repo_item
     respond_to do |format|
       if @group.rename_repo_item @repo_item, params[:repo_item][:name]
         format.json { render :show }

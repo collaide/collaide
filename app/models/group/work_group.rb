@@ -36,10 +36,12 @@ class Group::WorkGroup < Group::Group
 #  index members        --> member
 #  read member          --> member
 #  delete member        --> admin
+
 #  write file           --> member
 #  index files          --> member
 #  read file            --> member
 #  delete file          --> member
+
 #  index topics       --> member
 #  read topic          --> member
 #  write topic         --> member
