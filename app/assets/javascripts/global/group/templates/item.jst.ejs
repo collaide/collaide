@@ -3,7 +3,7 @@
         <div class="small-4 columns item-name">
             <%if(item.is_folder) {%>
             <i class="fi-folder"/>
-            <a href="<%= item.url %>"><%= item.name %></a>
+            <a href="<%= item.url %>.json" data-remote="true"><%= item.name %></a>
             <%} else {%>
             <i class="fi-download"/>
             <a href="<%= item.download %>"><%= item.name %></a>

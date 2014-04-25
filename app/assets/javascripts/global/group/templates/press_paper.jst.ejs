@@ -7,13 +7,13 @@
         <ul class="button-group">
             <li>
                 <form action="<%= copy %>" method="patch" data-remote="true" class="copy-form">
-                    <input type="hidden" value="<%=repo_id%>" name="repo_item[id]">
+                    <input type="hidden" value="<%=repo_id%>" name="repo_item[id]" class="repo_item_id">
                     <input type="submit" value="Copier ici" class="button secondary small">
                 </form>
             </li>
             <li>
                 <form action="<%= move %>" method="patch" data-remote="true">
-                    <input type="hidden" value="<%=repo_id%>" name="repo_item[id]">
+                    <input type="hidden" value="<%=repo_id%>" name="repo_item[id]" class="repo_item_id">
                     <input type="submit" value="Déplacer ici" class="button secondary small">
                 </form>
             </li>

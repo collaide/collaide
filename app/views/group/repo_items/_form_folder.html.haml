@@ -5,5 +5,5 @@
     .large-6.columns
       =submit_tag(t('repository_manager.form.new.repo_folder.submit'), class: "button tiny")
   -#=hidden_field_tag("object[id]", object.id)
-  -if repo_item
-    =hidden_field_tag('repo_folder[id]', repo_item.id)
+  -folder_id = (repo_item.nil? ? nil : repo_item.id)
+  =hidden_field_tag('repo_folder[id]', folder_id)

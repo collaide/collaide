@@ -1,4 +1,6 @@
 class window.RepoItem
+  @is_started = false
+  @is_first_time = true
   @start: (index) ->
     $.getJSON("#{document.URL}.json", (data) ->
       repo_items = data.repo_items
@@ -6,6 +8,7 @@ class window.RepoItem
       $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
       Utils.loaded()
     )
+    @is_started = true
 class Utils
   @type
   @flash: (key, msg) ->
@@ -64,12 +67,7 @@ $(document).on('repo_items:loaded', () ->
     )
   )
   #supprimer
-  $('a[data-method]').on('ajax:success', (e, data, status, xhr) ->
-    Utils.flash('notice', data.notice)
-    $(this).parents('.an-item').remove()
-  ).on('ajax:error', (data, xhr, status, e) ->
-    Utils.flash('alert', xhr.responseJSON.repo_items)
-  )
+
 
   #copier-déplacer
   $('.move-copy').on('click', () ->
@@ -82,17 +80,64 @@ $(document).on('repo_items:loaded', () ->
           $('#press-paper').hide()
       )
       $('.copy-form').on('ajax:success', (e, data, status, xhr) ->
-        console.log('asdasd')
         Utils.add_item(data)
         Utils.loaded()
       ).on('ajax:error', (data, xhr, status, e) ->
-        console.log('SDFLS')
         Utils.flash('alert', msg) for msg in xhr.responseJSON.copy
       )
   )
+
 )
 $ ->
-  #créer un dossier
+
+  window.onpopstate = (event) ->
+    if RepoItem.is_started
+      if ! RepoItem.is_first_time
+        $.getJSON("#{document.location}.json", (data) ->
+          if data.repo_items
+            repo_items = data.repo_items
+          else
+            repo_items = data.children
+          $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
+          $('#repo_file_id').val(data.id)
+          $('#repo_folder_id').val(data.id)
+          $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: data.path, root_folder: $('#root_folder').parent().html()}))
+          Utils.loaded()
+        )
+      else
+        RepoItem.is_first_time = false
+  #========================================================================
+  #=============== supprimer ==============================================
+  $(document).on('ajax:success', 'a[data-method]', (e, data, status, xhr) ->
+      Utils.flash('notice', data.notice)
+      $(this).parents('.an-item').remove()
+  ).on('ajax:error', (data, xhr, status, e) ->
+    Utils.flash('alert', xhr.responseJSON.repo_items)
+  )
+  #========================================================================
+  #=============== navigation ==============================================
+  $(document).on('ajax:success', '.item-name a', (e, data, status, xhr) ->
+    console.log(data)
+    $('#panel-items').html(JST['global/group/templates/index']({repo_items: data.children}))
+    $('#repo_file_id').val(data.id)
+    $('#repo_folder_id').val(data.id)
+    $('.repo_item_id').val(data.id)
+    $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: data.path, root_folder: $('#root_folder').parent().html()}))
+    window.history.pushState('salut', "#{data.name} - #{document.title}", data.url)
+    Utils.loaded()
+  )
+  $(document).on('ajax:success', '#root_folder', (e, data, status, xhr) ->
+    repo_items = data.repo_items
+    $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
+    $('#repo_file_id').val(null)
+    $('#repo_folder_id').val(null)
+    $('.repo_item_id').val(null)
+    $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: null, root_folder: $('#root_folder').parent().html()}))
+    window.history.pushState('salut', "#{document.title}", data.url)
+    Utils.loaded()
+  )
+  #========================================================================
+  #=============== création de dossier ====================================
   $('#form_folder').on('ajax:success', (e, data, status, xhr) ->
     Utils.add_item(data)
     $('#repo_folder_name').val('')
@@ -100,7 +145,9 @@ $ ->
   ).on('ajax:error', (data, xhr, status, e) ->
     Utils.flash('alert', msg) for msg in xhr.responseJSON.repo_items
   )
-  #créer un fichier
+
+  #========================================================================
+  #=============== déposer un fichier =====================================
   $('#repo_file_file').on('change', (e) ->
     $('#all-progress-bar').append(JST['global/group/templates/progress_bar']({text: "Déchargement du fichier '#{e.target.files[0].name}'"}))
     elem = $('.progress-bar').last()
@@ -111,7 +158,10 @@ $ ->
       clearForm: true,
       resetForm: true,
       error: (xhr, status) ->
-        Utils.flash('alert', msg) for msg in xhr.responseJSON.repo_items
+        if xhr.responseJSON
+          Utils.flash('alert', msg) for msg in xhr.responseJSON.repo_items
+        else
+          Utils.flash('alert', 'Impossible de déposer ce fichier')
       success: (xhr, status) ->
         Utils.add_item(xhr)
         Utils.loaded()

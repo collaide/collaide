@@ -25,7 +25,7 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def create_file
-    repo_item = RepositoryManager::RepoItem.find(params[:repo_file][:id]) if params[:repo_file][:id]
+    repo_item = RepositoryManager::RepoItem.find(params[:repo_file][:id]) if !params[:repo_file][:id].blank?
     raise CanCan::AccessDenied unless @group.can? :write, :file, current_user or @group.can_create? repo_item
     options = {source_folder: repo_item, sender: current_user}
     respond_to do |format|

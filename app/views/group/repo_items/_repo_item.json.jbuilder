@@ -22,3 +22,7 @@ json.rename group_work_group_repo_item_rename_url(repo_item.owner, repo_item)
 json.copy group_work_group_repo_item_copy_url(repo_item.owner, repo_item)
 json.move group_work_group_repo_item_move_url(repo_item.owner, repo_item)
 json.share group_work_group_repo_item_sharings_url(repo_item.owner, repo_item)
+json.path repo_item.path do |json, path|
+  json.url group_work_group_repo_item_path(@group, path)
+  json.name path.name
+end
