@@ -9,7 +9,7 @@ class Group::RepoItemsController < ApplicationController
   def show
     @repo_item = RepositoryManager::RepoItem.find(params[:id])
 
-    raise CanCan::AccessDenied if !@group.can_read?(@repo_item) or (@repo_item.is_folder? and !@group.can? :index, :files, current_user) or (!@repo_item.is_folder? and !@group.can :read, :file, current_user)
+    raise CanCan::AccessDenied if !@group.can_read?(@repo_item) or (@repo_item.is_folder? and !@group.can? :index, :files, current_user) or (!@repo_item.is_folder? and !@group.can? :read, :file, current_user)
 
     if @repo_item.is_folder?
       @children = @repo_item.children.order(name: :asc).order(file: :asc)
@@ -21,7 +21,7 @@ class Group::RepoItemsController < ApplicationController
   # Affiche le répertoire de base
   def index
     @repo_item = @group.root_repo_items.order(name: :asc).order(file: :asc)
-    raise CanCan::AccessDenied unless @group.can_read? @repo_item or @group.can? :index, :files, current_user
+    raise CanCan::AccessDenied unless @group.can? :index, :files, current_user
   end
 
   def create_file
