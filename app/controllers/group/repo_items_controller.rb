@@ -128,7 +128,7 @@ class Group::RepoItemsController < ApplicationController
     end
     raise CanCan::AccessDenied unless @group.can? :write, :file, current_user or @group.can_update? target
     respond_to do |format|
-      if @group.copy_repo_item(@repo_item, source_folder: target)
+      if (@repo_item=@group.copy_repo_item(@repo_item, source_folder: target))
         format.json { render :show }
       else
         format.json { render json: @repo_item.errors, status: :unprocessable_entity }
@@ -168,7 +168,7 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def do_request(params)
-    if params and block_given?
+    if !params.blank? and block_given?
       yield params
     else
       nil

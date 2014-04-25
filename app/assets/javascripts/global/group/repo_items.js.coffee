@@ -70,10 +70,25 @@ $(document).on('repo_items:loaded', () ->
   ).on('ajax:error', (data, xhr, status, e) ->
     Utils.flash('alert', xhr.responseJSON.repo_items)
   )
+
+  #copier-déplacer
   $('.move-copy').on('click', () ->
-    $('#press-paper-content').append('<p>salut</p>')
+    $('#press-paper-content').append(JST['global/group/templates/press_paper']({link: $(this).parents('.an-item').find('.item-name'), copy: $(this).attr('data-copy'), move: $(this).attr('data-move'), repo_id: ''}))
     if ($('#press-paper').hasClass('hide'))
       $('#press-paper').show()
+      $('.cancel-press-paper').on('click', () ->
+        $(this).parent().parent().remove()
+        if $('#press-paper-content').children().size()==0
+          $('#press-paper').hide()
+      )
+      $('.copy-form').on('ajax:success', (e, data, status, xhr) ->
+        console.log('asdasd')
+        Utils.add_item(data)
+        Utils.loaded()
+      ).on('ajax:error', (data, xhr, status, e) ->
+        console.log('SDFLS')
+        Utils.flash('alert', msg) for msg in xhr.responseJSON.copy
+      )
   )
 )
 $ ->
@@ -87,7 +102,6 @@ $ ->
   )
   #créer un fichier
   $('#repo_file_file').on('change', (e) ->
-    console.log(e.target.files[0])
     $('#all-progress-bar').append(JST['global/group/templates/progress_bar']({text: "Déchargement du fichier '#{e.target.files[0].name}'"}))
     elem = $('.progress-bar').last()
 

@@ -1,5 +1,23 @@
 <div class="row">
-    <div class="columns small-12">
-
+    <div class="columns small-6">
+        <%=$(link).html()%>
+        <a class="button tiny secondary round radius cancel-press-paper" href="#"><i class="fi-x"/></a>
     </div>
+    <div class="columns small-6">
+        <ul class="button-group">
+            <li>
+                <form action="<%= copy %>" method="patch" data-remote="true" class="copy-form">
+                    <input type="hidden" value="<%=repo_id%>" name="repo_item[id]">
+                    <input type="submit" value="Copier ici" class="button secondary small">
+                </form>
+            </li>
+            <li>
+                <form action="<%= move %>" method="patch" data-remote="true">
+                    <input type="hidden" value="<%=repo_id%>" name="repo_item[id]">
+                    <input type="submit" value="Déplacer ici" class="button secondary small">
+                </form>
+            </li>
+        </ul>
+    </div>
+    <hr>
 </div>
