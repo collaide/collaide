@@ -4,11 +4,10 @@
       =t('group.topics.index.no_author')
     -else
       =raw(image_and_name_for topic.writer)
-  %p= sanitize(topic.message).html_safe
-  %h6.subheader
     = t('group.topics.index.time_ago', time_ago: time_ago_in_words(topic.created_at))
     -#= link_to(t('group.statuses.index.edit'), '#', class: 'button small secondary')
     -#= link_to(t('group.statuses.index.delete'), '#', class: 'button small secondary')
+  %p= sanitize(topic.message).html_safe
   .row
     .columns.small-11.push-1
       -collection = topic.comments
