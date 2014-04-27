@@ -16,6 +16,10 @@ end
 
 module Collaide
   class Application < Rails::Application
+
+    config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td'
+    config.action_view.sanitized_allowed_attributes = ['style']
+
     # ATTENTION Ajouter pour contrer le bug de GoogleBooks
     # Je l'ai mis dans environnements/development.rb --> comme ça le serveur prod ne quinte pas.
     # Et Si ça bug en production, je dois pouvoir le configurer facilement

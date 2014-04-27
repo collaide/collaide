@@ -4,6 +4,35 @@ default:
 <% else %>
   language: 'en'
 <% end %>
+#  plugins: [
+#                  "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+#                  "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+#                  "table contextmenu directionality emoticons template textcolor paste fullpage textcolor"
+#          ]
+
+  plugins: [
+                    "autolink autosave link image lists print hr anchor",
+                    "searchreplace wordcount code fullscreen",
+                    "table emoticons"
+            ]
+  #toolbar2: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect"
+  #toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | inserttime preview | forecolor backcolor"
+  #toolbar2: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft"
+  #plugins: "table,contextmenu,paste,-externalplugin"
+
+  toolbar1: "
+  fullscreen
+  | undo redo
+  | searchreplace
+  | bold italic underline strikethrough subscript superscript blockquote
+  | bullist numlist
+  | link unlink image media
+  | table
+  | charmap emoticons
+  | styleselect
+  | print code"
+  menubar: false
+  toolbar_items_size: 'small'
   #inline: true
   #schema: 'html5'
   #add_unload_trigger: false
