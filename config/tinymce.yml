@@ -25,6 +25,7 @@ default:
   | undo redo
   | searchreplace
   | bold italic underline strikethrough subscript superscript blockquote
+  | alignleft aligncenter alignright alignjustify
   | bullist numlist
   | link unlink image media
   | table
