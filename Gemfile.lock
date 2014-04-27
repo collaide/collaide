@@ -448,6 +448,10 @@ GEM
     tilt (1.4.1)
     timers (1.1.0)
     tins (1.1.0)
+    tinymce-rails (4.0.19)
+      railties (>= 3.1.1)
+    tinymce-rails-langs (4.20140129)
+      tinymce-rails (~> 4.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -557,6 +561,8 @@ DEPENDENCIES
   spork-rails
   sqlite3
   thinking-sphinx (= 3.0.6)
+  tinymce-rails
+  tinymce-rails-langs
   turbolinks
   uglifier (~> 2.4.0)
   ui_datepicker-rails3

@@ -23,12 +23,7 @@
 //= require select2
 //= require select2_locale_fr
 //= require jquery.form
+//= require tinymce
 //= require_tree .
 
 $(document).foundation();
-
-var elements = document.querySelectorAll('.editable'),
-    editor = new MediumEditor(elements, {
-        placeholder: '',
-        checkLinkFormat: true
-    });

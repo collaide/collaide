@@ -1,0 +1,11 @@
+default:
+<% if I18n.locale == :fr %>
+  language: 'fr_FR'
+<% else %>
+  language: 'en'
+<% end %>
+  #inline: true
+  #schema: 'html5'
+  #add_unload_trigger: false
+  #theme: 'modern'
+  #statusbar: false

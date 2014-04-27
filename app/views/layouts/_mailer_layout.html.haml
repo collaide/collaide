@@ -1,0 +1,5 @@
+%div{style: "background-color:#eaf3ff;text-align:center;"}
+  %h2{style: "text-align:center; color: #0033CC;"}= yield(:mail_title)
+  =yield
+  %p= t('mailer.group.new_invitation.greetings')
+  %p= t('mailer.group.new_invitation.sign')

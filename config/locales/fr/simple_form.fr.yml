@@ -64,6 +64,9 @@ fr:
         content: Contenu du message
       group_work_group:
         name: Nom du groupe
+      topic:
+        title: Titre
+        message: Message
     placeholders:
       user_message:
         users: Pseudo

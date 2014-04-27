@@ -105,6 +105,8 @@ gem 'ejs'
 #gem 'json2-rails'
 
 gem 'jquery-form-rails', '~> 1.0.1'
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
 
 group :development, :test do
   #gem 'virb'
