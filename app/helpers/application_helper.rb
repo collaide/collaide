@@ -1,6 +1,22 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
 
+  def count_notifications
+    @count_notification ||= current_user.notifications.where(is_viewed: false).count
+  end
+
+  def count_messages
+    @count_messages ||= current_user.mailbox.inbox.includes(:receipts).where('receipts.is_read' => false).count
+  end
+
+  def alert_for(news_count)
+    if news_count > 0
+      "(#{news_count})"
+    else
+      ''
+    end
+  end
+
   def get_repo_items(show = 'false')
     content_for :get_repo_items do
       "<script>$(function() {RepoItem.start(#{show})});</script>".html_safe

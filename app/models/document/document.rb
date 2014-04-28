@@ -45,6 +45,7 @@ class Document::Document < ActiveRecord::Base
   #letsrate_rateable 'note'
 
   scope :valid, -> { where(status: :accepted) }
+  scope :footer, -> { valid.order('created_at DESC').limit(6)}
 
   mount_uploader :asset, DocumentUploader
 
@@ -63,7 +64,6 @@ class Document::Document < ActiveRecord::Base
   accepts_nested_attributes_for :domains
 
   before_validation :add_author
-  before_save :check_is_accepted
 
   #validation du type de fichier
   #création d'une image en fonction du fichier
@@ -81,14 +81,6 @@ class Document::Document < ActiveRecord::Base
   validates_presence_of :user
 
   private
-
-    def check_is_accepted
-      unless is_accepted?
-        if accepted? and Document::Document.find(id).pending?
-          self.is_accepted = true
-        end
-      end
-    end
 
     def add_author
       self.author = user.to_s if author.blank?

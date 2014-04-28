@@ -1,14 +1,15 @@
 # -*- encoding : utf-8 -*-
 # == Schema Information
 #
-# Table name: user_notifications
+# Table name: app_notifications
 #
 #  id          :integer          not null, primary key
 #  class_name  :string(255)
 #  method_name :string(255)
 #  values      :string(255)
 #  is_viewed   :boolean          default(FALSE)
-#  user_id     :integer
+#  owner_id    :integer
+#  owner_type  :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
 #
