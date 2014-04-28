@@ -11,14 +11,10 @@ class window.RepoItem
     @is_started = true
 class Utils
   @push: (title, url) ->
-    Session.set(document.location, true)
-    Session.set(url, true)
-    console.log('on push: ' + document.location)
-    console.log('on push:' + JSON.stringify Session.dump())
+    Session.set(document.location, true) # pour le retour arrière
+    Session.set(url, true) # pour le retour avant
     window.history.pushState(null, title, url)
   @is_pushed: (url)->
-     console.log('on pop: ' + url)
-     console.log('on pop:' + JSON.stringify Session.dump())
      return Session.get(url)
   @flash: (key, msg) ->
     $('#flash-msg').html('')
