@@ -13,7 +13,8 @@ default:
   plugins: [
                     "advlist autolink autosave link image lists print hr anchor",
                     "searchreplace wordcount code fullscreen",
-                    "table emoticons sh4tinymce"
+                    "table emoticons",
+                    #"table emoticons sh4tinymce"
             ]
   #toolbar2: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect"
   #toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | inserttime preview | forecolor backcolor"
