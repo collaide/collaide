@@ -97,7 +97,7 @@ module ApplicationHelper
 
   def image_and_name_for(writer, img = 'avatar')
     img_tag =  image_tag(writer.send(img).mini.url, alt: t("users.#{img}.title", user: h(writer)), title: t("users.#{img}.title", user: h(writer)), width: 30, height: 30) if !img.blank? and writer.respond_to?(img)
-    raw((link_to(img_tag+ h(writer), writer)).html_safe)
+    raw((link_to(img_tag + ' ' + h(writer), writer)).html_safe)
   end
 
   # View helper for rendering an activity, calls {Activity::Activity#render} internally.
