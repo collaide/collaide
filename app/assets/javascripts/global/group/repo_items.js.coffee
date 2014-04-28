@@ -1,29 +1,28 @@
 class window.RepoItem
   @is_started = false
   @is_first_time = true
+  @session_cleared = false
   @start: (index) ->
     $.getJSON("#{document.URL}.json", (data) ->
       repo_items = data.repo_items
       repo_items = data.children if(index)
       $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
-      Utils.loaded()
     )
     @is_started = true
 class Utils
-  @type
+  @push: (title, url) ->
+    Session.set(document.location, true)
+    Session.set(url, true)
+    console.log('on push: ' + document.location)
+    console.log('on push:' + JSON.stringify Session.dump())
+    window.history.pushState(null, title, url)
+  @is_pushed: (url)->
+     console.log('on pop: ' + url)
+     console.log('on pop:' + JSON.stringify Session.dump())
+     return Session.get(url)
   @flash: (key, msg) ->
     $('#flash-msg').html('')
     $('#flash-msg').append(JST['global/group/templates/flash']({text: msg, key: key}))
-  @loaded: () ->
-#    if type == @type
-#      console.log 'stop'
-#      return
-#    else
-#      console.log type
-#      @type = type
-    $.event.trigger({
-      type: 'repo_items:loaded'
-    })
   @add_item: (item) ->
     $('#items').prepend(JST['global/group/templates/item']({item: item}))
   @get_auth: ->
@@ -42,12 +41,94 @@ class Utils
     else if(e.selectionStart)
       e.selectionStart = start
       e.selectionEnd = end
+class PressPaper
+  @remove_from: (element)->
+    $(element).parents('.press-paper-line').remove()
+    if $('#press-paper-content').children().size()==0
+      $('#press-paper').hide()
 
-
-
-$(document).on('repo_items:loaded', () ->
-  #renommer
-  $('.rename-item').on('click', ()->
+$ ->
+  #========================================================================
+  #=============== retour arrière =========================================
+  window.onpopstate = (event) ->
+    if RepoItem.is_started
+      if RepoItem.is_first_time
+        RepoItem.is_first_time = false
+      else
+        if Utils.is_pushed(document.location)
+          $.getJSON("#{document.location}.json", (data) ->
+            if data.repo_items
+              repo_items = data.repo_items
+            else
+              repo_items = data.children
+            $('.repo_item_id').val(data.id)
+            $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
+            $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: data.path, root_folder: $('#root_folder').parent().html()})))
+    else
+      if !RepoItem.session_cleared
+        Session.clear()
+        RepoItem.session_cleared = true
+  #========================================================================
+  # -------------- clique sur un fichier ou dossier ----------------------------------
+  $(document).on('ajax:success', '.item-name a', (e, data, status, xhr) ->
+    $('#panel-items').html(JST['global/group/templates/index']({repo_items: data.children}))
+    $('.repo_item_id').val(data.id)
+    $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: data.path, root_folder: $('#root_folder').parent().html()}))
+    Utils.push("#{data.name} - #{document.title}", data.url)
+  )
+  # -------------- clique sur le root folder -------------------------------
+  $(document).on('ajax:success', '#root_folder', (e, data, status, xhr) ->
+    repo_items = data.repo_items
+    $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
+    $('.repo_item_id').val(null)
+    $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: null, root_folder: $('#root_folder').parent().html()}))
+    Utils.push("#{document.title}", data.url)
+  )
+  #========================================================================
+  #=============== mettre en haut =========================================
+  $(document).on('click', '.move-copy', () ->
+    $('#press-paper-content').append(JST['global/group/templates/press_paper']({
+      link: $(this).parents('.an-item').find('.item-name'),
+      copy: $(this).attr('data-copy'),
+      move: $(this).attr('data-move'),
+      repo_id: $(this).parents('.an-item').attr('id')}))
+    if ($('#press-paper').hasClass('hide'))
+      $('#press-paper').show()
+    $(this)
+    .addClass('disabled')
+    .addClass('move-copy-disabled')
+    .removeClass('move-copy')
+    .text('Ajouté en haut')
+  )
+  #========================================================================
+  #=============== retirer du presse-papier ===============================
+  $(document).on('click', '.cancel-press-paper', () ->
+    $('#' + $(this).parents('.press-paper-line').attr('id').split('_')[1])
+    .find('.move-copy-disabled')
+    .removeClass('disabled')
+    .addClass('move-copy')
+    .removeClass('move-copy-disabled')
+    .text('Ajouter en haut')
+    PressPaper.remove_from(this)
+  )
+  #========================================================================
+  #=============== copier =================================================
+  $(document).on('ajax:success', '.copy-form', (e, data, status, xhr) ->
+    Utils.add_item(data)
+  ).on('ajax:error', '.copy-form', (data, xhr, status, e) ->
+    Utils.flash('alert', msg) for msg in xhr.responseJSON.copy
+  )
+  #========================================================================
+  #=============== déplacer =================================================
+  $(document).on('ajax:success', '.move-form', (e, data, status, xhr) ->
+    Utils.add_item(data)
+    PressPaper.remove_from(this)
+  ).on('ajax:error', '.move-form', (data, xhr, status, e) ->
+    Utils.flash('alert', msg) for msg in xhr.responseJSON.move
+  )
+  #========================================================================
+  #=============== renommer ===============================================
+  $(document).on('click', '.rename-item', ()->
     item = $("#item-#{$(this).attr('data-id')} .item-name")
     previous_html = item.children()
     item_value =  item.find('a').text()
@@ -66,82 +147,20 @@ $(document).on('repo_items:loaded', () ->
       item.html(previous_html)
     )
   )
-  #supprimer
-
-
-  #copier-déplacer
-  $('.move-copy').on('click', () ->
-    $('#press-paper-content').append(JST['global/group/templates/press_paper']({link: $(this).parents('.an-item').find('.item-name'), copy: $(this).attr('data-copy'), move: $(this).attr('data-move'), repo_id: ''}))
-    if ($('#press-paper').hasClass('hide'))
-      $('#press-paper').show()
-      $('.cancel-press-paper').on('click', () ->
-        $(this).parent().parent().remove()
-        if $('#press-paper-content').children().size()==0
-          $('#press-paper').hide()
-      )
-      $('.copy-form').on('ajax:success', (e, data, status, xhr) ->
-        Utils.add_item(data)
-        Utils.loaded()
-      ).on('ajax:error', (data, xhr, status, e) ->
-        Utils.flash('alert', msg) for msg in xhr.responseJSON.copy
-      )
-  )
-
-)
-$ ->
-
-  window.onpopstate = (event) ->
-    if RepoItem.is_started
-      if ! RepoItem.is_first_time
-        $.getJSON("#{document.location}.json", (data) ->
-          if data.repo_items
-            repo_items = data.repo_items
-          else
-            repo_items = data.children
-          $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
-          $('#repo_file_id').val(data.id)
-          $('#repo_folder_id').val(data.id)
-          $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: data.path, root_folder: $('#root_folder').parent().html()}))
-          Utils.loaded()
-        )
-      else
-        RepoItem.is_first_time = false
   #========================================================================
   #=============== supprimer ==============================================
   $(document).on('ajax:success', 'a[data-method]', (e, data, status, xhr) ->
       Utils.flash('notice', data.notice)
+      PressPaper.remove_from($('#press-paper_' + $(this).parents('.an-item').attr('id')).children())
       $(this).parents('.an-item').remove()
   ).on('ajax:error', (data, xhr, status, e) ->
     Utils.flash('alert', xhr.responseJSON.repo_items)
-  )
-  #========================================================================
-  #=============== navigation ==============================================
-  $(document).on('ajax:success', '.item-name a', (e, data, status, xhr) ->
-    console.log(data)
-    $('#panel-items').html(JST['global/group/templates/index']({repo_items: data.children}))
-    $('#repo_file_id').val(data.id)
-    $('#repo_folder_id').val(data.id)
-    $('.repo_item_id').val(data.id)
-    $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: data.path, root_folder: $('#root_folder').parent().html()}))
-    window.history.pushState('salut', "#{data.name} - #{document.title}", data.url)
-    Utils.loaded()
-  )
-  $(document).on('ajax:success', '#root_folder', (e, data, status, xhr) ->
-    repo_items = data.repo_items
-    $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
-    $('#repo_file_id').val(null)
-    $('#repo_folder_id').val(null)
-    $('.repo_item_id').val(null)
-    $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: null, root_folder: $('#root_folder').parent().html()}))
-    window.history.pushState('salut', "#{document.title}", data.url)
-    Utils.loaded()
   )
   #========================================================================
   #=============== création de dossier ====================================
   $('#form_folder').on('ajax:success', (e, data, status, xhr) ->
     Utils.add_item(data)
     $('#repo_folder_name').val('')
-    Utils.loaded()
   ).on('ajax:error', (data, xhr, status, e) ->
     Utils.flash('alert', msg) for msg in xhr.responseJSON.repo_items
   )
@@ -164,7 +183,6 @@ $ ->
           Utils.flash('alert', 'Impossible de déposer ce fichier')
       success: (xhr, status) ->
         Utils.add_item(xhr)
-        Utils.loaded()
       uploadProgress: (event, position, total, percent) ->
         console.log("p=#{position}, tot=#{total}, perc=#{percent}")
         elem.find('.progress-bar-meter').css('width', "#{percent}%")
@@ -177,3 +195,8 @@ $ ->
     elem.find('.cancel-upload').click ->
       upload.abort()
   )
+#========================================================================
+#=============== fermer message flash ===================================
+$(document).on('click', '.alert-box .close', () ->
+  $(this).parent().remove()
+)

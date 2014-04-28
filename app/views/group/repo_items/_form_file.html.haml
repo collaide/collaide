@@ -10,4 +10,4 @@
   -#=hidden_field_tag("object[id]", object.id)
   =hidden_field_tag 'authenticity_token', form_authenticity_token
   -folder_id = (repo_item.nil? ? nil : repo_item.id)
-  =hidden_field_tag('repo_file[id]', folder_id)
+  =hidden_field_tag('repo_file[id]', folder_id, class: 'repo_item_id')

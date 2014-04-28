@@ -6,4 +6,4 @@
       =submit_tag(t('repository_manager.form.new.repo_folder.submit'), class: "button tiny")
   -#=hidden_field_tag("object[id]", object.id)
   -folder_id = (repo_item.nil? ? nil : repo_item.id)
-  =hidden_field_tag('repo_folder[id]', folder_id)
+  =hidden_field_tag('repo_folder[id]', folder_id, class: 'repo_item_id')
