@@ -45,6 +45,7 @@ class Document::Document < ActiveRecord::Base
   #letsrate_rateable 'note'
 
   scope :valid, -> { where(status: :accepted) }
+  scope :footer, -> { valid.order('created_at DESC').limit(6)}
 
   mount_uploader :asset, DocumentUploader
 

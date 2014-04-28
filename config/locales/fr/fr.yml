@@ -101,8 +101,8 @@ fr:
     document: "Documents"
     advertisement: "Annonces"
     group: Groupes
-    inbox: Messagerie
-    notifications: Notifications
+    inbox: "Messagerie %{count}"
+    notifications: "Notifications %{count}"
     user:
       profil: "Mon profil"
       edit: Modifier mon profil

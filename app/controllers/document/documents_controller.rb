@@ -244,7 +244,7 @@ class Document::DocumentsController < ApplicationController
 
   def search
     @document_documents = Document::Document.search(
-        Riddle::Query.escape(params[:query]),
+        Riddle::Query.escape(params[:query]+'*'),
         page: params[:page],
         ranker: :bm25,
         field_weights: {
@@ -269,7 +269,7 @@ class Document::DocumentsController < ApplicationController
   def autocomplete
     res =  Document::Document.search(
         Riddle::Query.escape(
-            params[:term]),
+            params[:term]+'*'),
             rank: :fieldmask,
             field_weights: {
                 title: 10,
@@ -282,7 +282,7 @@ class Document::DocumentsController < ApplicationController
             }
     ).map do |a_res|
        {id: a_res.id, value: a_res.title}
-    end
+    end.to_json
     respond_to do |format|
       format.js { render json: res }
     end

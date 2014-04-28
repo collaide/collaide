@@ -20,10 +20,6 @@ class ApplicationController < ActionController::Base
   before_action :store_location
   before_action :current_ability
 
-  before_action :get_documents
-  before_action :get_notification_and_message_count
-
-
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
     if(request.fullpath.start_with? '/admin')
@@ -131,18 +127,6 @@ class ApplicationController < ActionController::Base
     #I18n.locale = params[:locale] || ((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/]) if Rails.env == 'development'
     logger.info "lang set to '#{I18n.locale}'"
     add_breadcrumb(I18n.t('app_name'), :root_path)
-  end
-
-  def get_documents
-    @footer_document = Document::Document.valid.order('created_at DESC').limit(6).to_a
-  end
-
-  def get_notification_and_message_count
-    if current_user
-      @nb_notifications = current_user.notifications.where(is_viewed: false).count
-      @nb_messages = current_user.mailbox.inbox.includes(:receipts).where('receipts.is_read' => false).count
-      #@nb_messages = current_user.mailbox.inbox(:unread => true).count
-    end
   end
 
   def current_ability
