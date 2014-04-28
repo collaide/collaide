@@ -24,6 +24,20 @@
 //= require select2_locale_fr
 //= require jquery.form
 //= require tinymce
+//= require syntax-highlighter-rails/shCore
+//= require syntax-highlighter-rails/shBrushXml
+//= require syntax-highlighter-rails/shBrushVb
+//= require syntax-highlighter-rails/shBrushCss
+//= require syntax-highlighter-rails/shBrushJava
+//= require syntax-highlighter-rails/shBrushPhp
+//= require syntax-highlighter-rails/shBrushPython
+//= require syntax-highlighter-rails/shBrushRuby
+//= require syntax-highlighter-rails/shBrushSql
+/* TODO add all brushes : http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/
+
 //= require_tree .
 
 $(document).foundation();
+
+SyntaxHighlighter.all()
+

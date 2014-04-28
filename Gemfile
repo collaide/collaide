@@ -107,6 +107,7 @@ gem 'ejs'
 gem 'jquery-form-rails', '~> 1.0.1'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
+gem 'syntax-highlighter-rails'
 
 group :development, :test do
   #gem 'virb'

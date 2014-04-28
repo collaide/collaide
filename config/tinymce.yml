@@ -13,7 +13,7 @@ default:
   plugins: [
                     "advlist autolink autosave link image lists print hr anchor",
                     "searchreplace wordcount code fullscreen",
-                    "table emoticons"
+                    "table emoticons sh4tinymce"
             ]
   #toolbar2: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect"
   #toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | inserttime preview | forecolor backcolor"
@@ -24,7 +24,8 @@ default:
   fullscreen
   | undo redo
   | searchreplace
-  | bold italic underline strikethrough subscript superscript blockquote
+  | bold italic underline strikethrough subscript superscript
+  | blockquote sh4tinymce
   | alignleft aligncenter alignright alignjustify
   | bullist numlist outdent indent
   | link unlink image media
@@ -43,3 +44,7 @@ default:
   #add_unload_trigger: false
   #theme: 'modern'
   #statusbar: false
+
+  # Pour syntax codehighlighting
+  extended_valid_elements : "pre[class|name]"
+  remove_linebreaks : false
