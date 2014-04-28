@@ -19,8 +19,9 @@ class Document::DocumentObserver < ActiveRecord::Observer
   end
 
   def before_save(document)
-    if document.accepted? and Document::Document.find(id).pending?
+    if !document.is_accepted and document.accepted? and Document::Document.find(document.id).pending?
       document.is_accepted = true
+      Rails.logger.debug 'aésdgaésgdféasfdéiasdgfsaidgfsiudgiasudgfiuasdg'
       DocumentNotifications.perform_later(
           :valid_document,
           [document.id],
