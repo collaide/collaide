@@ -67,6 +67,8 @@ fr:
       topic:
         title: Titre
         message: Message
+      comment:
+        comment: Répondre
     placeholders:
       user_message:
         users: Pseudo

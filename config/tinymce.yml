@@ -11,7 +11,7 @@ default:
 #          ]
 
   plugins: [
-                    "autolink autosave link image lists print hr anchor",
+                    "advlist autolink autosave link image lists print hr anchor",
                     "searchreplace wordcount code fullscreen",
                     "table emoticons"
             ]
@@ -26,7 +26,7 @@ default:
   | searchreplace
   | bold italic underline strikethrough subscript superscript blockquote
   | alignleft aligncenter alignright alignjustify
-  | bullist numlist
+  | bullist numlist outdent indent
   | link unlink image media
   | table
   | charmap emoticons
