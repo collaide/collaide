@@ -34,6 +34,9 @@ default:
   | print code"
   menubar: false
   toolbar_items_size: 'small'
+  # Enlève le footer, à voir..
+  statusbar : false
+  #resize: true
   #inline: true
   #schema: 'html5'
   #add_unload_trigger: false
