@@ -33,8 +33,7 @@
 //= require syntax-highlighter-rails/shBrushPython
 //= require syntax-highlighter-rails/shBrushRuby
 //= require syntax-highlighter-rails/shBrushSql
-/* TODO add all brushes : http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/
-
+/* TODO add all brushes : http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/ */
 //= require_tree .
 
 $(document).foundation();
