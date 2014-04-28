@@ -5,8 +5,8 @@
 
     =f.input :user_ids, :as => :hidden, input_html: { class: 's2_users_select'}#, label_html: tooltip(t("messages.new.forms.tooltips.users"))
     =f.input :subject
-    =f.input :body, input_html: {rows: 10}, as: :text
-
+    =f.input :body, input_html: {class: 'tinymce', rows: 10}, as: :text
+    %br
   .form-actions
     =f.button :submit, t('messages.new.forms.submit')
 

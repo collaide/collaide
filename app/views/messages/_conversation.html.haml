@@ -16,7 +16,7 @@
           %a{href: message_path(conversation),class: 'th'}
             =image_tag conversation.last_message.sender.avatar.mini
         .large-11.columns
-          %h6.subheader=simple_format(truncate(conversation.last_message.body, length: 50))
+          %h6.subheader=simple_format(truncate(strip_tags(conversation.last_message.body.gsub('&nbsp;', ' ')), length: 50))
           %cite
             =link_to(conversation.last_message.sender.to_s, conversation.last_message.sender)
             %span{title: l(conversation.last_message.created_at, format: :long)}
