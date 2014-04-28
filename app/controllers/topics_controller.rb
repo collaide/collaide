@@ -11,7 +11,7 @@ class TopicsController < ApplicationController
     if object.is_a? Group::WorkGroup and object.can_not? :write, :topic, current_user
       raise CanCan::AccessDenied
     end
-    status = object.topics.create(message: topic_params[:message], writer: current_user)
+    status = object.topics.create(title: topic_params[:title], message: topic_params[:message], writer: current_user)
     respond_to do |format|
       if status.save #&& status.create_activity(:create, owner: current_user, recipient: object)
         format.html { redirect_to topic_params[:path], notice:  notice_after('success', on: 'create')}
@@ -40,7 +40,7 @@ class TopicsController < ApplicationController
   end
 
   def topic_params
-    params.require(:topic).permit(:message, :klass, :id, :path, :render_view)
+    params.require(:topic).permit(:title, :message, :klass, :id, :path, :render_view)
   end
 
   def p_status

@@ -3,8 +3,8 @@
     =hidden_field_for_polymorphic 'comment', object
   .row
     .columns.large-12
-      =f.input :comment, input_html: {class: 'tinymce', id: "comment_comment_#{object.id}"}, placeholder: t('group.topics.index.comment.form')
+      =f.input :comment, label: false, input_html: {class: 'tinymce', id: "comment_comment_#{object.id}"}, placeholder: t('group.topics.index.comment.form')
       %br
   .row
     .columns.large-12
-      =f.button :submit, submit_text, class: 'secondary'
+      =f.button :submit, submit_text, class: 'tiny'
