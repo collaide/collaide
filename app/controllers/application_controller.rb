@@ -9,8 +9,6 @@ class ApplicationController < ActionController::Base
     resource = controller_path.singularize.gsub('/', '_').to_sym # => 'blog/posts' => 'blog/post' => 'blog_post' => :blog_post
     method = "#{resource}_params" # => 'blog_post_params'
     params[resource] &&= send(method) if respond_to?(method, true)
-    logger.debug(resource.inspect)
-    logger.debug(method.inspect)
   end
 
   before_action :set_locale
@@ -125,7 +123,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = :fr
     # uncomment this line to have multi linguale site do it to config/application.rb, too
     #I18n.locale = params[:locale] || ((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/]) if Rails.env == 'development'
-    logger.info "lang set to '#{I18n.locale}'"
+    #logger.info "lang set to '#{I18n.locale}'"
     add_breadcrumb(I18n.t('app_name'), :root_path)
   end
 

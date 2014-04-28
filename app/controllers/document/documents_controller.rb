@@ -269,7 +269,7 @@ class Document::DocumentsController < ApplicationController
   def autocomplete
     res =  Document::Document.search(
         Riddle::Query.escape(
-            params[:term]+'*'),
+            params[:term])+'*',
             rank: :fieldmask,
             field_weights: {
                 title: 10,

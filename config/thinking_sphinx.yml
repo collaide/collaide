@@ -1,5 +1,7 @@
 developement:
-  min_prefix_len: 3
+  min_prefix_len: 1
+  enable_star: 1
+  min_infix_len: 1
   utf8: true
 production:
   min_prefix_len: 3

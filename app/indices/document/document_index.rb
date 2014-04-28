@@ -15,5 +15,4 @@ ThinkingSphinx::Index.define 'document/document', with: :active_record do
   #TODO: add stopwords
   has created_at, updated_at, user_id, document_type_id
   has domains(:id), as: :domain_ids
-  enable_star true
 end
