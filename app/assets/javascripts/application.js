@@ -34,7 +34,7 @@
 //= require syntax-highlighter-rails/shBrushRuby
 //= require syntax-highlighter-rails/shBrushSql
 /* TODO add all brushes : http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/ */
-//= require turbolinks
+/*//= require turbolinks*/
 //= require_tree .
 
 $(document).foundation();
