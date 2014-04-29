@@ -554,7 +554,7 @@ fr:
     topics:
       index:
         h1_title: Discussions
-        description: Vous pouvez ici mettre en page une joli message afin de lancer un discussion avec vos collègues.
+        description: Vous pouvez ici mettre en page de jolis messages afin de discuter avec vos collègues.
         last_discussions: Les dernières discussions
         empty: Aucune discussions en cours.
         new_discussion: Discuter

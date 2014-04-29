@@ -38,7 +38,8 @@
 
           -#formulair de réponse
           =form_tag(controller: 'messages', action: 'reply') do
-            =text_area_tag(:reply, nil, rows: 6, placeholder: t('messages.index.reply'))
             =hidden_field_tag(:conversation, @conversation.id)
+            =text_area_tag(:reply, nil, class: 'tinymce', rows: 6, placeholder: t('messages.index.reply'))
+            %br
             .form-actions
               =submit_tag(t('messages.index.submit'), class: 'button')
