@@ -137,7 +137,12 @@ fr:
       title:
         h1: "%{app_name}"
         h2: Apprenons ensemble
-        h3: Partagez des documents. Achetez et vendez des livres d'occasions. Bientôt, vous pourrez ajouter vos collègues, créer des groupes de travail, échanger des fichiers. Bref, rester connecté entres étudiants.
+        modules: |
+            Partagez des documents
+            Ajoutez vos collègue et créez des groupes de travail
+            Achetez et vendez des livres
+            Echangez des fichiers
+        subheader: Restez connectés entres étudiants !
       site_activities: Dernièrement sur Collaide
       last_doc:
         h4: Derniers documents
