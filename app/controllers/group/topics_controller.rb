@@ -1,4 +1,5 @@
 class Group::TopicsController < ApplicationController
+  include Concerns::PermissionConcern
   #load_and_authorize_resource class: Group::WorkGroup, as: :group
   #load_and_authorize_resource class: Topic
   before_action :sign_in_user
@@ -6,7 +7,8 @@ class Group::TopicsController < ApplicationController
 
   #GET /group/:id/statuses
   def index
-    raise CanCan::AccessDenied unless @group.can? :index, :topics, current_user
+    #raise CanCan::AccessDenied unless @group.can? :index, :topics, current_user
+    check_permission { @group.can? :index, :topics, current_user }
     @topic = Topic.new
     @topics = @group.topics.order('created_at DESC').includes({comments: :owner}, :writer)
   end

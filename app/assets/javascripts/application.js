@@ -37,7 +37,13 @@
 /*//= require turbolinks*/
 //= require_tree .
 
-$(document).foundation();
+$(function() {
+    $(document).foundation();
+    SyntaxHighlighter.all();
+});
 
-SyntaxHighlighter.all()
+$(document).on('page:load', function() {
+    $(document).foundation();
+    SyntaxHighlighter.all();
+});
 

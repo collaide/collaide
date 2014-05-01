@@ -1,6 +1,17 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
 
+  def tinymce_on_click(config=:default, options={})
+    options[:selector] = 'this'
+    javascript_tag <<-EOD
+$(function () {
+  $(document).on('click', 'textarea.tinymce', function() {
+    #{tinymce_javascript(config, options)}
+  });
+});
+    EOD
+  end
+
   def count_notifications
     @count_notification ||= current_user.notifications.where(is_viewed: false).count
   end

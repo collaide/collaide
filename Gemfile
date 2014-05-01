@@ -59,7 +59,7 @@ gem 'language_list'
 
 gem 'googlebooks', '~> 0.0.8'
 
-gem 'letsrate'
+gem 'letsrate', git: 'https://github.com/collaide/letsrate.git'
 
 gem 'enumerize'
 
