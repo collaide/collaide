@@ -1,0 +1,11 @@
+=render(:layout => 'layouts/mailer_layout') do
+  =t'mailboxer.new_message.description'
+  -unless @message.subject == t('messages.default.title')
+    = @message.subject.html_safe? ? @message.subject : strip_tags(@message.subject)
+  ===============================================
+
+  =t'mailboxer.new_message.message_message'
+
+  "-----------------------------------------------"
+  = @message.body.html_safe? ? @message.body : strip_tags(@message.body)
+  "-----------------------------------------------"

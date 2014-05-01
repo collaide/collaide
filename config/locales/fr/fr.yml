@@ -740,6 +740,17 @@ fr:
         message: "Message :"
         p1: Cliquez sur le lien ci-après pour rejoindre le groupe.
         join_group: Rejoindre le groupe
-        greetings: Avec nos salutations les meilleures et au plaisir de vous voir rapidement
-        sign: L'équipe Collaide
+    greetings: Avec nos salutations les meilleures et au plaisir de vous voir rapidement.
+    signature: L'équipe Collaide.
+  mailboxer:
+    message_mailer:
+      subject_new: "[Collaide] Nouveau message" # On peut utiliser %{subject}
+      subject_reply: "[Collaide] Nouvelle réponse"
+    notification_mailer:
+      subject: "Vous avez reçu une notification" # %{subject}
+    new_message:
+      title: Nouveau message
+      description: "Vous avez reçu un nouveau message privé."
+      message_subject: "Sujet:"
+      message_message: "Message:"
 

@@ -1,5 +1,14 @@
-%div{style: "background-color:#eaf3ff;text-align:center;"}
-  %h2{style: "text-align:center; color: #0033CC;"}= yield(:mail_title)
-  =yield
-  %p= t('mailer.group.new_invitation.greetings')
-  %p= t('mailer.group.new_invitation.sign')
+!!! 5
+-if I18n.locale == :fr # Pas trouve comment mieux faire pour le moment
+  <html lang=\"fr\">
+-else
+  <html lang=\"en\">
+%head
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  %meta{name: 'author', content: 'Yves Bauman et Numa de Montmollin'}
+%body
+  %div{style: ""}
+    %h1{style: "text-align:center; color: #0033CC;text-align:center;"}= yield(:mail_title)
+    =yield
+    %p= t('mailer.greetings')
+    %p= t('mailer.signature')
