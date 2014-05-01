@@ -14,12 +14,12 @@ class Group::TopicsController < ApplicationController
   end
 
   def new
-    raise CanCan::AccessDenied unless @group.can? :write, :topic, current_user
+    check_permission{ @group.can? :write, :topic, current_user }
     @topic = Topic.new
   end
 
   def show
-    raise CanCan::AccessDenied unless @group.can? :read, :topic, current_user
+    check_permission{ @group.can? :read, :topic, current_user }
     @topic = Topic.find params[:id]
   end
 
