@@ -2,7 +2,7 @@
     <li><%= root_folder%></li>
     <% for(item in folders) {%>
         <li class="item-name">
-            <a href="<%= folders[item].url%>.json" data-remote="true"><%= folders[item].name %></a>
+            <a href="<%= folders[item].url%>.json" data-remote="true" data-no-turbolink><%= folders[item].name %></a>
         </li>
     <% } %>
 </ul>

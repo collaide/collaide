@@ -1,19 +1,17 @@
 class window.RepoItem
-  @is_started = false
-  @is_first_time = true
-  @session_cleared = false
   @start: (index) ->
+    window.history.replaceState({repo_item: true, url: document.location.href}, 'title', document.location.href)
     $.getJSON("#{document.URL}.json", (data) ->
+      $.ajax.mostRecentCall = document.URL+'.json'
       repo_items = data.repo_items
       repo_items = data.children if(index)
       $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
     )
-    @is_started = true
+    window.history.replaceState({repo_item: true, url: document.location.href}, 'title', document.location.href)
 class Utils
   @push: (title, url) ->
-    Session.set(document.location, true) # pour le retour arrière
-    Session.set(url, true) # pour le retour avant
-    window.history.pushState({turbolinks: true, url: url}, title, url)
+    $.ajax.mostRecentCall = url + '.json'
+    window.history.pushState({repo_item: true, url: url}, title, url)
   @is_pushed: (url)->
      return Session.get(url)
   @flash: (key, msg) ->
@@ -43,36 +41,25 @@ class PressPaper
     if $('#press-paper-content').children().size()==0
       $('#press-paper').hide()
 
-navigate = ->
 #========================================================================
-  #=============== retour arrière =========================================
-  window.setTimeout(()->
-    window.onpopstate = (event) ->
-      console.log('salut')
-      if RepoItem.is_started
-        if RepoItem.is_first_time
-          RepoItem.is_first_time = false
+#=============== retour arrière =========================================
+$ ->
+  window.onpopstate = (event) ->
+    state = window.history.state
+    return if state == null or state.repo_item == null or !state.repo_item or state.url == null
+    url = state.url + '.json'
+    if $('#panel-items').length == 0
+      Turbolinks.visit(state.url)
+    else if $.ajax.mostRecentCall != url
+      $.getJSON(url, (data) ->
+        $.ajax.mostRecentCall = url
+        if data.repo_items
+          repo_items = data.repo_items
         else
-          if Utils.is_pushed(document.location)
-            $.getJSON("#{document.location}.json", (data) ->
-              if data.repo_items
-                repo_items = data.repo_items
-              else
-                repo_items = data.children
-              $('.repo_item_id').val(data.id)
-              $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
-              $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: data.path, root_folder: $('#root_folder').parent().html()})))
-      else
-        if !RepoItem.session_cleared
-          Session.clear()
-          RepoItem.session_cleared = true
-  , 500)
-
-#$ ->
-#  navigate()
-#$(document).on('page:load', ->
-#  navigate()
-#)
+          repo_items = data.children
+        $('.repo_item_id').val(data.id)
+        $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
+        $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: data.path, root_folder: $('#root_folder').parent().html()})))
   #========================================================================
   # -------------- clique sur un fichier ou dossier ----------------------------------
 $(document).on('ajax:success', '.item-name a', (e, data, status, xhr) ->
