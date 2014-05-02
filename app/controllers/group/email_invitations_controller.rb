@@ -33,7 +33,7 @@ class Group::EmailInvitationsController < ApplicationController
   end
 
   def destroy
-    ei = EmailInvitation.find params[:id]
+    ei = Group::EmailInvitation.find params[:id]
     ei.destroy
     redirect_to group_work_group_members_path, notice: t('group.invitations.destroy.notice')
   end
