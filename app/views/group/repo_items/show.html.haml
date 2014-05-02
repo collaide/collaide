@@ -1,6 +1,7 @@
 -content_for :title, t('group.repository.title_page', group: @group.name)
 -get_repo_items('true')
 =render(:layout => 'group/layouts/layout') do
+  -add_breadcrumb t('group.work_groups.menu.repository'), group_work_group_repo_item_path(work_group_id: @group, id: @repo_item)
   %h1= t('group.repository.title_page', group: @group.name)
   #breadcrumb-folder
     %ul.breadcrumbs

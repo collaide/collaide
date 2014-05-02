@@ -1,5 +1,8 @@
 =render(layout: 'group/layouts/layout') do
+  -add_breadcrumb t("group.work_groups.menu.topics"),  group_work_group_topics_path(@group)
+  -add_breadcrumb l(@topic.created_at, format: :short) + @topic.title.to_s,  group_work_group_topic_path(work_group_id: @group, id: @topic)
   %h1= t('group.topics.show.h1_title', date: l(@topic.created_at, format: :short))
+  %h3= @topic.title if @topic.title
   .row
     =render partial: 'topics/topic', locals: {topic: @topic, limit: nil}, as: 'topic'
 

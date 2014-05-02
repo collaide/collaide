@@ -1,4 +1,5 @@
 =render(layout: 'group/layouts/layout') do
+  -add_breadcrumb I18n.t("group.work_groups.menu.topics"),  group_work_group_topics_path(@group)
   %h1= t('group.topics.index.h1_title')
   %blockquote= t('group.topics.index.description')
   =render 'group/topics/form'
