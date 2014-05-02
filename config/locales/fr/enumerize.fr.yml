@@ -31,10 +31,10 @@ fr:
         very_damaged: Très abimé
     group/group_member:
       joined_method:
-        was_invited: sur invitation
-        was_invited_by_email: sur invitation par email
+        was_invited: ""
+        was_invited_by_email: par email
         was_added: par ajout de l'administrateur
-        by_itself: pas sa propre initiative
+        by_itself: par sa propre initiative
       role:
         admin: Administrateur
         member: Membre

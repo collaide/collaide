@@ -69,6 +69,9 @@ fr:
         message: Message
       comment:
         comment: Répondre
+      group_do_invitation:
+        email_list: Personnes à inviter
+        message: Message (optionel)
     placeholders:
       user_message:
         users: Pseudo
@@ -88,6 +91,9 @@ fr:
         realized_at: "01/01/1984"
       group_work_group:
         #name: Nom
+      group_do_invitation:
+        email_list: Pseudo ou e-mail des personnes à inviter
+        message: Votre message...
     prompts:
       advertisement_sale_book:
         currency: *choose

@@ -16,7 +16,7 @@ class Group::WorkGroupsController < ApplicationController
     @group = Group::WorkGroup.find(params[:id])
     @activities = Activity::Activity.order("created_at desc").where('(trackable_id = ? AND trackable_type = ?) OR (recipient_id = ? AND recipient_type = ?)', @group.id,  @group.class.base_class.to_s, @group.id,  @group.class.base_class.to_s)
 
-    add_breadcrumb @group.name, group_work_group_path(@group)
+    # add_breadcrumb @group.name, group_work_group_path(@group)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }
