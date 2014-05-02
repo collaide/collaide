@@ -7,6 +7,7 @@ class window.RepoItem
       repo_items = data.children if(index)
       $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
     )
+    BreadCrumbs.do_current()
     window.history.replaceState({repo_item: true, url: document.location.href}, 'title', document.location.href)
 class Utils
   @push: (title, url) ->
@@ -40,7 +41,15 @@ class PressPaper
     $(element).parents('.press-paper-line').remove()
     if $('#press-paper-content').children().size()==0
       $('#press-paper').hide()
-
+class BreadCrumbs
+  @do_current: () ->
+    items = $('#breadcrumb-folder').find('.item-name').last()
+    if items.length == 0
+      $('#root_folder').parent().addClass('current')
+    items.addClass('current')
+  @generate: (folders) ->
+    $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: folders, root_folder: $('#root_folder').parent().html()}))
+    BreadCrumbs.do_current()
 #========================================================================
 #=============== retour arrière =========================================
 $ ->
@@ -59,13 +68,15 @@ $ ->
           repo_items = data.children
         $('.repo_item_id').val(data.id)
         $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
-        $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: data.path, root_folder: $('#root_folder').parent().html()})))
+        BreadCrumbs.generate(data.path)
+      )
+
   #========================================================================
   # -------------- clique sur un fichier ou dossier ----------------------------------
 $(document).on('ajax:success', '.item-name a', (e, data, status, xhr) ->
   $('#panel-items').html(JST['global/group/templates/index']({repo_items: data.children}))
   $('.repo_item_id').val(data.id)
-  $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: data.path, root_folder: $('#root_folder').parent().html()}))
+  BreadCrumbs.generate(data.path)
   Utils.push("#{data.name} - #{document.title}", data.url)
 )
 # -------------- clique sur le root folder -------------------------------
@@ -73,7 +84,7 @@ $(document).on('ajax:success', '#root_folder', (e, data, status, xhr) ->
   repo_items = data.repo_items
   $('#panel-items').html(JST['global/group/templates/index']({repo_items: repo_items}))
   $('.repo_item_id').val(null)
-  $('#breadcrumb-folder').html(JST['global/group/templates/bread_crumb']({folders: null, root_folder: $('#root_folder').parent().html()}))
+  BreadCrumbs.generate(data.path)
   Utils.push("#{document.title}", data.url)
 )
 #========================================================================
