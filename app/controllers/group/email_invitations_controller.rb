@@ -1,7 +1,9 @@
 class Group::EmailInvitationsController < ApplicationController
-  load_and_authorize_resource class: Group::EmailInvitation
+  include Concerns::PermissionConcern
   def update
-    @ei = Group::EmailInvitation.find params[:id]
+    @ei = Group::EmailInvitation.find_by(id: params[:id])
+    redirect_to back, alert: t('group.email_invitations.error') and return if @ei.nil?
+    check_permission
     if @ei.secret_token = params[:secret_token]
       case params[:status]
         when 'later'
@@ -33,7 +35,7 @@ class Group::EmailInvitationsController < ApplicationController
   end
 
   def destroy
-    ei = EmailInvitation.find params[:id]
+    ei = Group::EmailInvitation.find params[:id]
     ei.destroy
     redirect_to group_work_group_members_path, notice: t('group.invitations.destroy.notice')
   end

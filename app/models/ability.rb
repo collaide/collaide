@@ -83,7 +83,6 @@ class Ability
     can :destroy, Group::EmailInvitation do |e_invitation|
       e_invitation.group_group.can? :manage, :invitations, user
     end
-    can :update, Group::EmailInvitation
     can :create, Group::Invitation do |invitation|
       invitation.group.can? :create, :invitation, user
     end
