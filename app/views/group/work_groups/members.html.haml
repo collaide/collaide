@@ -1,7 +1,7 @@
 -#content_for :title, t('users.show.meta_title', user: @user.name_to_show)
 -content_for :title, t('group.members.title_page', group: @group.name)
-
 =render(:layout => 'group/layouts/layout') do
+  -add_breadcrumb t('group.work_groups.menu.members'), group_work_group_members_path(@group)
   %h1= t('group.members.title_page', group: @group.name)
   .row
     .columns.small-12.large-6
@@ -14,15 +14,16 @@
         -if @group.p_or_l_group_invitations.empty? and @group.p_or_l_email_invitations.empty?
           %p= t('group.members.empty_invitation_list')
         -else
-          %ul
           -@group.p_or_l_group_invitations.each do |an_invitation|
-            %li
-              -if an_invitation.receiver.is_a? User
-                =image_and_name_for(an_invitation.receiver)
-              -else
-                = link_to an_invitation.receiver, an_invitation.receiver
-              = link_to t('group.members.delete_invitation'), group_work_group_invitation_path(@group, an_invitation), method: :delete, data: {confirm: t('confirm')}, class: 'button small secondary'
-          %ul
+            .row
+              .columns.medium-6
+                -if an_invitation.receiver.is_a? User
+                  =image_and_name_for(an_invitation.receiver)
+                -else
+                  = link_to an_invitation.receiver, an_invitation.receiver
+              .columns.medium-6
+                = link_to t('group.members.delete_invitation'), group_work_group_invitation_path(@group, an_invitation), method: :delete, data: {confirm: t('confirm')}, class: 'button small secondary'
+          %ul.no-bullet
             -@group.p_or_l_email_invitations.each do |email_invit|
               %li
                 = email_invit.email
@@ -33,13 +34,18 @@
       -if @group.members.empty?
         =t'group.members.empty'
       -else
-        %ul
+        %ul.no-bullet
           -@group.members.each do |m|
-            %li
+            %li.list-member-group
               -gm = m.group_members.where(group: @group).take
-              =link_to m.to_s, m
-              ="occupe le rôle de #{gm.role.text} et a rejoint le groupe #{gm.joined_method.text}"
-              -if gm.invited_or_added_by
-                (par :
-                =link_to gm.invited_or_added_by.to_s, gm.invited_or_added_by
-                )
+              =image_and_name_for m
+              -if gm.role = :admin
+                ="(#{gm.role.text})"
+              -if @group.user == gm.member
+                ="est le créateur du groupe"
+              -elsif gm.joined_method == 'by_itself'
+                ="a rejoint le groupe de sa propre initiative"
+              -else
+                ="invité #{gm.joined_method.text}"
+                -if gm.invited_or_added_by
+                  ="par #{image_and_name_for gm.invited_or_added_by}".html_safe

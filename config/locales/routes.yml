@@ -55,5 +55,6 @@ fr:
     all: tous
     sentbox: envoyes
     contact-for: contact
+    members: membres
 en:
   routes:

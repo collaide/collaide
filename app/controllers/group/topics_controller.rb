@@ -4,6 +4,7 @@ class Group::TopicsController < ApplicationController
   #load_and_authorize_resource class: Topic
   before_action :sign_in_user
   before_action :get_required_objects
+  add_breadcrumb I18n.t("group.groups.index.breadcrumb"),  :group_groups_path
 
   #GET /group/:id/statuses
   def index

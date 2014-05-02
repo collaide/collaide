@@ -4,6 +4,7 @@ class Group::RepoItemsController < ApplicationController
   #load_and_authorize_resource class: RepositoryManager::RepoItem
   before_action :find_the_group
   before_action :find_the_repo, only: [:download, :copy, :move, :rename]
+  add_breadcrumb I18n.t("group.groups.index.breadcrumb"),  :group_groups_path
 
   # GET /group/work_groups/1
   # GET /group/work_groups/1.json
