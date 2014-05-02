@@ -1,0 +1,13 @@
+-content_for :mail_title do
+  =t'mailboxer.new_message.title'
+
+=render(:layout => 'layouts/mailer_layout') do
+  %p=t'mailboxer.new_message.description'
+  -unless @message.subject == t('messages.default.title')
+    %p
+      %strong=t'mailboxer.new_message.message_subject'
+      = @message.subject.html_safe? ? @message.subject : strip_tags(@message.subject)
+  %p
+    %strong=t'mailboxer.new_message.message_message'
+  %blockquote{style: "border:1px solid;background-color:#eaf3ff;padding:10px;"}
+    =sanitize(simple_format(@message.body))

@@ -3,13 +3,18 @@
   -if current_user.nil?
     .signup-panel
       .row
-        .columns.small-12
-          %h1.text-center= t('static_pages.home.title.h1', app_name: t('app_name_long'))
-      .row
-        .columns.large-9
-          %h3.subheader.center-to-form= t('static_pages.home.title.h3')
+        .columns.large-offset-1.large-8
+          %h1= t('static_pages.home.title.h1', app_name: t('app_name_long'))
+          %ul.no-bullet
+            -t('static_pages.home.title.modules').each_line do |a_line|
+              -a_line = a_line.split('|')
+              %li= a_line[0]
+          %h3= t'static_pages.home.title.subheader'
         .columns.large-3
           = render 'devise/form/sign_up'
+    .pyctograms
+
+
   -else
     %h2= "Bonjour #{current_user}"
     -#blackboard

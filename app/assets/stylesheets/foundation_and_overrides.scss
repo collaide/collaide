@@ -193,7 +193,11 @@ textarea { height: auto; min-height: 50px;}
 :-ms-input-placeholder { font-size:$font-size; } /* ie */
 input:-moz-placeholder { font-size:$font-size; }
 
-.signup-panel { @include panel(#4b4b4b);
+.signup-panel { @include panel(#2f70a8);
+  h1 {
+    margin-bottom: 30px;
+  }
+  color: white;
   padding-bottom: 0px;
   .center-to-form {
     padding-bottom: 50px;
