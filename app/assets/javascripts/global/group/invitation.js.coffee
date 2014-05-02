@@ -1,8 +1,8 @@
-$ ->
-  splitInvitation = (value) ->
-    value.split( /,\s*/ )
-  extractLast = (term) ->
-    splitInvitation(term).pop()
+splitInvitation = (value) ->
+  value.split( /,\s*/ )
+extractLast = (term) ->
+  splitInvitation(term).pop()
+invitation = ->
   $('#group_do_invitation_email_list')
   .bind 'keydown', (event) ->
     if event.keyCode == $.ui.keyCode.TAB and $(this).data('ui-autocomplete').menu.active
@@ -26,3 +26,8 @@ $ ->
         $("<option value=\"#{ui.item.id}\" selected=\"selected\">#{ui.item.value}</option>").appendTo('#group_do_invitation_users_id')
         false
     })
+$ ->
+  invitation()
+$(document).on('page:load', ->
+  invitation()
+)
