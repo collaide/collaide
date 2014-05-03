@@ -12,7 +12,23 @@
           %h3= t'static_pages.home.title.subheader'
         .columns.large-3
           = render 'devise/form/sign_up'
-    .pyctograms
+    .row.text-center
+      .medium-3.large-3.columns
+        =link_to(image_tag('pictograms/4.png', size: "160x160"), document_documents_path)
+        %h3.subheader Documents scolaires
+        %p Des lettres de motivations aux rapports de sciences en passant par des résumés de livres, tous les types de documents étudiants sont accessibles gratuitement.
+      .medium-3.large-3.columns
+        =link_to(image_tag('pictograms/7.png',size: "160x160"), advertisement_advertisements_path)
+        %h3.subheader Livres étudiants
+        %p Vendez ou achetez facilement des livres scolaires d'occasions. Nous vous mettons gratuitement en relation avec des personnes intéressées.
+      .medium-3.large-3.columns
+        =link_to(image_tag('pictograms/10.png',size: "160x160"), group_groups_path)
+        %h3.subheader Groupes de travail
+        %p Créez facilement votre groupe de travail pour votre classe ou votre réseau universitaire.. Echangez vos documents et discutezz dans un espace privé !
+      .medium-3.large-3.columns
+        =link_to(image_tag('pictograms/3.png',size: "160x160"), group_groups_path)
+        %h3.subheader Partage de fichiers
+        %p Vous disposer d'une boite de dépôt de fichiers pour partager facilement vos travaux avec vos collègues !
 
 
   -else
