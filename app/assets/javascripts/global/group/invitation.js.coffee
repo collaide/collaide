@@ -48,21 +48,37 @@ $ ->
       results: (data, page) ->
         lastResult = data
         if data
-          results: data
+          results: []
         else
           lastResult = []
           results: []
     formatResult: (record) ->
-      record.value
-    formatSelection: (record) ->
-      record.value
-    createSearchChoice: (term) ->
-      if(lastResult.some((r) ->
-          r.text == term
-        ))
-        id: term, text: termq
+      image_txt = ''
+      text = ''
+      if record.path
+        text = "<a href='#{record.path}'>#{record.text}</a>"
       else
-        id: term, text: term+' (new)'
+        text = record.text
+      if record.img
+        image = record.img
+        image_txt = "<img src='#{image}' width='20' height='20'/>"
+      image_txt + record.text
+    formatSelection: (record) ->
+      image_txt = ''
+      text = ''
+      if record.path
+        text = "<a href='#{record.path}'>#{record.text}</a>"
+      else
+        text = text
+      if record.img
+        image = record.img
+        image_txt = "<img src='#{image}' width='20' height='20'/>"
+      image_txt + text
+    createSearchChoice: (term) ->
+      if(lastResult.length != 0)
+        id: lastResult[0].id, text: lastResult[0].name, img: lastResult[0].img, path: lastResult[0].path
+      else
+        id: term, text: term + " (non membre)"
   });
 
   # ajax: {
