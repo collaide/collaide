@@ -31,3 +31,61 @@ $ ->
 $(document).on('page:load', ->
   invitation()
 )
+
+$ ->
+  lastResult = []
+  $('#group_do_invitation_users_id').select2({
+    minimumInputLength: 2
+    placeholder: 'salut'
+    multiple: true
+    ajax: #instead of writing the function to execute the request we use Select2's convenient helper
+      url: '/users/search'
+      dataType: 'json'
+      data: (term, page) ->
+        term: term
+        #limit: 10
+        page: page
+      results: (data, page) ->
+        lastResult = data
+        if data
+          results: data
+        else
+          lastResult = []
+          results: []
+    formatResult: (record) ->
+      record.value
+    formatSelection: (record) ->
+      record.value
+    createSearchChoice: (term) ->
+      if(lastResult.some((r) ->
+          r.text == term
+        ))
+        id: term, text: termq
+      else
+        id: term, text: term+' (new)'
+  });
+
+  # ajax: {
+  #       multiple: true,
+  #       url: "/echo/json/",
+  #       dataType: "json",
+  #       type: "POST",
+  #       data: function (term, page) {
+  #           return {
+  #               json: JSON.stringify({results: [{id: "foo", text:"foo"},{id:"bar", text:"bar"}]}),
+  #               q: term
+  #           };
+  #       },
+  #       results: function (data, page) {
+  #           lastResults = data.results;
+  #           return data;
+  #       }
+  #   },
+  #   createSearchChoice: function (term) {
+  #       if(lastResults.some(function(r) { return r.text == term })) {
+  #           return { id: term, text: term };
+  #       }
+  #       else {
+  #           return { id: term, text: term + " (new)" };
+  #       }
+  #   }
