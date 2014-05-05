@@ -7,7 +7,7 @@ class NotificationSystem::AbstractClass < ActionView::Base
       Resque.enqueue(NotificationSystem::Save, self.to_s, method, values, options)
     rescue Errno::ECONNREFUSED, Redis::CannotConnectError
       Rails.logger.error "Unable to connect to Redis; falling back to synchronous insert notification" if Rails.logger
-            deliver!
+      NotificationSystem::Save.perform(self.to_s, method, values, options)
     end
   end
 
