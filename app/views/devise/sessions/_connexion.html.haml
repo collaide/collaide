@@ -9,9 +9,9 @@
           - resource_class.omniauth_providers.each do |provider|
             .large-6.columns
               -if provider.to_s.titleize == 'Google Oauth2'
-                = link_to t("devise.shared.links.sign_in_with_provider", provider: 'Google'), omniauth_authorize_path(resource_name, provider), class: 'button expand'
+                = link_to t("devise.shared.links.sign_in_with_provider", provider: 'Google'), omniauth_authorize_path(resource_name, provider), class: 'button secondary expand'
               -else
-                = link_to t("devise.shared.links.sign_in_with_provider", provider: provider.to_s.titleize), omniauth_authorize_path(resource_name, provider), class: 'button expand'
+                = link_to t("devise.shared.links.sign_in_with_provider", provider: provider.to_s.titleize), omniauth_authorize_path(resource_name, provider), class: 'button secondary expand'
       %h4.panel-subtitle
         = t'devise.sessions.new.via_app'
       = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|

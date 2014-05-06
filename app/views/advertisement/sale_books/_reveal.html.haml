@@ -11,7 +11,7 @@
   =simple_form_for(@message, :url => messages_path, html: {class: 'buy_book_form', data_abide: true}) do |f|
     =f.error_notification
     .form-inputs
-      .hide=f.association :users, wrapper_html: {id: 'message_sending_user_ids'}
+      .hide=f.input :user_ids_form, wrapper_html: {id: 'message_sending_user_ids'}, input_html: {name:  'user_message[user_ids]'}
       =f.input :subject, :as => :hidden
       =f.input :body, input_html: {class: 'buy_book_form_textarea', rows: 8}, :as => :text
     .form-actions
