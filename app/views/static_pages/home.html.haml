@@ -13,26 +13,25 @@
         .columns.large-3
           = render 'devise/form/sign_up'
     .row.text-center
-      .medium-3.large-3.columns
-        =link_to(image_tag('pictograms/4.png', size: "160x160"), document_documents_path)
-        %h3.subheader Documents scolaires
-        %p Des lettres de motivations aux rapports de sciences en passant par des résumés de livres, tous les types de documents étudiants sont accessibles gratuitement.
-      .medium-3.large-3.columns
-        =link_to(image_tag('pictograms/7.png',size: "160x160"), advertisement_advertisements_path)
-        %h3.subheader Livres étudiants
-        %p Vendez ou achetez facilement des livres scolaires d'occasions. Nous vous mettons gratuitement en relation avec des personnes intéressées.
-      .medium-3.large-3.columns
+      .medium-4.large-4.columns
         =link_to(image_tag('pictograms/10.png',size: "160x160"), group_groups_path)
-        %h3.subheader Groupes de travail
-        %p Créez facilement votre groupe de travail pour votre classe ou votre réseau universitaire.. Echangez vos documents et discutez dans un espace privé !
-      .medium-3.large-3.columns
+        %h3.subheader= t'static_pages.home.work_groups.title'
+        %p= t'static_pages.home.work_groups.description'
+      .medium-4.large-4.columns
+        =link_to(image_tag('pictograms/4.png', size: "160x160"), document_documents_path)
+        %h3.subheader= t'static_pages.home.documents.title'
+        %p= t'static_pages.home.documents.description'
+      .medium-4.large-4.columns
+        =link_to(image_tag('pictograms/7.png',size: "160x160"), advertisement_advertisements_path)
+        %h3.subheader=t'static_pages.home.advertisements.title'
+        %p= t'static_pages.home.advertisements.description'
+      -#.medium-3.large-3.columns
         =link_to(image_tag('pictograms/3.png',size: "160x160"), group_groups_path)
         %h3.subheader Partage de fichiers
         %p Chaque groupe de travail dispose d'une boite de dépôt de fichiers pour partager facilement vos travaux avec vos collègues !
 
 
   -else
-    %h2= "Bonjour #{current_user}"
     -#blackboard
       -###### Fait par Yves ################################
       .row
@@ -70,9 +69,14 @@
                 %li= a_notif.print_message
   .row
     .columns.small-12
-      %h4= t'static_pages.home.site_activities'
+      %h4
+        -if current_user.nil?
+          = t'static_pages.home.site_activities'
+        -else
+          =t'static_pages.home.your_activities'
+
       = render_activity @activities, layout: 'activity', locals: {specification: nil}
-  .row
+  -#.row
     .columns.large-4
       %h4.last-title#doc
         =link_to t('.last_doc.h4'), document_documents_path
