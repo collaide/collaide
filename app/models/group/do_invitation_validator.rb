@@ -45,12 +45,21 @@ class Group::DoInvitationValidator < ActiveModel::Validator
   end
 
   def validates_email_list(record)
-    record.users_id.each do |an_id|
+    return true if record.users_id.nil?
+    users_id = []
+    addresses = []
+    record.users_id.split(',').each do |id|
+      if id.to_i == 0
+        addresses << id
+      else
+        users_id << id if id.to_i != 0
+      end
+    end
+    users_id.each do |an_id|
       return false if !an_id.blank?
     end
-    return true if record.email_list.nil? or record.email_list.blank?
-    addresses = record.email_list.split(', ')
-    return true if addresses.empty?
+    return true if addresses.empty? and users_id.empty?
+    return false if !addresses.empty
     no_valid_addresses = true
     addresses.each do |an_email|
       if an_email =~ VALID_EMAIL_REGEX
