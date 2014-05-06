@@ -1,4 +1,4 @@
-$ ->
+user =  ()->
   $('#change-password').click ->
     $('#hidden-password').show('slow')
     $('#general-infos').hide('slow')
@@ -9,3 +9,8 @@ $ ->
     $('#general-infos').show('slow')
     $(this).removeClass('secondary')
     $('#change-password').addClass('secondary') unless $('#change-password').hasClass('secondary')
+$ ->
+  user()
+$(document).on('page:load', ->
+  user()
+)

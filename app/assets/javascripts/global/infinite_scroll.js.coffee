@@ -1,4 +1,4 @@
-$ ->
+infinite_scroll = ()->
   loading = false
   nearBottomOfPage = () ->
     $(window).scrollTop() > $(document).height() - $(window).height() - 200;
@@ -17,3 +17,8 @@ $ ->
         success: () ->
           loading = false
       })
+$ ->
+  infinite_scroll()
+$(document).on('page:load', ->
+  infinite_scroll()
+)
