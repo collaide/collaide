@@ -606,9 +606,19 @@ fr:
         notice: Invitation supprimée
       validation:
         not_blank: Ne peut pas être vide
-        no_valid: Aucune adresses e-mail valides
-        already_invited: Les personnes %{people} ont déjà été invitées
-        already_member: Les personnes %{people} sont déjà membres
+        no_group: Invitez les gens depuis un groupe
+        no_valid:
+          one: "L'adresse '%{email}' n'est pas valide"
+          other: "Les addresses suivantes ne sont pas valides: %{email}"
+        already_invited:
+          one: "%{people} à déjà été invitée"
+          other: Les personnes %{people} ont déjà été invitées
+        already_invited_by_email:
+          one: "Un e-mail a déjà été envoyé à '%{email}'"
+          other: "les e-mails ont déjà été envoyé aux addresses '%{email}'"
+        already_member:
+          one: "%{people} est déjà membre"
+          other: Les personnes %{people} sont déjà membres
       update:
         notice:
           accept: Bienvenue dans le groupe

@@ -18,10 +18,20 @@ class UserMessage
   #validates_presence_of :subject
   validates_presence_of :user_ids
   #
-  #has_and_belongs_to_many :users
+ # has_many :users
 
-  attr_accessor :user_ids, :body, :subject
+  attr_accessor :user_ids, :body, :subject, :users
 
-  #before_validation :default_title
+  def initialize(params = {})
+    super(params)
+    @users = []
+  end
+
+  def user_ids_form
+    @users.map do |user|
+      user.id
+    end.join(', ')
+  end
+    #before_validation :default_title
 
 end

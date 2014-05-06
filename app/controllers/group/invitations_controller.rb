@@ -9,7 +9,6 @@ class Group::InvitationsController < ApplicationController
     @group = Group::Group.find(params[:work_group_id])
     invitation = Group::Invitation.new(group: @group)
     authorize! :create, invitation
-    logger.debug 'On est dans le create de invitations'
     do_invitation = Group::DoInvitation.new(group_create_invitation_params)
     do_invitation.group_id = params[:work_group_id]
     if do_invitation.valid?
@@ -63,6 +62,6 @@ class Group::InvitationsController < ApplicationController
   end
 
   def group_create_invitation_params
-    params.require(:group_do_invitation).permit({users_id: []}, :email_list, :message)
+    params.require(:group_do_invitation).permit(:users_id, :email_list, :message)
   end
 end

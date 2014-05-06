@@ -17,7 +17,6 @@ class NotificationSystem::Save
           owner_id: user_id,
           owner_type: 'User'
       )
-      puts "User saved #{user_id}"
     end
     if users_ids.is_a?(Array)
       users_ids.each do |an_id|
@@ -28,7 +27,7 @@ class NotificationSystem::Save
             owner_id: an_id,
             owner_type: 'User'
         )
-        puts "User saved #{an_id}"
+        #puts "User saved #{an_id}"
       end
     end
     if user_role.is_a? String
@@ -40,7 +39,7 @@ class NotificationSystem::Save
             owner_id: a_user.id,
             owner_type: 'User'
         )
-        puts "User saved #{a_user.id}"
+        #puts "User saved #{a_user.id}"
       end
     end
 
@@ -54,7 +53,7 @@ class NotificationSystem::Save
             owner_id: a_user.id,
             owner_type: 'User'
         )
-        puts "User saved #{a_user.id}"
+        #puts "User saved #{a_user.id}"
       end
     end
   end
@@ -65,7 +64,7 @@ class NotificationSystem::Save
     def find_users(owners)
       users = []
       #unless owners['user'].nil?
-        #puts 'salut'
+        ##puts 'salut'
         users << User.find(owners['user'])
      # end
 

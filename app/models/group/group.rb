@@ -220,12 +220,12 @@ class Group::Group < ActiveRecord::Base
     end
 
     def do_invitation(do_invitation, sender: self, receiver_type: 'User')
-      do_invitation.users_id.each do |an_id|
+      do_invitation.users.each do |an_id|
         next if an_id.to_i < 1 or !an_id.to_i.is_a? Fixnum
         invitation  = Group::Invitation.new message: do_invitation.message,  receiver_type: receiver_type, receiver_id: an_id, sender: sender
         self.group_invitations << invitation
       end
-      do_invitation.email_list.split(', ').each do |an_email|
+      do_invitation.email_list.each do |an_email|
         if an_email =~ Group::DoInvitationValidator::VALID_EMAIL_REGEX
           a_user = User.find_by email: an_email
           if a_user
