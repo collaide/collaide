@@ -299,7 +299,7 @@ fr:
         description_meta: Téléchargez toutes sortes de documents scolaires gratuitement pour les étudiants de tous niveaux d'études
         key_words: liste, des, documents, document, Dissertations, Analyses, Documents, rapports, résumés, Exposers, Tests, Présentations, base de donnée, Collaide, Etudiants, document de maturité
         published_by: Publié par
-        title: Tous les documents
+        title: Les documents scolaires
         subtitle: "%{type} en %{domains}"
         new_link: Déposer un nouveau document
         download: Télécharger
@@ -516,9 +516,9 @@ fr:
         description_meta: Liste de tous les groupes
         key_words: Groupe, groupes de travail, liste, créer
         title_page: Les groupes d'étudiants permettant de travailler entres étudiants
-        description: Les groupes de travail vous permettent en un clique de créer un espace de travail idéal pour une
+        description: Les groupes de travail vous permettent de créer un espace de travail idéal pour une
          classe, un projet de groupe, etc.. Vous pourrez très facilement communiquer avec vos collègues
-         mais aussi échanger vos fichiers et les commenter.
+         mais aussi échanger vos fichiers.
         h1_title: Les groupes
         breadcrumb: Les groupes
         new_link: Créer un groupe
@@ -571,7 +571,7 @@ fr:
         h1_title: Discussions
         description: Vous pouvez ici mettre en page de jolis messages afin de discuter avec vos collègues.
         last_discussions: Les dernières discussions
-        empty: Aucune discussions en cours.
+        #empty: Aucune discussions en cours.
         new_discussion: Discuter
         begin_discussions: Lancer une discussion
         time_ago: Il y a %{time_ago}

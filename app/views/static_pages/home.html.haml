@@ -7,30 +7,30 @@
           %h1= t('static_pages.home.title.h1', app_name: t('app_name_long'))
           %ul.no-bullet
             -t('static_pages.home.title.modules').each_line do |a_line|
-              -a_line = a_line.split('|')
-              %li= a_line[0]
+              %li= a_line
           %h3= t'static_pages.home.title.subheader'
         .columns.large-3
           = render 'devise/form/sign_up'
     .row.text-center
       .medium-4.large-4.columns
-        =link_to(image_tag('pictograms/10.png',size: "160x160"), group_groups_path)
-        %h3.subheader= t'static_pages.home.work_groups.title'
+        %a{href:group_groups_path}
+          =image_tag('pictograms/10.png',size: "160x160")
+          %h3= t'static_pages.home.work_groups.title'
         %p= t'static_pages.home.work_groups.description'
       .medium-4.large-4.columns
-        =link_to(image_tag('pictograms/4.png', size: "160x160"), document_documents_path)
-        %h3.subheader= t'static_pages.home.documents.title'
+        %a{href: document_documents_path}
+          =image_tag('pictograms/4.png', size: "160x160")
+          %h3= t'static_pages.home.documents.title'
         %p= t'static_pages.home.documents.description'
       .medium-4.large-4.columns
-        =link_to(image_tag('pictograms/7.png',size: "160x160"), advertisement_advertisements_path)
-        %h3.subheader=t'static_pages.home.advertisements.title'
+        %a{href: advertisement_advertisements_path}
+          =image_tag('pictograms/7.png',size: "160x160")
+          %h3=t'static_pages.home.advertisements.title'
         %p= t'static_pages.home.advertisements.description'
       -#.medium-3.large-3.columns
         =link_to(image_tag('pictograms/3.png',size: "160x160"), group_groups_path)
         %h3.subheader Partage de fichiers
         %p Chaque groupe de travail dispose d'une boite de dépôt de fichiers pour partager facilement vos travaux avec vos collègues !
-
-
   -else
     -#blackboard
       -###### Fait par Yves ################################

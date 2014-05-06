@@ -3,9 +3,8 @@
   %h1= t('group.topics.index.h1_title')
   %blockquote= t('group.topics.index.description')
   =render 'group/topics/form'
-  .row
-    .columns.small-12
-      %h4.subheader= t('group.topics.index.last_discussions')
-      =render partial: 'topics/topic', collection: @topics, as: 'topic', locals: {limit: 5} || "<p>#{t('group.topics.index.empty')}</p>"
-
-
+  -unless @topics.empty?
+    .row
+      .columns.small-12
+        %h4.subheader= t('group.topics.index.last_discussions')
+        =render partial: 'topics/topic', collection: @topics, as: 'topic', locals: {limit: 5}
