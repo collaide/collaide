@@ -1,4 +1,4 @@
-$ ->
+datepicker = () ->
   $('.datepicker').datepicker({
     changeMonth: true,
     changeYear: true
@@ -11,3 +11,9 @@ $ ->
     dateFormat: "d M yy"
   }, $.datepicker.regional[ "fr" ])
   $( ".datepicker-form" ).datepicker( "setDate",  new Date($('#populate-datepicker').val())) unless $('#populate-datepicker').val() == ''
+
+$ ->
+  datepicker()
+$(document).on('page:load', ->
+  datepicker()
+)
