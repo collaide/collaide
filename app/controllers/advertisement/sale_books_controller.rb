@@ -18,7 +18,7 @@ class Advertisement::SaleBooksController < ApplicationController
     @message = UserMessage.new
 
     @sale_book = Advertisement::SaleBook.find(params[:id])
-    @message.users<<@sale_book.user
+    @message.users << @sale_book.user
     @message.subject=t('sale_books.buy.subject', book: @sale_book.book.title)
     @message.body=t('sale_books.buy.textarea', book: @sale_book.book.title)
 
