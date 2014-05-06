@@ -106,9 +106,7 @@ class   User < ActiveRecord::Base
   scope :search_by_email_or_name, -> (term) { where('email LIKE :email or name LIKE :name', email: "%#{term}%", name: "%#{term}%").limit 10 }
 
   def self.search_for_autocomplete(term)
-    self.search_by_email_or_name(term).map do |a_user|
-      {id: a_user.id, value: a_user.to_single_name}
-    end
+    self.search_by_email_or_name(term)
   end
   validates :name, presence: true
 
@@ -229,4 +227,3 @@ end
 class Point
   DOWNLOAD_DOCUMENT = 3
 end
-

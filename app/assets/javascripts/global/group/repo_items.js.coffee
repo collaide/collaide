@@ -162,44 +162,50 @@ $(document).on('ajax:success', 'a[data-method]', (e, data, status, xhr) ->
 ).on('ajax:error', (data, xhr, status, e) ->
   Utils.flash('alert', xhr.responseJSON.repo_items)
 )
-#========================================================================
-#=============== création de dossier ====================================
-$('#form_folder').on('ajax:success', (e, data, status, xhr) ->
-  Utils.add_item(data)
-  $('#repo_folder_name').val('')
-).on('ajax:error', (data, xhr, status, e) ->
-  Utils.flash('alert', msg) for msg in xhr.responseJSON.repo_items
-)
+file_folder = () ->
+  #========================================================================
+  #=============== création de dossier ====================================
+  $('#form_folder').on('ajax:success', (e, data, status, xhr) ->
+    Utils.add_item(data)
+    $('#repo_folder_name').val('')
+  ).on('ajax:error', (data, xhr, status, e) ->
+    Utils.flash('alert', msg) for msg in xhr.responseJSON.repo_items
+  )
 
-#========================================================================
-#=============== déposer un fichier =====================================
-$('#repo_file_file').on('change', (e) ->
-  $('#all-progress-bar').append(JST['global/group/templates/progress_bar']({text: "Déchargement du fichier '#{e.target.files[0].name}'"}))
-  elem = $('.progress-bar').last()
+  #========================================================================
+  #=============== déposer un fichier =====================================
+  $('#repo_file_file').on('change', (e) ->
+    $('#all-progress-bar').append(JST['global/group/templates/progress_bar']({text: "Déchargement du fichier '#{e.target.files[0].name}'"}))
+    elem = $('.progress-bar').last()
 
-  upload = $('#file-uploader').ajaxSubmit({
-    beforeSubmit: (a, f, o) ->
-      o.dataType = 'json'
-    clearForm: true,
-    resetForm: true,
-    error: (xhr, status) ->
-      if xhr.responseJSON
-        Utils.flash('alert', msg) for msg in xhr.responseJSON.repo_items
-      else
-        Utils.flash('alert', 'Impossible de déposer ce fichier')
-    success: (xhr, status) ->
-      Utils.add_item(xhr)
-    uploadProgress: (event, position, total, percent) ->
-      console.log("p=#{position}, tot=#{total}, perc=#{percent}")
-      elem.find('.progress-bar-meter').css('width', "#{percent}%")
-      if percent == 100
-        elem.html('<div class="columns small-12"><p>Traitement du fichier en cours<img src="/assets/loading.gif" width="50" height="50"/></p></div>')
-    complete: () ->
-      elem.remove()
-      console.log('fini')
-  })
-  elem.find('.cancel-upload').click ->
-    upload.abort()
+    upload = $('#file-uploader').ajaxSubmit({
+      beforeSubmit: (a, f, o) ->
+        o.dataType = 'json'
+      clearForm: true,
+      resetForm: true,
+      error: (xhr, status) ->
+        if xhr.responseJSON
+          Utils.flash('alert', msg) for msg in xhr.responseJSON.repo_items
+        else
+          Utils.flash('alert', 'Impossible de déposer ce fichier')
+      success: (xhr, status) ->
+        Utils.add_item(xhr)
+      uploadProgress: (event, position, total, percent) ->
+        console.log("p=#{position}, tot=#{total}, perc=#{percent}")
+        elem.find('.progress-bar-meter').css('width', "#{percent}%")
+        if percent == 100
+          elem.html('<div class="columns small-12"><p>Traitement du fichier en cours<img src="/assets/loading.gif" width="50" height="50"/></p></div>')
+      complete: () ->
+        elem.remove()
+        console.log('fini')
+    })
+    elem.find('.cancel-upload').click ->
+      upload.abort()
+  )
+$ ->
+  file_folder()
+$(document).on('page:load', ->
+    file_folder()
 )
 #========================================================================
 #=============== fermer message flash ===================================

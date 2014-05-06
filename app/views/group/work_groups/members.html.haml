@@ -23,10 +23,11 @@
                   = link_to an_invitation.receiver, an_invitation.receiver
               .columns.medium-6
                 = link_to t('group.members.delete_invitation'), group_work_group_invitation_path(@group, an_invitation), method: :delete, data: {confirm: t('confirm')}, class: 'button small secondary'
-          %ul.no-bullet
-            -@group.p_or_l_email_invitations.each do |email_invit|
-              %li
+          -@group.p_or_l_email_invitations.each do |email_invit|
+            .row
+              .columns.medium-6
                 = email_invit.email
+              .columns.medium-6
                 =link_to t('group.members.delete_invitation'), group_work_group_email_invitation_path(work_group_id: @group, id: email_invit), method: :delete, data: {confirm: t('confirm')}, class: 'button small secondary'
   .row
     .columns.small-12
