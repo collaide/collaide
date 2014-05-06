@@ -17,7 +17,6 @@ class NotificationSystem::Save
           owner_id: user_id,
           owner_type: 'User'
       )
-      #puts "User saved #{user_id}"
     end
     if users_ids.is_a?(Array)
       users_ids.each do |an_id|
