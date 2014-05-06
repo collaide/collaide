@@ -1,40 +1,35 @@
-splitInvitation = (value) ->
-  value.split( /,\s*/ )
-extractLast = (term) ->
-  splitInvitation(term).pop()
-invitation = ->
-  $('#group_do_invitation_email_list')
-  .bind 'keydown', (event) ->
-    if event.keyCode == $.ui.keyCode.TAB and $(this).data('ui-autocomplete').menu.active
-      event.preventDefault()
-  .autocomplete({
-      source: (request, response) ->
-        $.getJSON('/users/search', {
-          term: extractLast(request.term)
-        }, response)
-      search: ->
-        term = extractLast(this.value)
-        return false if term.length < 2
-      focus: ->
-        false
-      select: (event, ui) ->
-        terms = splitInvitation(this.value)
-        terms.pop()
-        terms.push(ui.item.value)
-        terms.push("")
-        this.value = terms.join(', ')
-        $("<option value=\"#{ui.item.id}\" selected=\"selected\">#{ui.item.value}</option>").appendTo('#group_do_invitation_users_id')
-        false
-    })
-$ ->
-  invitation()
-$(document).on('page:load', ->
-  invitation()
-)
+#splitInvitation = (value) ->
+#  value.split( /,\s*/ )
+#extractLast = (term) ->
+#  splitInvitation(term).pop()
+#invitation = ->
+#  $('#group_do_invitation_email_list')
+#  .bind 'keydown', (event) ->
+#    if event.keyCode == $.ui.keyCode.TAB and $(this).data('ui-autocomplete').menu.active
+#      event.preventDefault()
+#  .autocomplete({
+#      source: (request, response) ->
+#        $.getJSON('/users/search', {
+#          term: extractLast(request.term)
+#        }, response)
+#      search: ->
+#        term = extractLast(this.value)
+#        return false if term.length < 2
+#      focus: ->
+#        false
+#      select: (event, ui) ->
+#        terms = splitInvitation(this.value)
+#        terms.pop()
+#        terms.push(ui.item.value)
+#        terms.push("")
+#        this.value = terms.join(', ')
+#        $("<option value=\"#{ui.item.id}\" selected=\"selected\">#{ui.item.value}</option>").appendTo('#group_do_invitation_users_id')
+#        false
+#    })
 
-$ ->
+
+invitation  = () ->
   lastResult = []
-
   format = (record) ->
     image_txt = ''
     text = ''
@@ -73,31 +68,30 @@ $ ->
         id: lastResult[0].id, text: lastResult[0].name, img: lastResult[0].img, path: lastResult[0].path
       else
         id: term, text: term + " (non membre)"
+    initSelection: (element, callback) ->
+      invitations_list = element.val().split(',')
+      datas = []
+      jsonNeeded = false
+      for invitation_id in invitations_list
+        if isNaN(invitation_id)
+          datas.push({id: invitation_id, text: invitation_id + ' (non membre)'})
+        else
+          $.ajax('/users/search.json?id='+invitation_id).done((data) ->
+            if data.length > 0
+              jsonNeede = true
+              data[0].text = data[0].name
+              datas.push(data[0])
+              $.event.trigger({type:'init:done'})
+          )
+      if jsonNeeded
+        $(document).on('init:done', ->
+          callback(datas)
+        )
+      else callback(datas)
   });
 
-
-
-  # ajax: {
-  #       multiple: true,
-  #       url: "/echo/json/",
-  #       dataType: "json",
-  #       type: "POST",
-  #       data: function (term, page) {
-  #           return {
-  #               json: JSON.stringify({results: [{id: "foo", text:"foo"},{id:"bar", text:"bar"}]}),
-  #               q: term
-  #           };
-  #       },
-  #       results: function (data, page) {
-  #           lastResults = data.results;
-  #           return data;
-  #       }
-  #   },
-  #   createSearchChoice: function (term) {
-  #       if(lastResults.some(function(r) { return r.text == term })) {
-  #           return { id: term, text: term };
-  #       }
-  #       else {
-  #           return { id: term, text: term + " (new)" };
-  #       }
-  #   }
+$ ->
+  invitation()
+$(document).on('page:load', ->
+  invitation()
+)

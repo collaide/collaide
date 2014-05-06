@@ -603,6 +603,9 @@ fr:
         already_invited:
           one: "%{people} à déjà été invitée"
           other: Les personnes %{people} ont déjà été invitées
+        already_invited_by_email:
+          one: "Un e-mail a déjà été envoyé à '%{email}'"
+          other: "les e-mails ont déjà été envoyé aux addresses '%{email}'"
         already_member:
           one: "%{people} est déjà membre"
           other: Les personnes %{people} sont déjà membres
