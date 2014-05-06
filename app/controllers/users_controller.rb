@@ -46,12 +46,13 @@ class UsersController < ApplicationController
   end
 
   def search
-    res = User.search_for_autocomplete(params[:term])
-    (res.nil? or res.empty?) ? status = 204 : status = 200
-    #user_params = {id: user.id, name: user.name, email: user.email}
-    logger.debug res.inspect
+    if params[:term]
+      @users = User.search_for_autocomplete(params[:term])
+    else
+      @users = [User.find(params[:id])]
+    end
     respond_to do |format|
-      format.json { render status: status, json: res.to_json.to_s }
+      format.json { render template: 'users/search' }
     end
   end
 end
