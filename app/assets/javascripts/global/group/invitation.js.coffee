@@ -34,6 +34,18 @@ $(document).on('page:load', ->
 
 $ ->
   lastResult = []
+
+  format = (record) ->
+    image_txt = ''
+    text = ''
+    if record.path
+      text = "<a href='#{record.path}'>#{record.text}</a>"
+    else
+      text = record.text
+    if record.img
+      image = record.img
+      image_txt = "<img src='#{image}' width='20' height='20'/>"
+    image_txt + record.text
   $('#group_do_invitation_users_id').select2({
     minimumInputLength: 2
     placeholder: 'salut'
@@ -53,33 +65,17 @@ $ ->
           lastResult = []
           results: []
     formatResult: (record) ->
-      image_txt = ''
-      text = ''
-      if record.path
-        text = "<a href='#{record.path}'>#{record.text}</a>"
-      else
-        text = record.text
-      if record.img
-        image = record.img
-        image_txt = "<img src='#{image}' width='20' height='20'/>"
-      image_txt + record.text
+      format(record)
     formatSelection: (record) ->
-      image_txt = ''
-      text = ''
-      if record.path
-        text = "<a href='#{record.path}'>#{record.text}</a>"
-      else
-        text = text
-      if record.img
-        image = record.img
-        image_txt = "<img src='#{image}' width='20' height='20'/>"
-      image_txt + text
+      format(record)
     createSearchChoice: (term) ->
       if(lastResult.length != 0)
         id: lastResult[0].id, text: lastResult[0].name, img: lastResult[0].img, path: lastResult[0].path
       else
         id: term, text: term + " (non membre)"
   });
+
+
 
   # ajax: {
   #       multiple: true,

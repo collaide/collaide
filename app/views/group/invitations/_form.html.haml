@@ -1,5 +1,5 @@
 =simple_form_for @invitation, url: group_work_group_invitations_path do |f|
   =f.input :users_id, as: :hidden, input_html: { class: 's2_general'}
-  =f.input :email_list, as: :string
+  =#f.input :email_list, as: :string
   =f.input :message
   =f.button :submit, t('group.invitations.create.submit')
