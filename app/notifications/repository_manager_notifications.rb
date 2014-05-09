@@ -7,6 +7,10 @@ class RepositoryManagerNotifications < NotificationSystem::AbstractClass
     group = repo_item.owner
     sender = repo_item.sender
 
+    unless (repo_item or group or sender)
+      return
+    end
+
     raw I18n.t(
         'notifications.repository_manager.repo_items.create_in_group',
         sender: link_to(h(sender.to_s), sender),
