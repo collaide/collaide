@@ -6,7 +6,11 @@ def fill_book(book, google_book)
   book.ratings_count = google_book.ratings_count
   book.isbn_10 = google_book.isbn_10
   book.isbn_13 = google_book.isbn_13
-  book.authors = google_book.authors
+  if (authors = google_book.authors).present?
+    book.authors = authors
+  else
+    book.authors = 'Auteur inconnu'
+  end
   book.language = google_book.language
   book.page_count = google_book.page_count
   # si c'est juste 2000, j'ajoute 2000-01-01

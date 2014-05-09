@@ -32,8 +32,9 @@
 # ingorer les documents uploadé
 /uploads
 
-/public/uploads
-public/uploads/
+/public/uploads/repository_manager
+public/uploads/tmp
+
 /download
 Gemfile.lock
 
