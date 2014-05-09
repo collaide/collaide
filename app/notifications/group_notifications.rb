@@ -5,6 +5,10 @@ class GroupNotifications < NotificationSystem::AbstractClass
     #invitation = Group::Invitation.find invitation_id
     sender = User.find sender_id
     group = Group::Group.find group_id
+
+    unless (group or sender)
+      return
+    end
     raw I18n.t(
         'notifications.groups.is_invited',
         sender: link_to(h(sender.to_s), sender),
@@ -16,6 +20,9 @@ class GroupNotifications < NotificationSystem::AbstractClass
   def is_no_longer_invited(sender_id, group_id)
     #sender = User.find sender_id
     group = Group::Group.find group_id
+    unless (group)
+      return
+    end
     raw I18n.t(
             'notifications.groups.is_no_longer_invited',
             #sender: link_to(h(sender.to_s), sender),

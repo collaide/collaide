@@ -739,6 +739,7 @@ fr:
     link: lien
     documents:
       create_for_admin: "%{user} a déposé un nouveau document %{title}. Il nécessite encore une validation. Tu peux le faire en suivant ce %{link}."
+      create_for_admin_deleted: "%{user} a déposé un nouveau document qu'il a supprimé depuis."
       create_for_user: "Tu as déposé le document %{title}. Une fois validé il te rapportera 5 points !"
       valid_document: "Félicitation, ton document %{title} a été validé par %{user} (+5 points)."
     advertisements:
