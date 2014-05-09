@@ -490,6 +490,8 @@ ActiveRecord::Schema.define(version: 20140411081809) do
     t.boolean  "has_notifications",      default: false
     t.string   "provider"
     t.string   "uid"
+    t.string   "old_password"
+    t.boolean  "old_user"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "reset_password_token"

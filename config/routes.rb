@@ -193,5 +193,5 @@ Collaide::Application.routes.draw do
   end
   get 'users/search' => 'users#search', as: 'search_users'
   post '/rate' => 'rater#create', :as => 'rate'
-  devise_for :users, :controllers => {omniauth_callbacks: 'omniauth_callbacks', registrations: 'users/registrations' }
+  devise_for :users, :controllers => {omniauth_callbacks: 'omniauth_callbacks', registrations: 'users/registrations', sessions: 'users/sessions' }
 end

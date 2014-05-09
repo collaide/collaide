@@ -14,6 +14,8 @@ class CreateTableUser < ActiveRecord::Migration
       t.boolean :has_notifications, default:  false
       t.string :provider
       t.string :uid
+      t.string :old_password
+      t.boolean :old_user, defaults: false
 
       t.float :latitude
       t.float :longitude
