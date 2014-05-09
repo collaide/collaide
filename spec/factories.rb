@@ -21,7 +21,7 @@ FactoryGirl.define do
     sequence(:name)  { |n| "Person #{n}" }
     sequence(:email) { |n| "user#{n}@example.com"}
     password "password"
-    old_password 'old_password'
+    old_password Digest::MD5.hexdigest('old_password')
     old_user true
     password_confirmation "password"
   end

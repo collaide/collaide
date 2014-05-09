@@ -39,7 +39,7 @@ result.each do |r|
     doc.domains << Domain.find(1)
   end
   type = Document::Type.find_by name: r['work_type'].gsub(/\\/, '')
-  #puts "type: #{r['work_type'].gsub(/\\/, '')}"
+  puts "type: #{r['work_type'].gsub(/\\/, '')}"
   doc.document_type = type
   begin
     doc.save!

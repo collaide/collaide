@@ -491,7 +491,7 @@ ActiveRecord::Schema.define(version: 20140411081809) do
     t.string   "provider"
     t.string   "uid"
     t.string   "old_password"
-    t.string   "old_user"
+    t.boolean  "old_user"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "reset_password_token"
