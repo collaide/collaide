@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # my custom fields are :name, :avatar
 
   def configure_permitted_parameters
-    logger.debug('called from controllers/users/registrations_controller.rb')
+    #logger.debug('called from controllers/users/registrations_controller.rb')
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:name,
                :email, :password, :password_confirmation)
