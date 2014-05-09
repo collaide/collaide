@@ -9,6 +9,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
+  def sign_up(resource_name, resource)
+    logger.debug 'kajsbdkéasvdésvFASéFVASé'
+    sign_in(resource_name, resource)
+  end
+
   # my custom fields are :name, :avatar
 
   def configure_permitted_parameters
