@@ -26,7 +26,7 @@
 # -*- encoding : utf-8 -*-
 class Advertisement::SaleBook < Advertisement::Sale
   extend Enumerize
-  enumerize :annotation, in: [:not_annotated, :slightly_annotated, :annotated, :very_annotated]
+  enumerize :annotation, in: [:not_annotated, :slightly_annotated, :annotated]
   enumerize :state, in: [:new, :like_new, :normal, :damaged, :very_damaged]
   include Concerns::StudyLevel
   enumerize_study_level

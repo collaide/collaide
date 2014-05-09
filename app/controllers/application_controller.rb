@@ -28,6 +28,8 @@ class ApplicationController < ActionController::Base
         request.fullpath != user_password_path &&
         request.fullpath != destroy_user_session_path &&
         request.fullpath != user_registration_path &&
+        request.fullpath != new_user_password_path &&
+        !request.fullpath.start_with?(edit_user_password_path) &&
         !request.fullpath.start_with?('/users/auth/') &&
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath
