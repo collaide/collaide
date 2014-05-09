@@ -11,7 +11,7 @@ result.each do |r|
       created_at: r['work_date'],
       hits: r['work_hits'],
       realized_at: Date.new(r['work_dateR']),
-      asset: OldCollaide.open_file(r['doc_name_serv'], r['doc_name']),
+      asset: OldCollaide.instance.open_file(r['doc_name_serv'], r['doc_name']),
       status: :accepted,
       language: :french
   )
@@ -38,9 +38,15 @@ result.each do |r|
   rescue Exception
     doc.domains << Domain.find(1)
   end
-  type = Document::Type.find_by name: r['work_type']
+  type = Document::Type.find_by name: r['work_type'].gsub(/\\/, '')
+  #puts "type: #{r['work_type'].gsub(/\\/, '')}"
   doc.document_type = type
-  doc.save!
+  begin
+    doc.save!
+  rescue Exception => e
+    puts "'#{doc.title}' not created: #{e}"
+  end
   #doc.rate(r['work_stars'], User.find(1))
   #doc.save
+  #puts 'doc created'
 end

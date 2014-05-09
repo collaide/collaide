@@ -76,7 +76,7 @@ class Advertisement::SaleBooksController < ApplicationController
 
     if google_book && !isbn.empty?
       #On cherche si le livre est déja dans la bdd, si il l'est, on le met à jour, si il ne l'ai pas, onle crée
-      book = Book.find_by_isbn_13(google_book.isbn_13) || Book.find_by_isbn_10(google_book.isbn_10) || Book.new(isbn_13: google_book.isbn_13, isbn_10: google_book.isbn_10)
+      book = Book.find_by(isbn_13: google_book.isbn_13) || Book.find_by(isbn_10: google_book.isbn_10) || Book.new(isbn_13: google_book.isbn_13, isbn_10: google_book.isbn_10)
 
       fillBook(book, google_book)
     else

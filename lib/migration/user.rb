@@ -11,8 +11,9 @@ result.each do |r|
   begin
     u.last_sign_in_at = DateTime.parse(r['mem_date_last'].to_s)
   rescue Exception
-    puts 'never connected'
+    #puts 'never connected'
   end
-  u.avatar = File.open("#{OldCollaide.folder_path}/users/#{r['mem_avatar']}") unless r['mem_avatar'].blank?
-  u.save
+  u.avatar = File.open("#{OldCollaide.instance.folder_path}/users/#{r['mem_avatar']}") unless r['mem_avatar'].blank?
+  u.save!
+  #puts "user #{u.name} created"
 end
