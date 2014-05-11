@@ -5,9 +5,14 @@ class StaticPagesController < ApplicationController
       # it takes I18n.locale from the previous example set_locale as before_filter in application controller
       redirect_to eval("root_#{I18n.locale}_path")
     end
-    #@documents = Document::Document.valid.order('created_at DESC').limit(5).to_a
-    #@ads = Advertisement::Advertisement.order('created_at DESC').limit(5).includes(:book).to_a
-    @activities = Activity::Activity.order("created_at desc").limit(6).includes(:trackable).includes(:owner).includes(:recipient)
+
+    if current_user
+      # On va chercher les activités liés au membre
+      @activities = current_user.activities.order("created_at desc").limit(20).includes(:trackable, :owner, :recipient)
+    else
+      # Prendre que les activités publics
+      @activities = Activity::Activity.order("created_at desc").public.limit(20).includes(:trackable, :owner, :recipient)
+    end
     @site_news = SiteNew.new
     add_breadcrumb(t('static_pages.home.bc'))
   end

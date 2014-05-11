@@ -175,7 +175,7 @@ class Group::Group < ActiveRecord::Base
           gm.invited_or_added_by = invited_or_added_by
           self.group_members << gm
           self.save
-          create_activity(:joined, trackable: self, owner: m)
+          create_activity(:joined, trackable: self, owner: m, create_related_activity_param: true)
         end
       end
     else
@@ -189,7 +189,7 @@ class Group::Group < ActiveRecord::Base
       gm.invited_or_added_by = invited_or_added_by
       self.group_members << gm
       self.save
-      create_activity(:joined, trackable: self, owner: members)
+      create_activity(:joined, trackable: self, owner: members, create_related_activity_param: true)
     end
   end
 

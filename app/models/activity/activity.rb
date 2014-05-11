@@ -28,6 +28,10 @@ class Activity::Activity < ActiveRecord::Base
   # Serialize parameters Hash
   serialize :parameters, Hash
 
+  has_many :activity_parameters, :class_name => 'Activity::Parameter'
+
+  scope :public, -> { where(public: true) }
+
 
   # Virtual attribute returning text description of the activity
   # using the activity's key to translate using i18n.
