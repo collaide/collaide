@@ -238,6 +238,10 @@ GEM
       celluloid-io (>= 0.15.0)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
+    logstash-event (1.1.5)
+    logstasher (0.5.3)
+      logstash-event (~> 1.1.0)
+      request_store
     lorem-ipsum (0.1.1)
     lumberjack (1.0.5)
     magic_encoding (0.0.2)
@@ -269,7 +273,6 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.0)
-    newrelic_rpm (3.8.0.218)
     nio4r (1.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -365,6 +368,7 @@ GEM
     redis-namespace (1.4.1)
       redis (~> 3.0.4)
     remotipart (1.2.1)
+    request_store (1.0.5)
     resque (1.25.2)
       mono_logger (~> 1.0)
       multi_json (~> 1.0)
@@ -535,13 +539,13 @@ DEPENDENCIES
   kaminari
   language_list
   letsrate!
+  logstasher
   lorem-ipsum
   magic_encoding
   mailboxer
   meta_request
   mini_magick
   mysql2 (= 0.3.13)
-  newrelic_rpm
   nokogiri
   omniauth
   omniauth-facebook
