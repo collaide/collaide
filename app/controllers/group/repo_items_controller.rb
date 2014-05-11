@@ -140,7 +140,7 @@ class Group::RepoItemsController < ApplicationController
       puts @repo_item.inspect
       if (@repo_item=@group.copy_repo_item!(@repo_item, source_folder: target))
         puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-        puts @repo_item.inspect
+        puts @repo_item.reload.inspect
 
         format.json { render :show }
       else
