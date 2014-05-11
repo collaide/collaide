@@ -137,7 +137,11 @@ class Group::RepoItemsController < ApplicationController
     end
     check_permission{ @group.can? :write, :file, current_user or @group.can_update? target }
     respond_to do |format|
-      if (@repo_item=@group.copy_repo_item(@repo_item, source_folder: target))
+      puts @repo_item.inspect
+      if (@repo_item=@group.copy_repo_item!(@repo_item, source_folder: target))
+        puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        puts @repo_item.inspect
+
         format.json { render :show }
       else
         format.json { render json: @repo_item.errors, status: :unprocessable_entity }
