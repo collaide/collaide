@@ -137,10 +137,7 @@ class Group::RepoItemsController < ApplicationController
     end
     check_permission{ @group.can? :write, :file, current_user or @group.can_update? target }
     respond_to do |format|
-      puts @repo_item.inspect
-      if (@repo_item=@group.copy_repo_item!(@repo_item, source_folder: target))
-        puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-        puts @repo_item.reload.inspect
+      if (@group.copy_repo_item(@repo_item, source_folder: target))
 
         format.json { render :show }
       else
