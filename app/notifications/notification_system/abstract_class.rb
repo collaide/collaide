@@ -11,4 +11,8 @@ class NotificationSystem::AbstractClass < ActionView::Base
     end
   end
 
+  def deleted_message
+    raw I18n.t('notifications.deleted')
+  end
+
 end
