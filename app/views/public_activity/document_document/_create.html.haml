@@ -1,0 +1,5 @@
+=raw(t('activity.document.create', owner: link_to(h(activity.owner.name), activity.owner)))
+- if activity.trackable
+  #{link_to activity.trackable.title, activity.trackable}.
+- else
+  #{t'activity.document.not_exist'}.

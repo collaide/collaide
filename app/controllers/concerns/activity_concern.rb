@@ -8,6 +8,7 @@ module Concerns::ActivityConcern
   # :recipient (Activist) — Recipient
   # :params (Hash) — Parameters, see PublicActivity.resolve_value
   # :type (String) - For inheritance
+  # :public - The activity is public
   # :create_related_activity_param (boolean) - If true, we create the activity param
 
   def create_activity(action, options = {})

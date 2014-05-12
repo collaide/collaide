@@ -14,7 +14,7 @@ class Group::InvitationObserver < ActiveRecord::Observer
           [invitation.sender.id, invitation.group.id, invitation.receiver_id], # les paramètres de la notification
           'user' => invitation.receiver_id,# on notifie le receveur
       )
-      #UserNotificationsMailer.invitation_created(invitation.receiver_id).deliver # On envoi un e-mail à celui qui à recu l'invitation
+      #AppNotificationsMailer.invitation_created(invitation.receiver_id).deliver # On envoi un e-mail à celui qui à recu l'invitation
     end
   end
 

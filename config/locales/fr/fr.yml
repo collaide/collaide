@@ -751,9 +751,14 @@ fr:
     repository_manager:
       repo_items:
         create_in_group: "%{sender} a envoyé le fichier %{file} dans le groupe : %{group}."
-  user_notifications_mailer:
+  app_notifications_mailer:
     document_created:
-      subject: Nouveau document déposé sur collaide !
+      title: Nouveau document déposé
+      subject: "Merci d'avoir déposé un document sur Collaide !"
+      message: "Votre document a bien été déposé sur collaide.com, nous vous remercions de votre
+              participation !
+              Avant d'être validé et accessible à tous les membres du site, un administrateur va vérifier sont contenu.
+              Cela n'est qu'une formalité !"
   mailer:
     group:
       new_invitation:
@@ -774,4 +779,8 @@ fr:
       description: "Vous avez reçu un nouveau message privé."
       message_subject: "Sujet:"
       message_message: "Message:"
+    reply:
+      title: Nouvelle réponse
+      description: "Vous avez reçu une nouvelle réponse à l'un de vos messages privés."
+
 
