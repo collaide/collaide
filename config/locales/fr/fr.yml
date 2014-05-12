@@ -760,7 +760,7 @@ fr:
       subject: "Merci d'avoir déposé un document sur Collaide !"
       message: "Votre document a bien été déposé sur collaide.com, nous vous remercions de votre
               participation !
-              Avant d'être validé et accessible à tous les membres du site, un administrateur va vérifier sont contenu.
+              Avant d'être validé et accessible à tous les membres du site, un administrateur va vérifier son contenu.
               Cela n'est qu'une formalité !"
   mailer:
     group:
