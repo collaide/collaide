@@ -145,6 +145,9 @@ fr:
         subheader: Restez connectés entres étudiants !
       site_activities: Dernièrement sur Collaide
       your_activities: Votre fil d'actualité
+      clouds:
+        title: Partage de fichiers
+        description: Chaque groupe de travail dispose d'une boite de dépôt de fichiers pour partager facilement vos travaux avec vos collègues !
       work_groups:
         title: Groupe de travail
         description: Créez facilement votre groupe de travail pour votre classe ou votre réseau universitaire... Echangez vos fichiers et discutez dans un espace privé !

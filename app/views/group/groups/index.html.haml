@@ -3,15 +3,21 @@
 -#=link_to t('group.groups.index.new_link'), new_group_group_path, class: 'button expand'
 %blockquote= t 'group.groups.index.description'
 .row
-  .columns.large-6
+  .columns.large-4
     .panel
       %h3.panel-subtitle= t 'group.groups.index.title_panel_create'
       =render "/group/work_groups/form", edit: false
-  -#.columns.large-6.text-center
-    =image_tag('pictograms/3.png',size: "160x160")
-    %h3.subheader Partage de fichiers
-    %p Chaque groupe de travail dispose d'une boite de dépôt de fichiers pour partager facilement vos travaux avec vos collègues !
-
+  .columns.large-8.text-center
+    .panel
+      .row
+        .columns.large-6
+          =image_tag('pictograms/10.png',size: "160x160")
+          %h3.subheader= t'static_pages.home.work_groups.title'
+          %p= t'static_pages.home.work_groups.description'
+        .columns.large-6
+          =image_tag('pictograms/3.png',size: "160x160")
+          %h3.subheader= t'static_pages.home.clouds.title'
+          %p= t'static_pages.home.clouds.description'
     -#.panel
       %h4.panel-subtitle= t 'group.groups.index.title_panel_last'
       -if @groups.empty?
