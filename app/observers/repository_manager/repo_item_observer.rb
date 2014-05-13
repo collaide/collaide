@@ -22,6 +22,7 @@ class RepositoryManager::RepoItemObserver < ActiveRecord::Observer
         end
       end
        #AppNotificationsMailer.invitation_created(invitation.receiver_id).deliver # On envoi un e-mail à celui qui à recu l'invitation
+
     else
        # Todo when implemented
     end

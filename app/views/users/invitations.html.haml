@@ -4,7 +4,6 @@
     %p= t('users.invitations.no_invit')
   -else
     -unless give_a_reply.empty?
-      %p= give_a_reply.inspect
       -give_a_reply.each do |an_invit|
         %li
           %p= t('users.invitations.sender', sender: link_to(h(an_invit.sender), an_invit.sender), member: link_to(h(@user), @user), group: link_to(h(an_invit.group), an_invit.group), msg: h(an_invit.message)).html_safe
