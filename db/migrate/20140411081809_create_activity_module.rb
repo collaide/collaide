@@ -4,7 +4,7 @@ class CreateActivityModule < ActiveRecord::Migration
       t.belongs_to :owner, :polymorphic => true, index: true
       t.datetime :starting_at
       t.datetime :ending_at
-      t.belongs_to :trackable_id
+      t.belongs_to :trackable, :polymorphic => true, index: true
 
       #t.integer :condition, index: true
 

@@ -39,12 +39,14 @@ ActiveRecord::Schema.define(version: 20140411081809) do
     t.string   "owner_type"
     t.datetime "starting_at"
     t.datetime "ending_at"
-    t.integer  "trackable_id_id"
+    t.integer  "trackable_id"
+    t.string   "trackable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "activity_parameters", ["owner_id", "owner_type"], name: "index_activity_parameters_on_owner_id_and_owner_type", using: :btree
+  add_index "activity_parameters", ["trackable_id", "trackable_type"], name: "index_activity_parameters_on_trackable_id_and_trackable_type", using: :btree
 
   create_table "addresses", force: true do |t|
     t.string   "country"
