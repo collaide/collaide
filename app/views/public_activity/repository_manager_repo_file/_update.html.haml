@@ -1,0 +1,5 @@
+=raw(t('activity.repo_file.update', owner: link_to(h(activity.owner.name), activity.owner)))
+- if activity.trackable
+  #{link_to activity.trackable.name, activity.trackable}.
+- else
+  #{t'activity.repo_file.not_exist'}.

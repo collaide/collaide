@@ -14,7 +14,7 @@ class Group::WorkGroupsController < ApplicationController
   # GET /group/work_groups/1.json
   def show
     @group = Group::WorkGroup.find(params[:id])
-    @activities = Activity::Activity.order("created_at desc").where('(trackable_id = ? AND trackable_type = ?) OR (recipient_id = ? AND recipient_type = ?)', @group.id,  @group.class.base_class.to_s, @group.id,  @group.class.base_class.to_s)
+    @activities = Activity::Activity.order("created_at desc").where('(trackable_id = ? AND trackable_type = ?) OR (recipient_id = ? AND recipient_type = ?) OR (owner_id = ? AND owner_type = ?)', @group.id,  @group.class.base_class.to_s, @group.id,  @group.class.base_class.to_s, @group.id,  @group.class.base_class.to_s)
 
     # add_breadcrumb @group.name, group_work_group_path(@group)
     respond_to do |format|

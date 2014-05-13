@@ -1,0 +1,7 @@
+=raw(t('activity.repo_file.create', owner: link_to(h(activity.owner.name), activity.owner)))
+- if activity.trackable
+  =link_to activity.trackable.name, group_work_group_repo_item_path(activity.recipient, activity.trackable)
+  - if specification == nil
+    #{raw(t('activity.group_work_group.in_link', group: link_to(h(activity.recipient.name), activity.recipient)))}.
+- else
+  #{t'activity.repo_file.not_exist'}.
