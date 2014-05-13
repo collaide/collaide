@@ -13,6 +13,8 @@
 #  has_notifications      :boolean          default(FALSE)
 #  provider               :string(255)
 #  uid                    :string(255)
+#  old_password           :string(255)
+#  old_user               :boolean
 #  latitude               :float
 #  longitude              :float
 #  reset_password_token   :string(255)

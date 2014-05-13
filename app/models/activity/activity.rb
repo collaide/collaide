@@ -9,7 +9,7 @@
 #  owner_id       :integer
 #  owner_type     :string(255)
 #  key            :string(255)
-#  type           :string(255)
+#  public         :boolean          default(FALSE)
 #  parameters     :text
 #  recipient_id   :integer
 #  recipient_type :string(255)

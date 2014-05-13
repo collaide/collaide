@@ -39,7 +39,7 @@ module Concerns::ActivityConcern
     activity.save
   end
 
-  # Crée le parametre pour suivre des activités privées
+  # Crée le paramètre pour suivre des activités privées
   # params
   #     trackable: lié a l'objet à suivre
   #     owner: Qui suit cette objet
