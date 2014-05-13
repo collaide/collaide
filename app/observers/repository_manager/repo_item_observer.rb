@@ -3,7 +3,7 @@ class RepositoryManager::RepoItemObserver < ActiveRecord::Observer
   #observe :'RepositoryManager::RepoItem'
 
   def after_create(repo_item)
-    Rails.logger.debug repo_item.inspect # => #<RepositoryManager::RepoFile id: 3, owner_id: 1, owner_type: "Group::Group", sender_id: 2, sender_type: "User", ancestry: "1", ancestry_depth: 1, name: "PAS_BEAU.JPG", file_size: 1292775.0, content_type: "image/jpeg", file: "DSC_0777.JPG", type: "RepositoryManager::RepoFile">
+    #Rails.logger.debug repo_item.inspect # => #<RepositoryManager::RepoFile id: 3, owner_id: 1, owner_type: "Group::Group", sender_id: 2, sender_type: "User", ancestry: "1", ancestry_depth: 1, name: "PAS_BEAU.JPG", file_size: 1292775.0, content_type: "image/jpeg", file: "DSC_0777.JPG", type: "RepositoryManager::RepoFile">
 
     #j'ai commenté, sinon j'ai une erreur quand on copie un élément ailleur que dans le répertopire de base
     if repo_item.owner.class.base_class.to_s == 'Group::Group'
@@ -21,7 +21,7 @@ class RepositoryManager::RepoItemObserver < ActiveRecord::Observer
           )
         end
       end
-       #UserNotificationsMailer.invitation_created(invitation.receiver_id).deliver # On envoi un e-mail à celui qui à recu l'invitation
+       #AppNotificationsMailer.invitation_created(invitation.receiver_id).deliver # On envoi un e-mail à celui qui à recu l'invitation
     else
        # Todo when implemented
     end

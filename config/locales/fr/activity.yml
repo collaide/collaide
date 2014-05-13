@@ -20,3 +20,8 @@ fr:
       update: "%{owner} a modifié une annonce"
       sale_book:
         destroy: "%{owner} a supprimé une annonce de vente de livre d'occasion"
+    document:
+      not_exist: mais ce document n'existe plus
+      create: "%{owner} a publié un document scolaire"
+      update: "%{owner} a modifié un document scolaire"
+      destroy: "%{owner} a supprimé un document"

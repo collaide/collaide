@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-  </head>
-  <body>
-    <h1>You have a new reply: <%= @message.subject.html_safe? ? @message.subject : strip_tags(@message.subject) %></h1>
-    <p>
-      You have received a new reply:
-    </p>
-    <blockquote>
-      <p>
-        <%= raw @message.body %>
-      </p>
-    </blockquote>
-    <p>
-      Visit <%= link_to root_url,root_url %> and go to your inbox for more info.
-    </p>
-  </body>
-</html>
+-content_for :mail_title do
+  =t'mailboxer.reply.title'
+
+=render(:layout => 'layouts/mailer_layout') do
+  %p=t'mailboxer.reply.description'
+  -unless @message.subject == t('messages.default.title')
+    %p
+      %strong=t'mailboxer.new_message.message_subject'
+      = @message.subject.html_safe? ? @message.subject : strip_tags(@message.subject)
+  %p
+    %strong=t'mailboxer.new_message.message_message'
+  .panel
+    %blockquote
+      =sanitize(@message.body)

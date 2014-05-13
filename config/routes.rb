@@ -194,4 +194,29 @@ Collaide::Application.routes.draw do
   get 'users/search' => 'users#search', as: 'search_users'
   post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users, :controllers => {omniauth_callbacks: 'omniauth_callbacks', registrations: 'users/registrations', sessions: 'users/sessions' }
+
+  # COMPATIBILITY WITH OLD VERSION
+  # DOCUMENTS
+  get 'documents/p1-liste-des-documents.html', to: redirect('fr/documents')
+  get 'documents/p1-liste-des-documents-:domain.html', to: redirect('fr/documents')
+  get 'documents/p:num-top-telechargements.html', to: redirect('fr/documents')
+  get 'documents/p:num-liste-des-documents.html', to: redirect('fr/documents/page/%{num}')
+  get 'recherche-documents.html', to: redirect('fr/documents')
+  get 'documents/p1-:id.html', to: redirect {|path_params, req| "fr/documents/#{path_params[:id].split('-')[0]}" }
+  # LIVRES
+  get 'livres/p1-liste-des-ventes.html', to: redirect('fr/annonces')
+  get 'livres/p:num-liste-des-ventes.html', to: redirect('fr/annonces/page/%{num}')
+  get 'livres/p1-vente-:id.html', to: redirect {|path_params, req| "fr/annonce/livres/#{path_params[:id].split('-')[0]}" }
+  # Users
+  get 'membres/connexion.html', to: redirect('users/sign_in')
+  get 'membres/mot-de-passe-oublie.html', to: redirect('users/password/new')
+  get 'membres/inscription.html', to: redirect('users/sign_in')
+  # Static pages
+  get 'aide.html', to: redirect('fr/a-propos')
+  get 'contact.html', to: redirect('fr/contactez-nous')
+  get 'reglement.html', to: redirect('fr/reglement')
+  get 'partenaires.html', to: redirect('fr/partenaires')
+  get 'aide.html', to: redirect('fr/a-propos')
+
+
 end

@@ -1,0 +1,5 @@
+-content_for :mail_title do
+  =t'app_notifications_mailer.document_created.title'
+
+=render(:layout => 'layouts/mailer_layout') do
+  %p=t'app_notifications_mailer.document_created.message'

@@ -15,6 +15,6 @@ class Advertisement::AdvertisementObserver < ActiveRecord::Observer
         'user_roles' => %w(admin),# On notifie les admin et les validateurs de documents
     )
     AdvertisementNotifications.perform_later :create_for_user, [advertisement.id], 'user' => advertisement.user.id
-    UserNotificationsMailer.advertisement_created(advertisement.id).deliver # On envoi un e-mail à celui qui à déposé le document.
+    AppNotificationsMailer.advertisement_created(advertisement.id).deliver # On envoi un e-mail à celui qui à déposé le document.
   end
 end
