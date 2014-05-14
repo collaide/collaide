@@ -102,8 +102,17 @@ fr:
     document: "Documents"
     advertisement: "Annonces"
     group: Groupes
+    my_groups: Mes groupes
     inbox: "Messagerie %{count}"
+    no_inbox: Vous n'avez pas de message
+    has_inbox:
+      one: Vous avez %{count} nouveau message
+      other: Vous avez %{count} nouveaux messages
     notifications: "Notifications %{count}"
+    no_notification: Vous n'avez pas de notification
+    has_notification:
+      one: Vous avez %{num} notification
+      other: Vous avez %{num} notifications
     user:
       profil: "Mon profil"
       edit: Modifier mon profil

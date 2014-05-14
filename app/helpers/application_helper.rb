@@ -12,6 +12,10 @@ $(function () {
     EOD
   end
 
+  def user_groups
+    @user_groups ||= current_user.work_groups.to_a
+  end
+
   def count_notifications
     @count_notification ||= current_user.notifications.where(is_viewed: false).count
   end

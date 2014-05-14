@@ -19,8 +19,6 @@ class Group::GroupsController < ApplicationController
       @groups = []
     else
       @groups = current_user.work_groups
-      #@groups ||= current_user.work_groups
-
     end
   end
 
