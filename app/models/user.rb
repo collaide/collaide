@@ -113,6 +113,7 @@ class   User < ActiveRecord::Base
   # Un user a plusieurs groupes et un groupe a plusieurs utilisateurs
   has_many :group_members, as: :member, :class_name => 'Group::GroupMember'
   has_many :groups, :class_name => 'Group::Group', through: :group_members#, source: :group
+  has_many :work_groups, :class_name => 'Group::WorkGroup', through: :group_members, source: :group
 
   #has_and_belongs_to_many :addresses, :class_name => 'User::Address', join_table: 'user_addresses_users'
 

@@ -28,6 +28,7 @@ fr:
     documents: &documents Documents
     books: &books Livres
     news: &news News
+    groupes: &groups Groupes
     partners: &partners Partenaires
     delete: &delete Supprimer
     documents:
@@ -119,6 +120,7 @@ fr:
     collaide:
       documents: *documents
       books: *books
+      groups: *groups
       news: *news
       rules: Règlements
       partners: Partenaires
@@ -526,7 +528,7 @@ fr:
         breadcrumb: Les groupes
         new_link: Créer un groupe
         no_group: Il n'y actuellement aucun groupe
-        title_panel_last: Les derniers groupes
+        title_panel_last: Vos groupes
         title_panel_create: Créez un groupe de travail
         loading: Chargement en cours du contenu de votre dossier. Merci de patienter
       new:

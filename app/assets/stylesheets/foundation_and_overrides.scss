@@ -2,6 +2,14 @@
 @import 'foundation';
 @import 'foundation-icons';
 
+.thirty {
+  background-color: $thirty-color;
+  border-color: darken($thirty-color, 5%);
+}
+.thirty:hover{
+  background-color: darken($thirty-color, 5%);
+}
+
 
 //documents
 .no-border {

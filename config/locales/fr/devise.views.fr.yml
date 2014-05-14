@@ -46,11 +46,13 @@ fr:
         change_password: Modifier le mot de passe
       new:
         sign_up: Inscription
+        info: Pas de compte ? Créez en un gratuitement !
     sessions:
       new:
         title_page: Connexion
         sign_in: Connexion
         sign_up: Inscription
+        sign_up_info: Pas de compte ? Créez en un gratuitement !
         via_omniauth: Via votre compte Facebook ou Google
         via_app: Via votre compte Collaide
     shared:
