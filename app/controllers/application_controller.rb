@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     params[resource] &&= send(method) if respond_to?(method, true)
   end
 
+  before_action do
+    ObserverHelpers.current_user = current_user
+  end
+
   before_action :set_locale
 
     #rescue_from ActionController::RoutingError, :with => :render_not_found
@@ -20,7 +24,7 @@ class ApplicationController < ActionController::Base
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
-    if(request.fullpath.start_with? '/admin')
+    if(request.fullpath.start_with? '/admin' or request.post?)
       return
     end
     if (request.fullpath != new_user_session_path &&
