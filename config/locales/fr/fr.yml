@@ -773,8 +773,8 @@ fr:
     signature: L'équipe Collaide.
   mailboxer:
     message_mailer:
-      subject_new: "[Collaide] Nouveau message" # On peut utiliser %{subject}
-      subject_reply: "[Collaide] Nouvelle réponse"
+      subject_new: "[Collaide] Vous avez reçu un nouveau message" # On peut utiliser %{subject}
+      subject_reply: "[Collaide] Vous avez reçu une nouvelle réponse"
     notification_mailer:
       subject: "Vous avez reçu une notification" # %{subject}
     new_message:
