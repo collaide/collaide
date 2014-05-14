@@ -24,4 +24,12 @@ class Topic < ActiveRecord::Base
   belongs_to :writer, polymorphic: true
 
   validates_presence_of :message
+
+  def to_s
+    if title.blank?
+      ActionController::Base.helpers.strip_tags(message).truncate(30)
+    else
+      title
+    end
+  end
 end

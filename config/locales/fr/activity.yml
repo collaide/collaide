@@ -6,12 +6,13 @@ fr:
       update: "%{owner} a modifier le groupe"
       destroy: "%{owner} a supprimé un groupe de travail"
       joined: "%{owner} a rejoint le groupe de travail"
-      in: dans le groupe de travail
-      in_link: dans le groupe de travail %{group}
-    status:
-      create: "%{owner} a publié un status"
-      not_exist: mais ce status n'existe plus
-      in: un status
+      in: dans le groupe
+      in_link: dans le groupe %{group}
+    topic:
+      create: "%{owner} a lancé une discussion"
+      not_exist: mais cette discussion n'existe plus
+      in: une discussion
+      in_link: dans la discussion %{link}
     comment:
       create: "%{owner} a commenté"
       not_exist: mais ce commentaire n'existe plus

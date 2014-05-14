@@ -1,0 +1,12 @@
+=raw(t('activity.topic.create', owner: link_to(h(activity.owner.name), activity.owner)))
+- if activity.trackable
+  #{link_to activity.trackable, group_work_group_topic_path(activity.recipient, activity.trackable)}
+- else
+  #{t'activity.topic.not_exist'}.
+- if activity.recipient
+  - if specification == nil
+    -# On doit ajouter les détails
+    - if activity.recipient.class.to_s == 'Group::WorkGroup'
+      =raw("#{t'activity.group_work_group.in_link', group: link_to(h(activity.recipient.name), activity.recipient)}.")
+- else
+  #{t'activity.group_work_group.not_exist'}.
