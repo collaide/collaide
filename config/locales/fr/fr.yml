@@ -756,8 +756,8 @@ fr:
         create_in_group: "%{sender} a envoyé le fichier %{file} dans le groupe : %{group}."
   app_notifications_mailer:
     document_created:
-      title: Nouveau document déposé
-      subject: "Merci d'avoir déposé un document sur Collaide !"
+      title: Merci d'avoir déposé un document !
+      subject: "Nouveau document déposé sur Collaide"
       message: "Votre document a bien été déposé sur collaide.com, nous vous remercions de votre
               participation !
               Avant d'être validé et accessible à tous les membres du site, un administrateur va vérifier son contenu.
@@ -765,16 +765,16 @@ fr:
   mailer:
     group:
       new_invitation:
-        subject: "%{user} vous invite à rejoindre le groupe %{group} sur collaide.com"
+        subject: "%{user} vous invite à rejoindre le groupe %{group} sur Collaide"
         message: "Message :"
         p1: Cliquez sur le lien ci-après pour rejoindre le groupe.
         join_group: Rejoindre le groupe
-    greetings: Avec nos salutations les meilleures et au plaisir de vous voir rapidement.
+    greetings: Cordialement.
     signature: L'équipe Collaide.
   mailboxer:
     message_mailer:
-      subject_new: "[Collaide] Nouveau message" # On peut utiliser %{subject}
-      subject_reply: "[Collaide] Nouvelle réponse"
+      subject_new: "Vous avez reçu un nouveau message sur collaide" # On peut utiliser %{subject}
+      subject_reply: "Vous avez reçu une nouvelle réponse sur Collaide"
     notification_mailer:
       subject: "Vous avez reçu une notification" # %{subject}
     new_message:

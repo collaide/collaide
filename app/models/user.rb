@@ -140,16 +140,6 @@ class   User < ActiveRecord::Base
       only_integer: true
   }
 
-  #Returning the email address of the model if an email should be sent for this object (Message or Notification).
-  #If no mail has to be sent, return nil.
-  def mailboxer_email(object)
-    #Check if an email should be sent for that object
-    #if true
-    self.email
-    #if false
-    #return nil
-  end
-
   # Renvoi le nom de l'utilisateur
   def to_s
     self.name

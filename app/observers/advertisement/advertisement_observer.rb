@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Advertisement::AdvertisementObserver < ActiveRecord::Observer
+  include Concerns::ActivityConcern
 
   # MaClasseDeNotification.perform_later(
   # :la_méthode_contenant_le_texte_de_la_notification,
@@ -16,5 +17,6 @@ class Advertisement::AdvertisementObserver < ActiveRecord::Observer
     )
     AdvertisementNotifications.perform_later :create_for_user, [advertisement.id], 'user' => advertisement.user.id
     AppNotificationsMailer.advertisement_created(advertisement.id).deliver # On envoi un e-mail à celui qui à déposé le document.
+    create_activity(:create, trackable: advertisement, owner: advertisement.user, public: true)
   end
 end
