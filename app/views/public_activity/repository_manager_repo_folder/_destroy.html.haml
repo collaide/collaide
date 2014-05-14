@@ -1,1 +1,5 @@
-="#{t('activity.repo_folder.destroy', owner: link_to h(activity.owner.name), activity.owner)}."
+=raw("#{t('activity.repo_folder.destroy', owner: link_to(h(activity.owner.name), activity.owner), name: activity.parameters[:name])}")
+- if activity.recipient
+  - if specification == nil
+    - if activity.recipient.class.to_s == 'Group::WorkGroup'
+      =raw("#{t'activity.group_work_group.in_link', group: link_to(h(activity.recipient.name), activity.recipient)}.")
