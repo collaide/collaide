@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140411081809) do
     t.string   "owner_type"
     t.datetime "starting_at"
     t.datetime "ending_at"
-    t.integer  "trackable_id_id"
+    t.integer  "trackable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
