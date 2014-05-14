@@ -769,7 +769,7 @@ fr:
         message: "Message :"
         p1: Cliquez sur le lien ci-après pour rejoindre le groupe.
         join_group: Rejoindre le groupe
-    greetings: Avec nos salutations les meilleures et au plaisir de vous voir rapidement.
+    greetings: Cordialement.
     signature: L'équipe Collaide.
   mailboxer:
     message_mailer:
