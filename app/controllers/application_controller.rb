@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   before_action do
-    CollaideObserver.current_user = current_user
+    ObserverHelpers.current_user = current_user
   end
 
   before_action :set_locale
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
-    if(request.fullpath.start_with? '/admin')
+    if(request.fullpath.start_with? '/admin' or request.post?)
       return
     end
     if (request.fullpath != new_user_session_path &&

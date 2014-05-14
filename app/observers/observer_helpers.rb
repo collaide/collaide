@@ -1,5 +1,5 @@
-class CollaideObserver < ActiveRecord::Base
-  def current_user
+class ObserverHelpers
+  def self.current_user
     @@current_user
   end
 

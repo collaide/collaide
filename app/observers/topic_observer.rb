@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class TopicObserver < CollaideObserver
+class TopicObserver < ActiveRecord::Observer
   include Concerns::ActivityConcern
   def after_create(topic)
     create_activity(:create, trackable: topic, owner: topic.writer, recipient: topic.owner)
