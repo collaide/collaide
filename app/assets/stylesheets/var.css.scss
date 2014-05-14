@@ -1,16 +1,16 @@
 //COLLAIDE SETTINGS
 $price-title-weight: normal;
-$row-width: emCalc(1280px);
+$row-width: 1280px;
 
 $document-subtitle-color: black;//: $subheader-font-color;
-$document-subtitle-font-size: emCalc(16px);
+$document-subtitle-font-size: 16px;
 
 //annonces
 
 //sub title to show sale_book
 
 //$sale-book-subtitle-color: #a03b32;
-$sale-book-subtitle-font-size: emCalc(3px);
+$sale-book-subtitle-font-size: 3px;
 
 //home
 //colors for last resource panels
@@ -84,8 +84,10 @@ $font-size : 1em;
 // $default-float: left;
 
 // We use these as default colors throughout
-$primary-color: #ffb700;
+// $primary-color: #008CBA;
 // $secondary-color: #e7e7e7;
+// Orange
+$thirty-color: #ffb700;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
 

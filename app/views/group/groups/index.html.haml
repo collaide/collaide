@@ -10,14 +10,22 @@
   .columns.large-8.text-center
     .panel
       .row
-        .columns.large-6
-          =image_tag('pictograms/10.png',size: "160x160")
-          %h3.subheader= t'static_pages.home.work_groups.title'
-          %p= t'static_pages.home.work_groups.description'
-        .columns.large-6
-          =image_tag('pictograms/3.png',size: "160x160")
-          %h3.subheader= t'static_pages.home.clouds.title'
-          %p= t'static_pages.home.clouds.description'
+        -if @groups.empty?
+          .columns.large-6
+            =image_tag('pictograms/10.png',size: "160x160")
+            %h3.subheader= t'static_pages.home.work_groups.title'
+            %p= t'static_pages.home.work_groups.description'
+          .columns.large-6
+            =image_tag('pictograms/3.png',size: "160x160")
+            %h3.subheader= t'static_pages.home.clouds.title'
+            %p= t'static_pages.home.clouds.description'
+        -else
+          %h4.panel-subtitle= t 'group.groups.index.title_panel_last'
+          %ul.large-block-grid-2
+            -@parity=0
+            -@groups.each do |g|
+              %li= link_to g.name, g
+
     -#.panel
       %h4.panel-subtitle= t 'group.groups.index.title_panel_last'
       -if @groups.empty?

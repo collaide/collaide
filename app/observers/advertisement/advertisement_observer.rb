@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 class Advertisement::AdvertisementObserver < ActiveRecord::Observer
   include Concerns::ActivityConcern
+  #include Devise::Controllers::Helpers
+  #helper_method :current_user
 
   # MaClasseDeNotification.perform_later(
   # :la_méthode_contenant_le_texte_de_la_notification,
