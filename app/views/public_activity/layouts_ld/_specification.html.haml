@@ -1,0 +1,4 @@
+-# Add the specification in with is the notification (in a group?)
+-if ort
+  - if ort.class.to_s == 'Group::WorkGroup'
+    =raw("#{t'activity.group_work_group.in_link', group: link_to(h(ort.name), ort)}.")
