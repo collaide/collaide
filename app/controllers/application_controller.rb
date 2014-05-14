@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     params[resource] &&= send(method) if respond_to?(method, true)
   end
 
+  before_action do
+    CollaideObserver.current_user = current_user
+  end
+
   before_action :set_locale
 
     #rescue_from ActionController::RoutingError, :with => :render_not_found
