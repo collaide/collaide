@@ -13,6 +13,7 @@ $(function () {
   end
 
   def user_groups
+    return [] unless current_user
     @user_groups ||= current_user.work_groups.to_a
   end
 
