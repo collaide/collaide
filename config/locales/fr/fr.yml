@@ -757,7 +757,7 @@ fr:
   app_notifications_mailer:
     document_created:
       title: Merci d'avoir déposé un document !
-      subject: "[Collaide] Nouveau document déposé !"
+      subject: "Nouveau document déposé sur Collaide"
       message: "Votre document a bien été déposé sur collaide.com, nous vous remercions de votre
               participation !
               Avant d'être validé et accessible à tous les membres du site, un administrateur va vérifier son contenu.
@@ -765,7 +765,7 @@ fr:
   mailer:
     group:
       new_invitation:
-        subject: "[Collaide] %{user} vous invite à rejoindre le groupe %{group}"
+        subject: "%{user} vous invite à rejoindre le groupe %{group} sur Collaide"
         message: "Message :"
         p1: Cliquez sur le lien ci-après pour rejoindre le groupe.
         join_group: Rejoindre le groupe
@@ -773,8 +773,8 @@ fr:
     signature: L'équipe Collaide.
   mailboxer:
     message_mailer:
-      subject_new: "[Collaide] Vous avez reçu un nouveau message" # On peut utiliser %{subject}
-      subject_reply: "[Collaide] Vous avez reçu une nouvelle réponse"
+      subject_new: "Vous avez reçu un nouveau message sur collaide" # On peut utiliser %{subject}
+      subject_reply: "Vous avez reçu une nouvelle réponse sur Collaide"
     notification_mailer:
       subject: "Vous avez reçu une notification" # %{subject}
     new_message:
