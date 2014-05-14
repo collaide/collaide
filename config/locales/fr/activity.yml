@@ -31,9 +31,9 @@ fr:
       not_exist: mais ce fichier n'existe plus
       create: "%{owner} a envoyé le fichier"
       update: "%{owner} a modifié le fichier"
-      destroy: "%{owner} a supprimé un fichier"
+      destroy: "%{owner} a supprimé le fichier \"%{name}\""
     repo_folder:
       not_exist: mais ce dossier n'existe plus
       create: "%{owner} a créer le dossier"
       update: "%{owner} a renommé le dossier"
-      destroy: "%{owner} a supprimé un dossier"
+      destroy: "%{owner} a supprimé le dossier \"%{name}\""
