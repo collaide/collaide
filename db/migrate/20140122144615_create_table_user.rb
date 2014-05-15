@@ -16,6 +16,7 @@ class CreateTableUser < ActiveRecord::Migration
       t.string :uid
       t.string :old_password
       t.boolean :old_user, defaults: false
+      t.integer :old_id
 
       t.float :latitude
       t.float :longitude

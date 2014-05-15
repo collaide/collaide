@@ -42,11 +42,11 @@ OldCollaide.instance.client.query('SELECT * FROM bookinfo').each do |book|
   next if Book.find_by(isbn_13: book['book_isbn']) || Book.find_by(isbn_10: book['book_isbn'])
   g_book = GoogleBooks.search("isbn:#{book['book_isbn']}").first
   if g_book
-    book = Book.find_by(isbn_13: g_book.isbn_13) || Book.find_by(isbn_10: g_book.isbn_10) || Book.new(isbn_13: g_book.isbn_13, isbn_10: g_book.isbn_10)
+    c_book = Book.find_by(isbn_13: g_book.isbn_13) || Book.find_by(isbn_10: g_book.isbn_10) || Book.new(isbn_13: g_book.isbn_13, isbn_10: g_book.isbn_10)
     begin
-      fill_book(book, g_book).save!
+      fill_book(c_book, g_book).save!
     rescue Exception => e
-      puts "'#{book.title}' not saved #{e}"
+      puts "'#{c_book.title}' not saved #{e}"
       next
     end
     #puts "#{book.title} created"

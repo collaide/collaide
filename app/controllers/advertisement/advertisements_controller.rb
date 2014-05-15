@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Advertisement::AdvertisementsController < ApplicationController
-  load_and_authorize_resource class: Advertisement::Advertisement
+  load_and_authorize_resource class: Advertisement::Advertisement, except: :find_old_advertisement
 
   #breadcrumb
   add_breadcrumb I18n.t("advertisements.index.breadcrumb"),  :advertisement_advertisements_path

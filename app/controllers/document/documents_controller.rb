@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Document::DocumentsController < ApplicationController
-  load_and_authorize_resource class: Document::Document
+  load_and_authorize_resource class: Document::Document, except: :find_old_document
   add_breadcrumb(I18n.t('document.documents.bc'), :document_documents_path)
   add_breadcrumb(I18n.t('document.documents.new.bc'), :new_document_document_path, only: [:new, :create])
   def create

@@ -7,7 +7,7 @@ result.each do |r|
   rescue
     #puts 'parent nil'
   ensure
-    d = Domain.create!(name: r['dom_name'], description: 'A faire', parent: parent)
+    d = Domain.create!(id: r['dom_id'].to_i, name: r['dom_name'], description: 'A faire', parent: parent)
     #puts "#{d.name} created."
   end
 end

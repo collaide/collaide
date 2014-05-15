@@ -27,6 +27,7 @@ class CreateTableDocument < ActiveRecord::Migration
 
         # Enum
         t.string :study_level
+        t.integer :old_id
 
         t.timestamps
       end
