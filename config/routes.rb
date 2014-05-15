@@ -222,6 +222,4 @@ Collaide::Application.routes.draw do
   get 'reglement.html', to: redirect('fr/reglement')
   get 'partenaires.html', to: redirect('fr/partenaires')
   get 'aide.html', to: redirect('fr/a-propos')
-
-
 end

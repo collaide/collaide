@@ -57,11 +57,11 @@ class UsersController < ApplicationController
   end
 
   def find_old_user
-    user = User.find_by(old_id: id)
+    user = User.find_by(old_id: params[:id])
     if user
-      redirect_to user
+      redirect_to user, status: :moved_permanently
     else
-      redirect_to users_path
+      redirect_to users_path, status: :moved_permanently
     end
   end
 end

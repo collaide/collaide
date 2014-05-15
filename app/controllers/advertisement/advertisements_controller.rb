@@ -45,11 +45,11 @@ class Advertisement::AdvertisementsController < ApplicationController
   end
 
   def find_old_advertisement
-    advertisement = Advertisement::Advertisement.find_by(old_id: id)
+    advertisement = Advertisement::Advertisement.find_by(old_id: params[:id])
     if advertisement
-      redirect_to advertisement
+      redirect_to advertisement, status: :moved_permanently
     else
-      redirect_to advertisement_advertisements_path
+      redirect_to advertisement_advertisements_path, status: :moved_permanently
     end
   end
 
