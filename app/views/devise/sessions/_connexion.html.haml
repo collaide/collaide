@@ -5,6 +5,8 @@
       - if devise_mapping.omniauthable?
         %h4.panel-subtitle
           = t'devise.sessions.new.via_omniauth'
+        %p
+          %i=t'devise.sessions.new.via_omniauth_info'
         .row
           - resource_class.omniauth_providers.each do |provider|
             .large-6.columns
