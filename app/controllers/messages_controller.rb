@@ -73,6 +73,7 @@ class MessagesController < ApplicationController
     @message = UserMessage.new(message_params)
     users = User.find(@message.user_ids)
     @message.subject = I18n.t('messages.default.title') if @message.subject.blank?
+
     respond_to do |format|
       if @message.valid?
         receipts = current_user.send_message(users, @message.body, @message.subject)

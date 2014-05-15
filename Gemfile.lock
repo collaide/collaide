@@ -59,6 +59,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     acts_as_commentable (4.0.1)
+    addressable (2.3.6)
     ancestry (2.1.0)
       activerecord (>= 3.0.0)
     arel (4.0.2)
@@ -314,6 +315,9 @@ GEM
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
+    rack-canonical-host (0.1.0)
+      addressable
+      rack (~> 1.0)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
     rack-pjax (0.7.0)
@@ -555,6 +559,7 @@ DEPENDENCIES
   pg (~> 0.17.1)
   psych
   quiet_assets (>= 1.0.1)
+  rack-canonical-host
   rails (~> 4.0.2)
   rails-erd
   rails-i18n (~> 4.0.0)
