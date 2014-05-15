@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 #gem 'newrelic_rpm'
 gem 'logstasher'
 gem 'psych'
+gem 'rack-canonical-host'
 
 gem 'rails', '~> 4.0.2'
 

@@ -9,7 +9,7 @@ class Group::TopicsController < ApplicationController
   #GET /group/:id/statuses
   def index
     #raise CanCan::AccessDenied unless @group.can? :index, :topics, current_user
-    check_permission { @group.can? :index, :topic, current_user }
+    check_permission { @group.can? :index, :topics, current_user }
     @topic = Topic.new
     @topics = @group.topics.order('created_at DESC').includes({comments: :owner}, :writer)
   end
