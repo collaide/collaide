@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class UsersController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: :find_old_user
 
   add_breadcrumb I18n.t('users.index.breadcrumb'),  :users_path
   #FIXME le path ne marche pas...

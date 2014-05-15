@@ -206,7 +206,7 @@ Collaide::Application.routes.draw do
   get 'documents/p:num-top-telechargements.html', to: redirect('fr/documents')
   get 'documents/p:num-liste-des-documents.html', to: redirect('fr/documents/page/%{num}')
   get 'recherche-documents.html', to: redirect('fr/documents')
-  get 'documents/p1-:id.html', to: redirect {|path_params, req| "find_old_advertisement/#{path_params[:id].split('-')[0]}" }
+  get 'documents/p1-:id.html', to: redirect {|path_params, req| "find_old_document/#{path_params[:id].split('-')[0]}" }
   # LIVRES
   get 'livres/p1-liste-des-ventes.html', to: redirect('fr/annonces')
   get 'livres/p:num-liste-des-ventes.html', to: redirect('fr/annonces/page/%{num}')

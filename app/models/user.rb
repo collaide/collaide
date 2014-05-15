@@ -158,6 +158,9 @@ class   User < ActiveRecord::Base
   end
 
   def self.find_for_facebook_oauth(auth)
+    if (user = User.find_by(email: auth.info.email))
+      return user
+    end
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
@@ -171,6 +174,9 @@ class   User < ActiveRecord::Base
   end
 
   def self.find_for_google_oauth2(auth)
+    if (user = User.find_by(email: auth.info.email))
+      return user
+    end
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
