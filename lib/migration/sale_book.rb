@@ -1,5 +1,6 @@
 OldCollaide.instance.client.query('SELECT * FROM bookstock').each do |sale|
   sale_book = Advertisement::SaleBook.new(
+      old_id: sale['vente_id'].to_i,
       price: sale['vente_price'],
       currency: sale['vente_devise'].to_sym,
       description: sale['vente_description'],

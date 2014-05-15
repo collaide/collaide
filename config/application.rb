@@ -96,8 +96,8 @@ module Collaide
     config.assets.version = '1.0'
 
     # Enable observers
-    config.active_record.observers = :'document/document_observer', :'advertisement/advertisement_observer',
-        :'group/invitation_observer', :'repository_manager/repo_item_observer', :topic_observer, :comment_observer
+    #config.active_record.observers = :'document/document_observer', :'advertisement/advertisement_observer',
+    #    :'group/invitation_observer', :'repository_manager/repo_item_observer', :topic_observer, :comment_observer
 
   end
 end

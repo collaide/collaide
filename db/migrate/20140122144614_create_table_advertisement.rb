@@ -22,6 +22,7 @@ class CreateTableAdvertisement < ActiveRecord::Migration
       t.string :annotation
 
       t.string :study_level
+      t.integer :old_id
 
       t.timestamps
     end
