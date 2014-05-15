@@ -36,6 +36,10 @@ $(function () {
     end
   end
 
+  def cite_a_part(text, quote = '"', truncate=30)
+    "#{quote}#{CGI.unescapeHTML(h(strip_tags(text)).truncate(truncate))}#{quote}"
+  end
+
   def get_repo_items(show = 'false')
     content_for :get_repo_items do
       "<script>$(function() {RepoItem.start(#{show})});</script>".html_safe
