@@ -242,6 +242,15 @@ class Document::DocumentsController < ApplicationController
     doc.save
   end
 
+  def find_old_document
+    document = Document::Document.find_by(old_id: params[:id])
+    if document
+      redirect_to document, status: :moved_permanently
+    else
+      redirect_to document_documents_path, status: :moved_permanently
+    end
+  end
+
   def search
     @document_documents = Document::Document.search(
         Riddle::Query.escape(params[:query]+'*'),

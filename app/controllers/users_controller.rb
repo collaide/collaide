@@ -55,4 +55,13 @@ class UsersController < ApplicationController
       format.json { render template: 'users/search' }
     end
   end
+
+  def find_old_user
+    user = User.find_by(old_id: params[:id])
+    if user
+      redirect_to user, status: :moved_permanently
+    else
+      redirect_to users_path, status: :moved_permanently
+    end
+  end
 end

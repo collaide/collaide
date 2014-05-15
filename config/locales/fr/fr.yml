@@ -787,7 +787,7 @@ fr:
       subject_new: "Vous avez reçu un nouveau message sur collaide" # On peut utiliser %{subject}
       subject_reply: "Vous avez reçu une nouvelle réponse sur Collaide"
     notification_mailer:
-      subject: "Vous avez reçu une notification" # %{subject}
+      subject: "Vous avez reçu une notification"
     new_message:
       title: Nouveau message
       description: "Vous avez reçu un nouveau message privé."

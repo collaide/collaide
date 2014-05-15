@@ -44,6 +44,15 @@ class Advertisement::AdvertisementsController < ApplicationController
     redirect_to advertisement_advertisements_path, notice: t('advertisement.destroy.notice')
   end
 
+  def find_old_advertisement
+    advertisement = Advertisement::Advertisement.find_by(old_id: params[:id])
+    if advertisement
+      redirect_to advertisement, status: :moved_permanently
+    else
+      redirect_to advertisement_advertisements_path, status: :moved_permanently
+    end
+  end
+
   include BooksHelper
   def test
     isbn = "3.2_34-23 2-323 2-232"

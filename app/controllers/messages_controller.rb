@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class MessagesController < ApplicationController
   #load_and_authorize_resource
+  include Concerns::PermissionConcern
 
   add_breadcrumb I18n.t("messages.index.breadcrumb"), :messages_path
   add_breadcrumb I18n.t("messages.new.h1_title"), :new_message_path, :only => %w(new create)
@@ -57,7 +58,9 @@ class MessagesController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
     @receipts = @conversation.receipts_for current_user
-    p @receipts
+    check_permission do
+      @receipts.any?
+    end
     add_breadcrumb @conversation.subject
   end
 
