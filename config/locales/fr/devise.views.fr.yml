@@ -54,7 +54,7 @@ fr:
         sign_up: Inscription
         sign_up_info: Pas de compte ? Créez en un gratuitement !
         via_omniauth: Via votre compte Facebook ou Google
-        via_omniauth_info: Nous ne recupérons que votre pseudo, email et avatar et ne publions rien sur votre mur !
+        via_omniauth_info: Nous ne récupérons que votre pseudo, email et avatar et ne publions rien sur votre mur !
         via_app: Via votre compte Collaide
     shared:
       links:
