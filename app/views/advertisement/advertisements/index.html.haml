@@ -22,12 +22,12 @@
   %p= t 'advertisements.index.no_advertisement'
 -else
   .row
-    .small-12.columns#paginate
+    .small-12.columns
       =paginate @advertisement
     .small-12.columns#advertisements
       %ul.large-block-grid-2
         -@parity=0
         =render @advertisement
-    .small-12.columns#paginate
+    .small-12.columns
       =paginate @advertisement
 =render 'advertisement/sale_books/reveal', sale_book: nil
