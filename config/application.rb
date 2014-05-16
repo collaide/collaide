@@ -20,7 +20,7 @@ module Collaide
     config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td'
     config.action_view.sanitized_allowed_attributes = ['style']
 
-    config.exceptions_app = self.routes
+    #config.exceptions_app = self.routes
 
     # Custom logging
   # Enable the logstasher logs for the current environment

@@ -89,19 +89,19 @@ class ApplicationController < ActionController::Base
     can_can_access_denied
   end
 
-  def page_not_found
-    respond_to do |format|
-      format.html { render template: 'errors/not_found', layout: 'layouts/application', status: 404 }
-      format.all { render nothing: true, status: 404 }
-    end
-  end
-
-  def server_error
-    respond_to do |format|
-      format.html { render template: 'errors/internal_server_error', layout: 'layouts/application', status: 500 }
-      format.all { render nothing: true, status: 500}
-    end
-  end
+  #def page_not_found
+  #  respond_to do |format|
+  #    format.html { render template: 'errors/not_found', layout: 'layouts/application', status: 404 }
+  #    format.all { render nothing: true, status: 404 }
+  #  end
+  #end
+  #
+  #def server_error
+  #  respond_to do |format|
+  #    format.html { render template: 'errors/internal_server_error', layout: 'layouts/application', status: 500 }
+  #    format.all { render nothing: true, status: 500}
+  #  end
+  #end
 
   protected
   def can_can_access_denied

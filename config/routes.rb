@@ -187,11 +187,11 @@ Collaide::Application.routes.draw do
       get 'avatar'
     end
 
-    if Rails.env.production?
-      match '404', :to => 'application#page_not_found'
-      match '422', :to => 'application#server_error'
-      match '500', :to => 'application#server_error'
-    end
+    #if Rails.env.production?
+    #  match '404', :to => 'application#page_not_found'
+    #  match '422', :to => 'application#server_error'
+    #  match '500', :to => 'application#server_error'
+    #end
 
     #devise_scope :user do
     #  get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
