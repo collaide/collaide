@@ -12,7 +12,7 @@ Hack collaide: [![Hack collaide/collaide on Nitrous.IO](https://d3o0mnbgv6k92a.c
 
 ##TODO
 
-- [] pas coché
+- [ ] pas coché
 - [X] coché
 
 ##Recherche
