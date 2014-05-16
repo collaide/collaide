@@ -1,5 +1,7 @@
 fr:
   activity:
+    user:
+      create: "Bienvenue à %{user} qui a rejoint la communauté Collaide."
     group_work_group:
       create: "%{owner} a créé le groupe de travail"
       not_exist: mais ce groupe n'existe plus
