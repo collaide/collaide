@@ -17,7 +17,6 @@
           =search_field_tag :search, @searched_value, autofocus: true, placeholder: t('advertisements.index.forms.search.placeholder')
         .large-2.small-3.columns
           =submit_tag t('document.documents.index.forms.search.submit'), class: 'button secondary prefix', name: nil, id: 'go-search'
-
 -if @advertisement.empty?
   %p= t 'advertisements.index.no_advertisement'
 -else
