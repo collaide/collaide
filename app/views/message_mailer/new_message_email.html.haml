@@ -11,4 +11,4 @@
     %strong=t'mailboxer.new_message.message_message'
   .panel
     %blockquote
-      =sanitize(@message.body)
+      =Sanitize.clean(@message.body)

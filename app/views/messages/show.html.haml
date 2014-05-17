@@ -26,7 +26,7 @@
                   .large-1.columns.hide-for-small
                     %p=image_tag r.message.sender.avatar.mini
                   .large-11.columns
-                    =sanitize(r.message.body)
+                    =Sanitize.clean(r.message.body)
                     %cite
                       =link_to(r.message.sender.to_s, r.message.sender)
                       %span{title: l(r.created_at, format: :long)}
