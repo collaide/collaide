@@ -36,6 +36,11 @@ $(function () {
     end
   end
 
+  def s(text, config = Sanitize::Config::RELAXED)
+    Sanitize.clean(text, config)
+  end
+
+
   def cite_a_part(text, quote = '"', truncate=30)
     "#{quote}#{CGI.unescapeHTML(h(strip_tags(text)).truncate(truncate))}#{quote}"
   end
