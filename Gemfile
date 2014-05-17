@@ -43,10 +43,11 @@ gem 'globalize', '~> 4.0.0'
 
 gem 'ancestry'
 #gem 'activeadmin-sortable-tree', :github => 'nebirhos/activeadmin-sortable-tree', :branch => 'master'
-#
-#gem 'activeadmin'
-#gem 'ActiveAdmin-Globalize3-inputs'
-#gem "rails_admin", "~> 0.6.2"
+
+
+gem "activeadmin-globalize", github: 'collaide/activeadmin-globalize', branch: 'master'
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 gem 'paper_trail', '~> 3.0'
 
 gem 'date_validator'

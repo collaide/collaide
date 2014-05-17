@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   before_action do
-    ObserverHelpers.current_user = current_user
+    ::ObserverHelpers.current_user = current_user
   end
 
   before_action :set_locale
@@ -148,6 +148,6 @@ class ApplicationController < ActionController::Base
 
   def current_ability
 
-    @current_ability ||= Ability.new(current_user, request)
+    @current_ability ||= ::Ability.new(current_user, request)
   end
 end

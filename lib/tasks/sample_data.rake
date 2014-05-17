@@ -13,11 +13,13 @@ namespace :db do
 
   desc "Drop database, create a new one, migrate, seed and prepare for test"
   task recreate: :environment do
+
     # Rake::Task['db:drop'].invoke
     # Rake::Task['db:create'].invoke
     # Rake::Task['db:migrate'].invoke
     # Rake::Task['db:seed'].invoke
     # Rake::Task['db:test:prepare'].invoke
+
   end
 end
 
