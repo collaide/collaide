@@ -46,7 +46,7 @@ gem 'ancestry'
 #
 #gem 'activeadmin'
 #gem 'ActiveAdmin-Globalize3-inputs'
-gem "rails_admin", "~> 0.6.0"
+#gem "rails_admin", "~> 0.6.2"
 gem 'paper_trail', '~> 3.0'
 
 gem 'date_validator'
