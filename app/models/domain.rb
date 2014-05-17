@@ -20,6 +20,9 @@ class Domain < ActiveRecord::Base
   #acts_as_nested_set
 
   translates :name, :description
+  active_admin_translates :name, :description do
+    validates_presence_of :name
+  end
 
   #has_and_belongs_to_many :documents, :class_name => 'Document::Document'
   has_and_belongs_to_many :saleBooks, :class_name => 'Advertisement::SaleBook'

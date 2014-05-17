@@ -21,5 +21,8 @@ class Document::Type < ActiveRecord::Base
   validates_presence_of :name
 
   accepts_nested_attributes_for :translations
+  active_admin_translates :name, :description do
+    validates_presence_of :name
+  end
 
 end
