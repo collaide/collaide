@@ -161,7 +161,7 @@ fr:
             Partagez des documents scolaires
             Achetez et vendez des livres d'occasion
 #            Echangez des fichiers rapidement et simplement
-        subheader: Restez connectés entres étudiants !
+        subheader: Restez connectés entre étudiants !
       site_activities: Dernièrement sur Collaide
       your_activities: Votre fil d'actualité
       clouds:
@@ -172,10 +172,10 @@ fr:
         description: Créez facilement votre groupe de travail pour votre classe ou votre réseau universitaire... Echangez vos fichiers et discutez dans un espace privé !
       documents:
         title: Documents scolaires
-        description: "Tous les types de documents étudiants sont accessibles gratuitement : Des notes de cours aux rapports de chimies en passant par des lettres de motivation."
+        description: "Tous les types de documents étudiants sont accessibles gratuitement : Des notes de cours aux rapports de chimie en passant par les lettres de motivation."
       advertisements:
         title: Livres étudiants
-        description: Vendez ou achetez facilement des livres scolaires d'occasions. Nous vous mettons gratuitement en relation avec des personnes intéressées.
+        description: Vendez ou achetez facilement des livres scolaires d'occasion. Nous vous mettons gratuitement en relation avec des personnes intéressées.
       last_doc:
         h4: Derniers documents
         all: Tous les documents >>
