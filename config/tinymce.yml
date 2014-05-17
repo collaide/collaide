@@ -37,7 +37,7 @@ default:
   menubar: false
   toolbar_items_size: 'small'
   # Enlève le footer, à voir..
-  statusbar : false
+  #statusbar : false
   browser_spellcheck : true
   #resize: true
   #inline: true
