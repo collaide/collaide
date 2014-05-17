@@ -63,12 +63,20 @@ fr:
   default_description_meta: Collaide est un réseau d'étudiant
   delete: *delete
   errors:
-      messages:
-        not_a_date: "n'est pas une date"
-        after: "doit être après %{date}"
-        after_or_equal_to: "doit être supérieur ou égal à %{date}"
-        before: "doit être avant %{date}"
-        before_or_equal_to: "doit être inférieur ou égal à %{date}"
+    pages:
+      not_found:
+        title: Oups ! Je n'arrive pas à trouver la page (404)
+        description: Peut-être qu'elle n'existe plus où que l'url est fausse.
+      internal_server_error:
+        title: Oups ! Nous sommes désolé mais quelque chose s'est mal passé (500)
+        description: Si le problème persiste, merci de nous contacter !
+      return: Retourner sur %{url}.
+    messages:
+      not_a_date: "n'est pas une date"
+      after: "doit être après %{date}"
+      after_or_equal_to: "doit être supérieur ou égal à %{date}"
+      before: "doit être avant %{date}"
+      before_or_equal_to: "doit être inférieur ou égal à %{date}"
   activerecord:
     models:
       user: profil
@@ -149,10 +157,10 @@ fr:
         h1: "%{app_name}"
         h2: Apprenons ensemble
         modules: |
-            Partagez des documents scolaires
             Créez des groupes de travail avec vos collègues de classe
+            Partagez des documents scolaires
             Achetez et vendez des livres d'occasion
-            Echangez des fichiers rapidement et simplement
+#            Echangez des fichiers rapidement et simplement
         subheader: Restez connectés entres étudiants !
       site_activities: Dernièrement sur Collaide
       your_activities: Votre fil d'actualité

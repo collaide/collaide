@@ -10,7 +10,7 @@
       = t('group.topics.index.time_ago', time_ago: time_ago_in_words(topic.created_at))
       -#= link_to(t('group.statuses.index.edit'), '#', class: 'button small secondary')
       -#= link_to(t('group.statuses.index.delete'), '#', class: 'button small secondary')
-    %p= sanitize(topic.message).html_safe
+    %p= s(topic.message).html_safe
     %hr
     .row
       .columns.small-11.push-1

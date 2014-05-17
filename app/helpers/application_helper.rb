@@ -13,8 +13,11 @@ $(function () {
   end
 
   def user_groups
-    return [] unless current_user
-    @user_groups ||= current_user.work_groups.to_a
+    if current_user
+      current_user.work_groups.to_a
+    else
+      []
+    end
   end
 
   def count_notifications
@@ -31,6 +34,15 @@ $(function () {
     else
       ''
     end
+  end
+
+  def s(text, config = Sanitize::Config::RELAXED)
+    Sanitize.clean(text, config)
+  end
+
+
+  def cite_a_part(text, quote = '"', truncate=30)
+    "#{quote}#{CGI.unescapeHTML(h(strip_tags(text)).truncate(truncate))}#{quote}"
   end
 
   def get_repo_items(show = 'false')

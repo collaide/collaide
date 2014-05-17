@@ -1,0 +1,4 @@
+-content_for :title, t('errors.pages.not_found.title')
+%h2= t('errors.pages.not_found.title')
+%p=t('errors.pages.not_found.description')
+%p=t('errors.pages.return', url: link_to(t('app_name'), root_path)).html_safe

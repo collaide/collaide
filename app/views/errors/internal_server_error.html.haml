@@ -1,0 +1,4 @@
+-content_for :title, t('errors.pages.internal_server_error.title')
+%h3= t('errors.pages.internal_server_error.title')
+%p=t('errors.pages.internal_server_error.description')
+%p=t('errors.pages.return', url: link_to(t('app_name'), root_path)).html_safe

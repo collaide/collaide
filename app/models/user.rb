@@ -146,6 +146,10 @@ class   User < ActiveRecord::Base
     self.name
   end
 
+  def mailboxer_email(object)
+    self.email
+  end
+
   # Essaie de donner un nom unique à l'utilisateur, basé sur l'adresse, mail
   def to_single_name
     self.name+" (#{self.email[0 ]}...@#{self.email.split('@').last.to_s})"

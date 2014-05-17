@@ -64,14 +64,14 @@
             %br
         .row
           .large-6.columns
-            =f.input :state, prompt: t('simple_form.prompts.advertisement_sale_book.state')
+            =f.input :state, prompt: t('simple_form.prompts.advertisement_sale_book.state'), input_html: {class: 's2'}
           .large-6.columns
-            =f.input :annotation, prompt: t('simple_form.prompts.advertisement_sale_book.annotation'), label_html: tooltip(t("sale_books.new.forms.tooltips.annotation"))
+            =f.input :annotation, prompt: t('simple_form.prompts.advertisement_sale_book.annotation'), label_html: tooltip(t("sale_books.new.forms.tooltips.annotation")), input_html: {class: 's2'}
         =f.input :title, label_html: tooltip(t("sale_books.new.forms.tooltips.title"))
         =f.input :description, label_html: tooltip(t("sale_books.new.forms.tooltips.description")), input_html: {rows: 3}
 
-        =f.association :domains, collection: Domain.select_tree, label_html: tooltip(t("sale_books.new.forms.tooltips.domain"))
-        =f.input :study_level, prompt: t('document.documents.form.choose_study_level'),  label_html: tooltip(t("sale_books.new.forms.tooltips.study_level"))
+        =f.association :domains, collection: Domain.select_tree, label_html: tooltip(t("sale_books.new.forms.tooltips.domain")), input_html: {class: 's2'}
+        =f.input :study_level, prompt: t('document.documents.form.choose_study_level'),  label_html: tooltip(t("sale_books.new.forms.tooltips.study_level")), input_html: {class: 's2'}
   .form-actions
     -if edit
       =f.button :submit, t('sale_books.edit.forms.submit')

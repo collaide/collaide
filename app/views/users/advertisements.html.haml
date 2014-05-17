@@ -2,11 +2,13 @@
 -content_for :title, t('users.advertisements.title', user: @user.to_s)
 
 =render(:layout => 'layout') do
+  .right.hide-for-small=link_to t('advertisements.index.new_link'), new_advertisement_advertisement_path, class: 'button'
   %h1= t'users.advertisements.title', user: @user.to_s
+  .show-for-small=link_to t('advertisements.index.new_link'), new_advertisement_advertisement_path, class: 'button expand'
   -if @user.advertisements.empty?
     =t'users.advertisements.no-advertisement', user: @user.to_s
   -else
     .small-12.columns#advertisements
-      %ul.large-block-grid-3
+      %ul.large-block-grid-2
         -@parity=0
         =render @user.advertisements

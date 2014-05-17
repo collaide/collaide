@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'nokogiri'
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+gem 'sanitize'
 
 gem 'faker', '1.0.1'
 

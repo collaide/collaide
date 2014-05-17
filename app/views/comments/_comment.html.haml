@@ -5,5 +5,5 @@
     -else
       =image_and_name_for comment.owner
       =t('group.topics.index.time_ago', time_ago: time_ago_in_words(comment.created_at))
-  %p= sanitize(comment.comment).html_safe
+  %p= s(comment.comment).html_safe
   %hr

@@ -2,7 +2,9 @@
 -content_for :title, t('users.documents.title', user: @user.to_s)
 
 =render(:layout => 'layout') do
+  .right.hide-for-small=link_to t('document.documents.index.new_link'), new_document_document_path, class: 'button'
   %h1= t'users.documents.title', user: @user.to_s
+  .show-for-small=link_to t('document.documents.index.new_link'), new_document_document_path, class: 'button expand'
   -if @user.documents.empty?
     =t'users.documents.no-document', user: @user.to_s
   -else

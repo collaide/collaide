@@ -20,7 +20,9 @@ module Collaide
     config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td'
     config.action_view.sanitized_allowed_attributes = ['style']
 
-   # Custom logging 
+    #config.exceptions_app = self.routes
+
+    # Custom logging
   # Enable the logstasher logs for the current environment
    config.logstasher.enabled = true
   #
@@ -97,7 +99,8 @@ module Collaide
 
     # Enable observers
     config.active_record.observers = :'document/document_observer', :'advertisement/advertisement_observer',
-        :'group/invitation_observer', :'repository_manager/repo_item_observer', :topic_observer, :comment_observer
+        :'group/invitation_observer', :'repository_manager/repo_item_observer', :topic_observer, :comment_observer,
+        :user_observer
 
   end
 end
