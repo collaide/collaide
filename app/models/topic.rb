@@ -27,7 +27,7 @@ class Topic < ActiveRecord::Base
 
   def to_s
     if title.blank?
-      ActionController::Base.helpers.strip_tags(message).truncate(30)
+      ActionController::Base.helpers.strip_tags(message).truncate(30).html_safe
     else
       title
     end

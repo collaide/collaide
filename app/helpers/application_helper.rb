@@ -36,13 +36,25 @@ $(function () {
     end
   end
 
-  def s(text, config = Sanitize::Config::RELAXED)
-    Sanitize.clean(text, config)
+  # https://github.com/rgrove/sanitize
+  def s(text, config = nil)
+    if config.nil?
+      config = Sanitize::Config::RELAXED
+      config[:add_attributes] = {
+          'a' => {'rel' => 'nofollow'}
+      }
+      #whitelist[:attributes]["span"] = ["style"]
+      Sanitize.clean(text, config)
+    else
+      Sanitize.clean(text, config)
+    end
+
   end
 
-
   def cite_a_part(text, quote = '"', truncate=30)
-    "#{quote}#{CGI.unescapeHTML(h(strip_tags(text)).truncate(truncate))}#{quote}"
+    #text = truncate(text, lenght: truncate)
+    "#{quote}#{s(text.truncate(truncate), Sanitize::Config::RESTRICTED)}#{quote}".html_safe
+    #"#{quote}#{strip_tags(text).truncate(truncate)}#{quote}".html_safe
   end
 
   def get_repo_items(show = 'false')

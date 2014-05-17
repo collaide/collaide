@@ -2,6 +2,7 @@
 class AppNotificationsMailer < ActionMailer::Base
   include Resque::Mailer
   default from: "contact@collaide.com"
+  helper ApplicationHelper
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

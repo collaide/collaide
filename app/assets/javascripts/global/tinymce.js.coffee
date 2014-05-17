@@ -8,7 +8,17 @@ tinymce_init = (textarea_id) -> tinyMCE.init({
   toolbar_items_size: "small",
   browser_spellcheck: true,
   extended_valid_elements: "pre[class|name]",
-  remove_linebreaks: false
+  remove_linebreaks: false,
+  formats: {
+#    alignleft : {selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes : 'left'},
+#    aligncenter : {selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes : 'center'},
+#    alignright : {selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes : 'right'},
+#    alignfull : {selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes : 'full'},
+    #italic : {inline : 'i'},
+    underline : {inline : 'u'},
+    strikethrough : {inline : 'del'},
+
+  }
 })
 
 $ ->

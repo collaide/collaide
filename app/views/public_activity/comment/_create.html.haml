@@ -2,7 +2,7 @@
 
 =raw(t('activity.comment.create', owner: link_to(h(activity.owner.name), activity.owner)))
 - if activity.trackable
-  =cite_a_part(activity.trackable.comment).html_safe
+  =cite_a_part(activity.trackable.comment)
   =raw(t'activity.topic.in_link', link: link_to(h(activity.trackable.commentable), group_work_group_topic_path(activity.recipient, activity.trackable.commentable)))
 - else
   #{t'activity.comment.not_exist'}.
