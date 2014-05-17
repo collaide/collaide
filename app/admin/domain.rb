@@ -1,5 +1,5 @@
 ActiveAdmin.register Domain, as: 'Domaines' do
-
+  sortable tree: true
   
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -17,6 +17,11 @@ ActiveAdmin.register Domain, as: 'Domaines' do
   permit_params translations_attributes: [:locale, :name, :description]
 
 
+  index as: :sortable do
+    label :name
+    actions
+  end
+
   index do
     selectable_column
     translation_status
@@ -26,12 +31,8 @@ ActiveAdmin.register Domain, as: 'Domaines' do
     actions
   end
 
-  # filter :name
-  # filter :description
-  # filter :created_at
-  # filter :documents
-  # filter :sale_books
-
+  filter :name
+  filter :description
 
   form do |f|
     f.translated_inputs "Translated fields", switch_locale: true do |t|

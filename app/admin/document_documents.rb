@@ -40,6 +40,9 @@ ActiveAdmin.register Document::Document, as: 'Document' do
     column :user
     column :status
     column :created_at
+    column :asset do |resource|
+      link_to 'Télécharger', document_document_download_path(resource.id)
+    end
     actions
   end
 
