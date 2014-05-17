@@ -1,0 +1,11 @@
+-if current_user
+  %nav.top-bar#user-bar{'data-topbar' => ''}
+    %section.top-bar-section
+      %ul.left
+        %li= link_to current_user.to_s, current_user
+        %li.divider
+          %li.has-dropdown
+            = link_to t('header.my_groups'), group_groups_path
+            %ul.dropdown
+              -user_groups.each do |group|
+                %li= link_to group, group_work_group_path(group)

@@ -1,9 +1,14 @@
 %blockquote
   .row
     .large-1.columns.hide-for-small
-      -if activity.owner
-        %a{href: user_path(activity.owner),class: 'th'}
-          =image_tag activity.owner.avatar.mini
+      -if activity.key == 'user.create'
+        -if activity.trackable
+          %a{href: user_path(activity.trackable),class: 'th'}
+            =image_tag activity.trackable.avatar.mini
+      -else
+        -if activity.owner
+          %a{href: user_path(activity.owner),class: 'th'}
+            =image_tag activity.owner.avatar.mini
     .large-11.columns
       =yield
       %cite

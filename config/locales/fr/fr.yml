@@ -157,10 +157,10 @@ fr:
         h1: "%{app_name}"
         h2: Apprenons ensemble
         modules: |
-            Partagez des documents scolaires
             Créez des groupes de travail avec vos collègues de classe
+            Partagez des documents scolaires
             Achetez et vendez des livres d'occasion
-            Echangez des fichiers rapidement et simplement
+#            Echangez des fichiers rapidement et simplement
         subheader: Restez connectés entres étudiants !
       site_activities: Dernièrement sur Collaide
       your_activities: Votre fil d'actualité
