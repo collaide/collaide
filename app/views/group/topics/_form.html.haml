@@ -15,7 +15,7 @@
         =f.input :message,  input_html: {class: 'tinymce'}
     .form-inputs
       =f.input :title, placeholder: t('group.topics.new.form.title_placeholder')
-      =f.input :message,  input_html: {class: 'tinymce'}
+      =f.input :message,  input_html: {class: 'tinymce', id: 'topic_message_id'}
       %br
     .form-actions
     =f.button :submit, t('group.topics.new.form.submit')
