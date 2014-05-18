@@ -2,7 +2,7 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user, request)
+  def initialize(user, request=nil)
     #utilisateur non connecté, à voir si ça va comme ça
     if user.nil?
        no_connected
@@ -31,7 +31,7 @@ class Ability
     end
 
     #!!! Enlève des action pour certains modèles. Laisser à la fin!!!
-    rails_admin(request)
+    #rails_admin(request)
 
   end
 
