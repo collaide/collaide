@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Document::DomainsController < ApplicationController
-  load_and_authorize_resource class: Document::Domain
+  #load_and_authorize_resource class: Document::Domain
   def show
     @domain = Domain.find params[:id]
   end
