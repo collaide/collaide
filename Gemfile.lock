@@ -44,6 +44,15 @@ GIT
       sass-rails
 
 GIT
+  remote: git://github.com/nebirhos/activeadmin-sortable-tree.git
+  revision: d4f28e8d0700afa5646b8a7dbaaf89ac3b47383e
+  branch: master
+  specs:
+    activeadmin-sortable-tree (0.0.1)
+      activeadmin
+      rails (>= 3.2)
+
+GIT
   remote: https://github.com/codahale/bcrypt-ruby.git
   revision: f167f92c702ea6b01a9995e3089f49b95c34eecb
   specs:
@@ -54,13 +63,6 @@ GIT
   revision: a1d1443a69e77f40b46a922109d6853e4da76590
   specs:
     letsrate (1.0.9)
-
-PATH
-  remote: /Users/leo/.rvm/gems/ruby-2.0.0-p0/bundler/gems/activeadmin-sortable-tree-d4f28e8d0700
-  specs:
-    activeadmin-sortable-tree (0.0.1)
-      activeadmin
-      rails (>= 3.2)
 
 GEM
   remote: https://rubygems.org/
