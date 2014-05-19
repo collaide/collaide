@@ -13,6 +13,12 @@ class UserUploader < CarrierWave::Uploader::Base
       ActionController::Base.helpers.asset_path('users/no-avatar.png')
   end
 
+   # Override the directory where uploaded files will be stored.
+   # This is a sensible default for uploaders that are meant to be mounted:
+   def store_dir
+     "#{Rails.root.join('public')}/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+   end
+
    version :large do
     process :resize_to_fill => [200, 200]
   end

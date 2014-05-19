@@ -4,7 +4,7 @@ fr:
       new:
         email: Votre adresse e-mail
         name:  Choisissez un pseudo
-        password: Taper votre mot de passe
+        password: Tapez votre mot de passe
         password_confirmation: Confirmez votre mot de passe
     confirmations:
       new:
