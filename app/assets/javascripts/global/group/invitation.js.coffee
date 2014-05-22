@@ -43,7 +43,6 @@ invitation  = () ->
     image_txt + record.text
   $('#group_do_invitation_users_id').select2({
     minimumInputLength: 2
-    placeholder: 'salut'
     multiple: true
     ajax: #instead of writing the function to execute the request we use Select2's convenient helper
       url: '/users/search'

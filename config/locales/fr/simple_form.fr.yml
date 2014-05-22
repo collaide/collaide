@@ -70,7 +70,7 @@ fr:
       comment:
         comment: Répondre
       group_do_invitation:
-        email_list: Personnes à inviter
+        users_id: Personnes à inviter
         message: Message (optionel)
     placeholders:
       user_message:
@@ -92,7 +92,7 @@ fr:
       group_work_group:
         #name: Nom
       group_do_invitation:
-        email_list: Pseudo ou e-mail des personnes à inviter
+        users_id: Pseudo ou e-mail des personnes à inviter
         message: Votre message...
     prompts:
       advertisement_sale_book:
