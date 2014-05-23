@@ -9,7 +9,7 @@ Hack collaide: [![Hack collaide/collaide on Nitrous.IO](https://d3o0mnbgv6k92a.c
 Postez une issue sur github: https://github.com/collaide/collaide/issues/new
 
 ##Déscription
-collaide.com est un site web offrant différents services aux étudiants. Actuellement il est possible de télécharger et mettre à disposition des documents scolaires, acheter et vendre des livres scolaires d'occasion et créer des groupes de travails.
+collaide.com est un site web offrant différents services aux étudiants. Actuellement il est possible de télécharger et mettre à disposition des documents scolaires, acheter et vendre des livres scolaires d'occasion et créer des groupes de travail.
 ### Echange de documents scolaires
 C'est actuellement le service le plus utilisé. Il est possible de rechercher, télécharger et mettre des documents scolaires importants. Par exemple, rapport de projet, travail de maturité, de séminaire, dosssier, etc. Pour le moment plus de 100 documents sont mis à disposition.
 ### Vente et achat de livres scolaires
