@@ -29,7 +29,7 @@ Nous recherchons des personnes désirueses de nous aider :
 
 ##Organisation
 
-collaide.com a été développé durant notre temps libre. Le coût des serveurs et autre et payer de notre poche. Si vous voulez nous soutenir finacièrement, [contactez-nous](http://www.collaide.com/fr/contactez-nous)
+collaide.com a été développé durant notre temps libre. Le coût des serveurs et autre et payé de notre poche. Si vous voulez nous soutenir finacièrement, [contactez-nous](http://www.collaide.com/fr/contactez-nous)
 
 Nous avons séparé le travail en plusieurs modules indépendants l'un de l'autre. Ainsi, chacun peut travailler sur le ou les modules qui lui conviennent sans devoir comprendre l'ensemble du site. Pour l'instant, il y a 5 modules:
 
