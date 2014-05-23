@@ -8,7 +8,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 I18n.locale = :fr
-Document::Type.create([
+Document::Type.create!([
     {name: 'Présentation', description: 'A compléter'},
     {name: 'Rapport', description: 'A compléter'},
     {name: 'Travail de maturité', description: 'A compléter'},
@@ -24,11 +24,11 @@ Document::Type.create([
     {name: 'Réponses exa', description: 'A compléter'},
     {name: 'Annale d\'examen', description: 'A compléter'}
 ])
-User.create([
+User.create!([
     {name: 'admin', email: 'admin@example.com', password: 'password', role: :super_admin},
     {name: 'user', email: 'user@example.com', password: 'password'}
             ])
-Domain.create([
+Domain.create!([
     {name: 'domain 1', description: 'premier domaine', position: 0},
     {name: 'domain 2', description: 'deuxième domaine', position: 1}
               ])
