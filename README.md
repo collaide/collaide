@@ -1,4 +1,5 @@
-#Repértoire de la nouvelle version de collaide.com
+#collaide.com
+>Collaide, apprenons ensemble
 
 Béta version : http://www.collaide.com
 
