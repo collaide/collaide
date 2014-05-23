@@ -332,7 +332,7 @@ fr:
         display_search: Rechercher avancée
         page: Page %{nb_page}
         personlaized_search: Affichage personalisé
-        search_placeholder: rapport en pysique, liberté, etc. Essayez, ça marche !
+        search_placeholder: rapport en pysique, sport, etc. Essayez, ça marche !
         search: "Recherche de '%{search}'"
         no_result: "Aucun documents"
         title_type_document: Document

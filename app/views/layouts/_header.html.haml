@@ -43,18 +43,22 @@
         %li
           -count_notifications == 0 ? notifications_title = t('header.no_notification'): notifications_title = t('header.has_notification', count:count_notifications, num:count_notifications)
           %a{href: notifications_path, title: notifications_title}
-            %i.fi-torsos-all=" #{alert_for(count_notifications)}"
+            %span.fi-torsos-all
+              %span.hide-for-small=" #{alert_for(count_notifications)}"
+              %span.show-for-small= t('header.notifications', count: alert_for(count_notifications))
         %li.divider.hide-for-small
         -#%li= link_to t('header.inbox', count: alert_for(count_messages)), messages_path
         %li
           -count_messages == 0 ? inbox_title = t('header.no_inbox'): inbox_title = t('header.has_inbox', count:count_messages)
           %a{href: messages_path, title:inbox_title}
-            %i.fi-mail=" #{alert_for(count_messages)}"
+            %span.fi-mail
+              %span.hide-for-small=" #{alert_for(count_messages)}"
+              %span.show-for-small= t('header.inbox', count: alert_for(count_messages))
         %li.divider.hide-for-small
         %li.has-dropdown
           %a{href: "#"}
-            -#=t('header.user.settings')
-            %i.fi-widget
+            %span.fi-widget
+              %span.show-for-small=t('header.user.settings')
           %ul.dropdown
             %li= link_to t("header.user.edit"), edit_user_registration_path
             %li.divider

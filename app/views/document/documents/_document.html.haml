@@ -30,7 +30,8 @@
           .hide-for-small
             =t('document.documents.index.published_by')
             =link_to(document.user.to_s, document.user)
-        %p= document.description.truncate(100, separator: ' ', omission: ' ...')
+        -#%p= document.description.truncate(100, separator: ' ', omission: ' ...')
+        %p= cite_a_part(document.description, '', 200)
         .row
           .columns
             -#link_to t('document.documents.index.download'), document_document_download_path(document_document_id: document), class: 'button secondary expand'
