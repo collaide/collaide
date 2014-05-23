@@ -12,7 +12,8 @@
       %h2.panel-subtitle
         =raw(doc_sub_title(@document))
         =t('document.documents.show.realized_by', author: @document.author)
-      %p= @document.description
+      .panel-text
+        =s(@document.description).html_safe
       %p
         =t('document.documents.index.published_by')
         =link_to(@document.user.to_s, @document.user)

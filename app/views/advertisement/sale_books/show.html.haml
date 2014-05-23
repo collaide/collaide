@@ -41,7 +41,7 @@
         =link_to(@sale_book.user.to_s, @sale_book.user)
       %li.price=price
       -unless @sale_book.description.blank?
-        %li.description=@sale_book.description
+        %li.description=s(@sale_book.description).html_safe
       -if @sale_book.state
         %li.bullet-item=@sale_book.state.text
       -if @sale_book.annotation

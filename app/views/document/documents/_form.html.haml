@@ -2,7 +2,7 @@
   =f.error_notification
   .form-inputs
     =f.input :title, label_html: tooltip(t('document.documents.forms.tooltips.title'))
-    =f.input :description, input_html: {rows: 3}, label_html: tooltip(t('document.documents.forms.tooltips.description'))
+    =f.input :description, input_html: {rows: 3}, label_html: tooltip(t('document.documents.forms.tooltips.description')), input_html: {class: 'tinymce'}
     =f.input :asset, label: t('simple_form.labels.c_file_c_file.file'), label_html: tooltip(t('document.documents.forms.tooltips.file'))
     =f.input :asset_cache, as: :hidden
     .row

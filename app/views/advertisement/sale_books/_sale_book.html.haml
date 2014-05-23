@@ -35,7 +35,8 @@
         =t('sale_books.index.subtitle2', price: number_to_currency(sale_book.price, :unit => sale_book.currency.text))
         =link_to(sale_book.user.to_s, sale_book.user)
       -if sale_book.description
-        %p= sale_book.description.truncate(200, separator: ' ', omission: ' ...')
+        -#%p= sale_book.description.truncate(200, separator: ' ', omission: ' ...')
+        %p= cite_a_part(sale_book.description, '', 200)
       -elsif sale_book.book.description
         %p= sale_book.book.description.truncate(200, separator: ' ', omission: ' ...')
       -else
