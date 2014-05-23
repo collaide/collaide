@@ -177,6 +177,7 @@ class Advertisement::SaleBooksController < ApplicationController
   end
 
   def book_params
-   @book_params ||= params.require(:advertisement_sale_book).require(:book).permit(:isbn_13, :title, :authors)
+    @book_params ||= params.require(:advertisement_sale_book).require(:book).permit(:isbn_13, :title, :authors)
+    #@book_params ||= params.require(:advertisement_sale_book).permit(book: :isbn_13, book: :title, book: :authors)
   end
 end

@@ -132,6 +132,7 @@ fr:
   footer:
     titles:
       documents: Documents étudiants
+      advertisements: Annonces étudiantes
       partners: Partenaires
       follow_us: Nous suivre
     collaide:
@@ -259,6 +260,7 @@ fr:
       h1_title: *partners
       blockquote: "Vous trouverez ici les liens vers toutes nos pages partenaires ainsi que les sites personnels des personnes qui m'ont aidées dans le developpement du site.
                   Si vous êtes intéressé par un partenariat, n'hésitez pas à nous <a href='%{link}'>contacter</a>."
+      other: Autres
     rules:
       title_page: Réglement du site
       bc: Réglement
