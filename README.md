@@ -1,4 +1,4 @@
-#Repértoire de la nouvelle version de www.collaide.com
+#Repértoire de la nouvelle version de collaide.com
 
 Béta version : http://www.collaide.com
 
