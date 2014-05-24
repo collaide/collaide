@@ -18,7 +18,7 @@ module Collaide
   class Application < Rails::Application
 
     config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td'
-    config.action_view.sanitized_allowed_attributes = ['style']
+    #config.action_view.sanitized_allowed_attributes = ['style']
 
     #config.exceptions_app = self.routes
 

@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
   #sécu
   protect_from_forgery
 
+  #rescue_from ActionController::RoutingError,
+  #            ActionController::UnknownController,
+  #            AbstractController::ActionNotFound,
+  #            ActionController::MethodNotAllowed,
+  #            ActiveRecord::RecordNotFound,
+  #            with: :page_not_found
+  #rescue_from Exception,
+  #            with: :server_error
+
+
   prepend_before_action :auth_token_user
   before_action do
     resource = controller_path.singularize.gsub('/', '_').to_sym # => 'blog/posts' => 'blog/post' => 'blog_post' => :blog_post
@@ -89,19 +99,19 @@ class ApplicationController < ActionController::Base
     can_can_access_denied
   end
 
-  #def page_not_found
-  #  respond_to do |format|
-  #    format.html { render template: 'errors/not_found', layout: 'layouts/application', status: 404 }
-  #    format.all { render nothing: true, status: 404 }
-  #  end
-  #end
-  #
-  #def server_error
-  #  respond_to do |format|
-  #    format.html { render template: 'errors/internal_server_error', layout: 'layouts/application', status: 500 }
-  #    format.all { render nothing: true, status: 500}
-  #  end
-  #end
+  def page_not_found
+    respond_to do |format|
+      format.html { render template: 'errors/not_found', layout: 'layouts/application', status: 404 }
+      format.all { render nothing: true, status: 404 }
+    end
+  end
+
+  def server_error
+    respond_to do |format|
+      format.html { render template: 'errors/internal_server_error', layout: 'layouts/application', status: 500 }
+      format.all { render nothing: true, status: 500}
+    end
+  end
 
   protected
   def can_can_access_denied
@@ -134,7 +144,7 @@ class ApplicationController < ActionController::Base
     if !params[:user_email].blank? and (user = User.find_by(email: params[:user_email]))
       if Devise.secure_compare(user.authentication_token, params[:user_token])
         sign_in user, store: false
-        logger.debug('asDFsdfasdfsad')
+        #logger.debug('asDFsdfasdfsad')
       end
     end
   end

@@ -12,6 +12,8 @@
   %div{style: 'margin:0px 10px'}
     %h1= yield(:mail_title)
     =yield
-    %p= t('mailer.greetings')
-    %p= t('mailer.signature')
+    %p
+      = t('mailer.greetings')
+      %br
+      = t('mailer.signature')
 </html>

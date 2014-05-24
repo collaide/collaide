@@ -787,9 +787,12 @@ fr:
     group:
       new_invitation:
         subject: "%{user} vous invite à rejoindre le groupe %{group} sur Collaide"
-        message: "Message :"
-        p1: Cliquez sur le lien ci-après pour rejoindre le groupe.
-        join_group: Rejoindre le groupe
+        message: "Voici son message :"
+        text:
+          description: "Cliquez sur le lien suivant pour rejoindre le groupe :"
+        html:
+          description: Cliquez sur ce lien pour %{link}.
+        join_group: rejoindre le groupe
     greetings: Cordialement.
     signature: L'équipe Collaide.
   mailboxer:

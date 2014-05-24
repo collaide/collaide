@@ -14,8 +14,14 @@ Collaide::Application.routes.draw do
     get 'rules', to: 'static_pages#rules', as: 'rules'
     get 'change-lang', to: 'static_pages#change_lang', as: 'change_lang'
     post 'contact', to: 'static_pages#send_email', as: 'send_email_contact'
+    #get 'mail_test', to: 'static_pages#mail_test', as: 'mail_test'
+
     #get 'board', to: 'static_pages#board', as: 'board'
     #post '/rate' => 'rater#create', :as => 'rate'
+
+    #get '404', :to => 'application#page_not_found'
+    #get '422', :to => 'application#server_error'
+    #get '500', :to => 'application#server_error'
 
     resources :auth_token, only: [:create]
 
@@ -188,12 +194,6 @@ Collaide::Application.routes.draw do
       get 'invitations',  action: :invitations, as: 'invitations'
       get 'avatar'
     end
-
-    #if Rails.env.production?
-    #  match '404', :to => 'application#page_not_found'
-    #  match '422', :to => 'application#server_error'
-    #  match '500', :to => 'application#server_error'
-    #end
 
     #devise_scope :user do
     #  get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session

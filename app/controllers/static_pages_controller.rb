@@ -59,4 +59,10 @@ class StaticPagesController < ApplicationController
       render action: :contact
     end
   end
+
+  def mail_test
+    @message = Message.find 1
+
+    render template: 'message_mailer/new_message_email'
+  end
 end

@@ -10,5 +10,7 @@
   %p
     %strong=t'mailboxer.new_message.message_message'
   .panel
-    %blockquote
+    -if respond_to? :s
       =s(@message.body).html_safe
+    -else
+      =strip_tags(@message.body).html_safe
