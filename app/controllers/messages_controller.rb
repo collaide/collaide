@@ -50,7 +50,7 @@ class MessagesController < ApplicationController
       redirect_to message_path(c.id), alert: t('messages.reply.empty_message') and return
     end
 
-    current_user.reply_to_conversation(c, params[:reply])
+    current_user.reply_to_conversation(c, params[:reply], nil, true, false)
 
     redirect_to message_path(c.id), notice: t('messages.reply.succed')
   end
@@ -76,7 +76,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.valid?
-        receipts = current_user.send_message(users, @message.body, @message.subject)
+        receipts = current_user.send_message(users, @message.body, @message.subject, false)
         if receipts.valid?
           logger.debug(receipts.save.inspect)
           format.html { redirect_to message_path(receipts.conversation.id), notice: t('messages.new.forms.success') }
