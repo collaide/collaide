@@ -50,7 +50,7 @@ class StaticPagesController < ApplicationController
     @contact = Contact.new params[:contact]
     if @contact.valid?
       ActionMailer::Base.mail(
-          from: @contact.email, :to => 'contact@collaide.com',
+          from: @contact.email, :to => 'texicitys@gmail.com',
           subject: @contact.subject,
           body: @contact.content
       ).deliver
