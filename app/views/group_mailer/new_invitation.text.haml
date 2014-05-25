@@ -1,10 +1,9 @@
-=render(:layout => 'layouts/mailer_layout') do
-  =t('mailer.group.new_invitation.subject', user: @user.to_s, group: @group.to_s)
-  ===============================================
-  -unless @message.blank?
-    = t('mailer.group.new_invitation.message')
-    "-----------------------------------------------"
-    = @message
-    "-----------------------------------------------"
-  = t('mailer.group.new_invitation.text.description')
-  =group_work_group_email_invitations_url(work_group_id: @group.id, id: @email_id, secret_token: @secret_token)
+=t('mailer.group.new_invitation.subject', user: @user.to_s, group: @group.to_s)
+===============================================
+-unless @message.blank?
+  = t('mailer.group.new_invitation.message')
+  "-----------------------------------------------"
+  = @message
+  "-----------------------------------------------"
+= t('mailer.group.new_invitation.text.description')
+=group_work_group_email_invitations_url(work_group_id: @group.id, id: @email_id, secret_token: @secret_token)
