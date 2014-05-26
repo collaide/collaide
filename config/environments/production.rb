@@ -71,7 +71,7 @@ Collaide::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.action_mailer.default_url_options = {:host => "vps42634.ovh.net"}
+  config.action_mailer.default_url_options = {:host => 'www.collaide.com'}
   config.action_mailer.smtp_settings = {
       :address   => "smtp.mandrillapp.com",
       :port      => 25, # ports 587 and 2525 are also supported with STARTTLS
