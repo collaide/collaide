@@ -14,4 +14,4 @@
   -else
     =strip_tags(@message.body).html_safe
 -puts @conversation
-%p="#{link_to(t('mailboxer.read_it'), message_path(@conversation))}.".html_safe
+%p="#{link_to(t('mailboxer.read_it'), message_url(@conversation))}.".html_safe
