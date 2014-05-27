@@ -1,4 +1,4 @@
-ActiveAdmin.register Document::Type, as: 'Type' do
+ActiveAdmin.register Document::Type do
   menu parent: 'Document'
 
   
@@ -15,7 +15,7 @@ ActiveAdmin.register Document::Type, as: 'Type' do
   #  permitted
   # end
 
-  permit_params translations_attributes: [:locale, :name, :description]
+  permit_params translations_attributes: [:id, :locale, :name, :description]
 
 
   index do

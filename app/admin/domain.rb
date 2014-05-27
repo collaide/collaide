@@ -1,4 +1,4 @@
-ActiveAdmin.register Domain, as: 'Domaines' do
+ActiveAdmin.register Domain do
   sortable tree: true
   
   # See permitted parameters documentation:
@@ -14,7 +14,7 @@ ActiveAdmin.register Domain, as: 'Domaines' do
   #  permitted
   # end
 
-  permit_params translations_attributes: [:locale, :name, :description]
+  permit_params translations_attributes: [:locale, :id, :name, :description]
 
 
   index as: :sortable do
