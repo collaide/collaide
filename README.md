@@ -18,6 +18,10 @@ Permet d'acheter et vendre des livres d'occasions. Par la suite, il est prévu d
 Tout nouveau service! Il permet à des étudiants de discuter et échanger des fichiers dans un espace privé. C'est le service qui va la plus vite évoluer avec comme premiers objectifs la possibilité de garder un historique des modifications des fichiers, éditer, commenter des fichiers.
 
 Par la suite, il est aussi prévu de pouvoir créer d'autres type de groupe. Groupes publics, présentation d'association d'étudiants, de faculté, etc.
+### Plus
+Vous avez des idées ? des suggestions ? Postez une [suggestion](https://github.com/collaide/collaide/issues/new) ou rejoinez-nous pour coder directement votre idée
+
+Nous-même en avons encore pleins, mais pas le temps de tout faire
 
 ##Recherche
 
