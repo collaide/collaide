@@ -70,7 +70,6 @@ class Advertisement::SaleBooksController < ApplicationController
   def create
     # ON CHERCHE SUR LE ISBN CORRESPOND
     isbn = book_params[:isbn_13]
-
     parse_isbn(isbn)
     google_book = GoogleBooks.search("isbn:#{isbn}", {}, request.remote_ip).first
 
@@ -120,6 +119,7 @@ class Advertisement::SaleBooksController < ApplicationController
     book.isbn_10 = google_book.isbn_10
     book.isbn_13 = google_book.isbn_13
     book.authors = google_book.authors
+    book.authors = book_params[:authors] if google_book.authors.empty?
     book.language = google_book.language
     book.page_count = google_book.page_count
     # si c'est juste 2000, j'ajoute 2000-01-01
@@ -171,13 +171,17 @@ class Advertisement::SaleBooksController < ApplicationController
   def advertisement_sale_book_params
     params[:book] = book_params
     params.require(:advertisement_sale_book).permit(
-        :price, :currency, :payment_modes, :delivery_modes, :state, :annotation, :title, :description, :domain_ids,
-        :study_level
+        :price, :currency, :state, :annotation, :description, :study_level, domain_ids: [], payment_modes: [], delivery_modes: []
     )
   end
 
   def book_params
-    @book_params ||= params.require(:advertisement_sale_book).require(:book).permit(:isbn_13, :title, :authors)
+    # params.require(:advertisement_sale_book).permit(
+    #     :price, :currency, :payment_modes, :delivery_modes, :state,
+    #     :annotation, :title, :description, :domain_ids, :study_level,
+    #     book: [:isbn_13, :authors]
+    # )
+    @book_params ||= params.require(:advertisement_sale_book).permit(book: [:isbn_13, :title, :authors])[:book]
     #@book_params ||= params.require(:advertisement_sale_book).permit(book: :isbn_13, book: :title, book: :authors)
   end
 end

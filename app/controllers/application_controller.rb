@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
   before_action do
     resource = controller_path.singularize.gsub('/', '_').to_sym # => 'blog/posts' => 'blog/post' => 'blog_post' => :blog_post
     method = "#{resource}_params" # => 'blog_post_params'
+    logger.debug(method)
     params[resource] &&= send(method) if respond_to?(method, true)
   end
 

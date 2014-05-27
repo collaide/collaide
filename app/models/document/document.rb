@@ -67,7 +67,7 @@ class Document::Document < ActiveRecord::Base
 
   #validation du type de fichier
   #création d'une image en fonction du fichier
-  validates :author, presence: true, length: {minimum: 3, maximum: 30}
+  validates :author, presence: true, length: {minimum: 3, maximum: 250}
   validates :description, presence: true, length: {minimum: 5}
   validates_presence_of :language
   validates_presence_of :domains
