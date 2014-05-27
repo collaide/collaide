@@ -19,7 +19,9 @@ Tout nouveau service! Il permet à des étudiants de discuter et échanger des f
 
 Par la suite, il est aussi prévu de pouvoir créer d'autres type de groupe. Groupes publics, présentation d'association d'étudiants, de faculté, etc.
 ### Plus
-Vous avez des idées ? des suggestions ? Postez une [suggestion](https://github.com/collaide/collaide/issues/new) ou rejoinez-nous pour intégrer directement votre idée
+Vous avez des idées ? des suggestions ? Postez une [suggestion](https://github.com/collaide/collaide/issues/new) ou rejoinez-nous pour coder directement votre idée
+
+Nous-même en avons encore pleins, mais pas le temps de tout faire
 
 ##Recherche
 
