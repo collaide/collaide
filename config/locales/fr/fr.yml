@@ -473,7 +473,7 @@ fr:
           content: Entrez le code ISBN de votre livre !
         joy_price:
           title: Etape 2
-          content: A quel prix voulez vous vendre votre livre ?
+          content: A quel prix voulez-vous vendre votre livre ?
         joy_currency:
           title: Etape 3
           content: Merci d'indiquer dans quelle devise vous voulez être payé.
