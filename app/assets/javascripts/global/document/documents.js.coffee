@@ -71,5 +71,14 @@ if history && history.pushState
     addAnd = (attr) ->
       ajaxUrl += '&' if attr and ajaxUrl != ''
 
-$('#show_advanced_search').click ->
-  $('#advanced_search').toggle('slow')
+advanced_search = () ->
+  $(document).on('click', '#show_advanced_search', (e)->
+    e.preventDefault()
+    $('#advanced_search').toggle('slow')
+  )
+
+$ ->
+  advanced_search()
+#$(document).on('page:load', ->
+#  advanced_search()
+#)
