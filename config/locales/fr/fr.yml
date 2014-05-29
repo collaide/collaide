@@ -15,7 +15,7 @@ fr:
     sign_up: &sign_up Inscription
     connected: &connected connecté
     suscribe: "Inscrivez-vous"
-    password: &password Mot de passse
+    password: &password Mot de passe
     email: &email Adresse e-mail
     name: &name Pseudo
     password_confirmation: &password_confirmation Confirmation du mot de passe
