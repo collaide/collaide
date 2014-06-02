@@ -8,6 +8,7 @@ tiny_mce = () ->
     toolbar1: "fullscreen | undo redo | searchreplace | bold italic underline strikethrough subscript superscript | blockquote sh4tinymce | bullist numlist | link unlink image media | table | charmap emoticons | styleselect | print code headers",
     menubar: false,
     statusbar: false,
+    entity_encoding : "raw",
     toolbar_items_size: "small",
     browser_spellcheck: true,
     extended_valid_elements: "pre[class|name]",
