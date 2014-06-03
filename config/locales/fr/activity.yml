@@ -1,5 +1,6 @@
 fr:
   activity:
+    unknown: Un inconnu
     user:
       create: "Bienvenue à %{user} qui a rejoint la communauté Collaide."
     group_work_group:

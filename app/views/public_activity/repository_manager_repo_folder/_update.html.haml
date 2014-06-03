@@ -1,4 +1,4 @@
-=raw(t('activity.repo_folder.update', owner: link_to(h(activity.owner.name), activity.owner)))
+=raw(t('activity.repo_folder.update', owner: show_owner(activity.owner)))
 - if activity.trackable
   #{link_to activity.trackable.name, activity.trackable}.
 - else

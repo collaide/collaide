@@ -1,4 +1,4 @@
-=raw(t('activity.repo_file.create', owner: link_to(h(activity.owner.name), activity.owner)))
+=raw(t('activity.repo_file.create', owner: show_owner(activity.owner)))
 - if activity.trackable
   =link_to activity.trackable.name, group_work_group_repo_item_download_path(activity.recipient, activity.trackable)
   - if specification == nil

@@ -1,5 +1,4 @@
-
-=raw(t('activity.document.create', owner: link_to(h(activity.owner.name), activity.owner)))
+=raw(t('activity.document.create', owner: show_owner(activity.owner)))
 - if activity.trackable
   #{link_to activity.trackable.title, activity.trackable}.
 - else

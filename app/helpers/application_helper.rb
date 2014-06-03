@@ -139,6 +139,15 @@ $(function () {
     content_for(name, content, &block)
   end
 
+  # Activities show the owner
+  def show_owner(owner)
+    if owner
+      raw(link_to(h(owner.name), owner))
+    else
+      t'activity.unknown'
+    end
+  end
+
   private
     def find_t_for_meta(meta, options={})
       action_name = params[:action]
