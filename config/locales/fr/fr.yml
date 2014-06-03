@@ -148,7 +148,7 @@ fr:
   all:
     beta: "Ce site est en version bêta:"
     info: Nous sommes %{students} et developpons bénévolement collaide durant notre temps libre. Si le projet vous intéresse, que vous avez des propositions à nous faire, que vous désirez nous aider ou que vous rencontrez des bugs, merci de %{contact}.
-    students: deux étudiants
+    students: des étudiants
     contact: nous contacter
   domains:
     link:

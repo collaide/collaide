@@ -1,4 +1,4 @@
-=raw(t('activity.group_work_group.update', owner: link_to(h(activity.owner.name), activity.owner)))
+=raw(t('activity.group_work_group.update', owner: show_owner(activity.owner)))
 - if activity.trackable
   - if specification == nil
     #{link_to activity.trackable.name, activity.trackable}.

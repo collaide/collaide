@@ -7,19 +7,18 @@ module SanitizeHelper
       config = get_custom_relaxed_config
       config[:transformers] = [accept_specified_style,
                                #linkify_urls,
-                               remove_empty_elements
+                               #remove_empty_elements,
       ]
       Sanitize.clean(text, config)
     else
       Sanitize.clean(text, config)
     end
-
   end
 
   def cite_a_part(text, quote = '"', truncate=30)
-    #text = truncate(text, lenght: truncate)
-    "#{quote}#{s(text.truncate(truncate), Sanitize::Config::RESTRICTED)}#{quote}".html_safe
-    #"#{quote}#{strip_tags(text).truncate(truncate)}#{quote}".html_safe
+    #text = truncate(text, lenght: truncate, escape: false)
+    #"#{quote}#{s(text, Sanitize::Config::RESTRICTED)}#{quote}".html_safe
+    "#{quote}#{truncate(strip_tags(text), lenght: truncate, escape: false)}#{quote}".html_safe
   end
 
   private
