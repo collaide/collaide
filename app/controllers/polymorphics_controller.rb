@@ -6,8 +6,8 @@ module PolymorphicsController
     object = klass.find(relation_params[:id])
     access_denied = yield object
     if block_given? and access_denied
-      # Raise que si il n'est pas super_admin
-      raise CanCan::AccessDenied if !current_user.nil? and !current_user.super_admin?
+      # Raise que si il n'est pas super_admin ou non membre
+      raise CanCan::AccessDenied if (!current_user.nil? and !current_user.super_admin?) or (current_user.nil?)
     end
     @success = object.send(relation).create(values)
     respond_to do |format|
