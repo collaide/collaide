@@ -5,8 +5,8 @@ module PolymorphicsController
     raise  ActiveRecord::UnknownAttributeError unless klass.method_defined? relation
     object = klass.find(relation_params[:id])
     access_denied = yield object
-    if (block_given? and !access_denied) or (!current_user.nil? and !current_user.super_admin?)
-      raise CanCan::AccessDenied
+    if block_given? and access_denied
+      raise CanCan::AccessDenied unless current_user.nil? and current_user.super_admin?
     end
     @success = object.send(relation).create(values)
     respond_to do |format|
