@@ -9,6 +9,7 @@ tiny_mce = () ->
     menubar: false,
     statusbar: false,
     entity_encoding : "raw",
+    convert_urls: false,
     toolbar_items_size: "small",
     browser_spellcheck: true,
     extended_valid_elements: "pre[class|name]",
