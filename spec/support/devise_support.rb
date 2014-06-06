@@ -10,6 +10,11 @@ module ValidUserRequestHelper
     post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
   end
 
+  def sign_in_as_normal_user
+    @normal_user ||= FactoryGirl.create :normal_user
+    post_via_redirect user_session_path, 'user[email]' => @normal_user.email, 'user[password]' => @normal_user.password
+  end
+
   def get_super_user
     @user ||= FactoryGirl.create :user
   end
