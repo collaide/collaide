@@ -88,7 +88,9 @@ class Ability
     can :destroy, Group::Invitation do |invitation|
       invitation.group.can? :manage, :invitations, user
     end
-    can :update, Group::Invitation
+    can :update, Group::Invitation do |invitation|
+      invitation.receiver.id == user.id
+    end
 
   end
 
