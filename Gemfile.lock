@@ -105,6 +105,11 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
+    better_errors (1.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bourbon (3.2.3)
       sass (~> 3.2)
       thor
@@ -174,6 +179,7 @@ GEM
     database_cleaner (1.2.0)
     date_validator (0.7.0)
       activemodel (>= 3)
+    debug_inspector (0.0.2)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -539,6 +545,8 @@ DEPENDENCIES
   annotate!
   aws-sdk (~> 1.5.7)
   bcrypt!
+  better_errors
+  binding_of_caller
   breadcrumbs_on_rails
   cancan
   capistrano

@@ -126,6 +126,8 @@ group :development, :test do
   gem 'meta_request'
   gem 'rails-erd'
   gem 'capistrano'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 # Gems used only for assets and not required
