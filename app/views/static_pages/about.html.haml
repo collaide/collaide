@@ -24,3 +24,31 @@
   -t('.utils.list').each_line do |a_line|
     -a_line = a_line.split('|')
     %li= link_to a_line[0], a_line[1]
+%h3
+  Version
+  = IO.read(File.join(Rails.root, 'VERSION'))
+%ul
+  %li Corrigé un bug qui permettait à n'importe qui de commenter une discussion
+%h4 0.2.3
+%ul
+  %li Corrigé un bug pour l'insertion de d'URL locale dans Tinymce
+  %li Corrigé un bug pour les droits d'indexation d'un répertoire
+%h4 0.2.2
+%ul
+  %li corrigé un bug en rapport avec rails 4 pour la création et la mise à jour d'annonces
+  %li corrigé le texte du placeholder dans le formulaire d'invitation
+
+%h4 0.2.1
+%ul
+  %li corrigé un bug qui empêchait la recherche avancée de documents de s'afficher
+%h4 0.2.0
+%ul
+  %li création d'une interface d'administration
+%h4 0.1.2
+%ul
+  %li permettre l'accès aux helper depuis les vues de mails de mailboxer
+%h4 0.1.1
+%ul
+  %li corrigé un bug en rapport à l'image personalisée de nouveaus membres
+%h4 0.1.0
+%p Sortie de la version bétâ
