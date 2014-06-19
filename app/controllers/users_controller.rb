@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class UsersController < ApplicationController
-  load_and_authorize_resource except: :find_old_user
+  include Concerns::PermissionConcern
+  #load_and_authorize_resource except: :find_old_user
 
   add_breadcrumb I18n.t('users.index.breadcrumb'),  :users_path
   #FIXME le path ne marche pas...
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
 
   def invitations
     @user = User.find params[:user_id]
+    check_permission { @user.id == current_user.id }
     add_breadcrumb I18n.t('users.show.breadcrumb', user: @user.to_s), user_path(@user)
     @invitations = Group::Invitation.where receiver: @user
     @email_invitations = Group::EmailInvitation.where email: @user.email

@@ -15,6 +15,13 @@ module ValidUserRequestHelper
     post_via_redirect user_session_path, 'user[email]' => @normal_user.email, 'user[password]' => @normal_user.password
   end
 
+  def sign_in_user(user)
+    visit new_user_session_path
+    fill_in "Adresse e-mail",    with: user.email
+    fill_in "Mot de passe", with: user.password
+    click_button "Connexion"
+  end
+
   def get_super_user
     @user ||= FactoryGirl.create :user
   end

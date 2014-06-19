@@ -38,7 +38,6 @@ class Ability
   private
     def no_connected
       can :manage, GuestBook
-      can [:read, :documents, :advertisements, :search, :avatar], User
       #can :read, Domain
       can :read, Document::Document
       can :search, Document::Document
@@ -50,9 +49,6 @@ class Ability
 
     def normal(user)
       no_connected
-      can :manage do |requested_user|
-        requested_user.id == user.id
-      end
       can :downlaod, Document::Document
       can :manage, Document::Document, user_id: user.id #uniquement les documents créés par l'utilisateur
       can :manage, Advertisement::Advertisement, user_id: user.id #uniquement les annonces créées par l'utilisateur
