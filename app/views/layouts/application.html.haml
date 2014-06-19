@@ -60,6 +60,10 @@
             %a{href: '#', class: 'close'}= "&times;".html_safe
   .row#main-content
     .columns.small-12
+      -if current_user.nil? or current_user.sign_in_count < 2
+        %blockquote.hide-for-small.unread
+          %strong= t('all.beta')
+          =raw(t'all.info', students: link_to(t('all.students'), about_path), contact: link_to(t('all.contact'), contact_path))
       = yield
   .row#footer
     = render 'layouts/footer'

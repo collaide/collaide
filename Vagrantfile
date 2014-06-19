@@ -48,8 +48,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Example for VirtualBox:
   #
   config.vm.provider "virtualbox" do |v|
-    v.memory = 1024
-    #v.cpus = 2
+    v.memory = 512
+    v.cpus = 1
   end
   #
   # View the documentation for the provider you're using for more

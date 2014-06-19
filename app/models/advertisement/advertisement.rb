@@ -28,6 +28,9 @@ class Advertisement::Advertisement < ActiveRecord::Base
 
   validates_presence_of :title
 
+  scope :footer, -> { order('created_at DESC').limit(6)}
+
+
   #Liaisons
   belongs_to :user
 

@@ -1,7 +1,4 @@
-class GroupMailer < ActionMailer::Base
-  include Resque::Mailer
-
-  default from: "no-reply@collaide.com"
+class GroupMailer < ApplicationMailer
 
   def new_invitation(email_invitation)
     @user = User.find email_invitation['user_id'].to_i

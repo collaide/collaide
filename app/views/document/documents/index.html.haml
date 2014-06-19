@@ -41,7 +41,8 @@
               .large-3.small-12.columns
                 =label_tag :datepicker, t('document.documents.index.forms.order.label_datepicker')
                 =text_field_tag :datepicker, nil, class: :datepicker
-            %input{type: 'submit', value: 'Afficher', id: 'print-criter'}
+            %noscript
+              %input{type: 'submit', value: 'Afficher', id: 'print-criter', class: 'button'}
     -#afficher la pagination à cet endroit seulement pour les ordis
     .row
       .small-12.columns#paginate

@@ -1,11 +1,11 @@
-=render(:layout => 'layouts/mailer_layout') do
-  =t'mailboxer.new_message.description'
-  -unless @message.subject == t('messages.default.title')
-    = strip_tags(@message.subject)
-  ===============================================
+=t'mailboxer.new_message.description'
+-unless @message.subject == t('messages.default.title')
+  =@message.subject
+===============================================
 
-  =t'mailboxer.new_message.message_message'
+=t'mailboxer.new_message.message_message'
 
-  "-----------------------------------------------"
-  = strip_tags(@message.body)
-  "-----------------------------------------------"
+"-----------------------------------------------"
+= strip_tags(@message.body)
+"-----------------------------------------------"
+="#{t('mailboxer.read_it')}: #{message_url(@conversation.id)}."

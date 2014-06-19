@@ -85,7 +85,7 @@ FactoryGirl.define do
     owner { FactoryGirl.create :normal_user}
   end
 
-  factory :status, class: 'Status' do
+  factory :status, class: 'Topic' do
     message 'un status'
     writer { FactoryGirl.create :normal_user }
   end

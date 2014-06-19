@@ -18,7 +18,7 @@ module Collaide
   class Application < Rails::Application
 
     config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td'
-    config.action_view.sanitized_allowed_attributes = ['style']
+    #config.action_view.sanitized_allowed_attributes = ['style']
 
     #config.exceptions_app = self.routes
 
@@ -97,10 +97,13 @@ module Collaide
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    # Enable observers
-    config.active_record.observers = :'document/document_observer', :'advertisement/advertisement_observer',
-        :'group/invitation_observer', :'repository_manager/repo_item_observer', :topic_observer, :comment_observer,
-        :user_observer
+    if Rails.env != 'test'
+      # Enable observers
+      config.active_record.observers = :'document/document_observer', :'advertisement/advertisement_observer',
+          :'group/invitation_observer', :'repository_manager/repo_item_observer', :topic_observer, :comment_observer,
+          :user_observer
+    end
+
 
   end
 end

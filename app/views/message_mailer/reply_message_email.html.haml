@@ -1,14 +1,16 @@
 -content_for :mail_title do
   =t'mailboxer.reply.title'
 
-=render(:layout => 'layouts/mailer_layout') do
-  %p=t'mailboxer.reply.description'
-  -unless @message.subject == t('messages.default.title')
-    %p
-      %strong=t'mailboxer.new_message.message_subject'
-      = @message.subject.html_safe? ? @message.subject : strip_tags(@message.subject)
+%p=t'mailboxer.reply.description'
+-unless @message.subject == t('messages.default.title')
   %p
-    %strong=t'mailboxer.new_message.message_message'
-  .panel
-    %blockquote
-      =s(@message.body).html_safe
+    %strong=t'mailboxer.new_message.message_subject'
+    = @message.subject
+%p
+  %strong=t'mailboxer.new_message.message_message'
+.panel
+  -if respond_to? :s
+    =s(@message.body).html_safe
+  -else
+    =strip_tags(@message.body)
+%p="#{link_to(t('mailboxer.read_it'), message_url(@conversation.id))}.".html_safe

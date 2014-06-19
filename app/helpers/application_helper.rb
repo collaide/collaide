@@ -36,61 +36,6 @@ $(function () {
     end
   end
 
-  def get_default_options_to_sanatize
-    config = Sanitize::Config::RELAXED.deep_dup
-    config[:add_attributes] = {
-        'a' => {'rel' => 'nofollow'}
-    }
-    config[:elements].push('span')
-    config
-  end
-
-  def accept_specified_style
-    lambda do |env|
-      node      = env[:node]
-      inner_config = get_default_options_to_sanatize
-      inner_config[:attributes][:all].push('style')
-
-      # Don't continue if this node is already whitelisted or is not an element.
-      return if env[:is_whitelisted] || !node.element? || !node['style']
-
-      accepted_styles = ['text-decoration: line-through;', 'text-decoration: underline;', 'text-align: left;',
-                         'text-align: center;', 'text-align: right;', 'text-align: justify;', 'list-style-type: circle;',
-                         'list-style-type: disc;, list-style-type: square;', 'list-style-type: lower-alpha;', 'list-style-type: lower-greek;',
-                         'list-style-type: lower-roman;', 'list-style-type: upper-alpha;', 'list-style-type: upper-roman;', 'padding-left: 30px;',
-                         'padding-left: 60px;', 'padding-left: 90px;', 'padding-left: 120px;']
-      return unless accepted_styles.include? node['style']
-
-      # We're now certain that this is a YouTube embed, but we still need to run
-      # it through a special Sanitize step to ensure that no unwanted elements or
-      # attributes that don't belong in a YouTube embed can sneak in.
-      Sanitize.clean_node!(node, inner_config)
-
-      # Now that we're sure that this is a valid YouTube embed and that there are
-      # no unwanted elements or attributes hidden inside it, we can tell Sanitize
-      # to whitelist the current node.
-      {:node_whitelist => [node]}
-    end
-  end
-
-  # https://github.com/rgrove/sanitize
-  def s(text, config = nil)
-    if config.nil?
-      config = get_default_options_to_sanatize
-      config[:transformers] = accept_specified_style
-      Sanitize.clean(text, config)
-    else
-      Sanitize.clean(text, config)
-    end
-
-  end
-
-  def cite_a_part(text, quote = '"', truncate=30)
-    #text = truncate(text, lenght: truncate)
-    "#{quote}#{s(text.truncate(truncate), Sanitize::Config::RESTRICTED)}#{quote}".html_safe
-    #"#{quote}#{strip_tags(text).truncate(truncate)}#{quote}".html_safe
-  end
-
   def get_repo_items(show = 'false')
     content_for :get_repo_items do
       "<script>$(function() {RepoItem.start(#{show})});</script>".html_safe
@@ -192,6 +137,15 @@ $(function () {
   def single_content_for(name, content = nil, &block)
     @view_flow.set(name, ActiveSupport::SafeBuffer.new)
     content_for(name, content, &block)
+  end
+
+  # Activities show the owner
+  def show_owner(owner)
+    if owner
+      raw(link_to(h(owner.name), owner))
+    else
+      t'activity.unknown'
+    end
   end
 
   private

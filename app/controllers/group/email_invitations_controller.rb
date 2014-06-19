@@ -36,6 +36,7 @@ class Group::EmailInvitationsController < ApplicationController
 
   def destroy
     ei = Group::EmailInvitation.find params[:id]
+    check_permission { ei.group.can? :manage, :invitations, current_user }
     ei.destroy
     redirect_to group_work_group_members_path, notice: t('group.invitations.destroy.notice')
   end

@@ -15,7 +15,7 @@ fr:
     sign_up: &sign_up Inscription
     connected: &connected connecté
     suscribe: "Inscrivez-vous"
-    password: &password Mot de passse
+    password: &password Mot de passe
     email: &email Adresse e-mail
     name: &name Pseudo
     password_confirmation: &password_confirmation Confirmation du mot de passe
@@ -132,6 +132,7 @@ fr:
   footer:
     titles:
       documents: Documents étudiants
+      advertisements: Annonces étudiantes
       partners: Partenaires
       follow_us: Nous suivre
     collaide:
@@ -144,6 +145,11 @@ fr:
       guest_book: Livre d'or
       contact: Contact
       about: A propos
+  all:
+    beta: "Ce site est en version bêta:"
+    info: Nous sommes %{students} et developpons bénévolement collaide durant notre temps libre. Si le projet vous intéresse, que vous avez des propositions à nous faire, que vous désirez nous aider ou que vous rencontrez des bugs, merci de %{contact}.
+    students: des étudiants
+    contact: nous contacter
   domains:
     link:
       all: "Liste des domaines"
@@ -233,9 +239,13 @@ fr:
       title_page: Contact
       description_meta: Vous pouvez nous contacter avec le formulaire de contact
       key_words: contact
+#      text: |
+#        Ce site est fait par des étudiants pour des étudiants. Il est donc possible qu'il y ait quelques erreurs, bugs ou dysfonctionnements. Merci de nous en faire part.
+#        Pour nous contacter, il vous suffit de remplir le formulaire suivant ou de nous écrire un e-mail à l'adresse %{mail}.
       text: |
-        Ce site est fait par des étudiants pour des étudiants. Il est donc possible qu'il y ait quelques erreurs, bugs ou dysfonctionnements. Merci de nous en faire part.
-        Pour nous contacter, il vous suffit de remplir le formulaire suivant ou de nous écrire un e-mail à l'adresse %{mail}.
+        Ce site est fait par des étudiants pour des étudiants. Il est donc possible qu'il y ait quelques erreurs
+         ou bugs. Merci de nous en faire part. Nous cherchons aussi des personnes motivées pour nous aider.
+        Pour nous contacter, il vous suffit de remplir le formulaire suivant ou d'utiliser les réseaux sociaux.
       form:
         legend: Formulaire de contact
         email: Adresse e-mail de contact
@@ -259,6 +269,7 @@ fr:
       h1_title: *partners
       blockquote: "Vous trouverez ici les liens vers toutes nos pages partenaires ainsi que les sites personnels des personnes qui m'ont aidées dans le developpement du site.
                   Si vous êtes intéressé par un partenariat, n'hésitez pas à nous <a href='%{link}'>contacter</a>."
+      other: Autres
     rules:
       title_page: Réglement du site
       bc: Réglement
@@ -471,7 +482,7 @@ fr:
           content: Entrez le code ISBN de votre livre !
         joy_price:
           title: Etape 2
-          content: A quel prix voulez vous vendre votre livre ?
+          content: A quel prix voulez-vous vendre votre livre ?
         joy_currency:
           title: Etape 3
           content: Merci d'indiquer dans quelle devise vous voulez être payé.
@@ -785,9 +796,12 @@ fr:
     group:
       new_invitation:
         subject: "%{user} vous invite à rejoindre le groupe %{group} sur Collaide"
-        message: "Message :"
-        p1: Cliquez sur le lien ci-après pour rejoindre le groupe.
-        join_group: Rejoindre le groupe
+        message: "Voici son message :"
+        text:
+          description: "Cliquez sur le lien suivant pour rejoindre le groupe :"
+        html:
+          description: Cliquez sur ce lien pour %{link}.
+        join_group: rejoindre le groupe
     greetings: Cordialement.
     signature: L'équipe Collaide.
   mailboxer:
@@ -804,5 +818,6 @@ fr:
     reply:
       title: Nouvelle réponse
       description: "Vous avez reçu une nouvelle réponse à l'un de vos messages privés."
+    read_it: Cliquez ici pour lire ce message
 
 

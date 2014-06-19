@@ -33,7 +33,7 @@ class Document::Document < ActiveRecord::Base
 
   enumerize :status, in: [:accepted, :pending, :refused], default: :pending, predicates: true
   enumerize :study_level, in: [:university, :college, :secondary, :primary]
-  enumerize :language, in: [:french, :english, :german]
+  enumerize :language, in: [:french, :english, :german, :italian, :other]
 
   #permte aux utilisateurs de commenter un document. https://github.com/jackdempsey/acts_as_commentable
   acts_as_commentable
@@ -67,7 +67,7 @@ class Document::Document < ActiveRecord::Base
 
   #validation du type de fichier
   #création d'une image en fonction du fichier
-  validates :author, presence: true, length: {minimum: 3, maximum: 30}
+  validates :author, presence: true, length: {minimum: 3, maximum: 250}
   validates :description, presence: true, length: {minimum: 5}
   validates_presence_of :language
   validates_presence_of :domains
