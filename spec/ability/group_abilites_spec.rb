@@ -69,14 +69,7 @@ describe 'abilities of' do
         it { should be_able_to :edit, work_group }
         it { should be_able_to :update, work_group }
         it { should be_able_to :members, work_group }
-        it { should be_able_to :index, status }
-        it { should be_able_to :show, status }
-        it { should be_able_to :create, status }
-        it { should be_able_to :update, status }
-        it { should be_able_to :update, email_invitation}
-        it { should be_able_to :destroy, email_invitation}
         it { should be_able_to :create, invitation }
-        it { should be_able_to :update, invitation }
         it { should be_able_to :destroy, invitation }
       end
     end
@@ -92,7 +85,6 @@ describe 'abilities of' do
         email_invitation.save
       end
       context 'reads a status and creates an invitation' do
-        it { should be_able_to :index, status}
         it { should be_able_to :create, invitation}
       end
     end

@@ -5,6 +5,17 @@ fr:
         refused: Refusé
         accepted: Accepté
         pending: En attente
+      language:
+        french: Français
+        german: Allemand
+        english: Anglais
+        italian: Italien
+        other: Autre
+      study_level:
+        university: Universitaire
+        college: Lycé
+        secondary: Secondaire
+        primary: Primaire
     advertisement/sale:
       payment_modes:
         cash: Espèce

@@ -33,7 +33,7 @@ class Document::Document < ActiveRecord::Base
 
   enumerize :status, in: [:accepted, :pending, :refused], default: :pending, predicates: true
   enumerize :study_level, in: [:university, :college, :secondary, :primary]
-  enumerize :language, in: [:french, :english, :german]
+  enumerize :language, in: [:french, :english, :german, :italian, :other]
 
   #permte aux utilisateurs de commenter un document. https://github.com/jackdempsey/acts_as_commentable
   acts_as_commentable
