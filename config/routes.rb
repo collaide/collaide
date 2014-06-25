@@ -1,8 +1,13 @@
 # -*- encoding : utf-8 -*-
 Collaide::Application.routes.draw do
-  #devise_for :admin_users, ActiveAdmin::Devise.config
+
+  namespace :api do
+    scope path: ':user_id', as: :user do
+      resources :groups, controller: 'groups', only: :index
+    end
+  end
+
   ActiveAdmin.routes(self)
-  #mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   root to: 'static_pages#home', as: 'root'
   localized do
     root :to => "static_pages#home", as: 'root'
@@ -23,7 +28,7 @@ Collaide::Application.routes.draw do
     #get '422', :to => 'application#server_error'
     #get '500', :to => 'application#server_error'
 
-    resources :auth_token, only: [:create]
+    resources :auth_token, controller: 'api/auth_token', only: [:create]
 
     resources 'notifications', only: [:index] do
       get 'page/:page', action: :index, on: :collection
@@ -94,7 +99,7 @@ Collaide::Application.routes.draw do
       end
     end
 
-    resources :topics, only:[:create]
+    resources :topics, only: [:create]
     resources :comments, only: [:create]
 
     resources :groups, as: 'group_groups', controller: 'group/groups' do
@@ -115,7 +120,6 @@ Collaide::Application.routes.draw do
         get 'members', action: :members, as: 'members'
       end
     end
-
 
 
     resources :'documents', as: 'document_documents', controller: 'document/documents' do
@@ -191,7 +195,7 @@ Collaide::Application.routes.draw do
       get 'page', action: :page, as: 'page', on: :collection
       get 'documents', action: :documents, as: 'documents'
       get 'advertisements', action: :advertisements, as: 'advertisements'
-      get 'invitations',  action: :invitations, as: 'invitations'
+      get 'invitations', action: :invitations, as: 'invitations'
       get 'avatar'
     end
 
@@ -205,7 +209,7 @@ Collaide::Application.routes.draw do
   get 'find_old_user/:id' => 'users#find_old_user', as: 'find_old_user'
 
   post '/rate' => 'rater#create', :as => 'rate'
-  devise_for :users, :controllers => {omniauth_callbacks: 'omniauth_callbacks', registrations: 'users/registrations', sessions: 'users/sessions' }
+  devise_for :users, :controllers => {omniauth_callbacks: 'omniauth_callbacks', registrations: 'users/registrations', sessions: 'users/sessions'}
 
   # COMPATIBILITY WITH OLD VERSION
   # DOCUMENTS
@@ -214,16 +218,16 @@ Collaide::Application.routes.draw do
   get 'documents/p:num-top-telechargements.html', to: redirect('fr/documents')
   get 'documents/p:num-liste-des-documents.html', to: redirect('fr/documents/page/%{num}')
   get 'recherche-documents.html', to: redirect('fr/documents')
-  get 'documents/p1-:id.html', to: redirect {|path_params, req| "find_old_document/#{path_params[:id].split('-')[0]}" }
+  get 'documents/p1-:id.html', to: redirect { |path_params, req| "find_old_document/#{path_params[:id].split('-')[0]}" }
   # LIVRES
   get 'livres/p1-liste-des-ventes.html', to: redirect('fr/annonces')
   get 'livres/p:num-liste-des-ventes.html', to: redirect('fr/annonces/page/%{num}')
-  get 'livres/p1-vente-:id.html', to: redirect {|path_params, req| "find_old_advertisement/#{path_params[:id].split('-')[0]}" }
+  get 'livres/p1-vente-:id.html', to: redirect { |path_params, req| "find_old_advertisement/#{path_params[:id].split('-')[0]}" }
   # Users
   get 'membres/connexion.html', to: redirect('users/sign_in')
   get 'membres/mot-de-passe-oublie.html', to: redirect('users/password/new')
   get 'membres/inscription.html', to: redirect('users/sign_in')
-  get 'membres/compte-:id.html', to: redirect {|path_params, req| "find_old_user/#{path_params[:id].split('-')[0]}" }
+  get 'membres/compte-:id.html', to: redirect { |path_params, req| "find_old_user/#{path_params[:id].split('-')[0]}" }
   # Static pages
   get 'aide.html', to: redirect('fr/a-propos')
   get 'contact.html', to: redirect('fr/contactez-nous')
