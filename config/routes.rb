@@ -2,7 +2,8 @@
 Collaide::Application.routes.draw do
 
   namespace :api do
-    scope path: ':user_id', as: :user do
+    resources :auth_token, controller: 'auth_token', only: [:create]
+    scope path: 'user/:user_id', as: :user do
       resources :groups, controller: 'groups', only: :index
     end
   end
@@ -27,8 +28,6 @@ Collaide::Application.routes.draw do
     #get '404', :to => 'application#page_not_found'
     #get '422', :to => 'application#server_error'
     #get '500', :to => 'application#server_error'
-
-    resources :auth_token, controller: 'api/auth_token', only: [:create]
 
     resources 'notifications', only: [:index] do
       get 'page/:page', action: :index, on: :collection
@@ -102,14 +101,6 @@ Collaide::Application.routes.draw do
     resources :topics, only: [:create]
     resources :comments, only: [:create]
 
-    resources :groups, as: 'group_groups', controller: 'group/groups' do
-      collection do
-        #get 'page/:page', :action => :index, as: 'pager'
-        #get 'search', action: :search, as: 'search'
-        #get 'autocomplete', action: :autocomplete, as: 'autocomplete'
-      end
-    end
-
     namespace :group do
       resources :work_groups, :controller => 'work_groups', as: 'work_groups', :only => [:new, :create, :edit, :update, :show] do
         concerns :has_repository
@@ -118,6 +109,14 @@ Collaide::Application.routes.draw do
         concerns :member
         concerns :email_invitation
         get 'members', action: :members, as: 'members'
+      end
+    end
+
+    resources :groups, as: 'group_groups', controller: 'group/groups' do
+      collection do
+        #get 'page/:page', :action => :index, as: 'pager'
+        #get 'search', action: :search, as: 'search'
+        #get 'autocomplete', action: :autocomplete, as: 'autocomplete'
       end
     end
 

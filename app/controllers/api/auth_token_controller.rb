@@ -13,7 +13,7 @@ class Api::AuthTokenController < ApplicationController
     u.authentication_token = Devise.friendly_token
     u.save
     respond_to do |format|
-      format.json {render json: {token: u.authentication_token, id: u.id, name: u.to_s}}
+      format.json {render json: {token: u.authentication_token, id: u.id, name: u.to_s, email: u.email}}
     end
   end
 
