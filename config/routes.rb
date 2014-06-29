@@ -227,10 +227,15 @@ Collaide::Application.routes.draw do
   get 'partenaires.html', to: redirect('fr/partenaires')
   get 'aide.html', to: redirect('fr/a-propos')
 
-  namespace :api do
-    resources :auth_token, controller: 'auth_token', only: [:create]
-    scope path: 'user/:user_id', as: :user do
-      resources :groups, controller: 'groups', only: :index
+  scope path: 'api', as: :api do
+    namespace :api, path: '' do
+      resources :auth_token, controller: 'auth_token', only: [:create]
+      scope path: 'user/:user_id', as: :user do
+        resources :groups, controller: 'groups', only: :index
+      end
+    end
+    namespace :group, path: 'groups/:work_group_id' do
+      concerns :has_repository
     end
   end
 end
