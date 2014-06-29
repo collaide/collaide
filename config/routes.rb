@@ -1,13 +1,6 @@
 # -*- encoding : utf-8 -*-
 Collaide::Application.routes.draw do
 
-  namespace :api do
-    resources :auth_token, controller: 'auth_token', only: [:create]
-    scope path: 'user/:user_id', as: :user do
-      resources :groups, controller: 'groups', only: :index
-    end
-  end
-
   ActiveAdmin.routes(self)
   root to: 'static_pages#home', as: 'root'
   localized do
@@ -233,4 +226,11 @@ Collaide::Application.routes.draw do
   get 'reglement.html', to: redirect('fr/reglement')
   get 'partenaires.html', to: redirect('fr/partenaires')
   get 'aide.html', to: redirect('fr/a-propos')
+
+  namespace :api do
+    resources :auth_token, controller: 'auth_token', only: [:create]
+    scope path: 'user/:user_id', as: :user do
+      resources :groups, controller: 'groups', only: :index
+    end
+  end
 end
