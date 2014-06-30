@@ -116,14 +116,21 @@ class ApplicationController < ActionController::Base
 
   protected
   def can_can_access_denied
-    if !request.env["HTTP_REFERER"] and params[:work_group_id] and params[:secret_token] and params[:id] and current_user.nil?
-      redirect_to user_session_path, alert: t('access_denied')
-    elsif !request.env["HTTP_REFERER"] || !flash[:notice].nil?
-      redirect_to main_app.root_url, alert: t('not_enough_role')
-    elsif request.env['HTTP_REFERER'] and !current_user.nil?
-      redirect_to :back, alert: t('not_enough_role')
-    elsif current_user.nil?
-      redirect_to user_session_path, alert: t('access_denied')
+    respond_to do |format|
+      format.json do
+        render status: 401, text: 'no enough authorizations'
+      end
+      format.html do
+        if !request.env["HTTP_REFERER"] and params[:work_group_id] and params[:secret_token] and params[:id] and current_user.nil?
+          redirect_to user_session_path, alert: t('access_denied')
+        elsif !request.env["HTTP_REFERER"] || !flash[:notice].nil?
+          redirect_to main_app.root_url, alert: t('not_enough_role')
+        elsif request.env['HTTP_REFERER'] and !current_user.nil?
+          redirect_to :back, alert: t('not_enough_role')
+        elsif current_user.nil?
+          redirect_to user_session_path, alert: t('access_denied')
+        end
+      end
     end
   end
   #def user_for_paper_trail
