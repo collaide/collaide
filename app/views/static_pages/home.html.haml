@@ -3,11 +3,18 @@
     .row
       .large-13.columns
         %h2#index-title= t'static_pages.home.title.subheader'
-    .row
+    .row.text-center#show-modules
       .large-8.columns
         %h4=t'static_pages.home.documents.title'
+        %p=link_to t('static_pages.home.documents.link_to'), document_documents_path, class: 'std-button'
+        %p.text-left=link_to "Plus d'informations", '#'
       .large-8.columns
         %h4=t'static_pages.home.work_groups.title'
+        %p=link_to t('static_pages.home.work_groups.link_to'), document_documents_path, class: 'std-button'
+        %p.text-left=link_to "Plus d'informations", '#'
       .large-8.columns
         %h4=t'static_pages.home.advertisements.title'
+        %p=link_to t('static_pages.home.advertisements.link_to'), document_documents_path, class: 'std-button'
+        %p.text-left=link_to "Plus d'informations", '#'
+
 

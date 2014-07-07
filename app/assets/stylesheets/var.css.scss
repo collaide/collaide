@@ -88,14 +88,19 @@ $total-columns: 24;
 // $secondary-color: #e7e7e7;
 // Orange
 $thirty-color: #ffb700;
-$dominant-color: #2C3E4F;
-$second-color: #F6F6F7;
+$primary-color: #2C3E4F;
+$secondary-color: #F6F6F7;
+$link-color: #2980BA;
 
-// $alert-color: #f04124;
+$anchor-font-color: $link-color;
+$header-font-color: $primary-color;
+
+
+  // $alert-color: #f04124;
 // $success-color: #43AC6A;
 
 // We use these to make sure border radius matches unless we want it different.
-// $global-radius: 3px;
+$global-radius: 3px;
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
@@ -237,6 +242,41 @@ $second-color: #F6F6F7;
 // Button Groups
 
 // $include-html-button-classes: $include-html-classes;
+
+// We use these to build padding for buttons.
+//$button-med: rem-calc(12);
+//$button-tny: rem-calc(7);
+//$button-sml: rem-calc(9);
+//$button-lrg: rem-calc(16);
+
+// We use this to control the display property.
+//$button-display: inline-block;
+//$button-margin-bottom: rem-calc(20);
+
+// We use these to control button text styles.
+//$button-font-family: inherit;
+//$button-font-color: #fff;
+//$button-font-color-alt: #333;
+//$button-font-med: rem-calc(16);
+//$button-font-tny: rem-calc(11);
+//$button-font-sml: rem-calc(13);
+//$button-font-lrg: rem-calc(20);
+//$button-font-weight: bold;
+//$button-font-align: center;
+
+// We use these to control various hover effects.
+//$button-function-factor: 10%;
+
+// We use these to control button border styles.
+//$button-border-width: 1px;
+//$button-border-style: solid;
+
+// We use this to set the default radius used throughout the core.
+//$button-radius: $global-radius;
+//$button-round: $global-rounded;
+
+// We use this to set default opacity for disabled buttons.
+//$button-disabled-opacity: 0.6;
 
 // Sets the margin for the right side by default, and the left margin if right-to-left direction is used
 // $button-bar-margin-opposite: rem-calc(10);

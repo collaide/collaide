@@ -11,13 +11,45 @@
 }
 
 body {
-  background-color: $second-color;
+  background-color: $secondary-color;
 }
+
+.std-button {
+  @include button;
+  color: $primary-color;
+  background-color: $secondary-color;
+  border-width: 1px;
+  border-color: $primary-color;
+  border-style: solid;
+  //border-bottom-width: 4px;
+
+  box-shadow: 0px 3px 0px $primary-color;
+  border-radius: 5px;
+}
+.std-button:hover {
+  color: $primary-color;
+  background-color: $secondary-color;
+  border-width: 1px;
+  border-color: $primary-color;
+  border-style: solid;
+  border-radius: 5px;
+  box-shadow: none;
+  //border-bottom-width: 1px;
+}
+
 
 // INDEX
 #home {
   #index-title {
-    color: $dominant-color;
+    //color: $primary-color;
+  }
+  #show-modules {
+    margin-top: 150px;
+    .columns {
+      padding-left: 70px;
+      padding-right: 70px;
+    }
+
   }
 }
 
