@@ -42,7 +42,7 @@ class MessagesController < ApplicationController
 
 #Cette methode sert juste à traiter la réponse, elle n'aura pas de vue
   def reply
-    c = Conversation.find(params[:conversation])
+    c = Mailboxer::Conversation.find(params[:conversation])
     unless c
       redirect_to :messages, alert: t('messages.reply.no_conversation') and return
     end
@@ -56,7 +56,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.find(params[:id])
+    @conversation = Mailboxer::Conversation.find(params[:id])
     @receipts = @conversation.receipts_for current_user
     check_permission do
       @receipts.any?
