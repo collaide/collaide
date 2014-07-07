@@ -64,5 +64,6 @@
             %li.divider
             %li= link_to t("header.user.logout"), destroy_user_session_path, method: :delete
       - else
-        %li.has-form= link_to(t("header.sign_in"), new_user_session_path, class: "button")
-        -#%li.has-form= link_to(t("header.sign_up"), new_registration_path, class: "button")
+        %li.has-form= link_to(t("header.sign_up"), "#", class: "button")
+        %li.has-form= link_to(t("header.sign_in"), "#", class: "button")
+        -#%li.has-form= link_to(t("header.sign_in"), new_user_session_path, class: "button")

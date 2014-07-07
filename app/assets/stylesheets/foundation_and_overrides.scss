@@ -10,6 +10,17 @@
   background-color: darken($thirty-color, 5%);
 }
 
+body {
+  background-color: $second-color;
+}
+
+// INDEX
+#home {
+  #index-title {
+    color: $dominant-color;
+  }
+}
+
 
 //documents
 .no-border {

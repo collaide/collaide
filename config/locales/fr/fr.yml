@@ -160,27 +160,27 @@ fr:
       key_words: "collaide, partage, documents, Dissertations, Analyses, Documents, rapports, résumés, Exposers, Tests, Présentations, base de donnée, Collaide, Etudiants, document de maturité, Domaines, Allemand, Anglais, Architecture, Art visuel, Biologie, Bureautique, Chimie, Droit, Economie, Espagnol, Français, Géographie, Grec, Histoire, Informatique, Italien, Latin, Mathématiques, Musique, Pédagogie, Philosophie, Physique, Politique, Psychologie, Sports, Théologie, Autres"
       description_meta: Collaide a pour but de rassembler des étudiants de tous niveaux scolaires afin de les aider dans leurs études. Nous proposons une plateforme de partage de documents scolaires, l'achat et la vente de livres scolaires d'occasions, la création de groupes d'étudiants afin de rester en contact avec vos collègues de classes et bien d'autres.
       title:
-        h1: "%{app_name}"
-        h2: Apprenons ensemble
+        #h1: "%{app_name}"
+        #h2: Collaide est une plateforme interactive qui facilite l'organisation de ton travail pendant tes études.
         modules: |
             Créez des groupes de travail avec vos collègues de classe
             Partagez des documents scolaires
             Achetez et vendez des livres d'occasion
 #            Echangez des fichiers rapidement et simplement
-        subheader: Restez connectés entre étudiants !
+        subheader: Collaide est une plateforme interactive qui facilite l'organisation de ton travail pendant tes études.
       site_activities: Dernièrement sur Collaide
       your_activities: Votre fil d'actualité
       clouds:
         title: Partage de fichiers
         description: Chaque groupe de travail dispose d'une boite de dépôt de fichiers pour partager facilement vos travaux avec vos collègues !
       work_groups:
-        title: Groupe de travail
+        title: Crée des groupes de travail
         description: Créez facilement votre groupe de travail pour votre classe ou votre réseau universitaire... Echangez vos fichiers et discutez dans un espace privé !
       documents:
-        title: Documents scolaires
+        title: Echange des documents scolaires
         description: "Tous les types de documents étudiants sont accessibles gratuitement : Des notes de cours aux rapports de chimie en passant par les lettres de motivation."
       advertisements:
-        title: Livres étudiants
+        title: Achète et vend des livres d'occasion
         description: Vendez ou achetez facilement des livres scolaires d'occasion. Nous vous mettons gratuitement en relation avec des personnes intéressées.
       last_doc:
         h4: Derniers documents
