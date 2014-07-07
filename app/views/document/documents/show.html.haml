@@ -1,11 +1,11 @@
 %h1= @document.title
 .row
-  .columns.small-12.show-for-small
+  .columns.small-24.show-for-small
     = link_to(t('document.documents.index.download'), document_document_download_path(document_document_id: @document), class: 'button success expand')
 
 -#infos documents et fichier
 .row
-  .columns.large-8
+  .columns.large-16
     .panel
       %a{href: document_document_download_path(document_document_id: @document), class: 'th wrap-text'}
         =image_tag show_icon(@document), width: 100, height: 100
@@ -19,18 +19,18 @@
         =link_to(@document.user.to_s, @document.user)
         =t('dico.time_ago', date: time_ago_in_words(@document.created_at))
         .row
-          .columns.small-6
+          .columns.small-12
             =rating_for @document, 'note', star: 5
             -unless @document.note_average.nil?
               = t('document.documents.show.average', notes: @document.note_average.avg)
               %br
               = pluralize @document.note_average.qty, t('dico.personne')
               = @document.note_average.qty <= 1 ? t('document.documents.show.has_voted') : t('document.documents.show.have_voted')
-          .columns.small-6.push-1.hide-for-small
+          .columns.small-12.push-1.hide-for-small
             = link_to(t('document.documents.index.download'), document_document_download_path(document_document_id: @document), class: 'button success')
-  .columns.large-4
+  .columns.large-8
     .row
-      .columns.small-12
+      .columns.small-24
         %ul.pricing-table
           %li.title
             = t('document.documents.show.informations')
@@ -44,13 +44,13 @@
           %li.bullet-item= pluralize @document.hits, t('dico.documents.download')
           %li.bullet-item= show_extension(@document)
 .row
-  .columns.large-6.small-12
+  .columns.large-12.small-24
     .suggestion-panel
       %h6= t('document.documents.show.suggestion')
       %ul
         -@suggest.each do |a_doc|
           %li= link_to a_doc.title, a_doc
-  .columns.large-6.small-12
+  .columns.large-12.small-24
     .suggestion-panel
       %h6= t('document.documents.show.top_docs')
       %ul

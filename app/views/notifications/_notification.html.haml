@@ -3,13 +3,13 @@
     -unread = 'read'
   -else
     -unread = 'unread'
-  .small-12.columns
+  .small-24.columns
     %blockquote.message{class:unread}
       .row
-        .large-1.columns
+        .large-2.columns
           %a{href: user_path(notification.owner),class: 'th'}
             =image_tag notification.owner.avatar
-        .large-11.columns
+        .large-22.columns
           =notification.print_message
           %cite
             %span{title: l(notification.created_at, format: :long)}

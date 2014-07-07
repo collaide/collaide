@@ -1,8 +1,8 @@
 =render(:layout => 'layout_messages') do
   .row
-    .small-12.columns
+    .small-24.columns
       .row
-        .small-12.columns
+        .small-24.columns
           %h1= @conversation.subject
           %dl.sub-nav
             %dt=t'messages.show.participants'
@@ -10,7 +10,7 @@
               -unless r==current_user
                 %dd=link_to(r.to_s, r)
       .row
-        .small-12.colums
+        .small-24.colums
           #show_messages
             -@receipts.each do |r|
               -if r.mailbox_type == 'sentbox'
@@ -23,9 +23,9 @@
                 -unread = 'read'
               %blockquote.message{class: "#{is_sender} #{unread}"}
                 .row
-                  .large-1.columns.hide-for-small
+                  .large-2.columns.hide-for-small
                     %p=image_tag r.message.sender.avatar.mini
-                  .large-11.columns
+                  .large-22.columns
                     =s(r.message.body).html_safe
                     %cite
                       =link_to(r.message.sender.to_s, r.message.sender)

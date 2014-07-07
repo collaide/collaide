@@ -1,4 +1,4 @@
-.columns.small-12
+.columns.small-24
   .panel.topics
     %h6.subheader
       -if topic.title
@@ -13,7 +13,7 @@
     %p= s(topic.message).html_safe
     %hr
     .row
-      .columns.small-11.push-1
+      .columns.small-22.push-1
         -collection = topic.comments
         -if limit.is_a? Fixnum and limit > 0
           -collection = collection[0..limit]

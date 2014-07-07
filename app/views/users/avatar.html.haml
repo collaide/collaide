@@ -6,5 +6,5 @@
   -unless @user.avatar
     =t'users.avatar.no-avatar', user: @user.to_s
   -else
-    .small-12.columns
+    .small-24.columns
       %p=image_tag @user.avatar

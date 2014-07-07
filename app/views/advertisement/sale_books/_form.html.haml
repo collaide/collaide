@@ -5,12 +5,12 @@
       =f.simple_fields_for @advertisement_sale_book.book do |p|
         -if !edit
           .row
-            .large-6.columns
+            .large-12.columns
               =p.input :isbn_13, input_html: {id: 'book_isbn'}, label_html: tooltip(t('sale_books.new.forms.tooltips.isbn'))
-            .hide-for-small.large-4.columns
+            .hide-for-small.large-8.columns
               =t('sale_books.new.forms.infos_isbn')
               =link_to t('sale_books.new.forms.isbn_not_found'), '#', id:'isbn_not_found'
-            .hide-for-small.large-2.columns
+            .hide-for-small.large-4.columns
               =image_tag 'annonces/isbn_wiki.gif'
         -disabledTitle = false
         -hideBookTitle = ''
@@ -28,17 +28,17 @@
           =hidden_field_tag 'ajax_book_isbn_error', t('sale_books.new.forms.valid_isbn')
           =hidden_field_tag 'ajax_book_isbn_other_solution', t('sale_books.new.forms.other_solution')
           .row
-            .large-6.columns
+            .large-12.columns
               =p.input :title, input_html: {id: 'book_title'}, disabled: disabledTitle
-            .large-6.columns
+            .large-12.columns
               =p.input :authors, input_html: {id: 'book_authors'}, disabled: disabledTitle
 
       .row
-        .small-12.columns
+        .small-24.columns
           .row
-            =f.input :price, label_html: tooltip(t("sale_books.new.forms.tooltips.price")), wrapper_html: {class: 'columns small-4'}
-            =f.input :currency, prompt: t('simple_form.prompts.advertisement_sale_book.currency'), input_html: {class: 's2'}, wrapper_html: {class: 'columns large-4 small-8'}, label_html: tooltip(t("sale_books.new.forms.tooltips.currency"))
-            .columns.small-4
+            =f.input :price, label_html: tooltip(t("sale_books.new.forms.tooltips.price")), wrapper_html: {class: 'columns small-8'}
+            =f.input :currency, prompt: t('simple_form.prompts.advertisement_sale_book.currency'), input_html: {class: 's2'}, wrapper_html: {class: 'columns large-8 small-16'}, label_html: tooltip(t("sale_books.new.forms.tooltips.currency"))
+            .columns.small-8
       -if !edit
         #more_details
           =label_tag :more_details, t('sale_books.new.forms.details_label'), tooltip(t("sale_books.new.forms.tooltips.details"))
@@ -56,16 +56,16 @@
       %fieldset
         %legend{class: "has-tip tip-top", title: t("sale_books.new.forms.tooltips.optional"), 'data-tooltip' => ''}= t('sale_books.new.forms.optional')
         .row
-          .large-6.columns
+          .large-12.columns
             =f.input :payment_modes, label_html: tooltip(t("sale_books.new.forms.tooltips.payment_modes")), :as => :check_boxes
             %br
-          .large-6.columns
+          .large-12.columns
             =f.input :delivery_modes, label_html: tooltip(t("sale_books.new.forms.tooltips.delivery_modes")), :as => :check_boxes
             %br
         .row
-          .large-6.columns
+          .large-12.columns
             =f.input :state, prompt: t('simple_form.prompts.advertisement_sale_book.state'), input_html: {class: 's2'}
-          .large-6.columns
+          .large-12.columns
             =f.input :annotation, prompt: t('simple_form.prompts.advertisement_sale_book.annotation'), label_html: tooltip(t("sale_books.new.forms.tooltips.annotation")), input_html: {class: 's2'}
         =f.input :title, label_html: tooltip(t("sale_books.new.forms.tooltips.title"))
         =f.input :description, label_html: tooltip(t("sale_books.new.forms.tooltips.description")), input_html: {class: 'tinymce', rows: 3}

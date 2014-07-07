@@ -1,17 +1,17 @@
 -price = number_to_currency(@sale_book.price, :unit => @sale_book.currency.text)
 -content_for :title, t('sale_books.show.title_page', book: @sale_book.book.title, price: price)
 .row
-  .small-12.columns
+  .small-24.columns
     %h1.sale_book_title= t'sale_books.show.title', book: @sale_book.book.title
 .row
-  .small-12.large-6.columns
+  .small-24.large-12.columns
     %a.show-for-small.button.success{'href'=>'#', 'data-reveal-id'=>'buy_book'}=t'sale_books.show.buy'
     .panel#book_infos
       .row
-        .large-4.columns
+        .large-8.columns
           =book_image(@sale_book.book)
           %p= rating_for @sale_book.book, 'note', star: 5
-        .large-8.columns
+        .large-16.columns
           %h3= @sale_book.book.title
           %h4= t'sale_books.show.authors', authors: @sale_book.book.authors
           -if @sale_book.book.publisher || @sale_book.book.published_date
@@ -30,7 +30,7 @@
               -#=@sale_book.book.description.truncate(100)
               -#%a.tiny.button.secondary#show_description{href: "#"} plus
               =@sale_book.book.description
-  .small-12.large-6.columns
+  .small-24.large-12.columns
     %ul.pricing-table
       -if can?(:update, @sale_book)
         %li.cta-button
@@ -66,7 +66,7 @@
 -#Si il y a d'autres ventes pour ce livre
 -if @sale_book.book.sale_books.count>1
   .row
-    .small-12.columns
+    .small-24.columns
       %h4.subheader= t'sale_books.show.others_sales', book: @sale_book.book.title
       %table
         %thead

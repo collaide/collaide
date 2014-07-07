@@ -8,7 +8,7 @@
   -if @user.advertisements.empty?
     =t'users.advertisements.no-advertisement', user: @user.to_s
   -else
-    .small-12.columns#advertisements
+    .small-24.columns#advertisements
       %ul.large-block-grid-2
         -@parity=0
         =render @user.advertisements

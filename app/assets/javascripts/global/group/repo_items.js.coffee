@@ -194,7 +194,7 @@ file_folder = () ->
         console.log("p=#{position}, tot=#{total}, perc=#{percent}")
         elem.find('.progress-bar-meter').css('width', "#{percent}%")
         if percent == 100
-          elem.html('<div class="columns small-12"><p>Traitement du fichier en cours<img src="/assets/loading.gif" width="50" height="50"/></p></div>')
+          elem.html('<div class="columns small-24"><p>Traitement du fichier en cours<img src="/assets/loading.gif" width="50" height="50"/></p></div>')
       complete: () ->
         elem.remove()
         console.log('fini')

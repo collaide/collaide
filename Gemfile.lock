@@ -20,15 +20,15 @@ GIT
 
 GIT
   remote: git://github.com/ctran/annotate_models.git
-  revision: c60fa282d74051e2fb5d41b600f919a39d9edcb4
+  revision: 9634ea6e67851d4a9a4d0b89597a6a9d3fc4d1f4
   specs:
-    annotate (2.6.3)
+    annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 0af41dfdcab1f3974814d27d0b6f32929a0c682d
+  revision: 875f1efb8b49d54de530e65c59c203ad87acc978
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -45,7 +45,7 @@ GIT
 
 GIT
   remote: git://github.com/nebirhos/activeadmin-sortable-tree.git
-  revision: d4f28e8d0700afa5646b8a7dbaaf89ac3b47383e
+  revision: 77a59c351e3f4d4ba2429188da3ff6f677092140
   branch: master
   specs:
     activeadmin-sortable-tree (0.0.1)
@@ -54,7 +54,7 @@ GIT
 
 GIT
   remote: https://github.com/codahale/bcrypt-ruby.git
-  revision: f167f92c702ea6b01a9995e3089f49b95c34eecb
+  revision: 8e82ed61074496b406bc5f5ac43bce16ed8ad822
   specs:
     bcrypt (3.1.7)
 
@@ -152,6 +152,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    colorize (0.7.3)
     commands (0.2.1)
       rails (>= 3.2.0)
     compass (0.12.6)
@@ -165,6 +166,7 @@ GEM
       currencies (~> 0.4.2)
     country_select (1.3.1)
       countries (= 0.9.3)
+    crass (0.2.0)
     cucumber (1.3.15)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
@@ -196,7 +198,7 @@ GEM
       activesupport (>= 3.2)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    execjs (2.0.2)
+    execjs (2.2.0)
     factory_girl (4.1.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.1.0)
@@ -215,13 +217,13 @@ GEM
     foundation-icons-sass-rails (3.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
-    foundation-rails (5.2.2.0)
+    foundation-rails (5.3.0.1)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
-    friendly_id (5.0.3)
+    friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     fssm (0.2.10)
-    geocoder (1.2.1)
+    geocoder (1.2.2)
     gherkin (2.12.2)
       multi_json (~> 1.3)
     globalize (4.0.1)
@@ -240,7 +242,7 @@ GEM
       em-websocket (~> 0.5)
       guard (~> 2.0)
       multi_json (~> 1.8)
-    guard-rspec (4.2.9)
+    guard-rspec (4.2.10)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
     guard-spork (1.5.1)
@@ -252,16 +254,16 @@ GEM
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
-    hashie (2.1.1)
+    hashie (2.1.2)
     hike (1.2.3)
     http_parser.rb (0.6.0)
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.6.9)
-    inherited_resources (1.4.1)
+    inherited_resources (1.5.0)
       has_scope (~> 0.6.0.rc)
-      responders (~> 1.0.0.rc)
+      responders (~> 1.0)
     innertube (1.1.0)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -278,11 +280,11 @@ GEM
       railties (>= 3.2.16)
     json (1.8.1)
     jwt (1.0.0)
-    kaminari (0.15.1)
+    kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     language_list (1.0.0)
-    listen (2.7.5)
+    listen (2.7.9)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -291,15 +293,15 @@ GEM
       logstash-event (~> 1.1.0)
       request_store
     lorem-ipsum (0.1.1)
-    lumberjack (1.0.5)
+    lumberjack (1.0.7)
     magic_encoding (0.0.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mailboxer (0.11.0)
+    mailboxer (0.12.1)
       carrierwave (>= 0.5.8)
       foreigner (>= 0.9.1)
-      rails (> 3.0.0)
+      rails (>= 3.2.0)
     meta_request (0.3.0)
       callsite
       rack-contrib
@@ -322,6 +324,8 @@ GEM
     net-ssh (2.9.1)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
+    nokogumbo (1.1.9)
+      nokogiri
     oauth2 (0.9.4)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -353,13 +357,13 @@ GEM
     pg (0.17.1)
     polyamorous (1.0.0)
       activerecord (>= 3.0)
-    polyglot (0.3.4)
-    pry (0.9.12.6)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
+    polyglot (0.3.5)
+    pry (0.10.0)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
       slop (~> 3.4)
     psych (2.0.5)
-    quiet_assets (1.0.2)
+    quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-canonical-host (0.1.0)
@@ -402,13 +406,13 @@ GEM
       i18n
       polyamorous (~> 1.0.0)
     rb-fsevent (0.9.4)
-    rb-inotify (0.9.4)
+    rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     redis (3.0.7)
     redis-namespace (1.4.1)
       redis (~> 3.0.4)
-    request_store (1.0.5)
-    responders (1.0.0)
+    request_store (1.0.6)
+    responders (1.1.0)
       railties (>= 3.2, < 5)
     resque (1.25.2)
       mono_logger (~> 1.0)
@@ -416,7 +420,7 @@ GEM
       redis-namespace (~> 1.3)
       sinatra (>= 0.9.2)
       vegas (~> 0.1.2)
-    resque-web (0.0.5)
+    resque-web (0.0.6)
       coffee-rails
       jquery-rails
       resque
@@ -426,26 +430,32 @@ GEM
       actionmailer (>= 3.0)
     riddle (1.5.11)
     route_translator (3.2.2)
-    rspec (2.14.1)
-      rspec-core (~> 2.14.0)
-      rspec-expectations (~> 2.14.0)
-      rspec-mocks (~> 2.14.0)
-    rspec-core (2.14.8)
-    rspec-expectations (2.14.5)
-      diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.14.6)
-    rspec-rails (2.14.2)
+    rspec (3.0.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+    rspec-core (3.0.2)
+      rspec-support (~> 3.0.0)
+    rspec-expectations (3.0.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.0.0)
+    rspec-mocks (3.0.2)
+      rspec-support (~> 3.0.0)
+    rspec-rails (3.0.1)
       actionpack (>= 3.0)
-      activemodel (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-core (~> 2.14.0)
-      rspec-expectations (~> 2.14.0)
-      rspec-mocks (~> 2.14.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+      rspec-support (~> 3.0.0)
+    rspec-support (3.0.2)
     ruby-graphviz (1.0.9)
-    rubyzip (1.1.3)
-    sanitize (2.1.0)
+    rubyzip (1.1.4)
+    sanitize (3.0.0)
+      crass (~> 0.2.0)
       nokogiri (>= 1.4.4)
+      nokogumbo (= 1.1.9)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -481,15 +491,13 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.9)
-    sshkit (1.4.0)
+    sshkit (1.5.1)
+      colorize
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-      term-ansicolor
     subexec (0.2.3)
     syntax-highlighter-rails (3.0.83.1.1)
       railties
-    term-ansicolor (1.3.0)
-      tins (~> 1.0)
     thinking-sphinx (3.0.6)
       activerecord (>= 3.1.0)
       builder (>= 2.1.2)
@@ -497,11 +505,10 @@ GEM
       middleware (>= 0.1.0)
       riddle (>= 1.5.9)
     thor (0.19.1)
-    thread_safe (0.3.3)
+    thread_safe (0.3.4)
     tilt (1.4.1)
     timers (1.1.0)
-    tins (1.3.0)
-    tinymce-rails (4.0.26)
+    tinymce-rails (4.1.0)
       railties (>= 3.1.1)
     tinymce-rails-langs (4.20140129)
       tinymce-rails (~> 4.0)

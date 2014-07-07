@@ -1,6 +1,6 @@
 <li id="item-<%= item.id %>" class="an-item">
     <div class="row">
-        <div class="small-4 columns item-name">
+        <div class="small-8 columns item-name">
             <%if(item.is_folder) {%>
             <i class="fi-folder"/>
             <a href="<%= item.url %>.json" data-remote="true" data-no-turbolink><%= item.name %></a>
@@ -9,7 +9,7 @@
             <a href="<%= item.download %>"><%= item.name %></a>
             <% } %>
         </div>
-        <div class="small-8 columns">
+        <div class="small-16 columns">
             <ul class="button-group">
             <%if(item.is_folder) {%>
                 <li>

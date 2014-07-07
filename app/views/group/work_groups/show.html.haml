@@ -2,7 +2,7 @@
 =render(:layout => 'group/layouts/layout') do
   %h1= @group.name
   .row
-    .columns.small-12
+    .columns.small-24
       - @activities.each do |activity|
         .activity
           -# :specification says if it is specific for group or general, etc

@@ -3,31 +3,31 @@
   -if current_user.nil?
     .signup-panel
       .row
-        .columns.large-offset-1.large-8
+        .columns.large-offset-1.large-16
           %h1= t('static_pages.home.title.h1', app_name: t('app_name_long'))
           %ul.no-bullet
             -t('static_pages.home.title.modules').each_line do |a_line|
               %li= a_line
           %h3= t'static_pages.home.title.subheader'
-        .columns.large-3
+        .columns.large-6
           = render 'devise/form/sign_up'
     .row.text-center
-      .medium-4.large-4.columns
+      .medium-8.large-8.columns
         %a{href:group_groups_path}
           =image_tag('pictograms/10.png',size: "160x160")
           %h3= t'static_pages.home.work_groups.title'
         %p= t'static_pages.home.work_groups.description'
-      .medium-4.large-4.columns
+      .medium-8.large-8.columns
         %a{href: document_documents_path}
           =image_tag('pictograms/4.png', size: "160x160")
           %h3= t'static_pages.home.documents.title'
         %p= t'static_pages.home.documents.description'
-      .medium-4.large-4.columns
+      .medium-8.large-8.columns
         %a{href: advertisement_advertisements_path}
           =image_tag('pictograms/7.png',size: "160x160")
           %h3=t'static_pages.home.advertisements.title'
         %p= t'static_pages.home.advertisements.description'
-      -#.medium-3.large-3.columns
+      -#.medium-6.large-6.columns
         =link_to(image_tag('pictograms/3.png',size: "160x160"), group_groups_path)
         %h3.subheader Partage de fichiers
         %p Chaque groupe de travail dispose d'une boite de dépôt de fichiers pour partager facilement vos travaux avec vos collègues !
@@ -35,7 +35,7 @@
     -#blackboard
       -###### Fait par Yves ################################
       .row
-        .columns.small-12
+        .columns.small-24
           .board-corner-top-left.left
           .board-corner-top-right.right
           .board-top
@@ -48,7 +48,7 @@
                 -current_user.notifications.each do |a_notif|
                   %li= a_notif.print_message
       .row
-        .columns.small-12
+        .columns.small-24
           .board-corner-bottom-left.left
           .board-corner-bottom-right.right
           .board-bottom
@@ -56,10 +56,10 @@
     -##### Fait par NUMA ################################
     -#.connected-panel
       .row
-        .columns.small-1
+        .columns.small-2
           .user
             =link_to(image_tag(current_user.avatar), current_user, class: 'th')
-        .columns.small-11.small-centered
+        .columns.small-22.small-centered
           %h2.text-center= t('.connected_panel.title')
           -if current_user.notifications.empty?
             %h4.text-center= t('.connected_panel.no_notifications')
@@ -68,7 +68,7 @@
               -current_user.notifications.each do |a_notif|
                 %li= a_notif.print_message
   .row
-    .columns.small-12
+    .columns.small-24
       %h4
         -if current_user.nil?
           = t'static_pages.home.site_activities'
@@ -77,7 +77,7 @@
 
       = render_activity @activities, layout: 'activity', locals: {specification: nil}
   -#.row
-    .columns.large-4
+    .columns.large-8
       %h4.last-title#doc
         =link_to t('.last_doc.h4'), document_documents_path
       .last-panel
@@ -88,7 +88,7 @@
         %p.text-right
           = link_to t('.last_doc.all'), document_documents_path
         =link_to t('.last_doc.button'), new_document_document_path, class: 'button secondary'
-    .columns.large-4
+    .columns.large-8
       %h4.last-title#ads
         =link_to t('.last_ads.h4'), advertisement_advertisements_path
       .last-panel
@@ -99,7 +99,7 @@
         %p.text-right
           = link_to t('.last_ads.all'), advertisement_advertisements_path
         =link_to t('.last_ads.button'), new_advertisement_advertisement_path, class: 'button secondary'
-    .columns.large-4
+    .columns.large-8
       %h4.last-title#news
         =link_to t('.last_news.h4'), blog_path
       .last-panel

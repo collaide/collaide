@@ -7,9 +7,9 @@
   =simple_form_for(@contact, url: send_email_contact_path) do |f|
     .form-inputs
       .row
-        .columns.large-6
+        .columns.large-12
           =f.input :subject
-        .columns.large-6
+        .columns.large-12
           =f.input :email
       =f.input :content, as: :text
     .form-actions

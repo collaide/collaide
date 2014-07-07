@@ -3,7 +3,7 @@
     -unread = 'unread'
   -else
     -unread = 'read'
-  .small-12.columns
+  .small-24.columns
     %h5=link_to conversation.subject, message_path(conversation)
     %dl.sub-nav
       %dt=t'messages.index.with'
@@ -12,10 +12,10 @@
           %dd=link_to(r.to_s, r)
     %blockquote.message{class:unread}
       .row
-        .large-1.columns.hide-for-small
+        .large-2.columns.hide-for-small
           %a{href: message_path(conversation),class: 'th'}
             =image_tag conversation.last_message.sender.avatar.mini
-        .large-11.columns
+        .large-22.columns
           %h6.subheader=cite_a_part(conversation.last_message.body, '', 100)
           %cite
             =link_to(conversation.last_message.sender.to_s, conversation.last_message.sender)

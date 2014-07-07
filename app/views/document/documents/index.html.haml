@@ -1,27 +1,27 @@
 -# coding: UTF-8
 .row
-  .columns.small-12
+  .columns.small-24
     .row
-      .small-12.large-9.columns
+      .small-24.large-18.columns
         %h1#doc-title-index= t 'document.documents.index.title'
         %blockquote= t('document.documents.index.blockquote')
-      .small-12.large-3.columns#new-book
+      .small-24.large-6.columns#new-book
         =link_to t('.new_link'), new_document_document_path, class: 'expand button'
     -#Formulaire de recherche
     .row
-      .small-12.columns
+      .small-24.columns
         %form{action: document_documents_path, method: :get, class: 'custom'}
           .row.collapse
-            .large-3.small-12.columns
+            .large-6.small-24.columns
               =label_tag :search, t('document.documents.index.forms.search.label'), id: 'important-label'
-            .large-7.small-7.columns
+            .large-14.small-14.columns
               =search_field_tag :search, @searched_value, autofocus: true, placeholder: t('document.documents.index.search_placeholder')
-            .large-2.small-5.columns
+            .large-4.small-10.columns
               %ul.button-group.postfix.no-border
                 %li.full= submit_tag t('document.documents.index.forms.search.submit'), class: 'button small secondary', name: nil, id: 'go-search'
                 %li= link_to('', '#', class: 'button secondary small fi-zoom-in medium', id: 'show_advanced_search')
     .row.hide#advanced_search
-      .small-12.columns
+      .small-24.columns
         %fieldset
           %legend= t('.fieldset_legend.advanced_search')
           %form{action: search_document_documents_path, method: :get}
@@ -29,29 +29,29 @@
             =hidden_field_tag :url_for_ajax, @url_for_js
             =hidden_field_tag :auto_complete_url, autocomplete_document_documents_path
             .row
-              .large-3.small-12.columns
+              .large-6.small-24.columns
                 =label_tag :type, t('document.documents.index.forms.order.label_type')
                 =select_tag :type, options_from_collection_for_select(Document::Type.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_type'), class: 's2'
-              .large-3.small-12.columns
+              .large-6.small-24.columns
                 =label_tag :domains, t('document.documents.index.forms.order.label_domains')
                 =select_tag :domains, options_from_collection_for_select(Domain.includes(:translations).order('name ASC'), :id, :name), prompt: t('document.documents.index.forms.order.select_domains'), class: 's2'
-              .large-3.small-12.columns
+              .large-6.small-24.columns
                 =label_tag :order, t('document.documents.index.forms.order.label_order')
                 =select_tag :order, options_for_select([[t('document.documents.index.forms.order.select.newest'), 0], [t('document.documents.index.forms.order.select.notest'), 2], [t('document.documents.index.forms.order.select.hits'), 3], [t('document.documents.index.forms.order.select.alphabetic'), 1]]), class: 's2'
-              .large-3.small-12.columns
+              .large-6.small-24.columns
                 =label_tag :datepicker, t('document.documents.index.forms.order.label_datepicker')
                 =text_field_tag :datepicker, nil, class: :datepicker
             %noscript
               %input{type: 'submit', value: 'Afficher', id: 'print-criter', class: 'button'}
     -#afficher la pagination à cet endroit seulement pour les ordis
     .row
-      .small-12.columns#paginate
+      .small-24.columns#paginate
         =paginate @document_documents, remote: true
     -#le contenu
     .row
       %p#no-doc
       -#les documents
-      .small-12.columns
+      .small-24.columns
         -if @document_documents.empty?
           %p= t 'document.documents.index.no_document'
         -else
@@ -61,5 +61,5 @@
                 -@parity=0
                 =render @document_documents
     .row
-      .small-12.columns#paginate1
+      .small-24.columns#paginate1
         =paginate @document_documents, remote: true

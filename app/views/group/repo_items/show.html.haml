@@ -9,20 +9,20 @@
       -@repo_item.path.each do |path|
         %li.item-name=link_to path.name, group_work_group_repo_item_path(@group, path)
   .row
-    .small-12.columns.hide#press-paper
+    .small-24.columns.hide#press-paper
       .panel
         %h5 Presse-papier
         #press-paper-content
-    .small-12.columns
+    .small-24.columns
       .panel
         .row
-          .large-6.columns
+          .large-12.columns
             %h5.panel-subtitle= t'repository_manager.form.new.repo_file.title'
             =render 'form_file', object: @group, repo_item: @repo_item
-          .large-6.columns
+          .large-12.columns
             %h5.panel-subtitle= t'repository_manager.form.new.repo_folder.title'
             =render 'form_folder', object: @group, repo_item: @repo_item
-    .small-12.columns
+    .small-24.columns
       .panel#panel-items
         .p
           = t('group.groups.index.loading')

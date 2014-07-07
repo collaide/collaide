@@ -5,6 +5,6 @@
   =render 'group/topics/form'
   -unless @topics.empty?
     .row
-      .columns.small-12
+      .columns.small-24
         %h4.subheader= t('group.topics.index.last_discussions')
         =render partial: 'topics/topic', collection: @topics, as: 'topic', locals: {limit: 5}

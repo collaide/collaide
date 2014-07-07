@@ -6,13 +6,13 @@
     =f.input :asset, label: t('simple_form.labels.c_file_c_file.file'), label_html: tooltip(t('document.documents.forms.tooltips.file'))
     =f.input :asset_cache, as: :hidden
     .row
-      =f.input :author, required: false, label_html: tooltip(t('document.documents.forms.tooltips.author')), wrapper_html: {class: 'columns large-5'}
-      =f.input :number_of_pages, default: 1, label_html: tooltip(t('document.documents.forms.tooltips.number_of_pages')), wrapper_html: {class: 'columns large-2'}
-      =f.input :realized_at, input_html: {id: 'populate-datepicker'}, required: true, label_html: tooltip(t('document.documents.forms.tooltips.realized_at')), wrapper_html: {class: 'columns large-5'}
+      =f.input :author, required: false, label_html: tooltip(t('document.documents.forms.tooltips.author')), wrapper_html: {class: 'columns large-10'}
+      =f.input :number_of_pages, default: 1, label_html: tooltip(t('document.documents.forms.tooltips.number_of_pages')), wrapper_html: {class: 'columns large-4'}
+      =f.input :realized_at, input_html: {id: 'populate-datepicker'}, required: true, label_html: tooltip(t('document.documents.forms.tooltips.realized_at')), wrapper_html: {class: 'columns large-10'}
     .row
-      =f.input :language, prompt: t("document.documents.form.choose_language"), label_html: tooltip(t('document.documents.forms.tooltips.language')), wrapper_html: {class: 'columns large-4'}, input_html: {class: 's2'}
-      =f.input :study_level, prompt: t('document.documents.form.choose_study_level'), label_html: tooltip(t('document.documents.forms.tooltips.study_level')), wrapper_html: {class: 'columns large-4'}, input_html: {class: 's2'}
-      =f.association :document_type, prompt: t('document.documents.form.choose_document_type'), collection: Document::Type.includes(:translations), label_html: tooltip(t('document.documents.forms.tooltips.type')), wrapper_html: {class: 'columns large-4'}, input_html: {class: 's2'}
+      =f.input :language, prompt: t("document.documents.form.choose_language"), label_html: tooltip(t('document.documents.forms.tooltips.language')), wrapper_html: {class: 'columns large-8'}, input_html: {class: 's2'}
+      =f.input :study_level, prompt: t('document.documents.form.choose_study_level'), label_html: tooltip(t('document.documents.forms.tooltips.study_level')), wrapper_html: {class: 'columns large-8'}, input_html: {class: 's2'}
+      =f.association :document_type, prompt: t('document.documents.form.choose_document_type'), collection: Document::Type.includes(:translations), label_html: tooltip(t('document.documents.forms.tooltips.type')), wrapper_html: {class: 'columns large-8'}, input_html: {class: 's2'}
     =f.association :domains, collection: Domain.includes(:translations).order('name ASC'), label_html: tooltip(t('document.documents.forms.tooltips.domains')), input_html: {class: 's2'}
   .form-actions
     =f.button :submit, t('document.documents.form.submit')

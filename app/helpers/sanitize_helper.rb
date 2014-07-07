@@ -33,7 +33,8 @@ module SanitizeHelper
 
     def get_custom_relaxed_inner_config
       @inner_config = get_custom_relaxed_config
-      @inner_config[:attributes][:all].push('style')
+      p @inner_config[:attributes][:all].inspect
+      @inner_config[:attributes][:all].add('style')
       @inner_config
     end
 

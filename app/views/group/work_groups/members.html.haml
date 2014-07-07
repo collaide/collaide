@@ -4,11 +4,11 @@
   -add_breadcrumb t('group.work_groups.menu.members'), group_work_group_members_path(@group)
   %h1= t('group.members.title_page', group: @group.name)
   .row
-    .columns.small-12.large-6
+    .columns.small-24.large-12
       .panel
         %h3= t('group.members.invitation_form')
         =render partial: 'group/invitations/form'
-    .columns.small-12.large-6
+    .columns.small-24.large-12
       .panel
         %h3= t('group.members.invitation_list')
         -if @group.p_or_l_group_invitations.empty? and @group.p_or_l_email_invitations.empty?
@@ -16,21 +16,21 @@
         -else
           -@group.p_or_l_group_invitations.each do |an_invitation|
             .row
-              .columns.medium-6
+              .columns.medium-12
                 -if an_invitation.receiver.is_a? User
                   =image_and_name_for(an_invitation.receiver)
                 -else
                   = link_to an_invitation.receiver, an_invitation.receiver
-              .columns.medium-6
+              .columns.medium-12
                 = link_to t('group.members.delete_invitation'), group_work_group_invitation_path(@group, an_invitation), method: :delete, data: {confirm: t('confirm')}, class: 'button small secondary'
           -@group.p_or_l_email_invitations.each do |email_invit|
             .row
-              .columns.medium-6
+              .columns.medium-12
                 = email_invit.email
-              .columns.medium-6
+              .columns.medium-12
                 =link_to t('group.members.delete_invitation'), group_work_group_email_invitation_path(work_group_id: @group, id: email_invit), method: :delete, data: {confirm: t('confirm')}, class: 'button small secondary'
   .row
-    .columns.small-12
+    .columns.small-24
       %h3= t('group.members.members_list')
       -if @group.members.empty?
         =t'group.members.empty'

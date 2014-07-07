@@ -3,19 +3,19 @@
 -#=link_to t('group.groups.index.new_link'), new_group_group_path, class: 'button expand'
 %blockquote= t 'group.groups.index.description'
 .row
-  .columns.large-4
+  .columns.large-8
     .panel
       %h3.panel-subtitle= t 'group.groups.index.title_panel_create'
       =render "/group/work_groups/form", edit: false
-  .columns.large-8.text-center
+  .columns.large-16.text-center
     .panel
       .row
         -if @groups.empty?
-          .columns.large-6
+          .columns.large-12
             =image_tag('pictograms/10.png',size: "160x160")
             %h3.subheader= t'static_pages.home.work_groups.title'
             %p= t'static_pages.home.work_groups.description'
-          .columns.large-6
+          .columns.large-12
             =image_tag('pictograms/3.png',size: "160x160")
             %h3.subheader= t'static_pages.home.clouds.title'
             %p= t'static_pages.home.clouds.description'

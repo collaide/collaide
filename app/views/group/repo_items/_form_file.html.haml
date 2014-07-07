@@ -1,8 +1,8 @@
 =form_tag(create_file_group_work_group_repo_items_path(object, format: :json), :method => :post, multipart: true, remote: true, id: 'file-uploader') do
   .row
-    .small-12.columns
+    .small-24.columns
       =file_field_tag 'repo_file[file]', multiple: false
-    .small-12.columns
+    .small-24.columns
       .row#all-progress-bar
       %noscript
         =submit_tag(t('repository_manager.form.new.repo_file.submit'), class: "button tiny", id: 'submit-file-form')

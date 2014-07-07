@@ -39,8 +39,8 @@
   -#= render 'layouts/user_bar'
   %p
   -#.row
-    .columns.small-1
-    .columns.small-11
+    .columns.small-2
+    .columns.small-22
   -#if current_user
     #user-persistent-menu
       %h6 Mes groupes
@@ -48,18 +48,18 @@
         -current_user.groups.each do |g|
           %li=link_to g.name, g
   .row
-    #breadcrumb.columns.small-12
+    #breadcrumb.columns.small-24
       = render_breadcrumbs :builder => ::FoundationBreadcrumbsBuilder, :separator => "&raquo;"
   #flash-msg
   -unless flash.empty?
     .row
-      .columns.small-12
+      .columns.small-24
         -flash.each do |key, value|
           .alert-box{class: key, :'data-alert' =>  true}
             = value
             %a{href: '#', class: 'close'}= "&times;".html_safe
   .row#main-content
-    .columns.small-12
+    .columns.small-24
       -if current_user.nil? or current_user.sign_in_count < 2
         %blockquote.hide-for-small.unread
           %strong= t('all.beta')

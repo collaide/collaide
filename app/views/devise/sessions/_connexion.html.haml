@@ -1,5 +1,5 @@
 .row
-  .large-6.columns
+  .large-12.columns
     %h2= t "devise.sessions.new.sign_in"
     .panel
       - if devise_mapping.omniauthable?
@@ -9,7 +9,7 @@
           %i=t'devise.sessions.new.via_omniauth_info'
         .row
           - resource_class.omniauth_providers.each do |provider|
-            .large-6.columns
+            .large-12.columns
               -if provider.to_s.titleize == 'Google Oauth2'
                 = link_to t("devise.shared.links.sign_in_with_provider", provider: 'Google'), omniauth_authorize_path(resource_name, provider), class: 'button expand'
               -else
@@ -32,7 +32,7 @@
       - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
         = link_to t("devise.shared.links.didn_t_receive_unlock_instructions"), new_unlock_path(resource_name)
         %br/
-  .large-6.columns
+  .large-12.columns
     %h2= t "devise.sessions.new.sign_up"
     .panel
       %h4.panel-subtitle= t "devise.sessions.new.sign_up_info"

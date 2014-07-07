@@ -1,6 +1,6 @@
 %blockquote
   .row
-    .large-1.columns.hide-for-small
+    .large-2.columns.hide-for-small
       -if activity.key == 'user.create'
         -if activity.trackable
           %a{href: user_path(activity.trackable),class: 'th'}
@@ -9,7 +9,7 @@
         -if activity.owner
           %a{href: user_path(activity.owner),class: 'th'}
             =image_tag activity.owner.avatar.mini
-    .large-11.columns
+    .large-22.columns
       =yield
       %cite
         -action = activity.key.split('.').last

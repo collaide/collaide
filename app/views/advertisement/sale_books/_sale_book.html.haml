@@ -11,9 +11,9 @@
         =sale_book.user.id
       .sale_book_subject_content
         =t('sale_books.buy.subject', book: sale_book.book.title)
-    .large-4.columns.small-12
+    .large-8.columns.small-24
       .row
-        .small-12.columns
+        .small-24.columns
           %a.th{href: advertisement_sale_book_path(sale_book)}
             =book_image(sale_book.book)
           %br
@@ -21,12 +21,12 @@
           =edit_link(sale_book, t('sale_books.show.edit'), 'button tiny secondary')
           -#%a.button.tiny.secondary{href: edit_advertisement_sale_book_path(sale_book)}=t'sale_books.show.edit'
       -#.row
-      -#  .small-12.columns
+      -#  .small-24.columns
       -#    %p
       -#      =raw("<span>#{t('advertisements.index.hits')}</span>")
       -#      =sale_book.hits
       #star
-    .small-12.columns.large-8
+    .small-24.columns.large-16
       %h3= link_to sale_book.title.truncate(80, separator: '', omission: '...'), sale_book
       %h6.ads-subtitle= link_to sale_book.book.title.truncate(80, separator: '', omission: '...'), sale_book
       -#%h6.subheader= t('sale_books.index.subtitle1', book:sale_book.book.title)
@@ -41,7 +41,7 @@
         %p= sale_book.book.description.truncate(200, separator: ' ', omission: ' ...')
       -else
         %p= t('sale_books.index.no_description')
-      .small-12.large-4
+      .small-24.large-8
         -# ATTENTION NE PAS CHANGER LE ID DU LINK DESSOUS, LIE AU JS DANS SALE_BOOK.JS
         -if current_user.nil?
           =link_to(t('sale_books.index.buy'), contact_book_messages_path(sale_book.id), class: 'button secondary small expand')
