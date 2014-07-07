@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class MessagesController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource
   include Concerns::PermissionConcern
 
   add_breadcrumb I18n.t("messages.index.breadcrumb"), :messages_path

@@ -15,9 +15,9 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.datepicker
-//= require jquery.ui.autocomplete
-//= require jquery.ui.datepicker-fr
+//= require jquery-ui/datepicker
+//= require jquery-ui/autocomplete
+//= require jquery-ui/datepicker-fr
 //= require tree.jquery
 //= require foundation
 //= require select2

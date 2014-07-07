@@ -25,7 +25,7 @@ $(function () {
   end
 
   def count_messages
-    @count_messages ||= current_user.mailbox.inbox.includes(:receipts).where('receipts.is_read' => false).count
+    @count_messages ||= current_user.mailbox.inbox.includes(:receipts).where('mailboxer_receipts.is_read' => false).count
   end
 
   def alert_for(news_count)

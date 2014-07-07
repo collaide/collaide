@@ -46,6 +46,7 @@ gem 'activeadmin-sortable-tree', :github => "nebirhos/activeadmin-sortable-tree"
 
 
 gem "activeadmin-globalize", github: 'collaide/activeadmin-globalize', branch: 'master'
+
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'paper_trail', '~> 3.0'
