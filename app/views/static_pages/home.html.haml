@@ -1,20 +1,30 @@
 #home
   -if current_user.nil?
     .row
-      .large-13.columns
+      .large-1.columns
+        &nbsp;
+      .large-13.columns.end
         %h2#index-title= t'static_pages.home.title.subheader'
     .row.text-center#show-modules
-      .large-8.columns
+      .large-1.columns
+        &nbsp;
+      .large-6.columns
         %h4=t'static_pages.home.documents.title'
-        %p=link_to t('static_pages.home.documents.link_to'), document_documents_path, class: 'std-button'
+        %p=link_to t('static_pages.home.documents.link_to'), document_documents_path, class: 'std-button expand'
         %p.text-left=link_to "Plus d'informations", '#'
-      .large-8.columns
+      .large-2.columns
+        &nbsp;
+      .large-6.columns
         %h4=t'static_pages.home.work_groups.title'
-        %p=link_to t('static_pages.home.work_groups.link_to'), document_documents_path, class: 'std-button'
+        %p=link_to t('static_pages.home.work_groups.link_to'), document_documents_path, class: 'std-button expand'
         %p.text-left=link_to "Plus d'informations", '#'
-      .large-8.columns
+      .large-2.columns
+        &nbsp;
+      .large-6.columns
         %h4=t'static_pages.home.advertisements.title'
-        %p=link_to t('static_pages.home.advertisements.link_to'), document_documents_path, class: 'std-button'
+        %p=link_to t('static_pages.home.advertisements.link_to'), document_documents_path, class: 'std-button expand'
         %p.text-left=link_to "Plus d'informations", '#'
+      .large-1.columns
+        &nbsp;
 
 

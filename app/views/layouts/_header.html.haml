@@ -1,69 +1,70 @@
-%nav.top-bar{'data-topbar' => ''}
-  %ul.title-area
-    / Title Area
-    %li.name
-      %h1= link_to t("app_name"), eval("root_#{I18n.locale}_path")
-    / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
-    %li.toggle-topbar.menu-icon
-      %a{href: "#"}
-        %span Menu
-  %section.top-bar-section
-    / Left Nav Section
-    %ul.left
-      - if user_signed_in?
-        %li.divider.hide-for-small
-        %li= link_to current_user.to_s, current_user
-      %li.divider
-      - unless user_groups.empty?
-        %li.has-dropdown
-          = link_to t('header.my_groups'), group_groups_path
-          %ul.dropdown
-            -user_groups.each do |group|
-              %li= link_to group, group_work_group_path(group)
-      -else
-        %li= link_to t("header.group"), group_groups_path
-      %li.divider
-      - if user_signed_in?
-        %li.has-dropdown
-          %a{href: "#"}
-            %i.fi-plus
-          %ul.dropdown
-            %li= link_to t("header.document"), document_documents_path
-            %li.divider
-            %li= link_to t("header.advertisement"), advertisement_advertisements_path
-      -else
-        %li= link_to t("header.document"), document_documents_path
+.contain-to-grid
+  %nav.top-bar{'data-topbar' => ''}
+    %ul.title-area
+      / Title Area
+      %li.name
+        %h1= link_to image_tag("collaide-logo.png"), eval("root_#{I18n.locale}_path")
+      / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+      %li.toggle-topbar.menu-icon
+        %a{href: "#"}
+          %span Menu
+    %section.top-bar-section
+      / Left Nav Section
+      -#%ul.left
+        - if user_signed_in?
+          %li.divider.hide-for-small
+          %li= link_to current_user.to_s, current_user
         %li.divider
-        %li= link_to t("header.advertisement"), advertisement_advertisements_path
-    / Right Nav Section
-    %ul.right
-      %li.divider.hide-for-small
-      - if user_signed_in?
-        -#%li.green= link_to t('header.notifications', count: alert_for(count_notifications)), notifications_path
-        %li
-          -count_notifications == 0 ? notifications_title = t('header.no_notification'): notifications_title = t('header.has_notification', count:count_notifications, num:count_notifications)
-          %a{href: notifications_path, title: notifications_title}
-            %span.fi-torsos-all
-              %span.hide-for-small=" #{alert_for(count_notifications)}"
-              %span.show-for-small= t('header.notifications', count: alert_for(count_notifications))
-        %li.divider.hide-for-small
-        -#%li= link_to t('header.inbox', count: alert_for(count_messages)), messages_path
-        %li
-          -count_messages == 0 ? inbox_title = t('header.no_inbox'): inbox_title = t('header.has_inbox', count:count_messages)
-          %a{href: messages_path, title:inbox_title}
-            %span.fi-mail
-              %span.hide-for-small=" #{alert_for(count_messages)}"
-              %span.show-for-small= t('header.inbox', count: alert_for(count_messages))
-        %li.divider.hide-for-small
-        %li.has-dropdown
-          %a{href: "#"}
-            %span.fi-widget
-              %span.show-for-small=t('header.user.settings')
-          %ul.dropdown
-            %li= link_to t("header.user.edit"), edit_user_registration_path
-            %li.divider
-            %li= link_to t("header.user.logout"), destroy_user_session_path, method: :delete
-      - else
-        %li.has-form= link_to(t("header.sign_up"), "#", class: "button")
-        %li.has-form= link_to(t("header.sign_in"), "#", class: "button")
-        -#%li.has-form= link_to(t("header.sign_in"), new_user_session_path, class: "button")
+        - unless user_groups.empty?
+          %li.has-dropdown
+            = link_to t('header.my_groups'), group_groups_path
+            %ul.dropdown
+              -user_groups.each do |group|
+                %li= link_to group, group_work_group_path(group)
+        -else
+          %li= link_to t("header.group"), group_groups_path
+        %li.divider
+        - if user_signed_in?
+          %li.has-dropdown
+            %a{href: "#"}
+              %i.fi-plus
+            %ul.dropdown
+              %li= link_to t("header.document"), document_documents_path
+              %li.divider
+              %li= link_to t("header.advertisement"), advertisement_advertisements_path
+        -else
+          %li= link_to t("header.document"), document_documents_path
+          %li.divider
+          %li= link_to t("header.advertisement"), advertisement_advertisements_path
+      / Right Nav Section
+      %ul.right
+        %li.hide-for-small
+        - if user_signed_in?
+          -#%li.green= link_to t('header.notifications', count: alert_for(count_notifications)), notifications_path
+          %li
+            -count_notifications == 0 ? notifications_title = t('header.no_notification'): notifications_title = t('header.has_notification', count:count_notifications, num:count_notifications)
+            %a{href: notifications_path, title: notifications_title}
+              %span.fi-torsos-all
+                %span.hide-for-small=" #{alert_for(count_notifications)}"
+                %span.show-for-small= t('header.notifications', count: alert_for(count_notifications))
+          %li.divider.hide-for-small
+          -#%li= link_to t('header.inbox', count: alert_for(count_messages)), messages_path
+          %li
+            -count_messages == 0 ? inbox_title = t('header.no_inbox'): inbox_title = t('header.has_inbox', count:count_messages)
+            %a{href: messages_path, title:inbox_title}
+              %span.fi-mail
+                %span.hide-for-small=" #{alert_for(count_messages)}"
+                %span.show-for-small= t('header.inbox', count: alert_for(count_messages))
+          %li.divider.hide-for-small
+          %li.has-dropdown
+            %a{href: "#"}
+              %span.fi-widget
+                %span.show-for-small=t('header.user.settings')
+            %ul.dropdown
+              %li= link_to t("header.user.edit"), edit_user_registration_path
+              %li.divider
+              %li= link_to t("header.user.logout"), destroy_user_session_path, method: :delete
+        - else
+          %li.has-form= link_to(t("header.sign_up"), "#", class: "up-button")
+          %li.has-form= link_to(t("header.sign_in"), "#", class: "in-button")
+          -#%li.has-form= link_to(t("header.sign_in"), new_user_session_path, class: "button")
