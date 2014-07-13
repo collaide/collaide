@@ -1,146 +1,30 @@
--#=image_tag 'home/essai1.jpg'
 #home
   -if current_user.nil?
-    .signup-panel
-      .row
-        .columns.large-offset-1.large-16
-          %h1= t('static_pages.home.title.h1', app_name: t('app_name_long'))
-          %ul.no-bullet
-            -t('static_pages.home.title.modules').each_line do |a_line|
-              %li= a_line
-          %h3= t'static_pages.home.title.subheader'
-        .columns.large-6
-          = render 'devise/form/sign_up'
-    .row.text-center
-      .medium-8.large-8.columns
-        %a{href:group_groups_path}
-          =image_tag('pictograms/10.png',size: "160x160")
-          %h3= t'static_pages.home.work_groups.title'
-        %p= t'static_pages.home.work_groups.description'
-      .medium-8.large-8.columns
-        %a{href: document_documents_path}
-          =image_tag('pictograms/4.png', size: "160x160")
-          %h3= t'static_pages.home.documents.title'
-        %p= t'static_pages.home.documents.description'
-      .medium-8.large-8.columns
-        %a{href: advertisement_advertisements_path}
-          =image_tag('pictograms/7.png',size: "160x160")
-          %h3=t'static_pages.home.advertisements.title'
-        %p= t'static_pages.home.advertisements.description'
-      -#.medium-6.large-6.columns
-        =link_to(image_tag('pictograms/3.png',size: "160x160"), group_groups_path)
-        %h3.subheader Partage de fichiers
-        %p Chaque groupe de travail dispose d'une boite de dépôt de fichiers pour partager facilement vos travaux avec vos collègues !
-  -else
-    -#blackboard
-      -###### Fait par Yves ################################
-      .row
-        .columns.small-24
-          .board-corner-top-left.left
-          .board-corner-top-right.right
-          .board-top
-          .board-content
-            %h2.text-center= t('.connected_panel.title')
-            -if current_user.notifications.empty?
-              %h4.text-center= t('.connected_panel.no_notifications')
-            -else
-              %ul.text-left
-                -current_user.notifications.each do |a_notif|
-                  %li= a_notif.print_message
-      .row
-        .columns.small-24
-          .board-corner-bottom-left.left
-          .board-corner-bottom-right.right
-          .board-bottom
-
-    -##### Fait par NUMA ################################
-    -#.connected-panel
-      .row
-        .columns.small-2
-          .user
-            =link_to(image_tag(current_user.avatar), current_user, class: 'th')
-        .columns.small-22.small-centered
-          %h2.text-center= t('.connected_panel.title')
-          -if current_user.notifications.empty?
-            %h4.text-center= t('.connected_panel.no_notifications')
-          -else
-            %ul.text-left
-              -current_user.notifications.each do |a_notif|
-                %li= a_notif.print_message
-  .row
-    .columns.small-24
-      %h4
-        -if current_user.nil?
-          = t'static_pages.home.site_activities'
-        -else
-          =t'static_pages.home.your_activities'
-
-      = render_activity @activities, layout: 'activity', locals: {specification: nil}
-  -#.row
-    .columns.large-8
-      %h4.last-title#doc
-        =link_to t('.last_doc.h4'), document_documents_path
-      .last-panel
-        %ul
-          -@documents.each do |a_doc|
-            %li
-              %h5.subheader= link_to "#{a_doc.title}, #{a_doc.description}".truncate(40, separator: '', omission: '... '), document_document_path(a_doc)
-        %p.text-right
-          = link_to t('.last_doc.all'), document_documents_path
-        =link_to t('.last_doc.button'), new_document_document_path, class: 'button secondary'
-    .columns.large-8
-      %h4.last-title#ads
-        =link_to t('.last_ads.h4'), advertisement_advertisements_path
-      .last-panel
-        %ul
-          -@ads.each do |an_ads|
-            %li
-              %h5.subheader= link_to "#{an_ads.book.title}, #{an_ads.book.description}".truncate(40, separator: '', omission: '... '), advertisement_sale_book_path(an_ads)
-        %p.text-right
-          = link_to t('.last_ads.all'), advertisement_advertisements_path
-        =link_to t('.last_ads.button'), new_advertisement_advertisement_path, class: 'button secondary'
-    .columns.large-8
-      %h4.last-title#news
-        =link_to t('.last_news.h4'), blog_path
-      .last-panel
-        %ul
-          -#@site_news.get_recent_posts(count: 5).get(:posts).each do |a_new|
-            -#%li
-              -#%h5.subheader= link_to "#{l a_new.date.to_date, format: :short} : #{a_new.title}".truncate(40, separator: '', omission: '... '), a_new.url
-        %p.text-right
-          -# TODO : change this !!!!
-          = link_to t('.last_news.all'), blog_path
-        =link_to t('.last_news.button'), '', class: 'button secondary'
--#%h1= t('static_pages.home.h1.title', app_name: t('app_name_long'))
--#
--#.panel.callout.radius
--#  %h5 Collaide
--#  %p Partagez vos documents avec vos collègues de classe, échangez dans un espace privé, achetez et vendez vos livres scolaires d'occasions et bénéficiez de nombreuses fonctionnalités.
--#
--#Mise en ligne:
--#.radius.progress.success
--#  %span.meter{'style'=> 'width: 80%'}
--#
--#%p Pour la page d'accueil voila ce que je propose:
--#%ul
--#  %li Pour le visiteur qui n'est pas connecté:
--#  %ul
--#    %li Présentation en quelque mot du contenu du site
--#    %li Possibilité de s'inscrir ou de se connecté vu qu'on ne l'est pas
--#  %li Pour le membre connecté
--#  %ul
--#    %li Présentation des choses qui NOUS concerne
--#    %li Actualité des établissements, des groupes, de nos amis (document, annonce postée, etc..)
+    .row
+      .large-1.columns
+        &nbsp;
+      .large-13.columns.end
+        %h2#index-title= t'static_pages.home.title.subheader'
+    .row.text-center#show-modules
+      .large-1.columns
+        &nbsp;
+      .large-6.columns
+        %h4=t'static_pages.home.documents.title'
+        %p=link_to t('static_pages.home.documents.link_to'), document_documents_path, class: 'std-button expand'
+        %p.text-left=link_to "Plus d'informations", '#'
+      .large-2.columns
+        &nbsp;
+      .large-6.columns
+        %h4=t'static_pages.home.work_groups.title'
+        %p=link_to t('static_pages.home.work_groups.link_to'), document_documents_path, class: 'std-button expand'
+        %p.text-left=link_to "Plus d'informations", '#'
+      .large-2.columns
+        &nbsp;
+      .large-6.columns
+        %h4=t'static_pages.home.advertisements.title'
+        %p=link_to t('static_pages.home.advertisements.link_to'), document_documents_path, class: 'std-button expand'
+        %p.text-left=link_to "Plus d'informations", '#'
+      .large-1.columns
+        &nbsp;
 
 
--#%ul{'data-orbit'=> true}
--#  %li
--#    %h4 Titre 1
--#    %p "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed facilisis sapien. Proin facilisis, erat in hendrerit scelerisque, libero tortor faucibus nunc, id condimentum tortor risus non lorem. Maecenas ullamcorper lorem ac porta dignissim. Integer ultrices elit mi, ac euismod felis lobortis id. Etiam vitae tellus leo. Praesent est diam, lacinia id urna vel, faucibus lacinia libero. Ut vitae diam sem. Cras sem purus, interdum id neque eget, tempor molestie erat. Maecenas auctor posuere felis eget accumsan. Suspendisse vel risus vitae justo malesuada auctor. Ut diam libero, tincidunt non nibh non, porttitor elementum dui. Donec blandit magna ornare mi tincidunt, rutrum interdum lacus rhoncus. Morbi sed imperdiet lacus, vitae placerat velit. Sed nec tellus vehicula, mattis lectus eu, convallis magna. Fusce est felis, dictum ac bibendum sed, vehicula malesuada diam. Etiam lacinia urna eget nibh accumsan, sed feugiat dui egestas. Duis laoreet est a malesuada tempus. Vivamus quis aliquam lacus. Aenean aliquam ipsum fermentum, sagittis neque non, suscipit lorem. Sed eu posuere est. Cras quis justo eget velit dapibus rhoncus. Curabitur tortor libero, elementum in nibh imperdiet, rutrum mollis lectus."
--#    .orbit-caption ...
--#  %li
--#    %h4 Titre 2
--#    %p "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed facilisis sapien. Proin facilisis, erat in hendrerit scelerisque, libero tortor faucibus nunc, id condimentum tortor risus non lorem. Maecenas ullamcorper lorem ac porta dignissim. Integer ultrices elit mi, ac euismod felis lobortis id. Etiam vitae tellus leo. Praesent est diam, lacinia id urna vel, faucibus lacinia libero. Ut vitae diam sem. Cras sem purus, interdum id neque eget, tempor molestie erat. Maecenas auctor posuere felis eget accumsan. Suspendisse vel risus vitae justo malesuada auctor. Ut diam libero, tincidunt non nibh non, porttitor elementum dui. Donec blandit magna ornare mi tincidunt, rutrum interdum lacus rhoncus. Morbi sed imperdiet lacus, vitae placerat velit. Sed nec tellus vehicula, mattis lectus eu, convallis magna. Fusce est felis, dictum ac bibendum sed, vehicula malesuada diam. Etiam lacinia urna eget nibh accumsan, sed feugiat dui egestas. Duis laoreet est a malesuada tempus. Vivamus quis aliquam lacus. Aenean aliquam ipsum fermentum, sagittis neque non, suscipit lorem. Sed eu posuere est. Cras quis justo eget velit dapibus rhoncus. Curabitur tortor libero, elementum in nibh imperdiet, rutrum mollis lectus."
--#    .orbit-caption ...
--#  %li
--#    .orbit-caption ...

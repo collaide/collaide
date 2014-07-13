@@ -39,15 +39,6 @@
   -#= render 'layouts/user_bar'
   %p
   -#.row
-    .columns.small-2
-    .columns.small-22
-  -#if current_user
-    #user-persistent-menu
-      %h6 Mes groupes
-      %ul
-        -current_user.groups.each do |g|
-          %li=link_to g.name, g
-  .row
     #breadcrumb.columns.small-24
       = render_breadcrumbs :builder => ::FoundationBreadcrumbsBuilder, :separator => "&raquo;"
   #flash-msg
@@ -60,7 +51,7 @@
             %a{href: '#', class: 'close'}= "&times;".html_safe
   .row#main-content
     .columns.small-24
-      -if current_user.nil? or current_user.sign_in_count < 2
+      -#-if current_user.nil? or current_user.sign_in_count < 2
         %blockquote.hide-for-small.unread
           %strong= t('all.beta')
           =raw(t'all.info', students: link_to(t('all.students'), about_path), contact: link_to(t('all.contact'), contact_path))
