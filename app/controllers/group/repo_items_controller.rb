@@ -1,10 +1,22 @@
 # -*- encoding : utf-8 -*-
 class Group::RepoItemsController < ApplicationController
   include Concerns::PermissionConcern
+  before_action do
+    # uncomment to disable requests is the form /fr/groupes/travaux/:work_group_id/repertoires...
+    # so html request respond to the above URIs and JSON request respond to /api/groups/:work_group_id/repo_items...
+    # respond_to do |format|
+    #   format.json do
+    #     unless request.fullpath.start_with? '/api'
+    #       render status: 400, text: 'use api instant'
+    #       return
+    #     end
+    #   end
+    # end
+  end
   #load_and_authorize_resource class: RepositoryManager::RepoItem
   before_action :find_the_group
   before_action :find_the_repo, only: [:download, :copy, :move, :rename]
-  add_breadcrumb I18n.t("group.groups.index.breadcrumb"),  :group_groups_path
+  add_breadcrumb I18n.t("group.groups.index.breadcrumb"), :group_groups_path
 
   # GET /group/work_groups/1
   # GET /group/work_groups/1.json
@@ -13,8 +25,8 @@ class Group::RepoItemsController < ApplicationController
 
     check_permission do
       @group.can_read?(@repo_item) or
-      (@repo_item.is_folder? and @group.can? :index, :files, current_user) or
-      (!@repo_item.is_folder? and @group.can? :read, :file, current_user)
+          (@repo_item.is_folder? and @group.can? :index, :files, current_user) or
+          (!@repo_item.is_folder? and @group.can? :read, :file, current_user)
     end
 
     if @repo_item.is_folder?
@@ -27,12 +39,12 @@ class Group::RepoItemsController < ApplicationController
   # Affiche le répertoire de base
   def index
     @repo_item = @group.root_repo_items.order(name: :asc).order(file: :asc)
-    check_permission{ @group.can?(:index, :files, current_user) }
+    check_permission { @group.can?(:index, :files, current_user) }
   end
 
   def create_file
     repo_item = RepositoryManager::RepoItem.find(params[:repo_file][:id]) if !params[:repo_file][:id].blank?
-    check_permission{ @group.can? :write, :file, current_user or @group.can_create? repo_item }
+    check_permission { @group.can? :write, :file, current_user or @group.can_create? repo_item }
     options = {source_folder: repo_item, sender: current_user}
     respond_to do |format|
       if @item = @group.create_file(params[:repo_file][:file], options)
@@ -40,7 +52,7 @@ class Group::RepoItemsController < ApplicationController
         format.json { render template: 'group/repo_items/create', status: :created }
       else
         format.html { redirect_to back, alert: t('repository_manager.errors.repo_file.not_created') }
-        format.json { render json: options[:errors],  status: :unprocessable_entity }
+        format.json { render json: options[:errors], status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +66,7 @@ class Group::RepoItemsController < ApplicationController
     repo_item = do_request(folder_params[:id]) do |id|
       RepositoryManager::RepoItem.find id
     end
-    check_permission{ @group.can? :write, :file, current_user or @group.can_create? repo_item }
+    check_permission { @group.can? :write, :file, current_user or @group.can_create? repo_item }
     options = {source_folder: repo_item, sender: current_user}
     respond_to do |format|
       if @item = @group.create_folder(params[:repo_folder][:name], options)
@@ -68,7 +80,7 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def download
-    check_permission{ @group.can? :read, :file, current_user or @group.can_read? @repo_item }
+    check_permission { @group.can? :read, :file, current_user or @group.can_read? @repo_item }
     # Pris chez Numa
     # méthode d'envoi de fichier :default -> pour le local
     if Rails.env = 'production'
@@ -87,17 +99,19 @@ class Group::RepoItemsController < ApplicationController
     p MIME::Types.type_for(path).inspect
 
     unless MIME::Types.type_for(path).empty?
-      send_file_options = { :type => MIME::Types.type_for(path).first.content_type, disposition: :inline, filename: @repo_item.name  }
+      send_file_options = {:type => MIME::Types.type_for(path).first.content_type, disposition: :inline, filename: @repo_item.name}
     else
-      send_file_options = { disposition: :inline, filename: @repo_item.name }
+      send_file_options = {disposition: :inline, filename: @repo_item.name}
     end
 
     case send_file_method
-      when :apache then send_file_options[:x_sendfile] = true
-      when :nginx then head(
-          :x_accel_redirect => path.gsub(Rails.root, ''),
-          #:content_type => send_file_options[:type]
-      ) and return
+      when :apache then
+        send_file_options[:x_sendfile] = true
+      when :nginx then
+        head(
+            :x_accel_redirect => path.gsub(Rails.root, ''),
+        #:content_type => send_file_options[:type]
+        ) and return
     end
 
     # on envoie le fichier
@@ -107,14 +121,14 @@ class Group::RepoItemsController < ApplicationController
 
   def destroy
     @repo_item = RepositoryManager::RepoItem.find(params[:id])
-    check_permission{ @group.can? :delete, :file, current_user or @group.can_destroy? @repo_item }
+    check_permission { @group.can? :delete, :file, current_user or @group.can_destroy? @repo_item }
 
     if @repo_item.is_folder?
-      notice = t'repository_manager.destroy.repo_folder.success', item: @repo_item.name
-      notice_failed = t'repository_manager.destroy.repo_folder.failed', item: @repo_item.name
+      notice = t 'repository_manager.destroy.repo_folder.success', item: @repo_item.name
+      notice_failed = t 'repository_manager.destroy.repo_folder.failed', item: @repo_item.name
     else
-      notice = t'repository_manager.destroy.repo_file.success', item: @repo_item.name
-      notice_failed = t'repository_manager.destroy.repo_folder.failed', item: @repo_item.name
+      notice = t 'repository_manager.destroy.repo_file.success', item: @repo_item.name
+      notice_failed = t 'repository_manager.destroy.repo_folder.failed', item: @repo_item.name
     end
     respond_to do |format|
       if @group.delete_repo_item(@repo_item)
@@ -122,17 +136,17 @@ class Group::RepoItemsController < ApplicationController
         format.json { render json: {notice: notice} }
       else
         format.html { redirect_to :back, alert: notice_failed }
-        format.json { render json: repo_item.errors, status: :unprocessable_entity}
+        format.json { render json: repo_item.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def copy
     copy_params = params.require(:repo_item).permit :id
-    target = do_request(copy_params[:id]) do  |id|
+    target = do_request(copy_params[:id]) do |id|
       RepositoryManager::RepoItem.find id
     end
-    check_permission{ @group.can? :write, :file, current_user or @group.can_update? target }
+    check_permission { @group.can? :write, :file, current_user or @group.can_update? target }
     respond_to do |format|
       if (@group.copy_repo_item(@repo_item, source_folder: target))
 
@@ -148,7 +162,7 @@ class Group::RepoItemsController < ApplicationController
     target = do_request(move_params[:id]) do |id|
       RepositoryManager::RepoFolder.find id
     end
-    check_permission{ @group.can? :write, :file, current_user or @group.can_update? target }
+    check_permission { @group.can? :write, :file, current_user or @group.can_update? target }
     respond_to do |format|
       if @group.move_repo_item @repo_item, source_folder: target
         format.json { render :show }
@@ -159,7 +173,7 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def rename
-    check_permission{ @group.can? :write, :file, current_user or @group.can_update? @repo_item }
+    check_permission { @group.can? :write, :file, current_user or @group.can_update? @repo_item }
     respond_to do |format|
       if @group.rename_repo_item @repo_item, params[:repo_item][:name]
         format.json { render :show }

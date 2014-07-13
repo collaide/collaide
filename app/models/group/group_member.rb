@@ -36,6 +36,11 @@ class Group::GroupMember < ActiveRecord::Base
     where(group: group, member_id: member.id, member_type: member.class.name).take
   end
 
+  def self.get_user_groups(user)
+    return nil if user.nil?
+    where(member_id: user.id, member_type: user.class.name)
+  end
+
   # Le membre qui l'a ajouté ou invité
   belongs_to :invited_or_added_by, polymorphic: true
 
