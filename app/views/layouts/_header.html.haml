@@ -3,11 +3,11 @@
     %ul.title-area
       / Title Area
       %li.name
-        %h1= link_to image_tag("collaide-logo.png"), eval("root_#{I18n.locale}_path")
+        %h1= link_to(image_tag("collaide-logo.svg", size: "90x316"), eval("root_#{I18n.locale}_path"))
       / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
       %li.toggle-topbar.menu-icon
         %a{href: "#"}
-          %span Menu
+          %span
     %section.top-bar-section
       / Left Nav Section
       -#%ul.left
@@ -65,6 +65,6 @@
               %li.divider
               %li= link_to t("header.user.logout"), destroy_user_session_path, method: :delete
         - else
-          %li.has-form= link_to(t("header.sign_up"), "#", class: "up-button")
-          %li.has-form= link_to(t("header.sign_in"), "#", class: "in-button")
+          %li.has-form= link_to(t("header.sign_up"), "#", class: "up-button right-off-canvas-toggle", id: 'header-sign-up-button')
+          %li.has-form= link_to(t("header.sign_in"), "#", class: "in-button right-off-canvas-toggle", id: 'header-sign-in-button')
           -#%li.has-form= link_to(t("header.sign_in"), new_user_session_path, class: "button")

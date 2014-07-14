@@ -36,26 +36,29 @@
     <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-23680876-1', 'collaide.com');ga('send', 'pageview');</script>
   / Vous êtes programmateur, webdesigner, graphiste, ou autre ? rejoignez l'équipe de collaide ! ==> contact@collaide.com
   = render 'layouts/header'
-  -#= render 'layouts/user_bar'
-  %p
-  -#.row
-    #breadcrumb.columns.small-24
-      = render_breadcrumbs :builder => ::FoundationBreadcrumbsBuilder, :separator => "&raquo;"
-  #flash-msg
-  -unless flash.empty?
-    .row
-      .columns.small-24
-        -flash.each do |key, value|
-          .alert-box{class: key, :'data-alert' =>  true}
-            = value
-            %a{href: '#', class: 'close'}= "&times;".html_safe
-  .row#main-content
-    .columns.small-24
-      -#-if current_user.nil? or current_user.sign_in_count < 2
-        %blockquote.hide-for-small.unread
-          %strong= t('all.beta')
-          =raw(t'all.info', students: link_to(t('all.students'), about_path), contact: link_to(t('all.contact'), contact_path))
-      = yield
+  .off-canvas-wrap{'data-offcanvas'=> ''}
+    .inner-wrap
+      = render 'layouts/user_bar'
+      %p
+      -#.row
+        #breadcrumb.columns.small-24
+          = render_breadcrumbs :builder => ::FoundationBreadcrumbsBuilder, :separator => "&raquo;"
+      #flash-msg
+      -unless flash.empty?
+        .row
+          .columns.small-24
+            -flash.each do |key, value|
+              .alert-box{class: key, :'data-alert' =>  true}
+                = value
+                %a{href: '#', class: 'close'}= "&times;".html_safe
+      .row#main-content
+        .columns.small-24
+          -#-if current_user.nil? or current_user.sign_in_count < 2
+            %blockquote.hide-for-small.unread
+              %strong= t('all.beta')
+              =raw(t'all.info', students: link_to(t('all.students'), about_path), contact: link_to(t('all.contact'), contact_path))
+          = yield
+      %a.exit-off-canvas
   .row#footer
     = render 'layouts/footer'
   = content_for :get_repo_items

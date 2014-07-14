@@ -98,7 +98,8 @@ $body-font-weight: 400;
 
 
   // $alert-color: #f04124;
-// $success-color: #43AC6A;
+$alert-color: #C54443;
+$success-color: #43AC6A;
 
 // We use these to control header font styles
 $header-font-family: $body-font-family;
@@ -673,8 +674,9 @@ $button-font-weight: 300;
 // $tabbar-header-margin: 0;
 
 // Off Canvas Menu Variables
-// $off-canvas-width: 250px;
-// $off-canvas-bg: #333;
+$off-canvas-width: 400px;
+//$off-canvas-width:33.33333%;
+$off-canvas-bg: #3D5164;
 
 // Off Canvas Menu List Variables
 // $off-canvas-label-padding: 0.3rem rem-calc(15);

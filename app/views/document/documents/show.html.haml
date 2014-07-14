@@ -1,13 +1,13 @@
 %h1= @document.title
 .row
   .columns.small-24.show-for-small
-    = link_to(t('document.documents.index.download'), document_document_download_path(document_document_id: @document), class: 'button success expand')
+    = link_to(t('document.documents.index.download'), document_document_download_path(document_document_id: @document), class: 'button success expand', 'data-no-turbolink' => '')
 
 -#infos documents et fichier
 .row
   .columns.large-16
     .panel
-      %a{href: document_document_download_path(document_document_id: @document), class: 'th wrap-text'}
+      %a{href: document_document_download_path(document_document_id: @document), class: 'th wrap-text', 'data-no-turbolink' => ''}
         =image_tag show_icon(@document), width: 100, height: 100
       %h2.panel-subtitle
         =raw(doc_sub_title(@document))
@@ -27,7 +27,7 @@
               = pluralize @document.note_average.qty, t('dico.personne')
               = @document.note_average.qty <= 1 ? t('document.documents.show.has_voted') : t('document.documents.show.have_voted')
           .columns.small-12.push-1.hide-for-small
-            = link_to(t('document.documents.index.download'), document_document_download_path(document_document_id: @document), class: 'button success')
+            = link_to(t('document.documents.index.download'), document_document_download_path(document_document_id: @document), class: 'button success', 'data-no-turbolink' => '')
   .columns.large-8
     .row
       .columns.small-24
