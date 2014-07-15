@@ -15,9 +15,6 @@ headerOffCanvas = () ->
       $('aside.right-off-canvas-menu').empty()
       $('aside.right-off-canvas-menu').html(newCanvasContent)
 
-$(document).on('close.fndtn.offcanvas', '[data-offcanvas]', alert 'salut'
-)
-
 $ ->
   # enable select2 js
   $('.s2').select2()

@@ -63,7 +63,6 @@
               =raw(t'all.info', students: link_to(t('all.students'), about_path), contact: link_to(t('all.contact'), contact_path))
           = yield
       %a.exit-off-canvas
-  .row#footer
-    = render 'layouts/footer'
+  = render 'layouts/footer'
   = content_for :get_repo_items
 </html>
