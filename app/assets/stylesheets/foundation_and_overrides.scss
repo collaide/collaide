@@ -147,6 +147,10 @@
   input[type="checkbox"], input[type="radio"] {
     margin-right: 20px;
   }
+  input {
+    background-color: $primary-light-color;
+    color: $secondary-color;
+  }
   .button {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -168,6 +172,9 @@
 
   input[type="checkbox"], input[type="radio"] {
     margin-right: 20px;
+  }
+  input {
+    background-color: $secondary-color;
   }
   .button {
     padding-top: 10px;

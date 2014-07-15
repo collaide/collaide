@@ -48,13 +48,13 @@
         #breadcrumb.columns.small-24
           = render_breadcrumbs :builder => ::FoundationBreadcrumbsBuilder, :separator => "&raquo;"
       #flash-msg
-      -unless flash.empty?
-        .row
-          .columns.small-24
-            -flash.each do |key, value|
-              .alert-box{class: key, :'data-alert' =>  true}
-                = value
-                %a{href: '#', class: 'close'}= "&times;".html_safe
+        -unless flash.empty?
+          .row
+            .columns.small-24
+              -flash.each do |key, value|
+                .alert-box{class: key, :'data-alert' =>  true}
+                  = value
+                  %a{href: '#', class: 'close'}= "&times;".html_safe
       .row#main-content
         .columns.small-24
           -#-if current_user.nil? or current_user.sign_in_count < 2
