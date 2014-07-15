@@ -182,7 +182,7 @@ fr:
         link_to: Accéder aux documents
         description: "Tous les types de documents étudiants sont accessibles gratuitement : Des notes de cours aux rapports de chimie en passant par les lettres de motivation."
       advertisements:
-        title: Achat et ventes de livres d'occasion
+        title: Achat et vente de livres d'occasion
         link_to: Accéder à la boutique
         description: Vendez ou achetez facilement des livres scolaires d'occasion. Nous vous mettons gratuitement en relation avec des personnes intéressées.
       last_doc:

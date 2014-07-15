@@ -1,0 +1,9 @@
+#header-sign-up-panel
+  %h3= t'devise.registrations.new.sign_up'
+  = simple_form_for(User.new, as: :user, :url => user_registration_path) do |f|
+    = f.input :email, autocomplete: 'off', placeholder: t('devise.form.new.email')
+    = f.input :name, autocomplete: 'off', required: false, placeholder: t('devise.form.new.name')
+    = f.input :password, autocomplete: 'off', required: false, placeholder: t('devise.form.new.password')
+    = f.input :password_confirmation, autocomplete: 'off', required: false, placeholder: t('devise.form.new.password_confirmation')
+
+    = f.button :submit, t("devise.registrations.new.sign_up"), class: 'std-button-i right'

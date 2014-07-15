@@ -82,6 +82,7 @@ $total-columns: 24;
 // Orange
 $thirty-color: #ffb700;
 $primary-color: #2C3E4F;
+$primary-light-color: #3D5164;
 $secondary-color: #F6F6F7;
 $link-color: #2980BA;
 $font-color: #363737;
@@ -676,7 +677,7 @@ $button-font-weight: 300;
 // Off Canvas Menu Variables
 $off-canvas-width: 400px;
 //$off-canvas-width:33.33333%;
-$off-canvas-bg: #3D5164;
+$off-canvas-bg: $primary-light-color;
 
 // Off Canvas Menu List Variables
 // $off-canvas-label-padding: 0.3rem rem-calc(15);

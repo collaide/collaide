@@ -38,7 +38,11 @@
   = render 'layouts/header'
   .off-canvas-wrap{'data-offcanvas'=> ''}
     .inner-wrap
-      = render 'layouts/user_bar'
+      #get-header-sign-up-panel.hide
+        =render 'devise/form/header_sign_up'
+      #get-header-sign-in-panel.hide
+        =render 'devise/form/header_sign_in'
+      = render 'layouts/right_off_canvas'
       %p
       -#.row
         #breadcrumb.columns.small-24
