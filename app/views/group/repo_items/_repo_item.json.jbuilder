@@ -1,5 +1,6 @@
 json.(repo_item, :id, :name, :file_size, :content_type)
 json.is_folder repo_item.is_folder?
+json.md5 Digest::MD5.file(repo_item.file.url).hexdigest unless repo_item.is_folder?
 json.owner do |json|
   json.(repo_item.owner, :id)
   json.name repo_item.owner.to_s
