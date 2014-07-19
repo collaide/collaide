@@ -35,15 +35,15 @@
 //= require syntax-highlighter-rails/shBrushSql
 /* TODO add all brushes : http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/ */
 /*//= require turbolinks*/
-//= require_tree .
+//= require_tree ./global/
+//= require_tree ./tinymce/
 
-$(function() {
-    $(document).foundation();
-    SyntaxHighlighter.all();
-});
 
 $(document).on('page:load', function() {
     $(document).foundation();
     SyntaxHighlighter.all();
 });
-
+$(function() {
+    $(document).foundation();
+    SyntaxHighlighter.all();
+});

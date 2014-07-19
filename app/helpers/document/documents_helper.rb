@@ -54,7 +54,8 @@ module Document::DocumentsHelper
   end
 
   def find_extension(document)
-    application_type = MIME::Types.type_for(document.asset.url).first.content_type
+    application_type = MIME::Types.type_for(document.asset.url).first
+    application_type = application_type.content_type if application_type
     doc_types = {
         image: %w(image/jpg image/jpeg image/jpeg image/png image/x-png image/gif),
         pdf: %w(application/pdf),

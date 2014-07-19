@@ -8,7 +8,7 @@ class DocumentNotifications < NotificationSystem::AbstractClass
               'notifications.documents.create_for_admin',
               user: link_to(h(document.user.to_s), user_path(document.user)),
               title: link_to(h(document.title), document_document_path(document)),
-              link: link_to(I18n.t('notifications.link'), edit_admin_document_document_path(document)))
+              link: link_to(I18n.t('notifications.link'), edit_admin_document_path(document)))
     else
       deleted_message
     end

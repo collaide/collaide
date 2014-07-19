@@ -1,5 +1,10 @@
 %footer
-  .panel
+  .row
+    .small-12.columns
+      %p= link_to(image_tag("collaide-logo.svg", size: "70x200"), eval("root_#{I18n.locale}_path"))
+      %p Copyright 2014, tous droits réservés.
+
+  -#.panel
     .row
       .columns.large-6
         %h6= link_to t('app_name'), eval("root_#{I18n.locale.to_s}_path")

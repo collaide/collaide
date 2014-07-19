@@ -10,7 +10,7 @@ Postez une issue sur github: https://github.com/collaide/collaide/issues/new
 
 ##Description
 collaide.com est un site web offrant différents services aux étudiants. Actuellement il est possible de télécharger et mettre à disposition des documents scolaires, acheter et vendre des livres scolaires d'occasion et créer des groupes de travail.
-### Echange de documents scolaires
+### Échange de documents scolaires
 C'est actuellement le service le plus utilisé. Il est possible de rechercher, télécharger et mettre des documents scolaires importants. Par exemple, rapport de projet, travail de maturité, de séminaire, dosssier, etc. Pour le moment plus de 100 documents sont mis à disposition.
 ### Vente et achat de livres scolaires
 Permet d'acheter et vendre des livres d'occasions. Par la suite, il est prévu de pouvoir poster des annonces pour d'autres domaines. Appartements, échange de service, etc.

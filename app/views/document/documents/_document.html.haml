@@ -34,7 +34,7 @@
         %p= cite_a_part(document.description, '', 200)
         .row
           .columns
-            -#link_to t('document.documents.index.download'), document_document_download_path(document_document_id: document), class: 'button secondary expand'
+            -#link_to t('document.documents.index.download'), document_document_download_path(document_document_id: document), class: 'button secondary expand', 'data-no-turbolink' => ''
             -#link_to t('document.documents.index.show'), document, class: 'button secondary expand'
             =edit_link(document, t('document.documents.show.modify'), 'button secondary tiny')
     %hr.show-for-small

@@ -11,6 +11,199 @@
 }
 
 
+
+//body {
+//  background-color: $secondary-color;
+//}
+
+.std-button {
+  @include button;
+  color: $font-color;
+  background-color: $secondary-color;
+  border-width: 1px;
+  border-color: $primary-color;
+  border-style: solid;
+  //border-bottom-width: 4px;
+
+  box-shadow: 0px 3px 0px $primary-color;
+  border-radius: 5px;
+}
+.std-button:hover {
+  color: $font-color;
+  background-color: $secondary-color;
+  border-width: 1px;
+  border-color: $primary-color;
+  border-style: solid;
+  border-radius: 5px;
+  box-shadow: 0px 1px 0px $primary-color;
+  top: 2px;
+  //border-bottom-width: 1px;
+}
+
+.std-button-i {
+  @include button;
+  color: $secondary-color;
+  background-color: $primary-light-color;
+  border-width: 1px;
+  border-color:  $secondary-color;
+  border-style: solid;
+  //border-bottom-width: 4px;
+
+  box-shadow: 0px 3px 0px $secondary-color;
+  border-radius: 5px;
+}
+.std-button-i:hover {
+  color: $secondary-color;
+  background-color: $primary-light-color;
+  border-width: 1px;
+  border-color: $secondary-color;
+  border-style: solid;
+  border-radius: 5px;
+  box-shadow: 0px 1px 0px $secondary-color;
+  top: 2px;
+  //border-bottom-width: 1px;
+}
+
+.std-button.expand {
+  padding-right: 0;
+  padding-left: 0;
+  width: 100%;
+}
+
+
+.top-bar-section .up-button {
+  @include button;
+  color: $primary-color;
+  background-color: $secondary-color;
+  border-width: 1px;
+  border-color: $primary-color;
+  border-style: solid;
+  //border-bottom-width: 4px;
+
+  //box-shadow: 0px 3px 0px $primary-color;
+  border-radius: 5px;
+  margin-top: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.top-bar-section .up-button:hover {
+  color: $secondary-color;
+  background-color: $primary-color;
+  border-width: 1px;
+  border-color: $secondary-color;
+  border-style: solid;
+  border-radius: 5px;
+  box-shadow: none;
+  transition-duration: 300ms;
+  //border-bottom-width: 1px;
+}
+
+
+.top-bar-section .in-button {
+  @include button;
+  color: $secondary-color;
+  background-color: $primary-color;
+  border-width: 1px;
+  border-color: $secondary-color;
+  border-style: solid;
+  //border-bottom-width: 4px;
+
+  //box-shadow: 0px 3px 0px $primary-color;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 8px;
+  padding-right: 20px;
+  padding-left: 20px;
+
+}
+.top-bar-section .in-button:hover {
+  color: $primary-color;
+  transition-duration: 300ms;
+  background-color: $secondary-color;
+  border-width: 1px;
+  border-color: $primary-color;
+  border-style: solid;
+  border-radius: 5px;
+  box-shadow: none;
+  //border-bottom-width: 1px;
+}
+
+// Sign up panel
+#header-sign-up-panel {
+  padding: 40px;
+  h3 {
+    margin: 25px 0px;
+    color: $secondary-color;
+  }
+  label {
+    color: $secondary-color;
+    margin-bottom: 5px;
+  }
+
+  input[type="checkbox"], input[type="radio"] {
+    margin-right: 20px;
+  }
+  input {
+    background-color: $primary-light-color;
+    color: $secondary-color;
+  }
+  .button {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+}
+
+
+#header-sign-in-panel {
+  padding: 40px;
+  h3 {
+    margin: 25px 0px;
+    color: $primary-color;
+  }
+  label {
+    color: $primary-color;
+    margin-bottom: 5px;
+  }
+
+  input[type="checkbox"], input[type="radio"] {
+    margin-right: 20px;
+  }
+  input {
+    background-color: $secondary-color;
+  }
+  .button {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.right-off-canvas-menu {
+  //background-color: $secondary-color;
+}
+
+
+
+// INDEX
+#home {
+  #index-title {
+    //color: $primary-color;
+  }
+  #show-modules {
+    margin-top: 40px;
+    .columns {
+//      padding-left: 70px;
+//      padding-right: 70px;
+    }
+
+  }
+}
+
+
 //documents
 .no-border {
   border: none;
@@ -201,7 +394,8 @@ blockquote.unread{
 textarea { height: auto; min-height: 70px;}
 
 #main-content {
-  min-height: emCalc(300px);
+  min-height: emCalc(600px);
+
 }
 
 ::-webkit-input-placeholder { font-size:$font-size; }
@@ -297,74 +491,18 @@ input:-moz-placeholder { font-size:$font-size; }
   margin-bottom: emCalc(25px);
 }
 
-#footer {
+footer {
+  color: $secondary-color;
   min-width: 100%;
+  background-color: $primary-color;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 footer {
-  .panel { //@include panel($footer-background-color);
-    border: none;
-    background: #FFFFFF image-url('home/footer_bg.png') repeat-x;
-    li {
-      list-style: none;
-    }
-    a {
-      color: black;
-    }
-    a:hover {
-      color: $primary-color
-    }
-    .row {
-      max-width: $row-width;
-      margin: auto;
-    }
-  }
+
 }
 
-#blackboard {
-  .board-corner-top-left {
-    background: image-url('board/corners.gif') no-repeat top left;
-    width: 96px;
-    height: 94px;
-  }
-  .board-corner-top-right {
-    background: image-url('board/corners.gif') no-repeat;
-    background-position: 0 -297px;
-    width: 96px;
-    height: 94px;
-  }
-  .board-top {
-    background: image-url('board/board-top.gif'); background-position: 0 0px; background-repeat: repeat-x;
-    margin-right: 87px;
-    margin-left: 96px;
-    height: 34px;
-  }
-  .board-bottom {
-    background: image-url('board/board-bottom.gif'); background-position: 0 0px; background-repeat: repeat-x;
-    margin-right: 88px;
-    margin-left: 88px;
-    margin-top: 58px;
-    height: 34px;
-  }
-  .board-content {
-    margin-left: 50px;
-    margin-right:50px;
-
-  }
-  .board-corner-bottom-left {
-    background: image-url('board/corners.gif') no-repeat;
-    background-position: 0 -99px;
-    width: 96px; height: 94px;
-  }
-  .board-corner-bottom-right {
-    background: image-url('board/corners.gif') no-repeat;
-    background-position: 0 -198px;
-    width: 96px; height: 94px;
-  }
-  .board-bottom {
-    height: 94px;
-  }
-}
 
 .side-nav .heading {
   text-transform: uppercase;
@@ -375,38 +513,6 @@ footer {
 #invit-form {
   form {
     display: inline;
-  }
-}
-
-#user-persistent-menu {
-  position: fixed;
-  right: 0;
-  top: 130px;
-  width: 8em;
-  margin-top: -2.5em;
-  z-index: 10;
-  background: hsla(80, 90%, 40%, 0.7);
-  border: solid hsla(80, 90%, 40%, 0.5);
-  border-right: none;
-  padding: 0.5em 0.5em 0.5em 0.5em;
-  box-shadow: 0 1px 3px black;
-  border-radius: 0.5em 0em 0em 0.5em;
-  font-weight: bold;
-  //font-size: large;
-  text-align: left;
-  color: white;
-  a {
-    color: white;
-  }
-  a:hover {
-    color: antiquewhite;
-  }
-  h6 {
-    color: white;
-    //font-size: small;
-  }
-  ul {
-    list-style: none;
   }
 }
 
