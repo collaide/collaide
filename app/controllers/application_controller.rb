@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
 
 
   prepend_before_action :auth_token_user
+  skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
   before_action do
     resource = controller_path.singularize.gsub('/', '_').to_sym # => 'blog/posts' => 'blog/post' => 'blog_post' => :blog_post
     method = "#{resource}_params" # => 'blog_post_params'
@@ -149,7 +150,10 @@ class ApplicationController < ActionController::Base
   end
 
   def auth_token_user
+    #logger.debug params[:user_email]
+    #logger.debug params[:user_token]
     if !params[:user_email].blank? and (user = User.find_by(email: params[:user_email]))
+      #logger.debug 'correct'
       if Devise.secure_compare(user.authentication_token, params[:user_token])
         sign_in user, store: false
         #logger.debug('asDFsdfasdfsad')

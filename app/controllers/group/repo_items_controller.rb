@@ -43,11 +43,22 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def create_file
-    repo_item = RepositoryManager::RepoItem.find(params[:repo_file][:id]) if !params[:repo_file][:id].blank?
+    logger.debug 'jlashbsajldfvals'
+    repo_file = params[:repo_file]
+    # Pour l'application Java
+    if repo_file.nil?
+      repo_file = {}
+      repo_file[:file] = params[:repo_file_file]
+      repo_file[:id] = params[:repo_file_id]
+    end
+    repo_item = RepositoryManager::RepoItem.find(repo_file[:id]) if !repo_file[:id].blank?
+    logger.debug 'jasbdljashbvdlahjsvl'
     check_permission { @group.can? :write, :file, current_user or @group.can_create? repo_item }
+    logger.debug 'asdblsaFVALJSDHVFJLASHDVFLAJSHDVHDFJALSéVDFGHJASVD'
     options = {source_folder: repo_item, sender: current_user}
     respond_to do |format|
-      if @item = @group.create_file(params[:repo_file][:file], options)
+      logger.debug 'IUWerpwqgrpiuwqgriuweghr7834987z3948756932476593284675309845703'
+      if @item = @group.create_file(repo_file[:file], options)
         format.html { redirect_to back, notice: t('repository_manager.success.repo_file.created') }
         format.json { render template: 'group/repo_items/create', status: :created }
       else
@@ -181,6 +192,10 @@ class Group::RepoItemsController < ApplicationController
         format.json { render json: @repo_item.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def search
+
   end
 
   private

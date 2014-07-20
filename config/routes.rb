@@ -58,6 +58,7 @@ Collaide::Application.routes.draw do
     concern :has_repository do
       resources :repo_items, only: [:index, :show, :destroy] do
         get 'download'
+        get 'search'
         patch 'copy', action: :copy
         patch 'move', action: :move
         patch 'rename', action: :rename
