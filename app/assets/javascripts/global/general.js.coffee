@@ -1,18 +1,17 @@
 canvas = false
 offcanvas = () ->
-
   firstSignUp = true
   firstSignIn = true
-  $(document).on('click', '#header-sign-up-button',  (e)->
+  $(document).on('click', '#header-sign-up-button', (e)->
     if($('[data-offcanvas]').hasClass('move-left') and canvas == 'sign-up')
       console.log 'closing sign up'
-      firstSignIn = true
-      firstSignUp = true
+#      firstSignIn = true
+#      firstSignUp = true
     if canvas != 'sign-up'
       offPanel = $('aside.right-off-canvas-menu')
       canvas = 'sign-up'
       newCanvasContent = $('#get-header-sign-up-panel').html()
-      console.log newCanvasContent
+      #console.log newCanvasContent
       offPanel.css('background-color', '#3D5164')
       offPanel.empty()
       offPanel.html(newCanvasContent)
@@ -20,14 +19,15 @@ offcanvas = () ->
         firstSignUp = false
       else
         stop(e)
+        console.log 'j ai stopé la fermeture de sign up'
         offPanel.hide()
         offPanel.show('slow')
   )
   $(document).on('click', '#header-sign-in-button', (e)->
     if($('[data-offcanvas]').hasClass('move-left') and canvas == 'sign-in')
       console.log 'closing sign in'
-      firstSignIn = true
-      firstSignUp = true
+#      firstSignIn = true
+#      firstSignUp = true
     if canvas != 'sign-in'
       offPanel = $('aside.right-off-canvas-menu')
       canvas = 'sign-in'
@@ -39,13 +39,14 @@ offcanvas = () ->
         firstSignIn = false
       else
         stop(e)
+        console.log 'j ai stopé la fermeture de sign in'
         offPanel.hide()
         offPanel.show('slow')
   )
   $(document).on('close.fndtn.offcanvas', '[data-offcanvas]', () ->
     firstSignIn = true
     firstSignUp = true
-    console.log 'cloing'
+    console.log 'closing'
   )
 stop = (event) ->
   event.stopImmediatePropagation()
