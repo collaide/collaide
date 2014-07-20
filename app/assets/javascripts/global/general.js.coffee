@@ -1,13 +1,18 @@
+canvas = false
 offcanvas = () ->
-  canvas = false
+
   firstSignUp = true
   firstSignIn = true
-  offPanel = $('aside.right-off-canvas-menu')
   $(document).on('click', '#header-sign-up-button',  (e)->
-    console.log('salut')
+    if($('[data-offcanvas]').hasClass('move-left') and canvas == 'sign-up')
+      console.log 'closing sign up'
+      firstSignIn = true
+      firstSignUp = true
     if canvas != 'sign-up'
+      offPanel = $('aside.right-off-canvas-menu')
       canvas = 'sign-up'
       newCanvasContent = $('#get-header-sign-up-panel').html()
+      console.log newCanvasContent
       offPanel.css('background-color', '#3D5164')
       offPanel.empty()
       offPanel.html(newCanvasContent)
@@ -19,8 +24,12 @@ offcanvas = () ->
         offPanel.show('slow')
   )
   $(document).on('click', '#header-sign-in-button', (e)->
-    console.log('bonjour')
+    if($('[data-offcanvas]').hasClass('move-left') and canvas == 'sign-in')
+      console.log 'closing sign in'
+      firstSignIn = true
+      firstSignUp = true
     if canvas != 'sign-in'
+      offPanel = $('aside.right-off-canvas-menu')
       canvas = 'sign-in'
       newCanvasContent = $('#get-header-sign-in-panel').html()
       offPanel.css('background-color', '#F6F6F7')
@@ -33,16 +42,21 @@ offcanvas = () ->
         offPanel.hide()
         offPanel.show('slow')
   )
+  $(document).on('close.fndtn.offcanvas', '[data-offcanvas]', () ->
+    firstSignIn = true
+    firstSignUp = true
+    console.log 'cloing'
+  )
 stop = (event) ->
   event.stopImmediatePropagation()
   event.preventDefault()
-  console.log 'callCount'
 $ ->
   # enable select2 js
+  canvas = false
   offcanvas()
   $('.s2').select2()
 $(document).on('page:load', ->
-  offcanvas()
+  canvas = true
   $('.s2').select2()
 )
 Turbolinks.enableTransitionCache();
