@@ -1,8 +1,5 @@
 offcanvas = () ->
   canvas = false
-
-#  firstSignUp = true
-#  firstSignIn = true
   $(document).on('click', '#header-sign-up-button', (e)->
     if canvas != 'sign-up'
       canvas = 'sign-up'
@@ -13,21 +10,19 @@ offcanvas = () ->
       offPanel.html(newCanvasContent)
       if isCanvasOpen()
         stop(e)
-        console.log 'j ai stopé la fermeture de sign up'
         offPanel.hide()
         offPanel.show('slow')
   )
   $(document).on('click', '#header-sign-in-button', (e)->
     if(canvas != 'sign-in')
-      offPanel = $('aside.right-off-canvas-menu')
       canvas = 'sign-in'
+      offPanel = $('aside.right-off-canvas-menu')
       newCanvasContent = $('#get-header-sign-in-panel').html()
       offPanel.css('background-color', '#F6F6F7')
       offPanel.empty()
       offPanel.html(newCanvasContent)
       if isCanvasOpen()
         stop(e)
-        console.log 'j ai stopé la fermeture de sign in'
         offPanel.hide()
         offPanel.show('slow')
   )
