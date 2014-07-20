@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
 
 
   prepend_before_action :auth_token_user
-  skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
   before_action do
     resource = controller_path.singularize.gsub('/', '_').to_sym # => 'blog/posts' => 'blog/post' => 'blog_post' => :blog_post
     method = "#{resource}_params" # => 'blog_post_params'

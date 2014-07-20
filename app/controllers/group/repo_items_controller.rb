@@ -1,6 +1,9 @@
 # -*- encoding : utf-8 -*-
 class Group::RepoItemsController < ApplicationController
   include Concerns::PermissionConcern
+  skip_before_filter :verify_authenticity_token,
+                     :if => Proc.new { |c| c.request.format == 'application/json' },
+                     only: :create_file
   before_action do
     # uncomment to disable requests is the form /fr/groupes/travaux/:work_group_id/repertoires...
     # so html request respond to the above URIs and JSON request respond to /api/groups/:work_group_id/repo_items...
