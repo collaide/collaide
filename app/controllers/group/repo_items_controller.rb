@@ -43,7 +43,6 @@ class Group::RepoItemsController < ApplicationController
   end
 
   def create_file
-    logger.debug 'jlashbsajldfvals'
     repo_file = params[:repo_file]
     # Pour l'application Java
     if repo_file.nil?
@@ -52,9 +51,7 @@ class Group::RepoItemsController < ApplicationController
       repo_file[:id] = params[:repo_file_id]
     end
     repo_item = RepositoryManager::RepoItem.find(repo_file[:id]) if !repo_file[:id].blank?
-    logger.debug 'jasbdljashbvdlahjsvl'
     check_permission { @group.can? :write, :file, current_user or @group.can_create? repo_item }
-    logger.debug 'asdblsaFVALJSDHVFJLASHDVFLAJSHDVHDFJALSéVDFGHJASVD'
     options = {source_folder: repo_item, sender: current_user}
     respond_to do |format|
       logger.debug 'IUWerpwqgrpiuwqgriuweghr7834987z3948756932476593284675309845703'
