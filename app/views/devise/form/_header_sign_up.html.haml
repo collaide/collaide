@@ -1,6 +1,6 @@
 #header-sign-up-panel
   %h3= t'devise.registrations.new.sign_up'
-  = simple_form_for(User.new, as: :user, :url => user_registration_path, html: {:'data-abide' => ''}) do |f|
+  = simple_form_for(User.new, as: :user, :url => user_registration_path, defaults: { input_html: { class: 'validate-form' } } ) do |f|
     = f.input :email, autocomplete: 'off', required: false
     = f.input :name, autocomplete: 'off', required: false
     = f.input :password, autocomplete: 'off', required: false

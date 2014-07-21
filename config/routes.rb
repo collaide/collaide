@@ -234,6 +234,9 @@ Collaide::Application.routes.draw do
       scope path: 'user/:user_id', as: :user do
         resources :groups, controller: 'groups', only: :index
       end
+      resources :users, controller: 'users', only: :show do
+        post 'valid', on: :collection
+      end
     end
     namespace :group, path: 'groups/:work_group_id' do
       concerns :has_repository
