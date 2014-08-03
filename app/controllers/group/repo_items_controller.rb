@@ -195,6 +195,31 @@ class Group::RepoItemsController < ApplicationController
 
   end
 
+  def notify
+    @user = User.find(params[:repo_item_id])
+    notifications = @user.notifications.where(has_api_viewed: false).
+        where(class_name: 'RepositoryManagerNotifications').to_a
+
+    response = {}
+    notifications.each do |n|
+      repo_item = RepositoryManager::RepoItem.find(JSON.parse(n.values)[0])
+      if repo_item.owner == @group
+        n.has_api_viewed = true
+        n.save
+        response << {id: repo_item.id, event: n.method_name}
+      end
+    end
+
+    respond_to do |format|
+      if repo_items
+        format.json { render status: 200, json: response.to_json }
+      else
+        format.json { render status: 204 }
+      end
+    end
+
+  end
+
   private
   def find_the_group
     @group = Group::Group.find(params[:work_group_id])
