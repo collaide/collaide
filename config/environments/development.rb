@@ -3,7 +3,7 @@ Collaide::Application.configure do
   #Custom logging
   
   # Enable the logstasher logs for the current environment
-   config.logstasher.enabled = true
+   config.logstasher.enabled = false
   #
   # # This line is optional if you do not want to suppress app logs in your <environment>.log
    config.logstasher.suppress_app_log = false
@@ -42,7 +42,8 @@ Collaide::Application.configure do
    config.action_mailer.smtp_settings = { :address => 'localhost', :port => 1025 }
 
   # Print deprecation notices to the Rails logger
-  config.active_support.deprecation = :log
+  config.active_support.deprecation = :silence
+  config.log_level = :info
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
