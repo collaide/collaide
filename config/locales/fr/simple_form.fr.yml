@@ -64,6 +64,21 @@ fr:
         content: Contenu du message
       group_work_group:
         name: Nom du groupe
+        can_index_activity: Peut voir les activités
+        can_index_members: Peut voir les membres
+        can_delete_member: Peut supprimer des membres
+        can_read_topic: Peut lire une discussion
+        can_read_member: Peut ?? Read Member
+        can_write_file: Peut créer des nouveaux fichiers
+        can_index_files: Peut voir les fichiers
+        can_read_file: Peut télécharger les fichiers
+        can_delete_file: Peut supprimer les fichiers
+        can_index_topics: Peut voir les discussions
+        can_write_topic: Peut lancer de nouvelles discussions
+        can_delete_topic: Peut supprimer des discussions
+        can_create_invitation: Peut créer des invitations
+        can_manage_invitations: Peut gérer les invitations
+        can_delete_group: Peut supprimer le groupe
       topic:
         title: Titre
         message: Message

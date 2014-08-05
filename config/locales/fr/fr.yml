@@ -578,7 +578,7 @@ fr:
             name: Quel sera le nom de votre groupe ?
       show:
       edit:
-        title_page: Modifier %{group}
+        title_page: Paramètres de %{group}
         forms:
           success: Vos modifications en été enregistrées
           submit: Enregistrer

@@ -1,5 +1,10 @@
 fr:
   enumerize:
+    dico:
+      all: &all Tout le monde
+      member: &member Les membres
+      admin: &admin Les administrateurs
+      writer: &writer Les rédacteurs
     document/document:
       status:
         refused: Refusé
@@ -28,6 +33,82 @@ fr:
         CHF: 'CHF'
         EUR: '€'
         USD: '$'
+    group/group:
+      can_index_activity:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_index_members:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_delete_member:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_read_member:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_write_file:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_index_files:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_read_file:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_delete_topic:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_create_invitation:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_manage_invitations:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_delete_group:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_delete_file:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_index_topics:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_read_topic:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
+      can_write_topic:
+        all: *all
+        member: *member
+        admin: *admin
+        writer: *writer
     advertisement/sale_book:
       annotation:
         not_annotated: Sans annotation
