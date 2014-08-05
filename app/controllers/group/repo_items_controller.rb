@@ -203,7 +203,7 @@ class Group::RepoItemsController < ApplicationController
     response = []
 
     respond_to do |format|
-      if notifications
+      if notifications and notifications.any?
         notifications.each do |n|
           repo_item = RepositoryManager::RepoItem.find(JSON.parse(n.values)[0])
           if repo_item.owner == @group
@@ -214,7 +214,7 @@ class Group::RepoItemsController < ApplicationController
         end
         format.json { render status: 200, json: response.to_json }
       else
-        format.json { render status: 204 }
+        format.json { render status: 204, text: 'no content' }
       end
     end
 
