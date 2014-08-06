@@ -155,7 +155,7 @@ class Advertisement::SaleBooksController < ApplicationController
     @advertisement_sale_book = Advertisement::SaleBook.find(params[:id])
 
     respond_to do |format|
-      if @advertisement_sale_book.update_attributes(params[:advertisement_sale_book])
+      if @advertisement_sale_book.update_attributes(advertisement_sale_book_params)
         format.html { redirect_to @advertisement_sale_book, notice: t('sale_books.edit.forms.succes') }
         format.json { head :no_content }
       else

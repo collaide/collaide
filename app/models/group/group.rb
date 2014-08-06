@@ -33,32 +33,48 @@
 class Group::Group < ActiveRecord::Base
 
   include Concerns::ActivityConcern
+  extend Enumerize
 
 
-  ROLES = [:admin, :writer]
+  ROLES = [:all, :admin, :writer, :member]
 
   has_repository
 
   serialize :can_index_activity, Array
+  enumerize :can_index_activity, in: ROLES, multiple: true
 
   serialize :can_delete_group, Array
+  enumerize :can_delete_group, in: ROLES, multiple: true
 
   serialize :can_index_members, Array
+  enumerize :can_index_members, in: ROLES, multiple: true
   serialize :can_read_member, Array
+  enumerize :can_read_member, in: ROLES, multiple: true
   serialize :can_delete_member, Array
+  enumerize :can_delete_member, in: ROLES, multiple: true
 
   serialize :can_write_file, Array
+  enumerize :can_write_file, in: ROLES, multiple: true
   serialize :can_index_files, Array
+  enumerize :can_index_files, in: ROLES, multiple: true
   serialize :can_read_file, Array
+  enumerize :can_read_file, in: ROLES, multiple: true
   serialize :can_delete_file, Array
+  enumerize :can_delete_file, in: ROLES, multiple: true
 
   serialize :can_index_topics, Array
+  enumerize :can_index_topics, in: ROLES, multiple: true
   serialize :can_read_topic, Array
+  enumerize :can_read_topic, in: ROLES, multiple: true
   serialize :can_write_topic, Array
+  enumerize :can_write_topic, in: ROLES, multiple: true
   serialize :can_delete_topic, Array
+  enumerize :can_delete_topic, in: ROLES, multiple: true
 
   serialize :can_create_invitation, Array
+  enumerize :can_create_invitation, in: ROLES, multiple: true
   serialize :can_manage_invitations, Array
+  enumerize :can_manage_invitations, in: ROLES, multiple: true
 
   belongs_to :user
   belongs_to :main_group, class_name: 'Group::Group'
@@ -121,7 +137,8 @@ class Group::Group < ActiveRecord::Base
   #validates :password, length: {minimum: 1}, confirmation: true
   #validates_presence_of :password_confirmation
 
-  after_initialize :init
+  #after_initialize :init
+  before_create :init
 
   def init
     self.can_delete_member << Group::Roles::ADMIN

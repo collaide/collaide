@@ -73,8 +73,10 @@ class Group::WorkGroupsController < ApplicationController
 
     @group_work_group = Group::WorkGroup.find(params[:id])
 
+    p @group_work_group.inspect
     respond_to do |format|
-      if @group_work_group.update_attributes(params[:group_work_group]) && create_activity(:update, trackable: @group_work_group, owner: current_user)
+      if @group_work_group.update_attributes(group_work_group_params) && create_activity(:update, trackable: @group_work_group, owner: current_user)
+        #p @group_work_group.inspect
         format.html { redirect_to @group_work_group, notice: t('group.work_groups.edit.forms.success') }
         format.json { head :no_content }
       else
@@ -101,7 +103,11 @@ class Group::WorkGroupsController < ApplicationController
 
   private
   def group_work_group_params
-    params.require(:group_work_group).permit(:name)
+    params.require(:group_work_group).permit(:name, can_index_activity: [], can_index_members: [], can_delete_member: [],
+                                     can_read_member: [], can_write_file: [], can_index_files: [], can_read_file: [],
+                                     can_delete_file: [], can_index_topics: [], can_read_topic: [], can_write_topic: [],
+                                     can_delete_topic: [], can_create_invitation: [], can_manage_invitations: [],
+                                     can_delete_group: [])
   end
 
 end

@@ -1,0 +1,27 @@
+-unless @group
+  -@group = Group::WorkGroup.new
+=simple_form_for(@group, html: {data_abide: true}) do |f|
+  =f.error_notification
+  .form-inputs
+    =f.input :name, label_html: tooltip(t('group.work_groups.new.forms.tooltips.name'))
+    -type_for_permissions = :check_boxes
+    =f.input :can_index_activity, as: type_for_permissions
+    =f.input :can_index_members, as: type_for_permissions
+    =f.input :can_delete_member, as: type_for_permissions
+    =f.input :can_read_member, as: type_for_permissions
+    =f.input :can_write_file, as: type_for_permissions
+    =f.input :can_index_files, as: type_for_permissions
+    =f.input :can_read_file, as: type_for_permissions
+    =f.input :can_delete_file, as: type_for_permissions
+    =f.input :can_index_topics, as: type_for_permissions
+    =f.input :can_read_topic, as: type_for_permissions
+    =f.input :can_write_topic, as: type_for_permissions
+    =f.input :can_delete_topic, as: type_for_permissions
+    =f.input :can_create_invitation, as: type_for_permissions
+    =f.input :can_manage_invitations, as: type_for_permissions
+    =f.input :can_delete_group, as: type_for_permissions
+  .form-actions
+    -if edit
+      =f.button :submit, t('group.work_groups.edit.forms.submit')
+    -else
+      =f.button :submit, t('group.work_groups.new.forms.submit')
