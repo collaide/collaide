@@ -1,21 +1,3 @@
-#Feature:
-#
-#  Scenario: Everybody can see user's profil
-#    Given the following users
-#      | user        |
-#      | super_admin |
-#      | normal      |
-#    Given I am logged is as <login>
-#    When I visit profile for <profile>
-#    Then I should <action>
-#
-#    Examples:
-#      | login | profile | action        |
-#      |       | normal  | see "Profile" |
-#      | normal| normal  | see "Profile" |
-#      | admin | normal  | see "Profile" |
-#      | normal| admin   | see "Profile" |
-
 Feature: User's panel
 
   Scenario Outline: Everybody can see user's profile
@@ -36,4 +18,4 @@ Feature: User's panel
     |             | normal      | edit_user_registration | not see |
     |             | normal      | user_invitations       | not see |
     | normal      | super_admin | user_invitations       | not see |
-    | normal      | normal      | user_invitations       | see     |
+    | super_admin | normal      | user_invitations       | see     |
