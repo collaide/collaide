@@ -198,12 +198,19 @@ class Group::RepoItemsController < ApplicationController
   def notify
     @user = User.find(params[:repo_item_id])
     notifications = @user.notifications.where(has_api_viewed: false).
-        where(class_name: 'RepositoryManagerNotifications').to_a
+        where(class_name: 'RepositoryManagerNotifications')
+    if params[:event]
+      case params[:event]
+        when 'file_created'
+          notifications.where(method_name: 'create_file_in_group')
+      end
+    end
+  notifications.to_a
 
     response = []
 
     respond_to do |format|
-      if notifications and notifications.any?
+      if notifications
         notifications.each do |n|
           repo_item = RepositoryManager::RepoItem.find(JSON.parse(n.values)[0])
           if repo_item.owner == @group
@@ -212,6 +219,8 @@ class Group::RepoItemsController < ApplicationController
             response << {id: repo_item.id, event: n.method_name}
           end
         end
+      end
+      if response.any?
         format.json { render status: 200, json: response.to_json }
       else
         format.json { render status: 204, text: 'no content' }

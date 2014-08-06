@@ -4,27 +4,27 @@ FactoryGirl.define do
   sequence(:random_string) {|n| "Lorem ipsume #{n}" }
   sequence(:name) { |n| "Domain #{n}"}
 
-  factory :user do
-    sequence(:name)  { |n| "Person #{n}" }
-    sequence(:email) { |n| "admin#{n}@example.com"}
-    role :super_admin
-    password "password"
-    password_confirmation "password"
-  end
-  factory :normal_user, class: 'User' do
-    sequence(:name)  { |n| "Person #{n}" }
-    sequence(:email) { |n| "user#{n}@example.com"}
-    password "password"
-    password_confirmation "password"
-  end
-  factory :old_user, class: 'User' do
-    sequence(:name)  { |n| "Person #{n}" }
-    sequence(:email) { |n| "user#{n}@example.com"}
-    password "password"
-    old_password Digest::MD5.hexdigest('old_password')
-    old_user true
-    password_confirmation "password"
-  end
+  # factory :user do
+  #   sequence(:name)  { |n| "Person #{n}" }
+  #   sequence(:email) { |n| "admin#{n}@example.com"}
+  #   role :super_admin
+  #   password "password"
+  #   password_confirmation "password"
+  # end
+  # factory :normal_user, class: 'User' do
+  #   sequence(:name)  { |n| "Person #{n}" }
+  #   sequence(:email) { |n| "user#{n}@example.com"}
+  #   password "password"
+  #   password_confirmation "password"
+  # end
+  # factory :old_user, class: 'User' do
+  #   sequence(:name)  { |n| "Person #{n}" }
+  #   sequence(:email) { |n| "user#{n}@example.com"}
+  #   password "password"
+  #   old_password Digest::MD5.hexdigest('old_password')
+  #   old_user true
+  #   password_confirmation "password"
+  # end
 
   factory :domain do  |domain|
     sequence(:name) { |n| "Domain #{n}"}

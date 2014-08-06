@@ -15,11 +15,11 @@ module ValidUserRequestHelper
     post_via_redirect user_session_path, 'user[email]' => @normal_user.email, 'user[password]' => @normal_user.password
   end
 
-  def sign_in_user(user)
+  def sign_in_user(email)
     visit new_user_session_path
-    fill_in "Adresse e-mail",    with: user.email
-    fill_in "Mot de passe", with: user.password
-    click_button "Connexion"
+    fill_in "connection_user_email",    with: email
+    fill_in "connection_user_password", with: 'password'
+    click_button "connection_submit"
   end
 
   def get_super_user

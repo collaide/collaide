@@ -4,7 +4,6 @@ class RepositoryManager::RepoItemObserver < ActiveRecord::Observer
   #observe :'RepositoryManager::RepoItem'
 
   def after_create(repo_item)
-
     #j'ai commenté, sinon j'ai une erreur quand on copie un élément ailleur que dans le répertopire de base
     if repo_item.owner.class.base_class.to_s == 'Group::Group'
       if repo_item.is_file?
