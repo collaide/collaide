@@ -195,19 +195,20 @@
   #index-title {
     //color: $primary-color;
   }
-  @media #{$large-up} {
     #show-modules {
       margin-top: 40px;
-      #module-middle {
-        padding-left: 35px;
-        padding-right: 35px;
-      }
-      #module-left {
-        padding-right: 70px;
-      }
-      #module-right {
-        padding-left: 70px;
-      }
+    }
+  @media #{$large-up} {
+
+    #module-middle {
+      padding-left: 35px;
+      padding-right: 35px;
+    }
+    #module-left {
+      padding-right: 70px;
+    }
+    #module-right {
+      padding-left: 70px;
     }
   }
 }
