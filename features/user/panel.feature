@@ -1,6 +1,6 @@
 Feature: User's panel
 
-  Scenario Outline: Everybody can see user's profile
+  Scenario Outline: Not everybody can see user's profile and afferent pages
     Given the following users
       | role        |
       | super_admin |
