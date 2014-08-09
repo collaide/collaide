@@ -1,33 +1,30 @@
 #home
   -if current_user.nil?
     .row
-      .large-1.columns
-        &nbsp;
-      .large-13.columns.end
+      .large-14.columns.end
         %h2#index-title= t'static_pages.home.title.subheader'
     .row.text-center#show-modules
-      .large-1.columns
-        &nbsp;
-      .large-6.columns
+      .medium-8.columns#module-left
         =link_to(image_tag('home/icon-docs.svg', size:'100x100'), document_documents_path)
-        %h4=t'static_pages.home.documents.title'
+        %h4
+          =t'static_pages.home.documents.title'
+          %br.hide-for-small
+          =t'static_pages.home.documents.title2'
         %p=link_to t('static_pages.home.documents.link_to'), document_documents_path, class: 'std-button expand'
         %p.text-left=link_to "Plus d'informations", '#'
-      .large-2.columns
-        &nbsp;
-      .large-6.columns
+      .medium-8.columns#module-middle
         =link_to(image_tag('home/icon-groups.svg', size:'100x100'), group_groups_path)
-        %h4=t'static_pages.home.work_groups.title'
+        %h4
+          =t'static_pages.home.work_groups.title'
+          %br.hide-for-small
+          =t'static_pages.home.work_groups.title2'
         %p=link_to t('static_pages.home.work_groups.link_to'), group_groups_path, class: 'std-button expand'
         %p.text-left=link_to "Plus d'informations", '#'
-      .large-2.columns
-        &nbsp;
-      .large-6.columns
+      .medium-8.columns#module-right
         =link_to(image_tag('home/icon-ads.svg', size:'100x100'), advertisement_advertisements_path)
-        %h4=t'static_pages.home.advertisements.title'
+        %h4
+          =t'static_pages.home.advertisements.title'
+          %br.hide-for-small
+          =t'static_pages.home.advertisements.title2'
         %p=link_to t('static_pages.home.advertisements.link_to'), advertisement_advertisements_path, class: 'std-button expand'
         %p.text-left=link_to "Plus d'informations", '#'
-      .large-1.columns
-        &nbsp;
-
-
