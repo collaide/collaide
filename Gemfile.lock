@@ -128,6 +128,9 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    capybara-webkit (0.13.2)
+      capybara (>= 1.0.0, < 1.2)
+      json
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -557,6 +560,7 @@ DEPENDENCIES
   cancan
   capistrano
   capybara (= 1.1.2)
+  capybara-webkit
   childprocess
   coffee-rails (~> 4.0.1)
   coffee-script-source

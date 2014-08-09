@@ -145,6 +145,7 @@ gem 'foundation-icons-sass-rails'
 group :test do
   gem 'sqlite3'
   gem 'capybara', '1.1.2'
+  gem 'capybara-webkit'
   gem 'factory_girl_rails', '4.1.0'
   gem 'cucumber-rails', '1.2.1', :require => false
   gem 'database_cleaner', "~> 1.2.0"

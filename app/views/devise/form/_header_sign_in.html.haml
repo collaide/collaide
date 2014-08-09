@@ -1,10 +1,12 @@
 #header-sign-in-panel
-  %h3= t'devise.sessions.new.sign_in'
-  = simple_form_for(User.new, as: :user, :url => user_session_path) do |f|
-    = f.input :email, :required => false, :autofocus => true
+  %h3
+    = t'devise.sessions.new.sign_in'
+    %a.close.offcanvas-close{href: '#'} &times;
+  = simple_form_for(User.new, as: :user, :url => user_session_path, html: {id: 'offcanvas_sign_in'}) do |f|
+    = f.input :email, :required => false, input_html: {id: 'offcanvas-connection_user_email'}
     -#%small.error
     -#  =t('activerecord.errors.messages.invalid')
-    = f.input :password, :required => false
-    = f.input :remember_me, :as => :boolean
+    = f.input :password, :required => false, input_html: {id: 'offcanvas-connection_user_password'}
+    = f.input :remember_me, :as => :boolean, input_html:{checked: true}
 
-    = f.button :submit, t("devise.sessions.new.sign_in"), class: 'std-button right'
+    = f.button :submit, t("devise.sessions.new.sign_in"), class: 'std-button right', id: 'offcanvas-connection-submit'
