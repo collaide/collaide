@@ -3,9 +3,9 @@
     = t 'devise.registrations.new.sign_up'
     %a.close.offcanvas-close{href: '#'} &times;
   = simple_form_for(User.new, as: :user, :url => user_registration_path, defaults: { input_html: { class: 'validate-form' } }, html: {id: 'offcanvas_new_user'} ) do |f|
-    = f.input :email, autocomplete: 'off', required: false
-    = f.input :name, autocomplete: 'off', required: false
-    = f.input :password, autocomplete: 'off', required: false
-    = f.input :password_confirmation, autocomplete: 'off', required: false
+    = f.input :email, autocomplete: 'off', required: false, input_html: {id: 'offcanvas-signup_user_email'}
+    = f.input :name, autocomplete: 'off', required: false, input_html: {id: 'offcanvas-signup_user_name'}
+    = f.input :password, autocomplete: 'off', required: false, input_html: {id: 'offcanvas-signup_user_password'}
+    = f.input :password_confirmation, autocomplete: 'off', required: false, input_html: {id: 'offcanvas-signup_user_password_confirmation'}
 
-    = f.button :submit, t("devise.registrations.new.sign_up"), class: 'std-button-i right'
+    = f.button :submit, t("devise.registrations.new.sign_up"), class: 'std-button-i right', id: 'offcanvas-signup-submit'

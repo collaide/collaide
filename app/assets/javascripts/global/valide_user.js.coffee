@@ -10,9 +10,13 @@ $(document).on('blur', '.validate-form', (e)->
       invalid.removeClass('invalid')
       invalid.next('small').remove()
     error: (request, status, error)->
+      console.log 'lhasjdlahsvd'
       if(request and request.responseJSON and (errors = request.responseJSON.errors))
-        method = e.target.id.substring(5)
+        method = e.target.id.substring(22)
+        # TODO récuper seulement le nom (email, name, etc)
         msg = errors[method]
+        console.log method
+        console.log errors
         if(msg)
           addErrorToField(method, msg)
         else
@@ -66,7 +70,7 @@ userData = ->
   user
 
 addErrorToField = (selector, msg)->
-  selector = "aside #user_#{selector}"
+  selector = "aside #offcanvas-signup_user_#{selector}"
   console.log selector
   error_elem = $(selector).next('small')
   $(selector).addClass('invalid')
@@ -77,4 +81,4 @@ addErrorToField = (selector, msg)->
 getVale = (selector, signIn = false)->
   if signIn
     return $("aside #offcanvas-connection_user_#{selector}").val()
-  $("aside #user_#{selector}").val()
+  $("aside #offcanvas-signup_user_#{selector}").val()

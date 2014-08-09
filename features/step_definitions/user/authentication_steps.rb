@@ -54,3 +54,33 @@ When(/^he submit valid information for the in page form$/) do
   fill_in 'offcanvas-connection_user_password', with: 'password'
   click_button 'offcanvas-connection-submit'
 end
+
+And(/^clicks the sign up button$/) do
+  click_link 'header-sign-up-button'
+end
+
+When(/^he submits a valid sign up form$/) do
+  user = FactoryGirl.build :normal_user
+  fill_in 'offcanvas-signup_user_email', with: user.email
+  fill_in 'offcanvas-signup_user_name', with: user.name
+  fill_in 'offcanvas-signup_user_password', with: user.password
+  fill_in 'offcanvas-signup_user_password_confirmation', with: user.password_confirmation
+  click_button 'offcanvas-signup-submit'
+end
+
+Then(/^he should see the welcome message for the registration$/) do
+  should have_content 'Bienvenue ! Vous vous êtes enregistré(e) avec succès.'
+end
+
+When(/^he fills the e\-mail field with invalid e\-mail and focus out$/) do
+  fill_in 'offcanvas-signup_user_email', with: 'wrong_email'
+  page.execute_script "$('aside #offcanvas-signup_user_email').focus(); $('aside #offcanvas-signup_user_email').focusout()"
+end
+
+Then(/^he should see an error message under the e\-mail field$/) do
+  should have_selector 'aside div.email small.error'
+end
+
+When(/^he submits an invalid sign up form$/) do
+  click_button 'offcanvas-signup-submit'
+end
