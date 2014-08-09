@@ -42,7 +42,7 @@ gem 'route_translator'
 gem 'globalize', '~> 4.0.0'
 
 gem 'ancestry'
-gem 'activeadmin-sortable-tree', :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
+gem 'activeadmin-sortable-tree', :github => "collaide/activeadmin-sortable-tree", :branch => "master"
 
 
 gem "activeadmin-globalize", github: 'collaide/activeadmin-globalize', branch: 'master'
