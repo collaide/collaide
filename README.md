@@ -1,7 +1,7 @@
 #collaide.com
 >Collaide, apprenons ensemble
 
-Béta version : http://www.collaide.com
+Beta version : http://www.collaide.com
 
 Hack collaide: [![Hack collaide/collaide on Nitrous.IO](https://d3o0mnbgv6k92a.cloudfront.net/assets/hack-s-v1-7475db0cf93fe5d1e29420c928ebc614.png)](https://www.nitrous.io/hack_button?source=embed&runtime=rails&repo=collaide%2Fcollaide)
 
