@@ -101,6 +101,28 @@ class Group::WorkGroupsController < ApplicationController
     @repo_item = RepositoryManager::RepoItem.find(params[:repo_item_id]) if params[:repo_item_id]
   end
 
+  def notify
+    @group = Group::WorkGroup.find(params[:work_group_id])
+    notifications = @group.notifications.find_for_api(
+        params[:last_seen], params[:event]
+    ).to_a
+    response = []
+
+    respond_to :json do |format|
+      if notifications
+        notifications.each do |n|
+          notifier = n.notifier
+            response << {id: notifier.id, type: notifier.model_name.name}
+        end
+      end
+      if response.any?
+        format.json { render status: 200, json: response.to_json }
+      else
+        format.json { render status: 204, text: 'no content' }
+      end
+    end
+  end
+
   private
   def group_work_group_params
     params.require(:group_work_group).permit(:name, can_index_activity: [], can_index_members: [], can_delete_member: [],

@@ -10,7 +10,9 @@ class RepositoryManager::RepoItemObserver < ActiveRecord::Observer
 
         notified_member_ids = repo_item.owner.u_members.map(&:id)
         notified_member_ids.delete(repo_item.sender.id)
-
+        #### Pour l'api
+        repo_item.owner.notifications << ApiNotification.new()
+        ####
         unless notified_member_ids.empty?
           #On créé une notification pour le receveur
           RepositoryManagerNotifications.perform_later(

@@ -48,6 +48,9 @@ class Group::WorkGroup < Group::Group
 #  delete topic        --> admin
 #  create invitation    --> member
 #  manage invitations   --> admin
+
+  has_many :notifications, as: :owner, class_name: 'ApiNotification'
+
   def init
     super
     self.can_read_topic << Group::Roles::MEMBER

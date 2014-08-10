@@ -88,6 +88,7 @@ class   User < ActiveRecord::Base
   # Quels documents sont téléchargés
   has_many :document_downloads, :class_name => 'Document::Download'
   has_many :downloads, class_name: 'Document::Document', through: :document_downloads, source: :document
+
 #------
 
   # Status de l'utilisateur sur son mur

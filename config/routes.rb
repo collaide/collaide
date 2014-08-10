@@ -59,7 +59,6 @@ Collaide::Application.routes.draw do
       resources :repo_items, only: [:index, :show, :destroy] do
         get 'download'
         get 'search'
-        get 'notify'
         patch 'copy', action: :copy
         patch 'move', action: :move
         patch 'rename', action: :rename
@@ -240,6 +239,7 @@ Collaide::Application.routes.draw do
       end
     end
     namespace :group, path: 'groups/:work_group_id' do
+      get 'notify'
       concerns :has_repository
     end
   end
