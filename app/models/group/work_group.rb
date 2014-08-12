@@ -49,7 +49,7 @@ class Group::WorkGroup < Group::Group
 #  create invitation    --> member
 #  manage invitations   --> admin
 
-  has_many :notifications, as: :owner, class_name: 'ApiNotification'
+  has_many :notifications, as: :owner, class_name: 'ApiNotification::ApiNotification'
 
   def init
     super

@@ -15,6 +15,7 @@
 #  uid                    :string(255)
 #  old_password           :string(255)
 #  old_user               :boolean
+#  old_id                 :integer
 #  latitude               :float
 #  longitude              :float
 #  reset_password_token   :string(255)

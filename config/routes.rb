@@ -239,8 +239,9 @@ Collaide::Application.routes.draw do
       end
     end
     namespace :group, path: 'groups/:work_group_id' do
-      get 'notify'
       concerns :has_repository
+      get 'notify', controller: 'work_groups'
     end
+
   end
 end

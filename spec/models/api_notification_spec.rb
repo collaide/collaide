@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: api_notifications
+#
+#  id                :integer          not null, primary key
+#  owner_type        :string(255)
+#  owner_id          :integer
+#  notification_type :string(255)
+#  notifier_type     :string(255)
+#  notifier_id       :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#
+
 require 'spec_helper'
 
 describe ApiNotification do

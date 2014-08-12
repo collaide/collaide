@@ -3,15 +3,16 @@
 #
 # Table name: app_notifications
 #
-#  id          :integer          not null, primary key
-#  class_name  :string(255)
-#  method_name :string(255)
-#  values      :string(255)
-#  is_viewed   :boolean          default(FALSE)
-#  owner_id    :integer
-#  owner_type  :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id             :integer          not null, primary key
+#  class_name     :string(255)
+#  method_name    :string(255)
+#  values         :string(255)
+#  is_viewed      :boolean          default(FALSE)
+#  owner_id       :integer
+#  owner_type     :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  has_api_viewed :boolean          default(FALSE)
 #
 
 class AppNotification < ActiveRecord::Base
