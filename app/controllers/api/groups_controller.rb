@@ -9,4 +9,21 @@ class Api::GroupsController < ApplicationController
       format.json
     end
   end
+
+  def notify
+    #TODO ajouter erreur 406 quand il y a plus de 40 notifications
+    #TODO permissions -> user doit être membre du groupe
+    # TDOD test it
+    group = Group::WorkGroup.find(params[:work_group_id])
+    notifications = group.notifications.find_for_api(
+        params[:last_seen], params[:type]
+    ).to_a
+    respond_to do |format|
+      if notifications.any?
+        format.json { render status: 200, json: notifications.to_json }
+      else
+        format.json { render status: 204, text: 'no content' }
+      end
+    end
+  end
 end

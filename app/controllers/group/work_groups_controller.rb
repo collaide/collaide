@@ -101,19 +101,6 @@ class Group::WorkGroupsController < ApplicationController
     @repo_item = RepositoryManager::RepoItem.find(params[:repo_item_id]) if params[:repo_item_id]
   end
 
-  def notify
-    group = Group::WorkGroup.find(params[:work_group_id])
-    notifications = group.notifications.find_for_api(
-        params[:last_seen], params[:type]
-    ).to_a
-    respond_to do |format|
-      if notifications.any?
-        format.json { render status: 200, json: notifications.to_json }
-      else
-        format.json { render status: 204, text: 'no content' }
-      end
-    end
-  end
 
   private
   def group_work_group_params

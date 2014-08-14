@@ -25,7 +25,7 @@ class RepositoryManager::RepoItemObserver < ActiveRecord::Observer
           group,
           ApiNotification::ItemChanged,
           notifier: repo_item,
-          from_path: repo_item.file.current_path
+          from_path: '/test/2'
       )
     else
       # Todo when implemented
