@@ -41,7 +41,7 @@ class Group::RepoItemsController < ApplicationController
 
   # Affiche le répertoire de base
   def index
-    @repo_item = @group.root_repo_items.order(name: :asc).order(file: :asc)
+    @repo_item = @group.root_repo_items.includes(:owner).includes(:sender).order(name: :asc).order(file: :asc)
     check_permission { @group.can?(:index, :files, current_user) }
   end
 

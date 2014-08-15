@@ -27,3 +27,5 @@ json.path repo_item.path do |json, path|
   json.url api_group_repo_item_path(@group, path)
   json.name path.name
 end
+
+# json.id repo_item.id

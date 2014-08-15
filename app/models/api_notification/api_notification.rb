@@ -17,14 +17,14 @@ class ApiNotification::ApiNotification < ActiveRecord::Base
   belongs_to :notifier, polymorphic: true
   # recherche des notification à partir de la dernière consultation (optionel)
   scope :find_for_api, ->(last_seen = nil, type = nil) {
-    request = self
+    request = includes(:notifier).order('created_at ASC')
     unless last_seen.blank?
       request = request.where('created_at > ?', last_seen)
     end
     unless type.blank?
       request = request.where(type: type)
     end
-    request.includes(:notifier)
+    request
   }
 
   def as_json(options)
