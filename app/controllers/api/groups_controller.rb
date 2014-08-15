@@ -14,7 +14,7 @@ class Api::GroupsController < ApplicationController
     #TODO ajouter erreur 406 quand il y a plus de 40 notifications
     #TODO permissions -> user doit être membre du groupe
     # TDOD test it
-    group = Group::WorkGroup.find(params[:work_group_id])
+    group = Group::WorkGroup.find(params[:group_id])
     notifications = group.notifications.find_for_api(
         params[:last_seen], params[:type]
     ).to_a

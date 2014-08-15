@@ -233,9 +233,7 @@ Collaide::Application.routes.draw do
       resources :auth_token, controller: 'auth_token', only: [:create]
       scope path: 'user/:user_id', as: :user do
         resources :groups, controller: 'groups', only: :index do
-          collection do
             get 'notify'
-          end
         end
       end
       resources :users, controller: 'users', only: :show do
