@@ -19,6 +19,7 @@
 #  state          :string(255)
 #  annotation     :string(255)
 #  study_level    :string(255)
+#  old_id         :integer
 #  created_at     :datetime
 #  updated_at     :datetime
 #

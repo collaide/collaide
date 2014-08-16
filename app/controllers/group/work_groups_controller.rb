@@ -5,7 +5,7 @@ class Group::WorkGroupsController < ApplicationController
   include Concerns::ActivityConcern
 
   #breadcrumb
-  add_breadcrumb I18n.t("group.groups.index.breadcrumb"),  :group_groups_path
+  add_breadcrumb I18n.t("group.groups.index.breadcrumb"), :group_groups_path
 
   add_breadcrumb I18n.t("group.groups.new.title_page"), :new_group_group_path, :only => %w(new create)
   add_breadcrumb I18n.t("group.work_groups.new.h1_title"), :new_group_work_group_path, :only => %w(new create)
@@ -14,7 +14,7 @@ class Group::WorkGroupsController < ApplicationController
   # GET /group/work_groups/1.json
   def show
     @group = Group::WorkGroup.find(params[:id])
-    @activities = Activity::Activity.order("created_at desc").where('(trackable_id = ? AND trackable_type = ?) OR (recipient_id = ? AND recipient_type = ?) OR (owner_id = ? AND owner_type = ?)', @group.id,  @group.class.base_class.to_s, @group.id,  @group.class.base_class.to_s, @group.id,  @group.class.base_class.to_s)
+    @activities = Activity::Activity.order("created_at desc").where('(trackable_id = ? AND trackable_type = ?) OR (recipient_id = ? AND recipient_type = ?) OR (owner_id = ? AND owner_type = ?)', @group.id, @group.class.base_class.to_s, @group.id, @group.class.base_class.to_s, @group.id, @group.class.base_class.to_s)
 
     # add_breadcrumb @group.name, group_work_group_path(@group)
     respond_to do |format|
@@ -101,13 +101,14 @@ class Group::WorkGroupsController < ApplicationController
     @repo_item = RepositoryManager::RepoItem.find(params[:repo_item_id]) if params[:repo_item_id]
   end
 
+
   private
   def group_work_group_params
     params.require(:group_work_group).permit(:name, can_index_activity: [], can_index_members: [], can_delete_member: [],
-                                     can_read_member: [], can_write_file: [], can_index_files: [], can_read_file: [],
-                                     can_delete_file: [], can_index_topics: [], can_read_topic: [], can_write_topic: [],
-                                     can_delete_topic: [], can_create_invitation: [], can_manage_invitations: [],
-                                     can_delete_group: [])
+                                             can_read_member: [], can_write_file: [], can_index_files: [], can_read_file: [],
+                                             can_delete_file: [], can_index_topics: [], can_read_topic: [], can_write_topic: [],
+                                             can_delete_topic: [], can_create_invitation: [], can_manage_invitations: [],
+                                             can_delete_group: [])
   end
 
 end

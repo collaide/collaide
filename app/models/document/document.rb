@@ -18,6 +18,7 @@
 #  hits             :integer          default(0)
 #  is_deleted       :boolean          default(FALSE)
 #  study_level      :string(255)
+#  old_id           :integer
 #  created_at       :datetime
 #  updated_at       :datetime
 #

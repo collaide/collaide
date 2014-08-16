@@ -10,9 +10,13 @@ $(document).on('blur', '.validate-form', (e)->
       invalid.removeClass('invalid')
       invalid.next('small').remove()
     error: (request, status, error)->
+      console.log 'lhasjdlahsvd'
       if(request and request.responseJSON and (errors = request.responseJSON.errors))
-        method = e.target.id.substring(5)
+        method = e.target.id.substring(22)
+        # TODO récuper seulement le nom (email, name, etc)
         msg = errors[method]
+        console.log method
+        console.log errors
         if(msg)
           addErrorToField(method, msg)
         else
@@ -21,7 +25,7 @@ $(document).on('blur', '.validate-form', (e)->
             $("aside #user_#{method}").next('small').remove()
   })
 ) .
-on('submit', '#new_user', (e)->
+on('submit', '#offcanvas_new_user', (e)->
   e.preventDefault()
   $.ajax({
     type: 'POST',
@@ -37,6 +41,28 @@ on('submit', '#new_user', (e)->
       else
         e.target.submit()
   })
+).on('submit', '#offcanvas_sign_in', (e)->
+  e.preventDefault()
+  $.ajax({
+    accepts: 'json'
+    dataType: 'json'
+    type: 'POST',
+    url: '/api/auth_token.json',
+    data: {email: getVale('email', true), password: getVale('password', true)},
+  success: ->
+    e.target.submit()
+  error: (request, status, error) ->
+    if(request and request.responseJSON and (errorMessage = request.responseJSON.error))
+      $('aside #offcanvas_sign_in').prepend("
+        <div data-alert class='alert-box alert'>
+              #{errorMessage}
+        </div>
+      ")
+    else
+      e.target.submit()
+  })
+).on('click', '.offcanvas-close', (e)->
+  e.preventDefault()
 )
 
 userData = ->
@@ -44,7 +70,7 @@ userData = ->
   user
 
 addErrorToField = (selector, msg)->
-  selector = "aside #user_#{selector}"
+  selector = "aside #offcanvas-signup_user_#{selector}"
   console.log selector
   error_elem = $(selector).next('small')
   $(selector).addClass('invalid')
@@ -52,5 +78,7 @@ addErrorToField = (selector, msg)->
     error_elem.html(msg)
   else
     $(selector).parent().append("<small class=\"error\">#{msg}<small/>")
-getVale = (selector)->
-  $("aside #user_#{selector}").val()
+getVale = (selector, signIn = false)->
+  if signIn
+    return $("aside #offcanvas-connection_user_#{selector}").val()
+  $("aside #offcanvas-signup_user_#{selector}").val()

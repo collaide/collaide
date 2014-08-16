@@ -2,14 +2,15 @@
 #
 # Table name: activity_parameters
 #
-#  id              :integer          not null, primary key
-#  owner_id        :integer
-#  owner_type      :string(255)
-#  starting_at     :datetime
-#  ending_at       :datetime
-#  trackable_id_id :integer
-#  created_at      :datetime
-#  updated_at      :datetime
+#  id             :integer          not null, primary key
+#  owner_id       :integer
+#  owner_type     :string(255)
+#  starting_at    :datetime
+#  ending_at      :datetime
+#  trackable_id   :integer
+#  trackable_type :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
 #
 
 class Activity::Parameter < ActiveRecord::Base

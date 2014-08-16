@@ -42,7 +42,7 @@ gem 'route_translator'
 gem 'globalize', '~> 4.0.0'
 
 gem 'ancestry'
-gem 'activeadmin-sortable-tree', :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
+gem 'activeadmin-sortable-tree', :github => "collaide/activeadmin-sortable-tree", :branch => "master"
 
 
 gem "activeadmin-globalize", github: 'collaide/activeadmin-globalize', branch: 'master'
@@ -145,6 +145,7 @@ gem 'foundation-icons-sass-rails'
 group :test do
   gem 'sqlite3'
   gem 'capybara', '1.1.2'
+  gem 'capybara-webkit'
   gem 'factory_girl_rails', '4.1.0'
   gem 'cucumber-rails', '1.2.1', :require => false
   gem 'database_cleaner', "~> 1.2.0"

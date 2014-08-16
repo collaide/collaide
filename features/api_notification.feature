@@ -1,0 +1,1 @@
+Feature: Testing api notification for a repository of a group.

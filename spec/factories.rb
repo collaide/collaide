@@ -70,14 +70,7 @@ FactoryGirl.define do
     isbn_13 3333333333333
   end
 
-  factory :group, class: 'Group::Group' do |group|
-    name "Name group"
-    description "c'est une déscription"
-  end
 
-  factory :work_group, class: 'Group::WorkGroup' do
-    sequence(:name) { |n| "Public work group #{n}" }
-  end
 
   factory :comment, class: 'Comment' do
     sequence(:title) { |n| "Comment number #{n}"}

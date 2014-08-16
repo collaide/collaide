@@ -1,12 +1,12 @@
 class Api::AuthTokenController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: :create
+  prepend_before_filter :disable_devise_trackable
 
   def create
-    logger.debug auth_token_params.inspect
     u = User.find_by email: params[:email]
     if not u or !u.valid_password? params[:password]
       respond_to do |format|
-        format.json {render json: {error: 'cannot authenticate user'}, status: 401}
+        format.json {render json: {error: I18n.t('devise.failure.invalid')}, status: 401}
       end
       return
     end
@@ -25,5 +25,9 @@ class Api::AuthTokenController < ApplicationController
 
   def auth_token_params
     params
+  end
+
+  def disable_devise_trackable
+    request.env['devise.skip_trackable'] = true
   end
 end

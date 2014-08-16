@@ -59,7 +59,6 @@ Collaide::Application.routes.draw do
       resources :repo_items, only: [:index, :show, :destroy] do
         get 'download'
         get 'search'
-        get 'notify'
         patch 'copy', action: :copy
         patch 'move', action: :move
         patch 'rename', action: :rename
@@ -233,7 +232,9 @@ Collaide::Application.routes.draw do
     namespace :api, path: '' do
       resources :auth_token, controller: 'auth_token', only: [:create]
       scope path: 'user/:user_id', as: :user do
-        resources :groups, controller: 'groups', only: :index
+        resources :groups, controller: 'groups', only: :index do
+            get 'notify'
+        end
       end
       resources :users, controller: 'users', only: :show do
         post 'valid', on: :collection
@@ -242,5 +243,6 @@ Collaide::Application.routes.draw do
     namespace :group, path: 'groups/:work_group_id' do
       concerns :has_repository
     end
+
   end
 end

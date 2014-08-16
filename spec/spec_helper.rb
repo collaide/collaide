@@ -6,7 +6,7 @@ require 'spork'
 #require 'spork/ext/ruby-debug'
 
 Spork.prefork do
-  include BreadcrumbsOnRails::ActionController::HelperMethods
+#  include BreadcrumbsOnRails::ActionController::HelperMethods
   # Loading more in this block will cause your tests to run faster. However,
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.

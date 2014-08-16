@@ -154,6 +154,7 @@ class ApplicationController < ActionController::Base
     if !params[:user_email].blank? and (user = User.find_by(email: params[:user_email]))
       #logger.debug 'correct'
       if Devise.secure_compare(user.authentication_token, params[:user_token])
+        request.env['devise.skip_trackable'] = true
         sign_in user, store: false
         #logger.debug('asDFsdfasdfsad')
       end
