@@ -1,15 +1,6 @@
 # -*- encoding : utf-8 -*-
 Collaide::Application.configure do
   #Custom logging
-  
-  # Enable the logstasher logs for the current environment
-   config.logstasher.enabled = true
-  #
-  # # This line is optional if you do not want to suppress app logs in your <environment>.log
-   config.logstasher.suppress_app_log = false
-  #
-  # # This line is optional, it allows you to set a custom value for the @source field of the log event
-   config.logstasher.source = 'collaide.com'
 
 
   # Settings specified here will take precedence over those in config/application.rb

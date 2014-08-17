@@ -2,6 +2,14 @@
 Collaide::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # Monitoring
+  config.logstash.host = 'dev.collaide.com'
+  config.logstash.type = :udp
+  config.logstash.port = 6379
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Logstash.new
+  # ###################
+
   # Code is not reloaded between requests
   config.cache_classes = true
   config.middleware.use Rack::Deflater

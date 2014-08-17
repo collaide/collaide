@@ -22,16 +22,6 @@ module Collaide
 
     #config.exceptions_app = self.routes
 
-    # Custom logging
-  # Enable the logstasher logs for the current environment
-   config.logstasher.enabled = true
-  #
-  # # This line is optional if you do not want to suppress app logs in your <environment>.log
-   config.logstasher.suppress_app_log = false
-  #
-  # # This line is optional, it allows you to set a custom value for the @source field of the log event
-   config.logstasher.source = 'collaide.com'
-
     # ATTENTION Ajouter pour contrer le bug de GoogleBooks
     # Je l'ai mis dans environnements/development.rb --> comme ça le serveur prod ne quinte pas.
     # Et Si ça bug en production, je dois pouvoir le configurer facilement
