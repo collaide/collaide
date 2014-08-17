@@ -1,31 +1,45 @@
 # -*- encoding : utf-8 -*-
 Collaide::Application.configure do
   #Custom logging
-  
+
   # Enable the logstasher logs for the current environment
-   config.logstasher.enabled = false
+  config.logstasher.enabled = false
   #
   # # This line is optional if you do not want to suppress app logs in your <environment>.log
-   config.logstasher.suppress_app_log = false
+  config.logstasher.suppress_app_log = false
   #
   # # This line is optional, it allows you to set a custom value for the @source field of the log event
-   config.logstasher.source = 'collaide.com'
+  config.logstasher.source = 'collaide.com'
+
+  # Optional, defaults to '0.0.0.0'
+  config.logstash.host = 'dev.collaide.com'
+
+# Optional, defaults to :udp.
+  config.logstash.type = :udp
+
+# Required, the port to connect to
+  config.logstash.port = 6379
+
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Logstash.new
+
+###############################################################################################
 
 
-  # Settings specified here will take precedence over those in config/application.rb
-  # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
-  # In the development environment your application's code is reloaded on
-  # every request. This slows down response time but is perfect for development
-  # since you don't have to restart the web server when you make code changes.
+# Settings specified here will take precedence over those in config/application.rb
+# OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+# In the development environment your application's code is reloaded on
+# every request. This slows down response time but is perfect for development
+# since you don't have to restart the web server when you make code changes.
 
-  # In the development environment your application's code is reloaded on
-  # every request. This slows down response time but is perfect for development
-  # since you don't have to restart the web server when you make code changes.
+# In the development environment your application's code is reloaded on
+# every request. This slows down response time but is perfect for development
+# since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
   config.eager_load = false
-  # Show full error reports and disable caching
-  config.consider_all_requests_local       = true
+# Show full error reports and disable caching
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
@@ -37,9 +51,9 @@ Collaide::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-   config.action_mailer.delivery_method = :smtp
-   config.action_mailer.smtp_settings = { :address => 'localhost', :port => 1025 }
+  config.action_mailer.default_url_options = {:host => 'localhost:3000'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {:address => 'localhost', :port => 1025}
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :silence
