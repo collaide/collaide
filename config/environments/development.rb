@@ -1,17 +1,8 @@
 # -*- encoding : utf-8 -*-
 Collaide::Application.configure do
   #Custom logging
-  # Optional, defaults to '0.0.0.0'
-  config.logstash.host = 'dev.collaide.com'
 
-# Optional, defaults to :udp.
-  config.logstash.type = :udp
-
-# Required, the port to connect to
-  config.logstash.port = 6379
-
-  config.lograge.enabled = true
-  config.lograge.formatter = Lograge::Formatters::Logstash.new
+  config.lograge.enabled = false
 
 ###############################################################################################
 
