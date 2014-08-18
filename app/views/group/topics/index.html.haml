@@ -7,4 +7,5 @@
     .row
       .columns.small-24
         %h4.subheader= t('group.topics.index.last_discussions')
+        =paginate @topics
         =render partial: 'topics/topic', collection: @topics, as: 'topic', locals: {limit: 5}

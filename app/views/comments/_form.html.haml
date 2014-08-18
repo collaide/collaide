@@ -1,4 +1,4 @@
-=simple_form_for @comment do |f|
+=simple_form_for @comment, action: topics_path do |f|
   .hide
     =hidden_field_for_polymorphic 'comment', object
   .row
