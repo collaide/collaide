@@ -1,0 +1,13 @@
+#decal-content
+#user-panel
+  %ul.no-bullet
+    %li.user-avatar
+      -#=show_avatar_linked(current_user)
+      =link_to(image_tag(current_user.avatar.mini), current_user)
+    %li.user-notifications
+      =link_to('N', notifications_path)
+    %li.user-messages.selected
+      =link_to('M', messages_path, class: "up-button left-off-canvas-toggle")
+    %li.user-settings
+      =link_to('p', edit_user_registration_path)
+#user-notifications-panel

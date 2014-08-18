@@ -119,6 +119,10 @@ $(function () {
     raw((link_to(img_tag + ' ' + h(writer), writer, class: klass)).html_safe)
   end
 
+  def show_avatar_linked(user)
+    link_to(image_tag(user.avatar.mini), user).html_safe
+  end
+
   # View helper for rendering an activity, calls {Activity::Activity#render} internally.
   def render_activity activities, options = {}
     if activities.is_a? Activity::Activity

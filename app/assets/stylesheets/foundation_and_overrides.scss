@@ -213,6 +213,73 @@
   }
 }
 
+// user panel
+#user-panel {
+  border-top: solid 1px $primary-light-color;
+  //border-bottom: solid 1px $primary-light-color;
+  background-color: $primary-color;
+  width: 60px;
+  //min-height: emCalc(600px);
+  //min-height: 100%;
+  //height: 100%;
+  float: left;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  //overflow-y: auto;
+  li {
+    display: block;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: 15px;
+    //cursor: pointer;
+    img {
+      margin-top: 20px;
+    }
+  }
+  a {
+    display: block;
+    height: 100px;
+  }
+  li:hover, li.selected {
+    background-color: $primary-light-color;
+  }
+//  li.selected:hover {
+//    background-color: $primary-color;
+//  }
+  li.user-notifications {
+    background-image: image_url('icons/notif-icon.svg');
+  }
+  li.user-messages {
+    background-image: image_url('icons/chat-icon.svg');
+  }
+  li.user-settings {
+    background-image: image_url('icons/setting-icon.svg');
+  }
+}
+#user-notifications-panel {
+  width: 350px;
+  top: 0;
+  bottom: 0;
+  left: 60px;
+  position: absolute;
+  background-color: $primary-light-color;
+  border-right: solid 4px $primary-color;
+
+}
+
+#main-content.decal-content, #flash-msg.decal-content {
+  padding-left: 60px;
+}
+
+#main-content {
+  //position: absolute;
+  //bottom: 0px;
+  min-height: emCalc(600px);
+}
+
+
 
 //documents
 .no-border {
@@ -403,11 +470,6 @@ blockquote.unread{
 //static_pages
 textarea { height: auto; min-height: 70px;}
 
-#main-content {
-  min-height: emCalc(600px);
-
-}
-
 ::-webkit-input-placeholder { font-size:$font-size; }
 ::-moz-placeholder { font-size:$font-size; } /* firefox 19+ */
 :-ms-input-placeholder { font-size:$font-size; } /* ie */
@@ -507,10 +569,6 @@ footer {
   background-color: $primary-color;
   padding-top: 30px;
   padding-bottom: 30px;
-}
-
-footer {
-
 }
 
 

@@ -38,6 +38,8 @@
   = render 'layouts/header'
   .off-canvas-wrap{'data-offcanvas'=> ''}
     .inner-wrap
+      %aside.left-off-canvas-menu
+        Salut
       #get-header-sign-up-panel.hide
 
         =render 'devise/form/header_sign_up'
@@ -45,11 +47,16 @@
 
         =render 'devise/form/header_sign_in'
       = render 'layouts/right_off_canvas'
+      = render 'layouts/user_panel' if user_signed_in?
       %p
       -#.row
         #breadcrumb.columns.small-24
           = render_breadcrumbs :builder => ::FoundationBreadcrumbsBuilder, :separator => "&raquo;"
-      #flash-msg
+      -if user_signed_in?
+        -decal_class = 'decal-content'
+      -else
+        -decal_class = ''
+      #flash-msg{class: decal_class}
         -unless flash.empty?
           .row
             .columns.small-24
@@ -57,7 +64,7 @@
                 .alert-box{class: key, :'data-alert' =>  true}
                   = value
                   %a{href: '#', class: 'close'}= "&times;".html_safe
-      .row#main-content
+      .row#main-content{class: decal_class}
         .columns.small-24
           -#-if current_user.nil? or current_user.sign_in_count < 2
             %blockquote.hide-for-small.unread
