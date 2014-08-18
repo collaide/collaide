@@ -306,8 +306,6 @@ GEM
       activesupport (>= 3)
       railties (>= 3)
     logstash-event (1.2.02)
-    logstasher (0.2.8)
-      logstash-event
     lorem-ipsum (0.1.1)
     lumberjack (1.0.9)
     magic_encoding (0.0.2)
@@ -618,7 +616,6 @@ DEPENDENCIES
   letsrate!
   lograge
   logstash-logger!
-  logstasher
   lorem-ipsum
   magic_encoding
   mailboxer

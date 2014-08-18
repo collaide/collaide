@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 #gem 'newrelic_rpm'
 
 # pour surveiller l'activité
-gem 'logstasher'
 gem 'logstash-logger', github: 'dwbutler/logstash-logger'
 gem 'lograge'
 ##############################
