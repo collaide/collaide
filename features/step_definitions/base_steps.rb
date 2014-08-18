@@ -19,3 +19,8 @@ Given(/^I am logged in as "([^"]*)"$/) do |role|
     click_button "connection_submit"
   end
 end
+
+And(/^I am authenticated as a "([^"]*)" user$/) do |role|
+  Given("a #{role} user has an account")
+  Given('the normal user submits valid signin information')
+end
