@@ -19,6 +19,15 @@ GIT
       globalize (~> 4.0.0)
 
 GIT
+  remote: git://github.com/collaide/activeadmin-sortable-tree.git
+  revision: 72da665dea48204d7d1f13b4fae4033bbc8d8b83
+  branch: master
+  specs:
+    activeadmin-sortable-tree (0.0.1)
+      activeadmin
+      rails (>= 3.2)
+
+GIT
   remote: git://github.com/ctran/annotate_models.git
   revision: 9634ea6e67851d4a9a4d0b89597a6a9d3fc4d1f4
   specs:
@@ -50,15 +59,6 @@ GIT
       rails (>= 3.2, < 4.2)
       ransack (~> 1.0)
       sass-rails
-
-GIT
-  remote: git://github.com/nebirhos/activeadmin-sortable-tree.git
-  revision: 77a59c351e3f4d4ba2429188da3ff6f677092140
-  branch: master
-  specs:
-    activeadmin-sortable-tree (0.0.1)
-      activeadmin
-      rails (>= 3.2)
 
 GIT
   remote: https://github.com/codahale/bcrypt-ruby.git
