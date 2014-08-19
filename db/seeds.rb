@@ -38,6 +38,9 @@ I18n.locale = :fr
 #                            ])
 
 super_admin = User.find_by email: 'admin@example.com'
+super_admin = User.create!(email: 'admin@example.com', name: 'admin111', password: 'password', password_confirmation: 'password') unless super_admin
+super_admin.role = :super_admin
+super_admin.save
 work_group = Group::WorkGroup.create!(name: 'Un groupe', description: '?Ceskjab sd')
 work_group.add_members(super_admin)
 50.times do |i|

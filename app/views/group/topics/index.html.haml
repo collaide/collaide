@@ -6,6 +6,8 @@
   -unless @topics.empty?
     .row
       .columns.small-24
-        %h4.subheader= t('group.topics.index.last_discussions')
+        #infinite-scroll
+          %h4.subheader= t('group.topics.index.last_discussions')
+          .page
+            =render partial: 'topics/topic', collection: @topics, as: 'topic', locals: {limit: 5}
         =paginate @topics
-        =render partial: 'topics/topic', collection: @topics, as: 'topic', locals: {limit: 5}
