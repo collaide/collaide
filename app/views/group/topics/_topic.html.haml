@@ -3,7 +3,7 @@
     %h6.subheader
       -if not topic.title.blank?
         %strong=topic.title
-      -if topic.writer.nil?
+      -if topic.user_writer.nil?
         =t('group.topics.index.no_author')
       -else
         =t('group.topics.index.author')

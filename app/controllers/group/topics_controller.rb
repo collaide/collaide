@@ -21,7 +21,8 @@ class Group::TopicsController < ApplicationController
 
   def show
     check_permission{ @group.can? :read, :topic, current_user }
-    @topic = Topic.includes({comments: :owner}).find(params[:id])
+    @topic = Topic.find(params[:id])
+    @comments = @topic.comments.includes(:user).page(params[:page])
   end
 
   private

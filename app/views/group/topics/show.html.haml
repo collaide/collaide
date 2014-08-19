@@ -4,6 +4,23 @@
   %h1= t('group.topics.show.h1_title', date: l(@topic.created_at, format: :short))
   %h3= @topic.title if @topic.title
   .row
-    =render partial: 'topics/topic', locals: {topic: @topic, limit: nil}, as: 'topic'
-
-
+    .columns.small-24
+      .panel.topics
+        %h6.subheader
+          -if not @topic.title.blank?
+            %strong= @topic.title
+          -if @topic.writer.nil?
+            =t('group.topics.index.no_author')
+          -else
+            =t('group.topics.index.author')
+            =raw(image_and_name_for @topic.writer)
+          = t('group.topics.index.time_ago', time_ago: time_ago_in_words(@topic.created_at))
+          -#= link_to(t('group.statuses.index.edit'), '#', class: 'button small secondary')
+          -#= link_to(t('group.statuses.index.delete'), '#', class: 'button small secondary')
+        .row
+          .columns.small-22.push-1
+            =render 'comments/form', submit_text: t('group.topics.index.reply'), object: topic
+            #infinite-scroll
+              .page
+                =render partial: 'comment', collection: @comments, as: 'comment'
+            =paginate @comments
