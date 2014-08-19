@@ -1,1 +1,1 @@
-$('#infinite-scroll').append("<div class=\"page\">#{escape_javascript(render partial: 'topics/topic', collection: @topics, as: 'topic', locals: {limit: 5})}</div>")
+$('#infinite-scroll').append("<div class=\"page\">#{escape_javascript(render partial: 'topic', collection: @topics, as: 'topic', locals: {limit: 5})}</div>")

@@ -615,7 +615,8 @@ fr:
         begin_discussions: Lancer une discussion
         time_ago: Il y a %{time_ago}
         reply: Répondre
-        no_author: Pas d'auteur
+        no_author: Commencée
+        author: Commencée par
         edit: Modifier
         delete: Supprimer
         show_more: Afficher la suite de la discussion
