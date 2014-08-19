@@ -610,7 +610,7 @@ fr:
         h1_title: Discussions
         description: Vous pouvez ici mettre en page de jolis messages afin de discuter avec vos collègues.
         last_discussions: Les dernières discussions
-        #empty: Aucune discussions en cours.
+        empty: Aucune discussion en cours.
         new_discussion: Discuter
         begin_discussions: Lancer une discussion
         time_ago: Il y a %{time_ago}

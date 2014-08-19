@@ -1,0 +1,9 @@
+.columns.small-24
+  %h6.subheader
+    -if comment.user.nil?
+      =t('group.topics.index.comment.no_author')
+    -else
+      =image_and_name_for comment.user
+      =t('group.topics.index.time_ago', time_ago: time_ago_in_words(comment.created_at))
+  %p= s(comment.comment).html_safe
+  %hr
