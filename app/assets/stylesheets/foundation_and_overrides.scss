@@ -215,6 +215,7 @@
 
 // user panel
 #user-panel {
+  //border-top: solid 1px $primary-light-color;
   border-top: solid 1px $primary-light-color;
   //border-bottom: solid 1px $primary-light-color;
   background-color: $primary-color;
@@ -258,7 +259,8 @@
     background-image: image_url('icons/setting-icon.svg');
   }
 }
-#user-notifications-panel {
+
+.user-panel-extended {
   width: 350px;
   top: 0;
   bottom: 0;
@@ -266,7 +268,15 @@
   position: absolute;
   background-color: $primary-light-color;
   border-right: solid 4px $primary-color;
+  //border-top: solid 1px $primary-light-color;
+  z-index: 1;
 
+  #user-notifications-panel {
+    li {
+      padding: 15px 40px 15px 15px;
+    }
+
+  }
 }
 
 #main-content.decal-content, #flash-msg.decal-content {
