@@ -31,5 +31,5 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :owner, polymorphic: true
 
-  belongs_to :user, -> { where('comments.owner_type=User') }, foreign_key: 'owner_id', class_name: 'User'
+  belongs_to :user, foreign_key: 'owner_id', class_name: 'User'
 end

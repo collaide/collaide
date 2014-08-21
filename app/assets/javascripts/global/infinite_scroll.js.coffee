@@ -28,7 +28,7 @@ $(document).ready ->
   $("#infinite-scroll .page").infinitescroll
     navSelector: "ul.pagination"
     nextSelector: "ul.pagination a[rel=next]"
-    itemSelector: "#infinite-scroll .topics"
+    itemSelector: "#infinite-scroll .items"
     loading: {
       finishedMsg: "<em>Il n'y a pas d'autres eléments à afficher</em>",
       msgText: "<em>Chargement des prochains eléments</em>",
