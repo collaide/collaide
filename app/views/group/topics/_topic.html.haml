@@ -9,8 +9,9 @@
         =t('group.topics.index.author')
         =raw(image_and_name_for topic.user_writer)
       = t('group.topics.index.time_ago', time_ago: time_ago_in_words(topic.created_at))
+
       -#= link_to(t('group.statuses.index.edit'), '#', class: 'button small secondary')
-      -#= link_to(t('group.statuses.index.delete'), '#', class: 'button small secondary')
+      = link_to(t('group.statuses.index.delete'), group_work_group_topic_path(@group, topic), class: 'button small secondary', method: :delete, confirm: t('confirm'))
     .row
       .columns.small-22.push-1
         -collection = topic.comments

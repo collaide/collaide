@@ -25,6 +25,13 @@ class Group::TopicsController < ApplicationController
     @comments = @topic.comments
   end
 
+  def destroy
+    check_permission { @group.can? :delete, :topic, current_user }
+    @topic = Topic.find(params[:id])
+    @topic.delete
+    redirect_to group_work_group_topics_path, notice: 'supprimé.'
+  end
+
   private
   def get_required_objects
     @comment = Comment.new
