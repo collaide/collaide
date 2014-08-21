@@ -9,7 +9,7 @@
         %h6.subheader
           -if not @topic.title.blank?
             %strong= @topic.title
-          -if @topic.user_writer.nil?
+          -if @topic.writer.nil?
             =t('group.topics.index.no_author')
           -else
             =t('group.topics.index.author')
@@ -23,4 +23,4 @@
             #infinite-scroll
               .page
                 =render partial: 'comment', collection: @comments, as: 'comment'
-            =paginate @comments
+            -#=paginate @comments
