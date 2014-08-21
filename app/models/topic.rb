@@ -23,6 +23,8 @@ class Topic < ActiveRecord::Base
   belongs_to :owner, polymorphic: true, inverse_of: :topics
   belongs_to :writer, polymorphic: true
 
+  has_many :activities, foreign_key: "trackable_id", :dependent => :destroy
+
   validates_presence_of :message
 
   def to_s
