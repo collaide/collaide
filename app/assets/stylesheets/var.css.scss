@@ -28,6 +28,7 @@ $footer-end-color: lighten($footer-background-color, 30%);
 
 $font-size : 1em;
 $min-height: emCalc(600px);
+$footer-height: 200px;
 
 .row {
   max-width: $row-width;
