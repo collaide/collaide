@@ -22,3 +22,20 @@
 #$(document).on('page:load', ->
 #  infinite_scroll()
 #)
+
+#TODO: translate
+
+infinite = ->
+  $("#infinite-scroll .page").infinitescroll
+    navSelector: "ul.pagination"
+    nextSelector: "ul.pagination a[rel=next]"
+    itemSelector: "#infinite-scroll .items"
+    loading: {
+      finishedMsg: "<em>Il n'y a pas d'autres eléments à afficher</em>",
+      msgText: "<em>Chargement des prochains eléments</em>",
+    }
+$(document).ready ->
+  infinite()
+$(document).on('page:load', ->
+  infinite()
+)

@@ -3,8 +3,10 @@
   %h1= t('group.topics.index.h1_title')
   %blockquote= t('group.topics.index.description')
   =render 'group/topics/form'
-  -unless @topics.empty?
-    .row
-      .columns.small-24
+  .row
+    .columns.small-24
+      #infinite-scroll
         %h4.subheader= t('group.topics.index.last_discussions')
-        =render partial: 'topics/topic', collection: @topics, as: 'topic', locals: {limit: 5}
+        .page
+          =render(partial: 'topic', collection: @topics, as: 'topic', locals: {limit: 5}) || t('group.topics.index.empty')
+      =paginate @topics

@@ -11,7 +11,7 @@ class Group::TopicsController < ApplicationController
     #raise CanCan::AccessDenied unless @group.can? :index, :topics, current_user
     check_permission { @group.can? :index, :topics, current_user }
     @topic = Topic.new
-    @topics = @group.topics.order('created_at DESC').includes({comments: :owner}, :writer)
+    @topics = @group.topics.order('comments.created_at DESC').includes({comments: :user}, :user_writer).page(params[:page])
   end
 
   def new
@@ -21,7 +21,17 @@ class Group::TopicsController < ApplicationController
 
   def show
     check_permission{ @group.can? :read, :topic, current_user }
-    @topic = Topic.find params[:id]
+    @topic = Topic.find(params[:id])
+    @comments = @topic.comments.page(params[:page])
+  end
+
+  def destroy
+    check_permission { @group.can? :delete, :topic, current_user }
+    @topic = Topic.find(params[:id])
+    @comments = @topic.comments
+    @comments.each { |comment| comment.destroy }
+    @topic.delete
+    redirect_to group_work_group_topics_path, notice: 'supprimé.'
   end
 
   private

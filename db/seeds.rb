@@ -28,11 +28,22 @@ I18n.locale = :fr
 #     {name: 'admin', email: 'admin@example.com', password: 'password', role: :super_admin},
 #     {name: 'user', email: 'user@example.com', password: 'password'}
 #             ])
-Domain.create!([
-                   {name: 'domain 1', description: 'premier domaine', position: 0},
-                   {name: 'domain 2', description: 'deuxième domaine', position: 1}
-               ])
-Document::Document.create!([
-                               {"title" => "Doc 1", "description" => "c'est une déscription 1", "author" => "salut", "number_of_pages" => "2", "realized_at" => "2012-01-24", "language" => "Français", "asset" => Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'download', 'asDF.tiff')), "document_type_id" => "1", "study_level" => "university", domain_ids: [1]},
-                               {"title" => "Doc 2", "description" => "c'est une déscription 2", "author" => "salut", "number_of_pages" => "23", "realized_at" => "2012-01-25", "language" => "Français", "asset" => Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'download', 'asDF.tiff')), "document_type_id" => "1", "study_level" => "university", domain_ids: [1]}
-                           ])
+# Domain.create!([
+#                    {name: 'domain 1', description: 'premier domaine', position: 0},
+#                    {name: 'domain 2', description: 'deuxième domaine', position: 1}
+#                ])
+# Document::Document.create!([
+#                                {"title" => "Doc 1", "description" => "c'est une déscription 1", "author" => "salut", "number_of_pages" => "2", "realized_at" => "2012-01-24", "language" => "Français", "asset" => Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'download', 'asDF.tiff')), "document_type_id" => "1", "study_level" => "university", domain_ids: [1]},
+#                                {"title" => "Doc 2", "description" => "c'est une déscription 2", "author" => "salut", "number_of_pages" => "23", "realized_at" => "2012-01-25", "language" => "Français", "asset" => Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'download', 'asDF.tiff')), "document_type_id" => "1", "study_level" => "university", domain_ids: [1]}
+#                            ])
+
+super_admin = User.find_by email: 'admin@example.com'
+super_admin = User.create!(email: 'admin@example.com', name: 'admin111', password: 'password', password_confirmation: 'password') unless super_admin
+super_admin.role = :super_admin
+super_admin.save
+work_group = Group::WorkGroup.create!(name: 'Un groupe', description: '?Ceskjab sd')
+work_group.add_members(super_admin)
+50.times do |i|
+  work_group.topics << Topic.create(message: 'un messaeg ' + i.to_s)
+end
+work_group.save

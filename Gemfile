@@ -2,7 +2,12 @@ source 'https://rubygems.org'
 #ruby '2.0.0'
 # pour le monitoring de l'application
 #gem 'newrelic_rpm'
-gem 'logstasher'
+
+# pour surveiller l'activité
+gem 'logstash-logger', github: 'dwbutler/logstash-logger'
+gem 'lograge'
+##############################
+
 gem 'psych'
 gem 'rack-canonical-host'
 
