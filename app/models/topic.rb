@@ -23,7 +23,7 @@ class Topic < ActiveRecord::Base
   belongs_to :owner, polymorphic: true, inverse_of: :topics
   belongs_to :writer, polymorphic: true
 
-  belongs_to :user_writer, -> { where(topics: {writer_type: 'User'}) }, foreign_key: 'writer_id', class_name: 'User'
+  belongs_to :user_writer, -> { where('topics.writer_type = User') }, foreign_key: 'writer_id', class_name: 'User'
   validates_presence_of :message
 
   def to_s

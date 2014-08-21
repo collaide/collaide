@@ -9,7 +9,7 @@
         %h6.subheader
           -if not @topic.title.blank?
             %strong= @topic.title
-          -if @topic.writer.nil?
+          -if @topic.user_writer.nil?
             =t('group.topics.index.no_author')
           -else
             =t('group.topics.index.author')
@@ -19,7 +19,7 @@
           -#= link_to(t('group.statuses.index.delete'), '#', class: 'button small secondary')
         .row
           .columns.small-22.push-1
-            =render 'comments/form', submit_text: t('group.topics.index.reply'), object: topic
+            =render 'comments/form', submit_text: t('group.topics.index.reply'), object: @topic
             #infinite-scroll
               .page
                 =render partial: 'comment', collection: @comments, as: 'comment'
