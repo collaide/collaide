@@ -215,6 +215,7 @@
 
 // user panel
 #user-panel {
+  //border-top: solid 1px $primary-light-color;
   border-top: solid 1px $primary-light-color;
   //border-bottom: solid 1px $primary-light-color;
   background-color: $primary-color;
@@ -258,15 +259,52 @@
     background-image: image_url('icons/setting-icon.svg');
   }
 }
-#user-notifications-panel {
+
+.user-panel-extended {
   width: 350px;
+  //height: 600px;
+  overflow: hidden;
   top: 0;
   bottom: 0;
   left: 60px;
   position: absolute;
   background-color: $primary-light-color;
+  color: $secondary-color;
   border-right: solid 4px $primary-color;
+  //border-top: solid 1px $primary-light-color;
+  z-index: 1;
 
+//    li a {
+//      display: block;
+//      padding: 15px 40px 15px 15px;
+//    }
+  li {
+    font-size: 0.9em;
+    padding: 15px 15px 0px 15px;
+    table {
+      border: none;
+    }
+    border-bottom: solid 1px $primary-light-color;
+    .avatar {
+      //vertical-align: middle;
+    }
+    .text {
+      //padding-left: 60px;
+    }
+  }
+
+  .light, .light table {
+    background-color: $secondary-other-color;
+    .text {
+      color: $primary-color;
+    }
+  }
+  .dark, .dark table {
+    background-color: $primary-light-color;
+    .text {
+      color: $secondary-color;
+    }
+  }
 }
 
 #main-content.decal-content, #flash-msg.decal-content {

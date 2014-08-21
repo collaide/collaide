@@ -24,6 +24,8 @@ class Topic < ActiveRecord::Base
   belongs_to :writer, polymorphic: true
 
   belongs_to :user_writer, foreign_key: 'writer_id', class_name: 'User'
+  has_many :activities, foreign_key: "trackable_id", :dependent => :destroy
+
   validates_presence_of :message
 
   def to_s
