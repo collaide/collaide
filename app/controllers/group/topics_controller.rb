@@ -28,6 +28,8 @@ class Group::TopicsController < ApplicationController
   def destroy
     check_permission { @group.can? :delete, :topic, current_user }
     @topic = Topic.find(params[:id])
+    @comments = @topic.comments
+    @comments.each { |comment| comment.destroy }
     @topic.delete
     redirect_to group_work_group_topics_path, notice: 'supprimé.'
   end
