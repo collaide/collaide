@@ -215,6 +215,8 @@
 
 // user panel
 #user-panel {
+  margin-bottom: $footer-height;
+
   //border-top: solid 1px $primary-light-color;
   border-top: solid 1px $primary-light-color;
   //border-bottom: solid 1px $primary-light-color;
@@ -234,9 +236,11 @@
     background-repeat: no-repeat;
     background-size: 30px;
     background-position: 15px;
+    text-align: center;
+
     //cursor: pointer;
     img {
-      margin-top: 20px;
+      margin-top: 25px;
     }
   }
   a {
@@ -260,7 +264,8 @@
   }
 }
 
-.user-panel-extended {
+#user-panel-extended {
+  margin-bottom: $footer-height;
   width: 350px;
   //height: 600px;
   overflow: hidden;
@@ -607,6 +612,7 @@ footer {
   background-color: $primary-color;
   padding-top: 30px;
   padding-bottom: 30px;
+  height: $footer-height;
 }
 
 
