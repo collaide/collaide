@@ -1,0 +1,23 @@
+<%if @notifications.empty?
+    message = "<p>#{t('notifications.index.no_notification')}</p>"
+else
+    notifications = @notifications.map do |notification|
+        if notification.is_viewed?
+            color = 'light'
+        else
+            color = 'dark'
+        end
+        "<li class='#{color}'>
+          <table>
+            <tr>
+              <td class='avatar'>
+                <a href='#{user_path(notification.owner)}' class='th'>#{image_tag notification.owner.avatar}</a>
+              </td>
+              <td class='text'>#{notification.print_message}</td>
+            </tr>
+          </table>
+        </li>"
+    end
+    message = "<ul class='no-bullet'>#{notifications.join('')}</ul>" + paginate(@notifications)
+end%>
+$('#user-notifications-panel').html('<%=escape_javascript message.html_safe %>')

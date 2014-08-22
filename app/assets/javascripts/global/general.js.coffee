@@ -35,11 +35,12 @@ offcanvas = () ->
 #    console.log 'closing'
 #  )
 
+# Empêche qu'une requête soit effectuée pour afficher les notifications quand le pannau se ferme
 userPanel = () ->
-#  $('#user-panel-user-notifications').click ->
-#    alert 'aa'
-#    $('#user-panel-extended').toggle()
-#    false
+  $('#user-panel-user-notifications').click (e)->
+    if $('[data-offcanvas]').hasClass('move-right')
+      stop(e)
+      $('[data-offcanvas]').removeClass('move-right')
 
 stop = (event) ->
   event.stopImmediatePropagation()

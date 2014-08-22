@@ -5,7 +5,7 @@
       -#=show_avatar_linked(current_user)
       =link_to(image_tag(current_user.avatar.mini), current_user)
     %li.user-notifications
-      =link_to('', '#', id: 'user-panel-user-notifications', class: 'left-off-canvas-toggle')
+      =link_to('', notifications_path, id: 'user-panel-user-notifications', class: 'left-off-canvas-toggle', :'data-remote' => true)
     -#%li.user-messages.selected
     -#  =link_to('', messages_path, class: "up-button left-off-canvas-toggle")
     %li.user-settings
