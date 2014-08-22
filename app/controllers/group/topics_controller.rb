@@ -21,16 +21,16 @@ class Group::TopicsController < ApplicationController
 
   def show
     check_permission{ @group.can? :read, :topic, current_user }
-    @topic = Topic.find(params[:id])
+    @topic = @group.topics.where(id: params[:id]).take
     @comments = @topic.comments.page(params[:page])
   end
 
   def destroy
     check_permission { @group.can? :delete, :topic, current_user }
-    @topic = Topic.find(params[:id])
-    @comments = @topic.comments
-    @comments.each { |comment| comment.destroy }
-    @topic.delete
+    topic = @group.topics.where(id: params[:id]).take
+    comments = topic.comments
+    comments.each { |comment| comment.destroy }
+    topic.delete
     redirect_to group_work_group_topics_path, notice: 'supprimé.'
   end
 

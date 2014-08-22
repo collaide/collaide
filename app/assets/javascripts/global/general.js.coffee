@@ -36,10 +36,10 @@ offcanvas = () ->
 #  )
 
 userPanel = () ->
-#  ('#user-panel-user-notifications').click ->
-#    alert 'aa'
-#    ('#user-panel-extended').toggle
-#    false
+  $('#user-panel-user-notifications').click ->
+    alert 'aa'
+    $('#user-panel-extended').toggle()
+    false
 
 stop = (event) ->
   event.stopImmediatePropagation()

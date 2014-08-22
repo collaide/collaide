@@ -22,5 +22,6 @@
             =render 'comments/form', submit_text: t('group.topics.index.reply'), object: @topic
             #infinite-scroll
               .page
-                =render partial: 'comment', collection: @comments, as: 'comment'
+                =render partial: 'comment', collection: @comments, as: 'comment', locals: {topic: @topic}
+                =s(@topic.message).html_safe
             =paginate @comments
