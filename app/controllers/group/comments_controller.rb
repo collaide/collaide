@@ -1,4 +1,4 @@
-class Group::CommentsController
+class Group::CommentsController < ApplicationController
   include Concerns::PermissionConcern
   def destroy
     group = Group::WorkGroup.find params[:work_group_id]
@@ -6,6 +6,6 @@ class Group::CommentsController
     topic = group.topics.where(id: params[:topic_id]).take
     comment = topic.comments.where(id: params[:id]).take
     comment.destroy
-    redirect_to group_work_group_topic_path(topic)
+    redirect_to group_work_group_topic_path(group, topic)
   end
 end

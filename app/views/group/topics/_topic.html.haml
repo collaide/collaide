@@ -17,7 +17,8 @@
         -collection = topic.comments
         -if limit.is_a? Fixnum and limit > 0
           -collection = collection[0..limit]
-        =render partial: 'comment', collection: collection, as: 'comment', topic: topic
+        =render partial: 'comment', collection: collection, as: 'comment'
+        =s(topic.message).html_safe
         =render 'comments/form', submit_text: t('group.topics.index.reply'), object: topic
         -if limit.is_a? Fixnum and topic.comments.size >= limit
           = link_to t('group.topics.index.show_more'), group_work_group_topic_path(id: topic)
