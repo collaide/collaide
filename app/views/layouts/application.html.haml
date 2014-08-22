@@ -37,6 +37,7 @@
   / Vous êtes programmateur, webdesigner, graphiste, ou autre ? rejoignez l'équipe de collaide ! ==> contact@collaide.com
   = render 'layouts/header'
   .off-canvas-wrap{'data-offcanvas'=> ''}
+    = render 'layouts/user_panel' if user_signed_in?
     .inner-wrap
       %aside.left-off-canvas-menu
         Salut
@@ -47,7 +48,8 @@
 
         =render 'devise/form/header_sign_in'
       = render 'layouts/right_off_canvas'
-      = render 'layouts/user_panel' if user_signed_in?
+      = render 'layouts/left_off_canvas' if user_signed_in?
+      -#= render 'layouts/user_panel' if user_signed_in?
       %p
       -#.row
         #breadcrumb.columns.small-24
@@ -72,6 +74,6 @@
               =raw(t'all.info', students: link_to(t('all.students'), about_path), contact: link_to(t('all.contact'), contact_path))
           = yield
       %a.exit-off-canvas
-      = render 'layouts/footer'
+    = render 'layouts/footer'
   = content_for :get_repo_items
 </html>

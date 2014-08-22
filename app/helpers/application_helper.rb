@@ -120,7 +120,7 @@ $(function () {
   end
 
   def show_avatar_linked(user)
-    link_to(image_tag(user.avatar.mini), user).html_safe
+    link_to(image_tag(user.avatar.mini, size: "50x50"), user).html_safe
   end
 
   # View helper for rendering an activity, calls {Activity::Activity#render} internally.

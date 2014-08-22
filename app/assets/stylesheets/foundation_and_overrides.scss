@@ -216,6 +216,8 @@
 // user panel
 #user-panel {
   margin-bottom: $footer-height;
+  //margin-top: $topbar-height;
+  z-index: 2;
 
   //border-top: solid 1px $primary-light-color;
   border-top: solid 1px $primary-light-color;
@@ -265,8 +267,8 @@
 }
 
 #user-panel-extended {
-  margin-bottom: $footer-height;
-  width: 350px;
+  //margin-bottom: $footer-height;
+  //width: 330px;
   //height: 600px;
   overflow: hidden;
   top: 0;
@@ -290,7 +292,11 @@
       border: none;
     }
     border-bottom: solid 1px $primary-light-color;
-    .avatar {
+    .avatar img {
+      display: block;
+      height: 50px;
+      width: 50px;
+      max-width: none;
       //vertical-align: middle;
     }
     .text {
