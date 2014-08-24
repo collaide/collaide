@@ -791,6 +791,8 @@ fr:
     repository_manager:
       repo_items:
         create_in_group: "%{sender} a envoyé le fichier %{file} dans le groupe : %{group}."
+    panel:
+      loading: "Chargement de vos notifications"
   app_notifications_mailer:
     document_created:
       title: Merci d'avoir déposé un document !
