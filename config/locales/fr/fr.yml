@@ -619,7 +619,7 @@ fr:
         author: Commencée par
         edit: Modifier
         delete: Supprimer
-        show_more: Afficher la suite de la discussion
+        show_more: Afficher les conversations précédantes
         status:
           success: Une nouvelle discussion a commencée
           error: Impossible de commencer une nouvelle discussion.

@@ -8,5 +8,5 @@
       #infinite-scroll
         %h4.subheader= t('group.topics.index.last_discussions')
         .page
-          =render(partial: 'topic', collection: @topics, as: 'topic', locals: {limit: 5}) || t('group.topics.index.empty')
+          =render(partial: 'topic', collection: @topics, as: 'topic', locals: {limit: 3}) || t('group.topics.index.empty')
       =paginate @topics
