@@ -14,6 +14,11 @@ class Group::TopicsController < ApplicationController
     @topics = @group.topics.order('updated_at DESC').includes({comments: :user}, :user_writer).page(params[:page])
   end
 
+  def edit
+    check_permission { @group.can? :write, :topic, current_user }
+    @topic = @group.topics.where(id: params[:id]).take
+  end
+
   def new
     check_permission{ @group.can? :write, :topic, current_user }
     @topic = Topic.new

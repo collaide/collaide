@@ -74,8 +74,8 @@ Collaide::Application.routes.draw do
     end
 
     concern :topic do
-      resources :topics, only: [:index, :show, :new, :destroy] do
-        resources :comments, only: :destroy
+      resources :topics, only: [:index, :show, :new, :destroy, :edit] do
+        resources :comments, only: [:destroy, :edit]
       end
     end
 
@@ -94,8 +94,8 @@ Collaide::Application.routes.draw do
       end
     end
 
-    resources :topics, only: [:create]
-    resources :comments, only: [:create]
+    resources :topics, only: [:create, :update]
+    resources :comments, only: [:create, :update]
 
     namespace :group do
       resources :work_groups, :controller => 'work_groups', as: 'work_groups', :only => [:new, :create, :edit, :update, :show] do

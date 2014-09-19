@@ -4,14 +4,7 @@ class TopicsController < ApplicationController
 
 
   def create
-    raise  ActiveRecord::UnknownAttributeError unless topic_params[:klass]
-    klass = topic_params[:klass].to_s.constantize
-    raise  ActiveRecord::UnknownAttributeError unless klass.method_defined? 'topics'
-    object = klass.find(topic_params[:id])
-    if object.is_a? Group::WorkGroup and object.can_not? :write, :topic, current_user
-      raise CanCan::AccessDenied
-    end
-    status = object.topics.create(title: topic_params[:title], message: topic_params[:message], writer: current_user)
+    status = get_group.topics.create(title: topic_params[:title], message: topic_params[:message], writer: current_user)
     respond_to do |format|
       if status.save #&& status.create_activity(:create, owner: current_user, recipient: object)
         format.html { redirect_to topic_params[:path], notice:  notice_after('success', on: 'create')}
@@ -22,7 +15,7 @@ class TopicsController < ApplicationController
   end
 
   def update
-    topic = Topic.find params[:id]
+    topic = get_group.topics.where(id: params[:id]).take
     respond_to do |format|
       if topic.update(message: topic_params[:message])
         format.html { redirect_to topic_params[:path], notice: notice_after('success', on: 'update') }
@@ -34,6 +27,17 @@ class TopicsController < ApplicationController
 
 
   private
+
+  def get_group
+    raise  ActiveRecord::UnknownAttributeError unless topic_params[:klass]
+    klass = topic_params[:klass].to_s.constantize
+    raise  ActiveRecord::UnknownAttributeError unless klass.method_defined? 'topics'
+    object = klass.find(topic_params[:id])
+    if object.is_a? Group::WorkGroup and object.can_not? :write, :topic, current_user
+      raise CanCan::AccessDenied
+    end
+    object
+  end
 
   def notice_after(status = 'success', on: 'create')
     I18n.t("#{topic_params[:render_view].split('/').join('.')}.topic.#{on}.#{status}", default: t("topic.#{status}"))

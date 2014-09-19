@@ -1,0 +1,4 @@
+=render(layout: 'group/layouts/layout') do
+  -add_breadcrumb I18n.t('group.topics.index.edit'),  edit_group_work_group_topic_path(@group, @topic)
+  %h1= t('group.topics.index.h1_title')
+  =render 'group/topics/form'

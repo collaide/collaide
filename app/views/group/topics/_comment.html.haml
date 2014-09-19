@@ -6,5 +6,6 @@
       =image_and_name_for comment.user
       =t('group.topics.index.time_ago', time_ago: time_ago_in_words(comment.created_at))
     =link_to t('delete'), group_work_group_topic_comment_path(@group, topic, comment), class: 'button tiny alert', method: :delete, confirm: t('confirm') if defined? topic
+    =link_to t('dico.edit'), edit_group_work_group_topic_comment_path(@group, topic, comment), class: 'button tiny' if defined? topic
   %p= s(comment.comment).html_safe
   %hr

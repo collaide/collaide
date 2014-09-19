@@ -12,6 +12,7 @@
 
       -#= link_to(t('group.statuses.index.edit'), '#', class: 'button small secondary')
       = link_to(t('group.statuses.index.delete'), group_work_group_topic_path(@group, topic), class: 'button small secondary', method: :delete, confirm: t('confirm'))
+      = link_to(t('group.statuses.index.edit'), edit_group_work_group_topic_path(@group, topic), class: 'button small secondary')
     .row
       .columns.small-22.push-1
         =s(topic.message).html_safe
