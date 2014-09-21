@@ -675,6 +675,7 @@ fr:
   comments:
     success: Le commentaire a bien été créé
     error: le commentaire n'a pas pu être créé
+    update: "Le commentaire a été modifié"
   messages:
     title_page: Messagerie privée
     index:

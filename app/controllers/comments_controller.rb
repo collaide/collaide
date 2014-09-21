@@ -9,12 +9,12 @@ class CommentsController < ApplicationController
   def update
     raise  ActiveRecord::UnknownAttributeError unless comment_params[:klass]
     klass = comment_params[:klass].to_s.constantize
-    raise  ActiveRecord::UnknownAttributeError unless klass.method_defined? 'comments'
     object = klass.find(comment_params[:id])
-    if object.is_a? Group::WorkGroup and object.can_not? :write, :topic, current_user
-      raise CanCan::AccessDenied
+    object.is_a? Topic and object.owner.is_a? Group::Group and object.owner.can_not? :write, :topic, current_user
+    comment = object.comments.where(id: params[:id]).take
+    if comment.update(comment: comment_params[:comment])
+      redirect_to comment_params[:path], notice: t('comments.update')
     end
-    object
   end
 
   private

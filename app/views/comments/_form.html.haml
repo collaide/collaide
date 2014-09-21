@@ -1,6 +1,8 @@
 =simple_form_for @comment, action: topics_path do |f|
   .hide
-    =hidden_field_for_polymorphic 'comment', object
+    -params = {}
+    -params = {path: path} if defined? path
+    =hidden_field_for_polymorphic 'comment', object, params
   .row
     .columns.large-24
       =f.input :comment, label: false, input_html: {class: 'tinymce', id: "comment_comment_#{object.id}"}, placeholder: t('group.topics.index.comment.form')
