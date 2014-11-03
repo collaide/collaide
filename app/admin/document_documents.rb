@@ -71,4 +71,19 @@ ActiveAdmin.register Document::Document, as: 'Document' do
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 end
