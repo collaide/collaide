@@ -52,4 +52,23 @@ ActiveAdmin.register Document::Document, as: 'Document' do
   filter :status
   filter :user
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 end
